@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# Rename this file as SailDiscord.changes.run to let sfdk automatically
+# generate changelog from well formatted Git commit messages and tag
+# annotations. Note that 'sfdk changelog' must be invoked as 'sfdk-changelog' here.
+
+sfdk-changelog
+
+# Here are some basic examples how to change from the default behavior. Run
+# 'sfdk --help-maintaining' to learn more.
+
+# Use a subset of tags
+#sfdk-changelog --tags refs/tags/my-prefix/*
+
+# Group entries by minor revision, suppress headlines for patch-level revisions
+#sfdk-changelog --dense '/[0-9]+.[0-9+$'
+
+# Trim very old changes
+#sfdk-changelog --since 2014-04-01
+#echo '[ Some changelog entries trimmed for brevity ]'
+
+# Use the subjects (first lines) of tag annotations when no entry would be
+# included for a revision otherwise
+#sfdk-changelog --auto-add-annotations
