@@ -19,7 +19,10 @@ SOURCES += src/SailDiscord.cpp
 DISTFILES += qml/SailDiscord.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
+    qml/pages/LoginDialog.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/framescript.js \
+    qml/pages/site.html \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \
     rpm/SailDiscord.spec \
@@ -37,3 +40,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/SailDiscord-de.ts
+
+CONFIG += link_pkgconfig
+PKGCONFIG += qt5embedwidget

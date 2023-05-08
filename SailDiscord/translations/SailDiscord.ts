@@ -11,15 +11,11 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Show Page 2</source>
+        <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
+        <source>Second Page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
