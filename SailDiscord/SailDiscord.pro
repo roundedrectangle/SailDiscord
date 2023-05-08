@@ -21,8 +21,6 @@ DISTFILES += qml/SailDiscord.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/SecondPage.qml \
-    qml/pages/framescript.js \
-    qml/pages/site.html \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \
     rpm/SailDiscord.spec \
