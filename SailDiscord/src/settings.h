@@ -8,14 +8,18 @@
 class Settings : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
+
 public:
     explicit Settings(QObject *parent = nullptr);
 
+    QString token();
+    void setToken(QString token);
 private:
     QSettings settings;
 
 signals:
-
+    void tokenChanged();
 };
 
 #endif // SETTINGS_H
