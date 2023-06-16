@@ -39,5 +39,5 @@ CONFIG += sailfishapp_i18n
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/SailDiscord-de.ts
 
-CONFIG += link_pkgconfig
+#CONFIG += link_pkgconfig
 PKGCONFIG += qt5embedwidget

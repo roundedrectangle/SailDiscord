@@ -13,7 +13,7 @@ Name[de]=SailDiscord
 
 [X-Sailjail]
 # Replace with your organization as a reverse domain name
-OrganizationName=org.myorg
+OrganizationName=io.github.roundedrectangle
 # ApplicationName does not have to be identical to Name
 ApplicationName=SailDiscord
 # Add the required permissions here
