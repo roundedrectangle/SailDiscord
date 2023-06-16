@@ -13,7 +13,7 @@ class Settings : public QObject
 public:
     explicit Settings(QObject *parent = nullptr);
 
-    QString token();
+    QString token() const;
     void setToken(QString token);
 private:
     QSettings settings;

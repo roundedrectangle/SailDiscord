@@ -4,7 +4,7 @@ Settings::Settings(QObject *parent) : QObject(parent), settings(QStandardPaths::
 
 }
 
-QString Settings::token()
+QString Settings::token() const
 {
     return settings.value("token", "").toString();
 }
