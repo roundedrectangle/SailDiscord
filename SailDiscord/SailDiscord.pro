@@ -14,7 +14,8 @@ TARGET = SailDiscord
 
 CONFIG += sailfishapp
 
-SOURCES += src/SailDiscord.cpp
+SOURCES += src/SailDiscord.cpp \
+    src/settings.cpp
 
 DISTFILES += qml/SailDiscord.qml \
     qml/cover/CoverPage.qml \
@@ -41,3 +42,6 @@ TRANSLATIONS += translations/SailDiscord-de.ts
 
 #CONFIG += link_pkgconfig
 PKGCONFIG += qt5embedwidget
+
+HEADERS += \
+    src/settings.h
