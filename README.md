@@ -9,5 +9,6 @@ Not working yet
 ## TODO
 
 - [X] Login using Discord
-- [ ] Save token after logging in (in progress)
+- [X] Save token after logging in
+- [ ] Open the login page or the main page depending on is user logged in or not (started doing this, but not working for now)
 - [ ] Develop the whole app
