@@ -18,6 +18,10 @@
         <source>Second Page</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>UI Template</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SecondPage</name>

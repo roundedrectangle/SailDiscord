@@ -14,7 +14,7 @@ public:
     explicit Settings(QObject *parent = nullptr);
 
     QString token() const;
-    void setToken(QString token);
+    Q_INVOKABLE void setToken(QString token);
 private:
     QSettings settings;
 
