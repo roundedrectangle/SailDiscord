@@ -24,7 +24,6 @@ Page {
         if (appSettings.token == "" && !loggingIn) {
             loggingIn = true
             loading = false
-            //while (status != PageStatus.Active);
             openLoginDialogTimer.start()
         }
     }
