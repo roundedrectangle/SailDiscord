@@ -12,5 +12,5 @@ I can forget about my projects and pause the developing, but then I come back (n
 
 - [X] Login using Discord
 - [X] Save token after logging in
-- [ ] Open the login page or the main page depending on is user logged in or not (started doing this, but not working for now)
+- [X] Open the login page or the main page depending on is user logged in or not
 - [ ] Develop the whole app

@@ -11,12 +11,21 @@ Page {
     property bool loading: true
     property bool loggingIn: false
 
+    Timer {
+        //credit: Fernschreiber
+        id: openLoginDialogTimer
+        interval: 0
+        onTriggered: {
+            pageStack.push(Qt.resolvedUrl("LoginDialog.qml"))
+        }
+    }
+
     function updatePage() {
         if (appSettings.token == "" && !loggingIn) {
             loggingIn = true
             loading = false
-            while (status != PageStatus.Active);
-            pageStack.push(Qt.resolvedUrl("LoginDialog.qml"))
+            //while (status != PageStatus.Active);
+            openLoginDialogTimer.start()
         }
     }
 
