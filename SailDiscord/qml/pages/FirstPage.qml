@@ -21,11 +21,16 @@ Page {
     }
 
     function updatePage() {
+        console.log(loggingIn.toString() + " " + loading.toString())
         if (appSettings.token == "" && !loggingIn) {
             loggingIn = true
             loading = false
             openLoginDialogTimer.start()
+        } else { // logged in
+            loggingIn = false
+            loading = false
         }
+        console.log(loggingIn.toString() + " " + loading.toString())
     }
 
     Connections {
@@ -35,6 +40,8 @@ Page {
     }
 
     Component.onCompleted: {
+        //appSettings.setToken("")
+        console.log("Completed!")
         updatePage()
     }
 
@@ -45,7 +52,7 @@ Page {
 
         BusyLabel {
             text: "Loading"
-            running: !loading
+            running: loading
         }
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView

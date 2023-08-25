@@ -11,8 +11,6 @@ Dialog {
 
     onAccepted: {
         appSettings.setToken(webview.getToken());
-        FirstPage.loggingIn = false
-        FirstPage.loading = false
     }
 
     Column {
