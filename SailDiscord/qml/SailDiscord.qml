@@ -13,23 +13,4 @@ ApplicationWindow {
     AppSettings {
         id: appSettings
     }
-
-    Python {
-        id: python
-
-        Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl("python"))
-        }
-
-        onError: {
-            // when an exception is raised, this error handler will be called
-            console.log('python error: ' + traceback);
-        }
-
-        onReceived: {
-            // asychronous messages from Python arrive here
-            // in Python, this can be accomplished via pyotherside.send()
-            console.log('got message from python: ' + data);
-        }
-    }
 }
