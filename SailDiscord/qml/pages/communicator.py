@@ -4,6 +4,7 @@
 #     pass
 import pyotherside
 from threading import Thread
-pyotherside.send("UP")
 
-print("Python is UP!")
+if __name__ == "__main__":
+    # print("Python is UP!") # Print statements do not work here
+    pyotherside.send("UP")   # Debug this way instead (also add some code in QML)
