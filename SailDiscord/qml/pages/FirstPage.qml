@@ -97,7 +97,7 @@ Page {
         id: python
 
         Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl("."));
+            addImportPath(Qt.resolvedUrl("./python"));
 
             importModule('communicator', function () {});
         }

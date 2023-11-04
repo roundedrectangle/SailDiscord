@@ -4,6 +4,7 @@
 #     pass
 import pyotherside
 from threading import Thread
+import discord
 
 if __name__ == "__main__":
     # print("Python is UP!") # Print statements do not work here

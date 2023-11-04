@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Get help
+    url: https://github.com/dolfies/discord.py-self/discussions/new?category=help
+    about: Ask a question on our help page (*not* for bug reports).
+  - name: Suggest a feature
+    url: https://github.com/dolfies/discord.py-self/discussions/new?category=ideas
+    about: Suggest new features for the library!
+  - name: Telegram channel
+    about: Ask for help and discuss the library.
+    url: https://t.me/dpy_self_discussions
