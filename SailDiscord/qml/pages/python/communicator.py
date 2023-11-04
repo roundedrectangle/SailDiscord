@@ -26,7 +26,7 @@ class Communicator:
         self.loginth.start()
 
     def _login(self):
-        pyotherside.send(f"Got token: {token}")
+        pyotherside.send(f"Got token: {self.token}")
         self.client.run(self.token)
 
 comm = Communicator()
