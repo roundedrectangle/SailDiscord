@@ -13,7 +13,8 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Login using Discord
 - [X] Save token after logging in
 - [X] Open the login page or the main page depending on is user logged in or not
-- [ ] Connect Python
+- [X] Connect Python
+- [ ] Connect login dialog with discord.py-self
 - [ ] Develop the whole app
 
 Credits to discord.py-self library
