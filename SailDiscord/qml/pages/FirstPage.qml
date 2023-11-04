@@ -115,6 +115,7 @@ Page {
 
         function login(token) {
             loading = true;
+            call('lambda:print(dir())', function(){})
             call('communicator.comm.login', [token], function() {})
         }
     }

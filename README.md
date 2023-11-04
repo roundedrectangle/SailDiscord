@@ -18,3 +18,9 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [ ] Develop the whole app
 
 Credits to discord.py-self library
+You should install that library on your device with pip via Terminal, which is a part of developer mode for SFOS in Settings
+
+	pkcon install python3-pip
+	pip install discord.py-self --user
+
+Don't forget to add the --user option! Otherwise it won't work!
