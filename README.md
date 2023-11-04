@@ -14,7 +14,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Save token after logging in
 - [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
-- [ ] Connect login dialog with discord.py-self
+- [ ] Integrate discord.py-self
 - [ ] Develop the whole app
 
 Credits to discord.py-self library
