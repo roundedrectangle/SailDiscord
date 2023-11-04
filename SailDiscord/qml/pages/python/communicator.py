@@ -6,6 +6,16 @@ import pyotherside
 from threading import Thread
 import discord
 
-if __name__ == "__main__":
-    # print("Python is UP!") # Print statements do not work here
-    pyotherside.send("UP")   # Debug this way instead (also add some code in QML)
+class Communicator:
+    def __init__(self):
+        self.loginth = Thread()
+        self.loginth.start()
+
+    def login(self):
+        if self.loginth.is_alive():
+            return
+        self.loginth = Thread(target=self._login)
+        self.loginth.start()
+
+    def _login(self):
+        pass
