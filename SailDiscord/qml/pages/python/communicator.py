@@ -11,11 +11,13 @@ class Communicator:
         self.loginth = Thread()
         self.loginth.start()
 
-    def login(self):
+    def login(self, token):
         if self.loginth.is_alive():
             return
-        self.loginth = Thread(target=self._login)
+        self.loginth = Thread(target=self._login, args=(token,))
         self.loginth.start()
 
-    def _login(self):
-        pass
+    def _login(self, token):
+        pyotherside.send(f"Got token: {token}")
+
+comm = Communicator()

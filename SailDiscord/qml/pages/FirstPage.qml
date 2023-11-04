@@ -27,9 +27,9 @@ Page {
             loggingIn = true
             loading = false
             openLoginDialogTimer.start()
-        } else { // logged in
+        } else { // logged in, connect with python
             loggingIn = false
-            loading = false
+            python.login(appSettings.token)
         }
         console.log(loggingIn.toString() + " " + loading.toString())
     }
@@ -111,6 +111,11 @@ Page {
             // asychronous messages from Python arrive here
             // in Python, this can be accomplished via pyotherside.send()
             console.log('got message from python: ' + data);
+        }
+
+        function login(token) {
+            loading = true;
+            call('communicator.comm.login', [token], function() {})
         }
     }
 }
