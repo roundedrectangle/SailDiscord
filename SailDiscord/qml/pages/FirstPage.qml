@@ -11,6 +11,7 @@ Page {
 
     property bool loading: true
     property bool loggingIn: false
+    property string username: ""
 
     Timer {
         //credit: Fernschreiber
@@ -82,11 +83,11 @@ Page {
             width: page.width
             spacing: Theme.paddingLarge
             PageHeader {
-                title: qsTr("UI Template")
+                title: username
             }
             Label {
                 x: Theme.horizontalPageMargin
-                text: appSettings.token
+                text: qsTr("TODO")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
@@ -98,6 +99,11 @@ Page {
 
         Component.onCompleted: {
             addImportPath(Qt.resolvedUrl("./python"));
+
+            setHandler('logged_in', function(_username) {
+                loading = false;
+                username = _username
+            })
 
             importModule('communicator', function () {});
         }

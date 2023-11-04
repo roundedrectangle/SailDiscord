@@ -9,7 +9,7 @@ import discord
 
 class MyClient(discord.Client):
     async def on_ready(self):
-        pyotherside.send(f'Logged on as {self.user}')
+        pyotherside.send('logged_in', str(self.user))
 
 class Communicator:
     def __init__(self):

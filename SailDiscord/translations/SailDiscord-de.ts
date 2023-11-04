@@ -19,7 +19,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
+        <source>TODO</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
