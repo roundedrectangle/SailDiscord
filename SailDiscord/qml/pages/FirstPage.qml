@@ -87,11 +87,31 @@ Page {
             }
             Label {
                 x: Theme.horizontalPageMargin
-                text: qsTr("TODO")
+                text: qsTr("SailDiscord")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
             }
+
+            ExpandingSection {
+                id: dmSection
+                title: qsTr("Direct Messages")
+            }
+            ExpandingSection {
+                id: serversSection
+                title: qsTr("Servers")
+            }
         }
+    }
+
+    ListModel {
+        id: serversModel
+
+        function find(pattern) {
+            for (var i = 0; i<count; i++) if (pattern(get(i))) return get(i)
+            return null
+        }
+
+        function findById(_id) { return find(function (item) { return item.id === _id }) }
     }
 
     Python {
@@ -104,6 +124,12 @@ Page {
                 loading = false;
                 username = _username
             })
+
+            setHandler('server', function(_id) { serversModel.append({'id': _id, 'name': '', 'chunked': true, 'memberCount': 0}) })
+
+            setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
+            setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })
+            setHandler('SERVERmember_count', function (what) { updateServer(what, function(item, memberCount) { item.memberCount = memberCount }) })
 
             importModule('communicator', function () {});
         }
@@ -121,8 +147,13 @@ Page {
 
         function login(token) {
             loading = true;
-            call('lambda:print(dir())', function(){})
             call('communicator.comm.login', [token], function() {})
+        }
+
+        function updateServer(what, updater) {
+            var arr = what.split('~')
+            const id = arr.shift()
+            updater(serversModel.findById(id), arr.join(' '))
         }
     }
 }
