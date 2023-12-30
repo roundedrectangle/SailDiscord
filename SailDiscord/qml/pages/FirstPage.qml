@@ -48,10 +48,10 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
-        //model: serversModel
+        model: serversModel
 
         BusyLabel {
             text: "Loading"
