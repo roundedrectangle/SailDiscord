@@ -15,7 +15,13 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
 - [X] Integrate discord.py-self
-- [ ] Servers/DMs list placeholder in the UI
+- [ ] Servers/DMs list
+	- [ ] Frontend
+		- [ ] Servers
+		- [ ] DMs
+	- [-] Backend
+		- [X] Servers
+		- [ ] DMs
 - [ ] Develop the whole app
 
 Credits to discord.py-self library
