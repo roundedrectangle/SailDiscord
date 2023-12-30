@@ -20,8 +20,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 Credits to discord.py-self library
 You should install that library on your device with pip via Terminal, which is a part of developer mode for SFOS in Settings
 
-`pkcon install python3-pip # install pip`
-
+	pkcon install python3-pip # install pip
 ~~`pip install discord.py-self --user # install the library`~~
 
 For now you should install the development version of the library. Here's how to do that (installing pip is still needed):
