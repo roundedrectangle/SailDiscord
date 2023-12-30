@@ -157,7 +157,7 @@ Page {
                 username = _username
             })
 
-            setHandler('server', function(_id, _name) { serversModel.append({'id': _id, 'name': _name/*, 'chunked': true, 'memberCount': 0*/});print("NEW SERVER!"+_id+" "+_name)})
+            setHandler('server', function(_id, _name) { serversModel.append({'id': _id, 'name': _name/*, 'chunked': true, 'memberCount': 0*/}) })
 
             //setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
             //setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })
