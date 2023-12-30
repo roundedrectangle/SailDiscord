@@ -16,12 +16,14 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Connect Python
 - [X] Integrate discord.py-self
 - [ ] Servers/DMs list
-	- [ ] Frontend
-		- [ ] Servers
-		- [ ] DMs
-	- [ ] Backend
-		- [X] Servers
-		- [ ] DMs
+	- [ ] Servers
+		- [ ] Backend
+		- [ ] Connection
+		- [ ] Frontend
+	- [ ] DMs
+		- [ ] Backend
+		- [ ] Connection
+		- [ ] Frontend
 - [ ] Develop the whole app
 
 Credits to discord.py-self library

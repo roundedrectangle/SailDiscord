@@ -8,16 +8,16 @@ import os, sys
 import discord
 import time
 
-def send_server_info(g):
-    pyotherside.send('SERVERname', f"{g.id}~{g.name}")
-    pyotherside.send('SERVERchunked', f"{g.id}~{g.chunked}")
-    pyotherside.send('SERVERmember_count', f"{g.id}~{g.member_count}")
+#def send_server_info(g):
+#    pyotherside.send('SERVERname', f"{g.id}~{g.name}")
+#    pyotherside.send('SERVERchunked', f"{g.id}~{g.chunked}")
+#    pyotherside.send('SERVERmember_count', f"{g.id}~{g.member_count}")
 
 def send_servers(guilds):
     lst = list(guilds)
     for g in lst:
-        pyotherside.send('server', str(g.id))
-        send_server_info(g)
+        pyotherside.send('server', str(g.id), str(g.name))
+        #send_server_info(g)
 
 class MyClient(discord.Client):
     async def on_ready(self):
