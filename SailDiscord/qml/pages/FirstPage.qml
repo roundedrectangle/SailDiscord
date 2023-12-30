@@ -133,6 +133,14 @@ Page {
                 }
             }
         }*/
+        delegate: Item { // credit to the docs!
+            width: ListView.view.width
+            height: Theme.itemSizeSmall
+
+            Label {
+                text: name
+            }
+        }
     }
 
     ListModel {
@@ -157,7 +165,7 @@ Page {
                 username = _username
             })
 
-            setHandler('server', function(_id, _name) { serversModel.append({'id': _id, 'name': _name/*, 'chunked': true, 'memberCount': 0*/}) })
+            setHandler('server', function(_id, _name) { serversModel.append({"id": _id, "name": _name/*, "chunked": true, "memberCount": 0*/}) })
 
             //setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
             //setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })
