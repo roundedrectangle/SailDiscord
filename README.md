@@ -19,7 +19,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 	- [ ] Frontend
 		- [ ] Servers
 		- [ ] DMs
-	- [-] Backend
+	- [ ] Backend
 		- [X] Servers
 		- [ ] DMs
 - [ ] Develop the whole app
