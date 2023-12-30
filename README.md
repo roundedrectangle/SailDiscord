@@ -40,4 +40,6 @@ For now you should install the development version of the library. Here's how to
 
 Don't forget to add the --user option! Otherwise it won't work!
 
+If you had installed the old library version before, you should run this command before installing the development one: `pip uninstall discord.py-self`
+
 Also credits to the SailfishOS telegram client Fernschreiber for some code.
