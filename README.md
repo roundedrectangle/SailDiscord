@@ -23,7 +23,7 @@ You should install that library on your device with pip via Terminal, which is a
 	pkcon install python3-pip # install pip
 ~~pip install discord.py-self --user # install the library~~
 
-For now you should install the development version of the library. Here's how to do that:
+For now you should install the development version of the library. Here's how to do that (installing pip is still needed):
 
 	pkcon install git # not sure if it is needed on mobile
 	cd ~
