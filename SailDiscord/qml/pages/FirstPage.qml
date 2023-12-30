@@ -48,9 +48,10 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
+        model: serversModel
 
         BusyLabel {
             text: "Loading"
@@ -70,6 +71,16 @@ Page {
             }
         }
 
+        PageHeader {
+            title: username
+        }
+        Label {
+            x: Theme.horizontalPageMargin
+            text: qsTr("SailDiscord")
+            color: Theme.secondaryHighlightColor
+            font.pixelSize: Theme.fontSizeExtraLarge
+        }
+
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
         contentWidth: column.width
@@ -77,11 +88,12 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
 
-        Column {
+        /*Column {
             id: column
 
             width: page.width
             spacing: Theme.paddingLarge
+            visible: !loading
             PageHeader {
                 title: username
             }
@@ -95,12 +107,29 @@ Page {
             ExpandingSection {
                 id: dmSection
                 title: qsTr("Direct Messages")
+
+                content.sourceComponent: SilicaListView {
+                   id: dmList
+                }
             }
             ExpandingSection {
                 id: serversSection
                 title: qsTr("Servers")
+
+                content.sourceComponent: SilicaListView {
+                    id: serversList
+                    model: serversModel
+                    anchors.top: parent
+                    anchors.bottom: parent
+
+                    ViewPlaceholder {
+                        enabled: serversModel.count === 0
+                        text: "No servers"
+                        hintText: "Pull down to join (TODO)"
+                    }
+                }
             }
-        }
+        }*/
     }
 
     ListModel {
