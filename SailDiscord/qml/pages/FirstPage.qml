@@ -91,7 +91,7 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
 
-        Column {
+        /*Column {
             id: column
 
             width: page.width
@@ -132,7 +132,7 @@ Page {
                     }
                 }
             }
-        }
+        }*/
     }
 
     ListModel {

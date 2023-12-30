@@ -11,23 +11,15 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Second Page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>SailDiscord</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Direct Messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
