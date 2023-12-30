@@ -48,10 +48,9 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaListView {
+    SilicaFlickable {
         id: firstPageContainer
         anchors.fill: parent
-        model: serversModel
 
         BusyLabel {
             text: "Loading"
@@ -77,6 +76,7 @@ Page {
         }
 
         Label {
+            id: appname
             anchors.top: header_name.bottom
             x: Theme.horizontalPageMargin
             text: qsTr("SailDiscord")
@@ -133,12 +133,17 @@ Page {
                 }
             }
         }*/
-        delegate: Item { // credit to the docs!
-            width: ListView.view.width
-            height: Theme.itemSizeSmall
+        SilicaListView {
+            anchors.top: appname.bottom
+            model: serversModel
 
-            Label {
-                text: name
+            delegate: Item { // credit to the docs!
+                width: ListView.view.width
+                height: Theme.itemSizeSmall
+
+                Label {
+                    text: name
+                }
             }
         }
     }
