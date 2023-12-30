@@ -32,3 +32,5 @@ For now you should install the development version of the library. Here's how to
 	python3 -m pip install -U . --user # install the library
 
 Don't forget to add the --user option! Otherwise it won't work!
+
+Also credits to the SailfishOS telegram client Fernschreiber for some code.
