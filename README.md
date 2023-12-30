@@ -25,7 +25,7 @@ You should install that library on your device with pip via Terminal, which is a
 
 For now you should install the development version of the library. Here's how to do that (installing pip is still needed):
 
-	pkcon install git # not sure if it is needed on mobile
+	pkcon install git # not sure if this is needed on mobile
 	cd ~
 	git clone https://github.com/dolfies/discord.py-self
 	cd discord.py-self
