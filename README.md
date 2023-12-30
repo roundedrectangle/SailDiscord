@@ -21,7 +21,7 @@ Credits to discord.py-self library
 You should install that library on your device with pip via Terminal, which is a part of developer mode for SFOS in Settings
 
 	pkcon install python3-pip # install pip
-	~~pip install discord.py-self --user # install the library~~
+~~pip install discord.py-self --user # install the library~~
 
 For now you should install the development version of the library. Here's how to do that:
 
