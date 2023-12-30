@@ -17,8 +17,8 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Integrate discord.py-self
 - [ ] Servers/DMs list
 	- [ ] Servers
-		- [ ] Backend
-		- [ ] Connection
+		- [X] Backend
+		- [X] Connection
 		- [ ] Frontend
 	- [ ] DMs
 		- [ ] Backend
