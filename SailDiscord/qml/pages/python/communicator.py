@@ -2,11 +2,12 @@
 
 # if __name__ == "__main__":
 #     pass
+import os, sys, time
 import pyotherside
 from threading import Thread
-import os, sys
+
+sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'deps'))
 import discord
-import time
 
 #def send_server_info(g):
 #    pyotherside.send('SERVERname', f"{g.id}~{g.name}")

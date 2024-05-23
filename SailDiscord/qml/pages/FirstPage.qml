@@ -48,7 +48,7 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
+    SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
@@ -133,8 +133,8 @@ Page {
                 }
             }
         }*/
-        SilicaListView {
-            anchors.top: appname.bottom
+
+            //anchors.top: appname.bottom
             model: serversModel
 
             delegate: Item { // credit to the docs!
@@ -145,7 +145,7 @@ Page {
                     text: name
                 }
             }
-        }
+
     }
 
     ListModel {
