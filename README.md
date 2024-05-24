@@ -63,6 +63,7 @@ For now you should install the development version of the library. Here's how to
 
 If you had installed the old library version before, you should run this command before installing the development one: `pip uninstall discord.py-self`
 </strike>
+
 The 2.0 library version got released and stable works fine now.
 
 
