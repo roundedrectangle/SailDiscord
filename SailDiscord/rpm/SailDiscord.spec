@@ -1,14 +1,5 @@
 Name:       SailDiscord
 
-# >> macros
-#%define __provides_exclude_from ^%{_datadir}/.*$
-#%define __requires_exclude ^libc|libdl|libm|libpthread|libpython3.7m|libpython3.4m|python|env|libutil.*$
-# << macros
-
-#%{!?qtc_qmake:%define qtc_qmake %qmake}
-#%{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
-#%{!?qtc_make:%define qtc_make make}
-#%{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    An unofficial Discord client for SailfishOS
 Version:    0.1
 Release:    1
@@ -29,8 +20,6 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(qt5embedwidget)
-#BuildRequires:  python-pip
-#BuildRequires: python3-devel >= 3.8
 BuildRequires:  python3-base
 BuildRequires: python3-devel
 #BuildRequires: python3-pip # doesn't work for now; not fix yet
@@ -48,36 +37,11 @@ Short description of my Sailfish OS Application
 
 %make_build
 
-# >> build post
-
-#cp -r %{_builddir}/../%{name}/pymodules ./
-#cd pymodules/
-
-#tar xvf discord.py-self-2.0.0.tar.gz
-#cd discord.py-self-2.0.0
-#python3 setup.py build
-#cd ..
-
-#cd ..
-
-# << build post
-
-
 %install
 
 %qmake5_install
 
 # >> install post
-
-#cd pymodules/
-
-#cd discord.py-self-2.0.0
-#echo %{buildroot}
-#echo %{_datadir}/%{name}
-#python3 setup.py install --root=%{buildroot} --prefix=%{_datadir}/%{name}/
-#cd ..
-
-#cd ..
 
 #python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
 python3 -m pip install discord.py-self>=2.0 --target=%{buildroot}%{_datadir}/%{name}/qml/pages/deps
