@@ -43,7 +43,7 @@ Dialog {
                      function updateToken() {
                          webview.runJavaScript(
                                      // this code returns the token:
-                                     "return (webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=>m?.exports?.default?.getToken!==void 0).exports.default.getToken()",
+                                     "return (webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m?.exports?.default?.getToken).exports.default.getToken()",
 
                                      function (res) {
                                          // callback: if there is a token, store it in discord_token
