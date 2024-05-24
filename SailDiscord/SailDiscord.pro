@@ -14,6 +14,9 @@ TARGET = SailDiscord
 
 CONFIG += sailfishapp
 
+#CONFIG += link_pkgconfig
+PKGCONFIG += qt5embedwidget
+
 SOURCES += src/SailDiscord.cpp \
     src/settings.cpp
 
@@ -40,9 +43,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/SailDiscord-de.ts
-
-#CONFIG += link_pkgconfig
-PKGCONFIG += qt5embedwidget
 
 HEADERS += \
     src/settings.h

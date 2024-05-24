@@ -1,5 +1,14 @@
 Name:       SailDiscord
 
+# >> macros
+%define __provides_exclude_from ^%{_datadir}/.*$
+%define __requires_exclude ^libc|libdl|libm|libpthread|libpython3.7m|libpython3.4m|python|env|libutil.*$
+# << macros
+
+%{!?qtc_qmake:%define qtc_qmake %qmake}
+%{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
+%{!?qtc_make:%define qtc_make make}
+%{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    An unofficial Discord client for SailfishOS
 Version:    0.1
 Release:    1
@@ -14,10 +23,13 @@ BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  desktop-file-utils
+BuildRequires:  pkgconfig(qt5embedwidget)
 #BuildRequires:  python-pip
 #BuildRequires: python3-devel >= 3.8
+#BuildRequires:  python3-base
+#BuildRequires: python3-devel
+#BuildRequires: python3-pip
 
 %description
 Short description of my Sailfish OS Application
@@ -63,7 +75,7 @@ Short description of my Sailfish OS Application
 
 #cd ..
 
-python3 -m ensurepip --default-pip
+#python3 -m ensurepip --default-pip
 python3 -m pip install discord.py-self>=2.0 --target=%{buildroot}%{_datadir}/%{name}/qml/pages/deps
 
 # << install post

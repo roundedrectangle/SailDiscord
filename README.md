@@ -28,6 +28,10 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [ ] Develop the whole app
 
 Credits to discord.py-self library
+
+There's an issue that the app refuses to build. A workaround for now is to build these two awesome projects for the same target as for this project - [harbour-moremahjong](https://github.com/poetaster/harbour-moremahjong) and [sailfish-rpn-calculator](https://github.com/poetaster/sailfish-rpn-calculator)
+I haven't found a fix yet
+
 You should install that library on your device with pip via Terminal, which is a part of developer mode for SFOS in Settings
 In an emulator just ssh as root like this:
 
