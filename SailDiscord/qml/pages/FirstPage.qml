@@ -48,7 +48,8 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaListView {
+    SilicaFlickable {
+    //SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
@@ -91,7 +92,7 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
 
-        /*Column {
+        Column {
             id: column
 
             width: page.width
@@ -100,52 +101,55 @@ Page {
             PageHeader {
                 title: username
             }
-            Label {
+            /*Label {
                 x: Theme.horizontalPageMargin
                 text: qsTr("SailDiscord")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
-            }
+            }*/
 
-            ExpandingSection {
-                id: dmSection
-                title: qsTr("Direct Messages")
+            ExpandingSectionGroup {
 
-                content.sourceComponent: SilicaListView {
-                   id: dmList
+                ExpandingSection {
+                    id: dmSection
+                    title: qsTr("Direct Messages")
+
+                    content.sourceComponent: SilicaListView {
+                       id: dmList
+                    }
                 }
-            }
-            ExpandingSection {
-                id: serversSection
-                title: qsTr("Servers")
 
-                content.sourceComponent: SilicaListView {
-                    id: serversList
-                    model: serversModel
-                    anchors.top: parent
-                    anchors.bottom: parent
+                ExpandingSection {
+                    id: serversSection
+                    title: qsTr("Servers")
 
-                    ViewPlaceholder {
-                        enabled: serversModel.count === 0
-                        text: "No servers"
-                        hintText: "Pull down to join (TODO)"
+                    content.sourceComponent: SilicaListView {
+                        id: serversList
+                        model: serversModel
+                        anchors.top: parent
+                        anchors.bottom: parent
+
+                        ViewPlaceholder {
+                            enabled: serversModel.count === 0
+                            text: "No servers"
+                            hintText: "Pull down to join (TODO)"
+                        }
                     }
                 }
             }
-        }*/
 
-            //anchors.top: appname.bottom
-            model: serversModel
+                //anchors.top: appname.bottom
+                //model: serversModel
 
-            delegate: Item {
-                width: ListView.view.width
-                height: Theme.itemSizeSmall
+                /*delegate: Item {
+                    width: ListView.view.width
+                    height: Theme.itemSizeSmall
 
-                Label {
-                    text: name
-                }
-            }
-
+                    Label {
+                        text: name
+                    }
+                }*/
+        }
     }
 
     ListModel {

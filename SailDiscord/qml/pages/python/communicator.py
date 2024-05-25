@@ -35,6 +35,8 @@ class Communicator:
     def login(self, token):
         if self.loginth.is_alive():
             return
+        #elif token != '':
+        #    self.client.close()
         self.token = token
         self.loginth = Thread(target=self._login)
         self.loginth.start()
