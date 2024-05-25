@@ -22,7 +22,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  python3-base
 BuildRequires: python3-devel
-#BuildRequires: python3-pip # doesn't work for now; not fix yet
+#BuildRequires: python3-pip # doesn't work for now; no fix yet
 
 %description
 Short description of my Sailfish OS Application
@@ -37,14 +37,20 @@ Short description of my Sailfish OS Application
 
 %make_build
 
+# >> build post
+
+#python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
+python3 -m pip install discord.py-self>=2.0 --target=%_builddir/deps
+
+# << build post
+
 %install
 
 %qmake5_install
 
 # >> install post
 
-#python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
-python3 -m pip install discord.py-self>=2.0 --target=%{buildroot}%{_datadir}/%{name}/qml/pages/deps
+cp -r deps %{buildroot}%{_datadir}/%{name}/qml/pages/deps
 
 # << install post
 

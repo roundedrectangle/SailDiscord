@@ -85,8 +85,8 @@ Page {
         }
 
         // Tell SilicaFlickable the height of its content.
-        contentHeight: column.height
-        contentWidth: column.width
+        //contentHeight: column.height
+        //contentWidth: column.width
 
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
