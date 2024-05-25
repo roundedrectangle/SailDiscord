@@ -137,7 +137,7 @@ Page {
             //anchors.top: appname.bottom
             model: serversModel
 
-            delegate: Item { // credit to the docs!
+            delegate: Item {
                 width: ListView.view.width
                 height: Theme.itemSizeSmall
 
