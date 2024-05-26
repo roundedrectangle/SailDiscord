@@ -143,7 +143,7 @@ Page {
                 //anchors.top: appname.bottom
                 //model: serversModel
 
-                delegate: ListItem {
+                delegate: Item {
                     width: ListView.view.width
                     height: Theme.itemSizeSmall
 
