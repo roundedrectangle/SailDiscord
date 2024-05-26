@@ -48,8 +48,8 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    //SilicaFlickable {
-    SilicaListView {
+    SilicaFlickable {
+    //SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
@@ -143,15 +143,35 @@ Page {
                 //anchors.top: appname.bottom
                 //model: serversModel
 
-                delegate: Item {
-                    width: ListView.view.width
-                    height: Theme.itemSizeSmall
+        SilicaListView {
 
-                    Label {
-                        text: name
-                    }
+            anchors {
+                top: appname.bottom
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
+
+            id: serversListView
+            model: serversModel
+
+            delegate: Item {
+                width: parent.width //ListView.view.width
+                height: Theme.itemSizeSmall
+
+                //Label {
+                //    text: name
+                //}
+                Label {
+                    //x: Theme.horizontalPageMargin
+                    //width: parent.width - 2 * x
+                    //anchors.verticalCenter: parent.verticalCenter
+                    text: name
+                    //truncationMode: TruncationMode.Fade
+                    //font.capitalization: Font.Capitalize
                 }
-        //}
+            }
+        }
     }
 
     ListModel {
