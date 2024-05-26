@@ -48,8 +48,8 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
-    //SilicaListView {
+    //SilicaFlickable {
+    SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
@@ -60,6 +60,8 @@ Page {
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
+            busy: loading
+
             MenuItem {
                 text: qsTr("Second Page")
                 onClicked: pageStack.push("SecondPage.qml")
@@ -92,7 +94,7 @@ Page {
         // Place our content in a Column.  The PageHeader is always placed at the top
         // of the page, followed by our content.
 
-        Column {
+        /*Column {
             id: column
 
             width: page.width
@@ -106,7 +108,7 @@ Page {
                 text: qsTr("SailDiscord")
                 color: Theme.secondaryHighlightColor
                 font.pixelSize: Theme.fontSizeExtraLarge
-            }*/
+            }/*
 
             ExpandingSectionGroup {
 
@@ -136,20 +138,20 @@ Page {
                         }
                     }
                 }
-            }
+            }*/
 
                 //anchors.top: appname.bottom
                 //model: serversModel
 
-                /*delegate: Item {
+                delegate: ListItem {
                     width: ListView.view.width
                     height: Theme.itemSizeSmall
 
                     Label {
                         text: name
                     }
-                }*/
-        }
+                }
+        //}
     }
 
     ListModel {

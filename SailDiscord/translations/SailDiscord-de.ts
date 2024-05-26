@@ -22,14 +22,6 @@
         <source>SailDiscord</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Direct Messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Servers</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>SecondPage</name>
