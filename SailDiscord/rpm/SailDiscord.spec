@@ -1,3 +1,6 @@
+%define package_library "no"
+# See README
+
 Name:       SailDiscord
 
 Summary:    An unofficial Discord client for SailfishOS
@@ -20,9 +23,18 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(qt5embedwidget)
+
+%if %{package_library} == "yes"
 BuildRequires:  python3-base
 BuildRequires: python3-devel
 #BuildRequires: python3-pip # doesn't work for now; no fix yet
+%endif
+
+%if %{package_library} != "yes"
+Requires:  python3-base
+Requires: python3-devel
+Requires: python3-pip
+%endif
 
 %description
 Short description of my Sailfish OS Application
@@ -39,8 +51,10 @@ Short description of my Sailfish OS Application
 
 # >> build post
 
+%if %{package_library} == "yes"
 #python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
 python3 -m pip install discord.py-self>=2.0 --target=%_builddir/deps
+%endif
 
 # << build post
 
@@ -50,7 +64,9 @@ python3 -m pip install discord.py-self>=2.0 --target=%_builddir/deps
 
 # >> install post
 
+%if %{package_library} == "yes"
 cp -r deps %{buildroot}%{_datadir}/%{name}/qml/pages/deps
+%endif
 
 # << install post
 

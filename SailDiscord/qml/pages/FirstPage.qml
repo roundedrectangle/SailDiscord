@@ -155,7 +155,7 @@ Page {
             id: serversListView
             model: serversModel
 
-            delegate: Item {
+            delegate: ListItem {
                 width: parent.width //ListView.view.width
                 height: Theme.itemSizeSmall
 
