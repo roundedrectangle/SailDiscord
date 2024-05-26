@@ -26,12 +26,14 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
+BuildRequires: gcc
 BuildRequires: python3-devel
 #BuildRequires: python3-pip # doesn't work for now; no fix yet
 %endif
 
 %if %{package_library} == "no"
 Requires:  python3-base
+Requires: gcc
 Requires: python3-devel
 Requires: python3-pip
 %endif

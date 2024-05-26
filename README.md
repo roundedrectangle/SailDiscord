@@ -38,7 +38,6 @@ Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec
 
 If you didn't uncomment, you'll get faster build but aditional steps needed for phone. This is needed only once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
-	pkcon install python3-base python3-devel python3-pip
 	python3 -m pip install discord.py-self>=2.0
 
 Then open the app. If you ever want to switch to production version, type this command to undo:
