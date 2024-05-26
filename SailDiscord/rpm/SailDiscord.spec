@@ -1,4 +1,4 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       SailDiscord
@@ -26,7 +26,6 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
-BuildRequires: gcc
 BuildRequires: python3-devel
 #BuildRequires: python3-pip # doesn't work for now; no fix yet
 %endif

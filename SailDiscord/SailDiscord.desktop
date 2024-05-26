@@ -12,11 +12,11 @@ Name=SailDiscord
 Name[de]=SailDiscord
 
 [X-Sailjail]
-Sandboxing=Disabled
+#Sandboxing=Disabled
 # Replace with your organization as a reverse domain name
 OrganizationName=io.github.roundedrectangle
 # ApplicationName does not have to be identical to Name
 ApplicationName=SailDiscord
 # Add the required permissions here
-Permissions=
+Permissions=Internet,WebView
 
