@@ -30,7 +30,7 @@ BuildRequires: python3-devel
 #BuildRequires: python3-pip # doesn't work for now; no fix yet
 %endif
 
-%if %{package_library} != "yes"
+%if %{package_library} == "no"
 Requires:  python3-base
 Requires: python3-devel
 Requires: python3-pip
