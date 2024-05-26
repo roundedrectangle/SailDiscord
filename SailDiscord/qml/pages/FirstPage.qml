@@ -208,14 +208,14 @@ Page {
         onError: {
             // when an exception is raised, this error handler will be called
             console.log('python error: ' + traceback);
-            Notices.show("err: "+traceback, Notice.Long, Notice.Center)
+            //Notices.show("err: "+traceback, Notice.Long, Notice.Center)
         }
 
         onReceived: {
             // asychronous messages from Python arrive here
             // in Python, this can be accomplished via pyotherside.send()
             console.log('got message from python: ' + data);
-            Notices.show("dat: "+data, Notice.Long, Notice.Center)
+            //Notices.show("dat: "+data, Notice.Long, Notice.Center)
         }
 
         function login(token) {
