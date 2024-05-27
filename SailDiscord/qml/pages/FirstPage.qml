@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
+import "../components"
 
 
 Page {
@@ -156,20 +157,16 @@ Page {
             model: serversModel
 
             delegate: ListItem {
-                width: parent.width //ListView.view.width
-                height: Theme.itemSizeSmall
+                width: parent.width
+                //ListView.view.width
+               height: Theme.itemSizeSmall
 
-                //Label {
-                //    text: name
-                //}
-                Label {
-                    //x: Theme.horizontalPageMargin
-                    //width: parent.width - 2 * x
-                    //anchors.verticalCenter: parent.verticalCenter
-                    text: name
-                    //truncationMode: TruncationMode.Fade
-                    //font.capitalization: Font.Capitalize
-                }
+               //Label {
+               //    text: name
+               //}
+               ServerListItem {
+                   title: name
+               }
             }
         }
     }
