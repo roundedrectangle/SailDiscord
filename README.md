@@ -10,7 +10,6 @@ I can forget about my projects and pause the developing, but then I come back (n
 
 ## TODO
 
-- [X] Package library with app
 - [X] Login using Discord
 - [X] Save token after logging in
 - [X] Open the login page or the main page depending on is user logged in or not
@@ -26,6 +25,8 @@ I can forget about my projects and pause the developing, but then I come back (n
 		- [ ] Connection
 		- [ ] Frontend
 - [ ] Develop the whole app
+- [X] Package library with app
+- [X] SailJail
 
 Credits to discord.py-self library
 
