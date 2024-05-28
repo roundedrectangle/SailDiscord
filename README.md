@@ -15,15 +15,16 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
 - [X] Integrate discord.py-self
-- [ ] Servers/DMs list
-	- [ ] Servers
-		- [X] Backend
-		- [X] Connection
-		- [ ] Frontend
-	- [ ] DMs
-		- [ ] Backend
-		- [ ] Connection
-		- [ ] Frontend
+- [ ] Servers list
+	|      | Backend            | Connection         | Frontend           |
+	|------|--------------------|--------------------|--------------------|
+	| Name | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+	| Icon | :white_check_mark: | :white_check_mark: | :x:                |
+- [ ] DMs list
+	|      | Backend | Connection | Frontend |
+	|------|---------|------------|----------|
+	| Name | :x:     | :x:        | :x:      |
+	| Icon | :x:     | :x:        | :x:      |
 - [ ] Develop the whole app
 - [X] Package library with app
 - [X] SailJail

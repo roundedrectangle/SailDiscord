@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 
 Row {
     property string title
-    property string photoLink
+    property string icon
 
     Label {
         //x: Theme.horizontalPageMargin
