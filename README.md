@@ -53,7 +53,11 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 
 ## Credits
 
-For some code to the:
+To other projects:
 
 - SailfishOS telegram client Fernschreiber
 - sailfish-rpn-calculator
+
+To developers:
+
+- @roundedrectangle
