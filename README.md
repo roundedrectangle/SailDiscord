@@ -51,6 +51,9 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 	pkcon remove python3-pip
 	pkcon remove python3-devel
 
-Credits for some code to the:
+## Credits
+
+For some code to the:
+
 - SailfishOS telegram client Fernschreiber
 - sailfish-rpn-calculator
