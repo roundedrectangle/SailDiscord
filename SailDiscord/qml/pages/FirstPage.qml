@@ -161,16 +161,12 @@ Page {
                 //ListView.view.width
                height: Theme.itemSizeSmall
 
-               Component.onCompleted: {
-                   console.log('LIST_ITEM: '+name+icon)
-               }
-
                //Label {
                //    text: name
                //}
                ServerListItem {
                    title: name
-                   icon: icon
+                   icon: image
                }
             }
         }
@@ -198,7 +194,7 @@ Page {
                 username = _username
             })
 
-            setHandler('server', function(_id, _name, _icon) { serversModel.append({"id": _id, "name": _name, "icon": _icon/*, "chunked": true, "memberCount": 0*/}); console.log('GOT!'+_name+_icon) })
+            setHandler('server', function(_id, _name, _icon) { serversModel.append({"id": _id, "name": _name, "image": _icon/*, "chunked": true, "memberCount": 0*/}) })
 
             //setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
             //setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })
