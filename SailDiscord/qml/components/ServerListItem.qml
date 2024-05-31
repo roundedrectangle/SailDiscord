@@ -7,9 +7,6 @@ Row {
 
     Image {
         source: icon
-        Component.onCompleted: {
-            console.log(title+' | '+icon)
-        }
     }
 
     Label {
