@@ -17,6 +17,7 @@ import discord
 def send_servers(guilds):
     lst = list(guilds)
     for g in lst:
+        pyotherside.send(str(g.icon))
         pyotherside.send('server', str(g.id), str(g.name), str(g.icon))
         #send_server_info(g)
 

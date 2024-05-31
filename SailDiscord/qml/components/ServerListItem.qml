@@ -5,6 +5,13 @@ Row {
     property string title
     property string icon
 
+    Image {
+        source: icon
+        Component.onCompleted: {
+            console.log(title+' | '+icon)
+        }
+    }
+
     Label {
         //x: Theme.horizontalPageMargin
         //width: parent.width - 2 * x
