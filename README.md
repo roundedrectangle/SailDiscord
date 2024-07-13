@@ -51,6 +51,8 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 	pkcon remove python3-pip
 	pkcon remove python3-devel
 
+You might also need to remove the build_folder/deps/google/_upb folder
+
 ## Credits
 
 To other projects:
