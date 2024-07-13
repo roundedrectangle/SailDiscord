@@ -3,9 +3,9 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 Column {
+    property string title
+    property string icon
     Row {
-        property string title
-        property string icon
 
         Image {
             id: profileIcon

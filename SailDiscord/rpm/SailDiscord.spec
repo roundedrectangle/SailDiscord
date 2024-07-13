@@ -1,4 +1,4 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       SailDiscord
