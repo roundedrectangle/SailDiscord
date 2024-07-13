@@ -7,10 +7,10 @@ Column {
     property string icon
     Row {
 
-        Image {
+        /*Image {
             id: profileIcon
             source: icon
-        }
+        }*/
 
         Label {
             //x: Theme.horizontalPageMargin
