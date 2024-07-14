@@ -10,7 +10,6 @@ Not working yet
 
 I can forget about my projects and pause the developing, but then I come back (not always). I'm also new to developing SailfishOS apps, and it's really hard to find how to develop them.
 
-
 ## TODO
 
 - [X] Login using Discord
@@ -30,16 +29,16 @@ I can forget about my projects and pause the developing, but then I come back (n
 	| Icon | :x:     | :x:        | :x:      |
 - [ ] Develop the whole app
 - [X] Package library with app
+	- [ ] Fix `BuildRequires: python3-pip;` not working
 - [X] SailJail
-
-Credits to discord.py-self library
-
-There's an issue that the app refuses to build. A workaround for now is to build these two awesome projects for the same target as for this project - [harbour-moremahjong](https://github.com/poetaster/harbour-moremahjong) and [sailfish-rpn-calculator](https://github.com/poetaster/sailfish-rpn-calculator)
-I haven't found a fix yet
 
 ## Build
 
-Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec`, then replace `no` in the first line with `yes` if you want to make a production package if needed. Now just run or build.
+### Removing the debug flag (disabling faster build)
+
+Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec`, then replace `no` in the first line with `yes` if you want to make a production package. Now just run or build.
+
+### Faster build (not to package the library)
 
 If you didn't replace, you'll get faster build but aditional steps needed for phone. This is needed only once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
@@ -54,15 +53,23 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 	pkcon remove python3-pip
 	pkcon remove python3-devel
 
-You might also need to remove the build_folder/deps/google/_upb folder
+### Some general build issues
+
+- You might need to remove the build_folder/deps/google/_upb folder
+- There's an issue that the `BuildRequires: python3-pip;` line in the spec file throws an error. A workaround for now is to build these two awesome projects for the same target as for this project - [harbour-moremahjong](https://github.com/poetaster/harbour-moremahjong) and [sailfish-rpn-calculator](https://github.com/poetaster/sailfish-rpn-calculator).
+	- A fix could be to use `python3 -m ensurepip --default-pip` instead of `BuildRequires: python3-pip;` in the spec, but it might break the build vm/container so I am not recommending it. You can still do so by uncommenting a line in the spec file.
 
 ## Credits
 
-To other projects:
+The code is based on:
 
 - SailfishOS telegram client Fernschreiber
 - sailfish-rpn-calculator
 
-To developers:
+Core functionality:
+
+- discord.py-self library
+
+Developers:
 
 - @roundedrectangle
