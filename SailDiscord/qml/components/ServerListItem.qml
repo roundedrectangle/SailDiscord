@@ -10,6 +10,9 @@ Column {
         Image {
             id: profileIcon
             source: icon
+//            height: parent.height
+            height: parent.height-4*Theme.paddingSmall
+            width: height
         }
 
         Label {
