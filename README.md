@@ -1,5 +1,7 @@
 # SailDiscord
 
+This is a legacy branch with no pictures since they are glitchy for now.
+
 A SailfishOS Discord client
 
 Not working yet
