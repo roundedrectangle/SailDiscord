@@ -144,12 +144,12 @@ Page {
 
 //        SilicaListView {
 
-            anchors {
+            /*anchors {
                 top: appname.bottom
                 bottom: parent.bottom
                 left: parent.left
                 right: parent.right
-            }
+            }*/
 
 //            id: serversListView
             model: serversModel

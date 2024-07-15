@@ -6,6 +6,8 @@ ListItem {
     property string title
     property string icon
 
+    property bool hasIcon: icon != "None"
+
     width: parent.width
     //ListView.view.width
     height: Theme.itemSizeLarge
@@ -18,10 +20,12 @@ ListItem {
         Row {
             Image {
                 id: profileIcon
-                source: icon
+                source: hasIcon ? icon : undefined
                 //height: parent.height
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
+
+                visible: hasIcon
 
                 property bool rounded: true
                 property bool adapt: true
@@ -41,7 +45,7 @@ ListItem {
                 }
             }
 
-            Item { height: 1; width: Theme.paddingLarge }
+            Item { height: 1; width: Theme.paddingLarge; visible: hasIcon }
 
             Label {
                 //x: Theme.horizontalPageMargin
