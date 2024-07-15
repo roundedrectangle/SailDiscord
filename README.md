@@ -53,7 +53,7 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 
 ### Some general build issues
 
-- You might need to remove the build_folder/deps/google/_upb folder
+- ~You might need to remove the build_folder/deps/google/_upb folder~ Should not be needed now.
 - There's an issue that the `BuildRequires: python3-pip;` line in the spec file throws an error. A workaround for now is to build these two awesome projects for the same target as for this project - [harbour-moremahjong](https://github.com/poetaster/harbour-moremahjong) and [sailfish-rpn-calculator](https://github.com/poetaster/sailfish-rpn-calculator).
 	- A fix could be to use `python3 -m ensurepip --default-pip` instead of `BuildRequires: python3-pip;` in the spec, but it might break the build vm/container so I am not recommending it. You can still do so by uncommenting a line in the spec file.
 
