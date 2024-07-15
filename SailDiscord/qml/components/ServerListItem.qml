@@ -8,7 +8,7 @@ ListItem {
 
     width: parent.width
     //ListView.view.width
-    height: Theme.itemSizeSmall
+    height: Theme.itemSizeLarge
 
     //Label {
     //    text: name
@@ -16,7 +16,6 @@ ListItem {
 
     Column {
         Row {
-
             Image {
                 id: profileIcon
                 source: icon

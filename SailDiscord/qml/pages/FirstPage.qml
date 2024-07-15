@@ -24,7 +24,6 @@ Page {
     }
 
     function updatePage() {
-        console.log(loggingIn.toString() + " " + loading.toString())
         if (appSettings.token == "" && !loggingIn) {
             loggingIn = true
             loading = false
@@ -33,7 +32,6 @@ Page {
             loggingIn = false
             python.login(appSettings.token)
         }
-        console.log(loggingIn.toString() + " " + loading.toString())
     }
 
     Connections {
@@ -182,7 +180,7 @@ Page {
 
             setHandler('logged_in', function(_username) {
                 loading = false;
-                username = _username
+                username = _username;
             })
 
             setHandler('server', function(_id, _name, _icon) { serversModel.append({"id": _id, "name": _name, "image": _icon/*, "chunked": true, "memberCount": 0*/}) })
