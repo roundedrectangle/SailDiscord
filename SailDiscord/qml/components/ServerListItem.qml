@@ -20,7 +20,7 @@ ListItem {
                 id: profileIcon
                 source: icon
                 //height: parent.height
-                height: parent.height-4*Theme.paddingSmall
+                height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
             }
 
