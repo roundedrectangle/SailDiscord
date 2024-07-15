@@ -156,20 +156,11 @@ Page {
             id: serversListView
             model: serversModel
 
-            delegate: ListItem {
-                width: parent.width
-                //ListView.view.width
-               height: Theme.itemSizeSmall
-
-               //Label {
-               //    text: name
-               //}
-               ServerListItem {
-                   title: name
-                   icon: image
-               }
+            delegate: ServerListItem {
+                    title: name
+                    icon: image
+                }
             }
-        }
     }
 
     ListModel {
