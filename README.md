@@ -63,6 +63,7 @@ The code is based on:
 
 - SailfishOS telegram client Fernschreiber
 - sailfish-rpn-calculator
+- Whisperfish
 
 Core functionality:
 
