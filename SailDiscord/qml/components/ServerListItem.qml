@@ -20,7 +20,7 @@ ListItem {
         Row {
             Image {
                 id: profileIcon
-                source: hasIcon ? icon : undefined
+                source: hasIcon ? icon : ""
                 //height: parent.height
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
