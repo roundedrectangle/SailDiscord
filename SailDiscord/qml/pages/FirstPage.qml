@@ -47,8 +47,8 @@ Page {
     }
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
-    SilicaFlickable {
-    //SilicaListView {
+//    SilicaFlickable {
+    SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
@@ -72,19 +72,19 @@ Page {
             }
         }
 
-        PageHeader {
+        header: PageHeader {
             id: header_name
             title: username
         }
 
-        Label {
+        /*Label {
             id: appname
             anchors.top: header_name.bottom
             x: Theme.horizontalPageMargin
             text: qsTr("SailDiscord")
             color: Theme.secondaryHighlightColor
             font.pixelSize: Theme.fontSizeExtraLarge
-        }
+        }*/
 
         // Tell SilicaFlickable the height of its content.
         //contentHeight: column.height
@@ -142,7 +142,7 @@ Page {
                 //anchors.top: appname.bottom
                 //model: serversModel
 
-        SilicaListView {
+//        SilicaListView {
 
             anchors {
                 top: appname.bottom
@@ -151,14 +151,14 @@ Page {
                 right: parent.right
             }
 
-            id: serversListView
+//            id: serversListView
             model: serversModel
 
             delegate: ServerListItem {
                     title: name
                     icon: image
                 }
-            }
+//         }
     }
 
     ListModel {
