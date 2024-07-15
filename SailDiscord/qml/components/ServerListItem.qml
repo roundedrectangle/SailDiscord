@@ -23,10 +23,6 @@ ListItem {
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
 
-                anchors {
-
-                }
-
                 property bool rounded: true
                 property bool adapt: true
 
@@ -45,6 +41,8 @@ ListItem {
                 }
             }
 
+            Item { height: 1; width: Theme.paddingLarge }
+
             Label {
                 //x: Theme.horizontalPageMargin
                 //width: parent.width - 2 * x
@@ -52,11 +50,6 @@ ListItem {
                 text: title
                 //truncationMode: TruncationMode.Fade
                 //font.capitalization: Font.Capitalize
-
-                anchors {
-                    left: profileIcon.right
-                    leftMargin: Theme.paddingLarge
-                }
             }
         }
 
