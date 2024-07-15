@@ -56,7 +56,7 @@ Short description of my Sailfish OS Application
 #python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
 python3 -m pip install "discord.py-self>=2.0" --target=%_builddir/deps
 #python3 -m pip install "discord.py-self>=2.0" "protobuf==5.27.0" --target=%_builddir/deps
-rm -rf &_builddir/deps/google/_upb
+rm -rf %_builddir/deps/google/_upb
 %endif
 
 # << build post
