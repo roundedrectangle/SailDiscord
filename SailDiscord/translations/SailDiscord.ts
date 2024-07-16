@@ -11,10 +11,6 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Login</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -38,6 +34,14 @@
     </message>
     <message>
         <source>Session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Behaviour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Coming soon</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -23,6 +23,7 @@ SOURCES += src/SailDiscord.cpp \
 DISTFILES += qml/SailDiscord.qml \
     qml/components/ServerListItem.qml \
     qml/cover/CoverPage.qml \
+    qml/pages/ChannelsPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/SecondPage.qml \

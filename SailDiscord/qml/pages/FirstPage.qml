@@ -152,9 +152,16 @@ Page {
             model: serversModel
 
             delegate: ServerListItem {
-                    title: name
-                    icon: image
+                title: name
+                icon: image
+
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
+                        name: name
+                        //TODO: add channels here
+                    })
                 }
+            }
 //         }
     }
 
