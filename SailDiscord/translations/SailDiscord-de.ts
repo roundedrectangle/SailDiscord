@@ -30,4 +30,15 @@
         <translation>Element</translation>
     </message>
 </context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>
