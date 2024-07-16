@@ -67,11 +67,6 @@ Page {
                 text: qsTr("Settings")
                 onClicked: pageStack.push("SettingsPage.qml")
             }
-
-            MenuItem {
-                text: qsTr("Login")
-                onClicked: pageStack.push("LoginDialog.qml")
-            }
         }
 
         header: PageHeader {
