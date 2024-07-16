@@ -6,6 +6,8 @@ Not working yet
 
 **By using this, you are breaking Discord Terms of Services!**
 
+Join our discord [server](https://discord.gg/Q3u7ejjzFg) with detailed development logs!
+
 I can forget about my projects and pause the developing, but then I come back (not always). I'm also new to developing SailfishOS apps, and it's really hard to find how to develop them.
 
 ## TODO
@@ -15,11 +17,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
 - [X] Integrate discord.py-self
-- [ ] Servers list
-	|      | Backend            | Connection         | Frontend           |
-	|------|--------------------|--------------------|--------------------|
-	| Name | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-	| Icon | :white_check_mark: | :white_check_mark: | :x:                |
+- [X] Servers list
 - [ ] DMs list
 	|      | Backend | Connection | Frontend |
 	|------|---------|------------|----------|
