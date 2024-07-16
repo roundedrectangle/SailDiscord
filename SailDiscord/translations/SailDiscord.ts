@@ -11,11 +11,11 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <source>Second Page</source>
+        <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Login</source>
+        <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

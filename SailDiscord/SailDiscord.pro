@@ -26,6 +26,7 @@ DISTFILES += qml/SailDiscord.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/SecondPage.qml \
+    qml/pages/SettingsPage.qml \
     qml/pages/communicator.py \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \
