@@ -68,7 +68,7 @@ rm -rf %_builddir/deps/google/_upb
 # >> install post
 
 %if %{package_library} == "yes"
-cp -r deps %{buildroot}%{_datadir}/%{name}/qml/pages/deps
+cp -r deps %{buildroot}%{_datadir}/%{name}/qml/deps
 %endif
 
 # << install post
