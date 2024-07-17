@@ -60,7 +60,7 @@ Page {
                 bottom: parent.bottom
             }
 
-            currentIndex: 0
+            //currentIndex: 0
 
             ExpandingSection {
                 id: section
