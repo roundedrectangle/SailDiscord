@@ -50,6 +50,3 @@ TRANSLATIONS += translations/SailDiscord-de.ts
 
 HEADERS += \
     src/settings.h
-
-#icon.files = $${TARGET}.png
-#icon.path = /usr/share/icons/hicolor/86x86/apps # works this this for some reason
