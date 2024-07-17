@@ -13,7 +13,7 @@
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    app->setApplicationName("saildiscord");
+    app->setApplicationName("harbour-saildiscord");
     app->setOrganizationDomain("io.github.roundedrectangle");
     app->setOrganizationName("io.github.roundedrectangle");
     qmlRegisterType<Settings>("SailDiscord.Logic", 1, 0, "AppSettings");

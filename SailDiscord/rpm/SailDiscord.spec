@@ -1,10 +1,10 @@
 %define package_library "yes"
 # See README
 
-Name:       SailDiscord
+Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.1
+Version:    0.0.1
 Release:    1
 License:    LICENSE
 URL:        http://example.org/

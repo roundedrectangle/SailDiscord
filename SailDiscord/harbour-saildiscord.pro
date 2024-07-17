@@ -10,7 +10,7 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = SailDiscord
+TARGET = harbour-saildiscord
 
 CONFIG += sailfishapp
 
@@ -20,9 +20,11 @@ PKGCONFIG += qt5embedwidget
 SOURCES += src/SailDiscord.cpp \
     src/settings.cpp
 
-DISTFILES += qml/SailDiscord.qml \
+DISTFILES += \
+    harbour-saildiscord.desktop \
     qml/components/ServerListItem.qml \
     qml/cover/CoverPage.qml \
+    qml/harbour-saildiscord.qml \
     qml/pages/ChannelsPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
@@ -32,8 +34,7 @@ DISTFILES += qml/SailDiscord.qml \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \
     rpm/SailDiscord.spec \
-    translations/*.ts \
-    SailDiscord.desktop
+    translations/*.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
@@ -49,3 +50,6 @@ TRANSLATIONS += translations/SailDiscord-de.ts
 
 HEADERS += \
     src/settings.h
+
+#icon.files = $${TARGET}.png
+#icon.path = /usr/share/icons/hicolor/86x86/apps # works this this for some reason

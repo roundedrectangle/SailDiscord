@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=SailDiscord
-Exec=SailDiscord
+Icon=harbour-saildiscord
+Exec=harbour-saildiscord
 Name=SailDiscord
 # translation example:
 # your app name in German locale (de)
