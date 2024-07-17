@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     app->setApplicationName("harbour-saildiscord");
     app->setOrganizationDomain("io.github.roundedrectangle");
     app->setOrganizationName("io.github.roundedrectangle");
-    qmlRegisterType<Settings>("SailDiscord.Logic", 1, 0, "AppSettings");
+    qmlRegisterType<Settings>("harbour-saildiscord.Logic", 1, 0, "AppSettings");
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     view->setSource(SailfishApp::pathToMainQml());
