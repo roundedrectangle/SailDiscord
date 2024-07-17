@@ -25,7 +25,7 @@ ListItem {
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
 
-                visible: hasIcon
+                //visible: hasIcon
 
                 property bool rounded: true
                 property bool adapt: true
@@ -45,7 +45,7 @@ ListItem {
                 }
             }
 
-            Item { height: 1; width: Theme.paddingLarge; visible: hasIcon }
+            Item { height: 1; width: Theme.paddingLarge; }//visible: hasIcon }
 
             Label {
                 //x: Theme.horizontalPageMargin

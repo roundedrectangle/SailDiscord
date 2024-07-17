@@ -17,7 +17,8 @@ CONFIG += sailfishapp
 #CONFIG += link_pkgconfig
 PKGCONFIG += qt5embedwidget
 
-SOURCES += src/SailDiscord.cpp \
+SOURCES += \
+    src/harbour-saildiscord.cpp \
     src/settings.cpp
 
 DISTFILES += \
