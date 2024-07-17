@@ -16,3 +16,16 @@ void Settings::setToken(QString token)
         emit tokenChanged();
     }
 }
+
+bool Settings::emptySpace() const
+{
+    return settings.value("emptySpace", "").toBool();
+}
+
+void Settings::setEmptySpace(bool emptySpace)
+{
+    if (this->emptySpace() != emptySpace) {
+        settings.setValue("emptySpace", emptySpace);
+        emit emptySpaceChanged();
+    }
+}
