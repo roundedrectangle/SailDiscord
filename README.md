@@ -17,7 +17,11 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
 - [X] Integrate discord.py-self
-- [X] Servers list
+- [X] Servers
+	- [X] List
+	- [ ] Channels list
+	- [ ] Messages read
+	- [ ] Messages write
 - [ ] DMs list
 	|      | Backend | Connection | Frontend |
 	|------|---------|------------|----------|
@@ -27,6 +31,8 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Package library with app
 	- [ ] Fix `BuildRequires: python3-pip;` not working
 - [X] SailJail
+- [X] Settings
+	- [ ] Add more options
 
 ## Build
 
