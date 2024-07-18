@@ -19,6 +19,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Integrate discord.py-self
 - [X] Servers
 	- [X] List
+		- [ ] Make it follow the same sorting as in the real discord, probably not possible yet because no such thing is implemented in discord.py-self. mb this is also an issue with qml?
 	- [ ] Channels list
 	- [ ] Messages read
 	- [ ] Messages write
