@@ -23,6 +23,10 @@ def send_servers(guilds):
         pyotherside.send('server', str(g.id), str(g.name), str(g.icon))
         #send_server_info(g)
 
+def send_categories(guild):
+    for c in guild.categories:
+        pyotherside.send('category', str(g.id), str(c.id), str(g.name))
+
 class MyClient(discord.Client):
     async def on_ready(self):
         pyotherside.send('logged_in', str(self.user))
@@ -48,5 +52,11 @@ class Communicator:
 
     def _login(self):
         self.client.run(self.token)
+
+    def get_categories(guild_id):
+        g = self.get_guild(guild_id)
+        if g == None:
+            return
+        send_categories(g)
 
 comm = Communicator()

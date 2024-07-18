@@ -72,7 +72,14 @@ Page {
                     width: section.width
 
                     TextSwitch {
-                        text: qsTr("Coming soon")
+                        text: qsTr("Keep empty space in servers without icons")
+                        onCheckedChanged: {
+                            appSettings.setEmptySpace(checked)
+                        }
+
+                        Component.onCompleted: {
+                            checked = appSettings.emptySpace;
+                        }
                     }
                 }
             }

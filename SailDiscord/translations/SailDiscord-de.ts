@@ -4,13 +4,15 @@
 <context>
     <name>CoverPage</name>
     <message>
+        <location filename="../qml/cover/CoverPage.qml" line="8"/>
         <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>FirstPage</name>
     <message>
+        <location filename="../qml/pages/FirstPage.qml" line="67"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -18,30 +20,36 @@
 <context>
     <name>SecondPage</name>
     <message>
+        <location filename="../qml/pages/SecondPage.qml" line="16"/>
         <source>Nested Page</source>
-        <translation>Unterseite</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/SecondPage.qml" line="23"/>
         <source>Item</source>
-        <translation>Element</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="19"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Behaviour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Coming soon</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="75"/>
+        <source>Keep empty space in servers without icons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
+        <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

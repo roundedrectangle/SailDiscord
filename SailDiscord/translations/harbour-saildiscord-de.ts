@@ -5,7 +5,7 @@
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Mein Cover</translation>
     </message>
 </context>
 <context>
@@ -19,11 +19,11 @@
     <name>SecondPage</name>
     <message>
         <source>Nested Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Unterseite</translation>
     </message>
     <message>
         <source>Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Element</translation>
     </message>
 </context>
 <context>

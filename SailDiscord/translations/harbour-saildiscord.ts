@@ -44,11 +44,11 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="75"/>
-        <source>Coming soon</source>
+        <source>Keep empty space in servers without icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="84"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
         <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
