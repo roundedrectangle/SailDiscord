@@ -37,6 +37,10 @@ Requires: python3-devel
 Requires: python3-pip
 %endif
 
+Macros:
+ - __provides_exclude_from;^%{_datadir}/.*$
+
+
 %description
 Short description of my Sailfish OS Application
 
