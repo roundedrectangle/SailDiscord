@@ -64,6 +64,11 @@ Page {
             busy: loading
 
             MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push("AboutPage.qml")
+            }
+
+            MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push("SettingsPage.qml")
             }

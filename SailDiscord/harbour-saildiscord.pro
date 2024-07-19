@@ -26,6 +26,7 @@ DISTFILES += \
     qml/components/ServerListItem.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \
+    qml/pages/AboutPage.qml \
     qml/pages/ChannelsPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
@@ -51,3 +52,7 @@ TRANSLATIONS += translations/SailDiscord-de.ts
 
 HEADERS += \
     src/settings.h
+
+# app version
+DEFINES += APP_VERSION=\\\"123.0.0\\\"
+DEFINES += APP_RELEASE=\\\"$$RELEASE\\\"
