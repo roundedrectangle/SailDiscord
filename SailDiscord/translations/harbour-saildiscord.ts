@@ -26,6 +26,11 @@
     <name>FirstPage</name>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="67"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="72"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>

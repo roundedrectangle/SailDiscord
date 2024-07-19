@@ -10,9 +10,9 @@ AboutPageBase {
     allowedOrientations: Orientation.All
 
     appName: qsTr("SailDiscord")
-    appIcon: Qt.resolvedUrl("../../icons/%1.png".arg(Qt.application.name))
-    appVersion: APP_VERSION
-    appRelease: APP_RELEASE
+    //appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
+    appVersion: "0.0.1"
+    appRelease: "1"
     sourcesUrl: "https://github.com/roundedrectangle/SailDiscord"
     licenses: License { spdxId: "GPL-3.0-or-later" }
     description: qsTr("A SailfishOS Discord client")

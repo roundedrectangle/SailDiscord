@@ -52,7 +52,3 @@ TRANSLATIONS += translations/SailDiscord-de.ts
 
 HEADERS += \
     src/settings.h
-
-# app version
-DEFINES += APP_VERSION=\\\"123.0.0\\\"
-DEFINES += APP_RELEASE=\\\"$$RELEASE\\\"
