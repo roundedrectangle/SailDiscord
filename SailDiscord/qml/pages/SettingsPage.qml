@@ -94,7 +94,7 @@ Page {
                     width: sessionSection.width
 
                     Button {
-                        text: "Log out"
+                        text: qsTr("Log out")
                         onClicked: {
                             appSettings.setToken("");
                         }
