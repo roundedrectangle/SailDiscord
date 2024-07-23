@@ -11,7 +11,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="18"/>
         <source>A SailfishOS Discord client</source>
-        <translation type="unfinished"></translation>
+        <translation>Клиент Discord для SailfishOS</translation>
     </message>
 </context>
 <context>
@@ -19,7 +19,7 @@
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="8"/>
         <source>My Cover</source>
-        <translation type="unfinished"></translation>
+        <translation>Моя обложка</translation>
     </message>
 </context>
 <context>
@@ -32,7 +32,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="72"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -226,27 +226,27 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="19"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="69"/>
         <source>Behaviour</source>
-        <translation type="unfinished"></translation>
+        <translation>Поведение</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="75"/>
         <source>Keep empty space in servers without icons</source>
-        <translation type="unfinished"></translation>
+        <translation>Оставить пустое место в серверах без иконок</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="91"/>
         <source>Session</source>
-        <translation type="unfinished"></translation>
+        <translation>Сессия</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="97"/>
         <source>Log out</source>
-        <translation type="unfinished"></translation>
+        <translation>Выйти</translation>
     </message>
 </context>
 </TS>
