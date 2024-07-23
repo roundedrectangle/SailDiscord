@@ -29,4 +29,16 @@ AboutPageBase {
         }
 
     ]
+    contributionSections: [
+        ContributionSection {
+            title: qsTr("Translations")
+            groups: [
+                ContributionGroup {
+                    title: qsTr("Italian")
+                    entries: ["legacychimera247"]
+                }
+            ]
+        }
+
+    ]
 }
