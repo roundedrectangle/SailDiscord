@@ -37,7 +37,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="67"/>
         <source>About</source>
-        <translation type="unfinished">О программе</translation>
+        <translation>О программе</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="72"/>
