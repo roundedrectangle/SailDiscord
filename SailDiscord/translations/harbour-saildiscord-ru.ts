@@ -13,6 +13,16 @@
         <source>A SailfishOS Discord client</source>
         <translation>Клиент Discord для SailfishOS</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <source>Translations</source>
+        <translation type="unfinished">Перевод</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="37"/>
+        <source>Italian</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

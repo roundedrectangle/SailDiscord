@@ -11,6 +11,14 @@
         <source>A SailfishOS Discord client</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished">Übersetzungen</translation>
+    </message>
+    <message>
+        <source>Italian</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
