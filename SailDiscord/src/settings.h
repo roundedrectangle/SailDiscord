@@ -10,6 +10,7 @@ class Settings : public QObject
     Q_OBJECT
     Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
     Q_PROPERTY(bool emptySpace READ emptySpace WRITE setEmptySpace NOTIFY emptySpaceChanged)
+    Q_PROPERTY(bool ignorePrivate READ ignorePrivate WRITE setIgnorePrivate NOTIFY ignorePrivateChanged)
 
 public:
     explicit Settings(QObject *parent = nullptr);
@@ -19,12 +20,16 @@ public:
 
     bool emptySpace() const;
     Q_INVOKABLE void setEmptySpace(bool emptySpace);
+
+    bool ignorePrivate() const;
+    Q_INVOKABLE void setIgnorePrivate(bool ignorePrivate);
 private:
     QSettings settings;
 
 signals:
     void tokenChanged();
     void emptySpaceChanged();
+    void ignorePrivateChanged();
 };
 
 #endif // SETTINGS_H

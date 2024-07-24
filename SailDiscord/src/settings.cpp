@@ -17,6 +17,7 @@ void Settings::setToken(QString token)
     }
 }
 
+
 bool Settings::emptySpace() const
 {
     return settings.value("emptySpace", "").toBool();
@@ -27,5 +28,19 @@ void Settings::setEmptySpace(bool emptySpace)
     if (this->emptySpace() != emptySpace) {
         settings.setValue("emptySpace", emptySpace);
         emit emptySpaceChanged();
+    }
+}
+
+
+bool Settings::ignorePrivate() const
+{
+    return settings.value("ignorePrivate", "").toBool();
+}
+
+void Settings::setIgnorePrivate(bool ignorePrivate)
+{
+    if (this->ignorePrivate() != ignorePrivate) {
+        settings.setValue("ignorePrivate", ignorePrivate);
+        emit ignorePrivateChanged();
     }
 }

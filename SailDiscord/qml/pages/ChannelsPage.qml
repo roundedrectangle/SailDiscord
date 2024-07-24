@@ -34,7 +34,7 @@ Page {
 
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
-                if ((_serverid != serverid) || (!_haspermissions && !false)) return; // TODO: replace true with settings
+                if ((_serverid != serverid) || (!_haspermissions && !false)) return; // TODO: replace false with settings
                 append({id: _id, name: _name})
             })
             python.requestCategories(serverid)
