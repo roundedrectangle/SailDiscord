@@ -81,6 +81,17 @@ Page {
                             checked = appSettings.emptySpace;
                         }
                     }
+
+                    TextSwitch {
+                        text: qsTr("Ignore private setting for channels and channel categories")
+                        onCheckedChanged: {
+                            appSettings.setIgnorePrivate(checked)
+                        }
+
+                        Component.onCompleted: {
+                            checked = appSettings.ignorePrivate;
+                        }
+                    }
                 }
             }
 
