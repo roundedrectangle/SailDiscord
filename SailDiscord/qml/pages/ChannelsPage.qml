@@ -21,12 +21,10 @@ Page {
 
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name) {
-                console.log("Got a new category! ID: "+_id+" NAME: "+_name)
                 if (_serverid != serverid) return;
-                console.log("server id is the same one!")
+                console.log("Got a new category! ID: "+_id+" NAME: "+_name)
             })
             python.requestCategories(serverid)
-            console.log("SErverID: "+serverid)
         }
     }
 }

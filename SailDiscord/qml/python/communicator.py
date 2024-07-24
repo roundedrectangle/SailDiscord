@@ -24,7 +24,6 @@ def send_servers(guilds):
         #send_server_info(g)
 
 def send_categories(guild):
-    pyotherside.send("sending...")
     for c in guild.categories:
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name))
 
@@ -55,12 +54,9 @@ class Communicator:
         self.client.run(self.token)
 
     def get_categories(self, guild_id):
-        pyotherside.send(f"Got a categories request for guild {guild_id}")
         g = self.client.get_guild(int(guild_id))
         if g == None:
-            pyotherside.send("no such guild!")
             return
-        pyotherside.send("yes such guild!")
         send_categories(g)
 
 comm = Communicator()
