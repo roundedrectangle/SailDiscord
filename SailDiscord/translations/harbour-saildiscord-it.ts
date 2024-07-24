@@ -253,7 +253,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="86"/>
         <source>Ignore private setting for channels and channel categories</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignora le impostazioni private per i canali e le categorie di canali</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="102"/>
