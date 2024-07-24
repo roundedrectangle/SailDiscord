@@ -4,7 +4,7 @@ A SailfishOS Discord client
 
 Not working yet
 
-**By using this, you are breaking Discord Terms of Services!**
+**By using this, you are breaking Discord Terms of Services! This app might even get you banned!**
 
 Join our discord [server](https://discord.gg/Q3u7ejjzFg) with detailed development logs!
 
@@ -72,6 +72,7 @@ The code is based on:
 Core functionality:
 
 - discord.py-self library
+- Opal (Opal.About)
 
 Developers:
 
