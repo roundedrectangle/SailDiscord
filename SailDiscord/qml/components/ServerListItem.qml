@@ -45,7 +45,7 @@ ListItem {
                 }
             }
 
-            Item { height: 1; width: Theme.paddingLarge; visible: hasIcon && !appSettings.emptySpace }
+            Item { height: 1; width: Theme.paddingLarge; visible: hasIcon || !appSettings.emptySpace }
 
             Label {
                 //x: Theme.horizontalPageMargin
