@@ -204,5 +204,9 @@
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ignore private setting for channels and channel categories</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

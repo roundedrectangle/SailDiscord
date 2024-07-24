@@ -34,7 +34,7 @@ Page {
 
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
-                if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return; // TODO: replace false with settings
+                if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
                 append({id: _id, name: _name})
             })
             python.requestCategories(serverid)
