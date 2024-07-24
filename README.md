@@ -21,6 +21,8 @@ I can forget about my projects and pause the developing, but then I come back (n
 	- [X] List
 		- [ ] Make it follow the same sorting as in the real discord, probably not possible yet because no such thing is implemented in discord.py-self. mb this is also an issue with qml?
 	- [ ] Channels list
+		- [X] Categories
+		- [ ] Channels themselves
 	- [ ] Messages read
 	- [ ] Messages write
 - [ ] DMs list
@@ -34,6 +36,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] SailJail
 - [X] Settings
 	- [ ] Add more options
+- [ ] Automate translating, maybe something like weblate
 
 ## Build
 
@@ -76,8 +79,8 @@ Core functionality:
 
 Developers:
 
-- @roundedrectangle
+- [@roundedrectangle](https://github.com/roundedrectangle)
 
 Contributors (translations):
 
-- @legacychimera247 - italian
+- [@legacychimera247](https://github.com/legacychimera247) - italian
