@@ -62,4 +62,5 @@ ListItem {
             horizontalAlignment: Qt.AlignHCenter
         }
     }
+
 }
