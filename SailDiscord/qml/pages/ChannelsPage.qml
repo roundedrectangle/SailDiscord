@@ -21,6 +21,7 @@ Page {
         delegate: ListItem {
             width: parent.width
             height: Theme.itemSizeSmall
+            visible: hasPermissions
 
             Label {
                 text: name
@@ -33,9 +34,9 @@ Page {
         id: model
 
         Component.onCompleted: {
-            python.setHandler('category', function (_serverid, _id, _name) {
+            python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if (_serverid != serverid) return;
-                append({id: _id, name: _name})
+                append({id: _id, name: _name, hasPermissions: _haspermissions})
             })
             python.requestCategories(serverid)
         }

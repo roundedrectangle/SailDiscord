@@ -25,12 +25,11 @@ def send_servers(guilds):
 
 def send_categories(guild, user_id):
     for c in guild.categories:
+        has_permissions = True # default
         member = guild.get_member(user_id)
         if member != None:
-            has_permissions = c.permissions_for(member).read_messages
-            if not has_permissions:
-                continue
-        pyotherside.send('category', str(guild.id), str(c.id), str(c.name))
+            has_permissions = c.permissions_for(member).view_channel
+        pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
 
 class MyClient(discord.Client):
     async def on_ready(self):
