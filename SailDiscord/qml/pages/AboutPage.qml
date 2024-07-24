@@ -10,7 +10,7 @@ AboutPageBase {
     allowedOrientations: Orientation.All
 
     appName: qsTr("SailDiscord")
-    //appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
+    appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
     appVersion: "0.0.2"
     appRelease: "1"
     sourcesUrl: "https://github.com/roundedrectangle/SailDiscord"

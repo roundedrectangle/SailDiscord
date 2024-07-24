@@ -55,3 +55,8 @@ TRANSLATIONS += \
 
 HEADERS += \
     src/settings.h
+
+images.files = images
+images.path = /usr/share/$${TARGET}
+
+INSTALLS += images
