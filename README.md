@@ -77,3 +77,7 @@ Core functionality:
 Developers:
 
 - @roundedrectangle
+
+Contributors (translations):
+
+- @legacychimera247 - italian
