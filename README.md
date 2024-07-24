@@ -69,13 +69,13 @@ You might also want to uninstall pip and/or python3-devel, although this might b
 
 The code is based on:
 
-- SailfishOS telegram client Fernschreiber
-- sailfish-rpn-calculator
+- [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber)
+- [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator)
 
 Core functionality:
 
-- discord.py-self library
-- Opal (Opal.About)
+- [discord.py-self library](https://github.com/dolfies/discord.py-self)
+- [Opal](https://github.com/Pretty-SFOS/opal) ([Opal.About](https://github.com/Pretty-SFOS/opal-about))
 
 Developers:
 
