@@ -20,10 +20,11 @@ Page {
 
         delegate: ListItem {
             width: parent.width
-            height: Theme.itemSizeLarge
+            height: Theme.itemSizeSmall
 
             Label {
                 text: name
+                color: Theme.secondaryColor
             }
         }
     }
@@ -34,7 +35,6 @@ Page {
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name) {
                 if (_serverid != serverid) return;
-                console.log("Got a new category! ID: "+_id+" NAME: "+_name)
                 append({id: _id, name: _name})
             })
             python.requestCategories(serverid)

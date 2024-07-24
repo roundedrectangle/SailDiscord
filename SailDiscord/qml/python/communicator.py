@@ -23,8 +23,13 @@ def send_servers(guilds):
         pyotherside.send('server', str(g.id), str(g.name), str(g.icon))
         #send_server_info(g)
 
-def send_categories(guild):
+def send_categories(guild, user_id):
     for c in guild.categories:
+        member = guild.get_member(user_id)
+        if member != None:
+            has_permissions = c.permissions_for(member).read_messages
+            if not has_permissions:
+                continue
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name))
 
 class MyClient(discord.Client):
@@ -57,6 +62,6 @@ class Communicator:
         g = self.client.get_guild(int(guild_id))
         if g == None:
             return
-        send_categories(g)
+        send_categories(g, self.client.user.id)
 
 comm = Communicator()
