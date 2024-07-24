@@ -7,11 +7,24 @@ Page {
     id: page
     allowedOrientations: Orientation.All
 
+    property string serverid
     property string name
 
     SilicaListView {
         PageHeader {
             title: name
+        }
+    }
+
+    ListModel {
+        id: model
+
+        Component.onCompleted: {
+            python.setHandler('category', function (_serverid, _id, _name) {
+                if (_serverid != serverid) return;
+                console.log("Got a new category! ID: "+_id+" NAME: "+_name)
+            })
+            python.requestCategories(serverid)
         }
     }
 }

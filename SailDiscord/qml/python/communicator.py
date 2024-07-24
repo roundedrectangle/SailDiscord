@@ -53,8 +53,8 @@ class Communicator:
     def _login(self):
         self.client.run(self.token)
 
-    def get_categories(guild_id):
-        g = self.get_guild(guild_id)
+    def get_categories(self, guild_id):
+        g = self.client.get_guild(guild_id)
         if g == None:
             return
         send_categories(g)

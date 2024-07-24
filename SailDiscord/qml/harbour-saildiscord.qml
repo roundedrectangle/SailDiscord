@@ -57,5 +57,9 @@ ApplicationWindow {
             const id = arr.shift()
             updater(myPage.serversModel.findById(id), arr.join(' '))
         }
+
+        function requestCategories(guildid) {
+            call('communicator.comm.get_categories', [guildid], function() {})
+        }
     }
 }
