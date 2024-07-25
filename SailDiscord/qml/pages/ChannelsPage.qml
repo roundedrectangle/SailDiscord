@@ -72,11 +72,23 @@ Page {
                     chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon})
                 })
 
-                if (categoryid == "-1") {
-                    if (chModel.get(index+1).isCategory) {
+                updateNoCategory()
+            }
+
+            Connections {
+                target: chModel
+                onRowsInserted: {
+                    updateNoCategory()
+                }
+            }
+
+            function updateNoCategory() {
+                if ((categoryid == "-1") && (chModel.get(index+1).isCategory)) {
                         visible = false
-                        height = 0;
-                    }
+                        height = 0
+                } else {
+                        visible = true
+                        height = undefined
                 }
             }
         }
