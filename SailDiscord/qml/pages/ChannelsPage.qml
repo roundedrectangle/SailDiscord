@@ -95,6 +95,15 @@ Page {
                     hidden = true
                 else hidden = false
             }
+
+            onClicked: {
+                if (isCategory) return;
+                pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), {
+                    channelid: categoryid,
+                    name: name
+                    //TODO: add channels here
+                })
+            }
         }
     }
 

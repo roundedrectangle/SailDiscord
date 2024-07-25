@@ -30,6 +30,7 @@ DISTFILES += \
     qml/pages/ChannelsPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/LoginDialog.qml \
+    qml/pages/MessagesPage.qml \
     qml/pages/SecondPage.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/communicator.py \
