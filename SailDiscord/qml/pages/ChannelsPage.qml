@@ -25,8 +25,22 @@ Page {
 
 
             SectionHeader {
+                visible: isCategory
                 id: sectionHeader
-                text: categoryid == -1? qsTr("No category") : name
+                text: categoryid == "-1" ? qsTr("No category") : name
+
+                Component.onCompleted: {
+                    if (!visible) height = 0;
+                }
+            }
+
+            Label {
+                visible: !isCategory
+                text: name
+
+                Component.onCompleted: {
+                    if (!visible) height = 0;
+                }
             }
 
             Component.onCompleted: {
