@@ -30,6 +30,7 @@ def send_categories(guild, user_id):
         if member != None:
             has_permissions = c.permissions_for(member).view_channel
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
+    pyotherside.send('category', str(guild.id), str(-1), "", True)
 
 def send_channels(category, user_id):
     for c in category.channels:
