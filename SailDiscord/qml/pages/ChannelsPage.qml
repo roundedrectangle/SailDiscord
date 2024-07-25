@@ -92,11 +92,9 @@ Page {
             function updateNoCategory() {
                 if (chModel.get(index+1) == undefined) return;
                 if ((categoryid == "-1") && (chModel.get(index+1).isCategory)) {
-                        visible = false
-                        height = 0
+                        hidden = true
                 } else {
-                        visible = true
-                        height = undefined
+                        hidden = false
                 }
             }
         }
