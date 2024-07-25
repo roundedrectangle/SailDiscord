@@ -62,7 +62,7 @@ Page {
                 }
 
                 Label {
-                    text: name+" "+icon
+                    text: name
                 }
             }
 
