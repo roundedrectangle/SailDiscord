@@ -22,7 +22,6 @@ Page {
         delegate: ListItem {
             property bool hadFirst: false
             width: parent.width
-            //height: 500
 
 
             SectionHeader {
@@ -34,58 +33,8 @@ Page {
                 python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions) {
                     if (!_haspermissions && !appSettings.ignorePrivate) return;
                     chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false})
-                    /*if (!isCategory)
-                        hadFirst = true;
-                    else hadFirst = false;*/
-                    //console.log("ALERT: nothing much but "+sectionModel.count)
                 })
             }
-
-            /*SilicaListView { // TODO: add model for a specefic category here
-                model: sectionModel
-                anchors {
-                    top: sectionHeader.bottom
-                    bottom: parent.bottom
-                }
-
-                width: parent.width
-
-                delegate: ListItem {
-                    width: parent.width
-                    height: Theme.itemSizeExtraLarge
-
-                    Rectangle {
-                        color: Theme.highlightBackgroundColor
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        height: Theme.itemSizeSmall
-                        width: page.width
-                        Label {
-                            text: channelName
-                            anchors.centerIn: parent
-
-                            Component.onCompleted: {
-                                console.log("Label "+channelName+" initialised!")
-                            }
-                        }
-                    }
-                }
-            }
-*/
-            /*ListModel {
-                id: sectionModel
-
-                Component.onCompleted: {
-                    sectionModel.append({channelId: "-2", channelName: "hello2"})
-                    sectionModel.append({channelId: "-3", channelName: "hello3"})
-                    sectionModel.append({channelId: "-4", channelName: "hello4"})
-                    python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions) {
-                        if (!_haspermissions && !appSettings.ignorePrivate) return;
-                        //sectionModel.append({channelId: _id, channelName: _name})
-                        //console.log("ALERT: nothing much but "+sectionModel.count)
-                    })
-                    python.requestChannels(serverid, categoryid)
-                }
-            }*/
         }
     }
 
