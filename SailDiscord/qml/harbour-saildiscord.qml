@@ -61,5 +61,9 @@ ApplicationWindow {
         function requestCategories(guildid) {
             call('communicator.comm.get_categories', [guildid], function() {})
         }
+
+        function requestChannels(guildid, categoryid) {
+            call('communicator.comm.get_channels', [guildid, categoryid], function() {})
+        }
     }
 }

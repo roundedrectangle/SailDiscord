@@ -46,7 +46,12 @@ Page {
                 id: sectionModel
 
                 Component.onCompleted: {
-                    append({id: 0, name: "hello"})
+                    //append({id: 0, name: "hello"})
+                    //python.setHandler('channel', function (_serverid, _id, _name, _haspermissions) {
+                    //    if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
+                    //    append({categoryid: _id, name: _name})
+                    //})
+                    python.requestChannels(serverid, categoryid)
                 }
             }
         }
@@ -58,7 +63,7 @@ Page {
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({id: _id, name: _name})
+                append({categoryid: _id, name: _name})
             })
             python.requestCategories(serverid)
         }

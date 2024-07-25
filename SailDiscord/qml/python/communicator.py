@@ -38,17 +38,16 @@ def send_channels(category, user_id):
         member = category.guild.get_member(user_id)
         if member != None:
             has_permissions = c.permissions_for(member).view_channel
-        pyotherside.send('channel', str(category.id), str(c.id), str(c.name), has_permissions)
+        pyotherside.send('channel', str(category.guild.id), str(category.id), str(c.id), str(c.name), has_permissions)
 
 def send_channels_no_category(guild, user_id):
     for c in guild.channels:
         if c.category == None:
             has_permissions = True # default
-            member = category.guild.get_member(user_id)
+            member = c.guild.get_member(user_id)
             if member != None:
                 has_permissions = c.permissions_for(member).view_channel
-            pyotherside.send('channel', str(-1), str(c.id), str(c.name), has_permissions)
-            pyotherside.send(f"Uncategorised Channel: {c.name}")
+            pyotherside.send('channel', str(c.guild.id), str(-1), str(c.id), str(c.name), has_permissions)
 
 
 
@@ -87,10 +86,11 @@ class Communicator:
     def get_channels(self, guild_id, category_id):
         g = self.client.get_guild(int(guild_id))
         if g != None:
-            if category_id == -1:
+            if int(category_id) == -1:
+                pyotherside.send("requested channels for "+guild_id+" categoryid "+category_id)
                 send_channels_no_category(g, self.client.user.id)
                 return
-            c = g.get_channel(category_id)
+            c = g.get_channel(int(category_id))
             if c != None:
                 send_channels(c, self.client.user.id)
 
