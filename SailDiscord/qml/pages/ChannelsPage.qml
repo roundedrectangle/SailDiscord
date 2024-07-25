@@ -11,8 +11,8 @@ Page {
     property string name
 
     SilicaListView {
-        id: list
-        model: model
+        id: channelList
+        model: chModel
         anchors.fill: parent
 
         header: PageHeader {
@@ -20,6 +20,7 @@ Page {
         }
 
         delegate: ListItem {
+            property bool hadFirst: false
             width: parent.width
             //height: 500
 
@@ -27,6 +28,17 @@ Page {
             SectionHeader {
                 id: sectionHeader
                 text: categoryid == -1? qsTr("No category") : name
+            }
+
+            Component.onCompleted: {
+                python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions) {
+                    if (!_haspermissions && !appSettings.ignorePrivate) return;
+                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false})
+                    /*if (!isCategory)
+                        hadFirst = true;
+                    else hadFirst = false;*/
+                    //console.log("ALERT: nothing much but "+sectionModel.count)
+                })
             }
 
             /*SilicaListView { // TODO: add model for a specefic category here
@@ -78,17 +90,13 @@ Page {
     }
 
     ListModel {
-        id: model
+        id: chModel
 
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({categoryid: _id, name: _name})
-                python.setHandler('channel'+serverid+" "+_id, function (__id, __name, _haspermissions) {
-                    if (!_haspermissions && !appSettings.ignorePrivate) return;
-                    append({categoryid: __id, name: __name})
-                    //console.log("ALERT: nothing much but "+sectionModel.count)
-                })
+                append({categoryid: _id, name: _name, isCategory: true})
+
                 python.requestChannels(serverid, _id)
             })
             python.requestCategories(serverid)

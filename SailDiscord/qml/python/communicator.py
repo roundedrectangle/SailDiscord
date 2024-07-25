@@ -33,7 +33,7 @@ def send_categories(guild, user_id):
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
 
 def send_channels(category, user_id):
-    for c in category.channels:
+    for c in reversed(category.channels):
         has_permissions = True # default
         member = category.guild.get_member(user_id)
         if member != None:
@@ -41,7 +41,7 @@ def send_channels(category, user_id):
         pyotherside.send(f'channel{category.guild.id} {category.id}', str(c.id), str(c.name), has_permissions)
 
 def send_channels_no_category(guild, user_id):
-    for c in guild.channels:
+    for c in reversed(guild.channels):
         if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
             has_permissions = True # default
             member = c.guild.get_member(user_id)

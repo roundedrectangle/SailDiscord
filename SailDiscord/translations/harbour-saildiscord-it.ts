@@ -27,7 +27,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="30"/>
         <source>No category</source>
         <translation type="unfinished"></translation>
     </message>
