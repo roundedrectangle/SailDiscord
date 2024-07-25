@@ -30,6 +30,15 @@ Page {
                 text: categoryid == "-1" ? qsTr("No category") : name
 
                 Component.onCompleted: {
+                    if (categoryid == "-1") {
+                        if (chModel.get(index+1).isCategory) {
+                            //visible = false
+                            chModel.remove(index)
+                        }
+                    }
+
+
+
                     if (!visible) height = 0;
                 }
             }
@@ -42,23 +51,35 @@ Page {
 
                 Icon {
                     source: {
-                        switch (true) {
-                            case true:
+                        switch (icon) {
+                            case "voice":
                                 "image://theme/icon-m-browser-sound"
+                                break
+                            case "news":
+                                "image://theme/icon-m-send"
+                                break
+                            case "private":
+                                "image://theme/icon-m-device-lock"
+                                break
+                            case "text":
+                                "image://theme/icon-m-edit"
+                                break
+                            default:
+                                "image://theme/icon-m-warning"
                                 break
                         }
                     }
                 }
 
                 Label {
-                    text: name
+                    text: name+" "+icon
                 }
             }
 
             Component.onCompleted: {
-                python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions) {
+                python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions, _icon) {
                     if (!_haspermissions && !appSettings.ignorePrivate) return;
-                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false})
+                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon})
                 })
             }
         }
@@ -70,7 +91,7 @@ Page {
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({categoryid: _id, name: _name, isCategory: true})
+                append({categoryid: _id, name: _name, isCategory: true, icon: ""})
 
                 python.requestChannels(serverid, _id)
             })
