@@ -34,12 +34,24 @@ Page {
                 }
             }
 
-            Label {
+            Row {
                 visible: !isCategory
-                text: name
-
                 Component.onCompleted: {
                     if (!visible) height = 0;
+                }
+
+                Icon {
+                    source: {
+                        switch (true) {
+                            case true:
+                                "image://theme/icon-m-browser-sound"
+                                break
+                        }
+                    }
+                }
+
+                Label {
+                    text: name
                 }
             }
 
