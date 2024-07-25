@@ -20,24 +20,30 @@ Page {
 
         delegate: ListItem {
             width: parent.width
-            //height: Theme.itemSizeSmall
 
             SectionHeader {
                 id: sectionHeader
-                text: name
+                text: categoryid == -1? qsTr("No category") : name
             }
 
             SilicaListView { // TODO: add model for a specefic category here
                 model: sectionModel
                 anchors {
                     top: sectionHeader.bottom
-                    bottom: parent.bottom
+                    //bottom: parent.bottom
                 }
+
                 width: parent.width
 
                 delegate: ListItem {
+                    width: parent.width
+                    height: Theme.itemSizeLarge
                     Label {
                         text: channelName
+
+                        Component.onCompleted: {
+                            console.log("Label "+channelName+" initialised!")
+                        }
                     }
                 }
             }
@@ -46,11 +52,13 @@ Page {
                 id: sectionModel
 
                 Component.onCompleted: {
-                    //append({id: 0, name: "hello"})
-                    python.setHandler('channel', function (_serverid, _categoryid, _id, _name, _haspermissions) {
-                        if (((_serverid != serverid) || (_categoryid != categoryid)) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                        sectionModel.append({channelId: _id, channelName: _name})
-
+                    sectionModel.append({channelId: "-2", channelName: "hello2"})
+                    sectionModel.append({channelId: "-3", channelName: "hello3"})
+                    sectionModel.append({channelId: "-4", channelName: "hello4"})
+                    python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions) {
+                        if (!_haspermissions && !appSettings.ignorePrivate) return;
+                        //sectionModel.append({channelId: _id, channelName: _name})
+                        //console.log("ALERT: nothing much but "+sectionModel.count)
                     })
                     python.requestChannels(serverid, categoryid)
                 }
