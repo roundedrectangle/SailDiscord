@@ -31,6 +31,14 @@ def send_categories(guild, user_id):
             has_permissions = c.permissions_for(member).view_channel
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
 
+def send_channels(category, user_id):
+    for c in category.channels:
+        has_permissions = True # default
+        member = category.guild.get_member(user_id)
+        if member != None:
+            has_permissions = c.permissions_for(member).view_channel
+        pyotherside.send('channel', str(category.id), str(c.id), str(c.name), has_permissions)
+
 class MyClient(discord.Client):
     async def on_ready(self):
         pyotherside.send('logged_in', str(self.user))
@@ -62,5 +70,12 @@ class Communicator:
         if g == None:
             return
         send_categories(g, self.client.user.id)
+
+    def get_channels(self, guild_id, category_id):
+        g = self.client.get_guild(int(guild_id))
+        if g != None:
+            c = g.get_channel(category_id)
+            if c != None:
+                send_channels(c, self.client.user.id)
 
 comm = Communicator()
