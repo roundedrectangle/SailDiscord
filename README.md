@@ -20,11 +20,11 @@ I can forget about my projects and pause the developing, but then I come back (n
 - [X] Servers
 	- [X] List
 		- [ ] Make it follow the same sorting as in the real discord, probably not possible yet because no such thing is implemented in discord.py-self. mb this is also an issue with qml?
-	- [ ] Channels list
-		- [X] Categories
-		- [ ] Channels themselves
-	- [ ] Messages read
-	- [ ] Messages write
+	- [X] Channels list
+	- [ ] Messages
+		- [ ] Read text
+		- [ ] Write text
+		- [ ] Other types
 - [ ] DMs list
 	|      | Backend | Connection | Frontend |
 	|------|---------|------------|----------|
