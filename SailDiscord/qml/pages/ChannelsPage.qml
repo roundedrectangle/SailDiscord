@@ -31,7 +31,7 @@ Page {
                 model: sectionModel
                 anchors {
                     top: sectionHeader.bottom
-                    bottom: parent.height
+                    bottom: parent.bottom
                 }
                 width: parent.width
 
