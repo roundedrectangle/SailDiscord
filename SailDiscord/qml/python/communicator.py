@@ -42,7 +42,7 @@ def send_channels(category, user_id):
 
 def send_channels_no_category(guild, user_id):
     for c in guild.channels:
-        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(discord.CategoryChannel)):
+        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
             has_permissions = True # default
             member = c.guild.get_member(user_id)
             if member != None:
