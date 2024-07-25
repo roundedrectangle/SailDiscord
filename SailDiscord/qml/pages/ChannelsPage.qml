@@ -37,7 +37,7 @@ Page {
 
                 delegate: ListItem {
                     Label {
-                        text: name
+                        text: channelName
                     }
                 }
             }
@@ -47,10 +47,11 @@ Page {
 
                 Component.onCompleted: {
                     //append({id: 0, name: "hello"})
-                    //python.setHandler('channel', function (_serverid, _id, _name, _haspermissions) {
-                    //    if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                    //    append({categoryid: _id, name: _name})
-                    //})
+                    python.setHandler('channel', function (_serverid, _categoryid, _id, _name, _haspermissions) {
+                        if (((_serverid != serverid) || (_categoryid != categoryid)) || (!_haspermissions && !appSettings.ignorePrivate)) return;
+                        sectionModel.append({channelId: _id, channelName: _name})
+
+                    })
                     python.requestChannels(serverid, categoryid)
                 }
             }
