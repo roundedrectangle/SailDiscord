@@ -29,7 +29,7 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="29"/>
         <source>No category</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna categoria</translation>
     </message>
 </context>
 <context>
@@ -127,7 +127,7 @@
         <source>show license(s)</source>
         <translation>
             <numerusform></numerusform>
-            <numerusform>Mostra licenze</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -201,7 +201,7 @@
         <source>License(s)</source>
         <translation>
             <numerusform></numerusform>
-            <numerusform>Licenze</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
