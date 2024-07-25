@@ -43,6 +43,7 @@ Page {
                     source: {
                         switch (icon) {
                             case "voice":
+                            case "stage_voice":
                                 "image://theme/icon-m-browser-sound"
                                 break
                             case "news":
@@ -54,12 +55,18 @@ Page {
                             case "text":
                                 "image://theme/icon-m-edit"
                                 break
+                            case "forum":
+                            case "directory":
+                                "image://theme/icon-m-folder"
+                                break
                             default:
                                 "image://theme/icon-m-warning"
                                 break
                         }
                     }
                 }
+
+                Item { height: 1; width: Theme.paddingLarge; }
 
                 Label {
                     text: name
