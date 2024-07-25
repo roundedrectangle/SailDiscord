@@ -23,22 +23,12 @@ Page {
             property bool hadFirst: false
             width: parent.width
 
-
             SectionHeader {
                 visible: isCategory
                 id: sectionHeader
                 text: categoryid == "-1" ? qsTr("No category") : name
 
                 Component.onCompleted: {
-                    if (categoryid == "-1") {
-                        if (chModel.get(index+1).isCategory) {
-                            //visible = false
-                            chModel.remove(index)
-                        }
-                    }
-
-
-
                     if (!visible) height = 0;
                 }
             }
@@ -81,6 +71,13 @@ Page {
                     if (!_haspermissions && !appSettings.ignorePrivate) return;
                     chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon})
                 })
+
+                if (categoryid == "-1") {
+                    if (chModel.get(index+1).isCategory) {
+                        visible = false
+                        height = 0;
+                    }
+                }
             }
         }
     }
