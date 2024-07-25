@@ -20,11 +20,34 @@ Page {
 
         delegate: ListItem {
             width: parent.width
-            height: Theme.itemSizeSmall
+            //height: Theme.itemSizeSmall
 
-            Label {
+            SectionHeader {
+                id: sectionHeader
                 text: name
-                color: Theme.secondaryColor
+            }
+
+            SilicaListView { // TODO: add model for a specefic category here
+                model: sectionModel
+                anchors {
+                    top: sectionHeader.bottom
+                    bottom: parent.height
+                }
+                width: parent.width
+
+                delegate: ListItem {
+                    Label {
+                        text: name
+                    }
+                }
+            }
+
+            ListModel {
+                id: sectionModel
+
+                Component.onCompleted: {
+                    append({id: 0, name: "hello"})
+                }
             }
         }
     }
