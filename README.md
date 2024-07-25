@@ -4,7 +4,7 @@ A SailfishOS Discord client
 
 Not working yet
 
-**By using this, you are breaking Discord Terms of Services! This app might even get you banned!**
+**By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
 
 Join our discord [server](https://discord.gg/Q3u7ejjzFg) with detailed development logs!
 
