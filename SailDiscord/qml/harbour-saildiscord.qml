@@ -65,5 +65,13 @@ ApplicationWindow {
         function requestChannels(guildid, categoryid) {
             call('communicator.comm.get_channels', [guildid, categoryid], function() {})
         }
+
+        function setCurrentServer(guildid) {
+            call('communicator.comm.set_server', [guildid], function() {})
+        }
+
+        function resetCurrentServer() {
+            setCurrentServer("")
+        }
     }
 }

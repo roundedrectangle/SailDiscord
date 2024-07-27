@@ -86,6 +86,7 @@ class Communicator:
         self.client.run(self.token)
 
     def get_categories(self, guild_id):
+        self.set_server(guild_id)
         g = self.client.get_guild(int(guild_id))
         if g == None:
             return
