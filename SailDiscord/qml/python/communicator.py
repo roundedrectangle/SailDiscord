@@ -102,4 +102,14 @@ class Communicator:
             if c != None:
                 send_channels(c, self.client.user.id)
 
+    def set_server(guild_id):
+        if guild_id in [None, '']:
+            self.client.current_server = None
+        else:
+            try:
+                self.client.current_server = self.client.get_guild(int(guild_id))
+            except Exception as e:
+                pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
+                self.client.current_server = None
+
 comm = Communicator()
