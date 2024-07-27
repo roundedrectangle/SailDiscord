@@ -53,13 +53,16 @@ def send_channels_no_category(guild, user_id):
 
 class MyClient(discord.Client):
     async def on_ready(self):
+        # Setup control variables
+        self.current_server = None
+
         pyotherside.send('logged_in', str(self.user))
         send_servers(self.guilds)
 
     async def on_message(self, message):
-        server_name = "No server" if message.guild == None else message.guild
-        pyotherside.send(f"Got message from {message.author} in server : {message.content}")
-        #await message.channel.send('pong')
+        if message.guild == self.current_server and self.current_server != None:
+            pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
+            #await message.channel.send('pong')
 
 class Communicator:
     def __init__(self):
