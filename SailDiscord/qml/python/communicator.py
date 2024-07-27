@@ -56,6 +56,11 @@ class MyClient(discord.Client):
         pyotherside.send('logged_in', str(self.user))
         send_servers(self.guilds)
 
+    async def on_message(self, message):
+        server_name = "No server" if message.guild == None else message.guild
+        pyotherside.send(f"Got message from {message.author} in server : {message.content}")
+        #await message.channel.send('pong')
+
 class Communicator:
     def __init__(self):
         self.loginth = Thread()
