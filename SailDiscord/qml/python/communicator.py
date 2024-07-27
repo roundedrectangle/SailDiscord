@@ -19,7 +19,7 @@ QMLLIVE_DEBUG = True
 
 def send_servers(guilds):
     lst = list(guilds)
-    for g in lst:
+    for g in reversed(lst):
         pyotherside.send('server', str(g.id), str(g.name), str(g.icon))
         #send_server_info(g)
 
