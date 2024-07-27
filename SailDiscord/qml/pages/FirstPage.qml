@@ -181,8 +181,4 @@ Page {
 
         function findById(_id) { return find(function (item) { return item.id === _id }) }
     }
-
-    Component.onCompleted: {
-        python.resetCurrentServer()
-    }
 }
