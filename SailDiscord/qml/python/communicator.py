@@ -70,12 +70,14 @@ class MyClient(discord.Client):
 
     def set_current_server(self, guild):
         self.current_server = guild
-        asyncio.run(guild.subscribe())
+        # This will be used when discord.py-self 2.1 will be out.
+        #asyncio.run(guild.subscribe())
 
     def unset_current_server(self):
-        if self.current_server == None:
-            return
-        asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
+        # This will be used when discord.py-self 2.1 will be out.
+        #if self.current_server == None:
+        #    return
+        #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
         self.current_server = None
 
 class Communicator:

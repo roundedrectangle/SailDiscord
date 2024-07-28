@@ -27,8 +27,6 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
-BuildRequires:  git
-# didn't work before, but works now for some reason:
 BuildRequires: python3-pip
 %endif
 
@@ -37,7 +35,6 @@ Requires:  python3-base
 Requires: gcc
 Requires: python3-devel
 Requires: python3-pip
-Requires: git
 %endif
 
 # >> macros
@@ -64,7 +61,7 @@ Short description of my Sailfish OS Application
 
 %if %{package_library} == "yes"
 #python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
-python3 -m pip install -U "git+https://github.com/dolfies/discord.py-self.git" --target=%_builddir/deps
+python3 -m pip install "discord.py-self>=2.0" --target=%_builddir/deps
 rm -rf %_builddir/deps/google/_upb
 %endif
 
