@@ -1,4 +1,4 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-saildiscord
@@ -26,8 +26,10 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
-BuildRequires: python3-devel
-#BuildRequires: python3-pip # doesn't work for now; no fix yet
+BuildRequires:  python3-devel
+BuildRequires:  git
+# didn't work before, but works not for some reason:
+BuildRequires: python3-pip
 %endif
 
 %if %{package_library} == "no"
@@ -57,10 +59,11 @@ Short description of my Sailfish OS Application
 
 # >> build post
 
+#zypper install git
+
 %if %{package_library} == "yes"
 #python3 -m ensurepip --default-pip # a workaround for BuildRequires: python3-pip; a better solution for now is building sailfish-rpn-calc
-python3 -m pip install "discord.py-self>=2.0" --target=%_builddir/deps
-#python3 -m pip install "discord.py-self>=2.0" "protobuf==5.27.0" --target=%_builddir/deps
+python3 -m pip install -U "git+https://github.com/dolfies/discord.py-self.git" --target=%_builddir/deps
 rm -rf %_builddir/deps/google/_upb
 %endif
 

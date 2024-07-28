@@ -68,11 +68,21 @@ class MyClient(discord.Client):
             pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
             #await message.channel.send('pong')
 
+    def set_current_server(self, guild):
+        self.current_server = guild
+        asyncio.run(guild.subscribe())
+
+    def unset_current_server(self):
+        if self.current_server == None:
+            return
+        asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
+        self.current_server = None
+
 class Communicator:
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
-        self.client = MyClient()
+        self.client = MyClient(guild_subscriptions=False)
         self.token = ''
 
     def login(self, token):
@@ -109,12 +119,12 @@ class Communicator:
 
     def set_server(self, guild_id):
         if guild_id in [None, '']:
-            self.client.current_server = None
+            self.client.unset_current_server()
         else:
             try:
-                self.client.current_server = self.client.get_guild(int(guild_id))
+                self.client.set_current_server(self.client.get_guild(int(guild_id)))
             except Exception as e:
                 pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-                self.client.current_server = None
+                self.client.unset_current_server()
 
 comm = Communicator()
