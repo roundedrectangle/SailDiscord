@@ -37,6 +37,7 @@ Requires:  python3-base
 Requires: gcc
 Requires: python3-devel
 Requires: python3-pip
+Requires: git
 %endif
 
 # >> macros
