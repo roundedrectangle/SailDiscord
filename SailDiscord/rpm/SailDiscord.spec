@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  git
-# didn't work before, but works not for some reason:
+# didn't work before, but works now for some reason:
 BuildRequires: python3-pip
 %endif
 
