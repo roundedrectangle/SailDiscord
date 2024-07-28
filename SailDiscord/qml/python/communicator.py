@@ -58,7 +58,7 @@ class MyClient(discord.Client):
         # Setup control variables
         self.current_server = None
 
-        pyotherside.send('logged_in', str(self.user))
+        pyotherside.send('logged_in', str(self.user.name))
         send_servers(self.guilds)
 
     async def on_message(self, message):

@@ -10,12 +10,26 @@ Page {
     property string channelid
     property string name
 
-    SilicaFlickable {
-        id: container
+    SilicaListView {
+        id: messagesList
         anchors.fill: parent
+        model: model
 
-        PageHeader {
+        header: PageHeader {
+            id: header
             title: "#"+name
         }
+    }
+
+    ListModel {
+        id: model
+    }
+
+    Component.onCompleted: {
+        // TODO: send that the channel is opened to python
+    }
+
+    Component.onDestroyed: {
+        // TODO: send that the channel is closed to python
     }
 }
