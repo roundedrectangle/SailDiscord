@@ -14,6 +14,7 @@ ListItem {
 
         Label {
             text: contents
+            wrapMode: Text.Wrap
         }
     }
 }
