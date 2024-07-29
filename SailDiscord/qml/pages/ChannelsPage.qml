@@ -99,6 +99,7 @@ Page {
             onClicked: {
                 if (isCategory) return;
                 pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), {
+                    guildid: serverid,
                     channelid: categoryid,
                     name: name
                     //TODO: add channels here

@@ -23,6 +23,7 @@ SOURCES += \
 
 DISTFILES += \
     harbour-saildiscord.desktop \
+    qml/components/MessageItem.qml \
     qml/components/ServerListItem.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \

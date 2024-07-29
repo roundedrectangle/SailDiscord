@@ -7,6 +7,7 @@ Page {
     id: page
     allowedOrientations: Orientation.All
 
+    property string guildid
     property string channelid
     property string name
 
@@ -19,17 +20,28 @@ Page {
             id: header
             title: "#"+name
         }
+
+        delegate: MessageItem {
+            contents: _contents
+            author: _author
+        }
     }
 
     ListModel {
         id: model
+
+        Component.onCompleted: {
+            append({_id: 0, _author: "me", _contents: "hello world"})
+            append({_id: 0, _author: "me", _contents: "hello world"})
+            append({_id: 0, _author: "me", _contents: "hello world"})
+        }
     }
 
     Component.onCompleted: {
         // TODO: send that the channel is opened to python
     }
 
-    Component.onDestroyed: {
+    Component.onDestruction: {
         // TODO: send that the channel is closed to python
     }
 }
