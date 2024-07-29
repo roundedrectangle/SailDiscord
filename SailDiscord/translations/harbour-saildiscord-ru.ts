@@ -27,7 +27,12 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="29"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
         <source>No category</source>
         <translation type="unfinished"></translation>
     </message>
@@ -43,12 +48,17 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="67"/>
+        <location filename="../qml/pages/FirstPage.qml" line="56"/>
+        <source>Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="72"/>
+        <location filename="../qml/pages/FirstPage.qml" line="69"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -58,6 +68,19 @@
     <message>
         <location filename="../qml/modules/Opal/About/private/LicenseListPart.qml" line="119"/>
         <source>License text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessagesPage</name>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="26"/>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="27"/>
+        <source>Say hi (Coming soon)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

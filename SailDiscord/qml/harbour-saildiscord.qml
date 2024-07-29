@@ -25,7 +25,7 @@ ApplicationWindow {
                 myPage.username = _username;
             })
 
-            setHandler('server', function(_id, _name, _icon) { myPage.serversModel.append({"id": _id, "name": _name, "image": _icon/*, "chunked": true, "memberCount": 0*/}) })
+            setHandler('server', function(_id, _name, _icon, _memberCount) { myPage.serversModel.append({"id": _id, "name": _name, "image": _icon, "memberCount": _memberCount}) })
 
             //setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
             //setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })

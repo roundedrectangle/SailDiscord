@@ -20,7 +20,8 @@ QMLLIVE_DEBUG = True
 def send_servers(guilds):
     lst = list(guilds)
     for g in reversed(lst):
-        pyotherside.send('server', str(g.id), str(g.name), str(g.icon))
+        count = g.member_count if g.member_count != None else -1
+        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count)
         #send_server_info(g)
 
 def send_categories(guild, user_id):

@@ -9,6 +9,8 @@ Page {
 
     property string serverid
     property string name
+    property string icon
+    property string memberCount
 
     SilicaListView {
         id: channelList
@@ -17,6 +19,18 @@ Page {
 
         header: PageHeader {
             title: name
+        }
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
+                    serverid: serverid,
+                    name: name,
+                    icon: icon,
+                    memberCount: memberCount
+                })
+            }
         }
 
         delegate: ListItem {

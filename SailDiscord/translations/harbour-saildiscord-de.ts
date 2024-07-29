@@ -26,6 +26,10 @@
         <source>No category</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">Über</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -44,12 +48,27 @@
         <source>About</source>
         <translation type="unfinished">Über</translation>
     </message>
+    <message>
+        <source>Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LicenseListPart</name>
     <message>
         <source>License text</source>
         <translation>Lizenztext</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesPage</name>
+    <message>
+        <source>No messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Say hi (Coming soon)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
