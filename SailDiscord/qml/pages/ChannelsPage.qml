@@ -121,8 +121,4 @@ Page {
             python.requestCategories(serverid)
         }
     }
-
-    Component.onDestruction: {
-        python.resetCurrentServer()
-    }
 }

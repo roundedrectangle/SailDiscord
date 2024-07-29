@@ -102,7 +102,7 @@ class Communicator:
         self.client.run(self.token)
 
     def get_categories(self, guild_id):
-        self.set_server(guild_id)
+        #self.set_server(guild_id)
         g = self.client.get_guild(int(guild_id))
         if g == None:
             return
@@ -119,7 +119,7 @@ class Communicator:
             if c != None:
                 send_channels(c, self.client.user.id)
 
-    def set_server(self, guild_id):
+    def set_channel(self, guild_id, channel_id):
         if guild_id in [None, '']:
             self.client.unset_current_server()
         else:

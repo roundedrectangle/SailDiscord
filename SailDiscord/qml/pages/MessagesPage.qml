@@ -38,10 +38,10 @@ Page {
     }
 
     Component.onCompleted: {
-        // TODO: send that the channel is opened to python
+        python.setCurrentChannel(guildid, channelid)
     }
 
     Component.onDestruction: {
-        // TODO: send that the channel is closed to python
+        python.resetCurrentChannel()
     }
 }
