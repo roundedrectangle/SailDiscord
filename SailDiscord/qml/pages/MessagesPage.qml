@@ -22,8 +22,8 @@ Page {
         }
 
         delegate: MessageItem {
-            contents: _contents
-            author: _author
+            contents: contents
+            author: author
         }
     }
 
@@ -38,8 +38,6 @@ Page {
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 append({messageId: _id, author: _author, contents: _contents})
-
-                python.requestChannels(serverid, _id)
             })
         }
     }
