@@ -6,7 +6,14 @@ ListItem {
     property string contents
     property string author
 
+    width: parent.width
+    height: column.height
+
     Column {
+        id: column
+        width: parent.width
+        height: childrenRect.height
+
         Label {
             text: author
             color: Theme.secondaryColor
@@ -15,6 +22,7 @@ ListItem {
         Label {
             text: contents
             wrapMode: Text.Wrap
+            width: parent.width
         }
     }
 }
