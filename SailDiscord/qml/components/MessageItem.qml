@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.0
 ListItem {
     property string contents
     property string author
+    property string pfp
 
     width: parent.width
     height: column.height
@@ -24,5 +25,8 @@ ListItem {
             wrapMode: Text.Wrap
             width: parent.width
         }
+    }
+    Component.onCompleted: {
+        console.log(contents+' '+pfp)
     }
 }

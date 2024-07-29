@@ -24,6 +24,7 @@ Page {
         delegate: MessageItem {
             contents: _contents
             author: _author
+            pfp: _pfp
         }
     }
 
@@ -31,9 +32,9 @@ Page {
         id: model
 
         Component.onCompleted: {
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                append({messageId: _id, _author: _author, _contents: _contents})
+                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon})
                 messagesList.forceLayout()
             })
         }
