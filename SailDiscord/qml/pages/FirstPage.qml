@@ -48,18 +48,15 @@ Page {
         updatePage()
     }
 
-    // To enable PullDownMenu, place our content in a SilicaFlickable
-//    SilicaFlickable {
     SilicaListView {
         id: firstPageContainer
         anchors.fill: parent
 
         BusyLabel {
-            text: "Loading"
+            text: qsTr("Loading")
             running: loading
         }
 
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             busy: loading
 
@@ -79,96 +76,20 @@ Page {
             title: username
         }
 
-        /*Label {
-            id: appname
-            anchors.top: header_name.bottom
-            x: Theme.horizontalPageMargin
-            text: qsTr("SailDiscord")
-            color: Theme.secondaryHighlightColor
-            font.pixelSize: Theme.fontSizeExtraLarge
-        }*/
+        model: serversModel
 
-        // Tell SilicaFlickable the height of its content.
-        //contentHeight: column.height
-        //contentWidth: column.width
+        delegate: ServerListItem {
+            title: name
+            icon: image
 
-        // Place our content in a Column.  The PageHeader is always placed at the top
-        // of the page, followed by our content.
-
-        /*Column {
-            id: column
-
-            width: page.width
-            spacing: Theme.paddingLarge
-            visible: !loading
-            PageHeader {
-                title: username
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
+                    serverid: id,
+                    name: name
+                    //TODO: add channels here
+                })
             }
-            /*Label {
-                x: Theme.horizontalPageMargin
-                text: qsTr("SailDiscord")
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
-            }/*
-
-            ExpandingSectionGroup {
-
-                ExpandingSection {
-                    id: dmSection
-                    title: qsTr("Direct Messages")
-
-                    content.sourceComponent: SilicaListView {
-                       id: dmList
-                    }
-                }
-
-                ExpandingSection {
-                    id: serversSection
-                    title: qsTr("Servers")
-
-                    content.sourceComponent: SilicaListView {
-                        id: serversList
-                        model: serversModel
-                        anchors.top: parent
-                        anchors.bottom: parent
-
-                        ViewPlaceholder {
-                            enabled: serversModel.count === 0
-                            text: "No servers"
-                            hintText: "Pull down to join (TODO)"
-                        }
-                    }
-                }
-            }*/
-
-                //anchors.top: appname.bottom
-                //model: serversModel
-
-//        SilicaListView {
-
-            /*anchors {
-                top: appname.bottom
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }*/
-
-//            id: serversListView
-            model: serversModel
-
-            delegate: ServerListItem {
-                title: name
-                icon: image
-
-                onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
-                        serverid: id,
-                        name: name
-                        //TODO: add channels here
-                    })
-                }
-            }
-//         }
+        }
     }
 
     ListModel {
