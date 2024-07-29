@@ -76,7 +76,7 @@ Page {
             Component.onCompleted: {
                 python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions, _icon) {
                     if (!_haspermissions && !appSettings.ignorePrivate) return;
-                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon})
+                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon, hasPermissions: _haspermissions})
                 })
 
                 updateNoCategory()
@@ -97,7 +97,7 @@ Page {
             }
 
             onClicked: {
-                if (isCategory) return;
+                if (isCategory || !hasPermissions) return;
                 pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), {
                     guildid: serverid,
                     channelid: categoryid,
@@ -114,7 +114,7 @@ Page {
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({categoryid: _id, name: _name, isCategory: true, icon: ""})
+                append({categoryid: _id, name: _name, isCategory: true, icon: "", hasPermissions: _haspermissions})
 
                 python.requestChannels(serverid, _id)
             })

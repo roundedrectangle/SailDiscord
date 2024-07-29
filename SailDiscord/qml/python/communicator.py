@@ -53,6 +53,7 @@ def send_channels_no_category(guild, user_id):
 
 class MyClient(discord.Client):
     current_server = None
+    current_channel = None
 
     async def on_ready(self):
         # Setup control variables
@@ -62,23 +63,26 @@ class MyClient(discord.Client):
         send_servers(self.guilds)
 
     async def on_message(self, message):
-        if self.current_server == None:
+        if self.current_server == None or self.current_channel == None:
             return
-        if message.guild.id == self.current_server.id:
-            pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
+        if message.guild.id == self.current_server.id and message.channel.id == self.current_channel.id:
+            #pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
+            pyotherside.send('message', str(message.guild.id), str(message.channel.id), str(message.id), str(message.author), str(message.content))
             #await message.channel.send('pong')
 
-    def set_current_server(self, guild):
+    def set_current_channel(self, guild, channel):
         self.current_server = guild
+        self.current_channel = channel
         # This will be used when discord.py-self 2.1 will be out.
         #asyncio.run(guild.subscribe())
 
-    def unset_current_server(self):
+    def unset_current_channel(self):
         # This will be used when discord.py-self 2.1 will be out.
         #if self.current_server == None:
         #    return
         #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
         self.current_server = None
+        self.current_channel = None
 
 class Communicator:
     def __init__(self):
@@ -121,12 +125,14 @@ class Communicator:
 
     def set_channel(self, guild_id, channel_id):
         if guild_id in [None, '']:
-            self.client.unset_current_server()
+            self.client.unset_current_channel()
         else:
             try:
-                self.client.set_current_server(self.client.get_guild(int(guild_id)))
+                guild = self.client.get_guild(int(guild_id))
+                channel = guild.get_channel(int(channel_id))
+                self.client.set_current_channel(guild, channel)
             except Exception as e:
                 pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-                self.client.unset_current_server()
+                self.client.unset_current_channel()
 
 comm = Communicator()
