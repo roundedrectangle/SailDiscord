@@ -8,25 +8,52 @@ ListItem {
     property string pfp
 
     width: parent.width
-    height: column.height
+    height: row.height
 
-    Column {
-        id: column
+    Row {
+        id: row
         width: parent.width
         height: childrenRect.height
 
-        Label {
-            text: author
-            color: Theme.secondaryColor
+        Image {
+            id: profileIcon
+            source: pfp
+            //height: parent.height
+            height: Theme.iconSizeLarge
+            width: height
+
+            property bool rounded: true
+            property bool adapt: true
+
+            layer.enabled: rounded
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: profileIcon.width
+                    height: profileIcon.height
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: profileIcon.adapt ? profileIcon.width : Math.min(profileIcon.width, profileIcon.height)
+                        height: profileIcon.adapt ? profileIcon.height : width
+                        radius: Math.min(width, height)
+                    }
+                }
+            }
         }
 
-        Label {
-            text: contents
-            wrapMode: Text.Wrap
-            width: parent.width
+        Item { id: iconPadding; height: 1; width: Theme.paddingLarge; }
+
+        Column {
+            width: parent.width-(profileIcon.width+iconPadding.width)
+            Label {
+                text: author
+                color: Theme.secondaryColor
+            }
+
+            Label {
+                text: contents
+                wrapMode: Text.Wrap
+                width: parent.width
+            }
         }
-    }
-    Component.onCompleted: {
-        console.log(contents+' '+pfp)
     }
 }
