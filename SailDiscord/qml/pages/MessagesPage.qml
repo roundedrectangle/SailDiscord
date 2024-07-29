@@ -21,6 +21,12 @@ Page {
             title: "#"+name
         }
 
+        ViewPlaceholder {
+            enabled: model.count === 0
+            text: qsTr("No messages")
+            hintText: qsTr("Say hi (Coming soon)")
+        }
+
         delegate: MessageItem {
             contents: _contents
             author: _author

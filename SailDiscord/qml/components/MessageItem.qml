@@ -8,7 +8,7 @@ ListItem {
     property string pfp
 
     width: parent.width
-    height: row.height
+    contentHeight: row.height
 
     Row {
         id: row
@@ -54,6 +54,8 @@ ListItem {
                 wrapMode: Text.Wrap
                 width: parent.width
             }
+
+            Item { height: Theme.paddingLarge; width: 1; }
         }
     }
 }
