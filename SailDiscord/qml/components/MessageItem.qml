@@ -13,14 +13,13 @@ ListItem {
 
     Row {
         id: row
-        width: parent.width
+        width: Math.min(parent.width, profileIcon.width+iconPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
         height: childrenRect.height
-        //layoutDirection: Qt.RightToLeft
+        anchors.right: sent ? parent.right : undefined
 
         Image {
             id: profileIcon
             source: pfp
-            //height: parent.height
             height: Theme.iconSizeLarge
             width: height
 
@@ -46,8 +45,9 @@ ListItem {
 
         Column {
             id: textContainer
-            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), contentsLbl.paintedWidth)
+            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width))
             Label {
+                id: authorLbl
                 text: author
                 color: Theme.secondaryColor
             }
@@ -60,15 +60,6 @@ ListItem {
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
-
-            Component.onCompleted: {
-                console.log(contents+'\\'+width+'\\'+contentsLbl.width+'\\'+parent.width)
-            }
-        }
-
-        Component.onCompleted: {
-            //width = Math.min(parent.width, contentsLbl.implicitWidth)
-            console.log(author+""+width)
         }
     }
 }
