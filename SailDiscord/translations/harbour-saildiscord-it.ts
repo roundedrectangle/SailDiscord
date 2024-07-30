@@ -35,7 +35,7 @@
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
-        <translation type="unfinished">A proposito di</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
