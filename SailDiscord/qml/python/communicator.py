@@ -52,7 +52,9 @@ def send_channels_no_category(guild, user_id):
 
 def send_message(message):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    pyotherside.send('message', str(message.guild.id), str(message.channel.id), str(message.id), str(message.author.name), str(message.content), str(message.author.display_avatar))
+    pyotherside.send('message', str(message.guild.id), str(message.channel.id),
+        str(message.id), str(message.author.name), str(message.content),
+        str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
 
 class MyClient(discord.Client):

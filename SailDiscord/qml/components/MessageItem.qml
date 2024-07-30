@@ -6,6 +6,7 @@ ListItem {
     property string contents
     property string author
     property string pfp
+    property bool sent // If the message is sent by the user connected to the client
 
     width: parent.width
     contentHeight: row.height
@@ -57,5 +58,9 @@ ListItem {
 
             Item { height: Theme.paddingLarge; width: 1; }
         }
+    }
+
+    Component.onCompleted: {
+        console.log(contents+"-"+sent)
     }
 }

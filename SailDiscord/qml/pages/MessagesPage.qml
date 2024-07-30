@@ -31,6 +31,7 @@ Page {
             contents: _contents
             author: _author
             pfp: _pfp
+            sent: _sent
         }
     }
 
@@ -38,9 +39,9 @@ Page {
         id: model
 
         Component.onCompleted: {
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon})
+                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent})
                 messagesList.forceLayout()
             })
         }
