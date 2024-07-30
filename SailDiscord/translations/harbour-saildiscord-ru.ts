@@ -16,12 +16,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Translations</source>
-        <translation type="unfinished">Перевод</translation>
+        <translation>Перевод</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="37"/>
         <source>Italian</source>
-        <translation type="unfinished"></translation>
+        <translation>Итальянский</translation>
     </message>
 </context>
 <context>
@@ -29,25 +29,21 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
         <source>Member count: </source>
-        <translation type="unfinished"></translation>
+        <translation>Количество участников: </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
-        <translation type="unfinished">О программе</translation>
+        <translation>О сервере</translation>
     </message>
 </context>
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <source>About</source>
-        <translation type="unfinished">О программе</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
         <source>No category</source>
-        <translation type="unfinished"></translation>
+        <translation>Без категории</translation>
     </message>
 </context>
 <context>
@@ -63,7 +59,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="56"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>

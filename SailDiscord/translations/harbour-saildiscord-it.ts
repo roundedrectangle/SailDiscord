@@ -33,17 +33,13 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
         <translation type="unfinished">A proposito di</translation>
     </message>
 </context>
 <context>
     <name>ChannelsPage</name>
-    <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <source>About</source>
-        <translation type="unfinished">A proposito di</translation>
-    </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
         <source>No category</source>
