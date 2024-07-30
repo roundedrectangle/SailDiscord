@@ -15,6 +15,7 @@ ListItem {
         id: row
         width: parent.width
         height: childrenRect.height
+        //layoutDirection: Qt.RightToLeft
 
         Image {
             id: profileIcon
@@ -44,23 +45,30 @@ ListItem {
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge; }
 
         Column {
-            width: parent.width-(profileIcon.width+iconPadding.width)
+            id: textContainer
+            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), childrenRect.width-contentsLbl.paintedWidth)
             Label {
                 text: author
                 color: Theme.secondaryColor
             }
 
             Label {
+                id: contentsLbl
                 text: contents
                 wrapMode: Text.Wrap
                 width: parent.width
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
-        }
-    }
 
-    Component.onCompleted: {
-        console.log(contents+"-"+sent)
+            Component.onCompleted: {
+                console.log(contents+'\\'+width+'\\'+contentsLbl.width+'\\'+parent.width)
+            }
+        }
+
+        Component.onCompleted: {
+            //width = Math.min(parent.width, contentsLbl.implicitWidth)
+            console.log(author+""+width)
+        }
     }
 }
