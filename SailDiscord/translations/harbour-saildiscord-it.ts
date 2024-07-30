@@ -29,13 +29,13 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
         <source>Member count: </source>
-        <translation type="unfinished"></translation>
+        <translation>Membri</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>A proposito del server</translation>
     </message>
 </context>
 <context>
@@ -59,7 +59,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="56"/>
         <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <translation>Sto caricando</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
@@ -86,12 +86,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="26"/>
         <source>No messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun messaggio</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="27"/>
         <source>Say hi (Coming soon)</source>
-        <translation type="unfinished"></translation>
+        <translation>Dì ciao (Presto in arrivo)</translation>
     </message>
 </context>
 <context>
