@@ -25,6 +25,19 @@
     </message>
 </context>
 <context>
+    <name>AboutServerPage</name>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
+        <source>Member count: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <source>About</source>
+        <translation type="unfinished">О программе</translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
@@ -54,6 +67,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
+        <location filename="../qml/pages/FirstPage.qml" line="98"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>

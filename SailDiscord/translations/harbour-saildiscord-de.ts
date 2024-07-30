@@ -21,6 +21,17 @@
     </message>
 </context>
 <context>
+    <name>AboutServerPage</name>
+    <message>
+        <source>Member count: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">Über</translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <source>No category</source>
