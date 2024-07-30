@@ -46,7 +46,7 @@ ListItem {
 
         Column {
             id: textContainer
-            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), childrenRect.width-contentsLbl.paintedWidth)
+            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), contentsLbl.paintedWidth)
             Label {
                 text: author
                 color: Theme.secondaryColor
