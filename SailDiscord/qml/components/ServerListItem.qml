@@ -8,9 +8,9 @@ ListItem {
 
     property bool hasIcon: icon != "None"
 
-    width: parent.width
+    contentWidth: parent.width
     //ListView.view.width
-    height: Theme.itemSizeLarge
+    contentHeight: Theme.itemSizeLarge
 
     //Label {
     //    text: name

@@ -91,6 +91,20 @@ Page {
                     //TODO: add channels here
                 })
             }
+
+            menu: Component {
+                ContextMenu {
+                    MenuItem {
+                        text: qsTr("About")
+                        onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
+                             serverid: id,
+                             name: name,
+                             icon: icon,
+                             memberCount: memberCount
+                         })
+                    }
+                }
+            }
         }
     }
 
