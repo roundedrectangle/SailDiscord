@@ -80,7 +80,7 @@ color:Theme.highlightColor
 font.pixelSize:Theme.fontSizeLarge
 horizontalAlignment:Text.AlignHCenter
 }Label{width:parent.width
-visible:String(appVersion!=="")
+visible:String(appVersion)!==""
 text:qsTranslate("Opal.About","Version %1").arg(Func.formatAppVersion(appVersion,appRelease,appReleaseType))
 wrapMode:Text.Wrap
 color:Theme.secondaryHighlightColor

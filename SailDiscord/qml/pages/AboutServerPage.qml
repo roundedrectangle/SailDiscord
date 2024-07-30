@@ -2,8 +2,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../components"
+import "../modules/Opal/About"
+import "../modules/Opal/Attributions"
 
-Page {
+AboutPageBase {
     id: page
     allowedOrientations: Orientation.All
 
@@ -12,9 +14,11 @@ Page {
     property string icon
     property string memberCount
 
-    SilicaFlickable {
-        PageHeader {
-            title: name
-        }
-    }
+    appName: name
+    appIcon: icon == "None" ? undefined : icon
+    description: qsTr("Member count: ")+memberCount
+
+    _pageHeaderItem.title: qsTr("About")
+    _licenseInfoSection.visible: false
+    _develInfoSection.visible: false
 }
