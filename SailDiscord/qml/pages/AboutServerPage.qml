@@ -15,7 +15,7 @@ AboutPageBase {
     property string memberCount
 
     appName: name
-    appIcon: icon == "None" ? undefined : icon
+    appIcon: icon == "None" ? "" : icon
     description: qsTr("Member count: ")+memberCount
 
     _pageHeaderItem.title: qsTr("About")
