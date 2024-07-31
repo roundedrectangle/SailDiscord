@@ -71,7 +71,21 @@ Page {
                             Component.onCompleted: {
                                 currentIndex = 0
                             }
-                        }
+
+                            onCurrentItemChanged: {
+                                var res = function(){switch (currentItem.text) {
+                                        case "large (default)": return "l"
+                                        case "extra large": return "L"
+                                        case "huge": return "h"
+                                        case "medium": return "m"
+                                        case "small": return "s"
+                                        case "extra small": return "S"
+                                    }}()
+                                console.log(res)
+                                }
+
+                            }
+                        //}
 
                         SectionHeader { text: qsTr("Channels list") }
 
