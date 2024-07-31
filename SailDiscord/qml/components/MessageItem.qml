@@ -14,10 +14,17 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: (appSettings.sentBehaviour != "n") ? Math.min(parent.width-((appSettings.messagesLessWidth && sent && appSettings.sentBehaviour != "n") ? Theme.itemSizeMedium : 0), profileIcon.width+iconPadding.width+rightPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width)) : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.itemSizeMedium : 0)
+        width: (appSettings.sentBehaviour != "n") ? Math.min(parent.width-((appSettings.messagesLessWidth && sent && appSettings.sentBehaviour != "n") ? Theme.paddingLarge : 0), profileIcon.width+iconPadding.width+leftPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width)) : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
         height: childrenRect.height
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
         layoutDirection: (sent && appSettings.sentBehaviour == "r") ? Qt.RightToLeft : Qt.LeftToRight
+
+        Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
+           default: case "n": return 0
+           case "s": return sent ? Theme.paddingLarge : 0
+           case "r": return sent ? 0 : Theme.paddingLarge
+           case "a": return Theme.paddingLarge
+        } }
 
         Image {
             id: profileIcon
@@ -55,7 +62,7 @@ ListItem {
 
         Column {
             id: textContainer
-            width: (appSettings.sentBehaviour == "a") ? Math.min(parent.width-(profileIcon.width+iconPadding.width+rightPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width)) : parent.width-(profileIcon.width+iconPadding.width+rightPadding.width)
+            width: (appSettings.sentBehaviour == "a") ? Math.min(parent.width-(profileIcon.width+iconPadding.width+leftPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width)) : parent.width-(profileIcon.width+iconPadding.width+leftPadding.width)
             Label {
                 id: authorLbl
                 text: author
@@ -71,12 +78,8 @@ ListItem {
 
             Item { height: Theme.paddingLarge; width: 1; }
         }
-
-        Item { id: rightPadding; height: 1; width: switch (appSettings.messagesPadding) {
-           default: case "n": return 0
-           case "s": return sent ? Theme.paddingLarge : 0
-           case "r": return sent ? 0 : Theme.paddingLarge
-           case "a": return Theme.paddingLarge
-        } }
+        Component.onCompleted: {
+            console.log(leftPadding.width)
+        }
     }
 }
