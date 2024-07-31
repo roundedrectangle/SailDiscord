@@ -250,7 +250,79 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>fixed width</source>
+        <source>Servers list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>large (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>extra large</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>huge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channels list</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sent messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>reversed (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>align right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nothing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Less maximum width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Makes the maximum width of a sent message smaller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extra padding</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>none (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>received</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sets for which messages extra padding should apply</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

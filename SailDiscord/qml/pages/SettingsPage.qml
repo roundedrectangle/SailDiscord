@@ -13,184 +13,157 @@ Page {
         width: parent.width
         height: parent.height
         bottomMargin: Theme.paddingLarge
+        contentHeight: column.height
 
-        PageHeader {
-            id: header
-            title: qsTr("Settings")
-        }
+        VerticalScrollDecorator {}
 
-        /*SectionHeader {
-            text: qsTr("Session")
-        }*/
+        Column {
+            id: column
+            width: parent.width
 
-        /*ExpandingSectionGroup {
-            anchors {
-                top: header.bottom
-                bottom: parent.bottom
+            PageHeader {
+                id: header
+                title: qsTr("Settings")
             }
 
-
-            currentIndex: 0
-
-            ExpandingSection {
+            ExpandingSectionGroup {
                 anchors {
-
+                    //top: header.bottom
+                    //bottom: parent.bottom
                 }
 
-                id: sessionSection
+                //currentIndex: 0
 
-                title: qsTr("Session")
+                ExpandingSection {
+                    id: section
 
-                content.sourceComponent: Column {
-//                    width: sessionSection.width
+                    //property int sectionIndex: model.index
+                    title: qsTr("Behaviour")
 
-                    Button {
-                        text: "Log out"
-                        onClicked: {
-                            appSettings.setToken("");
-                        }
-                    }
-                }
-            }
-        }*/
+                    content.sourceComponent: Column {
+                        width: section.width
 
-        ExpandingSectionGroup {
-            anchors {
-                top: header.bottom
-                bottom: parent.bottom
-            }
+                        SectionHeader { text: qsTr("Servers list") }
 
-            //currentIndex: 0
+                        TextSwitch {
+                            text: qsTr("Keep empty space in servers without icons")
+                            onCheckedChanged: {
+                                appSettings.setEmptySpace(checked)
+                            }
 
-            ExpandingSection {
-                id: section
-
-                //property int sectionIndex: model.index
-                title: qsTr("Behaviour")
-
-                content.sourceComponent: Column {
-                    width: section.width
-
-                    SectionHeader { text: qsTr("Servers list") }
-
-                    TextSwitch {
-                        text: qsTr("Keep empty space in servers without icons")
-                        onCheckedChanged: {
-                            appSettings.setEmptySpace(checked)
+                            Component.onCompleted: {
+                                checked = appSettings.emptySpace;
+                            }
                         }
 
-                        Component.onCompleted: {
-                            checked = appSettings.emptySpace;
-                        }
-                    }
+                        ComboBox {
+                            label: qsTr("Size")
+                            currentIndex: 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("large (default)") }
+                                MenuItem { text: qsTr("extra large") }
+                                MenuItem { text: qsTr("huge") }
+                                MenuItem { text: qsTr("medium") }
+                                //MenuItem { text: qsTr("small") }
+                                //MenuItem { text: qsTr("extra small") }
+                            }
 
-                    ComboBox {
-                        label: qsTr("Size")
-                        currentIndex: 0
-                        menu: ContextMenu {
-                            MenuItem { text: qsTr("large (default)") }
-                            MenuItem { text: qsTr("extra large") }
-                            MenuItem { text: qsTr("huge") }
-                            MenuItem { text: qsTr("medium") }
-                            //MenuItem { text: qsTr("small") }
-                            //MenuItem { text: qsTr("extra small") }
-                        }
-
-                        Component.onCompleted: {
-                            currentIndex = 0
-                        }
-                    }
-
-                    SectionHeader { text: qsTr("Channels list") }
-
-                    TextSwitch {
-                        text: qsTr("Ignore private setting for channels and channel categories")
-                        onCheckedChanged: {
-                            appSettings.setIgnorePrivate(checked)
+                            Component.onCompleted: {
+                                currentIndex = 0
+                            }
                         }
 
-                        Component.onCompleted: {
-                            checked = appSettings.ignorePrivate;
-                        }
-                    }
+                        SectionHeader { text: qsTr("Channels list") }
 
-                    SectionHeader { text: qsTr("Messages") }
+                        TextSwitch {
+                            text: qsTr("Ignore private setting for channels and channel categories")
+                            onCheckedChanged: {
+                                appSettings.setIgnorePrivate(checked)
+                            }
 
-                    ComboBox {
-                        id: sentMessagesBox
-                        label: qsTr("Sent messages")
-                        menu: ContextMenu {
-                            MenuItem { text: qsTr("reversed (default)") }
-                            MenuItem { text: qsTr("align right") }
-                            MenuItem { text: qsTr("nothing") }
+                            Component.onCompleted: {
+                                checked = appSettings.ignorePrivate;
+                            }
                         }
 
-                        Component.onCompleted: {
-                            currentIndex = 0
-                        }
-                    }
+                        SectionHeader { text: qsTr("Messages") }
 
-                    TextSwitch {
-                        text: qsTr("Less maximum width")
-                        visible: sentMessagesBox.currentIndex != 2
-                        description: qsTr("Makes the maximum width of a sent message smaller")
+                        ComboBox {
+                            id: sentMessagesBox
+                            label: qsTr("Sent messages")
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("reversed (default)") }
+                                MenuItem { text: qsTr("align right") }
+                                MenuItem { text: qsTr("nothing") }
+                            }
 
-                        Component.onCompleted: {
-                            checked = false
-                        }
-                    }
-
-                    ComboBox {
-                        label: qsTr("Extra padding")
-                        currentIndex: 0
-                        menu: ContextMenu {
-                            MenuItem { text: qsTr("none (default)") }
-                            MenuItem { text: qsTr("sent") }
-                            MenuItem { text: qsTr("received") }
-                            MenuItem { text: qsTr("all") }
-                        }
-                        description: qsTr("Sets for which messages extra padding should apply")
-
-                        Component.onCompleted: {
-                            currentIndex = 0
-                        }
-                    }
-
-                    ComboBox {
-                        label: qsTr("Size")
-                        currentIndex: 0
-                        menu: ContextMenu {
-                            MenuItem { text: qsTr("large (default)") }
-                            MenuItem { text: qsTr("extra large") }
-                            //MenuItem { text: qsTr("launcher") }
-                            MenuItem { text: qsTr("medium") }
-                            //MenuItem { text: qsTr("small") }
-                            //MenuItem { text: qsTr("small plus") }
-                            //MenuItem { text: qsTr("extra small") }
+                            Component.onCompleted: {
+                                currentIndex = 0
+                            }
                         }
 
-                        Component.onCompleted: {
-                            currentIndex = 0
+                        TextSwitch {
+                            text: qsTr("Less maximum width")
+                            visible: sentMessagesBox.currentIndex != 2
+                            description: qsTr("Makes the maximum width of a sent message smaller")
+
+                            Component.onCompleted: {
+                                checked = false
+                            }
+                        }
+
+                        ComboBox {
+                            label: qsTr("Extra padding")
+                            currentIndex: 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("none (default)") }
+                                MenuItem { text: qsTr("sent") }
+                                MenuItem { text: qsTr("received") }
+                                MenuItem { text: qsTr("all") }
+                            }
+                            description: qsTr("Sets for which messages extra padding should apply")
+
+                            Component.onCompleted: {
+                                currentIndex = 0
+                            }
+                        }
+
+                        ComboBox {
+                            label: qsTr("Size")
+                            currentIndex: 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("large (default)") }
+                                MenuItem { text: qsTr("extra large") }
+                                //MenuItem { text: qsTr("launcher") }
+                                MenuItem { text: qsTr("medium") }
+                                //MenuItem { text: qsTr("small") }
+                                //MenuItem { text: qsTr("small plus") }
+                                //MenuItem { text: qsTr("extra small") }
+                            }
+
+                            Component.onCompleted: {
+                                currentIndex = 0
+                            }
                         }
                     }
                 }
-            }
 
-            ExpandingSection {
-                id: sessionSection
+                ExpandingSection {
+                    id: sessionSection
 
-                //property int sectionIndex: model.index
-                title: qsTr("Session")
+                    //property int sectionIndex: model.index
+                    title: qsTr("Session")
 
-                content.sourceComponent: Column {
-                    width: sessionSection.width
+                    content.sourceComponent: Column {
+                        width: sessionSection.width
 
-                    Button {
-                        text: qsTr("Log out")
-                        onClicked: {
-                            appSettings.setToken("");
+                        Button {
+                            text: qsTr("Log out")
+                            onClicked: {
+                                appSettings.setToken("");
+                            }
+                            anchors.horizontalCenter: parent.horizontalCenter
                         }
-                        anchors.horizontalCenter: parent.horizontalCenter
                     }
                 }
             }
