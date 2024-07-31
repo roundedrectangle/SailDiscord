@@ -7,6 +7,7 @@ ListItem {
     property string author
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
+    property bool sameAuthorAsBefore
 
     width: parent.width
     contentHeight: row.height
@@ -39,6 +40,7 @@ ListItem {
                     case "S": Theme.iconSizeExtraSmall; break
                 }
             width: height
+            visible: !sameAuthorAsBefore
 
             property bool rounded: true
             property bool adapt: true
@@ -58,7 +60,7 @@ ListItem {
             }
         }
 
-        Item { id: iconPadding; height: 1; width: Theme.paddingLarge; }
+        Item { id: iconPadding; height: 1; width: Theme.paddingLarge; visible: !sameAuthorAsBefore; }
 
         Column {
             id: textContainer
@@ -67,6 +69,7 @@ ListItem {
                 id: authorLbl
                 text: author
                 color: Theme.secondaryColor
+                visible: !sameAuthorAsBefore
             }
 
             Label {
@@ -79,7 +82,7 @@ ListItem {
             Item { height: Theme.paddingLarge; width: 1; }
         }
         Component.onCompleted: {
-            console.log(leftPadding.width)
+            console.log(sameAuthorAsBefore)
         }
     }
 }

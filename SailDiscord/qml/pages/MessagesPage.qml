@@ -14,7 +14,7 @@ Page {
     SilicaListView {
         id: messagesList
         anchors.fill: parent
-        model: model
+        model: msgModel
 
         header: PageHeader {
             id: header
@@ -22,7 +22,7 @@ Page {
         }
 
         ViewPlaceholder {
-            enabled: model.count === 0
+            enabled: msgModel.count === 0
             text: qsTr("No messages")
             hintText: qsTr("Say hi (Coming soon)")
         }
@@ -32,11 +32,12 @@ Page {
             author: _author
             pfp: _pfp
             sent: _sent
+            sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : msgModel.get(index-1)._author == _author
         }
     }
 
     ListModel {
-        id: model
+        id: msgModel
 
         Component.onCompleted: {
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
