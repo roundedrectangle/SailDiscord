@@ -69,8 +69,7 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                var a = "l"
-                                currentIndex = function(){switch (a) {
+                                currentIndex = function(){switch (appSettings.serverSize) {
                                     case "l": return 0
                                     case "L": return 1
                                     case "h": return 2
@@ -78,20 +77,21 @@ Page {
 
                                     case "s":
                                     case "S":
-                                    default: return -1
+                                    default:
+                                        appSettings.setServerSize("l")
+                                        return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                var res = function(){switch (value) {
-                                        case "large (default)": return "l"
-                                        case "extra large": return "L"
-                                        case "huge": return "h"
-                                        case "medium": return "m"
-                                        case "small": return "s"
-                                        case "extra small": return "S"
-                                    }}()
-                                console.log(res)
+                                appSettings.setServerSize(function(){switch (currentItem.text) {
+                                    case "large (default)": return "l"
+                                    case "extra large": return "L"
+                                    case "huge": return "h"
+                                    case "medium": return "m"
+                                    case "small": return "s"
+                                    case "extra small": return "S"
+                                }}())
                             }
                         }
 
@@ -120,22 +120,22 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                var a = "r"
-                                currentIndex = function(){switch (a) {
+                                currentIndex = function(){switch (appSettings.sentBehaviour) {
                                     case "r": return 0
                                     case "a": return 1
                                     case "n": return 2
-                                    default: return -1
+                                    default:
+                                        appSettings.setSentBehaviour("r")
+                                        return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                var res = function(){switch (currentItem.text) {
-                                        case "reversed (default)": return "r"
-                                        case "align right": return "a"
-                                        case "nothing": return "n"
-                                    }}()
-                                console.log(res)
+                                appSettings.setSentBehaviour(function(){switch (currentItem.text) {
+                                    case "reversed (default)": return "r"
+                                    case "align right": return "a"
+                                    case "nothing": return "n"
+                                }}())
                             }
                         }
 
@@ -145,11 +145,11 @@ Page {
                             description: qsTr("Makes the maximum width of a sent message smaller")
 
                             Component.onCompleted: {
-                                checked = false
+                                checked = appSettings.messagesLessWidth
                             }
 
                             onCheckedChanged: {
-
+                                appSettings.setMessagesLessWidth(checked)
                             }
                         }
 
@@ -165,28 +165,29 @@ Page {
                             description: qsTr("Sets for which messages extra padding should apply")
 
                             Component.onCompleted: {
-                                var a = "n"
-                                currentIndex = function(){switch (a) {
+                                currentIndex = function(){switch (appSettings.messagesPadding) {
                                     case "n": return 0
                                     case "s": return 1
                                     case "r": return 2
                                     case "a": return 3
-                                    default: return -1
+                                    default:
+                                        appSettings.setMessagesPadding("n")
+                                        return 0
                                 }}()
                             }
                             onCurrentItemChanged: {
-                                var res = function(){switch (currentItem.text) {
+                                appSettings.setMessagesPadding(function(){switch (currentItem.text) {
                                         case "none (default)": return "n"
                                         case "sent": return "s"
                                         case "received": return "r"
                                         case "all": return "a"
-                                    }}()
-                                console.log(res)
+                                    }}())
                             }
                         }
 
                         ComboBox {
                             label: qsTr("Size")
+                            description: qsTr("Specifies profile picture size in a message")
                             currentIndex: 0
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("large (default)") }
@@ -199,8 +200,7 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                var a = "l"
-                                currentIndex = function(){switch (a) {
+                                currentIndex = function(){switch (appSettings.messageSize) {
                                     case "l": return 0
                                     case "L": return 1
                                     case "m": return 2
@@ -209,21 +209,22 @@ Page {
                                     case "s":
                                     case "t":
                                     case "S":
-                                    default: return -1
+                                    default:
+                                        appSettings.setMessageSize("l")
+                                        return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                var res = function(){switch (currentItem.text) {
-                                        case "large (default)": return "l"
-                                        case "extra large": return "L"
-                                        case "launcher": return "a"
-                                        case "medium": return "m"
-                                        case "small": return "s"
-                                        case "small plus": return "t"
-                                        case "extra small": return "S"
-                                    }}()
-                                console.log(res)
+                                appSettings.setMessageSize(function(){switch (currentItem.text) {
+                                    case "large (default)": return "l"
+                                    case "extra large": return "L"
+                                    case "launcher": return "a"
+                                    case "medium": return "m"
+                                    case "small": return "s"
+                                    case "small plus": return "t"
+                                    case "extra small": return "S"
+                                }}())
                             }
                         }
                     }
