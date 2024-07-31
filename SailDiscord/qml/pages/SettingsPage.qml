@@ -69,11 +69,21 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = 0
+                                var a = "l"
+                                currentIndex = function(){switch (a) {
+                                    case "l": return 0
+                                    case "L": return 1
+                                    case "h": return 2
+                                    case "m": return 3
+
+                                    case "s":
+                                    case "S":
+                                    default: return -1
+                                }}()
                             }
 
                             onCurrentItemChanged: {
-                                var res = function(){switch (currentItem.text) {
+                                var res = function(){switch (value) {
                                         case "large (default)": return "l"
                                         case "extra large": return "L"
                                         case "huge": return "h"
@@ -110,7 +120,13 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = 0
+                                var a = "r"
+                                currentIndex = function(){switch (a) {
+                                    case "r": return 0
+                                    case "a": return 1
+                                    case "n": return 2
+                                    default: return -1
+                                }}()
                             }
 
                             onCurrentItemChanged: {
@@ -149,9 +165,15 @@ Page {
                             description: qsTr("Sets for which messages extra padding should apply")
 
                             Component.onCompleted: {
-                                currentIndex = 0
+                                var a = "n"
+                                currentIndex = function(){switch (a) {
+                                    case "n": return 0
+                                    case "s": return 1
+                                    case "r": return 2
+                                    case "a": return 3
+                                    default: return -1
+                                }}()
                             }
-
                             onCurrentItemChanged: {
                                 var res = function(){switch (currentItem.text) {
                                         case "none (default)": return "n"
@@ -177,7 +199,18 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = 0
+                                var a = "l"
+                                currentIndex = function(){switch (a) {
+                                    case "l": return 0
+                                    case "L": return 1
+                                    case "m": return 2
+
+                                    case "a":
+                                    case "s":
+                                    case "t":
+                                    case "S":
+                                    default: return -1
+                                }}()
                             }
 
                             onCurrentItemChanged: {
