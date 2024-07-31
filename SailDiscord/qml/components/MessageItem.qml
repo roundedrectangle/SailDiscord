@@ -14,15 +14,23 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: Math.min(parent.width, profileIcon.width+iconPadding.width+rightPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
+        width: (appSettings.sentBehaviour != "n") ? Math.min(parent.width-((appSettings.messagesLessWidth && sent && appSettings.sentBehaviour != "n") ? Theme.itemSizeMedium : 0), profileIcon.width+iconPadding.width+rightPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width)) : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.itemSizeMedium : 0)
         height: childrenRect.height
-        anchors.right: sent ? parent.right : undefined
-        //layoutDirection: Qt.RightToLeft
+        anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
+        layoutDirection: (sent && appSettings.sentBehaviour == "r") ? Qt.RightToLeft : Qt.LeftToRight
 
         Image {
             id: profileIcon
             source: pfp
-            height: Theme.iconSizeLarge
+            height: switch (appSettings.messageSize) {
+                    default: case "l": Theme.iconSizeLarge; break
+                    case "L": Theme.iconSizeExtraLarge; break
+                    case "m": Theme.iconSizeMedium; break
+                    case "a": Theme.iconSizeLauncher; break
+                    case "s": Theme.iconSizeSmall; break
+                    case "t": Theme.iconSizeSmallPlus; break
+                    case "S": Theme.iconSizeExtraSmall; break
+                }
             width: height
 
             property bool rounded: true
@@ -47,7 +55,7 @@ ListItem {
 
         Column {
             id: textContainer
-            width: Math.min(parent.width-(profileIcon.width+iconPadding.width+rightPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width))
+            width: (appSettings.sentBehaviour == "a") ? Math.min(parent.width-(profileIcon.width+iconPadding.width+rightPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width)) : parent.width-(profileIcon.width+iconPadding.width+rightPadding.width)
             Label {
                 id: authorLbl
                 text: author
@@ -64,6 +72,11 @@ ListItem {
             Item { height: Theme.paddingLarge; width: 1; }
         }
 
-        Item { id: rightPadding; height: 1; width: Theme.paddingLarge; }
+        Item { id: rightPadding; height: 1; width: switch (appSettings.messagesPadding) {
+           default: case "n": return 0
+           case "s": return sent ? Theme.paddingLarge : 0
+           case "r": return sent ? 0 : Theme.paddingLarge
+           case "a": return Theme.paddingLarge
+        } }
     }
 }
