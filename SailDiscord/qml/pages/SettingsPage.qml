@@ -131,6 +131,10 @@ Page {
                             Component.onCompleted: {
                                 checked = false
                             }
+
+                            onCheckedChanged: {
+
+                            }
                         }
 
                         ComboBox {
