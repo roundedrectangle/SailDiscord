@@ -142,7 +142,7 @@ Page {
                         TextSwitch {
                             text: qsTr("Less maximum width")
                             visible: sentMessagesBox.currentIndex != 2
-                            description: qsTr("Makes the maximum width of a sent message smaller")
+                            description: qsTr("Adds a padding to the left side of a sent message.")
 
                             Component.onCompleted: {
                                 checked = appSettings.messagesLessWidth
