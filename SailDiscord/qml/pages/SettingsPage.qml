@@ -82,10 +82,8 @@ Page {
                                         case "extra small": return "S"
                                     }}()
                                 console.log(res)
-                                }
-
                             }
-                        //}
+                        }
 
                         SectionHeader { text: qsTr("Channels list") }
 
@@ -140,6 +138,16 @@ Page {
                             Component.onCompleted: {
                                 currentIndex = 0
                             }
+
+                            onCurrentItemChanged: {
+                                var res = function(){switch (currentItem.text) {
+                                        case "none (default)": return "n"
+                                        case "sent": return "s"
+                                        case "received": return "r"
+                                        case "all": return "a"
+                                    }}()
+                                console.log(res)
+                            }
                         }
 
                         ComboBox {
@@ -157,6 +165,19 @@ Page {
 
                             Component.onCompleted: {
                                 currentIndex = 0
+                            }
+
+                            onCurrentItemChanged: {
+                                var res = function(){switch (currentItem.text) {
+                                        case "large (default)": return "l"
+                                        case "extra large": return "L"
+                                        case "launcher": return "a"
+                                        case "medium": return "m"
+                                        case "small": return "s"
+                                        case "small plus": return "t"
+                                        case "extra small": return "S"
+                                    }}()
+                                console.log(res)
                             }
                         }
                     }
