@@ -114,3 +114,45 @@ void Settings::setMessagesPadding(QString messagesPadding)
         emit messagesPaddingChanged();
     }
 }
+
+
+bool Settings::alignMessagesText() const
+{
+    return settings.value("alignMessagesText", "").toBool();
+}
+
+void Settings::setAlignMessagesText(bool alignMessagesText)
+{
+    if (this->messagesLessWidth() != alignMessagesText) {
+        settings.setValue("alignMessagesText", alignMessagesText);
+        emit alignMessagesTextChanged();
+    }
+}
+
+
+bool Settings::oneAuthor() const
+{
+    return settings.value("oneAuthor", "").toBool();
+}
+
+void Settings::setOneAuthor(bool oneAuthor)
+{
+    if (this->oneAuthor() != oneAuthor) {
+        settings.setValue("oneAuthor", oneAuthor);
+        emit oneAuthorChanged();
+    }
+}
+
+
+bool Settings::oneAuthorPadding() const
+{
+    return settings.value("oneAuthorPadding", "").toBool();
+}
+
+void Settings::setOneAuthorPadding(bool oneAuthorPadding)
+{
+    if (this->oneAuthorPadding() != oneAuthorPadding) {
+        settings.setValue("oneAuthorPadding", oneAuthorPadding);
+        emit oneAuthorPaddingChanged();
+    }
+}
