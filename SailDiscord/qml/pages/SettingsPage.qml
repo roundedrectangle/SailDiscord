@@ -112,6 +112,15 @@ Page {
                             Component.onCompleted: {
                                 currentIndex = 0
                             }
+
+                            onCurrentItemChanged: {
+                                var res = function(){switch (currentItem.text) {
+                                        case "reversed (default)": return "r"
+                                        case "align right": return "a"
+                                        case "nothing": return "n"
+                                    }}()
+                                console.log(res)
+                            }
                         }
 
                         TextSwitch {
