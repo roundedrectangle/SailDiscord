@@ -13,9 +13,11 @@ ListItem {
 
     Row {
         id: row
-        width: Math.min(parent.width, profileIcon.width+iconPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
+        //width: parent.width
+        width: Math.min(parent.width, profileIcon.width+iconPadding.width+rightPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
         height: childrenRect.height
         anchors.right: sent ? parent.right : undefined
+        //layoutDirection: Qt.RightToLeft
 
         Image {
             id: profileIcon
@@ -45,7 +47,7 @@ ListItem {
 
         Column {
             id: textContainer
-            width: Math.min(parent.width-(profileIcon.width+iconPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width))
+            width: Math.min(parent.width-(profileIcon.width+iconPadding.width+rightPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width))
             Label {
                 id: authorLbl
                 text: author
@@ -61,5 +63,7 @@ ListItem {
 
             Item { height: Theme.paddingLarge; width: 1; }
         }
+
+        Item { id: rightPadding; height: 1; width: Theme.paddingLarge; }
     }
 }

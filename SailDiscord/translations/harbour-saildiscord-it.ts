@@ -33,13 +33,17 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
         <translation>A proposito del server</translation>
     </message>
 </context>
 <context>
     <name>ChannelsPage</name>
+    <message>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
         <source>No category</source>
@@ -297,12 +301,22 @@
         <translation>Ignora le impostazioni private per i canali e le categorie di canali</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="102"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
+        <source>fixed width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
         <source>Session</source>
         <translation>Sessione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Log out</source>
         <translation>Disconnettiti</translation>
     </message>

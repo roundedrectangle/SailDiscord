@@ -245,5 +245,13 @@
         <source>Ignore private setting for channels and channel categories</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>fixed width</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

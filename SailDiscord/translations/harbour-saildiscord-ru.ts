@@ -33,13 +33,17 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
         <translation>О сервере</translation>
     </message>
 </context>
 <context>
     <name>ChannelsPage</name>
+    <message>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
         <source>No category</source>
@@ -295,12 +299,22 @@
         <translation>Игнорировать настройку приватности для каналов и категорий каналов</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="102"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <source>Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
+        <source>fixed width</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
         <source>Session</source>
         <translation>Сессия</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Log out</source>
         <translation>Выйти</translation>
     </message>

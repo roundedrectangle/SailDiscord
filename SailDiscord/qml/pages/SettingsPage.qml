@@ -71,6 +71,8 @@ Page {
                 content.sourceComponent: Column {
                     width: section.width
 
+                    SectionHeader { text: qsTr("Servers list") }
+
                     TextSwitch {
                         text: qsTr("Keep empty space in servers without icons")
                         onCheckedChanged: {
@@ -82,6 +84,25 @@ Page {
                         }
                     }
 
+                    ComboBox {
+                        label: qsTr("Size")
+                        currentIndex: 0
+                        menu: ContextMenu {
+                            MenuItem { text: qsTr("large (default)") }
+                            MenuItem { text: qsTr("extra large") }
+                            MenuItem { text: qsTr("huge") }
+                            MenuItem { text: qsTr("medium") }
+                            //MenuItem { text: qsTr("small") }
+                            //MenuItem { text: qsTr("extra small") }
+                        }
+
+                        Component.onCompleted: {
+                            currentIndex = 0
+                        }
+                    }
+
+                    SectionHeader { text: qsTr("Channels list") }
+
                     TextSwitch {
                         text: qsTr("Ignore private setting for channels and channel categories")
                         onCheckedChanged: {
@@ -90,6 +111,66 @@ Page {
 
                         Component.onCompleted: {
                             checked = appSettings.ignorePrivate;
+                        }
+                    }
+
+                    SectionHeader { text: qsTr("Messages") }
+
+                    ComboBox {
+                        id: sentMessagesBox
+                        label: qsTr("Sent messages")
+                        menu: ContextMenu {
+                            MenuItem { text: qsTr("reversed (default)") }
+                            MenuItem { text: qsTr("align right") }
+                            MenuItem { text: qsTr("nothing") }
+                        }
+
+                        Component.onCompleted: {
+                            currentIndex = 0
+                        }
+                    }
+
+                    TextSwitch {
+                        text: qsTr("Less maximum width")
+                        visible: sentMessagesBox.currentIndex != 2
+                        description: qsTr("Makes the maximum width of a sent message smaller")
+
+                        Component.onCompleted: {
+                            checked = false
+                        }
+                    }
+
+                    ComboBox {
+                        label: qsTr("Extra padding")
+                        currentIndex: 0
+                        menu: ContextMenu {
+                            MenuItem { text: qsTr("none (default)") }
+                            MenuItem { text: qsTr("sent") }
+                            MenuItem { text: qsTr("received") }
+                            MenuItem { text: qsTr("all") }
+                        }
+                        description: qsTr("Sets for which messages extra padding should apply")
+
+                        Component.onCompleted: {
+                            currentIndex = 0
+                        }
+                    }
+
+                    ComboBox {
+                        label: qsTr("Size")
+                        currentIndex: 0
+                        menu: ContextMenu {
+                            MenuItem { text: qsTr("large (default)") }
+                            MenuItem { text: qsTr("extra large") }
+                            //MenuItem { text: qsTr("launcher") }
+                            MenuItem { text: qsTr("medium") }
+                            //MenuItem { text: qsTr("small") }
+                            //MenuItem { text: qsTr("small plus") }
+                            //MenuItem { text: qsTr("extra small") }
+                        }
+
+                        Component.onCompleted: {
+                            currentIndex = 0
                         }
                     }
                 }
