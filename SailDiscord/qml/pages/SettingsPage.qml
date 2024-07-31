@@ -233,40 +233,39 @@ Page {
                         TextSwitch {
                             text: qsTr("Align sent messages text to right")
                             enabled: sentMessagesBox.currentIndex != 2
-                            description: sentMessagesBox.currentIndex != 2 ? undefined
+                            description: sentMessagesBox.currentIndex != 2 ? ""
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
 
                             onCheckedChanged: {
-                                //appSettings.setAlignMessagesText(checked)
+                                appSettings.setAlignMessagesText(checked)
+                                console.log(appSettings.alignMessagesText)
                             }
 
                             Component.onCompleted: {
-                                //checked = appSettings.alignMessagesText;
+                                checked = appSettings.alignMessagesText;
                             }
                         }
 
                         TextSwitch {
-                            id: oneAuthorSwitch
                             text: qsTr("One author text and picture for multiple messages from the same author")
                             onCheckedChanged: {
-                                //appSettings.setOneAuthor(checked)
+                                appSettings.setOneAuthor(checked)
                             }
 
                             Component.onCompleted: {
-                                //checked = appSettings.oneAuthor;
+                                checked = appSettings.oneAuthor;
                             }
                         }
 
                         TextSwitch {
                             text: qsTr("Enable extra padding for new messages from the same author")
-                            visible: oneAuthorSwitch.enabled
-
+                            visible: appSettings.oneAuthor
                             onCheckedChanged: {
-                                //appSettings.setOneAuthorPadding(checked)
+                                appSettings.setOneAuthorPadding(checked)
                             }
 
                             Component.onCompleted: {
-                                //checked = appSettings.oneAuthorPadding;
+                                checked = appSettings.oneAuthorPadding;
                             }
                         }
                     }

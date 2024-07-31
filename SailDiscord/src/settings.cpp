@@ -123,7 +123,7 @@ bool Settings::alignMessagesText() const
 
 void Settings::setAlignMessagesText(bool alignMessagesText)
 {
-    if (this->messagesLessWidth() != alignMessagesText) {
+    if (this->alignMessagesText() != alignMessagesText) {
         settings.setValue("alignMessagesText", alignMessagesText);
         emit alignMessagesTextChanged();
     }

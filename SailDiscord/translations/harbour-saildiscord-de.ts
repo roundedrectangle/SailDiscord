@@ -298,10 +298,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Makes the maximum width of a sent message smaller</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Extra padding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -323,6 +319,30 @@
     </message>
     <message>
         <source>Sets for which messages extra padding should apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Adds a padding to the left side of a sent message.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set Sent messages to reversed or align right to enable.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Specifies profile picture size in a message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Align sent messages text to right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>One author text and picture for multiple messages from the same author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable extra padding for new messages from the same author</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

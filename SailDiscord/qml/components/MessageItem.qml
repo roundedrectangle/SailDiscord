@@ -40,7 +40,7 @@ ListItem {
                     case "S": Theme.iconSizeExtraSmall; break
                 }
             width: height
-            visible: !sameAuthorAsBefore
+            visible: !sameAuthorAsBefore && !appSettings.oneAuthor
 
             property bool rounded: true
             property bool adapt: true
@@ -60,7 +60,8 @@ ListItem {
             }
         }
 
-        Item { id: iconPadding; height: 1; width: Theme.paddingLarge; visible: !sameAuthorAsBefore; }
+        Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
+            visible: !(sameAuthorAsBefore && !appSettings.oneAuthor) || appSettings.oneAuthorPadding; }
 
         Column {
             id: textContainer
@@ -69,7 +70,7 @@ ListItem {
                 id: authorLbl
                 text: author
                 color: Theme.secondaryColor
-                visible: !sameAuthorAsBefore
+                visible: !sameAuthorAsBefore && !appSettings.oneAuthor
             }
 
             Label {
@@ -77,7 +78,7 @@ ListItem {
                 text: contents
                 wrapMode: Text.Wrap
                 width: Math.min(parent.width, implicitWidth)
-                anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
+                anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText) ? parent.right : undefined
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
