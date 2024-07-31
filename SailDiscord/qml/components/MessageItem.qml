@@ -76,13 +76,11 @@ ListItem {
                 id: contentsLbl
                 text: contents
                 wrapMode: Text.Wrap
-                width: parent.width
+                width: Math.min(parent.width, implicitWidth)
+                anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
-        }
-        Component.onCompleted: {
-            console.log(sameAuthorAsBefore)
         }
     }
 }
