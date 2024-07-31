@@ -44,3 +44,73 @@ void Settings::setIgnorePrivate(bool ignorePrivate)
         emit ignorePrivateChanged();
     }
 }
+
+
+QString Settings::serverSize() const
+{
+    return settings.value("serverSize", "").toString();
+}
+
+void Settings::setServerSize(QString serverSize)
+{
+    if (this->serverSize() != serverSize) {
+        settings.setValue("serverSize", serverSize);
+        emit serverSizeChanged();
+    }
+}
+
+
+QString Settings::messageSize() const
+{
+    return settings.value("messageSize", "").toString();
+}
+
+void Settings::setMessageSize(QString messageSize)
+{
+    if (this->messageSize() != messageSize) {
+        settings.setValue("messageSize", messageSize);
+        emit messageSizeChanged();
+    }
+}
+
+
+bool Settings::messagesLessWidth() const
+{
+    return settings.value("messagesLessWidth", "").toBool();
+}
+
+void Settings::setMessagesLessWidth(bool messagesLessWidth)
+{
+    if (this->messagesLessWidth() != messagesLessWidth) {
+        settings.setValue("messagesLessWidth", messagesLessWidth);
+        emit messagesLessWidthChanged();
+    }
+}
+
+
+QString Settings::sentBehaviour() const
+{
+    return settings.value("sentBehaviour", "").toString();
+}
+
+void Settings::setSentBehaviour(QString sentBehaviour)
+{
+    if (this->sentBehaviour() != sentBehaviour) {
+        settings.setValue("sentBehaviour", sentBehaviour);
+        emit sentBehaviourChanged();
+    }
+}
+
+
+QString Settings::messagesPadding() const
+{
+    return settings.value("messagesPadding", "").toString();
+}
+
+void Settings::setMessagesPadding(QString messagesPadding)
+{
+    if (this->messagesPadding() != messagesPadding) {
+        settings.setValue("messagesPadding", messagesPadding);
+        emit messagesPaddingChanged();
+    }
+}
