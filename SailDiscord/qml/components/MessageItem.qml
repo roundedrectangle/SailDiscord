@@ -40,7 +40,8 @@ ListItem {
                     case "S": Theme.iconSizeExtraSmall; break
                 }
             width: height
-            visible: !sameAuthorAsBefore && !appSettings.oneAuthor
+            visible: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? true : !(sameAuthorAsBefore && appSettings.oneAuthor)
+            opacity: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? (!(sameAuthorAsBefore && appSettings.oneAuthor) ? 1 : 0) : 1
 
             property bool rounded: true
             property bool adapt: true
@@ -61,7 +62,7 @@ ListItem {
         }
 
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
-            visible: !(sameAuthorAsBefore && !appSettings.oneAuthor) || appSettings.oneAuthorPadding; }
+            visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding ||  !appSettings.alignMessagesText}
 
         Column {
             id: textContainer
@@ -70,7 +71,8 @@ ListItem {
                 id: authorLbl
                 text: author
                 color: Theme.secondaryColor
-                visible: !sameAuthorAsBefore && !appSettings.oneAuthor
+                visible: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? true : !(sameAuthorAsBefore && appSettings.oneAuthor)
+                opacity: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? (!(sameAuthorAsBefore && appSettings.oneAuthor) ? 1 : 0) : 1
             }
 
             Label {
