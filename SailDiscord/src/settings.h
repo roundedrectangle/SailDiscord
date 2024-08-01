@@ -18,7 +18,7 @@ class Settings : public QObject
     Q_PROPERTY(QString messagesPadding READ messagesPadding WRITE setMessagesPadding NOTIFY messagesPaddingChanged)
     Q_PROPERTY(bool alignMessagesText READ alignMessagesText WRITE setAlignMessagesText NOTIFY alignMessagesTextChanged)
     Q_PROPERTY(bool oneAuthor READ oneAuthor WRITE setOneAuthor NOTIFY oneAuthorChanged)
-    Q_PROPERTY(bool oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
+    Q_PROPERTY(QString oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
 
 public:
     explicit Settings(QObject *parent = nullptr);
@@ -53,8 +53,8 @@ public:
     bool oneAuthor() const;
     Q_INVOKABLE void setOneAuthor(bool oneAuthor);
 
-    bool oneAuthorPadding() const;
-    Q_INVOKABLE void setOneAuthorPadding(bool oneAuthorPadding);
+    QString oneAuthorPadding() const;
+    Q_INVOKABLE void setOneAuthorPadding(QString oneAuthorPadding);
 
 private:
     QSettings settings;

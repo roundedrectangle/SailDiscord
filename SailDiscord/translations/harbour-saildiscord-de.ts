@@ -342,7 +342,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable extra padding for new messages from the same author</source>
+        <source>no (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>small</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>as pfp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set extra padding for new messages from the same author</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -380,6 +380,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Extra padding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -424,17 +425,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
-        <source>Enable extra padding for new messages from the same author</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="275"/>
+        <source>no (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="278"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
+        <source>small</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
+        <source>as pfp</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
+        <source>Set extra padding for new messages from the same author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="309"/>
         <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="284"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>

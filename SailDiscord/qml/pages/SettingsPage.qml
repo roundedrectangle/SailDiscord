@@ -238,7 +238,6 @@ Page {
 
                             onCheckedChanged: {
                                 appSettings.setAlignMessagesText(checked)
-                                console.log(appSettings.alignMessagesText)
                             }
 
                             Component.onCompleted: {
@@ -257,7 +256,7 @@ Page {
                             }
                         }
 
-                        TextSwitch {
+                        /*TextSwitch {
                             text: qsTr("Enable extra padding for new messages from the same author")
                             visible: appSettings.oneAuthor
                             onCheckedChanged: {
@@ -266,6 +265,37 @@ Page {
 
                             Component.onCompleted: {
                                 checked = appSettings.oneAuthorPadding;
+                            }
+                        }*/
+
+                        ComboBox {
+                            label: qsTr("Extra padding")
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("no (default)") }
+                                MenuItem { text: qsTr("small") }
+                                MenuItem { text: qsTr("as pfp") }
+                            }
+                            visible: appSettings.oneAuthor
+                            description: qsTr("Set extra padding for new messages from the same author")
+
+                            Component.onCompleted: {
+                                currentIndex = function(){switch (appSettings.oneAuthorPadding) {
+                                    case "n": return 0
+                                    case "s": return 1
+                                    case "p": return 2
+                                    default:
+                                        console.log("padding "+appSettings.oneAuthorPadding)
+                                        appSettings.setOneAuthorPadding("n")
+                                        return 0
+                                }}()
+                            }
+
+                            onCurrentItemChanged: {
+                                appSettings.setOneAuthorPadding(function(){switch (currentItem.text) {
+                                    case "no (default)": return "n"
+                                    case "small": return "s"
+                                    case "as pfp": return "p"
+                                }}())
                             }
                         }
                     }

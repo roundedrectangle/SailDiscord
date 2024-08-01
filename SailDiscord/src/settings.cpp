@@ -144,12 +144,12 @@ void Settings::setOneAuthor(bool oneAuthor)
 }
 
 
-bool Settings::oneAuthorPadding() const
+QString Settings::oneAuthorPadding() const
 {
-    return settings.value("oneAuthorPadding", "").toBool();
+    return settings.value("oneAuthorPadding", "").toString();
 }
 
-void Settings::setOneAuthorPadding(bool oneAuthorPadding)
+void Settings::setOneAuthorPadding(QString oneAuthorPadding)
 {
     if (this->oneAuthorPadding() != oneAuthorPadding) {
         settings.setValue("oneAuthorPadding", oneAuthorPadding);
