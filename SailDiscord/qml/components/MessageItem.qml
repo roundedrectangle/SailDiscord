@@ -8,6 +8,7 @@ ListItem {
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
     property bool sameAuthorAsBefore
+    property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
 
     width: parent.width
     contentHeight: row.height
@@ -15,7 +16,14 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: (appSettings.sentBehaviour != "n") ? Math.min(parent.width-((appSettings.messagesLessWidth && sent && appSettings.sentBehaviour != "n") ? Theme.paddingLarge : 0), profileIcon.width+iconPadding.width+leftPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width)) : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
+        width: (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
+                    Math.min(parent.width-( // parent width substracting padding if sent and less width for messages is enabled
+                                (appSettings.messagesLessWidth && sent)
+                                 ? Theme.paddingLarge : 0),
+
+                             profileIcon.width+iconPadding.width+leftPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
+
+                    : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
         height: childrenRect.height
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
         layoutDirection: (sent && appSettings.sentBehaviour == "r") ? Qt.RightToLeft : Qt.LeftToRight
@@ -40,8 +48,7 @@ ListItem {
                     case "S": Theme.iconSizeExtraSmall; break
                 }
             width: height
-            visible: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? true : !(sameAuthorAsBefore && appSettings.oneAuthor)
-            opacity: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? (!(sameAuthorAsBefore && appSettings.oneAuthor) ? 1 : 0) : 1
+            visible: !(sameAuthorAsBefore && appSettings.oneAuthor)
 
             property bool rounded: true
             property bool adapt: true
@@ -62,7 +69,7 @@ ListItem {
         }
 
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
-            visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding ||  !appSettings.alignMessagesText}
+            visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding; }
 
         Column {
             id: textContainer
@@ -71,15 +78,14 @@ ListItem {
                 id: authorLbl
                 text: author
                 color: Theme.secondaryColor
-                visible: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? true : !(sameAuthorAsBefore && appSettings.oneAuthor)
-                opacity: (sent && appSettings.sentBehaviour != "n" && !appSettings.alignMessagesText) ? (!(sameAuthorAsBefore && appSettings.oneAuthor) ? 1 : 0) : 1
+                visible: !(sameAuthorAsBefore && appSettings.oneAuthor)
             }
 
             Label {
                 id: contentsLbl
                 text: contents
                 wrapMode: Text.Wrap
-                width: Math.min(parent.width, implicitWidth)
+                width: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText) ? parent.width : Math.min(parent.width, implicitWidth)
                 anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText) ? parent.right : undefined
             }
 

@@ -32,7 +32,12 @@ Page {
             author: _author
             pfp: _pfp
             sent: _sent
-            sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : msgModel.get(index-1)._author == _author
+            sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
+                                    msgModel.get(index-1)._author == _author
+            masterWidth: !sameAuthorAsBefore ? undefined :
+                            (msgModel.get(index-1).masterWidth != undefined ? // If the previous element had masterWidth, use that
+                            msgModel.get(index-1).masterWidth :
+                            msgModel.get(index-1).width)
         }
     }
 
