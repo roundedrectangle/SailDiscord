@@ -34,10 +34,24 @@ Page {
             sent: _sent
             sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
                                     msgModel.get(index-1)._author == _author
-            masterWidth: !sameAuthorAsBefore ? undefined :
-                            (msgModel.get(index-1).masterWidth != undefined ? // If the previous element had masterWidth, use that
-                            msgModel.get(index-1).masterWidth :
-                            msgModel.get(index-1).width)
+            masterWidth: !sameAuthorAsBefore ? -1 :
+                            (msgModel.get(index-1)._masterWidth != -1 ? // If the previous element had masterWidth, use that
+                            msgModel.get(index-1)._masterWidth :
+                            msgModel.get(index-1)._masterWidth)
+            Component.onCompleted: {
+                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                //console.log("FIRST - "+_masterWidth+" "+innerWidth)
+            }
+
+            onMasterWidthChanged: {
+                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                //console.log("CHANGED!!! "+_masterWidth+" "+innerWidth)
+            }
+
+            onInnerWidthChanged: {
+                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                //console.log("WCHANGED!!! "+_masterWidth+" "+innerWidth)
+            }
         }
     }
 
@@ -47,7 +61,7 @@ Page {
         Component.onCompleted: {
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent})
+                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1})
                 messagesList.forceLayout()
             })
         }

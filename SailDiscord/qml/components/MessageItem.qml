@@ -10,13 +10,15 @@ ListItem {
     property bool sameAuthorAsBefore
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
 
+    property alias innerWidth: row.width
+
     width: parent.width
     contentHeight: row.height
 
     Row {
         id: row
         //width: parent.width
-        width: (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
+        width: (sameAuthorAsBefore && appSettings.oneAuthor) ? masterWidth : (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
                     Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0),
 
@@ -41,7 +43,7 @@ ListItem {
 
         Image {
             id: profileIcon
-            source: pfp
+            source: !(sameAuthorAsBefore && appSettings.oneAuthor) ? pfp : ""
             height: switch (appSettings.messageSize) {
                     default: case "l": Theme.iconSizeLarge; break
                     case "L": Theme.iconSizeExtraLarge; break
@@ -78,7 +80,8 @@ ListItem {
 
         Column {
             id: textContainer
-            width: (appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
+            width: (sameAuthorAsBefore && appSettings.oneAuthor) ? parent.width :
+                (appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
                              // ListItem width substracting all other elements width except us (textContainer)
                     Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
 
@@ -104,9 +107,21 @@ ListItem {
                 anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
 
                                     ? parent.right : undefined
+
+                Component.onCompleted: {
+                    console.log(contents+"LABEL"+width)
+                }
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
+        }
+
+        Component.onCompleted: {
+            console.log(contents+'  '+width)
+        }
+
+        onWidthChanged: {
+            console.log("WIDTH WAS CHANGED!!!jjjjjjjjjjjjjjj "+contents+"  "+width)
         }
     }
 }
