@@ -18,7 +18,8 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: (sameAuthorAsBefore && appSettings.oneAuthor) ? masterWidth : (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
+        width: (sameAuthorAsBefore && appSettings.oneAuthor) ? Math.max(masterWidth, Math.min(parent.width, contentsLbl.implicitWidth)) :
+                             (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
                     Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0),
 
@@ -113,7 +114,7 @@ ListItem {
                 }
             }
 
-            Item { height: Theme.paddingLarge; width: 1; }
+            Item { height: !(sameAuthorAsBefore && appSettings.oneAuthor) ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
 
         Component.onCompleted: {
