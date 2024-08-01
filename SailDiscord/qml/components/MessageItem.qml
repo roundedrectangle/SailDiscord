@@ -17,15 +17,19 @@ ListItem {
         id: row
         //width: parent.width
         width: (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
-                    Math.min(parent.width-( // parent width substracting padding if sent and less width for messages is enabled
-                                (appSettings.messagesLessWidth && sent)
-                                 ? Theme.paddingLarge : 0),
+                             // parent width substracting padding if sent and less width for messages is enabled
+                    Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0),
 
-                             profileIcon.width+iconPadding.width+leftPadding.width+Math.max(contentsLbl.implicitWidth, authorLbl.width))
+                             // width of all elements, last one is what is larger - author or contets
+                             profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, authorLbl.width))
 
+                    // if sent messages are not specially aligned or reversed,
+                    // parent width substracting padding if sent and less width for messages is enabled
                     : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
         height: childrenRect.height
+        // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
+        // reverse if sent and set to reversed
         layoutDirection: (sent && appSettings.sentBehaviour == "r") ? Qt.RightToLeft : Qt.LeftToRight
 
         Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
@@ -69,11 +73,18 @@ ListItem {
         }
 
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
+            // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
             visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding; }
 
         Column {
             id: textContainer
-            width: (appSettings.sentBehaviour == "a") ? Math.min(parent.width-(profileIcon.width+iconPadding.width+leftPadding.width), Math.max(contentsLbl.paintedWidth, authorLbl.width)) : parent.width-(profileIcon.width+iconPadding.width+leftPadding.width)
+            width: (appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
+                             // ListItem width substracting all other elements width except us (textContainer)
+                    Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
+
+                             Math.max(contentsLbl.paintedWidth, authorLbl.width))
+                      // ListItem width substracting all other elements width except us (textContainer)
+                    : parent.width - (profileIcon.width + iconPadding.width + leftPadding.width)
             Label {
                 id: authorLbl
                 text: author
@@ -85,8 +96,14 @@ ListItem {
                 id: contentsLbl
                 text: contents
                 wrapMode: Text.Wrap
-                width: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText) ? parent.width : Math.min(parent.width, implicitWidth)
-                anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText) ? parent.right : undefined
+                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
+                width: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
+
+                            ? parent.width : Math.min(parent.width, implicitWidth)
+                               // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
+                anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
+
+                                    ? parent.right : undefined
             }
 
             Item { height: Theme.paddingLarge; width: 1; }
