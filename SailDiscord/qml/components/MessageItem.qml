@@ -29,7 +29,7 @@ ListItem {
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
                     : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
-        height: childrenRect.height
+        height: (sameAuthorAsBefore && appSettings.oneAuthor) ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
         // reverse if sent and set to reversed
@@ -40,7 +40,9 @@ ListItem {
            case "s": return sent ? Theme.paddingLarge : 0
            case "r": return sent ? 0 : Theme.paddingLarge
            case "a": return Theme.paddingLarge
-        } }
+        }
+            visible: !(sameAuthorAsBefore && appSettings.oneAuthor)
+        }
 
         Image {
             id: profileIcon
@@ -100,30 +102,13 @@ ListItem {
                 id: contentsLbl
                 text: contents
                 wrapMode: Text.Wrap
-                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                width: Math.min(parent.width, implicitWidth)//(sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
-
-                            //? parent.width : Math.min(parent.width, implicitWidth)
+                width: Math.min(parent.width, implicitWidth)
                                // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                 anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
                                ? parent.right : undefined
-
-                Component.onCompleted: {
-                    console.log(contents+"LABEL"+anchors.right+width+' '+implicitWidth+' '+(sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText))
-                }
             }
 
             Item { height: !(sameAuthorAsBefore && appSettings.oneAuthor) ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
-
-            Component.onCompleted: {
-                console.log(contents+'  '+width+'  '+parent.width)
-            }
-        }
-
-
-
-        onWidthChanged: {
-            //console.log("WIDTH WAS CHANGED!!!jjjjjjjjjjjjjjj "+contents+"  "+width)
         }
     }
 }
