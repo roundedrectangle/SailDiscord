@@ -101,28 +101,29 @@ ListItem {
                 text: contents
                 wrapMode: Text.Wrap
                        // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                width: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
+                width: Math.min(parent.width, implicitWidth)//(sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
 
-                            ? parent.width : Math.min(parent.width, implicitWidth)
+                            //? parent.width : Math.min(parent.width, implicitWidth)
                                // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                 anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
-
-                                    ? parent.right : undefined
+                               ? parent.right : undefined
 
                 Component.onCompleted: {
-                    console.log(contents+"LABEL"+width)
+                    console.log(contents+"LABEL"+anchors.right+width+' '+implicitWidth+' '+(sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText))
                 }
             }
 
             Item { height: !(sameAuthorAsBefore && appSettings.oneAuthor) ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
+
+            Component.onCompleted: {
+                console.log(contents+'  '+width+'  '+parent.width)
+            }
         }
 
-        Component.onCompleted: {
-            console.log(contents+'  '+width)
-        }
+
 
         onWidthChanged: {
-            console.log("WIDTH WAS CHANGED!!!jjjjjjjjjjjjjjj "+contents+"  "+width)
+            //console.log("WIDTH WAS CHANGED!!!jjjjjjjjjjjjjjj "+contents+"  "+width)
         }
     }
 }
