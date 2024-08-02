@@ -29,7 +29,7 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
         <source>Member count: </source>
-        <translation>Membri</translation>
+        <translation>Membri: </translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
@@ -42,7 +42,7 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>A proposito</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
@@ -293,7 +293,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="46"/>
         <source>Servers list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista server</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="49"/>
@@ -304,35 +304,35 @@
         <location filename="../qml/pages/SettingsPage.qml" line="60"/>
         <location filename="../qml/pages/SettingsPage.qml" line="191"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Peso</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="63"/>
         <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>large (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>largo (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="64"/>
         <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>extra large</source>
-        <translation type="unfinished"></translation>
+        <translation>molto largo</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>huge</source>
-        <translation type="unfinished"></translation>
+        <translation>enorme</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="66"/>
         <location filename="../qml/pages/SettingsPage.qml" line="198"/>
         <source>medium</source>
-        <translation type="unfinished"></translation>
+        <translation>medio</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Channels list</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista canali</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="101"/>
@@ -342,109 +342,109 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="111"/>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="115"/>
         <source>Sent messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggi inviati</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>reversed (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>al contrario (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="118"/>
         <source>align right</source>
-        <translation type="unfinished"></translation>
+        <translation>allinea a destra</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>nothing</source>
-        <translation type="unfinished"></translation>
+        <translation>niente</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="143"/>
         <source>Less maximum width</source>
-        <translation type="unfinished"></translation>
+        <translation>Minore larghezza massima</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="146"/>
         <source>Adds a padding to the left side of a sent message.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge una spaziatura al lato sinistro di un messaggio inviato.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="147"/>
         <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta i messaggi inviati al contrario o allineati a destra.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <location filename="../qml/pages/SettingsPage.qml" line="272"/>
         <source>Extra padding</source>
-        <translation type="unfinished"></translation>
+        <translation>Spaziatura aggiuntiva</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="162"/>
         <source>none (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>nessuna (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="163"/>
         <source>sent</source>
-        <translation type="unfinished"></translation>
+        <translation>inviati</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="164"/>
         <source>received</source>
-        <translation type="unfinished"></translation>
+        <translation>ricevuti</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="165"/>
         <source>all</source>
-        <translation type="unfinished"></translation>
+        <translation>tutti</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>Sets for which messages extra padding should apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta per quali messaggi la spaziatura aggiuntiva dovrebbe essere applicata</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="192"/>
         <source>Specifies profile picture size in a message</source>
-        <translation type="unfinished"></translation>
+        <translation>Specifica la dimensione dell&apos;immagine di profilo in un messaggio</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="234"/>
         <source>Align sent messages text to right</source>
-        <translation type="unfinished"></translation>
+        <translation>Allinea il testo dei messaggi inviati a destra</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="249"/>
         <source>One author text and picture for multiple messages from the same author</source>
-        <translation type="unfinished"></translation>
+        <translation>Immagine di profilo  e informazioni singole per messaggi dello stesso autore</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="274"/>
         <source>no (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>no (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="275"/>
         <source>small</source>
-        <translation type="unfinished"></translation>
+        <translation>piccola</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="276"/>
         <source>as pfp</source>
-        <translation type="unfinished"></translation>
+        <translation>come immagine di profilo</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="279"/>
         <source>Set extra padding for new messages from the same author</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta spaziatura aggiuntiva per nuovi messaggi dallo stesso autore</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="308"/>
