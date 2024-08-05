@@ -10,14 +10,7 @@ ListItem {
 
     contentWidth: parent.width
 
-    contentHeight: switch (appSettings.serverSize) {
-        default: case "l": Theme.itemSizeLarge; break
-        case "L": Theme.itemSizeExtraLarge; break
-        case "h": Theme.itemSizeHuge; break
-        case "m": Theme.itemSizeMedium; break
-        case "s": Theme.itemSizeSmall; break
-        case "S": Theme.itemSizeExtraSmall; break
-    }
+    contentHeight: Theme.itemSizeLarge;
 
     Column {
         Row {

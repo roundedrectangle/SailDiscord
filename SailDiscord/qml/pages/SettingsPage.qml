@@ -56,45 +56,6 @@ Page {
                             }
                         }
 
-                        ComboBox {
-                            label: qsTr("Size")
-                            currentIndex: 0
-                            menu: ContextMenu {
-                                MenuItem { text: qsTr("large (default)") }
-                                MenuItem { text: qsTr("extra large") }
-                                MenuItem { text: qsTr("huge") }
-                                MenuItem { text: qsTr("medium") }
-                                //MenuItem { text: qsTr("small") }
-                                //MenuItem { text: qsTr("extra small") }
-                            }
-
-                            Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.serverSize) {
-                                    case "l": return 0
-                                    case "L": return 1
-                                    case "h": return 2
-                                    case "m": return 3
-
-                                    case "s":
-                                    case "S":
-                                    default:
-                                        appSettings.setServerSize("l")
-                                        return 0
-                                }}()
-                            }
-
-                            onCurrentItemChanged: {
-                                appSettings.setServerSize(function(){switch (currentItem.text) {
-                                    case "large (default)": return "l"
-                                    case "extra large": return "L"
-                                    case "huge": return "h"
-                                    case "medium": return "m"
-                                    case "small": return "s"
-                                    case "extra small": return "S"
-                                }}())
-                            }
-                        }
-
                         SectionHeader { text: qsTr("Channels list") }
 
                         TextSwitch {

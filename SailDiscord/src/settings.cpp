@@ -48,20 +48,6 @@ void Settings::setIgnorePrivate(bool ignorePrivate)
 }
 
 
-QString Settings::serverSize() const
-{
-    return settings.value("serverSize", "").toString();
-}
-
-void Settings::setServerSize(QString serverSize)
-{
-    if (this->serverSize() != serverSize) {
-        //settings.setValue("serverSize", serverSize);
-        emit serverSizeChanged();
-    }
-}
-
-
 QString Settings::messageSize() const
 {
     return settings.value("messageSize", "").toString();
