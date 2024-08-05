@@ -19,7 +19,6 @@ class Settings : public QObject
     Q_PROPERTY(bool alignMessagesText READ alignMessagesText WRITE setAlignMessagesText NOTIFY alignMessagesTextChanged)
     Q_PROPERTY(bool oneAuthor READ oneAuthor WRITE setOneAuthor NOTIFY oneAuthorChanged)
     Q_PROPERTY(QString oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
-
 public:
     explicit Settings(QObject *parent = nullptr);
 

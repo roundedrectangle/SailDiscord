@@ -1,7 +1,9 @@
 #include "settings.h"
 
 Settings::Settings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/SailDiscord/settings.conf", QSettings::NativeFormat) {
+    //if (!settings.value("serverSize", QVariant::fromValue(nullptr))se.isNull()) settings.remove("serverSize");
 
+    if (settings.contains("serverSize")) settings.remove("serverSize");
 }
 
 QString Settings::token() const
@@ -54,7 +56,7 @@ QString Settings::serverSize() const
 void Settings::setServerSize(QString serverSize)
 {
     if (this->serverSize() != serverSize) {
-        settings.setValue("serverSize", serverSize);
+        //settings.setValue("serverSize", serverSize);
         emit serverSizeChanged();
     }
 }
