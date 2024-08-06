@@ -18,17 +18,17 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: (sameAuthorAsBefore && appSettings.oneAuthor) ? Math.max(masterWidth, Math.min(parent.width-((appSettings.messagesLessWidth) ? Theme.itemSizeLarge : 0), contentsLbl.implicitWidth)) :
+        width: (sameAuthorAsBefore && appSettings.oneAuthor) ? Math.max(masterWidth, Math.min(parent.width-((appSettings.messagesLessWidth && sent) ? Theme.itemSizeLarge : 0), contentsLbl.implicitWidth)) :
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
-                    Math.min(parent.width - ((appSettings.messagesLessWidth) ? Theme.itemSizeLarge : 0),
+                    Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.itemSizeLarge : 0),
 
                              // width of all elements, last one is what is larger - author or contets
                              profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, authorLbl.width))
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
-                    : parent.width-((appSettings.messagesLessWidth) ? Theme.itemSizeLarge : 0)
+                    : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.itemSizeLarge : 0)
         height: (sameAuthorAsBefore && appSettings.oneAuthor) ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
