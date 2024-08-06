@@ -1,9 +1,7 @@
 #include "settings.h"
 
 Settings::Settings(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/SailDiscord/settings.conf", QSettings::NativeFormat) {
-    //if (!settings.value("serverSize", QVariant::fromValue(nullptr))se.isNull()) settings.remove("serverSize");
 
-    if (settings.contains("serverSize")) settings.remove("serverSize");
 }
 
 QString Settings::token() const
@@ -44,6 +42,20 @@ void Settings::setIgnorePrivate(bool ignorePrivate)
     if (this->ignorePrivate() != ignorePrivate) {
         settings.setValue("ignorePrivate", ignorePrivate);
         emit ignorePrivateChanged();
+    }
+}
+
+
+QString Settings::serverSize() const
+{
+    return settings.value("serverSize", "").toString();
+}
+
+void Settings::setServerSize(QString serverSize)
+{
+    if (this->serverSize() != serverSize) {
+        settings.setValue("serverSize", serverSize);
+        emit serverSizeChanged();
     }
 }
 

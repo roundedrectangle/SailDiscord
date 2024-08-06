@@ -11,6 +11,7 @@ class Settings : public QObject
     Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
     Q_PROPERTY(bool emptySpace READ emptySpace WRITE setEmptySpace NOTIFY emptySpaceChanged)
     Q_PROPERTY(bool ignorePrivate READ ignorePrivate WRITE setIgnorePrivate NOTIFY ignorePrivateChanged)
+    Q_PROPERTY(QString serverSize READ serverSize WRITE setServerSize NOTIFY serverSizeChanged)
     Q_PROPERTY(QString messageSize READ messageSize WRITE setMessageSize NOTIFY messageSizeChanged)
     Q_PROPERTY(bool messagesLessWidth READ messagesLessWidth WRITE setMessagesLessWidth NOTIFY messagesLessWidthChanged)
     Q_PROPERTY(QString sentBehaviour READ sentBehaviour WRITE setSentBehaviour NOTIFY sentBehaviourChanged)
@@ -18,6 +19,7 @@ class Settings : public QObject
     Q_PROPERTY(bool alignMessagesText READ alignMessagesText WRITE setAlignMessagesText NOTIFY alignMessagesTextChanged)
     Q_PROPERTY(bool oneAuthor READ oneAuthor WRITE setOneAuthor NOTIFY oneAuthorChanged)
     Q_PROPERTY(QString oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
+
 public:
     explicit Settings(QObject *parent = nullptr);
 
@@ -29,6 +31,9 @@ public:
 
     bool ignorePrivate() const;
     Q_INVOKABLE void setIgnorePrivate(bool ignorePrivate);
+
+    QString serverSize() const;
+    Q_INVOKABLE void setServerSize(QString serverSize);
 
     QString messageSize() const;
     Q_INVOKABLE void setMessageSize(QString messageSize);
@@ -58,6 +63,7 @@ signals:
     void tokenChanged();
     void emptySpaceChanged();
     void ignorePrivateChanged();
+    void serverSizeChanged();
     void messageSizeChanged();
     void messagesLessWidthChanged();
     void sentBehaviourChanged();

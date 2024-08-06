@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
-import Nemo.Configuration 1.0
 
 ListItem {
     property string title
@@ -11,10 +10,13 @@ ListItem {
 
     contentWidth: parent.width
 
-    contentHeight: Theme.itemSizeLarge;
-
-    ConfigurationGroup {
-
+    contentHeight: switch (appSettings.serverSize) {
+        default: case "l": Theme.itemSizeLarge; break
+        case "L": Theme.itemSizeExtraLarge; break
+        case "h": Theme.itemSizeHuge; break
+        case "m": Theme.itemSizeMedium; break
+        case "s": Theme.itemSizeSmall; break
+        case "S": Theme.itemSizeExtraSmall; break
     }
 
     Column {
