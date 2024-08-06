@@ -32,7 +32,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 	| Icon | :x:     | :x:        | :x:      |
 - [ ] Develop the whole app
 - [X] Package library with app
-	- [ ] Fix `BuildRequires: python3-pip;` not working
+	- [X] Fix `BuildRequires: python3-pip;` not working
 - [X] SailJail
 - [X] Settings
 	- [ ] Add more options
