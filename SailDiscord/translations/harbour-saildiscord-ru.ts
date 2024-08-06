@@ -432,7 +432,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="275"/>
         <source>small</source>
-        <translation">маленький</translation>
+        <translation>маленький</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="276"/>
