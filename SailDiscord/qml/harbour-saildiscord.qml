@@ -21,9 +21,10 @@ ApplicationWindow {
         property string token: ""
 
         Component.onCompleted: {
-            console.log("Pre - "+value("token", "No Token!"))
+            //clear()
+            console.log("Pre - "+token)
             token = "helloWorld"
-            console.log("Post - "+value("token", "No Token!"))
+            console.log("Post - "+token)
             //migrateOldConfiguration()
             migrateSettings.migrateConfiguration()
         }
