@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import "pages"
 import io.thp.pyotherside 1.5
 import harboursaildiscord.Logic 1.0
+import Nemo.Configuration 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -10,8 +11,13 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    AppSettings {
-        id: appSettings
+    ConfigurationGroup {
+        path: StandardPaths.data+"/settings.conf"
+
+        Component.onCompleted: {
+            console.log(path)
+            console.log(value("token", "No Token!"))
+        }
     }
 
     Python {

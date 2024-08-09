@@ -299,158 +299,149 @@
         <translation>Оставить пустое место в серверах без иконок</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="60"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="191"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>Size</source>
         <translation>Размер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
         <source>large (default)</source>
         <translation>большой (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="64"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
         <source>extra large</source>
         <translation>супер большой</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
-        <source>huge</source>
-        <translation>огромный</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="198"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>medium</source>
         <translation>средний</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Channels list</source>
         <translation>Список каналов</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="62"/>
         <source>Ignore private setting for channels and channel categories</source>
         <translation>Игнорировать настройку приватности для каналов и категорий каналов</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="72"/>
         <source>Messages</source>
         <translation>Сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="76"/>
         <source>Sent messages</source>
         <translation>Отправленные сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="78"/>
         <source>reversed (default)</source>
         <translation>развёрнутые (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="79"/>
         <source>align right</source>
         <translation>выравнять вправо</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>nothing</source>
         <translation>ничего</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>Less maximum width</source>
         <translation>Меньше максимальной ширины</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
         <source>Adds a padding to the left side of a sent message.</source>
         <translation>Добавляет отступ к левой стороне отправленного сообщения.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="147"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="198"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation>Установите Отправленные сообщения как развёрнутые или выравнять вправо, чтобы вклюсить.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="120"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Extra padding</source>
         <translation>Дополнительные отступы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="162"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
         <source>none (default)</source>
         <translation>нет (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="163"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>sent</source>
         <translation>отправленные</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
         <source>received</source>
         <translation>полученные</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="165"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
         <source>all</source>
         <translation>все</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation>Устанавливает, для каких сообщений нужны дополнительные отступы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="192"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
         <source>Specifies profile picture size in a message</source>
         <translation>Устанавливает размер аватара сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="234"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>Align sent messages text to right</source>
         <translation>Выравнить текст отправленных сообщений справа</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>One author text and picture for multiple messages from the same author</source>
         <translation>Один текст и аватар автора для несколький сообщений одного автора</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>no (default)</source>
         <translation>нет (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="275"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>small</source>
         <translation>маленький</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>as pfp</source>
         <translation>как аватар</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="279"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="240"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation>Дополнительные отступы для новых сообщений от одного автора</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="308"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="269"/>
         <source>Session</source>
         <translation>Сессия</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="275"/>
         <source>Log out</source>
         <translation>Выйти</translation>
     </message>

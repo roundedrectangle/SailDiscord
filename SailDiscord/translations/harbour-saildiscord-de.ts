@@ -266,10 +266,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>huge</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>medium</source>
         <translation type="unfinished"></translation>
     </message>
