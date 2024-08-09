@@ -47,26 +47,16 @@ Page {
 
                         TextSwitch {
                             text: qsTr("Keep empty space in servers without icons")
-                            onCheckedChanged: {
-                                appSettings.setEmptySpace(checked)
-                            }
-
-                            Component.onCompleted: {
-                                checked = appSettings.emptySpace;
-                            }
+                            onCheckedChanged: experimentalAppSettings.emptySpace = checked
+                            Component.onCompleted: checked = experimentalAppSettings.emptySpace
                         }
 
                         SectionHeader { text: qsTr("Channels list") }
 
                         TextSwitch {
                             text: qsTr("Ignore private setting for channels and channel categories")
-                            onCheckedChanged: {
-                                appSettings.setIgnorePrivate(checked)
-                            }
-
-                            Component.onCompleted: {
-                                checked = appSettings.ignorePrivate;
-                            }
+                            onCheckedChanged: experimentalAppSettings.ignorePrivate = checked
+                            Component.onCompleted: experimentalAppSettings = appSettings.ignorePrivate
                         }
 
                         SectionHeader { text: qsTr("Messages") }
@@ -81,22 +71,22 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.sentBehaviour) {
+                                currentIndex = function(){switch (experimentalAppSettings.sentBehaviour) {
                                     case "r": return 0
                                     case "a": return 1
                                     case "n": return 2
                                     default:
-                                        appSettings.setSentBehaviour("r")
+                                        experimentalAppSettings.sentBehaviour = "r"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                appSettings.setSentBehaviour(function(){switch (currentItem.text) {
+                                experimentalAppSettings.sentBehaviour = function(){switch (currentItem.text) {
                                     case "reversed (default)": return "r"
                                     case "align right": return "a"
                                     case "nothing": return "n"
-                                }}())
+                                }}()
                             }
                         }
 
@@ -107,13 +97,8 @@ Page {
                                              qsTr("Adds a padding to the left side of a sent message.")
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
 
-                            Component.onCompleted: {
-                                checked = appSettings.messagesLessWidth
-                            }
-
-                            onCheckedChanged: {
-                                appSettings.setMessagesLessWidth(checked)
-                            }
+                            Component.onCompleted: checked = experimentalAppSettings.messagesLessWidth
+                            onCheckedChanged: experimentalAppSettings.messagesLessWidth = checked
                         }
 
                         ComboBox {
@@ -128,23 +113,23 @@ Page {
                             description: qsTr("Sets for which messages extra padding should apply")
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.messagesPadding) {
+                                currentIndex = function(){switch (experimentalAppSettings.messagesPadding) {
                                     case "n": return 0
                                     case "s": return 1
                                     case "r": return 2
                                     case "a": return 3
                                     default:
-                                        appSettings.setMessagesPadding("n")
+                                        experimentalAppSettings.messagesPadding = "n"
                                         return 0
                                 }}()
                             }
                             onCurrentItemChanged: {
-                                appSettings.setMessagesPadding(function(){switch (currentItem.text) {
+                                experimentalAppSettings.messagesPadding = function(){switch (currentItem.text) {
                                         case "none (default)": return "n"
                                         case "sent": return "s"
                                         case "received": return "r"
                                         case "all": return "a"
-                                    }}())
+                                    }}()
                             }
                         }
 
@@ -163,7 +148,7 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.messageSize) {
+                                currentIndex = function(){switch (experimentalAppSettings.messageSize) {
                                     case "l": return 0
                                     case "L": return 1
                                     case "m": return 2
@@ -173,13 +158,13 @@ Page {
                                     case "t":
                                     case "S":
                                     default:
-                                        appSettings.setMessageSize("l")
+                                        experimentalAppSettings.messageSize = "l"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                appSettings.setMessageSize(function(){switch (currentItem.text) {
+                                experimentalAppSettings.messageSize = function(){switch (currentItem.text) {
                                     case "large (default)": return "l"
                                     case "extra large": return "L"
                                     case "launcher": return "a"
@@ -187,7 +172,7 @@ Page {
                                     case "small": return "s"
                                     case "small plus": return "t"
                                     case "extra small": return "S"
-                                }}())
+                                }}()
                             }
                         }
 
@@ -197,24 +182,14 @@ Page {
                             description: sentMessagesBox.currentIndex != 2 ? ""
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
 
-                            onCheckedChanged: {
-                                appSettings.setAlignMessagesText(checked)
-                            }
-
-                            Component.onCompleted: {
-                                checked = appSettings.alignMessagesText;
-                            }
+                            onCheckedChanged: experimentalAppSettings.alignMessagesText = checked
+                            Component.onCompleted: checked = experimentalAppSettings.alignMessagesText
                         }
 
                         TextSwitch {
                             text: qsTr("One author text and picture for multiple messages from the same author")
-                            onCheckedChanged: {
-                                appSettings.setOneAuthor(checked)
-                            }
-
-                            Component.onCompleted: {
-                                checked = appSettings.oneAuthor;
-                            }
+                            onCheckedChanged: experimentalAppSettings.oneAuthor = checked
+                            Component.onCompleted: checked = experimentalAppSettings.oneAuthor
                         }
 
                         /*TextSwitch {
@@ -240,23 +215,22 @@ Page {
                             description: qsTr("Set extra padding for new messages from the same author")
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.oneAuthorPadding) {
+                                currentIndex = function(){switch (experimentalAppSettings.oneAuthorPadding) {
                                     case "n": return 0
                                     case "s": return 1
                                     case "p": return 2
                                     default:
-                                        console.log("padding "+appSettings.oneAuthorPadding)
-                                        appSettings.setOneAuthorPadding("n")
+                                        experimentalAppSettings.oneAuthorPadding = "n"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                appSettings.setOneAuthorPadding(function(){switch (currentItem.text) {
+                                experimentalAppSettings.oneAuthorPadding = function(){switch (currentItem.text) {
                                     case "no (default)": return "n"
                                     case "small": return "s"
                                     case "as pfp": return "p"
-                                }}())
+                                }}()
                             }
                         }
                     }
@@ -274,7 +248,7 @@ Page {
                         Button {
                             text: qsTr("Log out")
                             onClicked: {
-                                appSettings.setToken("");
+                                appConfiguration.token = "";
                             }
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
