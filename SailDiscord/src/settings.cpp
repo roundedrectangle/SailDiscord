@@ -144,3 +144,14 @@ void Settings::setOneAuthorPadding(QString oneAuthorPadding)
         emit oneAuthorPaddingChanged();
     }
 }
+
+
+void Settings::migrateConfiguration()
+{
+    QFile oldFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/SailDiscord/settings.conf");
+    QFile newFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/harbour-saildiscord/settings.conf");
+
+    if (oldFile.exists()) {
+        //newFile.write()
+    }
+}

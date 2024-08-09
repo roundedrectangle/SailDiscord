@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QFile>
 
 class Settings : public QObject
 {
@@ -51,6 +52,7 @@ public:
     QString oneAuthorPadding() const;
     Q_INVOKABLE void setOneAuthorPadding(QString oneAuthorPadding);
 
+    Q_INVOKABLE void migrateConfiguration();
 private:
     QSettings settings;
 
