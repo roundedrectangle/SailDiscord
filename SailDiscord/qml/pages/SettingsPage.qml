@@ -133,49 +133,6 @@ Page {
                             }
                         }
 
-                        ComboBox {
-                            label: qsTr("Size")
-                            description: qsTr("Specifies profile picture size in a message")
-                            currentIndex: 0
-                            menu: ContextMenu {
-                                MenuItem { text: qsTr("large (default)") }
-                                MenuItem { text: qsTr("extra large") }
-                                //MenuItem { text: qsTr("launcher") }
-                                MenuItem { text: qsTr("medium") }
-                                //MenuItem { text: qsTr("small") }
-                                //MenuItem { text: qsTr("small plus") }
-                                //MenuItem { text: qsTr("extra small") }
-                            }
-
-                            Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.messageSize) {
-                                    case "l": return 0
-                                    case "L": return 1
-                                    case "m": return 2
-
-                                    case "a":
-                                    case "s":
-                                    case "t":
-                                    case "S":
-                                    default:
-                                        appSettings.messageSize = "l"
-                                        return 0
-                                }}()
-                            }
-
-                            onCurrentItemChanged: {
-                                appSettings.messageSize = function(){switch (currentItem.text) {
-                                    case "large (default)": return "l"
-                                    case "extra large": return "L"
-                                    case "launcher": return "a"
-                                    case "medium": return "m"
-                                    case "small": return "s"
-                                    case "small plus": return "t"
-                                    case "extra small": return "S"
-                                }}()
-                            }
-                        }
-
                         TextSwitch {
                             text: qsTr("Align sent messages text to right")
                             enabled: sentMessagesBox.currentIndex != 2

@@ -47,15 +47,7 @@ ListItem {
         Image {
             id: profileIcon
             source: !(sameAuthorAsBefore && appSettings.oneAuthor) ? pfp : ""
-            height: switch (appSettings.messageSize) {
-                    default: case "l": Theme.iconSizeLarge; break
-                    case "L": Theme.iconSizeExtraLarge; break
-                    case "m": Theme.iconSizeMedium; break
-                    case "a": Theme.iconSizeLauncher; break
-                    case "s": Theme.iconSizeSmall; break
-                    case "t": Theme.iconSizeSmallPlus; break
-                    case "S": Theme.iconSizeExtraSmall; break
-                }
+            height: Theme.iconSizeLarge
             width: height
             visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding == "p"
             opacity: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding != "p" ? 1 : 0

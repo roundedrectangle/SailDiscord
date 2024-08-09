@@ -35,7 +35,6 @@ ApplicationWindow {
             property bool alignMessagesText
             property bool oneAuthor
 
-            property string messageSize
             property string sentBehaviour
             property string messagesPadding
             property string oneAuthorPadding
