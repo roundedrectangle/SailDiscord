@@ -16,7 +16,6 @@ ApplicationWindow {
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one
         id: experimentalAppSettings
-        //path: StandardPaths.data+"/settings.conf"
 
         function processRequest(method, file, contents) {
             var request = new XMLHttpRequest();
@@ -25,14 +24,15 @@ ApplicationWindow {
             return request;
         }
 
-        function getFile(file) { return processRequest("GET", file, null) }
+        /*function getFile(file) { return processRequest("GET", file, null) }
         function saveFile(file, text) { return processRequest("PUT", file, text) }
-        function deleteFile(file) { return processRequest("DELETE", file, null) }
+        function deleteFile(file) { return processRequest("DELETE", file, null) }*/
 
         function migrateOldConfiguration() {
-            var oldConfigurationPath = StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf";
-            if (getFile(oldConfigurationPath).status == 200) { // start migration process
-
+            var oldConfPath = StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf";
+            var oldConf = processRequest("GET", oldConfPath, null)
+            if (oldConf.status == 200) { // start migration process
+                //processRequest("PUT", "TODO", oldConf.responseText)
             }
         }
 
