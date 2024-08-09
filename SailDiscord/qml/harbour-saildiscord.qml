@@ -17,18 +17,18 @@ ApplicationWindow {
         // An experimental configuration system replacing old C++ one
         id: experimentalAppSettings
 
-        function processRequest(method, file, contents) {
+        /*function processRequest(method, file, contents) {
             var request = new XMLHttpRequest();
             request.open(method, Qt.resolvedUrl(file), false);
             request.send(contents);
             return request;
-        }
+        }*/
 
         /*function getFile(file) { return processRequest("GET", file, null) }
         function saveFile(file, text) { return processRequest("PUT", file, text) }
         function deleteFile(file) { return processRequest("DELETE", file, null) }*/
 
-        function migrateOldConfiguration() {
+        /*function migrateOldConfiguration() {
             var oldConfPath = StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf";
             console.log("Processing...")
             console.log(oldConfPath)
@@ -38,11 +38,12 @@ ApplicationWindow {
                 console.log(req.status)
                 console.log(req.statusText)
             }
-        }
+        }*/
 
         Component.onCompleted: {
             console.log(value("token", "No Token!"))
-            migrateOldConfiguration()
+            //migrateOldConfiguration()
+            migrateSettings.migrateConfiguration()
         }
     }
 
