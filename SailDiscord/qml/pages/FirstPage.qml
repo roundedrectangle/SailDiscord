@@ -26,24 +26,24 @@ Page {
     }
 
     function updatePage() {
-        if (appSettings.token == "" && !loggingIn) {
+        if (experimentalAppSettings.token == "" && !loggingIn) {
             loggingIn = true
             loading = false
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
             loggingIn = false
-            python.login(appSettings.token)
+            python.login(experimentalAppSettings.token)
         }
     }
 
     Connections {
-        target: appSettings
+        target: experimentalAppSettings
 
         onTokenChanged: updatePage()
     }
 
     Component.onCompleted: {
-        //appSettings.setToken("")
+        //experimentalAppSettings.setToken("")
         console.log("Completed!")
         updatePage()
     }

@@ -10,7 +10,7 @@ Dialog {
     canAccept: webview.getToken() !== ""
 
     onAccepted: {
-        appSettings.setToken(webview.getToken());
+        experimentalAppSettings.token =webview.getToken()
     }
 
     Column {

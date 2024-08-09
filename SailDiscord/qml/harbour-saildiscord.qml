@@ -22,10 +22,6 @@ ApplicationWindow {
 
         Component.onCompleted: {
             //clear()
-            console.log("Pre - "+token)
-            token = "helloWorld"
-            console.log("Post - "+token)
-            //migrateOldConfiguration()
             migrateSettings.migrateConfiguration()
         }
     }
