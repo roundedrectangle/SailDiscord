@@ -28,6 +28,17 @@ ApplicationWindow {
         ConfigurationGroup {
             id: experimentalAppSettings
             path: "/settings"
+
+            property bool emptySpace
+            property bool ignorePrivate
+            property bool messagesLessWidth
+            property bool alignMessagesText
+            property bool alignMessagesText
+
+            property string messageSize
+            property string sentBehaviour
+            property string messagesPadding
+            property string oneAuthorPadding
         }
     }
 
