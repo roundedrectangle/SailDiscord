@@ -11,7 +11,7 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    //AppSettings { id: appSettings }
+    SettingsMigrationAssistant { id: migrateSettings }
 
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one

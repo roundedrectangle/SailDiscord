@@ -1,10 +1,10 @@
 #include "settings.h"
 
-Settings::Settings(QObject *parent) : QObject(parent) {
+SettingsMigrationAssistant::SettingsMigrationAssistant(QObject *parent) : QObject(parent) {
 //, settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/SailDiscord/settings.conf", QSettings::NativeFormat) {
     //if (!settings.value("serverSize", QVariant::fromValue(nullptr))se.isNull()) settings.remove("serverSize");
 
-    if (settings.contains("serverSize")) settings.remove("serverSize");
+    //if (settings.contains("serverSize")) settings.remove("serverSize");
 }
 /*
 QString Settings::token() const
@@ -147,7 +147,7 @@ void Settings::setOneAuthorPadding(QString oneAuthorPadding)
 }*/
 
 
-void Settings::migrateConfiguration()
+void SettingsMigrationAssistant::migrateConfiguration()
 {
     QFile oldFile(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/io.github.roundedrectangle/SailDiscord/settings.conf");
     if (oldFile.exists()) oldFile.remove();

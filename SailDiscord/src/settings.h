@@ -6,7 +6,7 @@
 #include <QStandardPaths>
 #include <QFile>
 
-class Settings : public QObject
+class SettingsMigrationAssistant : public QObject
 {
     Q_OBJECT
     /*Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
@@ -20,7 +20,7 @@ class Settings : public QObject
     Q_PROPERTY(bool oneAuthor READ oneAuthor WRITE setOneAuthor NOTIFY oneAuthorChanged)
     Q_PROPERTY(QString oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
 */public:
-    explicit Settings(QObject *parent = nullptr);
+    explicit SettingsMigrationAssistant(QObject *parent = nullptr);
 
     /*QString token() const;
     Q_INVOKABLE void setToken(QString token);
