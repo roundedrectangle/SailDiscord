@@ -56,7 +56,7 @@ Page {
                         TextSwitch {
                             text: qsTr("Ignore private setting for channels and channel categories")
                             onCheckedChanged: experimentalAppSettings.ignorePrivate = checked
-                            Component.onCompleted: experimentalAppSettings = appSettings.ignorePrivate
+                            Component.onCompleted: checked = experimentalAppSettings.ignorePrivate
                         }
 
                         SectionHeader { text: qsTr("Messages") }
@@ -211,7 +211,7 @@ Page {
                                 MenuItem { text: qsTr("small") }
                                 MenuItem { text: qsTr("as pfp") }
                             }
-                            visible: appSettings.oneAuthor
+                            visible: experimentalAppSettings.oneAuthor
                             description: qsTr("Set extra padding for new messages from the same author")
 
                             Component.onCompleted: {
