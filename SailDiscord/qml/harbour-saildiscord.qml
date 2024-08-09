@@ -15,7 +15,7 @@ ApplicationWindow {
 
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one
-        id: experimentalAppSettings
+        id: appConfiguration
         path: "/apps/harbour-saildiscord"
 
         property string token: ""
@@ -23,6 +23,11 @@ ApplicationWindow {
         Component.onCompleted: {
             //clear()
             migrateSettings.migrateConfiguration()
+        }
+
+        ConfigurationGroup {
+            id: experimentalAppSettings
+            path: "/settings"
         }
     }
 
