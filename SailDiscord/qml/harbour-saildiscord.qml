@@ -30,20 +30,19 @@ ApplicationWindow {
 
         function migrateOldConfiguration() {
             var oldConfPath = StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf";
-            var oldConf = processRequest("GET", oldConfPath, null)
-            if (oldConf.status == 200) { // start migration process
-                //processRequest("PUT", "TODO", oldConf.responseText)
+            console.log("Processing...")
+            console.log(oldConfPath)
+            if (processRequest("GET", oldConfPath, null).status == 200) {
+                console.log("Deleting...")
+                var req = processRequest("DELETE", oldConfPath, null) // probably need to use C++
+                console.log(req.status)
+                console.log(req.statusText)
             }
         }
 
         Component.onCompleted: {
-
-
-            console.log(myFile)
-            console.log(existsFile(myFile).status)
-            console.log(path)
-            experimentalAppSettings
             console.log(value("token", "No Token!"))
+            migrateOldConfiguration()
         }
     }
 
