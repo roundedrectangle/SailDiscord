@@ -47,16 +47,16 @@ Page {
 
                         TextSwitch {
                             text: qsTr("Keep empty space in servers without icons")
-                            onCheckedChanged: experimentalAppSettings.emptySpace = checked
-                            Component.onCompleted: checked = experimentalAppSettings.emptySpace
+                            onCheckedChanged: appSettings.emptySpace = checked
+                            Component.onCompleted: checked = appSettings.emptySpace
                         }
 
                         SectionHeader { text: qsTr("Channels list") }
 
                         TextSwitch {
                             text: qsTr("Ignore private setting for channels and channel categories")
-                            onCheckedChanged: experimentalAppSettings.ignorePrivate = checked
-                            Component.onCompleted: checked = experimentalAppSettings.ignorePrivate
+                            onCheckedChanged: appSettings.ignorePrivate = checked
+                            Component.onCompleted: checked = appSettings.ignorePrivate
                         }
 
                         SectionHeader { text: qsTr("Messages") }
@@ -71,18 +71,18 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (experimentalAppSettings.sentBehaviour) {
+                                currentIndex = function(){switch (appSettings.sentBehaviour) {
                                     case "r": return 0
                                     case "a": return 1
                                     case "n": return 2
                                     default:
-                                        experimentalAppSettings.sentBehaviour = "r"
+                                        appSettings.sentBehaviour = "r"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                experimentalAppSettings.sentBehaviour = function(){switch (currentItem.text) {
+                                appSettings.sentBehaviour = function(){switch (currentItem.text) {
                                     case "reversed (default)": return "r"
                                     case "align right": return "a"
                                     case "nothing": return "n"
@@ -97,8 +97,8 @@ Page {
                                              qsTr("Adds a padding to the left side of a sent message.")
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
 
-                            Component.onCompleted: checked = experimentalAppSettings.messagesLessWidth
-                            onCheckedChanged: experimentalAppSettings.messagesLessWidth = checked
+                            Component.onCompleted: checked = appSettings.messagesLessWidth
+                            onCheckedChanged: appSettings.messagesLessWidth = checked
                         }
 
                         ComboBox {
@@ -113,18 +113,18 @@ Page {
                             description: qsTr("Sets for which messages extra padding should apply")
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (experimentalAppSettings.messagesPadding) {
+                                currentIndex = function(){switch (appSettings.messagesPadding) {
                                     case "n": return 0
                                     case "s": return 1
                                     case "r": return 2
                                     case "a": return 3
                                     default:
-                                        experimentalAppSettings.messagesPadding = "n"
+                                        appSettings.messagesPadding = "n"
                                         return 0
                                 }}()
                             }
                             onCurrentItemChanged: {
-                                experimentalAppSettings.messagesPadding = function(){switch (currentItem.text) {
+                                appSettings.messagesPadding = function(){switch (currentItem.text) {
                                         case "none (default)": return "n"
                                         case "sent": return "s"
                                         case "received": return "r"
@@ -148,7 +148,7 @@ Page {
                             }
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (experimentalAppSettings.messageSize) {
+                                currentIndex = function(){switch (appSettings.messageSize) {
                                     case "l": return 0
                                     case "L": return 1
                                     case "m": return 2
@@ -158,13 +158,13 @@ Page {
                                     case "t":
                                     case "S":
                                     default:
-                                        experimentalAppSettings.messageSize = "l"
+                                        appSettings.messageSize = "l"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                experimentalAppSettings.messageSize = function(){switch (currentItem.text) {
+                                appSettings.messageSize = function(){switch (currentItem.text) {
                                     case "large (default)": return "l"
                                     case "extra large": return "L"
                                     case "launcher": return "a"
@@ -182,14 +182,14 @@ Page {
                             description: sentMessagesBox.currentIndex != 2 ? ""
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
 
-                            onCheckedChanged: experimentalAppSettings.alignMessagesText = checked
-                            Component.onCompleted: checked = experimentalAppSettings.alignMessagesText
+                            onCheckedChanged: appSettings.alignMessagesText = checked
+                            Component.onCompleted: checked = appSettings.alignMessagesText
                         }
 
                         TextSwitch {
                             text: qsTr("One author text and picture for multiple messages from the same author")
-                            onCheckedChanged: experimentalAppSettings.oneAuthor = checked
-                            Component.onCompleted: checked = experimentalAppSettings.oneAuthor
+                            onCheckedChanged: appSettings.oneAuthor = checked
+                            Component.onCompleted: checked = appSettings.oneAuthor
                         }
 
                         /*TextSwitch {
@@ -211,22 +211,22 @@ Page {
                                 MenuItem { text: qsTr("small") }
                                 MenuItem { text: qsTr("as pfp") }
                             }
-                            visible: experimentalAppSettings.oneAuthor
+                            visible: appSettings.oneAuthor
                             description: qsTr("Set extra padding for new messages from the same author")
 
                             Component.onCompleted: {
-                                currentIndex = function(){switch (experimentalAppSettings.oneAuthorPadding) {
+                                currentIndex = function(){switch (appSettings.oneAuthorPadding) {
                                     case "n": return 0
                                     case "s": return 1
                                     case "p": return 2
                                     default:
-                                        experimentalAppSettings.oneAuthorPadding = "n"
+                                        appSettings.oneAuthorPadding = "n"
                                         return 0
                                 }}()
                             }
 
                             onCurrentItemChanged: {
-                                experimentalAppSettings.oneAuthorPadding = function(){switch (currentItem.text) {
+                                appSettings.oneAuthorPadding = function(){switch (currentItem.text) {
                                     case "no (default)": return "n"
                                     case "small": return "s"
                                     case "as pfp": return "p"

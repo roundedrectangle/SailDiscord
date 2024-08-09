@@ -26,7 +26,7 @@ ApplicationWindow {
         }
 
         ConfigurationGroup {
-            id: experimentalAppSettings
+            id: appSettings
             path: "/settings"
 
             property bool emptySpace
