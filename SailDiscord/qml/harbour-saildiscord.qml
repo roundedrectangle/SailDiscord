@@ -33,7 +33,7 @@ ApplicationWindow {
             property bool ignorePrivate
             property bool messagesLessWidth
             property bool alignMessagesText
-            property bool alignMessagesText
+            property bool oneAuthor
 
             property string messageSize
             property string sentBehaviour
