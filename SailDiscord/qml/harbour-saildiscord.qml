@@ -11,44 +11,34 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    AppSettings {
-        id: appSettings
-    }
+    //AppSettings { id: appSettings }
 
     ConfigurationGroup {
+        // An experimental configuration system replacing old C++ one
         id: experimentalAppSettings
         //path: StandardPaths.data+"/settings.conf"
 
-        function existsFile(fileUrl) {
+        function processRequest(method, file, contents) {
             var request = new XMLHttpRequest();
-            request.open("GET", fileUrl, false);
-            request.send(null);
-            return request;//.status;
+            request.open(method, Qt.resolvedUrl(file), false);
+            request.send(contents);
+            return request;
         }
 
-        function openFile(fileUrl) {
-            var request = new XMLHttpRequest();
-            request.open("GET", fileUrl, false);
-            request.send(null);
-            return request;//.responseText;
-        }
+        function getFile(file) { return processRequest("GET", file, null) }
+        function saveFile(file, text) { return processRequest("PUT", file, text) }
+        function deleteFile(file) { return processRequest("DELETE", file, null) }
 
-        function saveFile(fileUrl, text) {
-            var request = new XMLHttpRequest();
-            request.open("PUT", fileUrl, false);
-            request.send(text);
-            return request;//.status;
-        }
+        function migrateOldConfiguration() {
+            var oldConfigurationPath = StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf";
+            if (getFile(oldConfigurationPath).status == 200) { // start migration process
 
-        function deleteFile(fileUrl) {
-            var request = new XMLHttpRequest();
-            request.open("DELETE", fileUrl, false);
-            request.send(null);
-            return request;//.status;
+            }
         }
 
         Component.onCompleted: {
-            var myFile = Qt.resolvedUrl(StandardPaths.home + "/.config/io.github.roundedrectangle/SailDiscord/settings.conf");
+
+
             console.log(myFile)
             console.log(existsFile(myFile).status)
             console.log(path)
