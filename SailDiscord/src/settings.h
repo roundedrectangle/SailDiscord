@@ -9,7 +9,7 @@
 class Settings : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
+    /*Q_PROPERTY(QString token READ token WRITE setToken NOTIFY tokenChanged)
     Q_PROPERTY(bool emptySpace READ emptySpace WRITE setEmptySpace NOTIFY emptySpaceChanged)
     Q_PROPERTY(bool ignorePrivate READ ignorePrivate WRITE setIgnorePrivate NOTIFY ignorePrivateChanged)
     Q_PROPERTY(QString messageSize READ messageSize WRITE setMessageSize NOTIFY messageSizeChanged)
@@ -19,10 +19,10 @@ class Settings : public QObject
     Q_PROPERTY(bool alignMessagesText READ alignMessagesText WRITE setAlignMessagesText NOTIFY alignMessagesTextChanged)
     Q_PROPERTY(bool oneAuthor READ oneAuthor WRITE setOneAuthor NOTIFY oneAuthorChanged)
     Q_PROPERTY(QString oneAuthorPadding READ oneAuthorPadding WRITE setOneAuthorPadding NOTIFY oneAuthorPaddingChanged)
-public:
+*/public:
     explicit Settings(QObject *parent = nullptr);
 
-    QString token() const;
+    /*QString token() const;
     Q_INVOKABLE void setToken(QString token);
 
     bool emptySpace() const;
@@ -50,14 +50,14 @@ public:
     Q_INVOKABLE void setOneAuthor(bool oneAuthor);
 
     QString oneAuthorPadding() const;
-    Q_INVOKABLE void setOneAuthorPadding(QString oneAuthorPadding);
+    Q_INVOKABLE void setOneAuthorPadding(QString oneAuthorPadding);*/
 
     Q_INVOKABLE void migrateConfiguration();
 private:
-    QSettings settings;
+    //QSettings settings;
 
 signals:
-    void tokenChanged();
+    /*void tokenChanged();
     void emptySpaceChanged();
     void ignorePrivateChanged();
     void messageSizeChanged();
@@ -66,7 +66,7 @@ signals:
     void messagesPaddingChanged();
     void alignMessagesTextChanged();
     void oneAuthorChanged();
-    void oneAuthorPaddingChanged();
+    void oneAuthorPaddingChanged();*/
 };
 
 #endif // SETTINGS_H
