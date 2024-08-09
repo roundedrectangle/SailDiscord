@@ -16,9 +16,14 @@ ApplicationWindow {
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one
         id: experimentalAppSettings
+        path: "/apps/harbour-saildiscord"
+
+        property string token: ""
 
         Component.onCompleted: {
-            console.log(value("token", "No Token!"))
+            console.log("Pre - "+value("token", "No Token!"))
+            token = "helloWorld"
+            console.log("Post - "+value("token", "No Token!"))
             //migrateOldConfiguration()
             migrateSettings.migrateConfiguration()
         }
