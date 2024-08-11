@@ -6,7 +6,7 @@
     <message>
         <location filename="../Opal/About/private/LicenseListPart.qml" line="183"/>
         <source>License text</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekst licencji</translation>
     </message>
 </context>
 <context>
@@ -37,7 +37,7 @@
         <location filename="../Opal/About/AboutPageBase.qml" line="785"/>
         <location filename="../Opal/About/private/ChangelogPage.qml" line="26"/>
         <source>Changelog</source>
-        <translation type="unfinished"></translation>
+        <translation>Dziennik zmian</translation>
     </message>
     <message>
         <location filename="../Opal/About/AboutPageBase.qml" line="825"/>
@@ -47,7 +47,7 @@
     <message numerus="yes">
         <location filename="../Opal/About/AboutPageBase.qml" line="838"/>
         <source>show license(s)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>pokaż licencję</numerusform>
             <numerusform>pokaż licencje</numerusform>
             <numerusform>pokaż licencje</numerusform>
@@ -74,10 +74,10 @@
     <message numerus="yes">
         <location filename="../Opal/About/private/LicensePage.qml" line="62"/>
         <source>License(s)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Licencja</numerusform>
             <numerusform>Licencje</numerusform>
-            <numerusform>Licencje</numerusform>
+            <numerusform>Licencji</numerusform>
         </translation>
     </message>
     <message>
@@ -108,12 +108,12 @@
     <message>
         <location filename="../Opal/About/private/ExternalUrlPage.qml" line="27"/>
         <source>External Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Link Zewnętrzny</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExternalUrlPage.qml" line="57"/>
         <source>Open in browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz w przeglądarce</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExternalUrlPage.qml" line="76"/>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../Opal/About/private/LicensePage.qml" line="48"/>
         <source>Download license texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pobierz tekst licencji</translation>
     </message>
     <message>
         <location filename="../Opal/About/AboutPageBase.qml" line="780"/>
@@ -131,18 +131,18 @@
         <location filename="../Opal/About/private/ContributorsPage.qml" line="142"/>
         <location filename="../Opal/About/private/LicenseListPart.qml" line="73"/>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Strona główna</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ContributorsPage.qml" line="110"/>
         <location filename="../Opal/About/private/LicensePage.qml" line="61"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Szczegóły</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExternalUrlPage.qml" line="67"/>
         <source>Copied to clipboard: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skopiowano do schowka: %1</translation>
     </message>
     <message>
         <source>Version %1 (%2)</source>
@@ -156,12 +156,12 @@
     <message>
         <location filename="../Opal/About/ChangelogNews.qml" line="208"/>
         <source>News</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowości</translation>
     </message>
     <message>
         <location filename="../Opal/About/ChangelogNews.qml" line="209"/>
         <source>Changes since version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiany od wersji %1</translation>
     </message>
 </context>
 <context>
@@ -229,7 +229,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="23"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Dane</translation>
     </message>
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="25"/>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="22"/>
         <source>Third-party libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>Biblioteki stron trzecich</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="24"/>
@@ -278,7 +278,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="26"/>
         <source>Terms of Use</source>
-        <translation type="unfinished"></translation>
+        <translation>Warunki użytkowania</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="12"/>
@@ -288,10 +288,10 @@
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="13"/>
         <source>Author(s)</source>
-        <translation type="unfinished">
+        <translation>
             <numerusform>Autor</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>Autorzy</numerusform>
+            <numerusform>Autorów</numerusform>
         </translation>
     </message>
     <message>
