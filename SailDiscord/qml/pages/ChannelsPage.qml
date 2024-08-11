@@ -116,7 +116,6 @@ Page {
                     guildid: serverid,
                     channelid: categoryid,
                     name: name
-                    //TODO: add channels here
                 })
             }
         }

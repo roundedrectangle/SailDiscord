@@ -27,13 +27,6 @@ Page {
             }
 
             ExpandingSectionGroup {
-                anchors {
-                    //top: header.bottom
-                    //bottom: parent.bottom
-                }
-
-                //currentIndex: 0
-
                 ExpandingSection {
                     id: section
 
@@ -42,6 +35,7 @@ Page {
 
                     content.sourceComponent: Column {
                         width: section.width
+                        spacing: Theme.paddingSmall
 
                         SectionHeader { text: qsTr("Servers list") }
 
@@ -188,6 +182,15 @@ Page {
                                     case "small": return "s"
                                     case "as pfp": return "p"
                                 }}()
+                            }
+                        }
+
+
+                        ButtonLayout {
+                            Button {
+                                text: qsTr("Preview")
+                                onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { isDemo: true })
+                                anchors.horizontalCenter: parent.horizontalCenter
                             }
                         }
                     }
