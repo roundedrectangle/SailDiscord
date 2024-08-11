@@ -421,7 +421,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>
