@@ -204,6 +204,7 @@ Page {
 
                     content.sourceComponent: Column {
                         width: sessionSection.width
+                        spacing: Theme.paddingSmall
 
                         Button {
                             text: qsTr("Log out")

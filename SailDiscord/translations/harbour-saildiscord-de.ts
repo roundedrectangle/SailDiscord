@@ -333,5 +333,9 @@
         <source>Set extra padding for new messages from the same author</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
