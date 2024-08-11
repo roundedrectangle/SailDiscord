@@ -29,15 +29,15 @@ ApplicationWindow {
             id: appSettings
             path: "/settings"
 
-            property bool emptySpace
-            property bool ignorePrivate
-            property bool messagesLessWidth
-            property bool alignMessagesText
-            property bool oneAuthor
+            property bool emptySpace: false
+            property bool ignorePrivate: false
+            property bool messagesLessWidth: false
+            property bool alignMessagesText: false
+            property bool oneAuthor: true
 
-            property string sentBehaviour
-            property string messagesPadding
-            property string oneAuthorPadding
+            property string sentBehaviour: "r"
+            property string messagesPadding: "n"
+            property string oneAuthorPadding: "n"
         }
     }
 
