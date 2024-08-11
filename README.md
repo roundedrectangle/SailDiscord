@@ -1,8 +1,8 @@
 # SailDiscord
 
-A SailfishOS Discord client
+An unofficial SailfishOS Discord client
 
-Not working yet
+Very very WIP
 
 **By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
 
@@ -23,6 +23,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 	- [X] Channels list
 	- [ ] Messages
 		- [ ] Read text
+  			- [X] New messages
 		- [ ] Write text
 		- [ ] Other types
 - [ ] DMs list
@@ -44,13 +45,13 @@ I can forget about my projects and pause the developing, but then I come back (n
 
 Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec`, then replace `no` in the first line with `yes` if you want to make a production package. Now just run or build.
 
-### Faster build (not to package the library, **NOT RECOMMENDED IN PRODUCTION**)Requires: git
+### Faster build (not to package the library, **NOT RECOMMENDED IN PRODUCTION**)
 
 If you didn't replace, you'll get faster build but aditional steps needed for phone. This is needed only once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
 	python3 -m pip install --user "discord.py-self>=2.0"
 
-Then open the app. If you ever want to switch to production version, type this command to undo:
+Then open the app. If you ever want to switch back to the production version, type this command to undo:
 
 	python3 -m pip uninstall discord.py-self
 
@@ -75,8 +76,8 @@ Core functionality:
 
 Developers:
 
-- [@roundedrectangle](https://github.com/roundedrectangle)
+- [@roundedrectangle](https://github.com/roundedrectangle) (me)
 
 Contributors (translations):
 
-- [@legacychimera247](https://github.com/legacychimera247) - italian
+- [@legacychimera247](https://github.com/legacychimera247) - Italian
