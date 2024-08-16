@@ -30,7 +30,7 @@ ListItem {
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
                     : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
-        height: _sameAuthorAsBefore ? textContainer.height : childrenRect.height
+        height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
         // reverse if sent and set to reversed
@@ -74,7 +74,8 @@ ListItem {
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
             // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
             visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n";
-        Component.onCompleted: if (!visible) width = 0
+        /*Component.onCompleted: width = visible ? Theme.paddingLarge : 0
+        onVisibleChanged: width = visible ? Theme.paddingLarge : 0*/
         }
 
         Column {
@@ -106,5 +107,9 @@ ListItem {
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
+    }
+
+    Component.onCompleted: {
+        console.log(contents+"|||"+_firstSameAuthor+"---"+iconPadding.visible+"///"+(_firstSameAuthor || appSettings.oneAuthorPadding != "n"))
     }
 }
