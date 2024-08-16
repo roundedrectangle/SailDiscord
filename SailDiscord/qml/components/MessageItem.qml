@@ -8,7 +8,7 @@ ListItem {
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
     property bool sameAuthorAsBefore
-    property bool _sameAuthorAsBefore: sameAuthorAsBefore && appSettings.oneAuthor
+    property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
 
     property alias innerWidth: row.width
@@ -19,7 +19,7 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: _sameAuthorAsBefore ? Math.max(masterWidth, Math.min(parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0), contentsLbl.implicitWidth)) :
+        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0), contentsLbl.implicitWidth)) :
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
                     Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0),
@@ -42,16 +42,16 @@ ListItem {
            case "r": return sent ? 0 : Theme.paddingLarge
            case "a": return Theme.paddingLarge
         }
-            visible: !_sameAuthorAsBefore || appSettings.oneAuthorPadding != "n"
+            visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n"
         }
 
         Image {
             id: profileIcon
-            source: !_sameAuthorAsBefore ? pfp : ""
+            source: _firstSameAuthor ? pfp : ""
             height: Theme.iconSizeLarge
             width: height
-            visible: !_sameAuthorAsBefore || appSettings.oneAuthorPadding == "p"
-            opacity: !_sameAuthorAsBefore ? 1 : 0
+            visible: _firstSameAuthor || appSettings.oneAuthorPadding == "p"
+            opacity: _firstSameAuthor ? 1 : 0
 
             property bool rounded: true
             property bool adapt: true
@@ -73,13 +73,13 @@ ListItem {
 
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
             // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
-            visible: !_sameAuthorAsBefore || appSettings.oneAuthorPadding != "n";
+            visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n";
         Component.onCompleted: if (!visible) width = 0
         }
 
         Column {
             id: textContainer
-            width: _sameAuthorAsBefore ? parent.width - (profileIcon.width + iconPadding.width + leftPadding.width) :
+            width: !_firstSameAuthor ? parent.width - (profileIcon.width + iconPadding.width + leftPadding.width) :
                 (appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
                              // ListItem width substracting all other elements width except us (textContainer)
                     Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
@@ -91,7 +91,7 @@ ListItem {
                 id: authorLbl
                 text: author
                 color: Theme.secondaryColor
-                visible: !_sameAuthorAsBefore
+                visible: _firstSameAuthor
             }
 
             Label {
@@ -104,7 +104,7 @@ ListItem {
                                ? parent.right : undefined
             }
 
-            Item { height: !_sameAuthorAsBefore ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
+            Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
     }
 }
