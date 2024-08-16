@@ -51,7 +51,7 @@ ListItem {
             height: Theme.iconSizeLarge
             width: height
             visible: !_sameAuthorAsBefore || appSettings.oneAuthorPadding == "p"
-            opacity: (!_sameAuthorAsBefore || appSettings.oneAuthorPadding == "p") ? 1 : 0
+            opacity: !_sameAuthorAsBefore ? 1 : 0
 
             property bool rounded: true
             property bool adapt: true
