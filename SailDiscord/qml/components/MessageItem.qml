@@ -50,7 +50,7 @@ ListItem {
             height: Theme.iconSizeLarge
             width: height
             visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding == "p"
-            opacity: (!(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding != "p") ? 1 : 0
+            opacity: (!(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding == "p") ? 1 : 0
 
             property bool rounded: true
             property bool adapt: true
@@ -72,7 +72,7 @@ ListItem {
 
         Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
             // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
-            visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding != "n";
+            visible: !(sameAuthorAsBefore && appSettings.oneAuthor) || appSettings.oneAuthorPadding == "n";
         Component.onCompleted: if (!visible) width = 0
         }
 
