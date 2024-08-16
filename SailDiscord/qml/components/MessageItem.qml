@@ -7,6 +7,7 @@ ListItem {
     property string author
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
+    property bool _sentLessWidth: appSettings.messagesLessWidth && sent
     property bool sameAuthorAsBefore
     property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
@@ -19,17 +20,17 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0), contentsLbl.implicitWidth)) :
+        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), contentsLbl.implicitWidth)) :(
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
-                    Math.min(parent.width - ((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0),
+                    Math.min(parent.width - (_sentLessWidth ? Theme.paddingLarge : 0),
 
                              // width of all elements, last one is what is larger - author or contets
                              profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, authorLbl.width))
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
-                    : parent.width-((appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0)
+                    : parent.width-(_sent ? Theme.paddingLarge : 0))
         height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
