@@ -107,9 +107,9 @@ ListItem {
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
-    }
 
-    Component.onCompleted: {
-        console.log(contents+"|||"+_firstSameAuthor+"---"+iconPadding.visible+"///"+(_firstSameAuthor || appSettings.oneAuthorPadding != "n"))
+        Component.onCompleted: {
+            shared.log(contents,width,masterWidth,parent.width)
+        }
     }
 }

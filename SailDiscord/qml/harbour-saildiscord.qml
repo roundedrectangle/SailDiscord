@@ -11,6 +11,19 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
+    QtObject {
+        id: shared
+
+        function log() {
+          var f = ""
+          for (var i = 0; i < arguments.length; i++) {
+            f += arguments[i]
+            if (i != arguments.length-1) f += "|||"
+          }
+          console.log(f)
+        }
+    }
+
     SettingsMigrationAssistant { id: migrateSettings }
 
     ConfigurationGroup {
