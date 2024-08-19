@@ -12,12 +12,15 @@ ListItem {
     contentHeight: Theme.itemSizeLarge;
 
     Column {
-        width: parent.width - Theme.paddingLarge*2
-        anchors.horizontalCenter: parent.horizontalCenter;
+        width: parent.width - Theme.horizontalPageMargin*2
+        //height: parent.height - Theme.paddingLarge*2
+        anchors.horizontalCenter: parent.horizontalCenter
+        //anchors.verticalCenter: parent.verticalCenter
         spacing: Theme.paddingSmall
 
         Row {
-            //width: parent.width
+            //spacing: (hasIcon || appSettings.emptySpace) ? Theme.paddingLarge : 0
+
             Image {
                 id: profileIcon
                 source: hasIcon ? icon : ""
@@ -45,15 +48,21 @@ ListItem {
                 }
             }
 
-            Item { height: 1; width: Theme.paddingLarge; visible: hasIcon || appSettings.emptySpace }
+            Item { id: iconPadding; height: 1; width: (hasIcon || appSettings.emptySpace) ? Theme.paddingLarge : 0; }
 
             Label {
-                //x: Theme.horizontalPageMargin
-                //width: parent.width - 2 * x
-                //anchors.verticalCenter: parent.verticalCenter
+                //width: (parent.width - profileIcon.width - iconPadding.width)
                 text: title
+                //fontSizeMode: Text.HorizontalFit
+                //minimumPixelSize: 1
+                //font.pixelSize: 50
+
                 //truncationMode: TruncationMode.Fade
-                //font.capitalization: Font.Capitalize
+                //horizontalAlignment: Text.AlignLeft
+
+                //anchors.horizontalCenter: parent.horizontalCenter
+                //horizontalAlignment: Text.AlignLeft
+                //truncationMode: TruncationMode.Fade
             }
         }
 

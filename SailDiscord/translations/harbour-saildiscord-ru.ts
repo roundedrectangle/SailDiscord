@@ -67,7 +67,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
-        <location filename="../qml/pages/FirstPage.qml" line="98"/>
+        <location filename="../qml/pages/FirstPage.qml" line="97"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
