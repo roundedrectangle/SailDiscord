@@ -20,7 +20,7 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), contentsLbl.implicitWidth)) :(
+        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), profileIcon.width + iconPadding.width + leftPadding.width + contentsLbl.implicitWidth)) :(
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
                     Math.min(parent.width - (_sentLessWidth ? Theme.paddingLarge : 0),
@@ -30,7 +30,7 @@ ListItem {
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
-                    : parent.width-(_sent ? Theme.paddingLarge : 0))
+                    : parent.width-(_sentLessWidth ? Theme.paddingLarge : 0))
         height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
@@ -39,9 +39,9 @@ ListItem {
 
         Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
            default: case "n": return 0
-           case "s": return sent ? Theme.paddingLarge : 0
-           case "r": return sent ? 0 : Theme.paddingLarge
-           case "a": return Theme.paddingLarge
+           case "s": return (visible && sent) ? Theme.paddingLarge : 0
+           case "r": return (visible && sent) ? 0 : Theme.paddingLarge
+           case "a": return visible ? Theme.paddingLarge : 0
         }
             visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n"
         }
@@ -50,7 +50,7 @@ ListItem {
             id: profileIcon
             source: _firstSameAuthor ? pfp : ""
             height: Theme.iconSizeLarge
-            width: height
+            width: visible ? height : 0
             visible: _firstSameAuthor || appSettings.oneAuthorPadding == "p"
             opacity: _firstSameAuthor ? 1 : 0
 
@@ -72,23 +72,21 @@ ListItem {
             }
         }
 
-        Item { id: iconPadding; height: 1; width: Theme.paddingLarge;
+        Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
             // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
             visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n";
-        /*Component.onCompleted: width = visible ? Theme.paddingLarge : 0
-        onVisibleChanged: width = visible ? Theme.paddingLarge : 0*/
         }
 
         Column {
             id: textContainer
             width: !_firstSameAuthor ? parent.width - (profileIcon.width + iconPadding.width + leftPadding.width) :
-                (appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
+                ((appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
                              // ListItem width substracting all other elements width except us (textContainer)
                     Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
 
                              Math.max(contentsLbl.paintedWidth, authorLbl.width))
                       // ListItem width substracting all other elements width except us (textContainer)
-                    : parent.width - (profileIcon.width + iconPadding.width + leftPadding.width)
+                    : (parent.width - (profileIcon.width + iconPadding.width + leftPadding.width)))
             Label {
                 id: authorLbl
                 text: author
@@ -107,10 +105,14 @@ ListItem {
             }
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
+
+            Component.onCompleted: {
+                //shared.log(contents, width, parent.width, contentsLbl.implicitWidth, contentsLbl.width)
+            }
         }
 
         Component.onCompleted: {
-            shared.log(contents,width,masterWidth,parent.width)
+            //shared.log(contents,width,masterWidth,parent.width, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), contentsLbl.implicitWidth), contentsLbl.implicitWidth)
         }
     }
 }
