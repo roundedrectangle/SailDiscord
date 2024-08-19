@@ -105,14 +105,6 @@ ListItem {
             }
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
-
-            Component.onCompleted: {
-                //shared.log(contents, width, parent.width, contentsLbl.implicitWidth, contentsLbl.width)
-            }
-        }
-
-        Component.onCompleted: {
-            //shared.log(contents,width,masterWidth,parent.width, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), contentsLbl.implicitWidth), contentsLbl.implicitWidth)
         }
     }
 }
