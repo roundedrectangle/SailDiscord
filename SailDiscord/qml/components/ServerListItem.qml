@@ -9,11 +9,15 @@ ListItem {
     property bool hasIcon: icon != "None"
 
     contentWidth: parent.width
-
     contentHeight: Theme.itemSizeLarge;
 
     Column {
+        width: parent.width - Theme.paddingLarge*2
+        anchors.horizontalCenter: parent.horizontalCenter;
+        spacing: Theme.paddingSmall
+
         Row {
+            //width: parent.width
             Image {
                 id: profileIcon
                 source: hasIcon ? icon : ""
@@ -55,6 +59,7 @@ ListItem {
 
         Separator {
             color: Theme.primaryColor
+            width: parent.width
             horizontalAlignment: Qt.AlignHCenter
         }
     }

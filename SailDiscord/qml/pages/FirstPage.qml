@@ -88,7 +88,6 @@ Page {
                     name: name,
                     icon: icon,
                     memberCount: memberCount
-                    //TODO: add channels here
                 })
             }
 
