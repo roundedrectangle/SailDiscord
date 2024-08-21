@@ -50,11 +50,17 @@ def send_channels_no_category(guild, user_id):
                 has_permissions = c.permissions_for(member).view_channel
             pyotherside.send(f'channel{c.guild.id} -1', str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
 
-def send_message(message):
+def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    pyotherside.send('message', str(message.guild.id), str(message.channel.id),
+    pyotherside.send('history_message' if is_history else 'message',
+        str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
+
+def send_history(channel):
+    messages = [message async for message in channel.history(limit=30)].reversed()
+    for m in messages:
+        send_message(m)
 
 
 class MyClient(discord.Client):
@@ -137,8 +143,10 @@ class Communicator:
                 guild = self.client.get_guild(int(guild_id))
                 channel = guild.get_channel(int(channel_id))
                 self.client.set_current_channel(guild, channel)
+                send_history(channel)
             except Exception as e:
                 pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
                 self.client.unset_current_channel()
+
 
 comm = Communicator()

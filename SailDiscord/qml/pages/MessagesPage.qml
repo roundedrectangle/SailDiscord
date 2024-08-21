@@ -87,6 +87,12 @@ Page {
                 append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1})
                 messagesList.forceLayout()
             })
+
+            python.setHandler("history_message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
+                if ((_serverid != guildid) || (_channelid != channelid)) return;
+                insert(0, {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1})
+                messagesList.forceLayout()
+            })
         }
     }
 
