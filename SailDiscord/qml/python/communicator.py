@@ -52,15 +52,26 @@ def send_channels_no_category(guild, user_id):
 
 def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+    pyotherside.send("Message created: "+message.content)
     pyotherside.send('history_message' if is_history else 'message',
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
-def send_history(channel):
+def test_asyncio():
+    print("Works!")
+
+async def send_history(channel):
+    await asyncio.to_thread(test_asyncio, m, True)
     messages = [message async for message in channel.history(limit=30)].reversed()
     for m in messages:
-        send_message(m)
+        await asyncio.to_thread(send_message, m, True)
+
+
+def run_send_history(channel):
+    # Get the current event loop and schedule the main coroutine
+    loop = asyncio.get_event_loop()
+    loop.create_task(send_history(channel))
 
 
 class MyClient(discord.Client):
@@ -139,14 +150,14 @@ class Communicator:
         if guild_id in [None, '']:
             self.client.unset_current_channel()
         else:
-            try:
+            #try:
                 guild = self.client.get_guild(int(guild_id))
                 channel = guild.get_channel(int(channel_id))
                 self.client.set_current_channel(guild, channel)
-                send_history(channel)
-            except Exception as e:
-                pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-                self.client.unset_current_channel()
+                run_send_history(channel)
+            #except Exception as e:
+            #    pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
+            #    self.client.unset_current_channel()
 
 
 comm = Communicator()
