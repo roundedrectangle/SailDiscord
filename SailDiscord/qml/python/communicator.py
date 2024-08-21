@@ -58,20 +58,19 @@ def send_message(message, is_history=False):
         str(message.id), str(message.author.name), str(message.content),
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
-def test_asyncio():
-    print("Works!")
-
 async def send_history(channel):
-    await asyncio.to_thread(test_asyncio, m, True)
-    messages = [message async for message in channel.history(limit=30)].reversed()
-    for m in messages:
-        await asyncio.to_thread(send_message, m, True)
-
+    messages = [message async for message in channel.history(limit=30)]
+    messages.reverse()
+    #for m in messages:
+    #    await asyncio.get_event_loop().run_in_executor(None, send_message, m, True)
+    await asyncio.gather(*(send_message(m, True) for m in messages))
 
 def run_send_history(channel):
-    # Get the current event loop and schedule the main coroutine
     loop = asyncio.get_event_loop()
-    loop.create_task(send_history(channel))
+    if loop.is_running():
+        asyncio.ensure_future(send_history(channel))
+    else:
+        loop.run_until_complete(send_history(channel))
 
 
 class MyClient(discord.Client):
