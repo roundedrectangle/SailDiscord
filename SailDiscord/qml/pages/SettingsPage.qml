@@ -77,7 +77,7 @@ Page {
 
                             onCurrentItemChanged: {
                                 appSettings.sentBehaviour = function(){switch (currentItem.text) {
-                                    case "reversed (default)": return "r"
+                                    default: case "reversed (default)": return "r"
                                     case "align right": return "a"
                                     case "nothing": return "n"
                                 }}()
@@ -119,7 +119,7 @@ Page {
                             }
                             onCurrentItemChanged: {
                                 appSettings.messagesPadding = function(){switch (currentItem.text) {
-                                        case "none (default)": return "n"
+                                        default: case "none (default)": return "n"
                                         case "sent": return "s"
                                         case "received": return "r"
                                         case "all": return "a"
@@ -178,7 +178,7 @@ Page {
 
                             onCurrentItemChanged: {
                                 appSettings.oneAuthorPadding = function(){switch (currentItem.text) {
-                                    case "no (default)": return "n"
+                                    default: case "no (default)": return "n"
                                     case "small": return "s"
                                     case "as pfp": return "p"
                                 }}()
