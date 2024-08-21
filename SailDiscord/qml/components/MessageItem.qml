@@ -51,7 +51,7 @@ ListItem {
             source: _firstSameAuthor ? pfp : ""
             height: Theme.iconSizeLarge
             width: visible ? height : 0
-            visible: _firstSameAuthor || appSettings.oneAuthorPadding == "p"
+            visible: _firstSameAuthor || (appSettings.oneAuthorPadding == "p")
             opacity: _firstSameAuthor ? 1 : 0
 
             property bool rounded: true
@@ -69,6 +69,15 @@ ListItem {
                         radius: Math.min(width, height)
                     }
                 }
+            }
+
+            Component.onCompleted: {
+                console.log("SEND THIS START")
+                console.log("contents:"+contents)
+                console.log("width:"+width)
+                console.log("visible:"+visible)
+                console.log("opacity:"+opacity)
+                console.log("SEND THIS END")
             }
         }
 
