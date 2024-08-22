@@ -70,15 +70,6 @@ ListItem {
                     }
                 }
             }
-
-            Component.onCompleted: {
-                console.log("SEND THIS START")
-                console.log("contents:"+contents)
-                console.log("width:"+width)
-                console.log("visible:"+visible)
-                console.log("opacity:"+opacity)
-                console.log("SEND THIS END")
-            }
         }
 
         Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
@@ -115,5 +106,14 @@ ListItem {
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
+    }
+
+    Component.onCompleted: {
+        console.log("SEND THIS START")
+        console.log("contents:"+contents)
+        console.log("width:"+profileIcon.width)
+        console.log("visible:"+profileIcon.visible)
+        console.log("opacity:"+profileIcon.opacity)
+        console.log("SEND THIS END")
     }
 }
