@@ -66,13 +66,14 @@ class MyClient(discord.Client):
     current_channel = None
     loop = None
 
-    async def on_ready(self):
+    async def on_ready(self, first_run=True):
         pyotherside.send('logged_in', str(self.user.name))
         send_servers(self.guilds)
 
         # Setup control variables
         self.current_server = None
-        self.loop = asyncio.get_running_loop()
+        if first_run:
+            self.loop = asyncio.get_running_loop()
 
     async def on_message(self, message):
         if self.current_server == None or self.current_channel == None:
@@ -112,7 +113,7 @@ class Communicator:
     def login(self, token):
         if self.loginth.is_alive():
             if QMLLIVE_DEBUG:
-                asyncio.run(self.client.on_ready())
+                asyncio.run(self.client.on_ready(False))
             return
         #elif token != '':
         #    self.client.close()
