@@ -70,7 +70,7 @@ def send_message(message, is_history=False):
 #    return lst
 
 # Backward compatible sync generator
-def get_results(channel):
+"""def get_results(channel):
 
     async def gather_all_results():
         res = []
@@ -86,7 +86,7 @@ def get_results(channel):
 def send_history(channel):
     messages = get_results(channel)
     for m in messages:
-        pyotherside.send(m)
+        pyotherside.send(m)"""
 
 
 
@@ -96,6 +96,15 @@ def send_history(channel):
         asyncio.ensure_future(send_history(channel))
     else:
         loop.run_until_complete(send_history(channel))"""
+
+async def get_last_messages(loop, channel):
+    await loop.run_in_executor(None, pyotherside.send, "hello world...")
+    async for m in channel.history(limit=30):
+        pyotherside.send(m.content)
+
+async def send_history(channel):
+    loop = asyncio.new_event_loop()
+    asyncio.run(loop, get_last_messages(channel))
 
 
 class MyClient(discord.Client):
@@ -109,6 +118,8 @@ class MyClient(discord.Client):
         pyotherside.send('logged_in', str(self.user.name))
         send_servers(self.guilds)
 
+        await self.get_last_messages(self.get_channel(1261929481590014074))
+
     async def on_message(self, message):
         if self.current_server == None or self.current_channel == None:
             return
@@ -116,6 +127,10 @@ class MyClient(discord.Client):
             #pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
             send_message(message)
             #await message.channel.send('pong')
+
+    async def get_last_messages(self, channel):
+        async for m in channel.history(limit=30):
+            pyotherside.send(m.content)
 
     def set_current_channel(self, guild, channel):
         self.current_server = guild
