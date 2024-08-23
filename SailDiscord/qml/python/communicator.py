@@ -15,12 +15,9 @@ import queue
 import threading
 from typing import Coroutine, AsyncGenerator
 
+# when you save a file in QMLLive, the app is reloaded, and so are the Python login function
+# if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
-
-#def send_server_info(g):
-#    pyotherside.send('SERVERname', f"{g.id}~{g.name}")
-#    pyotherside.send('SERVERchunked', f"{g.id}~{g.chunked}")
-#    pyotherside.send('SERVERmember_count', f"{g.id}~{g.member_count}")
 
 def send_servers(guilds):
     lst = list(guilds)
@@ -63,62 +60,19 @@ def send_message(message, is_history=False):
         str(message.id), str(message.author.name), str(message.content),
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
-#async def get_last_messages(channel):
-#    lst = await stream.list(channel.history(limit=30))
-    #async for m in channel.history(limit=30):
-    #    result.append(m)
-#    return lst
-
-# Backward compatible sync generator
-"""def get_results(channel):
-
-    async def gather_all_results():
-        res = []
-        async for i in channel.history(limit=30):
-            res.append(i)
-        return res
-
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    res = loop.run_until_complete(gather_all_results())
-    return res
-
-def send_history(channel):
-    messages = get_results(channel)
-    for m in messages:
-        pyotherside.send(m)"""
-
-
-
-"""def run_send_history(channel):
-    loop = asyncio.get_event_loop()
-    if loop.is_running():
-        asyncio.ensure_future(send_history(channel))
-    else:
-        loop.run_until_complete(send_history(channel))"""
-
-async def get_last_messages(loop, channel):
-    await loop.run_in_executor(None, pyotherside.send, "hello world...")
-    async for m in channel.history(limit=30):
-        pyotherside.send(m.content)
-
-async def send_history(channel):
-    loop = asyncio.new_event_loop()
-    asyncio.run(loop, get_last_messages(channel))
-
 
 class MyClient(discord.Client):
     current_server = None
     current_channel = None
+    loop = None
 
     async def on_ready(self):
-        # Setup control variables
-        self.current_server = None
-
         pyotherside.send('logged_in', str(self.user.name))
         send_servers(self.guilds)
 
-        await self.get_last_messages(self.get_channel(1261929481590014074))
+        # Setup control variables
+        self.current_server = None
+        self.loop = asyncio.get_running_loop()
 
     async def on_message(self, message):
         if self.current_server == None or self.current_channel == None:
@@ -128,8 +82,9 @@ class MyClient(discord.Client):
             send_message(message)
             #await message.channel.send('pong')
 
-    async def get_last_messages(self, channel):
-        async for m in channel.history(limit=30):
+    async def get_last_messages(self):
+        async for m in self.current_channel.history(limit=30):
+            #send_message(m, True)
             pyotherside.send(m.content)
 
     def set_current_channel(self, guild, channel):
@@ -137,6 +92,8 @@ class MyClient(discord.Client):
         self.current_channel = channel
         # This will be used when discord.py-self 2.1 will be out.
         #asyncio.run(guild.subscribe())
+
+        asyncio.run_coroutine_threadsafe(self.get_last_messages(), self.loop)
 
     def unset_current_channel(self):
         # This will be used when discord.py-self 2.1 will be out.
@@ -189,14 +146,13 @@ class Communicator:
         if guild_id in [None, '']:
             self.client.unset_current_channel()
         else:
-            #try:
+            try:
                 guild = self.client.get_guild(int(guild_id))
                 channel = guild.get_channel(int(channel_id))
                 self.client.set_current_channel(guild, channel)
-                send_history(channel)
-            #except Exception as e:
-            #    pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-            #    self.client.unset_current_channel()
+            except Exception as e:
+                pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
+                self.client.unset_current_channel()
 
 
 comm = Communicator()
