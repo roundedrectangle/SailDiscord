@@ -1,7 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
-import Nemo.Thumbnailer 1.0
 
 ListItem {
     property string title
@@ -22,14 +21,13 @@ ListItem {
         Row {
             //spacing: (hasIcon || appSettings.emptySpace) ? Theme.paddingLarge : 0
 
-            Thumbnail {
+            Image {
                 id: profileIcon
-                source: hasIcon ? icon : ""
+                source: hasIcon ? "image://nemoThumbnail/" + icon : ""
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
-                sourceSize.width: width
                 sourceSize.height: height
-                fillMode: Thumbnail.PreserveAspectFit
+                sourceSize.width: width
 
                 visible: hasIcon || appSettings.emptySpace
 
