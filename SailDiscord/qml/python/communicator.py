@@ -84,8 +84,7 @@ class MyClient(discord.Client):
 
     async def get_last_messages(self):
         async for m in self.current_channel.history(limit=30):
-            #send_message(m, True)
-            pyotherside.send(m.content)
+            send_message(m, True)
 
     def set_current_channel(self, guild, channel):
         self.current_server = guild

@@ -107,13 +107,4 @@ ListItem {
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
     }
-
-    Component.onCompleted: {
-        console.log("SEND THIS START")
-        console.log("contents:"+contents)
-        console.log("width:"+profileIcon.width)
-        console.log("visible:"+profileIcon.visible)
-        console.log("opacity:"+profileIcon.opacity)
-        console.log("SEND THIS END")
-    }
 }
