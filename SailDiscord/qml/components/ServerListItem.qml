@@ -23,7 +23,7 @@ ListItem {
 
             Image {
                 id: profileIcon
-                source: hasIcon ? "image://nemoThumbnail/" + icon : ""
+                source: hasIcon ? Qt.resolvedUrl("image://nemoThumbnail/" + icon) : ""
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
                 sourceSize.height: height
