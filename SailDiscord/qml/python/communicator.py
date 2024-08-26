@@ -42,16 +42,37 @@ class Cache:
 
     @classmethod
     def cache_image(cls, url, id, type: ImageType):
+        if type == cls.ImageType.USER and cls.has_cached_user(id):
+            return
         im = cls.download_pillow(url)
         if im == None: return
         comm.ensure_cache()
         path = cls.get_cached_path(id, type)
         path.parent.mkdir(exist_ok=True, parents=True)
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
+        cls.set_cached_user(id)
 
     @classmethod
     def cache_image_bg(cls, url, id, type: ImageType):
         Thread(target=cls.cache_image, args=(url, id, type)).start()
+
+    @classmethod
+    def ensure_cached_users(cls):
+        """Returns True if cached users were initialized"""
+        if not hasattr(cls, 'users'):
+            cls.cached_users = []
+            return True
+        return False
+
+    @classmethod
+    def set_cached_user(cls, id):
+        cls.ensure_cached_users()
+        cls.cached_users.append(str(id))
+
+    @classmethod
+    def has_cached_user(cls, id):
+        cls.ensure_cached_users()
+        return str(id) in cls.cached_users
 
 
 def send_servers(guilds):
