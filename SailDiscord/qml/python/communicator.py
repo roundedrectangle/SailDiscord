@@ -22,7 +22,7 @@ class Cache:
 
     class ImageType(Enum):
         SERVER = auto()
-        PERSON = auto()
+        USER = auto()
 
     @classmethod
     def get_cached_path(cls, id, type: ImageType, default=None):
@@ -62,8 +62,6 @@ def send_servers(guilds):
         icon = '' if g.icon == None else \
                 str(Cache.get_cached_path(g.id, Cache.ImageType.SERVER, default=g.icon))
 
-        pyotherside.send(icon)
-
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
             Cache.cache_image_bg(str(g.icon), g.id, Cache.ImageType.SERVER)
@@ -96,11 +94,18 @@ def send_channels_no_category(guild, user_id):
 
 def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+
+    icon = '' if message.author.display_avatar == None else \
+            str(Cache.get_cached_path(message.author.id, Cache.ImageType.USER, default=message.author.display_avatar))
+
     pyotherside.send('message',
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
-        str(message.author.display_avatar), message.author.id == comm.client.user.id,
+        icon, message.author.id == comm.client.user.id,
         is_history)
+
+    if icon != '':
+        Cache.cache_image_bg(str(message.author.display_avatar), message.author.id, Cache.ImageType.USER)
 
 class MyClient(discord.Client):
     current_server = None
