@@ -44,16 +44,8 @@ class Cache:
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
 
     @classmethod
-    def get_cached_pillow(cls, id, type: ImageType):
-        comm.ensure_cache()
-        path = cls.get_cached_path(id, type)
-        if not path.exists(): return
-        return Image.open(path)
-
-    @classmethod
     def cache_image_bg(cls, url, id, type: ImageType):
         Thread(target=cls.cache_image, args=(url, id, type)).start()
-
 
 
 def send_servers(guilds):
