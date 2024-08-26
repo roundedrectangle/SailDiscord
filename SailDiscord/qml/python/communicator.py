@@ -30,7 +30,7 @@ def send_servers(guilds):
             icon = ''
         else:
             cached = get_cached_pillow(g.id, ImageType.SERVER) != None
-            icon = f'image://python/SERVER {g.id}' if cached else str(g.icon)
+            icon = str(Path(comm.cache) / f"server/{g.id}.png") if cached else str(g.icon)
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if not cached:
             Thread(target=cache_image, args=(icon, g.id, ImageType.SERVER)).start()
