@@ -2,13 +2,14 @@
 
 # if __name__ == "__main__":
 #     pass
-import os, sys, time, io
-from enum import Enum
+import sys, time, io
 import pyotherside
 from threading import Thread
 import asyncio
+from enum import Enum, auto
+from pathlib import Path
 
-sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'deps'))
+sys.path.append(Path(sys.path[0]).parent / 'deps')
 import discord, requests
 from PIL import Image
 
@@ -24,11 +25,15 @@ def send_servers(guilds):
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
-        cached = get_cached_pillow(g.id, ImageType.SERVER) != None
-        icon = f'image://python/SERVER {g.id}' if cached else str(g.icon)
-        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count)
+        if g.icon == None:
+            cached = True
+            icon = ''
+        else:
+            cached = get_cached_pillow(g.id, ImageType.SERVER) != None
+            icon = f'image://python/SERVER {g.id}' if cached else str(g.icon)
+        pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if not cached:
-            Thread(target=cache_image, args=(g.icon, g.id, ImageType.SERVER)).start()
+            Thread(target=cache_image, args=(icon, g.id, ImageType.SERVER)).start()
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -78,16 +83,19 @@ def extract_pillow(im, format='PNG'):
     return bytearr
 
 def cache_image(url, id, type: ImageType):
-    c = download_pillow(url)
-    if c == None: return
+    im = download_pillow(url)
+    if im == None: return
     while not comm.cache_ready:pass
+    path = Path(comm.cache) / type.name.lower() / f"{id}.png"
+    path.parent.mkdir(exist_ok=True, parents=True)
     # We use Pillow to convert JPEG, GIF and others to PNG
-    c.save(os.path.join(comm.cache, type.name.lower(), f"{id}.png"))
+    im.save(path)
+    #pyotherside.send
 
 def get_cached_pillow(id, type: ImageType):
     while not comm.cache_ready:pass
-    path = os.path.join(comm.cache, type.name.lower(), f"{id}.png")
-    if not os.path.exists(path): return
+    path = Path(comm.cache) / type.name.lower() / f"{id}.png"
+    if not Path(path).exists(): return
     return Image.open(path)
 
 def image_provider(image_id, size):
