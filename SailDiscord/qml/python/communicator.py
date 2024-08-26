@@ -56,10 +56,8 @@ def send_message(message, is_history=False):
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
 def image_provider(url, size):
-    #pyotherside.send(f"New image requested! {url}-{size}-{comm.cache_ready}-{comm.cache}")
     r = requests.get(url, stream=True)
     im = Image.open(r.raw)
-    #im.save("/home/nemo/Documents/myimg"+'_'.join(url.split('/'))+".png")
     bytearr = io.BytesIO()
     im.save(bytearr, format='PNG')
     bytearr = bytearray(bytearr.getvalue())
