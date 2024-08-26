@@ -75,13 +75,6 @@ def download_pillow(url):
     im = Image.open(r.raw)
     return im
 
-def extract_pillow(im, format='PNG'):
-    if im == None: return
-    bytearr = io.BytesIO()
-    im.save(bytearr, format=format)
-    bytearr = bytearray(bytearr.getvalue())
-    return bytearr
-
 def cache_image(url, id, type: ImageType):
     im = download_pillow(url)
     if im == None: return
@@ -97,16 +90,6 @@ def get_cached_pillow(id, type: ImageType):
     path = Path(comm.cache) / type.name.lower() / f"{id}.png"
     if not Path(path).exists(): return
     return Image.open(path)
-
-def image_provider(image_id, size):
-    """id format: 'type id'"""
-    type = ImageType[image_id.split()[0].upper()]
-    id = image_id.split()[1]
-    im = get_cached_pillow(id, type)
-    if im == None:
-        return bytearray(b''), (-1, -1), pyotherside.format_data
-
-    return extract_pillow(im), im.size, pyotherside.format_data
 
 class MyClient(discord.Client):
     current_server = None
@@ -157,7 +140,6 @@ class Communicator:
         self.client = MyClient(guild_subscriptions=False)
         self.token = ''
         self.cache = ''
-        pyotherside.set_image_provider(image_provider)
 
     def login(self, token):
         if self.loginth.is_alive():
