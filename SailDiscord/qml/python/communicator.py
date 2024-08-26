@@ -2,18 +2,14 @@
 
 # if __name__ == "__main__":
 #     pass
-import os, sys, time
+import os, sys, time, io
 import pyotherside
 from threading import Thread
 import asyncio
 
 sys.path.append(os.path.join(os.path.dirname(sys.path[0]),'deps'))
-import discord
-#from aiostream import stream
-
-import queue
-import threading
-from typing import Coroutine, AsyncGenerator
+import discord, requests
+from PIL import Image
 
 # when you save a file in QMLLive, the app is reloaded, and so are the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -59,6 +55,15 @@ def send_message(message, is_history=False):
         str(message.id), str(message.author.name), str(message.content),
         str(message.author.display_avatar), message.author.id == comm.client.user.id)
 
+def image_provider(url, size):
+    #pyotherside.send(f"New image requested! {url}-{size}-{comm.cache_ready}-{comm.cache}")
+    r = requests.get(url, stream=True)
+    im = Image.open(r.raw)
+    #im.save("/home/nemo/Documents/myimg"+'_'.join(url.split('/'))+".png")
+    bytearr = io.BytesIO()
+    im.save(bytearr, format='PNG')
+    bytearr = bytearray(bytearr.getvalue())
+    return (bytearr, im.size, pyotherside.format_data)
 
 class MyClient(discord.Client):
     current_server = None
@@ -108,17 +113,24 @@ class Communicator:
         self.loginth.start()
         self.client = MyClient(guild_subscriptions=False)
         self.token = ''
+        self.cache = ''
+        pyotherside.set_image_provider(image_provider)
 
     def login(self, token):
         if self.loginth.is_alive():
             if QMLLIVE_DEBUG:
                 asyncio.run(self.client.on_ready(False))
             return
-        #elif token != '':
-        #    self.client.close()
         self.token = token
         self.loginth = Thread(target=self._login)
         self.loginth.start()
+
+    def set_cache(self, cache):
+        self.cache = str(cache)
+
+    @property
+    def cache_ready(self):
+        return len(self.cache) > 0
 
     def _login(self):
         self.client.run(self.token)

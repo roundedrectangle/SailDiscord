@@ -60,7 +60,7 @@ Short description of my Sailfish OS Application
 #zypper install git
 
 %if %{package_library} == "yes"
-python3 -m pip install "discord.py-self>=2.0" --target=%_builddir/deps
+python3 -m pip install "discord.py-self>=2.0" "requests" "Pillow" --target=%_builddir/deps
 rm -rf %_builddir/deps/google/_upb
 %endif
 

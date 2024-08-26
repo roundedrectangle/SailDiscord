@@ -55,7 +55,7 @@ Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec
 
 If you didn't replace, you'll get faster build but aditional steps needed for phone. This is needed only once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
-	python3 -m pip install --user "discord.py-self>=2.0"
+	python3 -m pip install --user "discord.py-self>=2.0" "requests" "Pillow"
 
 Then open the app. If you ever want to switch back to the production version, type this command to undo:
 

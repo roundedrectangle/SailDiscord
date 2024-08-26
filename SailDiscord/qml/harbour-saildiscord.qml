@@ -64,14 +64,10 @@ ApplicationWindow {
                 myPage.loading = false;
                 myPage.username = _username;
             })
-
             setHandler('server', function(_id, _name, _icon, _memberCount) { myPage.serversModel.append({"id": _id, "name": _name, "image": _icon, "memberCount": _memberCount}) })
 
-            //setHandler('SERVERname', function (what) { updateServer(what, function(item, name) { item.name  = name }) })
-            //setHandler('SERVERchunked', function (what) { updateServer(what, function(item, chunked) { item.chunked = chunked }) })
-            //setHandler('SERVERmember_count', function (what) { updateServer(what, function(item, memberCount) { item.memberCount = memberCount }) })
-
-            importModule('communicator', function () {});
+            importModule('communicator', function () {})
+            call('communicator.comm.set_cache', [StandardPaths.cache], function() {})
         }
 
         onError: {
