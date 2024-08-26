@@ -28,7 +28,7 @@ class Cache:
     def get_cached_path(cls, id, type: ImageType, default=None):
         """If default is not None and path does not exist default is returned"""
         path = Path(comm.cache) / type.name.lower() / f"{id}.png"
-        if (default != None) and (not path.exists()):
+        if ((default != None) and (not path.exists())) and cls.has_cached_session(id, type, False):
             return default
         return path
 
@@ -42,37 +42,55 @@ class Cache:
 
     @classmethod
     def cache_image(cls, url, id, type: ImageType):
-        if type == cls.ImageType.USER and cls.has_cached_user(id):
+        if cls.has_cached_session(id, type):
+            # Only cache once in a session
             return
+        cls.set_cached_session(id, type, True)
         im = cls.download_pillow(url)
         if im == None: return
         comm.ensure_cache()
         path = cls.get_cached_path(id, type)
         path.parent.mkdir(exist_ok=True, parents=True)
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
-        cls.set_cached_user(id)
+        cls.set_cached_session(id, type)
 
     @classmethod
     def cache_image_bg(cls, url, id, type: ImageType):
         Thread(target=cls.cache_image, args=(url, id, type)).start()
 
     @classmethod
-    def ensure_cached_users(cls):
-        """Returns True if cached users were initialized"""
-        if not hasattr(cls, 'users'):
-            cls.cached_users = []
+    def ensure_cached_session(cls):
+        """Returns True if stuff cached in this session were initialized"""
+        if not hasattr(cls, 'session_cached'):
+            cls.session_cached = {}
+            for im in cls.ImageType:
+                cls.session_cached[im.name.lower()] = {}
             return True
         return False
 
     @classmethod
-    def set_cached_user(cls, id):
-        cls.ensure_cached_users()
-        cls.cached_users.append(str(id))
+    def set_cached_session(cls, id, type: ImageType, in_progress=False):
+        cls.ensure_cached_session()
+        cls.session_cached[type.name.lower()][str(id)] = in_progress
+        pyotherside.send("SET "+str(cls.session_cached))
 
     @classmethod
-    def has_cached_user(cls, id):
-        cls.ensure_cached_users()
-        return str(id) in cls.cached_users
+    def has_cached_session(cls, id, type: ImageType, in_progress=None):
+        """in_progress:
+            - True for in progress only
+            - False for finished only
+            - None/anything else for any/both"""
+        cls.ensure_cached_session()
+        pyotherside.send("HAS "+str(cls.session_cached))
+
+        if id not in cls.session_cached[type.name.lower()]:
+            return False
+        
+        if in_progress in [False, True]:
+            return cls.session_cached[type.name.lower()][id] == in_progress
+        else:
+            return True
+        
 
 
 def send_servers(guilds):
