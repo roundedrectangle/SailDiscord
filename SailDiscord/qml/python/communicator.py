@@ -17,36 +17,42 @@ from PIL import Image
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-class ImageType(Enum):
-    SERVER = auto()
-    PERSON = auto()
+class Cache:
+    class ImageType(Enum):
+        SERVER = auto()
+        PERSON = auto()
 
-def get_cached_path(id, type: ImageType):
-    return Path(comm.cache) / type.name.lower() / f"{id}.png"
+    @classmethod
+    def get_cached_path(cls, id, type: ImageType):
+        return Path(comm.cache) / type.name.lower() / f"{id}.png"
 
-def download_pillow(url):
-    """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
-    r = requests.get(url, stream=True)
-    if r.status_code != 200: return
-    im = Image.open(r.raw)
-    return im
+    @classmethod
+    def download_pillow(cls, url):
+        """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
+        r = requests.get(url, stream=True)
+        if r.status_code != 200: return
+        im = Image.open(r.raw)
+        return im
 
-def cache_image(url, id, type: ImageType):
-    im = download_pillow(url)
-    if im == None: return
-    comm.ensure_cache()
-    path = get_cached_path(id, type)
-    path.parent.mkdir(exist_ok=True, parents=True)
-    im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
+    @classmethod
+    def cache_image(cls, url, id, type: ImageType):
+        im = cls.download_pillow(url)
+        if im == None: return
+        comm.ensure_cache()
+        path = cls.get_cached_path(id, type)
+        path.parent.mkdir(exist_ok=True, parents=True)
+        im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
 
-def get_cached_pillow(id, type: ImageType):
-    comm.ensure_cache()
-    path = get_cached_path(id, type)
-    if not path.exists(): return
-    return Image.open(path)
+    @classmethod
+    def get_cached_pillow(cls, id, type: ImageType):
+        comm.ensure_cache()
+        path = cls.get_cached_path(id, type)
+        if not path.exists(): return
+        return Image.open(path)
 
-def cache_image_bg(url, id, type: ImageType):
-    Thread(target=cache_image, args=(url, id, type)).start()
+    @classmethod
+    def cache_image_bg(cls, url, id, type: ImageType):
+        Thread(target=cls.cache_image, args=(url, id, type)).start()
 
 
 
@@ -55,13 +61,13 @@ def send_servers(guilds):
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
 
-        cached_path = get_cached_path(g.id, ImageType.SERVER)
+        cached_path = Cache.get_cached_path(g.id, Cache.ImageType.SERVER)
         icon = cached_path if cached_path.exists() else str(g.icon)
         icon = '' if g.icon == None else icon
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
-            cache_image_bg(icon, g.id, ImageType.SERVER)
+            Cache.cache_image_bg(icon, g.id, Cache.ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
