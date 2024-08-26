@@ -25,8 +25,12 @@ class Cache:
         PERSON = auto()
 
     @classmethod
-    def get_cached_path(cls, id, type: ImageType):
-        return Path(comm.cache) / type.name.lower() / f"{id}.png"
+    def get_cached_path(cls, id, type: ImageType, default=None):
+        """If default is not None and path does not exist default is returned"""
+        path = Path(comm.cache) / type.name.lower() / f"{id}.png"
+        if (default != None) and (not path.exists()):
+            return default
+        return path
 
     @classmethod
     def download_pillow(cls, url):
@@ -55,9 +59,10 @@ def send_servers(guilds):
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
 
-        cached_path = Cache.get_cached_path(g.id, Cache.ImageType.SERVER)
-        icon = cached_path if cached_path.exists() else g.icon
-        icon = '' if g.icon == None else str(icon)
+        icon = '' if g.icon == None else \
+                str(Cache.get_cached_path(g.id, Cache.ImageType.SERVER, default=g.icon))
+
+        pyotherside.send(icon)
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
