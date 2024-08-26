@@ -82,15 +82,10 @@ Page {
                 messagesList.forceLayout()
                 return
             }
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                append({messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1})
-                messagesList.forceLayout()
-            })
-
-            python.setHandler("history_message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent) {
-                if ((_serverid != guildid) || (_channelid != channelid)) return;
-                insert(0, {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1})
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1}
+                if (history) insert(0, data); else append(data);
                 messagesList.forceLayout()
             })
         }

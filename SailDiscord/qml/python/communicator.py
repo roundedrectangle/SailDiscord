@@ -50,10 +50,11 @@ def send_channels_no_category(guild, user_id):
 
 def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    pyotherside.send('history_message' if is_history else 'message',
+    pyotherside.send('message',
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
-        str(message.author.display_avatar), message.author.id == comm.client.user.id)
+        str(message.author.display_avatar), message.author.id == comm.client.user.id,
+        is_history)
 
 def image_provider(url, size):
     r = requests.get(url, stream=True)
