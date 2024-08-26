@@ -24,8 +24,10 @@ def send_servers(guilds):
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
-        cached = False
+        cached = get_cached_pillow(g.id, ImageType.SERVER) != None
         pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count, cached)
+        if not cached:
+            Thread(target=cache_image, args=(g.icon, g.id, ImageType.SERVER)).start()
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -74,9 +76,6 @@ def extract_pillow(im, format='PNG'):
     bytearr = bytearray(bytearr.getvalue())
     return bytearr
 
-def download_image(url):
-    return extract_pillow(download_pillow(url))
-
 def cache_image(url, id, type: ImageType):
     c = download_pillow(url)
     if c == None: return
@@ -89,9 +88,6 @@ def get_cached_pillow(id, type: ImageType):
     path = os.path.join(comm.cache, type.name.lower(), f"{id}.png")
     if not os.path.exists(path): return
     return Image.open(path)
-
-def get_cached_image(id, type: ImageType):
-    return extract_pillow(get_cached_pillow(id, type))
 
 def image_provider(image_id, size):
     """id format: 'type id'"""
