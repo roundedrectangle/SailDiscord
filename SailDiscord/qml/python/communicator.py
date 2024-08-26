@@ -5,7 +5,7 @@
 import sys, time, io
 import pyotherside
 from threading import Thread
-import asyncio
+import asyncio, shutil
 from enum import Enum, auto
 from pathlib import Path
 
@@ -78,7 +78,7 @@ def download_pillow(url):
 def cache_image(url, id, type: ImageType):
     im = download_pillow(url)
     if im == None: return
-    while not comm.cache_ready:pass
+    comm.ensure_cache()
     path = Path(comm.cache) / type.name.lower() / f"{id}.png"
     path.parent.mkdir(exist_ok=True, parents=True)
     # We use Pillow to convert JPEG, GIF and others to PNG
@@ -86,7 +86,7 @@ def cache_image(url, id, type: ImageType):
     #pyotherside.send
 
 def get_cached_pillow(id, type: ImageType):
-    while not comm.cache_ready:pass
+    comm.ensure_cache()
     path = Path(comm.cache) / type.name.lower() / f"{id}.png"
     if not Path(path).exists(): return
     return Image.open(path)
@@ -153,9 +153,11 @@ class Communicator:
     def set_cache(self, cache):
         self.cache = str(cache)
 
-    @property
-    def cache_ready(self):
-        return len(self.cache) > 0
+    def ensure_cache(self):
+        while len(self.cache) <= 0: pass
+
+    def clear_cache(self):
+        shutil.rmtree(Path(self.cache))
 
     def _login(self):
         self.client.run(self.token)

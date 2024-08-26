@@ -206,13 +206,17 @@ Page {
                         width: sessionSection.width
                         spacing: Theme.paddingSmall
 
-                        Button {
-                            text: qsTr("Log out")
-                            onClicked: {
-                                appConfiguration.token = "";
+                        ButtonLayout {
+                            Button {
+                                text: qsTr("Log out")
+                                onClicked: appConfiguration.token = ""
                             }
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
+
+                            Button {
+                                text: qsTr("Clear cache")
+                                onClicked: python.clearCache()
+                            }
+                            }
                     }
                 }
             }

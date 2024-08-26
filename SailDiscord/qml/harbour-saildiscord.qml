@@ -109,5 +109,9 @@ ApplicationWindow {
         function resetCurrentChannel() {
             setCurrentChannel("", "")
         }
+
+        function clearCache() {
+            call('communicator.comm.clear_cache', [], function() {})
+        }
     }
 }

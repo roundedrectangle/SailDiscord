@@ -425,5 +425,10 @@
         <source>Log out</source>
         <translation>Выйти</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
+        <source>Clear cache</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
