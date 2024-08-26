@@ -216,7 +216,7 @@ Page {
                                 text: qsTr("Clear cache")
                                 onClicked: python.clearCache()
                             }
-                            }
+                        }
                     }
                 }
             }
