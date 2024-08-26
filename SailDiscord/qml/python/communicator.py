@@ -25,7 +25,8 @@ def send_servers(guilds):
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
         cached = get_cached_pillow(g.id, ImageType.SERVER) != None
-        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count, cached)
+        icon = f'image://python/SERVER {g.id}' if cached else str(g.icon)
+        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count)
         if not cached:
             Thread(target=cache_image, args=(g.icon, g.id, ImageType.SERVER)).start()
 
