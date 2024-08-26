@@ -23,7 +23,7 @@ ListItem {
 
             Image {
                 id: profileIcon
-                source: hasIcon ? "image://python/" + icon : ""
+                source: hasIcon ? icon : ""
                 height: parent.parent.parent.height-4*Theme.paddingSmall
                 width: height
 

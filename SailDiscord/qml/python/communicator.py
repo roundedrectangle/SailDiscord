@@ -19,8 +19,8 @@ def send_servers(guilds):
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
-        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count)
-        #send_server_info(g)
+        cached = False
+        pyotherside.send('server', str(g.id), str(g.name), str(g.icon), count, cached)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -56,13 +56,21 @@ def send_message(message, is_history=False):
         str(message.author.display_avatar), message.author.id == comm.client.user.id,
         is_history)
 
+def download_image(url):
+    r = requests.get(url, stream=True)
+    im = Image.open(r.raw)
+    bytearr = io.BytesIO()
+    im.save(bytearr, format='PNG')
+    bytearr = bytearray(bytearr.getvalue())
+    return bytearr
+
 def image_provider(url, size):
     r = requests.get(url, stream=True)
     im = Image.open(r.raw)
     bytearr = io.BytesIO()
     im.save(bytearr, format='PNG')
     bytearr = bytearray(bytearr.getvalue())
-    return (bytearr, im.size, pyotherside.format_data)
+    return bytearr, im.size, pyotherside.format_data
 
 class MyClient(discord.Client):
     current_server = None

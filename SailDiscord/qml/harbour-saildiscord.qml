@@ -64,7 +64,7 @@ ApplicationWindow {
                 myPage.loading = false;
                 myPage.username = _username;
             })
-            setHandler('server', function(_id, _name, _icon, _memberCount) { myPage.serversModel.append({"id": _id, "name": _name, "image": _icon, "memberCount": _memberCount}) })
+            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
 
             importModule('communicator', function () {})
             call('communicator.comm.set_cache', [StandardPaths.cache], function() {})
