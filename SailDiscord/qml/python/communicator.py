@@ -18,6 +18,8 @@ from PIL import Image
 QMLLIVE_DEBUG = True
 
 class Cache:
+    """Cache operations"""
+
     class ImageType(Enum):
         SERVER = auto()
         PERSON = auto()
@@ -54,12 +56,12 @@ def send_servers(guilds):
         count = g.member_count if g.member_count != None else -1
 
         cached_path = Cache.get_cached_path(g.id, Cache.ImageType.SERVER)
-        icon = cached_path if cached_path.exists() else str(g.icon)
-        icon = '' if g.icon == None else icon
+        icon = cached_path if cached_path.exists() else g.icon
+        icon = '' if g.icon == None else str(icon)
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
-            Cache.cache_image_bg(icon, g.id, Cache.ImageType.SERVER)
+            Cache.cache_image_bg(str(g.icon), g.id, Cache.ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -161,7 +163,7 @@ class Communicator:
         while len(self.cache) <= 0: pass
 
     def clear_cache(self):
-        shutil.rmtree(Path(self.cache))
+        shutil.rmtree(Path(self.cache), ignore_errors=True)
 
     def _login(self):
         self.client.run(self.token)
