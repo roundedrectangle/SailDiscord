@@ -3,6 +3,7 @@
 # if __name__ == "__main__":
 #     pass
 import os, sys, time, io
+from enum import Enum
 import pyotherside
 from threading import Thread
 import asyncio
@@ -14,6 +15,10 @@ from PIL import Image
 # when you save a file in QMLLive, the app is reloaded, and so are the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
+
+class ImageType(Enum):
+    SERVER = auto()
+    PERSON = auto()
 
 def send_servers(guilds):
     lst = list(guilds)
@@ -56,21 +61,47 @@ def send_message(message, is_history=False):
         str(message.author.display_avatar), message.author.id == comm.client.user.id,
         is_history)
 
-def download_image(url):
+def download_pillow(url):
     r = requests.get(url, stream=True)
+    if r.status_code != 200: return
     im = Image.open(r.raw)
+    return im
+
+def extract_pillow(im, format='PNG'):
+    if im == None: return
     bytearr = io.BytesIO()
-    im.save(bytearr, format='PNG')
+    im.save(bytearr, format=format)
     bytearr = bytearray(bytearr.getvalue())
     return bytearr
 
-def image_provider(url, size):
-    r = requests.get(url, stream=True)
-    im = Image.open(r.raw)
-    bytearr = io.BytesIO()
-    im.save(bytearr, format='PNG')
-    bytearr = bytearray(bytearr.getvalue())
-    return bytearr, im.size, pyotherside.format_data
+def download_image(url):
+    return extract_pillow(download_pillow(url))
+
+def cache_image(url, id, type: ImageType):
+    c = download_pillow(url)
+    if c == None: return
+    while not comm.cache_ready:pass
+    # We use Pillow to convert JPEG, GIF and others to PNG
+    c.save(os.path.join(comm.cache, type.name.lower(), f"{id}.png"))
+
+def get_cached_pillow(id, type: ImageType):
+    while not comm.cache_ready:pass
+    path = os.path.join(comm.cache, type.name.lower(), f"{id}.png")
+    if not os.path.exists(path): return
+    return Image.open(path)
+
+def get_cached_image(id, type: ImageType):
+    return extract_pillow(get_cached_pillow(id, type))
+
+def image_provider(image_id, size):
+    """id format: 'type id'"""
+    type = ImageType[image_id.split()[0].upper()]
+    id = image_id.split()[1]
+    im = get_cached_pillow(id, type)
+    if im == None:
+        return bytearray(b''), (-1, -1), pyotherside.format_data
+
+    return extract_pillow(im), im.size, pyotherside.format_data
 
 class MyClient(discord.Client):
     current_server = None

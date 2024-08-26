@@ -80,7 +80,7 @@ Page {
 
         delegate: ServerListItem {
             title: name
-            icon: cached ? "image://python/" + image : image
+            icon: cached ? "image://python/"+image : image
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
