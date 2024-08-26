@@ -25,15 +25,14 @@ def send_servers(guilds):
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
-        if g.icon == None:
-            cached = True
-            icon = ''
-        else:
-            cached = get_cached_pillow(g.id, ImageType.SERVER) != None
-            icon = str(Path(comm.cache) / f"server/{g.id}.png") if cached else str(g.icon)
+
+        cached_path = get_cached_path(g.id, ImageType.SERVER)
+        icon = cached_path if cached_path.exists() else str(g.icon)
+        icon = '' if g.icon == None else icon
+
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
-        if not cached:
-            Thread(target=cache_image, args=(icon, g.id, ImageType.SERVER)).start()
+        if icon != '':
+            cache_image_bg(icon, g.id, ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -69,7 +68,11 @@ def send_message(message, is_history=False):
         str(message.author.display_avatar), message.author.id == comm.client.user.id,
         is_history)
 
+def get_cached_path(id, type: ImageType):
+    return Path(comm.cache) / type.name.lower() / f"{id}.png"
+
 def download_pillow(url):
+    """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
     r = requests.get(url, stream=True)
     if r.status_code != 200: return
     im = Image.open(r.raw)
@@ -79,17 +82,18 @@ def cache_image(url, id, type: ImageType):
     im = download_pillow(url)
     if im == None: return
     comm.ensure_cache()
-    path = Path(comm.cache) / type.name.lower() / f"{id}.png"
+    path = get_cached_path(id, type)
     path.parent.mkdir(exist_ok=True, parents=True)
-    # We use Pillow to convert JPEG, GIF and others to PNG
-    im.save(path)
-    #pyotherside.send
+    im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
 
 def get_cached_pillow(id, type: ImageType):
     comm.ensure_cache()
-    path = Path(comm.cache) / type.name.lower() / f"{id}.png"
-    if not Path(path).exists(): return
+    path = get_cached_path(id, type)
+    if not path.exists(): return
     return Image.open(path)
+
+def cache_image_bg(url, id, type: ImageType):
+    Thread(target=cache_image, args=(url, id, type)).start()
 
 class MyClient(discord.Client):
     current_server = None
