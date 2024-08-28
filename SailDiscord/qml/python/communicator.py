@@ -31,11 +31,19 @@ class Cache:
         USER = auto()
 
     @classmethod
+    def _cached_path(cls, id, type: ImageType):
+        return Path(comm.cache) / type.name.lower() / f"{id}.png"
+
+    @classmethod
     def get_cached_path(cls, id, type: ImageType, default=None):
-        """If default is not None and path does not exist default is returned"""
-        path = Path(comm.cache) / type.name.lower() / f"{id}.png"
+        """If default is not None and any of these:
+        - path does not exist
+        - path was cached in this session (finished only)
+        - path contains broken image
+        then default is returned"""
+        path = cls._cached_path(id, type)
         if default != None:
-            if (not path.exists()) or cls.has_cached_session(id, type, False):
+            if cls.broken_image(id, type) or cls.has_cached_session(id, type, True):
                 return default
         return path
 
@@ -54,7 +62,7 @@ class Cache:
 
     @classmethod
     def broken_image(cls, id, type: ImageType):
-        """Checks if an image is broken. Returns None if not or an error if yes."""
+        """Checks if an image is broken or image is not cached. Returns None if not or an error if yes."""
         path = cls.get_cached_path(id, type)
         if not path.exists():
             return DoesNotExistException
@@ -73,7 +81,7 @@ class Cache:
         if cls.has_cached_session(id, type):
             # Only cache once in a session
             return
-        cls.set_cached_session(id, type, True)
+        cls.set_cached_session(id, type, False)
         im = cls.download_pillow(url)
         if im == None: return
         comm.ensure_cache()
@@ -97,19 +105,21 @@ class Cache:
         return False
 
     @classmethod
-    def set_cached_session(cls, id, type: ImageType, in_progress=False):
+    def set_cached_session(cls, id, type: ImageType, finished=True):
         cls.ensure_cached_session()
-        cls.session_cached[type.name.lower()][str(id)] = in_progress
-        pyotherside.send("SET "+str(cls.session_cached))
+        cls.session_cached[type.name.lower()][str(id)] = finished
+        #pyotherside.send("SET "+str(cls.session_cached))
 
     @classmethod
-    def has_cached_session(cls, id, type: ImageType, in_progress=None):
-        """in_progress:
-            - True for in progress only
-            - False for finished only
-            - None/anything else for any/both"""
+    def has_cached_session(cls, id, type: ImageType, finished=None):
+        """Returns was ever the image cached in the current session.
+        
+        finished:
+            - True for checking finished only
+            - False for checking in progress only
+            - Anything else (or None) for checking any/both"""
         cls.ensure_cached_session()
-        pyotherside.send("HAS "+str(cls.session_cached))
+        #pyotherside.send("HAS "+str(cls.session_cached))
 
         if id not in cls.session_cached[type.name.lower()]:
             return False
