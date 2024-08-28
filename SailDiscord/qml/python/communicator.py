@@ -43,7 +43,7 @@ class Cache:
         then default is returned"""
         path = cls._cached_path(id, type)
         if default != None:
-            if cls.broken_image(id, type) or cls.has_cached_session(id, type, True):
+            if cls.verify_image(id, type) or cls.has_cached_session(id, type, True):
                 return default
         return path
 
@@ -67,6 +67,11 @@ class Cache:
         if not path.exists():
             return DoesNotExistException
         return cls._verify_pillow(path)
+    
+    @classmethod
+    def verify_image(cls, id, type: ImageType):
+        """Returns if an image is not broken and is cached"""
+        return cls.broken_image(id, type) == None
 
     @classmethod
     def download_pillow(cls, url):

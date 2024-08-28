@@ -104,10 +104,6 @@ Page {
                     }
                 }
             }
-
-            Component.onCompleted: {
-                console.log(image);
-            }
         }
     }
 
