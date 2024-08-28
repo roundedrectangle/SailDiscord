@@ -8,6 +8,7 @@ from threading import Thread
 import asyncio, shutil
 from enum import Enum, auto
 from pathlib import Path
+from datetime import datetime, timezone, timedelta
 
 sys.path.append(Path(sys.path[0]).parent / 'deps')
 import discord, requests
@@ -48,6 +49,15 @@ class Cache:
         return path
 
     @classmethod
+    def _update_required(cls, path: Path, minimum_time: timedelta = timedelta(1)):
+        """Returns if the file at `path` was modified more or `minimum_time` ago."""
+        mod = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+        now = datetime.now(timezone.utc)
+        dif = now-mod
+        return dif >= minimum_time
+
+
+    @classmethod
     def _verify_pillow(cls, path):
         try:
             im = Image.load(path)
@@ -84,7 +94,6 @@ class Cache:
     @classmethod
     def cache_image(cls, url, id, type: ImageType):
         if cls.has_cached_session(id, type):
-            pyotherside.send(f"YUY+{id}")
             return # Only cache once in a session
         cls.set_cached_session(id, type, False)
         im = cls.download_pillow(url)
@@ -101,7 +110,7 @@ class Cache:
 
     @classmethod
     def ensure_cached_session(cls):
-        """Returns True if stuff cached in this session were initialized"""
+        """Returns True if stuff cached in this session was initialized"""
         if not hasattr(cls, 'session_cached'):
             cls.session_cached = {}
             for im in cls.ImageType:
