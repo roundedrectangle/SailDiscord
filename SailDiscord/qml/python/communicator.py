@@ -17,13 +17,6 @@ from PIL import Image
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-class classproperty:
-    def __init__(self, func):
-        self.fget = func
-    def __get__(self, instance, owner):
-        return self.fget(owner)
-
-
 class SailDiscordException(Exception):
     pass
 
@@ -44,11 +37,13 @@ class Cache:
     @classmethod
     def get_cached_path(cls, id, type: ImageType, default=None):
         """If default is not None and any of these:
-            - path does not exist
-            - path contains broken image
+        - path does not exist
+        - path was cached in this session (finished only)
+        - path contains broken image
         then default is returned"""
         path = cls._cached_path(id, type)
-        if default != None and cls.verify_image(id, type):
+        if default != None:
+            if cls.verify_image(id, type):
                 return default
         return path
 
@@ -89,6 +84,7 @@ class Cache:
     @classmethod
     def cache_image(cls, url, id, type: ImageType):
         if cls.has_cached_session(id, type):
+            pyotherside.send(f"YUY+{id}")
             return # Only cache once in a session
         cls.set_cached_session(id, type, False)
         im = cls.download_pillow(url)
@@ -100,16 +96,8 @@ class Cache:
         cls.set_cached_session(id, type)
 
     @classmethod
-    def ensure_threads(cls):
-        cls.running = []
-        cls.threads_full = False
-
-    @classmethod
     def cache_image_bg(cls, url, id, type: ImageType):
-        cls.ensure_threads()
-        t = Thread(target=cls.cache_image, args=(url, id, type))
-        t.start()
-        cls.running.append(t)
+        Thread(target=cls.cache_image, args=(url, id, type)).start()
 
     @classmethod
     def ensure_cached_session(cls):

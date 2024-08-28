@@ -32,7 +32,6 @@ ApplicationWindow {
         path: "/apps/harbour-saildiscord"
 
         property string token: ""
-        property date lastCacheUpdate
 
         Component.onCompleted: {
             //clear()
@@ -66,7 +65,6 @@ ApplicationWindow {
                 myPage.username = _username;
             })
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
-            setHandler('cacheUpdate', function(data) { appConfiguration.lastCacheUpdate = data })
 
             importModule('communicator', function () {})
             call('communicator.comm.set_cache', [StandardPaths.cache], function() {})
