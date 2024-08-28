@@ -17,6 +17,12 @@ from PIL import Image
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
+class SailDiscordException(Exception):
+    pass
+
+class DoesNotExistException(SailDiscordException):
+    pass
+
 class Cache:
     """Cache operations"""
 
@@ -28,9 +34,31 @@ class Cache:
     def get_cached_path(cls, id, type: ImageType, default=None):
         """If default is not None and path does not exist default is returned"""
         path = Path(comm.cache) / type.name.lower() / f"{id}.png"
-        if ((default != None) and (not path.exists())) and cls.has_cached_session(id, type, False):
-            return default
+        if default != None:
+            if (not path.exists()) or cls.has_cached_session(id, type, False):
+                return default
         return path
+
+    @classmethod
+    def _verify_pillow(cls, path):
+        try:
+            im = Image.load(path)
+            im.verify()
+            im.close()
+            im = Image.load(path) 
+            im.transpose(Image.FLIP_LEFT_RIGHT)
+            im.close()
+        except Exception as e:
+            return e
+        return None
+
+    @classmethod
+    def broken_image(cls, id, type: ImageType):
+        """Checks if an image is broken. Returns None if not or an error if yes."""
+        path = cls.get_cached_path(id, type)
+        if not path.exists():
+            return DoesNotExistException
+        return cls._verify_pillow(path)
 
     @classmethod
     def download_pillow(cls, url):
