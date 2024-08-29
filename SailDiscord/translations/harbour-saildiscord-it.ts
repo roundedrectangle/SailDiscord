@@ -439,7 +439,12 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="229"/>
-        <source>On restart</source>
+        <source>On app restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="244"/>
+        <source>Changes how often the cache is updated. App restart required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

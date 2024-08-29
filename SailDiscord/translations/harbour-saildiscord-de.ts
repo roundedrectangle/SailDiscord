@@ -346,10 +346,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>On restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hourly</source>
         <translation type="unfinished"></translation>
     </message>
@@ -371,6 +367,14 @@
     </message>
     <message>
         <source>Yearly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On app restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changes how often the cache is updated. App restart required</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

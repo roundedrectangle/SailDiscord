@@ -226,7 +226,7 @@ Page {
                             width: parent.width
                             valueText: switch (value) {
                                default: case 0: return qsTr("Never")
-                               case 1: return qsTr("On restart")
+                               case 1: return qsTr("On app restart")
                                case 2: return qsTr("Hourly")
                                case 3: return qsTr("Daily")
                                case 4: return qsTr("Weekly")
@@ -238,6 +238,14 @@ Page {
                             label: "Cache update period"
 
                             onValueChanged: appSettings.cachePeriod = value
+                        }
+
+                        Label {
+                            text: qsTr("Changes how often the cache is updated. App restart required")
+                            color: palette.secondaryHighlightColor
+                            wrapMode: Text.Wrap
+                            width: parent.width - Theme.horizontalPageMargin
+                            anchors.horizontalCenter: parent.horizontalCenter
                         }
                     }
                 }
