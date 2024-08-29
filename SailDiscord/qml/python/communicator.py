@@ -9,7 +9,7 @@ import asyncio, shutil
 from pathlib import Path
 
 from exceptions import *
-from caching import Cacher, ImageType
+from caching import Cacher, ImageType, CachePeriodMapping
 
 sys.path.append(Path(sys.path[0]).parent / 'deps')
 import discord
@@ -121,6 +121,7 @@ class Communicator:
         self.client = MyClient(guild_subscriptions=False)
         self.token = ''
         self.cacher = None
+        self.cache_period = None
 
     def login(self, token):
         if self.loginth.is_alive():
@@ -131,9 +132,15 @@ class Communicator:
         self.loginth = Thread(target=self._login)
         self.loginth.start()
 
-    def set_cache(self, cache):
+    def set_cache(self, cache, cache_period):
         self.cacher = Cacher(cache)
+        self.set_cache_period(cache_period)
         #pyotherside.send(self.cacher.update_required(1021310444167778364, ImageType.SERVER))
+
+    def set_cache_period(self, cache_period):
+        """Run when cacher is initialized but cache period was changed"""
+        pyotherside.send(cache_period)
+        self.cache_period = CachePeriodMapping[cache_period]
 
     def ensure_cache(self):
         while self.cacher == None: pass

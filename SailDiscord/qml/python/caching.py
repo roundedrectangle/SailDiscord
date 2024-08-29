@@ -14,15 +14,17 @@ from PIL import Image
 
 AnyPath = Union[Path, str]
 
-# def cachefailsafe(fun):
-#     """Failsafe for cache being None"""
-#     def f(*args, **kwargs):
-#         if self.cache == None:
-#             if self.error_on_none:
-#                 raise NotImplementedError
-#         else:
-#             fun(*args, **kwargs)
-#     return f
+CachePeriodMapping = [
+    None, # Never
+    timedelta(), # On app restart
+    timedelta(hours=1),
+    timedelta(1),
+    timedelta(weeks=1),
+    timedelta(30),
+    timedelta(182.5), # half-yearly
+    timedelta(365),
+]
+#CachePeriodMapping.__doc__ = """Maps QML cache period slider system to timedelta objects. On app restart is timedelta(0), Never is None."""
 
 class ImageType(Enum):
     SERVER = auto()

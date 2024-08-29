@@ -53,6 +53,8 @@ ApplicationWindow {
             property string oneAuthorPadding: "n"
 
             property int cachePeriod: 1
+
+            onCachePeriodChanged: python.call('communicator.comm.set_cache_period', [cachePeriod], function() {})
         }
     }
 
@@ -69,7 +71,8 @@ ApplicationWindow {
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
 
             importModule('communicator', function () {})
-            call('communicator.comm.set_cache', [StandardPaths.cache], function() {})
+
+            call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod], function() {})
         }
 
         onError: {
