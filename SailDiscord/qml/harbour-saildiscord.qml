@@ -40,7 +40,7 @@ ApplicationWindow {
 
         ConfigurationGroup {
             id: appSettings
-            path: "/settings"
+            path: "settings"
 
             property bool emptySpace: false
             property bool ignorePrivate: false
@@ -51,6 +51,8 @@ ApplicationWindow {
             property string sentBehaviour: "r"
             property string messagesPadding: "n"
             property string oneAuthorPadding: "n"
+
+            property int cachePeriod: 1
         }
     }
 

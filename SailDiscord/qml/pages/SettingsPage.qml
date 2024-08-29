@@ -226,12 +226,12 @@ Page {
                             width: parent.width
                             valueText: switch (value) {
                                default: case 0: return qsTr("Never")
-                               case 1: return qsTr("Every restart")
+                               case 1: return qsTr("On restart")
                                case 2: return qsTr("Hourly")
                                case 3: return qsTr("Daily")
                                case 4: return qsTr("Weekly")
                                case 5: return qsTr("Monthly")
-                               case 6: return qsTr("Every 6 months")
+                               case 6: return qsTr("Half-yearly")
                                case 7: return qsTr("Yearly")
                             }
 
