@@ -217,6 +217,26 @@ Page {
                                 onClicked: python.clearCache()
                             }
                         }
+
+                        Slider {
+                            value: 0
+                            minimumValue: 0
+                            maximumValue: 7
+                            stepSize: 1
+                            width: parent.width
+                            valueText: switch (value) {
+                               default: case 0: return qsTr("Never")
+                               case 1: return qsTr("Every restart")
+                               case 2: return qsTr("Hourly")
+                               case 3: return qsTr("Daily")
+                               case 4: return qsTr("Weekly")
+                               case 5: return qsTr("Monthly")
+                               case 6: return qsTr("Every 6 months")
+                               case 7: return qsTr("Yearly")
+                            }
+
+                            label: "Cache update period"
+                        }
                     }
                 }
             }
