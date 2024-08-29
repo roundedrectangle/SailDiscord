@@ -19,16 +19,17 @@ import discord
 QMLLIVE_DEBUG = True
 
 def send_servers(guilds):
+    comm.ensure_cache()
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
 
         icon = '' if g.icon == None else \
-                str(Cache.get_cached_path(g.id, caching.ImageType.SERVER, default=g.icon))
+                str(comm.cacher.get_cached_path(g.id, caching.ImageType.SERVER, default=g.icon))
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
-            Cache.cache_image_bg(str(g.icon), g.id, caching.ImageType.SERVER)
+            comm.cacher.cache_image_bg(str(g.icon), g.id, caching.ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -60,7 +61,7 @@ def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
 
     icon = '' if message.author.display_avatar == None else \
-            str(Cache.get_cached_path(message.author.id, caching.ImageType.USER, default=message.author.display_avatar))
+            str(comm.cacher.get_cached_path(message.author.id, caching.ImageType.USER, default=message.author.display_avatar))
 
     pyotherside.send('message',
         str(message.guild.id), str(message.channel.id),
@@ -69,7 +70,7 @@ def send_message(message, is_history=False):
         is_history)
 
     if icon != '':
-        Cache.cache_image_bg(str(message.author.display_avatar), message.author.id, caching.ImageType.USER)
+        comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, caching.ImageType.USER)
 
 class MyClient(discord.Client):
     current_server = None
@@ -119,8 +120,7 @@ class Communicator:
         self.loginth.start()
         self.client = MyClient(guild_subscriptions=False)
         self.token = ''
-        self.cache = ''
-        self.cacher = Cacher(None)
+        self.cacher = None
 
     def login(self, token):
         if self.loginth.is_alive():
@@ -132,11 +132,11 @@ class Communicator:
         self.loginth.start()
 
     def set_cache(self, cache):
-        self.cache = str(cache)
-        #pyotherside.send(Cache.update_required(1021310444167778364, caching.ImageType.SERVER))
+        self.cacher = Cacher(cache)
+        #pyotherside.send(self.cacher.update_required(1021310444167778364, caching.ImageType.SERVER))
 
     def ensure_cache(self):
-        while len(self.cache) <= 0: pass
+        while self.cacher == None: pass
 
     def clear_cache(self):
         shutil.rmtree(Path(self.cache), ignore_errors=True)
