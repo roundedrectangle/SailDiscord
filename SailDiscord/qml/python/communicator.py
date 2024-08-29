@@ -9,8 +9,7 @@ import asyncio, shutil
 from pathlib import Path
 
 from exceptions import *
-import caching
-from caching import Cache
+from caching import Cacher, ImageType
 
 sys.path.append(Path(sys.path[0]).parent / 'deps')
 import discord
@@ -121,6 +120,7 @@ class Communicator:
         self.client = MyClient(guild_subscriptions=False)
         self.token = ''
         self.cache = ''
+        self.cacher = Cacher(None)
 
     def login(self, token):
         if self.loginth.is_alive():
