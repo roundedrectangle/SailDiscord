@@ -6,12 +6,13 @@ from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from threading import Thread
 import pyotherside
+from typing import Union
 
 sys.path.append(Path(sys.path[0]).parent / 'deps')
 import requests
 from PIL import Image
 
-AnyPath = Path | str
+AnyPath = Union[Path, str]
 
 # def cachefailsafe(fun):
 #     """Failsafe for cache being None"""
