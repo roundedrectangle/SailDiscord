@@ -10,6 +10,8 @@ from enum import Enum, auto
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
+from exceptions import *
+
 sys.path.append(Path(sys.path[0]).parent / 'deps')
 import discord, requests
 from PIL import Image
@@ -17,12 +19,6 @@ from PIL import Image
 # when you save a file in QMLLive, the app is reloaded, and so are the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
-
-class SailDiscordException(Exception):
-    pass
-
-class DoesNotExistException(SailDiscordException):
-    pass
 
 class Cache:
     """Cache operations"""
@@ -49,13 +45,22 @@ class Cache:
         return path
 
     @classmethod
-    def _update_required(cls, path: Path, minimum_time: timedelta = timedelta(1)):
+    def _update_required(cls, path: Path, minimum_time: timedelta):
         """Returns if the file at `path` was modified more or `minimum_time` ago."""
         mod = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+        pyotherside.send(str(mod), str(path))
         now = datetime.now(timezone.utc)
         dif = now-mod
         return dif >= minimum_time
 
+    @classmethod
+    def update_required(cls, id, type: ImageType):
+        t = timedelta(1)
+
+        p = cls.get_cached_path(id, type)
+        if not p.exists():
+            return
+        return cls._update_required(p, t)
 
     @classmethod
     def _verify_pillow(cls, path):
@@ -75,7 +80,7 @@ class Cache:
         """Checks if an image is broken or image is not cached. Returns None if not or an error if yes."""
         path = cls.get_cached_path(id, type)
         if not path.exists():
-            return DoesNotExistException
+            return DoesNotExistError
         return cls._verify_pillow(path)
     
     @classmethod
@@ -259,6 +264,7 @@ class Communicator:
 
     def set_cache(self, cache):
         self.cache = str(cache)
+        #pyotherside.send(Cache.update_required(1021310444167778364, Cache.ImageType.SERVER))
 
     def ensure_cache(self):
         while len(self.cache) <= 0: pass
