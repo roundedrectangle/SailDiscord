@@ -9,11 +9,11 @@ import asyncio, shutil
 from pathlib import Path
 
 from exceptions import *
+import caching
 from caching import Cache
 
 sys.path.append(Path(sys.path[0]).parent / 'deps')
-import discord, requests
-from PIL import Image
+import discord
 
 # when you save a file in QMLLive, the app is reloaded, and so are the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -25,11 +25,11 @@ def send_servers(guilds):
         count = g.member_count if g.member_count != None else -1
 
         icon = '' if g.icon == None else \
-                str(Cache.get_cached_path(g.id, Cache.ImageType.SERVER, default=g.icon))
+                str(Cache.get_cached_path(g.id, caching.ImageType.SERVER, default=g.icon))
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
         if icon != '':
-            Cache.cache_image_bg(str(g.icon), g.id, Cache.ImageType.SERVER)
+            Cache.cache_image_bg(str(g.icon), g.id, caching.ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -61,7 +61,7 @@ def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
 
     icon = '' if message.author.display_avatar == None else \
-            str(Cache.get_cached_path(message.author.id, Cache.ImageType.USER, default=message.author.display_avatar))
+            str(Cache.get_cached_path(message.author.id, caching.ImageType.USER, default=message.author.display_avatar))
 
     pyotherside.send('message',
         str(message.guild.id), str(message.channel.id),
@@ -70,7 +70,7 @@ def send_message(message, is_history=False):
         is_history)
 
     if icon != '':
-        Cache.cache_image_bg(str(message.author.display_avatar), message.author.id, Cache.ImageType.USER)
+        Cache.cache_image_bg(str(message.author.display_avatar), message.author.id, caching.ImageType.USER)
 
 class MyClient(discord.Client):
     current_server = None
@@ -133,7 +133,7 @@ class Communicator:
 
     def set_cache(self, cache):
         self.cache = str(cache)
-        #pyotherside.send(Cache.update_required(1021310444167778364, Cache.ImageType.SERVER))
+        #pyotherside.send(Cache.update_required(1021310444167778364, caching.ImageType.SERVER))
 
     def ensure_cache(self):
         while len(self.cache) <= 0: pass
