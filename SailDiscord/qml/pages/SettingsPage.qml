@@ -219,7 +219,7 @@ Page {
                         }
 
                         Slider {
-                            value: 0
+                            value: appSettings.cachePeriod
                             minimumValue: 0
                             maximumValue: 7
                             stepSize: 1
@@ -236,6 +236,8 @@ Page {
                             }
 
                             label: "Cache update period"
+
+                            onValueChanged: appSettings.cachePeriod = value
                         }
                     }
                 }
