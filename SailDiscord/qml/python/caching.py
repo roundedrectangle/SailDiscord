@@ -13,6 +13,8 @@ import requests
 from PIL import Image
 
 AnyPath = Union[Path, str]
+TimedeltaResult = Union[timedelta, None]
+AnyTimedelta = Union[TimedeltaResult, int]
 
 CachePeriodMapping = [
     None, # Never
@@ -60,9 +62,29 @@ def update_required(path: Path, minimum_time: timedelta):
     dif = now-mod
     return dif >= minimum_time
 
+def convert_to_timedelta(data: AnyTimedelta) -> TimedeltaResult:
+    try:
+        if isinstance(data, int):
+            return CachePeriodMapping[data]
+        else: return data # Already converted
+    except:
+        pyotherside.send(f"An error occured when converting timedeltas.\ndata of type {type(data)}: {data}\nFalling back to None.")
+        return None # failsafe
+
 class Cacher:
-    def __init__(self, cache: AnyPath):
+    @property
+    def update_period(self):
+        return self._update_period
+
+    @update_period.setter
+    def update_period(self, value: AnyTimedelta):
+        self._update_period = convert_to_timedelta(value)
+
+    def __init__(self, cache: AnyPath, update_period: AnyTimedelta):
+        self._update_period = None
+
         self.cache = Path(cache)
+        self.update_period = update_period
 
         self.session_cached = {}
         for im in ImageType:
