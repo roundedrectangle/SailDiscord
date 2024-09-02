@@ -103,7 +103,7 @@ class Cacher:
 
     def update_required(self, id, type: ImageType):
         p = self.get_cached_path(id, type)
-        if not p.exists():
+        if not p.exists() or self.update_period == timedelta(0):
             return True
         if self.update_period == None:
             return False
