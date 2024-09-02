@@ -129,9 +129,7 @@ class Cacher:
         if im == None: return
         path = self.get_cached_path(id, type)
         path.parent.mkdir(exist_ok=True, parents=True)
-        pyotherside.send(f"CACHING STARTED FOR {id}!")
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
-        pyotherside.send(f"caching stopped for {id}!")
         self.set_cached_session(id, type)
 
     def cache_image_bg(self, url, id, type: ImageType):
@@ -139,7 +137,7 @@ class Cacher:
 
     def set_cached_session(self, id, type: ImageType, finished=True):
         self.session_cached[type.name.lower()][str(id)] = finished
-        #pyotherside.send(f"SET {self.session_cached} {id} {id in self.session_cached[type.name.lower()]}")
+        #pyotherside.send(f"SET {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
 
     def has_cached_session(self, id, type: ImageType, finished=None):
         """Returns was ever the image cached in the current session.
@@ -148,7 +146,7 @@ class Cacher:
             - True for checking finished only
             - False for checking in progress only
             - Anything else (or None) for checking any/both"""
-        #pyotherside.send(f"HAS {self.session_cached} {str(id)} {str(id) in self.session_cached[type.name.lower()]}")
+        #pyotherside.send(f"HAS {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
 
         if str(id) not in self.session_cached[type.name.lower()]:
             return False

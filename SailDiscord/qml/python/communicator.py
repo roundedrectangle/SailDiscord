@@ -28,8 +28,8 @@ def send_servers(guilds):
                 str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
-        #if icon != '':
-        #    comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
+        if icon != '':
+            comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)
@@ -132,6 +132,9 @@ class Communicator:
         self.loginth.start()
 
     def set_cache(self, cache, cache_period):
+        if self.cacher != None:
+            self.set_cache_period(cache_period)
+            return
         self.cacher = Cacher(cache, cache_period)
         #pyotherside.send(self.cacher.update_required(1021310444167778364, ImageType.SERVER))
 
