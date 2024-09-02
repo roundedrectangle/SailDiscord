@@ -54,25 +54,27 @@ ApplicationWindow {
 
             property int cachePeriod: 1
 
-            onCachePeriodChanged: python.call('communicator.comm.set_cache_period', [cachePeriod], function() {})
+            onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
     }
 
     Python {
         id: python
+        property bool initialized: false
 
         Component.onCompleted: {
-            addImportPath(Qt.resolvedUrl("./python"));
-
             setHandler('logged_in', function(_username) {
                 myPage.loading = false;
                 myPage.username = _username;
             })
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
 
+            addImportPath(Qt.resolvedUrl("./python"))
             importModule('communicator', function () {})
 
             call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod], function() {})
+
+            initialized = true
         }
 
         onError: {
@@ -117,6 +119,11 @@ ApplicationWindow {
 
         function clearCache() {
             call('communicator.comm.clear_cache', [], function() {})
+        }
+
+        function setCachePeriod(period) {
+            if (!initialized) return;
+            python.call('communicator.comm.set_cache_period', [period], function() {})
         }
     }
 }
