@@ -57,7 +57,6 @@ def download_pillow(url):
 def update_required(path: Path, minimum_time: timedelta):
     """Returns if the file at `path` was modified more or `minimum_time` ago"""
     mod = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
-    pyotherside.send(str(mod), str(path))
     now = datetime.now(timezone.utc)
     dif = now-mod
     return dif >= minimum_time
@@ -93,22 +92,22 @@ class Cacher:
     def get_cached_path(self, id, type: ImageType, default=None):
         """If default is not None and any of these:
         - path does not exist
-        - path was cached in this session (finished only)
         - path contains broken image
+        - update_period set to None (Never)
         then default is returned"""
         path = cached_path(self.cache, id, type)
         if default != None:
-            if not self.verify_image(id, type):
+            if not self.verify_image(id, type) or self.update_period == None:
                 return default
         return path
 
     def update_required(self, id, type: ImageType):
-        t = timedelta(1)
-
         p = self.get_cached_path(id, type)
         if not p.exists():
-            return
-        return update_required(p, t)
+            return True
+        if self.update_period == None:
+            return False
+        return update_required(p, self.update_period)
 
     def broken_image(self, id, type: ImageType):
         """Checks if an image is broken or image is not cached. Returns None if not or an error if yes."""
@@ -122,8 +121,10 @@ class Cacher:
         return self.broken_image(id, type) == None
 
     def cache_image(self, url, id, type: ImageType):
-        if self.has_cached_session(id, type):
-            return # Only cache once in a session
+        if self.update_period == None: return # Never set in settings
+        if self.has_cached_session(id, type) or not self.update_required(id, type):
+            return # Only cache once in a session or update_period
+        pyotherside.send(f"were cookin {id}")
         self.set_cached_session(id, type, False)
         im = download_pillow(url)
         if im == None: return
