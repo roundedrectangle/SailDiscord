@@ -28,8 +28,8 @@ def send_servers(guilds):
                 str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
 
         pyotherside.send('server', str(g.id), str(g.name), icon, count)
-        if icon != '':
-            comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
+        #if icon != '':
+        #    comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
 def send_categories(guild, user_id):
     pyotherside.send('category', str(guild.id), str(-1), "", True)

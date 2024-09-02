@@ -98,7 +98,7 @@ class Cacher:
         then default is returned"""
         path = cached_path(self.cache, id, type)
         if default != None:
-            if self.verify_image(id, type):
+            if not self.verify_image(id, type):
                 return default
         return path
 
