@@ -129,7 +129,9 @@ class Cacher:
         if im == None: return
         path = self.get_cached_path(id, type)
         path.parent.mkdir(exist_ok=True, parents=True)
+        pyotherside.send(f"CACHING STARTED FOR {id}!")
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
+        pyotherside.send(f"caching stopped for {id}!")
         self.set_cached_session(id, type)
 
     def cache_image_bg(self, url, id, type: ImageType):
