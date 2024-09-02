@@ -124,7 +124,6 @@ class Cacher:
         if self.update_period == None: return # Never set in settings
         if self.has_cached_session(id, type) or not self.update_required(id, type):
             return # Only cache once in a session or update_period
-        pyotherside.send(f"were cookin {id}")
         self.set_cached_session(id, type, False)
         im = download_pillow(url)
         if im == None: return
