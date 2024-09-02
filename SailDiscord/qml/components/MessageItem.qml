@@ -70,6 +70,22 @@ ListItem {
                     }
                 }
             }
+
+            onStatusChanged: if (status == Image.Error)
+                Notices.show(qsTr("Error loading image %1. Please report this to developers").arg(author), Notice.Long, Notice.Top)
+
+            ProgressCircle {
+                id: progressCircle
+                anchors.fill: parent
+                visible: parent.status == Image.Loading
+
+                Timer {
+                    interval: 32
+                    repeat: true
+                    onTriggered: progressCircle.value = (progressCircle.value + 0.01) % 1.0
+                    running: parent.parent.status == Image.Loading
+                }
+            }
         }
 
         Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
