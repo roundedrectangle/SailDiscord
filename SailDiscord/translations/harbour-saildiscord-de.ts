@@ -72,6 +72,13 @@
     </message>
 </context>
 <context>
+    <name>MessageItem</name>
+    <message>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessagesPage</name>
     <message>
         <source>No messages</source>
@@ -217,6 +224,13 @@
     <message>
         <source>Item</source>
         <translation>Element</translation>
+    </message>
+</context>
+<context>
+    <name>ServerListItem</name>
+    <message>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

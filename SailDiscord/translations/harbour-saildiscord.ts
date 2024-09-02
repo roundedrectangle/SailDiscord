@@ -86,6 +86,14 @@
     </message>
 </context>
 <context>
+    <name>MessageItem</name>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="75"/>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessagesPage</name>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="27"/>
@@ -273,6 +281,14 @@
     <message>
         <location filename="../qml/pages/SecondPage.qml" line="23"/>
         <source>Item</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ServerListItem</name>
+    <message>
+        <location filename="../qml/components/ServerListItem.qml" line="50"/>
+        <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

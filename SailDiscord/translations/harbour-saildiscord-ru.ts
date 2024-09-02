@@ -86,6 +86,15 @@
     </message>
 </context>
 <context>
+    <name>MessageItem</name>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="75"/>
+        <location filename="../qml/components/ServerListItem.qml" line="50"/>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам.</translation>
+    </message>
+</context>
+<context>
     <name>MessagesPage</name>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="27"/>
@@ -443,37 +452,37 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="244"/>
         <source>Changes how often the cache is updated. App restart required</source>
-        <translation type="unfinished"></translation>
+        <translation>Устанавливает как часто будет обновление кэша.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="230"/>
         <source>Hourly</source>
-        <translation type="unfinished"></translation>
+        <translation>Каждый час</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="231"/>
         <source>Daily</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежедневно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Weekly</source>
-        <translation type="unfinished"></translation>
+        <translation>Еженедельно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Monthly</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежемесячно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="234"/>
         <source>Half-yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Каждые полгода</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Ежегодно</translation>
     </message>
 </context>
 </TS>
