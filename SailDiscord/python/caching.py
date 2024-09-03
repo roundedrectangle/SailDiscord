@@ -8,8 +8,10 @@ from threading import Thread
 import pyotherside
 from typing import Union
 
-script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/qml/python
-sys.path.append(script_path.parents[1] / 'lib/deps') # /usr/share/harbour-saildiscord/lib/deps
+from exceptions import *
+
+script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
+sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import requests
 from PIL import Image
 
@@ -38,10 +40,10 @@ def cached_path(cache: AnyPath, id, type: ImageType):
 
 def verify_pillow(path: AnyPath):
     try:
-        im = Image.load(path)
+        im = Image.open(path)
         im.verify()
         im.close()
-        im = Image.load(path) 
+        im = Image.open(path) 
         im.transpose(Image.FLIP_LEFT_RIGHT)
         im.close()
     except Exception as e:

@@ -11,8 +11,8 @@ from pathlib import Path
 from exceptions import *
 from caching import Cacher, ImageType, CachePeriodMapping
 
-script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/qml/python
-sys.path.append(script_path.parents[1] / 'lib/deps') # /usr/share/harbour-saildiscord/lib/deps
+script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
+sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import discord
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
