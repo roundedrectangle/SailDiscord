@@ -62,4 +62,7 @@ HEADERS += \
 images.files = images
 images.path = /usr/share/$${TARGET}
 
-INSTALLS += images
+python.files = python
+python.path = /usr/share/$${TARGET}
+
+INSTALLS += images python

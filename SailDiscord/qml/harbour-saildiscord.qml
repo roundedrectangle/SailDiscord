@@ -69,7 +69,7 @@ ApplicationWindow {
             })
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
 
-            addImportPath(Qt.resolvedUrl("./python"))
+            addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
             call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod], function() {})
