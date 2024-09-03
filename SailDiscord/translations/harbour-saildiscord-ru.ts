@@ -437,17 +437,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="216"/>
         <source>Clear cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистить кэш</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Никогда</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>On app restart</source>
-        <translation type="unfinished"></translation>
+        <translation>При перезагрузке приложения</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="244"/>
