@@ -90,7 +90,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="75"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished">Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам.</translation>
+        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
 </context>
 <context>
@@ -289,7 +289,7 @@
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="50"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished">Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам.</translation>
+        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
 </context>
 <context>
