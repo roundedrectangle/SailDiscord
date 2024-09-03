@@ -28,6 +28,8 @@ BuildRequires:  pkgconfig(qt5embedwidget)
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires: python3-pip
+BuildRequires: libjpeg-turbo
+BuildRequires: libjpeg-turbo-devel
 %endif
 
 %if %{package_library} == "no"

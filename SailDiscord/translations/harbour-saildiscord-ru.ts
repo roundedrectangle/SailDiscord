@@ -89,7 +89,6 @@
     <name>MessageItem</name>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="75"/>
-        <location filename="../qml/components/ServerListItem.qml" line="50"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам.</translation>
     </message>
@@ -286,6 +285,14 @@
     </message>
 </context>
 <context>
+    <name>ServerListItem</name>
+    <message>
+        <location filename="../qml/components/ServerListItem.qml" line="50"/>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation type="unfinished">Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам.</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="26"/>
@@ -451,8 +458,8 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="244"/>
-        <source>Changes how often the cache is updated. App restart required</source>
-        <translation>Устанавливает как часто будет обновление кэша.</translation>
+        <source>Changes how often the cache is updated</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="230"/>
