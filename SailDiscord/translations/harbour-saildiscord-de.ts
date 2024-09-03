@@ -388,7 +388,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Changes how often the cache is updated</source>
+        <source>Changes how often the cache is updated. App restart might be required</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

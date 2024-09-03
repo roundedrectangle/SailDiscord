@@ -460,7 +460,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="244"/>
-        <source>Changes how often the cache is updated</source>
+        <source>Changes how often the cache is updated. App restart might be required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -9,13 +9,13 @@ Name=SailDiscord
 #
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
-Name[de]=SailDiscord
+#Name[de]=SailDiscord
 
 [X-Sailjail]
 # Replace with your organization as a reverse domain name
 OrganizationName=io.github.roundedrectangle
 # ApplicationName does not have to be identical to Name
-ApplicationName=SailDiscord
+ApplicationName=harbour-saildiscord
 # Add the required permissions here
 Permissions=Internet;WebView
 

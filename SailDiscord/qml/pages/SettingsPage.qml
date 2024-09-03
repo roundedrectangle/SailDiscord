@@ -241,7 +241,7 @@ Page {
                         }
 
                         Label {
-                            text: qsTr("Changes how often the cache is updated")
+                            text: qsTr("Changes how often the cache is updated. App restart might be required")
                             font.pixelSize: Theme.fontSizeSmall
                             color: palette.secondaryHighlightColor
                             wrapMode: Text.Wrap
