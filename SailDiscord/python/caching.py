@@ -8,7 +8,8 @@ from threading import Thread
 import pyotherside
 from typing import Union
 
-sys.path.append(Path(sys.path[0]).parent / 'deps')
+script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/qml/python
+sys.path.append(script_path.parents[1] / 'lib/deps') # /usr/share/harbour-saildiscord/lib/deps
 import requests
 from PIL import Image
 
