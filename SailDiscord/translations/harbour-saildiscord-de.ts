@@ -395,5 +395,9 @@
         <source>Reset all settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings reset. Please restart the app</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
