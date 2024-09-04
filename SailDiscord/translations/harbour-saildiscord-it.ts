@@ -90,7 +90,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="75"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
 </context>
 <context>
@@ -170,9 +170,9 @@
     <message numerus="yes">
         <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="134"/>
         <source>show license(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>mostra licenza</numerusform>
+            <numerusform>mostra licenze</numerusform>
         </translation>
     </message>
     <message>
@@ -244,9 +244,9 @@
     <message numerus="yes">
         <location filename="../qml/modules/Opal/About/private/LicensePage.qml" line="31"/>
         <source>License(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Licenza</numerusform>
+            <numerusform>Licenze</numerusform>
         </translation>
     </message>
     <message>
@@ -291,7 +291,7 @@
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="50"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
 </context>
 <context>
@@ -446,52 +446,52 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="216"/>
         <source>Clear cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimina cache</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Mai</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>On app restart</source>
-        <translation type="unfinished"></translation>
+        <translation>Al riavvio dell&apos;applicazione</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="244"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia il numero di volte che la cache viene aggiornata. Un riavvio potrebbe essere necessario</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="230"/>
         <source>Hourly</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogni ora</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="231"/>
         <source>Daily</source>
-        <translation type="unfinished"></translation>
+        <translation>Giornalmente</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Weekly</source>
-        <translation type="unfinished"></translation>
+        <translation>Settimanalmente</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Monthly</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensilmente</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="234"/>
         <source>Half-yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Semestrale</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Yearly</source>
-        <translation type="unfinished"></translation>
+        <translation>Annualmente</translation>
     </message>
 </context>
 </TS>
