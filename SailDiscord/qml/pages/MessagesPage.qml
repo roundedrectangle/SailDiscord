@@ -33,6 +33,7 @@ Page {
             author: _author
             pfp: _pfp
             sent: _sent
+            date: _date
             sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
                                     msgModel.get(index-1)._author == _author
             masterWidth: !sameAuthorAsBefore ? -1 :
@@ -63,28 +64,28 @@ Page {
 
                 // Append demo messages
 
-                append({messageId: "-1", _author: "you", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
-                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
-                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
+                append({messageId: "-1", _author: "you", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
 
-                append({messageId: "-1", _author: "notyou", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
-                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
-                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
+                append({messageId: "-1", _author: "notyou", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
 
-                append({messageId: "-1", _author: "you", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
-                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
-                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1})
+                append({messageId: "-1", _author: "you", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
 
-                append({messageId: "-1", _author: "notyou", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
-                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
-                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1})
+                append({messageId: "-1", _author: "notyou", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
 
                 messagesList.forceLayout()
                 return
             }
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, history) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _date: _date, _masterWidth: -1}
                 if (history) insert(0, data); else append(data);
                 messagesList.forceLayout()
             })

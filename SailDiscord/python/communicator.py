@@ -68,7 +68,7 @@ def send_message(message, is_history=False):
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
         icon, message.author.id == comm.client.user.id,
-        is_history)
+        message.created_at, is_history)
 
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)

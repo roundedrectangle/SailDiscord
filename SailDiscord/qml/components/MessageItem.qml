@@ -11,6 +11,7 @@ ListItem {
     property bool sameAuthorAsBefore
     property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
+    property date date
 
     property alias innerWidth: row.width
 
