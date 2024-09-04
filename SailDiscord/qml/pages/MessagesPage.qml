@@ -62,23 +62,31 @@ Page {
                     return result;
                 };
 
+                var appendDemo = function(isyou, thecontents) {
+                    append({
+                               messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
+                               _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
+                               _sent: isyou, _masterWidth: -1
+                           })
+                }
+
                 // Append demo messages
 
-                append({messageId: "-1", _author: "you", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                appendDemo(true, "First message!")
+                appendDemo(true, "Second message")
+                appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
 
-                append({messageId: "-1", _author: "notyou", _contents: "First message!", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                appendDemo(false, "First message!")
+                appendDemo(false, "Second message")
+                appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
 
-                append({messageId: "-1", _author: "you", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "you", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "you", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/0.png", _sent: true, _masterWidth: -1, _date: new Date()})
+                appendDemo(true, repeatString("Hello, world. ", 50))
+                appendDemo(true, "Second message")
+                appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
 
-                append({messageId: "-1", _author: "notyou", _contents: repeatString("Hello, world. ", 50), _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "notyou", _contents: "Second message", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
-                append({messageId: "-1", _author: "notyou", _contents: "A l "+repeatString("o ", 100)+"ng message.", _pfp: "https://cdn.discordapp.com/embed/avatars/1.png", _sent: false, _masterWidth: -1, _date: new Date()})
+                appendDemo(false, repeatString("Hello, world. ", 50))
+                appendDemo(false, "Second message")
+                appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
 
                 messagesList.forceLayout()
                 return
