@@ -36,10 +36,7 @@ Page {
             //date: _date
             sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
                                     msgModel.get(index-1)._author == _author
-            masterWidth: !sameAuthorAsBefore ? -1 :
-                            (msgModel.get(index-1)._masterWidth != -1 ? // If the previous element had masterWidth, use that
-                            msgModel.get(index-1)._masterWidth :
-                            msgModel.get(index-1)._masterWidth)
+            masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
 
             function updateMasterWidth() {
                 msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
