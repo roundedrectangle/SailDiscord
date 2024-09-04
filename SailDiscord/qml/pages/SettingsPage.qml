@@ -227,9 +227,8 @@ Page {
                                 Button {
                                     text: qsTr("Reset all settings")
                                     onClicked: {
-                                        appSettings.sync()
                                         appSettings.clear()
-                                        appSettings.sync()
+                                        Notices.show(qsTr("Settings reset. Please restart the app"), Notice.Short, Notice.Center)
                                     }
                                 }
                             }
