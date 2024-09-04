@@ -193,6 +193,8 @@ Page {
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                         }
+
+                        Item {width: 1; height: Theme.paddingLarge}
                     }
                 }
 
@@ -206,15 +208,30 @@ Page {
                         width: sessionSection.width
                         spacing: Theme.paddingSmall
 
-                        ButtonLayout {
-                            Button {
-                                text: qsTr("Log out")
-                                onClicked: appConfiguration.token = ""
+                        Column {
+                            width: parent.width
+                            spacing: Theme.paddingLarge
+                            ButtonLayout {
+                                Button {
+                                    text: qsTr("Log out")
+                                    onClicked: appConfiguration.token = ""
+                                }
+
+                                Button {
+                                    text: qsTr("Clear cache")
+                                    onClicked: python.clearCache()
+                                }
                             }
 
-                            Button {
-                                text: qsTr("Clear cache")
-                                onClicked: python.clearCache()
+                            ButtonLayout {
+                                Button {
+                                    text: qsTr("Reset all settings")
+                                    onClicked: {
+                                        appSettings.sync()
+                                        appSettings.clear()
+                                        appSettings.sync()
+                                    }
+                                }
                             }
                         }
 
@@ -243,7 +260,7 @@ Page {
                         Label {
                             text: qsTr("Changes how often the cache is updated. App restart might be required")
                             font.pixelSize: Theme.fontSizeSmall
-                            color: palette.secondaryHighlightColor
+                            color: Theme.secondaryColor
                             wrapMode: Text.Wrap
                             width: parent.width - Theme.horizontalPageMargin
                             anchors.horizontalCenter: parent.horizontalCenter
