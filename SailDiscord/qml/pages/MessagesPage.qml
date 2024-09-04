@@ -33,7 +33,7 @@ Page {
             author: _author
             pfp: _pfp
             sent: _sent
-            date: _date
+            //date: _date
             sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
                                     msgModel.get(index-1)._author == _author
             masterWidth: !sameAuthorAsBefore ? -1 :
@@ -84,8 +84,9 @@ Page {
                 return
             }
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
+                console.log(_date);
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _date: _date, _masterWidth: -1}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1}
                 if (history) insert(0, data); else append(data);
                 messagesList.forceLayout()
             })
