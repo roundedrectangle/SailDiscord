@@ -33,7 +33,7 @@ Page {
             author: _author
             pfp: _pfp
             sent: _sent
-            //date: _date
+            date: _date
             sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
                                     msgModel.get(index-1)._author == _author
             masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
@@ -63,7 +63,7 @@ Page {
                     append({
                                messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
                                _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-                               _sent: isyou, _masterWidth: -1
+                               _sent: isyou, _masterWidth: -1, _date: new Date()
                            })
                 }
 
@@ -89,9 +89,8 @@ Page {
                 return
             }
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
-                console.log(_date);
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: _date}
                 if (history) insert(0, data); else append(data);
                 messagesList.forceLayout()
             })
