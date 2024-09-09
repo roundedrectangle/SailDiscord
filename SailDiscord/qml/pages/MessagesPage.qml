@@ -42,7 +42,10 @@ Page {
                 msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
             }
 
-            Component.onCompleted: updateMasterWidth()
+            Component.onCompleted: {
+                updateMasterWidth()
+                if (_from_history) messagesList.scrollToBottom();
+            }
             onMasterWidthChanged: updateMasterWidth()
             onInnerWidthChanged: updateMasterWidth()
         }
@@ -90,7 +93,7 @@ Page {
             }
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: _date}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: _date, _from_history: history}
                 if (history) insert(0, data); else append(data);
                 messagesList.forceLayout()
             })
