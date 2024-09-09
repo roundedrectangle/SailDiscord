@@ -12,6 +12,19 @@ Page {
     property string name
     property bool isDemo: false
 
+    Timer {
+        id: scrollToBottomTimer
+        interval: 0
+        property int hasRun: 0
+        onTriggered: {
+            if (!messagesList.quickScrollAnimating){//(hasRun <= 15) {
+                //hasRun++
+                messagesList.scrollToBottom()
+            }
+
+        }
+    }
+
     SilicaListView {
         id: messagesList
         anchors.fill: parent
@@ -44,7 +57,7 @@ Page {
 
             Component.onCompleted: {
                 updateMasterWidth()
-                if (_from_history) messagesList.scrollToBottom();
+                if (!scrollToBottomTimer.running) scrollToBottomTimer.start()
             }
             onMasterWidthChanged: updateMasterWidth()
             onInnerWidthChanged: updateMasterWidth()
@@ -54,50 +67,54 @@ Page {
     ListModel {
         id: msgModel
 
+        function generateDemo() {
+            var repeatString = function(string, count) {
+                var result = "";
+                for (var i = 0; i < count; i++) result += string;
+                return result;
+            };
+
+            var appendDemo = function(isyou, thecontents) {
+                append({
+                           messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
+                           _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
+                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true
+                       })
+            }
+
+            // Append demo messages
+
+            appendDemo(true, "First message!")
+            appendDemo(true, "Second message")
+            appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
+
+            appendDemo(false, "First message!")
+            appendDemo(false, "Second message")
+            appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
+
+            appendDemo(true, repeatString("Hello, world. ", 50))
+            appendDemo(true, "Second message")
+            appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
+
+            appendDemo(false, repeatString("Hello, world. ", 50))
+            appendDemo(false, "Second message")
+            appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
+        }
+
         Component.onCompleted: {
             if (isDemo) {
-                var repeatString = function(string, count) {
-                    var result = "";
-                    for (var i = 0; i < count; i++) result += string;
-                    return result;
-                };
-
-                var appendDemo = function(isyou, thecontents) {
-                    append({
-                               messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
-                               _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-                               _sent: isyou, _masterWidth: -1, _date: new Date()
-                           })
-                }
-
-                // Append demo messages
-
-                appendDemo(true, "First message!")
-                appendDemo(true, "Second message")
-                appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
-
-                appendDemo(false, "First message!")
-                appendDemo(false, "Second message")
-                appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
-
-                appendDemo(true, repeatString("Hello, world. ", 50))
-                appendDemo(true, "Second message")
-                appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
-
-                appendDemo(false, repeatString("Hello, world. ", 50))
-                appendDemo(false, "Second message")
-                appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
-
-                messagesList.forceLayout()
+                generateDemo()
                 return
             }
+
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: _date, _from_history: history}
                 if (history) insert(0, data); else append(data);
-                messagesList.forceLayout()
             })
         }
+
+        onCountChanged: messagesList.forceLayout()
     }
 
     Component.onCompleted: {

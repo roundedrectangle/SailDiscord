@@ -90,8 +90,6 @@ class MyClient(discord.Client):
     async def on_message(self, message):
         if self.current_server == None or self.current_channel == None:
             return
-        #if None in [message.guild, self.current_server, message.channel, self.current_channel]:
-        #    pyotherside.send("Error sending message!", message.guild, self.current_server, message.channel, self.current_channel)
         if message.guild.id == self.current_server.id and message.channel.id == self.current_channel.id:
             #pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
             send_message(message)
