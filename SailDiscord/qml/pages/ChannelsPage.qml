@@ -93,7 +93,7 @@ Page {
                     chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon, hasPermissions: _haspermissions})
                 })
                 updateNoCategory()
-                python.requestChannels(serverid, _id)
+                if (isCategory) python.requestChannels(serverid, categoryid)
             }
 
             Connections {
@@ -127,7 +127,7 @@ Page {
         Component.onCompleted: {
             python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
                 if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({_serverid: serverid, categoryid: _id, name: _name, isCategory: true, icon: "", hasPermissions: _haspermissions})
+                append({categoryid: _id, name: _name, isCategory: true, icon: "", hasPermissions: _haspermissions})
             })
             python.requestCategories(serverid)
         }
