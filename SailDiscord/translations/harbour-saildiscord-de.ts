@@ -32,6 +32,13 @@
     </message>
 </context>
 <context>
+    <name>ChannelsPage</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished">Über</translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>

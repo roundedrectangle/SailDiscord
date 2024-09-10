@@ -34,15 +34,19 @@ Page {
             pfp: _pfp
             sent: _sent
             date: _date
-            sameAuthorAsBefore: (msgModel.get(index-1) == undefined) ? false : // If this is the first message, false
-                                    msgModel.get(index-1)._author == _author
+            sameAuthorAsBefore: index == 0 ? false :
+                                 (msgModel.get(index-1)._author == _author ||
+                                  false)//((date - msgModel.get(index-1)._date) > 300000))
             masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
 
             function updateMasterWidth() {
                 msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
             }
 
-            Component.onCompleted: updateMasterWidth()
+            Component.onCompleted: {
+                updateMasterWidth()
+                //if (!firstMessage && !_from_history) console.log((date - msgModel.get(index-1)._date) > 300000)
+            }
             onMasterWidthChanged: updateMasterWidth()
             onInnerWidthChanged: updateMasterWidth()
         }

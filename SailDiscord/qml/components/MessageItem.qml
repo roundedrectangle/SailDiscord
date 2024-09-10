@@ -27,7 +27,7 @@ ListItem {
                     Math.min(parent.width - (_sentLessWidth ? Theme.paddingLarge : 0),
 
                              // width of all elements, last one is what is larger - author or contets
-                             profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, authorLbl.width))
+                             profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, infoRow.width))
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
@@ -101,14 +101,24 @@ ListItem {
                              // ListItem width substracting all other elements width except us (textContainer)
                     Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
 
-                             Math.max(contentsLbl.paintedWidth, authorLbl.width))
+                             Math.max(contentsLbl.paintedWidth, infoRow.width))
                       // ListItem width substracting all other elements width except us (textContainer)
                     : (parent.width - (profileIcon.width + iconPadding.width + leftPadding.width)))
-            Label {
-                id: authorLbl
-                text: author
-                color: Theme.secondaryColor
+            Row {
+                id: infoRow
                 visible: _firstSameAuthor
+                spacing: Theme.paddingSmall
+                Label {
+                    id: authorLbl
+                    text: author
+                    color: Theme.secondaryColor
+                }
+
+                Label {
+                    id: timeLbl
+                    text: Format.formatDate(date, Formatter.TimepointRelative)
+                    color: Theme.secondaryHighlightColor
+                }
             }
 
             Label {
@@ -123,9 +133,5 @@ ListItem {
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
-    }
-
-    Component.onCompleted: {
-        console.log(date)
     }
 }
