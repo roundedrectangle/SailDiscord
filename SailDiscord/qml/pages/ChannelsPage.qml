@@ -21,7 +21,7 @@ Page {
             title: name
         }
 
-        /*PullDownMenu {
+        PullDownMenu {
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
@@ -31,11 +31,13 @@ Page {
                     memberCount: memberCount
                 })
             }
-        }*/
+        }
 
-        section.property: "categoryname"
-        section.delegate: SectionHeader {
-            text: section
+        section {
+            property: "categoryname"
+            delegate: SectionHeader {
+                text: section
+            }
         }
 
         delegate: ListItem {
@@ -77,15 +79,11 @@ Page {
                 }
             }
 
-            Component.onCompleted: {
-                shared.log(categoryid, categoryname, channelid, name, icon, hasPermissions)
-            }
-
             onClicked: {
-                if (isCategory || !hasPermissions) return;
+                if (!hasPermissions) return
                 pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), {
                     guildid: serverid,
-                    channelid: categoryid,
+                    channelid: channelid,
                     name: name
                 })
             }

@@ -33,15 +33,6 @@ def send_servers(guilds):
         if icon != '':
             comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
-def send_categories(guild, user_id):
-    pyotherside.send('category', str(guild.id), str(-1), "", True)
-    for c in guild.categories:
-        has_permissions = True # default
-        member = guild.get_member(user_id)
-        if member != None:
-            has_permissions = c.permissions_for(member).view_channel
-        pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
-
 def view_permissions(channel, user_id):
     """Returns if a user has view access to channel"""
     has_permissions = True # default
@@ -49,23 +40,6 @@ def view_permissions(channel, user_id):
     if member != None:
         has_permissions = channel.permissions_for(member).view_channel
     return has_permissions
-
-def send_channels_old(category, user_id):
-    for c in reversed(category.channels):
-        has_permissions = True # default
-        member = category.guild.get_member(user_id)
-        if member != None:
-            has_permissions = c.permissions_for(member).view_channel
-        pyotherside.send(f'channel{category.guild.id} {category.id}', str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
-
-def send_channels_no_category(guild, user_id):
-    for c in reversed(guild.channels):
-        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
-            has_permissions = True # default
-            member = c.guild.get_member(user_id)
-            if member != None:
-                has_permissions = c.permissions_for(member).view_channel
-            pyotherside.send(f'channel{c.guild.id} -1', str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
 
 def send_channel(c, user_id):
     if c.type == discord.ChannelType.category:
@@ -175,24 +149,6 @@ class Communicator:
 
     def _login(self):
         self.client.run(self.token)
-
-    def get_categories(self, guild_id):
-        #self.set_server(guild_id)
-        g = self.client.get_guild(int(guild_id))
-        if g == None:
-            return
-        send_categories(g, self.client.user.id)
-
-    def get_channels_old(self, guild_id, category_id):
-        g = self.client.get_guild(int(guild_id))
-        if g != None:
-            if int(category_id) == -1:
-                #pyotherside.send("requested channels for "+guild_id+" categoryid "+category_id)
-                send_channels_no_category(g, self.client.user.id)
-                return
-            c = g.get_channel(int(category_id))
-            if c != None:
-                send_channels(c, self.client.user.id)
 
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
