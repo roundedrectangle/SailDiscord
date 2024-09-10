@@ -228,7 +228,6 @@ Page {
                                     text: qsTr("Reset all settings")
                                     onClicked: {
                                         appSettings.clear()
-                                        //Notices.show(qsTr("Settings reset. Please restart the app"), Notice.Short, Notice.Center)
                                         pageStack.push(settingsResetPage)
                                     }
                                 }
