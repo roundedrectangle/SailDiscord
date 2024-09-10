@@ -7,6 +7,7 @@ import pyotherside
 from threading import Thread
 import asyncio, shutil
 from pathlib import Path
+import itertools
 
 from exceptions import *
 from caching import Cacher, ImageType, CachePeriodMapping
@@ -41,6 +42,14 @@ def send_categories(guild, user_id):
             has_permissions = c.permissions_for(member).view_channel
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
 
+def view_permissions(channel, user_id):
+    """Returns if a user has view access to channel"""
+    has_permissions = True # default
+    member = channel.guild.get_member(user_id)
+    if member != None:
+        has_permissions = channel.permissions_for(member).view_channel
+    return has_permissions
+
 def send_channels_old(category, user_id):
     for c in reversed(category.channels):
         has_permissions = True # default
@@ -58,17 +67,19 @@ def send_channels_no_category(guild, user_id):
                 has_permissions = c.permissions_for(member).view_channel
             pyotherside.send(f'channel{c.guild.id} -1', str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
 
+def send_channel(c, user_id):
+    if c.type == discord.ChannelType.category:
+        return
+    category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
+    pyotherside.send(f'channel{c.guild.id}', category_position, getattr(c.category, 'name', ''), str(c.id), str(c.name), view_permissions(c, user_id), str(getattr(getattr(c, 'type'), 'name')))
+
 def send_channels(guild: discord.Guild, user_id):
-    # TODO: scroll through every category to fix duplicate categories and wrong positions!
-    for c in reversed(guild.channels):
-        if c.type == discord.ChannelType.category:
-            continue
-        has_permissions = True # default
-        member = guild.get_member(user_id)
-        if member != None:
-            has_permissions = c.permissions_for(member).view_channel
-        category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
-        pyotherside.send(f'channel{guild.id}', category_position, getattr(c.category, 'name', ''), str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
+    for c in guild.channels:
+        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
+            send_channel(c, user_id)
+    for category in guild.categories:
+        for c in category.channels:
+            send_channel(c, user_id)
 
 
 def send_message(message, is_history=False):
