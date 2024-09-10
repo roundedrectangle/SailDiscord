@@ -452,52 +452,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
-        <source>Settings reset. Please restart the app</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="281"/>
+        <source>Settings reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="244"/>
-        <source>Never</source>
+        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
+        <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="245"/>
-        <source>On app restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
-        <source>Changes how often the cache is updated. App restart might be required</source>
+        <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="246"/>
-        <source>Hourly</source>
+        <source>On app restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
+        <source>Changes how often the cache is updated. App restart might be required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="247"/>
-        <source>Daily</source>
+        <source>Hourly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="248"/>
-        <source>Weekly</source>
+        <source>Daily</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="249"/>
-        <source>Monthly</source>
+        <source>Weekly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="250"/>
-        <source>Half-yearly</source>
+        <source>Monthly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="251"/>
+        <source>Half-yearly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="252"/>
         <source>Yearly</source>
         <translation type="unfinished"></translation>
     </message>

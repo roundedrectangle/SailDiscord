@@ -396,7 +396,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings reset. Please restart the app</source>
+        <source>Settings reset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
