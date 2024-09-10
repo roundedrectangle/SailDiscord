@@ -102,11 +102,12 @@ ApplicationWindow {
         }
 
         function requestCategories(guildid) {
-            call('communicator.comm.get_categories', [guildid], function() {})
+            //call('communicator.comm.get_categories', [guildid], function() {})
         }
 
-        function requestChannels(guildid, categoryid) {
-            call('communicator.comm.get_channels', [guildid, categoryid], function() {})
+        function requestChannels(guildid, callback){//, categoryid) {
+            //call('communicator.comm.get_channels', [guildid, categoryid], function() {})
+            call('communicator.comm.get_channels', [guildid], function() {})
         }
 
         function setCurrentChannel(guildid, channelid) {

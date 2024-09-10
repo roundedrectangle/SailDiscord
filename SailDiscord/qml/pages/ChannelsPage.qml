@@ -21,7 +21,7 @@ Page {
             title: name
         }
 
-        PullDownMenu {
+        /*PullDownMenu {
             MenuItem {
                 text: qsTr("About")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
@@ -31,28 +31,18 @@ Page {
                     memberCount: memberCount
                 })
             }
+        }*/
+
+        section.property: "categoryname"
+        section.delegate: SectionHeader {
+            text: section
         }
 
         delegate: ListItem {
             property bool hadFirst: false
             width: parent.width
 
-            SectionHeader {
-                visible: isCategory
-                id: sectionHeader
-                text: categoryid == "-1" ? qsTr("No category") : name
-
-                Component.onCompleted: {
-                    if (!visible) height = 0;
-                }
-            }
-
             Row {
-                visible: !isCategory
-                Component.onCompleted: {
-                    if (!visible) height = 0;
-                }
-
                 Icon {
                     source: {
                         switch (icon) {
@@ -88,26 +78,7 @@ Page {
             }
 
             Component.onCompleted: {
-                python.setHandler('channel'+serverid+" "+categoryid, function (_id, _name, _haspermissions, _icon) {
-                    if (!_haspermissions && !appSettings.ignorePrivate) return;
-                    chModel.insert(index+1, {categoryid: _id, name: _name, isCategory: false, icon: _icon, hasPermissions: _haspermissions})
-                })
-                updateNoCategory()
-                if (isCategory) python.requestChannels(serverid, categoryid)
-            }
-
-            Connections {
-                target: chModel
-                onRowsInserted: {
-                    updateNoCategory()
-                }
-            }
-
-            function updateNoCategory() {
-                if (chModel.get(index+1) == undefined) return;
-                if ((categoryid == "-1") && (chModel.get(index+1).isCategory))
-                    hidden = true
-                else hidden = false
+                shared.log(categoryid, categoryname, channelid, name, icon, hasPermissions)
             }
 
             onClicked: {
@@ -125,11 +96,11 @@ Page {
         id: chModel
 
         Component.onCompleted: {
-            python.setHandler('category', function (_serverid, _id, _name, _haspermissions) {
-                if ((_serverid != serverid) || (!_haspermissions && !appSettings.ignorePrivate)) return;
-                append({categoryid: _id, name: _name, isCategory: true, icon: "", hasPermissions: _haspermissions})
+            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon) {
+                if (!_haspermissions && !appSettings.ignorePrivate) return;
+                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions})
             })
-            python.requestCategories(serverid)
+            python.requestChannels(serverid)
         }
     }
 }

@@ -124,4 +124,8 @@ ListItem {
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
     }
+
+    Component.onCompleted: {
+        console.log(date)
+    }
 }

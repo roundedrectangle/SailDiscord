@@ -32,17 +32,6 @@
     </message>
 </context>
 <context>
-    <name>ChannelsPage</name>
-    <message>
-        <source>No category</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="unfinished">Über</translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <source>My Cover</source>

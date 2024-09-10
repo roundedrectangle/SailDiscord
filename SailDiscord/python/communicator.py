@@ -41,7 +41,7 @@ def send_categories(guild, user_id):
             has_permissions = c.permissions_for(member).view_channel
         pyotherside.send('category', str(guild.id), str(c.id), str(c.name), has_permissions)
 
-def send_channels(category, user_id):
+def send_channels_old(category, user_id):
     for c in reversed(category.channels):
         has_permissions = True # default
         member = category.guild.get_member(user_id)
@@ -57,6 +57,19 @@ def send_channels_no_category(guild, user_id):
             if member != None:
                 has_permissions = c.permissions_for(member).view_channel
             pyotherside.send(f'channel{c.guild.id} -1', str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
+
+def send_channels(guild: discord.Guild, user_id):
+    # TODO: scroll through every category to fix duplicate categories and wrong positions!
+    for c in reversed(guild.channels):
+        if c.type == discord.ChannelType.category:
+            continue
+        has_permissions = True # default
+        member = guild.get_member(user_id)
+        if member != None:
+            has_permissions = c.permissions_for(member).view_channel
+        category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
+        pyotherside.send(f'channel{guild.id}', category_position, getattr(c.category, 'name', ''), str(c.id), str(c.name), has_permissions, str(getattr(getattr(c, 'type'), 'name')))
+
 
 def send_message(message, is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
@@ -159,7 +172,7 @@ class Communicator:
             return
         send_categories(g, self.client.user.id)
 
-    def get_channels(self, guild_id, category_id):
+    def get_channels_old(self, guild_id, category_id):
         g = self.client.get_guild(int(guild_id))
         if g != None:
             if int(category_id) == -1:
@@ -169,6 +182,11 @@ class Communicator:
             c = g.get_channel(int(category_id))
             if c != None:
                 send_channels(c, self.client.user.id)
+
+    def get_channels(self, guild_id):
+        g = self.client.get_guild(int(guild_id))
+        if g != None:
+            send_channels(g, self.client.user.id)
 
     def set_channel(self, guild_id, channel_id):
         if guild_id in [None, '']:

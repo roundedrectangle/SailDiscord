@@ -38,19 +38,6 @@
     </message>
 </context>
 <context>
-    <name>ChannelsPage</name>
-    <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="43"/>
-        <source>No category</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>CoverPage</name>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="8"/>
