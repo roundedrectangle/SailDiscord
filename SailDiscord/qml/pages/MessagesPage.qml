@@ -12,19 +12,6 @@ Page {
     property string name
     property bool isDemo: false
 
-    Timer {
-        id: scrollToBottomTimer
-        interval: 0
-        property int hasRun: 0
-        onTriggered: {
-            if (!messagesList.quickScrollAnimating){//(hasRun <= 15) {
-                //hasRun++
-                messagesList.scrollToBottom()
-            }
-
-        }
-    }
-
     SilicaListView {
         id: messagesList
         anchors.fill: parent
@@ -55,10 +42,7 @@ Page {
                 msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
             }
 
-            Component.onCompleted: {
-                updateMasterWidth()
-                if (!scrollToBottomTimer.running) scrollToBottomTimer.start()
-            }
+            Component.onCompleted: updateMasterWidth()
             onMasterWidthChanged: updateMasterWidth()
             onInnerWidthChanged: updateMasterWidth()
         }
@@ -115,6 +99,15 @@ Page {
         }
 
         onCountChanged: messagesList.forceLayout()
+
+        onRowsInserted: {
+            for (var i=first; i<=last; i++) {
+                if (get(i)._from_history) {
+                    messagesList.scrollToBottom()
+                    break
+                }
+            }
+        }
     }
 
     Component.onCompleted: {
