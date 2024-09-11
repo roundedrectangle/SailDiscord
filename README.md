@@ -23,27 +23,28 @@ I can forget about my projects and pause the developing, but then I come back (n
 	- [X] List
 		- [ ] Make it follow the same sorting as in the real discord, probably not possible yet because no such thing is implemented in discord.py-self. mb this is also an issue with qml?
 	- [X] Channels list
-	- [ ] Messages
-		- [ ] Read text
-  			- [X] New messages
-		- [ ] Write text
-		- [ ] Other types
+- [ ] Messages
+	- [ ] Text
+		- [X] Read
+		- [ ] Write
+	- [ ] Other types
 - [ ] DMs list
-	|      | Backend | Connection | Frontend |
-	|------|---------|------------|----------|
-	| Name | :x:     | :x:        | :x:      |
-	| Icon | :x:     | :x:        | :x:      |
 - [ ] Develop the whole app
 - [X] Package library with app
 	- [X] Fix `BuildRequires: python3-pip;` not working
 - [X] SailJail
 - [X] Settings
-	- [ ] Add more options
+- [X] About page
+- [ ] Caching
+	- [X] Avatars
 - [ ] Automate translating, maybe something like weblate
 
-## In progress currently
-
-- Polish the messages UI
+## Screenshots
+<img src="pictures/FirstPage.png" alt="Server list" width="200"/>
+<img src="pictures/Channels.png" alt="Server list" width="200"/>
+<img src="pictures/Messages.png" alt="Server list" width="200"/>
+<img src="pictures/Settings.png" alt="Server list" width="200"/>
+<img src="pictures/About.png" alt="Server list" width="200"/>
 
 ## Build
 
