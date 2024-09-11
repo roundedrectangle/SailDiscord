@@ -8,6 +8,7 @@ from threading import Thread
 import asyncio, shutil
 from pathlib import Path
 import itertools
+from datetime import datetime, timezone
 
 from exceptions import *
 from caching import Cacher, ImageType, CachePeriodMapping
@@ -66,7 +67,8 @@ def send_message(message, is_history=False):
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
         icon, message.author.id == comm.client.user.id,
-        message.created_at, is_history)
+        message.created_at.replace(tzinfo=timezone.utc).timestamp()*1000, # Convert to UTC Unix timestamp using milliseconds
+        is_history)
 
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)

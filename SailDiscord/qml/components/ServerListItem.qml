@@ -6,10 +6,10 @@ ListItem {
     property string title
     property string icon
 
-    property bool hasIcon: icon != "None"
+    property bool hasIcon: icon != "None" && icon != ""
 
     contentWidth: parent.width
-    contentHeight: Theme.itemSizeLarge;
+    contentHeight: hasIcon || appSettings.emptySpace ? Theme.itemSizeLarge : Theme.itemSizeSmall;
 
     Column {
         width: parent.width - Theme.horizontalPageMargin*2
@@ -24,7 +24,7 @@ ListItem {
             Image {
                 id: profileIcon
                 source: hasIcon ? icon : ""
-                height: parent.parent.parent.height-4*Theme.paddingSmall
+                height: (parent.parent.parent.height-4*Theme.paddingSmall)
                 width: height
 
                 visible: hasIcon || appSettings.emptySpace

@@ -94,7 +94,7 @@ Page {
 
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: _date, _from_history: history}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history}
                 if (history) insert(0, data); else append(data);
             })
         }
