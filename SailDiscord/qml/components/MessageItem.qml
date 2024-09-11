@@ -40,9 +40,9 @@ ListItem {
 
         Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
            default: case "n": return 0
-           case "s": return (visible && sent) ? Theme.paddingLarge : 0
-           case "r": return (visible && sent) ? 0 : Theme.paddingLarge
-           case "a": return visible ? Theme.paddingLarge : 0
+           case "s": return (visible && sent) ? Theme.horizontalPageMargin : 0
+           case "r": return (visible && sent) ? 0 : Theme.horizontalPageMargin
+           case "a": return visible ? Theme.horizontalPageMargin : 0
         }
             visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n"
         }

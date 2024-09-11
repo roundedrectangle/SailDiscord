@@ -91,13 +91,18 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="27"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="37"/>
         <source>No messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="28"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="38"/>
         <source>Say hi (Coming soon)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="67"/>
+        <source>Your message</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -84,6 +84,10 @@
         <source>Say hi (Coming soon)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Your message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Opal.About</name>

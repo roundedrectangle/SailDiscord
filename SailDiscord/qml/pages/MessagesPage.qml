@@ -12,40 +12,86 @@ Page {
     property string name
     property bool isDemo: false
 
-    SilicaListView {
-        id: messagesList
+    SilicaFlickable {
         anchors.fill: parent
-        model: msgModel
 
-        header: PageHeader {
-            id: header
-            title: "#"+name
-        }
+        Column {
+            width: parent.width
+            height: parent.height
+            Item {
+                width: parent.width
+                height: parent.height - enterField.height
+                SilicaListView {
+                    id: messagesList
+                    anchors.fill: parent
+                    model: msgModel
+                    clip: true
 
-        ViewPlaceholder {
-            enabled: msgModel.count === 0
-            text: qsTr("No messages")
-            hintText: qsTr("Say hi (Coming soon)")
-        }
+                    header: PageHeader {
+                        id: header
+                        title: "#"+name
+                    }
 
-        delegate: MessageItem {
-            contents: _contents
-            author: _author
-            pfp: _pfp
-            sent: _sent
-            date: _date
-            sameAuthorAsBefore: index == 0 ? false :
-                                 (msgModel.get(index-1)._author == _author)
-                                  //||((date - msgModel.get(index-1)._date) > 300000))
-            masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
+                    ViewPlaceholder {
+                        enabled: msgModel.count === 0
+                        text: qsTr("No messages")
+                        hintText: qsTr("Say hi (Coming soon)")
+                    }
 
-            function updateMasterWidth() {
-                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                    delegate: MessageItem {
+                        contents: _contents
+                        author: _author
+                        pfp: _pfp
+                        sent: _sent
+                        date: _date
+                        sameAuthorAsBefore: index == 0 ? false :
+                                             (msgModel.get(index-1)._author == _author)
+                                              //||((date - msgModel.get(index-1)._date) > 300000))
+                        masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
+
+                        function updateMasterWidth() {
+                            msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                        }
+
+                        Component.onCompleted: updateMasterWidth()
+                        onMasterWidthChanged: updateMasterWidth()
+                        onInnerWidthChanged: updateMasterWidth()
+                    }
+                }
             }
 
-            Component.onCompleted: updateMasterWidth()
-            onMasterWidthChanged: updateMasterWidth()
-            onInnerWidthChanged: updateMasterWidth()
+            TextArea {
+                id: enterField
+                width: parent.width
+
+                placeholderText: qsTr("Your message")
+                hideLabelOnEmptyField: false
+
+                textRightMargin: Theme.horizontalPageMargin + sendButton.width + Theme.paddingLarge
+
+                backgroundStyle: TextEditor.UnderlineBackground
+                horizontalAlignment: TextEdit.AlignLeft
+
+                //EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                //EnterKey.onClicked: console.log("messages sent: "+text)
+
+                Button {
+                    id: sendButton
+                    parent: enterField
+                    width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                    height: width
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: Theme.horizontalPageMargin
+                    }
+
+                    y: enterField.contentItem.y + enterField.contentItem.height - height/2
+                    icon.source: "image://theme/icon-m-send"
+
+                    onClicked: console.log("messages sent: "+enterField.text)
+                }
+            }
         }
     }
 
