@@ -61,6 +61,7 @@ Page {
                             if (index == 0) return false
                             if (msgModel.get(index-1)._author == _author)
                              return (date - msgModel.get(index-1)._date) < 300000 // 5 minutes
+                            return false
                         }
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
 

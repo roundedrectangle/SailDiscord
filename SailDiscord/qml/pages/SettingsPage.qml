@@ -137,11 +137,26 @@ Page {
                             Component.onCompleted: checked = appSettings.alignMessagesText
                         }
 
-                        TextSwitch {
+                        ComboBox {
+                            property var values: ["d", "a", "n"]
+                            label: qsTr("Message grouping")
+                            currentIndex: values.indexOf(appSettings.messageGrouping) == -1 ? 0 : values.indexOf(appSettings.messageGrouping)
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("author & time (default)") }
+                                MenuItem { text: qsTr("author") }
+                                MenuItem { text: qsTr("none") }
+                            }
+
+                            onCurrentItemChanged: {
+                                appSettings.messageGrouping = values[currentIndex]
+                            }
+                        }
+
+                        /*TextSwitch {
                             text: qsTr("One author text and picture for multiple messages from the same author")
                             onCheckedChanged: appSettings.oneAuthor = checked
                             Component.onCompleted: checked = appSettings.oneAuthor
-                        }
+                        }*/
 
                         /*TextSwitch {
                             text: qsTr("Enable extra padding for new messages from the same author")

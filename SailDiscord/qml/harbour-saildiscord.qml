@@ -51,6 +51,7 @@ ApplicationWindow {
             property string sentBehaviour: "r"
             property string messagesPadding: "n"
             property string oneAuthorPadding: "n"
+            property string messageGrouping: "d"
 
             property int cachePeriod: 1
 
