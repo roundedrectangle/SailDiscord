@@ -137,6 +137,12 @@ Page {
                             Component.onCompleted: checked = appSettings.alignMessagesText
                         }
 
+                        /*SettingsComboBox {
+                            _values: {"author & time (default)": "d", "author": "a", "none": "n"}
+                            _title: "Message grouping"
+                            _option: appSettings.messageGrouping
+                        }*/
+
                         ComboBox {
                             property var values: ["d", "a", "n"]
                             label: qsTr("Message grouping")
@@ -147,9 +153,7 @@ Page {
                                 MenuItem { text: qsTr("none") }
                             }
 
-                            onCurrentItemChanged: {
-                                appSettings.messageGrouping = values[currentIndex]
-                            }
+                            onCurrentItemChanged: appSettings.messageGrouping = values[currentIndex]
                         }
 
                         /*TextSwitch {

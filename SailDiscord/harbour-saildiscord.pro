@@ -25,6 +25,7 @@ DISTFILES += \
     harbour-saildiscord.desktop \
     qml/components/MessageItem.qml \
     qml/components/ServerListItem.qml \
+    qml/components/SettingsComboBox.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \
     qml/pages/AboutPage.qml \

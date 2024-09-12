@@ -328,10 +328,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>One author text and picture for multiple messages from the same author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>no (default)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -401,6 +397,22 @@
     </message>
     <message>
         <source>Please restart the app</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message grouping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>author &amp; time (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>none</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
