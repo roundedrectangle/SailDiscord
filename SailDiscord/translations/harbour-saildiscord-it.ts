@@ -34,7 +34,7 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <source>About</source>
-        <translation>A proposito del server</translation>
+        <translation>Info sul server</translation>
     </message>
 </context>
 <context>
@@ -42,12 +42,12 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
-        <translation type="unfinished"></translation>
+        <translation>Canale non supportato</translation>
     </message>
 </context>
 <context>
@@ -108,7 +108,7 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="93"/>
         <source>Type something</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrivi qualcosa</translation>
     </message>
 </context>
 <context>
@@ -116,7 +116,7 @@
     <message>
         <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="55"/>
         <source>About</source>
-        <translation>A proposito di</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="84"/>
@@ -412,22 +412,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="111"/>
         <source>Message grouping</source>
-        <translation type="unfinished"></translation>
+        <translation>Raggruppa messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="114"/>
         <source>author &amp; time (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Autore &amp; data (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="115"/>
         <source>author</source>
-        <translation type="unfinished"></translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>none</source>
-        <translation type="unfinished"></translation>
+        <translation>nessuno</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="130"/>
@@ -457,22 +457,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="147"/>
         <source>Message field</source>
-        <translation type="unfinished"></translation>
+        <translation>Campo messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>Send messages by enter</source>
-        <translation type="unfinished"></translation>
+        <translation>Invia messaggi con tasto invio</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="156"/>
         <source>Focus input message area after send</source>
-        <translation type="unfinished"></translation>
+        <translation>Focus su campo invio messaggi dopo l&apos;invio</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="162"/>
         <source>Focus input message area on channel open</source>
-        <translation type="unfinished"></translation>
+        <translation>Focus su campo invio messaggi quando si apre un canale</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="173"/>
