@@ -30,19 +30,20 @@ Page {
         Column {
             width: parent.width
             height: parent.height
+
+            PageHeader {
+                id: header
+                title: "#"+name
+            }
+
             Item {
                 width: parent.width
-                height: parent.height - sendField.height
+                height: parent.height - header.height - sendField.height
                 SilicaListView {
                     id: messagesList
                     anchors.fill: parent
                     model: msgModel
                     clip: true
-
-                    header: PageHeader {
-                        id: header
-                        title: "#"+name
-                    }
 
                     ViewPlaceholder {
                         enabled: msgModel.count === 0

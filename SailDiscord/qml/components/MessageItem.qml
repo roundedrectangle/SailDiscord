@@ -7,11 +7,13 @@ ListItem {
     property string author
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
-    property bool _sentLessWidth: appSettings.messagesLessWidth && sent
     property bool sameAuthorAsBefore
-    property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date date
+
+    property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
+    property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0
+    property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
     property alias innerWidth: row.width
 
@@ -21,17 +23,17 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-(_sentLessWidth ? Theme.paddingLarge : 0), profileIcon.width + iconPadding.width + leftPadding.width + contentsLbl.implicitWidth)) :(
+        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-_sentLessWidth, _infoWidth + contentsLbl.implicitWidth)) :(
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
-                    Math.min(parent.width - (_sentLessWidth ? Theme.paddingLarge : 0),
+                    Math.min(parent.width - _sentLessWidth,
 
                              // width of all elements, last one is what is larger - author or contets
-                             profileIcon.width + iconPadding.width + leftPadding.width + Math.max(contentsLbl.implicitWidth, infoRow.width))
+                             _infoWidth + Math.max(contentsLbl.implicitWidth, infoRow.width))
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
-                    : parent.width-(_sentLessWidth ? Theme.paddingLarge : 0))
+                    : parent.width-_sentLessWidth)
         height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
@@ -96,14 +98,14 @@ ListItem {
 
         Column {
             id: textContainer
-            width: !_firstSameAuthor ? parent.width - (profileIcon.width + iconPadding.width + leftPadding.width) :
+            width: !_firstSameAuthor ? parent.width - _infoWidth :
                 ((appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
                              // ListItem width substracting all other elements width except us (textContainer)
-                    Math.min(parent.width - (profileIcon.width + iconPadding.width + leftPadding.width),
+                    Math.min(parent.width - _infoWidth,
 
                              Math.max(contentsLbl.paintedWidth, infoRow.width))
                       // ListItem width substracting all other elements width except us (textContainer)
-                    : (parent.width - (profileIcon.width + iconPadding.width + leftPadding.width)))
+                    : (parent.width - _infoWidth))
             Row {
                 id: infoRow
                 visible: _firstSameAuthor
