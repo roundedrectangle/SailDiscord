@@ -23,7 +23,8 @@ ListItem {
     Row {
         id: row
         //width: parent.width
-        width: !_firstSameAuthor ? Math.max(masterWidth, Math.min(parent.width-_sentLessWidth, _infoWidth + contentsLbl.implicitWidth)) :(
+        width: {
+            if(!_firstSameAuthor) return Math.max(masterWidth, Math.min(parent.width-_sentLessWidth, _infoWidth + contentsLbl.implicitWidth)); else return (
                              (appSettings.sentBehaviour != "n") ? // If sent messages are reversed or right-aligned,
                              // parent width substracting padding if sent and less width for messages is enabled
                     Math.min(parent.width - _sentLessWidth,
@@ -33,7 +34,8 @@ ListItem {
 
                     // if sent messages are not specially aligned or reversed,
                     // parent width substracting padding if sent and less width for messages is enabled
-                    : parent.width-_sentLessWidth)
+                    : parent.width-_sentLessWidth);
+        }
         height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
         anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
