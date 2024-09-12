@@ -9,6 +9,7 @@ import asyncio, shutil
 from pathlib import Path
 import itertools
 from datetime import datetime, timezone
+from typing import Optional, Union
 
 from exceptions import *
 from caching import Cacher, ImageType, CachePeriodMapping
@@ -74,8 +75,8 @@ def send_message(message, is_history=False):
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
 
 class MyClient(discord.Client):
-    current_server = None
-    current_channel = None
+    current_server: Optional[discord.Guild] = None
+    current_channel: Optional[discord.abc.GuildChannel] = None
     loop = None
 
     async def on_ready(self, first_run=True):
@@ -88,9 +89,7 @@ class MyClient(discord.Client):
             self.loop = asyncio.get_running_loop()
 
     async def on_message(self, message):
-        if self.current_server == None or self.current_channel == None:
-            return
-        if message.guild.id == self.current_server.id and message.channel.id == self.current_channel.id:
+        if self.ensure_current_channel(message.channel, message.guild):
             #pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
             send_message(message)
             #await message.channel.send('pong')
@@ -99,13 +98,16 @@ class MyClient(discord.Client):
         async for m in self.current_channel.history(limit=30):
             send_message(m, True)
 
+    def run_asyncio_threadsafe(self, courutine):
+        return asyncio.run_coroutine_threadsafe(courutine, self.loop)
+
     def set_current_channel(self, guild, channel):
         self.current_server = guild
         self.current_channel = channel
         # This will be used when discord.py-self 2.1 will be out.
         #asyncio.run(guild.subscribe())
 
-        asyncio.run_coroutine_threadsafe(self.get_last_messages(), self.loop)
+        self.run_asyncio_threadsafe(self.get_last_messages())
 
     def unset_current_channel(self):
         # This will be used when discord.py-self 2.1 will be out.
@@ -114,6 +116,17 @@ class MyClient(discord.Client):
         #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
         self.current_server = None
         self.current_channel = None
+    
+    def send_message(self, text):
+        if self.ensure_current_channel():
+            return self.run_asyncio_threadsafe(self.current_channel.send(text))
+    
+    def ensure_current_channel(self, channel=None, server=None):
+        if (self.current_server == None) or (self.current_channel == None):
+            return
+        ch = (self.current_channel == channel) if channel != None else True
+        se = (self.current_server == server) if server != None else True
+        return ch and se
 
 class Communicator:
     def __init__(self):
@@ -168,6 +181,9 @@ class Communicator:
             except Exception as e:
                 pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
                 self.client.unset_current_channel()
+    
+    def send_message(self, message_text):
+        self.client.send_message(message_text)
 
 
 comm = Communicator()
