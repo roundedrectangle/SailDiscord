@@ -12,6 +12,14 @@ Page {
     property string name
     property bool isDemo: false
 
+    Timer {
+        id: activeFocusTimer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: sendField.forceActiveFocus()
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -20,7 +28,7 @@ Page {
             height: parent.height
             Item {
                 width: parent.width
-                height: parent.height - enterField.height
+                height: parent.height - sendField.height
                 SilicaListView {
                     id: messagesList
                     anchors.fill: parent
@@ -60,36 +68,39 @@ Page {
                 }
             }
 
-            TextArea {
-                id: enterField
+            Row {
                 width: parent.width
+                anchors.horizontalCenter: parent.horizontalCenter
 
-                placeholderText: qsTr("Your message")
-                hideLabelOnEmptyField: false
+                TextArea {
+                    id: sendField
+                    width: parent.width - sendButton.width
 
-                textRightMargin: Theme.horizontalPageMargin + sendButton.width + Theme.paddingLarge
+                    placeholderText: qsTr("Your message")
+                    hideLabelOnEmptyField: false
+                    labelVisible: false
+                    anchors.verticalCenter: parent.verticalCenter
+                    backgroundStyle: TextEditor.UnderlineBackground
+                    horizontalAlignment: TextEdit.AlignLeft
+                    //focus: true
 
-                backgroundStyle: TextEditor.UnderlineBackground
-                horizontalAlignment: TextEdit.AlignLeft
+                    //EnterKey.iconSource: "image://theme/icon-m-enter-accept"
+                    //EnterKey.onClicked: console.log("messages sent: "+text)
+                }
 
-                //EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-                //EnterKey.onClicked: console.log("messages sent: "+text)
-
-                Button {
+                IconButton {
                     id: sendButton
-                    parent: enterField
                     width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
                     height: width
-
-                    anchors {
-                        right: parent.right
-                        rightMargin: Theme.horizontalPageMargin
-                    }
-
-                    y: enterField.contentItem.y + enterField.contentItem.height - height/2
+                    enabled: sendField.text.length !== 0
+                    anchors.bottom: parent.bottom
                     icon.source: "image://theme/icon-m-send"
 
-                    onClicked: console.log("messages sent: "+enterField.text)
+                    onClicked: {
+                        console.log("messages sent: "+sendField.text)
+                        sendField.text = ""
+                        activeFocusTimer.start()
+                    }
                 }
             }
         }
