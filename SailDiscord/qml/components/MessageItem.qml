@@ -127,8 +127,7 @@ ListItem {
                 wrapMode: Text.Wrap
                 width: Math.min(parent.width, implicitWidth)
                                // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                anchors.right: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText)
-                               ? parent.right : undefined
+                anchors.right: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? parent.right : undefined
             }
 
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }

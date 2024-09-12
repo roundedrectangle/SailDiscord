@@ -57,16 +57,20 @@ Page {
                         pfp: _pfp
                         sent: _sent
                         date: _date
-                        sameAuthorAsBefore: index == 0 ? false :
-                                             (msgModel.get(index-1)._author == _author)
-                                              //||((date - msgModel.get(index-1)._date) > 300000))
+                        sameAuthorAsBefore: {
+                            if (index == 0) return false
+                            if (msgModel.get(index-1)._author == _author)
+                             return (date - msgModel.get(index-1)._date) < 300000 // 5 minutes
+                        }
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
 
-                        Component.onCompleted: updateMasterWidth()
+                        Component.onCompleted: {
+                            updateMasterWidth()
+                        }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
                     }
