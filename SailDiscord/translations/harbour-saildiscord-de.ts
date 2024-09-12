@@ -37,6 +37,10 @@
         <source>About</source>
         <translation type="unfinished">Über</translation>
     </message>
+    <message>
+        <source>Channel unsupported</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -85,7 +89,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Your message</source>
+        <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

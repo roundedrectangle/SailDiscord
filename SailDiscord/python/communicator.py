@@ -35,19 +35,16 @@ def send_servers(guilds):
         if icon != '':
             comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
-def view_permissions(channel, user_id):
-    """Returns if a user has view access to channel"""
-    has_permissions = True # default
+def permissions_for(channel, user_id) -> discord.Permissions:
     member = channel.guild.get_member(user_id)
-    if member != None:
-        has_permissions = channel.permissions_for(member).view_channel
-    return has_permissions
+    return None if member == None else channel.permissions_for(member)
 
 def send_channel(c, user_id):
     if c.type == discord.ChannelType.category:
         return
-    category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
-    pyotherside.send(f'channel{c.guild.id}', category_position, getattr(c.category, 'name', ''), str(c.id), str(c.name), view_permissions(c, user_id), str(getattr(getattr(c, 'type'), 'name')))
+    #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
+    text_sending_allowed = c.type == discord.ChannelType.text and permissions_for(c, user_id).send_messages
+    pyotherside.send(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''), str(c.id), str(c.name), permissions_for(c, user_id).view_channel, str(getattr(getattr(c, 'type'), 'name')), text_sending_allowed)
 
 def send_channels(guild: discord.Guild, user_id):
     for c in guild.channels:

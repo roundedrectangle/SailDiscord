@@ -44,6 +44,11 @@
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
+        <source>Channel unsupported</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -91,18 +96,18 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="56"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="57"/>
         <source>No messages</source>
         <translation>Nessun messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="57"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="58"/>
         <source>Say hi (Coming soon)</source>
         <translation>Dì ciao (Presto in arrivo)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="91"/>
-        <source>Your message</source>
+        <location filename="../qml/pages/MessagesPage.qml" line="93"/>
+        <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

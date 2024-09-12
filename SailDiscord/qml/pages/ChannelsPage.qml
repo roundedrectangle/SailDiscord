@@ -81,11 +81,11 @@ Page {
 
             onClicked: {
                 if (!hasPermissions) return
-                pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), {
-                    guildid: serverid,
-                    channelid: channelid,
-                    name: name
-                })
+                switch (icon) {
+                case "text": case "news": case "name": pageStack.push(Qt.resolvedUrl("MessagesPage.qml"),
+                                {guildid: serverid, channelid: channelid, name: name, sendPermissions: textSendPermissions});break
+                default: pageStack.push(comingSoonPage, {channelType: icon});break
+                }
             }
         }
     }
@@ -94,11 +94,25 @@ Page {
         id: chModel
 
         Component.onCompleted: {
-            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon) {
+            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed) {
                 if (!_haspermissions && !appSettings.ignorePrivate) return;
-                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions})
+                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed})
             })
             python.requestChannels(serverid)
+        }
+    }
+
+    Component {
+        id: comingSoonPage
+        Page {
+            property string channelType
+            SilicaFlickable {
+                ViewPlaceholder {
+                    enabled: true
+                    text: qsTr("Channel unsupported")
+                    hintText: channelType
+                }
+            }
         }
     }
 }

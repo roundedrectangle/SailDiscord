@@ -11,6 +11,7 @@ Page {
     property string channelid
     property string name
     property bool isDemo: false
+    property bool sendPermissions: true
 
     Timer {
         id: scrollToBottomTimer
@@ -44,7 +45,7 @@ Page {
 
             Item {
                 width: parent.width
-                height: parent.height - header.height - sendField.height
+                height: parent.height - header.height - (sendField.visible ? sendField.height : 0)
                 SilicaListView {
                     id: messagesList
                     anchors.fill: parent
@@ -83,12 +84,13 @@ Page {
             Row {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: sendPermissions
 
                 TextArea {
                     id: sendField
                     width: parent.width - sendButton.width
 
-                    placeholderText: qsTr("Your message")
+                    placeholderText: qsTr("Type something")
                     hideLabelOnEmptyField: false
                     labelVisible: false
                     anchors.verticalCenter: parent.verticalCenter
