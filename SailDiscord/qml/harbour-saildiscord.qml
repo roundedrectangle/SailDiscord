@@ -126,5 +126,9 @@ ApplicationWindow {
             if (!initialized) return;
             python.call('communicator.comm.set_cache_period', [period], function() {})
         }
+
+        function sendMessage(text, callback) {
+            python.call('communicator.comm.send_message', [text], callback)
+        }
     }
 }

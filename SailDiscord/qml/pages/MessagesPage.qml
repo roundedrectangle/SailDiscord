@@ -13,10 +13,14 @@ Page {
     property bool isDemo: false
 
     Timer {
+        id: scrollToBottomTimer
+        interval: 750
+        onTriggered: messagesList.scrollToBottom()
+    }
+
+    Timer {
         id: activeFocusTimer
         interval: 100
-        running: false
-        repeat: false
         onTriggered: sendField.forceActiveFocus()
     }
 
@@ -97,7 +101,7 @@ Page {
                     icon.source: "image://theme/icon-m-send"
 
                     onClicked: {
-                        console.log("messages sent: "+sendField.text)
+                        python.sendMessage(sendField.text, function() {scrollToBottomTimer.start()})
                         sendField.text = ""
                         activeFocusTimer.start()
                     }
