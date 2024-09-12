@@ -57,31 +57,17 @@ Page {
 
                         ComboBox {
                             id: sentMessagesBox
+                            property var values: ["r", "a", "n"]
                             label: qsTr("Sent messages")
+                            description: qsTr("Sets for which messages extra padding should apply")
+                            currentIndex: values.indexOf(appSettings.sentBehaviour) == -1 ? 0 : values.indexOf(appSettings.sentBehaviour)
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("reversed (default)") }
                                 MenuItem { text: qsTr("align right") }
                                 MenuItem { text: qsTr("nothing") }
                             }
 
-                            Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.sentBehaviour) {
-                                    case "r": return 0
-                                    case "a": return 1
-                                    case "n": return 2
-                                    default:
-                                        appSettings.sentBehaviour = "r"
-                                        return 0
-                                }}()
-                            }
-
-                            onCurrentItemChanged: {
-                                appSettings.sentBehaviour = function(){switch (currentItem.text) {
-                                    default: case "reversed (default)": return "r"
-                                    case "align right": return "a"
-                                    case "nothing": return "n"
-                                }}()
-                            }
+                            onCurrentItemChanged: appSettings.sentBehaviour = values[currentIndex]
                         }
 
                         TextSwitch {
@@ -96,35 +82,18 @@ Page {
                         }
 
                         ComboBox {
+                            property var values: ["n", "s", "r", "a"]
                             label: qsTr("Extra padding")
-                            currentIndex: 0
+                            description: qsTr("Sets for which messages extra padding should apply")
+                            currentIndex: values.indexOf(appSettings.messagesPadding) == -1 ? 0 : values.indexOf(appSettings.messagesPadding)
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("none (default)") }
                                 MenuItem { text: qsTr("sent") }
                                 MenuItem { text: qsTr("received") }
                                 MenuItem { text: qsTr("all") }
                             }
-                            description: qsTr("Sets for which messages extra padding should apply")
 
-                            Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.messagesPadding) {
-                                    case "n": return 0
-                                    case "s": return 1
-                                    case "r": return 2
-                                    case "a": return 3
-                                    default:
-                                        appSettings.messagesPadding = "n"
-                                        return 0
-                                }}()
-                            }
-                            onCurrentItemChanged: {
-                                appSettings.messagesPadding = function(){switch (currentItem.text) {
-                                        default: case "none (default)": return "n"
-                                        case "sent": return "s"
-                                        case "received": return "r"
-                                        case "all": return "a"
-                                    }}()
-                            }
+                            onCurrentItemChanged: appSettings.messagesPadding = values[currentIndex]
                         }
 
                         TextSwitch {
@@ -136,12 +105,6 @@ Page {
                             onCheckedChanged: appSettings.alignMessagesText = checked
                             Component.onCompleted: checked = appSettings.alignMessagesText
                         }
-
-                        /*SettingsComboBox {
-                            _values: {"author & time (default)": "d", "author": "a", "none": "n"}
-                            _title: "Message grouping"
-                            _option: appSettings.messageGrouping
-                        }*/
 
                         ComboBox {
                             property var values: ["d", "a", "n"]
@@ -156,54 +119,20 @@ Page {
                             onCurrentItemChanged: appSettings.messageGrouping = values[currentIndex]
                         }
 
-                        /*TextSwitch {
-                            text: qsTr("One author text and picture for multiple messages from the same author")
-                            onCheckedChanged: appSettings.oneAuthor = checked
-                            Component.onCompleted: checked = appSettings.oneAuthor
-                        }*/
-
-                        /*TextSwitch {
-                            text: qsTr("Enable extra padding for new messages from the same author")
-                            visible: appSettings.oneAuthor
-                            onCheckedChanged: {
-                                appSettings.setOneAuthorPadding(checked)
-                            }
-
-                            Component.onCompleted: {
-                                checked = appSettings.oneAuthorPadding;
-                            }
-                        }*/
-
                         ComboBox {
                             label: qsTr("Extra padding")
+                            visible: appSettings.oneAuthor
+                            description: qsTr("Set extra padding for new messages from the same author")
+
+                            property var values: ["n", "s", "p"]
+                            currentIndex: values.indexOf(appSettings.oneAuthorPadding) == -1 ? 0 : values.indexOf(appSettings.oneAuthorPadding)
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("no (default)") }
                                 MenuItem { text: qsTr("small") }
                                 MenuItem { text: qsTr("as pfp") }
                             }
-                            visible: appSettings.oneAuthor
-                            description: qsTr("Set extra padding for new messages from the same author")
-
-                            Component.onCompleted: {
-                                currentIndex = function(){switch (appSettings.oneAuthorPadding) {
-                                    case "n": return 0
-                                    case "s": return 1
-                                    case "p": return 2
-                                    default:
-                                        appSettings.oneAuthorPadding = "n"
-                                        return 0
-                                }}()
-                            }
-
-                            onCurrentItemChanged: {
-                                appSettings.oneAuthorPadding = function(){switch (currentItem.text) {
-                                    default: case "no (default)": return "n"
-                                    case "small": return "s"
-                                    case "as pfp": return "p"
-                                }}()
-                            }
+                            onCurrentItemChanged: appSettings.oneAuthorPadding = values[currentIndex]
                         }
-
 
                         ButtonLayout {
                             Button {
