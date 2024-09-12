@@ -121,7 +121,7 @@ Page {
 
                         ComboBox {
                             label: qsTr("Extra padding")
-                            visible: appSettings.oneAuthor
+                            visible: appSettings.messageGrouping !== "n"
                             description: qsTr("Set extra padding for new messages from the same author")
 
                             property var values: ["n", "s", "p"]
@@ -143,6 +143,26 @@ Page {
                         }
 
                         Item {width: 1; height: Theme.paddingLarge}
+
+                        SectionHeader { text: qsTr("Message field") }
+
+                        TextSwitch {
+                            text: qsTr("Send messages by enter")
+                            checked: appSettings.sendByEnter
+                            onCheckedChanged: appSettings.sendByEnter = checked
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Focus input message area after send")
+                            checked: appSettings.focusAfterSend
+                            onCheckedChanged: appSettings.focusAfterSend = checked
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Focus input message area on channel open")
+                            checked: appSettings.focudOnChatOpen
+                            onCheckedChanged: appSettings.focudOnChatOpen = checked
+                        }
                     }
                 }
 

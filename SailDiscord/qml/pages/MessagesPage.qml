@@ -24,6 +24,12 @@ Page {
         onTriggered: sendField.forceActiveFocus()
     }
 
+    function sendMessage() {
+        python.sendMessage(sendField.text, function() {scrollToBottomTimer.start()})
+        sendField.text = ""
+        if (appSettings.focusAfterSend) activeFocusTimer.start()
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -57,9 +63,9 @@ Page {
                         pfp: _pfp
                         sent: _sent
                         date: _date
-                        sameAuthorAsBefore: index == 0 ? false : (msgModel.get(index-1)._author === _author)
+                        sameAuthorAsBefore: index == 0 ? false : (msgModel.get(index-1)._author == _author)
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
-                        masterDate: index == 0 ? undefined : msgModel.get(index-1)._date
+                        masterDate: index == 0 ? new Date(1) : msgModel.get(index-1)._date
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -90,8 +96,8 @@ Page {
                     horizontalAlignment: TextEdit.AlignLeft
                     //focus: true
 
-                    //EnterKey.iconSource: "image://theme/icon-m-enter-accept"
-                    //EnterKey.onClicked: console.log("messages sent: "+text)
+                    EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
+                    EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
                 }
 
                 IconButton {
@@ -102,11 +108,7 @@ Page {
                     anchors.bottom: parent.bottom
                     icon.source: "image://theme/icon-m-send"
 
-                    onClicked: {
-                        python.sendMessage(sendField.text, function() {scrollToBottomTimer.start()})
-                        sendField.text = ""
-                        activeFocusTimer.start()
-                    }
+                    onClicked: sendMessage()
                 }
             }
         }
@@ -183,6 +185,7 @@ Page {
         }
 
         python.setCurrentChannel(guildid, channelid)
+        if (appSettings.focudOnChatOpen) activeFocusTimer.start()
     }
 
     Component.onDestruction: {

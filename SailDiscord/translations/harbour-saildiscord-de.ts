@@ -415,5 +415,21 @@
         <source>none</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Message field</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send messages by enter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus input message area after send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Focus input message area on channel open</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

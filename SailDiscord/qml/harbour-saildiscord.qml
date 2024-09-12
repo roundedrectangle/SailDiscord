@@ -46,6 +46,9 @@ ApplicationWindow {
             property bool ignorePrivate: false
             property bool messagesLessWidth: false
             property bool alignMessagesText: false
+            property bool sendByEnter: false
+            property bool focusAfterSend: true
+            property bool focudOnChatOpen: false
 
             property string sentBehaviour: "r"
             property string messagesPadding: "n"
