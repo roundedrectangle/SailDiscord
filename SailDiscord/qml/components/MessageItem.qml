@@ -12,7 +12,7 @@ ListItem {
     property date date
 
     property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
-    property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0
+    property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0 // Width required to substract
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
     property alias innerWidth: row.width
@@ -25,23 +25,19 @@ ListItem {
         //width: parent.width
         width: {
             if(_firstSameAuthor) {
-                if (appSettings.sentBehaviour != "n") // If sent messages are reversed or right-aligned,
-                             // parent width substracting padding if sent and less width for messages is enabled
+                if (appSettings.sentBehaviour !== "n")
                     return Math.min(parent.width - _sentLessWidth,
-
-                             // width of all elements, last one is what is larger - author or contets
-                             _infoWidth + Math.max(contentsLbl.implicitWidth, infoRow.width));
-
-                    // if sent messages are not specially aligned or reversed,
-                    // parent width substracting padding if sent and less width for messages is enabled
-                    else return parent.width-_sentLessWidth;
-            } else return Math.max(masterWidth, Math.min(parent.width-_sentLessWidth, _infoWidth + contentsLbl.implicitWidth));
+                                    _infoWidth + Math.max(contentsLbl.implicitWidth, infoRow.width));
+                else return parent.width-_sentLessWidth
+            } else return Math.max(masterWidth,
+                                   Math.min(parent.width-_sentLessWidth,
+                                            _infoWidth + contentsLbl.implicitWidth));
         }
         height: !_firstSameAuthor ? textContainer.height : childrenRect.height
         // align right if sent and set to reversed/right aligned
-        anchors.right: (sent && appSettings.sentBehaviour != "n") ? parent.right : undefined
+        anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
         // reverse if sent and set to reversed
-        layoutDirection: (sent && appSettings.sentBehaviour == "r") ? Qt.RightToLeft : Qt.LeftToRight
+        layoutDirection: (sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
 
         Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
            default: case "n": return 0
@@ -49,7 +45,7 @@ ListItem {
            case "r": return (visible && sent) ? 0 : Theme.horizontalPageMargin
            case "a": return visible ? Theme.horizontalPageMargin : 0
         }
-            visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n"
+            visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
         }
 
         Image {
@@ -57,7 +53,7 @@ ListItem {
             source: _firstSameAuthor ? pfp : ""
             height: Theme.iconSizeLarge
             width: visible ? height : 0
-            visible: _firstSameAuthor || (appSettings.oneAuthorPadding == "p")
+            visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
             opacity: _firstSameAuthor ? 1 : 0
 
             property bool rounded: true
@@ -96,19 +92,18 @@ ListItem {
 
         Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
             // visible the same as for authorLbl or profileIcon; but if oneAuthorPadding is enabled then ignore everything and set to true
-            visible: _firstSameAuthor || appSettings.oneAuthorPadding != "n";
+            visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n";
         }
 
         Column {
             id: textContainer
-            width: !_firstSameAuthor ? parent.width - _infoWidth :
-                ((appSettings.sentBehaviour == "a") ? // If sentBehaviour is right-aligned,
-                             // ListItem width substracting all other elements width except us (textContainer)
-                    Math.min(parent.width - _infoWidth,
-
-                             Math.max(contentsLbl.paintedWidth, infoRow.width))
-                      // ListItem width substracting all other elements width except us (textContainer)
-                    : (parent.width - _infoWidth))
+            width: {
+                if(_firstSameAuthor) {
+                    if (appSettings.sentBehaviour === "a") // If sentBehaviour is right-aligned,
+                    return Math.min(parent.width - _infoWidth, Math.max(contentsLbl.paintedWidth, infoRow.width))
+                    else return (parent.width - _infoWidth)
+                } else return parent.width - _infoWidth;
+            }
             Row {
                 id: infoRow
                 visible: _firstSameAuthor
@@ -132,7 +127,7 @@ ListItem {
                 wrapMode: Text.Wrap
                 width: Math.min(parent.width, implicitWidth)
                                // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                anchors.right: (sent && appSettings.sentBehaviour != "n" && appSettings.alignMessagesText)
+                anchors.right: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText)
                                ? parent.right : undefined
             }
 
