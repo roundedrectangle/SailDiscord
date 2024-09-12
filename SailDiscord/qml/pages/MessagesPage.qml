@@ -57,13 +57,9 @@ Page {
                         pfp: _pfp
                         sent: _sent
                         date: _date
-                        sameAuthorAsBefore: {
-                            if (index == 0) return false
-                            if (msgModel.get(index-1)._author == _author)
-                             return (date - msgModel.get(index-1)._date) < 300000 // 5 minutes
-                            return false
-                        }
+                        sameAuthorAsBefore: index == 0 ? false : (msgModel.get(index-1)._author === _author)
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
+                        masterDate: index == 0 ? undefined : msgModel.get(index-1)._date
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)

@@ -8,10 +8,16 @@ ListItem {
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
     property bool sameAuthorAsBefore
-    property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date date
 
-    property bool _firstSameAuthor: !(sameAuthorAsBefore && appSettings.oneAuthor)
+    property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
+    property date masterDate // Date of previous element
+
+    property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
+        case "n": return true
+        case "a": return !sameAuthorAsBefore
+        case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index-1)._date) < 300000) // 5 minutes
+    }
     property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0 // Width required to substract
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
