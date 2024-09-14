@@ -171,7 +171,8 @@ Page {
         onRowsInserted: {
             for (var i=first; i<=last; i++) {
                 if (get(i)._from_history) {
-                    messagesList.scrollToBottom()
+                    //messagesList.scrollToBottom()
+                    messagesList.positionViewAtEnd()
                     break
                 }
             }
