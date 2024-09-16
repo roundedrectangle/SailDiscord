@@ -15,36 +15,30 @@ I can forget about my projects and pause the developing, but then I come back (n
 ## TODO
 
 - [X] Login using Discord
-- [X] Save token after logging in
-- [X] Open the login page or the main page depending on is user logged in or not
 - [X] Connect Python
-- [X] Integrate discord.py-self
 - [X] Servers
-	- [X] List
-		- [ ] Make it follow the same sorting as in the real discord, probably not possible yet because no such thing is implemented in discord.py-self. mb this is also an issue with qml?
-	- [X] Channels list
-- [ ] Messages
+	- [ ] Make the list follow the same sorting as in the real discord. *probably not possible yet because this is not implemented in discord.py-self*
+- [ ] Text channels
 	- [ ] Text
-		- [X] Read
-		- [ ] Write
-	- [ ] Other types
-- [ ] DMs list
-- [ ] Develop the whole app
-- [X] Package library with app
-	- [X] Fix `BuildRequires: python3-pip;` not working
-- [X] SailJail
+	- [ ] Other types (photos, gifs, etc.)
+- [ ] DMs
 - [X] Settings
 - [X] About page
 - [ ] Caching
 	- [X] Avatars
-- [ ] Automate translating, maybe something like weblate
+- [ ] Automate translating, maybe with something like weblate
+- [ ] More features?
 
 ## Screenshots
-<img src="pictures/FirstPage.png" alt="Server list" width="200"/>
-<img src="pictures/Channels.png" alt="Server list" width="200"/>
-<img src="pictures/Messages.png" alt="Server list" width="200"/>
-<img src="pictures/Settings.png" alt="Server list" width="200"/>
-<img src="pictures/About.png" alt="Server list" width="200"/>
+<p float="left">
+	<img src="pictures/FirstPage.png" alt="Server list" width="200"/>
+	<img src="pictures/Channels.png" alt="Server list" width="200"/>
+	<img src="pictures/Messages.png" alt="Server list" width="200"/>
+	<img src="pictures/Settings.png" alt="Server list" width="200"/>
+	<img src="pictures/About.png" alt="Server list" width="200"/>
+</p>
+
+*Screenshots are for version 0.2.2*
 
 ## Build
 
