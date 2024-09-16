@@ -16,7 +16,7 @@ ListItem {
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
         case "n": return true
         case "a": return !sameAuthorAsBefore
-        case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index-1)._date) < 300000) // 5 minutes
+        case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) // 5 minutes
     }
     property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0 // Width required to substract
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width

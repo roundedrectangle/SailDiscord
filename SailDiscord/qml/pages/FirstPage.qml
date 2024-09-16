@@ -84,7 +84,7 @@ Page {
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
-                    serverid: id,
+                    serverid: _id,
                     name: name,
                     icon: icon,
                     memberCount: memberCount

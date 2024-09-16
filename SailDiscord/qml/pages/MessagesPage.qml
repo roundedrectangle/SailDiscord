@@ -14,19 +14,13 @@ Page {
     property bool sendPermissions: true
 
     Timer {
-        id: scrollToBottomTimer
-        interval: 750
-        onTriggered: messagesList.scrollToBottom()
-    }
-
-    Timer {
         id: activeFocusTimer
         interval: 100
         onTriggered: sendField.forceActiveFocus()
     }
 
     function sendMessage() {
-        python.sendMessage(sendField.text, function() {scrollToBottomTimer.start()})
+        python.sendMessage(sendField.text)
         sendField.text = ""
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
@@ -46,11 +40,13 @@ Page {
             Item {
                 width: parent.width
                 height: parent.height - header.height - (sendField.visible ? sendField.height : 0)
+
                 SilicaListView {
                     id: messagesList
                     anchors.fill: parent
                     model: msgModel
                     clip: true
+                    verticalLayoutDirection: ListView.BottomToTop
 
                     ViewPlaceholder {
                         enabled: msgModel.count === 0
@@ -64,9 +60,9 @@ Page {
                         pfp: _pfp
                         sent: _sent
                         date: _date
-                        sameAuthorAsBefore: index == 0 ? false : (msgModel.get(index-1)._author == _author)
-                        masterWidth: sameAuthorAsBefore ? msgModel.get(index-1)._masterWidth : -1
-                        masterDate: index == 0 ? new Date(1) : msgModel.get(index-1)._date
+                        sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
+                        masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
+                        masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -96,7 +92,6 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     backgroundStyle: TextEditor.UnderlineBackground
                     horizontalAlignment: TextEdit.AlignLeft
-                    //focus: true
 
                     EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
                     EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
@@ -162,21 +157,11 @@ Page {
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history}
-                if (history) insert(0, data); else append(data);
+                if (!history) insert(0, data); else append(data);
             })
         }
 
         onCountChanged: messagesList.forceLayout()
-
-        onRowsInserted: {
-            for (var i=first; i<=last; i++) {
-                if (get(i)._from_history) {
-                    //messagesList.scrollToBottom()
-                    messagesList.positionViewAtEnd()
-                    break
-                }
-            }
-        }
     }
 
     Component.onCompleted: {
