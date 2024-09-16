@@ -8,18 +8,17 @@ ListItem {
 
     property bool hasIcon: icon != "None" && icon != ""
 
+    property bool _iconAvailable: hasIcon || appSettings.emptySpace
+
     contentWidth: parent.width
-    contentHeight: hasIcon || appSettings.emptySpace ? Theme.itemSizeLarge : Theme.itemSizeSmall;
+    contentHeight: _iconAvailable ? Theme.itemSizeLarge : Theme.itemSizeSmall;
 
     Column {
         width: parent.width - Theme.horizontalPageMargin*2
-        //height: parent.height - Theme.paddingLarge*2
         anchors.horizontalCenter: parent.horizontalCenter
-        //anchors.verticalCenter: parent.verticalCenter
-        spacing: Theme.paddingSmall
-
+        anchors.verticalCenter: parent.verticalCenter
         Row {
-            //spacing: (hasIcon || appSettings.emptySpace) ? Theme.paddingLarge : 0
+            //spacing: _iconAvailable ? Theme.paddingLarge : 0
 
             Image {
                 id: profileIcon
@@ -27,7 +26,7 @@ ListItem {
                 height: (parent.parent.parent.height-4*Theme.paddingSmall)
                 width: height
 
-                visible: hasIcon || appSettings.emptySpace
+                visible: _iconAvailable
 
                 property bool rounded: true
                 property bool adapt: true
@@ -63,7 +62,7 @@ ListItem {
                 }
             }
 
-            Item { id: iconPadding; height: 1; width: (hasIcon || appSettings.emptySpace) ? Theme.paddingLarge : 0; }
+            Item { id: iconPadding; height: 1; width: _iconAvailable ? Theme.paddingLarge : 0; }
 
             Label {
                 //width: (parent.width - profileIcon.width - iconPadding.width)
@@ -80,12 +79,5 @@ ListItem {
                 //truncationMode: TruncationMode.Fade
             }
         }
-
-        Separator {
-            color: Theme.primaryColor
-            width: parent.width
-            horizontalAlignment: Qt.AlignHCenter
-        }
     }
-
 }

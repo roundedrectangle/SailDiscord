@@ -70,7 +70,7 @@ ApplicationWindow {
                 myPage.loading = false;
                 myPage.username = _username;
             })
-            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached}) })
+            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id}) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})

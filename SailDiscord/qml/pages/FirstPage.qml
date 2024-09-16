@@ -105,6 +105,22 @@ Page {
                 }
             }
         }
+
+        section {
+            property: "_id"
+            delegate: Separator {
+                color: Theme.primaryColor
+                width: parent.width
+                horizontalAlignment: Qt.AlignHCenter
+
+                Component.onCompleted: {
+                    // why is this required?
+                    visible = section != serversModel.get(0)._id;
+                    opacity = visible ? 1 : 0
+                    height = visible ? undefined : 0
+                }
+            }
+        }
     }
 
     ListModel {
