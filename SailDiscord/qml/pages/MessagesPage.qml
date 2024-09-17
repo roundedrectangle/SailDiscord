@@ -66,6 +66,13 @@ Page {
 
                         property int yoff: Math.round(y - messagesList.contentY)
                         property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
+                        property bool newMessagesRequired: isFullyVisible && index == msgModel.count-2 && initializationComplete
+                        property bool initializationComplete: false
+
+                        Timer {
+                            interval: 1000
+                            onTriggered: parent.initializationComplete = true
+                        }
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -84,7 +91,9 @@ Page {
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
 
-                        onIsFullyVisibleChanged: shared.log(_contents, isFullyVisible)
+                        onNewMessagesRequiredChanged: {
+                            if (newMessagesRequired) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!")
+                        }
                     }
                 }
             }
