@@ -64,6 +64,9 @@ Page {
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
                         masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
 
+                        property int yoff: Math.round(y - messagesList.contentY)
+                        property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
+
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
@@ -80,6 +83,8 @@ Page {
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
+
+                        onIsFullyVisibleChanged: shared.log(_contents, isFullyVisible)
                     }
                 }
             }

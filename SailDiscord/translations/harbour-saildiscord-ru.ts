@@ -106,7 +106,7 @@
         <translation>Скажи привет (Скоро)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="96"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="101"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

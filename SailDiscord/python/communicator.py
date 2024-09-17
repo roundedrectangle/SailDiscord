@@ -92,11 +92,14 @@ class MyClient(discord.Client):
             #await message.channel.send('pong')
 
     async def get_last_messages(self):
-        this_thread_channel_id = self.current_channel.id
-        async for m in self.current_channel.history(limit=100):
-            #if self.current_channel.id != this_thread_channel_id:
-            #    pyotherside.send("Channel closed!")
-            #    return
+        # this_thread_channel = self.current_channel
+        # history = this_thread_channel.history(limit=None)
+        # async for m in history:
+        #     send_message(m, True)
+        #     if self.current_channel != this_thread_channel:
+        #         pyotherside.send("Channel closed!")
+        #         await history.aclose()
+        async for m in self.current_channel.history(limit=30):
             send_message(m, True)
 
     def run_asyncio_threadsafe(self, courutine):
