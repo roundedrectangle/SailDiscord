@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from typing import Optional, Union
 
 from exceptions import *
+from utils import *
 from caching import Cacher, ImageType, CachePeriodMapping
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
@@ -91,7 +92,7 @@ class MyClient(discord.Client):
             send_message(message)
             #await message.channel.send('pong')
 
-    async def get_last_messages(self):
+    async def get_last_messages(self, after: Optional[discord.SnowflakeTime]=None, limit=30):
         # this_thread_channel = self.current_channel
         # history = this_thread_channel.history(limit=None)
         # async for m in history:
@@ -99,7 +100,7 @@ class MyClient(discord.Client):
         #     if self.current_channel != this_thread_channel:
         #         pyotherside.send("Channel closed!")
         #         await history.aclose()
-        async for m in self.current_channel.history(limit=30):
+        async for m in self.current_channel.history(limit=limit, after=after, oldest_first=False):
             send_message(m, True)
 
     def run_asyncio_threadsafe(self, courutine):
@@ -188,6 +189,11 @@ class Communicator:
     
     def send_message(self, message_text):
         self.client.send_message(message_text)
+
+    @exception_decorator(AttributeError, discord.NotFound)
+    def get_messages(self, channel_id, after_id):
+        msg = self.client.get_channel(channel_id).fetch_message()
+        self.client.run_asyncio_threadsafe(self.client.get_last_messages())
 
 
 comm = Communicator()
