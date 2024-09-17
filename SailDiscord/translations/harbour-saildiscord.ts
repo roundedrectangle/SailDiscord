@@ -96,17 +96,17 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="57"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="53"/>
         <source>No messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="58"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="54"/>
         <source>Say hi (Coming soon)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="93"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="96"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
@@ -292,7 +292,7 @@
 <context>
     <name>ServerListItem</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="50"/>
+        <location filename="../qml/components/ServerListItem.qml" line="49"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>

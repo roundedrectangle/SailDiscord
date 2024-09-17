@@ -70,6 +70,13 @@ Page {
 
                         Component.onCompleted: {
                             updateMasterWidth()
+                            _wasRecreated = function(){switch (_wasRecreated) {
+                                case -1: return 0
+                                case 0: return 1
+                                case 1: default: return 2
+                            }}() // might be removed!
+
+                            //if (_wasRecreated === 1) shared.log(_contents)
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
@@ -125,7 +132,7 @@ Page {
                 append({
                            messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
                            _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true
+                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasRecreated: -1
                        })
             }
 
@@ -156,7 +163,9 @@ Page {
 
             python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon, _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history}
+                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
+                    _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
+                    _wasRecreated: -1}
                 if (!history) insert(0, data); else append(data);
             })
         }
