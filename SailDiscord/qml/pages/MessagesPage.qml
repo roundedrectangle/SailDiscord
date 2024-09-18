@@ -92,8 +92,8 @@ Page {
                         onInnerWidthChanged: updateMasterWidth()
 
                         onNewMessagesRequiredChanged: {
-                            if (newMessagesRequired) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!")
-                            python.requestOlderHistory(channelid, messageId)
+                            //if (newMessagesRequired) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!")
+                            //python.requestOlderHistory(channelid, messageId)
                         }
                     }
                 }
@@ -185,7 +185,13 @@ Page {
             })
         }
 
-        onCountChanged: messagesList.forceLayout()
+        onCountChanged: {
+            messagesList.forceLayout()
+            if (count % 30 == 0) {
+                console.log("New 30th message! History update is required!")
+                python.requestOlderHistory(channelid, get(count-1).messageId)
+            }
+        }
     }
 
     Component.onCompleted: {
