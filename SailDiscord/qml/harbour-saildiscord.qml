@@ -130,8 +130,13 @@ ApplicationWindow {
             python.call('communicator.comm.set_cache_period', [period], function() {})
         }
 
-        function sendMessage(text, callback) {
-            python.call('communicator.comm.send_message', [text], callback)
+        function sendMessage(text) {
+            python.call('communicator.comm.send_message', [text], function() {})
+        }
+
+        function requestOlderHistory(channelid, messageId) {
+            //console.log("Requsted history for "+channelid+" "+messageId)
+            python.call('communicator.comm.get_history_messages', [channelid, messageId], function() {})
         }
     }
 }

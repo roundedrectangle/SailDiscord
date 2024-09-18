@@ -3,7 +3,8 @@ from typing import Callable # TODO: use collections.abc.Callable
 import functools
 import time
 
-def generate_exception_decorator(*exceptions: Exception):
+def exception_decorator(*exceptions: Exception):
+    """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
     def decorator(func: Callable):
         @functools.wraps(func)
         def f(*args, **kwargs):
@@ -16,4 +17,4 @@ def generate_exception_decorator(*exceptions: Exception):
     return decorator
 
 
-attributeerror_safe = generate_exception_decorator(AttributeError)
+attributeerror_safe = exception_decorator(AttributeError)

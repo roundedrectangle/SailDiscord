@@ -92,7 +92,7 @@ class MyClient(discord.Client):
             send_message(message)
             #await message.channel.send('pong')
 
-    async def get_last_messages(self, after: Optional[discord.SnowflakeTime]=None, limit=30):
+    async def get_last_messages(self, after: Optional[Union[discord.abc.Snowflake, datetime]]=None, limit=30):
         # this_thread_channel = self.current_channel
         # history = this_thread_channel.history(limit=None)
         # async for m in history:
@@ -190,10 +190,24 @@ class Communicator:
     def send_message(self, message_text):
         self.client.send_message(message_text)
 
+    async def lazy_last_messages(self, channel_id, after_id):
+        ch = self.client.get_channel(int(channel_id))
+        coro = ch.fetch_message(int(after_id))
+        pyotherside.send(f"Awaiting message {after_id} for channel {ch.name}, {coro}")
+        msg = self.client.run_asyncio_threadsafe(coro)
+        await msg
+
+        pyotherside.send(f"History requested after message {msg.result().content}")
+
     @exception_decorator(AttributeError, discord.NotFound)
-    def get_messages(self, channel_id, after_id):
-        msg = self.client.get_channel(channel_id).fetch_message()
-        self.client.run_asyncio_threadsafe(self.client.get_last_messages())
+    def get_history_messages(self, channel_id, after_id):
+        ch = self.client.get_channel(int(channel_id))
+        coro = ch.fetch_message(int(after_id))
+        pyotherside.send(f"Awaiting message {after_id} for channel {ch.name}, {coro}")
+        msg = self.client.run_asyncio_threadsafe(coro)
+        msg.add_done_callback(lambda msg: pyotherside.send(f"History requested after message {msg.result().content}"))
+        
+        #self.client.run_asyncio_threadsafe(self.lazy_last_messages(channel_id, after_id))
 
 
 comm = Communicator()

@@ -66,7 +66,7 @@ Page {
 
                         property int yoff: Math.round(y - messagesList.contentY)
                         property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
-                        property bool newMessagesRequired: isFullyVisible && index == msgModel.count-2 && initializationComplete
+                        property bool newMessagesRequired: isFullyVisible && index == msgModel.count-2 //&& initializationComplete
                         property bool initializationComplete: false
 
                         Timer {
@@ -93,6 +93,7 @@ Page {
 
                         onNewMessagesRequiredChanged: {
                             if (newMessagesRequired) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!")
+                            python.requestOlderHistory(channelid, messageId)
                         }
                     }
                 }
