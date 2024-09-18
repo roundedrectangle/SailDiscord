@@ -76,6 +76,7 @@ class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.abc.GuildChannel] = None
     loop = None
+    current_channel_deletion_pending = False
 
     async def on_ready(self, first_run=True):
         pyotherside.send('logged_in', str(self.user.name))
@@ -93,12 +94,21 @@ class MyClient(discord.Client):
             #await message.channel.send('pong')
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
+        ch = self.get_channel(current_channel.id)
         _before = before
         if isinstance(before, int):
-            _before = self.current_channel.get_partial_message(before)
+            _before = self.ch.get_partial_message(before)
+        pyotherside.send(f"works {ch.name} {_before}")
 
-        async for m in self.current_channel.history(limit=limit, before=_before, oldest_first=False):
+        gen = ch.history(limit=limit, before=_before, oldest_first=False)
+
+        async for m in gen:
             send_message(m, True)
+            if self.current_channel == None:
+                pyotherside.send("Stopping iteration...")
+                cancel_gen(gen)
+                pyotherside.send("completed!")
+                return#break
 
     def run_asyncio_threadsafe(self, courutine):
         return asyncio.run_coroutine_threadsafe(courutine, self.loop)

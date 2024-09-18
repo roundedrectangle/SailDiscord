@@ -106,7 +106,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="111"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="112"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>

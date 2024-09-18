@@ -65,8 +65,9 @@ Page {
                         masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
 
                         property int yoff: Math.round(y - messagesList.contentY)
-                        property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
-                        property bool newMessagesRequired: isFullyVisible && index == msgModel.count-2 //&& initializationComplete
+                        //property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
+                        property bool isFullyVisible: (yoff > messagesList.y && yoff < messagesList.y + messagesList.height)
+                        property bool newMessagesRequired: (isFullyVisible) //&& initializationComplete
                         property bool initializationComplete: false
 
                         Timer {
@@ -91,8 +92,8 @@ Page {
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
 
-                        onNewMessagesRequiredChanged: {
-                            //if (newMessagesRequired) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!")
+                        onIsFullyVisibleChanged: {
+                            //if (isFullyVisible) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!", index, _contents)
                             //python.requestOlderHistory(channelid, messageId)
                         }
                     }
