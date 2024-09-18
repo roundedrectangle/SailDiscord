@@ -102,12 +102,10 @@ class MyClient(discord.Client):
         gen = ch.history(limit=limit, before=_before, oldest_first=False)
 
         async for m in gen:
-            send_message(m, True)
             if self.current_channel == None: # this doesn't work!
-                pyotherside.send("Stopping iteration...")
                 cancel_gen(gen)
-                pyotherside.send("completed!")
-                return#break
+                break
+            send_message(m, True)
 
     def run_asyncio_threadsafe(self, courutine):
         return asyncio.run_coroutine_threadsafe(courutine, self.loop)
@@ -127,7 +125,6 @@ class MyClient(discord.Client):
         #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
         self.current_server = None
         self.current_channel = None
-        pyotherside.send("@@@@@@@@@@@@ current_channel unset")
     
     def send_message(self, text):
         if self.ensure_current_channel():
