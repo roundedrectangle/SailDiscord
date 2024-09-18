@@ -92,15 +92,12 @@ class MyClient(discord.Client):
             send_message(message)
             #await message.channel.send('pong')
 
-    async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime]]=None, limit=30):
-        # this_thread_channel = self.current_channel
-        # history = this_thread_channel.history(limit=None)
-        # async for m in history:
-        #     send_message(m, True)
-        #     if self.current_channel != this_thread_channel:
-        #         pyotherside.send("Channel closed!")
-        #         await history.aclose()
-        async for m in self.current_channel.history(limit=limit, before=before, oldest_first=False):
+    async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
+        _before = before
+        if isinstance(before, int):
+            _before = self.current_channel.get_partial_message(before)
+
+        async for m in self.current_channel.history(limit=limit, before=_before, oldest_first=False):
             send_message(m, True)
 
     def run_asyncio_threadsafe(self, courutine):
@@ -201,13 +198,15 @@ class Communicator:
 
     @exception_decorator(AttributeError, discord.NotFound)
     def get_history_messages(self, channel_id, before_id):
-        ch = self.client.get_channel(int(channel_id))
-        coro = ch.fetch_message(int(before_id))
-        pyotherside.send(f"Awaiting message {before_id} for channel {ch.name}, {coro}")
-        msg = self.client.run_asyncio_threadsafe(coro)
-        msg.add_done_callback(lambda msg: pyotherside.send(f"History requested after message {msg.result().content}"))
+        # ch = self.client.get_channel(int(channel_id))
+        # coro = ch.fetch_message(int(before_id))
+        # pyotherside.send(f"Awaiting message {before_id} for channel {ch.name}, {coro}")
+        # msg = self.client.run_asyncio_threadsafe(coro)
+        # msg.add_done_callback(lambda msg: pyotherside.send(f"History requested after message {msg.result().content}"))
 
         #self.client.run_asyncio_threadsafe(self.lazy_last_messages(channel_id, before_id))
+
+        self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)))
 
 
 comm = Communicator()

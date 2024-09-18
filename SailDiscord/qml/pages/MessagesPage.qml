@@ -136,6 +136,8 @@ Page {
     ListModel {
         id: msgModel
 
+        property int updateCounter: 0
+
         function generateDemo() {
             var repeatString = function(string, count) {
                 var result = "";
@@ -188,8 +190,10 @@ Page {
         onCountChanged: {
             messagesList.forceLayout()
             if (count % 30 == 0) {
+                if (updateCounter >= 10) return //todo: fix without this, for now app lags even with this, even when done
                 console.log("New 30th message! History update is required!")
                 python.requestOlderHistory(channelid, get(count-1).messageId)
+                updateCounter++
             }
         }
     }
