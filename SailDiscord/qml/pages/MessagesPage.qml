@@ -214,5 +214,6 @@ Page {
     Component.onDestruction: {
         if (isDemo) return
         python.resetCurrentChannel()
+        python.setHandler("message", shared.log)
     }
 }

@@ -1,8 +1,10 @@
 import pyotherside
-from typing import Callable # TODO: use collections.abc.Callable
+from typing import Callable, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 import time
 from contextlib import suppress
+
+GeneralNone = ('', None) # usage: x in GenralNone
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""

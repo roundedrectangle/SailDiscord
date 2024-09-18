@@ -9,7 +9,7 @@ import asyncio, shutil
 from pathlib import Path
 import itertools
 from datetime import datetime, timezone
-from typing import Optional, Union
+from typing import Optional, Union # TODO: use pipe (|) (needs newer python)
 
 from exceptions import *
 from utils import *
@@ -94,17 +94,16 @@ class MyClient(discord.Client):
             #await message.channel.send('pong')
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
-        ch = self.get_channel(current_channel.id)
+        ch = self.get_channel(self.current_channel.id)
         _before = before
         if isinstance(before, int):
-            _before = self.ch.get_partial_message(before)
-        pyotherside.send(f"works {ch.name} {_before}")
+            _before = ch.get_partial_message(before)
 
         gen = ch.history(limit=limit, before=_before, oldest_first=False)
 
         async for m in gen:
             send_message(m, True)
-            if self.current_channel == None:
+            if self.current_channel == None: # this doesn't work!
                 pyotherside.send("Stopping iteration...")
                 cancel_gen(gen)
                 pyotherside.send("completed!")
@@ -128,6 +127,7 @@ class MyClient(discord.Client):
         #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
         self.current_server = None
         self.current_channel = None
+        pyotherside.send("@@@@@@@@@@@@ current_channel unset")
     
     def send_message(self, text):
         if self.ensure_current_channel():
@@ -183,7 +183,7 @@ class Communicator:
             send_channels(g, self.client.user.id)
 
     def set_channel(self, guild_id, channel_id):
-        if guild_id in [None, '']:
+        if guild_id in GeneralNone:
             self.client.unset_current_channel()
         else:
             try:
