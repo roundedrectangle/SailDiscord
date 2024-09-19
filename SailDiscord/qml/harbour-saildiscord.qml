@@ -11,6 +11,14 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
+    Connections {
+        target: Qt.application
+
+        onAboutToQuit: {
+            console.log("app quiting!") // TODO: set status to offline
+        }
+    }
+
     QtObject {
         id: shared
 
