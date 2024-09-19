@@ -54,6 +54,16 @@ Page {
                         hintText: qsTr("Say hi (Coming soon)")
                     }
 
+                    //onContentYChanged: shared.log(originY, contentY)
+
+                    function getVisibleIndexRange() { // this one actually works!
+                        var center_x = messagesList.x + messagesList.width / 2
+                        return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
+                                indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
+                    }
+
+                    onContentYChanged: console.log(getVisibleIndexRange())
+
                     delegate: MessageItem {
                         contents: _contents
                         author: _author
@@ -93,6 +103,7 @@ Page {
                         onInnerWidthChanged: updateMasterWidth()
 
                         onIsFullyVisibleChanged: {
+                            // TODO: request new items on scroll to top/2/3/4/5th last message
                             //if (isFullyVisible) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!", index, _contents)
                             //python.requestOlderHistory(channelid, messageId)
                         }
@@ -193,7 +204,7 @@ Page {
             if (count % 30 == 0) {
                 if (updateCounter >= 10) return //todo: fix without this, for now app lags even with this, even when done
                 console.log("New 30th message! History update is required!")
-                python.requestOlderHistory(channelid, get(count-1).messageId)
+                //python.requestOlderHistory(channelid, get(count-1).messageId)
                 updateCounter++
             }
         }
