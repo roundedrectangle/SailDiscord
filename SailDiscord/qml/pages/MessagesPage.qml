@@ -54,8 +54,6 @@ Page {
                         hintText: qsTr("Say hi (Coming soon)")
                     }
 
-                    //onContentYChanged: shared.log(originY, contentY)
-
                     function getVisibleIndexRange() { // this one actually works!
                         var center_x = messagesList.x + messagesList.width / 2
                         return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
@@ -86,39 +84,15 @@ Page {
                         masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
                         masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
 
-                        property int yoff: Math.round(y - messagesList.contentY)
-                        //property bool isFullyVisible: (yoff > messagesList.y && yoff + height < messagesList.y + messagesList.height)
-                        property bool isFullyVisible: (yoff > messagesList.y && yoff < messagesList.y + messagesList.height)
-                        property bool newMessagesRequired: (isFullyVisible) //&& initializationComplete
-                        property bool initializationComplete: false
-
-                        Timer {
-                            interval: 1000
-                            onTriggered: parent.initializationComplete = true
-                        }
-
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
 
                         Component.onCompleted: {
                             updateMasterWidth()
-                            /*_wasRecreated = function(){switch (_wasRecreated) {
-                                case -1: return 0
-                                case 0: return 1
-                                case 1: default: return 2
-                            }}() // might be removed!*/
-
-                            //if (_wasRecreated === 1) shared.log(_contents)
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
-
-                        onIsFullyVisibleChanged: {
-                            // TODO: request new items on scroll to top/2/3/4/5th last message
-                            //if (isFullyVisible) shared.log("NEW MESSAGES ARE NEEDED!!!1!!!!!!!1!1!", index, _contents)
-                            //python.requestOlderHistory(channelid, messageId)
-                        }
                     }
                 }
             }
@@ -211,15 +185,7 @@ Page {
             })
         }
 
-        onCountChanged: {
-            messagesList.forceLayout()
-            if (count % 30 == 0) {
-                if (updateCounter >= 10) return //todo: fix without this, for now app lags even with this, even when done
-                //console.log("New 30th message! History update is required!")
-                //python.requestOlderHistory(channelid, get(count-1).messageId)
-                updateCounter++
-            }
-        }
+        onCountChanged: messagesList.forceLayout()
     }
 
     Component.onCompleted: {

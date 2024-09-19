@@ -111,13 +111,7 @@ ApplicationWindow {
             const id = arr.shift()
             updater(myPage.serversModel.findById(id), arr.join(' '))
         }
-
-        function requestCategories(guildid) {
-            //call('communicator.comm.get_categories', [guildid], function() {})
-        }
-
-        function requestChannels(guildid){//, categoryid) {
-            //call('communicator.comm.get_channels', [guildid, categoryid], function() {})
+        function requestChannels(guildid){
             call('communicator.comm.get_channels', [guildid], function () {})
         }
 
@@ -143,7 +137,6 @@ ApplicationWindow {
         }
 
         function requestOlderHistory(messageId) {
-            //console.log("Requsted history for "+channelid+" "+messageId)
             python.call('communicator.comm.get_history_messages', [messageId], function() {})
         }
     }
