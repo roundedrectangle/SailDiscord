@@ -11,7 +11,7 @@ AboutPageBase {
 
     appName: qsTr("SailDiscord")
     appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
-    appVersion: "0.3.0"
+    appVersion: "0.3.1"
     appRelease: "1"
     sourcesUrl: "https://github.com/roundedrectangle/SailDiscord"
     licenses: License { spdxId: "GPL-3.0-or-later" }
