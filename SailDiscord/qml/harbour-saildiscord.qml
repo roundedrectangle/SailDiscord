@@ -142,9 +142,9 @@ ApplicationWindow {
             python.call('communicator.comm.send_message', [text], function() {})
         }
 
-        function requestOlderHistory(channelid, messageId) {
+        function requestOlderHistory(messageId) {
             //console.log("Requsted history for "+channelid+" "+messageId)
-            python.call('communicator.comm.get_history_messages', [channelid, messageId], function() {})
+            python.call('communicator.comm.get_history_messages', [messageId], function() {})
         }
     }
 }

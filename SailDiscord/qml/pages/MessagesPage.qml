@@ -68,7 +68,7 @@ Page {
                             if (i>0 && i%29 == 0) {
                                 if (!msgModel.get(i)._wasUpdated) {
                                     msgModel.get(i)._wasUpdated = true
-                                    console.log("Update required...", i, rng)
+                                    python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
                                 }
                             }
                         }

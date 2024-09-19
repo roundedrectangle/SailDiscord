@@ -194,25 +194,8 @@ class Communicator:
     def send_message(self, message_text):
         self.client.send_message(message_text)
 
-    async def lazy_last_messages(self, channel_id, after_id):
-        ch = self.client.get_channel(int(channel_id))
-        coro = ch.fetch_message(int(after_id))
-        pyotherside.send(f"Awaiting message {after_id} for channel {ch.name}, {coro}")
-        msg = self.client.run_asyncio_threadsafe(coro)
-        await msg
-
-        pyotherside.send(f"History requested after message {msg.result().content}")
-
     @exception_decorator(AttributeError, discord.NotFound)
-    def get_history_messages(self, channel_id, before_id):
-        # ch = self.client.get_channel(int(channel_id))
-        # coro = ch.fetch_message(int(before_id))
-        # pyotherside.send(f"Awaiting message {before_id} for channel {ch.name}, {coro}")
-        # msg = self.client.run_asyncio_threadsafe(coro)
-        # msg.add_done_callback(lambda msg: pyotherside.send(f"History requested after message {msg.result().content}"))
-
-        #self.client.run_asyncio_threadsafe(self.lazy_last_messages(channel_id, before_id))
-
+    def get_history_messages(self, before_id):
         self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)))
 
 
