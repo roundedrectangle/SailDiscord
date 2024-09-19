@@ -62,7 +62,19 @@ Page {
                                 indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
                     }
 
-                    onContentYChanged: console.log(getVisibleIndexRange())
+                    function checkForUpdate() {
+                        var rng = getVisibleIndexRange()
+                        for (var i=rng[1]; i<=rng[0]; i++) {
+                            if (i>0 && i%29 == 0) {
+                                if (!msgModel.get(i)._wasUpdated) {
+                                    msgModel.get(i)._wasUpdated = true
+                                    console.log("Update required...", i, rng)
+                                }
+                            }
+                        }
+                    }
+
+                    onContentYChanged: checkForUpdate()
 
                     delegate: MessageItem {
                         contents: _contents
@@ -91,11 +103,11 @@ Page {
 
                         Component.onCompleted: {
                             updateMasterWidth()
-                            _wasRecreated = function(){switch (_wasRecreated) {
+                            /*_wasRecreated = function(){switch (_wasRecreated) {
                                 case -1: return 0
                                 case 0: return 1
                                 case 1: default: return 2
-                            }}() // might be removed!
+                            }}() // might be removed!*/
 
                             //if (_wasRecreated === 1) shared.log(_contents)
                         }
@@ -161,7 +173,7 @@ Page {
                 append({
                            messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
                            _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasRecreated: -1
+                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasUpdated: false
                        })
             }
 
@@ -194,7 +206,7 @@ Page {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasRecreated: -1}
+                    _wasUpdated: false}
                 if (!history) insert(0, data); else append(data);
             })
         }
@@ -203,7 +215,7 @@ Page {
             messagesList.forceLayout()
             if (count % 30 == 0) {
                 if (updateCounter >= 10) return //todo: fix without this, for now app lags even with this, even when done
-                console.log("New 30th message! History update is required!")
+                //console.log("New 30th message! History update is required!")
                 //python.requestOlderHistory(channelid, get(count-1).messageId)
                 updateCounter++
             }
