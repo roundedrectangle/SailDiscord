@@ -28,18 +28,20 @@
     </message>
     <message>
         <source>About</source>
+        <comment>Server</comment>
         <translation type="unfinished">Über</translation>
     </message>
 </context>
 <context>
     <name>ChannelsPage</name>
     <message>
-        <source>About</source>
-        <translation type="unfinished">Über</translation>
-    </message>
-    <message>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation type="unfinished">Über</translation>
     </message>
 </context>
 <context>
@@ -56,12 +58,18 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>About</source>
+        <comment>App</comment>
         <translation type="unfinished">Über</translation>
     </message>
     <message>
-        <source>Loading</source>
-        <translation type="unfinished"></translation>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation type="unfinished">Über</translation>
     </message>
 </context>
 <context>

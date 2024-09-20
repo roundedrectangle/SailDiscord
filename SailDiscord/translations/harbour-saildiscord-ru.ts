@@ -34,6 +34,7 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <source>About</source>
+        <comment>Server</comment>
         <translation>О сервере</translation>
     </message>
 </context>
@@ -42,6 +43,7 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <source>About</source>
+        <comment>Server</comment>
         <translation>О сервере</translation>
     </message>
     <message>
@@ -67,9 +69,15 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
+        <source>About</source>
+        <comment>App</comment>
+        <translation>О программе</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/FirstPage.qml" line="97"/>
         <source>About</source>
-        <translation>О программе</translation>
+        <comment>Server</comment>
+        <translation>О сервере</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="69"/>
