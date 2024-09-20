@@ -66,6 +66,15 @@
     </message>
 </context>
 <context>
+    <name>Errors</name>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="83"/>
+        <location filename="../qml/components/ServerListItem.qml" line="49"/>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="56"/>
@@ -84,14 +93,6 @@
         <location filename="../qml/modules/Opal/About/private/LicenseListPart.qml" line="119"/>
         <source>License text</source>
         <translation>Текст лицензии</translation>
-    </message>
-</context>
-<context>
-    <name>MessageItem</name>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="83"/>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
 </context>
 <context>
@@ -288,14 +289,6 @@
         <location filename="../qml/pages/SecondPage.qml" line="23"/>
         <source>Item</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ServerListItem</name>
-    <message>
-        <location filename="../qml/components/ServerListItem.qml" line="49"/>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
 </context>
 <context>

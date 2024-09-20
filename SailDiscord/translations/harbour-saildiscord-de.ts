@@ -55,6 +55,13 @@
     </message>
 </context>
 <context>
+    <name>Errors</name>
+    <message>
+        <source>Error loading image %1. Please report this to developers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FirstPage</name>
     <message>
         <source>Settings</source>
@@ -70,13 +77,6 @@
     <message>
         <source>License text</source>
         <translation>Lizenztext</translation>
-    </message>
-</context>
-<context>
-    <name>MessageItem</name>
-    <message>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -229,13 +229,6 @@
     <message>
         <source>Item</source>
         <translation>Element</translation>
-    </message>
-</context>
-<context>
-    <name>ServerListItem</name>
-    <message>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

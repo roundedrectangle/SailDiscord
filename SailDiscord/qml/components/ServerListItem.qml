@@ -46,7 +46,7 @@ ListItem {
                 }
 
                 onStatusChanged: if (status == Image.Error)
-                    Notices.show(qsTr("Error loading image %1. Please report this to developers").arg(title), Notice.Long, Notice.Top)
+                    Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(title), Notice.Long, Notice.Top)
 
                 ProgressCircle {
                     id: progressCircle
