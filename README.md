@@ -6,9 +6,9 @@ Very very WIP
 
 **By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
 
-Join our telegram [channel](https://t.me/saildiscord) with detailed development logs!
+<!--Join our telegram [channel](https://t.me/saildiscord) with detailed development logs!
 
-For testing functionality and my other projects you can use our discord [server](https://discord.gg/Q3u7ejjzFg).
+For testing functionality and my other projects you can use our discord [server](https://discord.gg/Q3u7ejjzFg).-->
 
 I can forget about my projects and pause the developing, but then I come back (not always). I'm also new to developing SailfishOS apps, and it's really hard to find how to develop them.
 
