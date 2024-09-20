@@ -61,7 +61,7 @@ Then open the app. If you ever want to switch back to the production version, ty
 - ~You might need to remove the build_folder/deps/google/_upb folder~ Should not be needed now.
 - ~There's an issue that the `BuildRequires: python3-pip;` line in the spec file throws an error. A workaround for now is to build these two awesome projects for the same target as for this project - [harbour-moremahjong](https://github.com/poetaster/harbour-moremahjong) and [sailfish-rpn-calculator](https://github.com/poetaster/sailfish-rpn-calculator).~
 	- ~A fix could be to use `python3 -m ensurepip --default-pip` instead of `BuildRequires: python3-pip;` in the spec, but it might break the build vm/container so I am not recommending it. You can still do so by uncommenting a line in the spec file.~
-	- The fix has been found, and it turns out very simple. Open the project in Sailfish IDE, right click on it in the file structure and click rebuild.
+	- The fix has been found, and it turns out very simple. Open the project in Sailfish IDE, right click on it in the file structure and click Run QMake.
 - You might need to `cd` into the build folder, run `sfdk config target=<a target>` and then `sfdk build-shell --maintain`, finally inside that shell run `python3 -m pip install --upgrade pip`.
 
 ## Credits

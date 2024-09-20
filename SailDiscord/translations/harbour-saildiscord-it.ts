@@ -21,11 +21,6 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="12"/>
-        <source>SailDiscord</source>
-        <translation>SailDiscord</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/AboutPage.qml" line="18"/>
         <source>A SailfishOS Discord client</source>
         <translation>Un client Discord per Sailfish OS</translation>
@@ -55,14 +50,6 @@
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
-    </message>
-</context>
-<context>
-    <name>CoverPage</name>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="8"/>
-        <source>My Cover</source>
-        <translation>Mia Cover</translation>
     </message>
 </context>
 <context>

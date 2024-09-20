@@ -14,7 +14,6 @@ TARGET = harbour-saildiscord
 
 CONFIG += sailfishapp
 
-#CONFIG += link_pkgconfig
 PKGCONFIG += qt5embedwidget
 
 SOURCES += \

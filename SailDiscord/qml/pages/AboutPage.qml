@@ -9,7 +9,7 @@ AboutPageBase {
     id: page
     allowedOrientations: Orientation.All
 
-    appName: qsTr("SailDiscord")
+    appName: "SailDiscord"
     appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
     appVersion: APP_VERSION
     appRelease: APP_RELEASE

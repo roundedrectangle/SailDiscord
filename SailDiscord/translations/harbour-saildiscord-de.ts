@@ -17,10 +17,6 @@
 <context>
     <name>AboutPage</name>
     <message>
-        <source>SailDiscord</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>A SailfishOS Discord client</source>
         <translation type="unfinished"></translation>
     </message>
@@ -45,13 +41,6 @@
     <message>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>CoverPage</name>
-    <message>
-        <source>My Cover</source>
-        <translation>Mein Cover</translation>
     </message>
 </context>
 <context>
