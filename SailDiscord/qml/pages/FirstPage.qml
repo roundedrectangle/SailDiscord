@@ -61,7 +61,7 @@ Page {
             busy: loading
 
             MenuItem {
-                text: qsTr("About", "App")
+                text: qsTranslate("About", "About", "App")
                 onClicked: pageStack.push("AboutPage.qml")
             }
 
@@ -94,7 +94,7 @@ Page {
             menu: Component {
                 ContextMenu {
                     MenuItem {
-                        text: qsTr("About", "Server")
+                        text: qsTranslate("About", "About", "Server")
                         onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                              serverid: id,
                              name: name,

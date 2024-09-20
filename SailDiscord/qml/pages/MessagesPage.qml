@@ -51,7 +51,7 @@ Page {
                     ViewPlaceholder {
                         enabled: msgModel.count === 0
                         text: qsTr("No messages")
-                        hintText: qsTr("Say hi (Coming soon)")
+                        hintText: qsTr("Say hi ;)")
                     }
 
                     function getVisibleIndexRange() { // this one actually works!

@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>About</name>
+    <message>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation type="unfinished">Über</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <comment>App</comment>
+        <translation type="unfinished">Über</translation>
+    </message>
+</context>
+<context>
     <name>AboutPage</name>
     <message>
         <source>SailDiscord</source>
@@ -26,22 +39,12 @@
         <source>Member count: </source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation type="unfinished">Über</translation>
-    </message>
 </context>
 <context>
     <name>ChannelsPage</name>
     <message>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation type="unfinished">Über</translation>
     </message>
 </context>
 <context>
@@ -60,16 +63,6 @@
     <message>
         <source>Loading</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>About</source>
-        <comment>App</comment>
-        <translation type="unfinished">Über</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation type="unfinished">Über</translation>
     </message>
 </context>
 <context>
@@ -93,11 +86,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Say hi (Coming soon)</source>
+        <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Type something</source>
+        <source>Say hi ;)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

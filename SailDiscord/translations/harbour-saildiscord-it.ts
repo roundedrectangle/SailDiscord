@@ -2,6 +2,23 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="it_IT">
 <context>
+    <name>About</name>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <location filename="../qml/pages/FirstPage.qml" line="97"/>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation>Info sul server</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="64"/>
+        <source>About</source>
+        <comment>App</comment>
+        <translation>A proposito di</translation>
+    </message>
+</context>
+<context>
     <name>AboutPage</name>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="12"/>
@@ -31,21 +48,9 @@
         <source>Member count: </source>
         <translation>Membri: </translation>
     </message>
-    <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation>Info sul server</translation>
-    </message>
 </context>
 <context>
     <name>ChannelsPage</name>
-    <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation>Info</translation>
-    </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
@@ -66,18 +71,6 @@
         <location filename="../qml/pages/FirstPage.qml" line="56"/>
         <source>Loading</source>
         <translation>Sto caricando</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="64"/>
-        <source>About</source>
-        <comment>App</comment>
-        <translation>A proposito di</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="97"/>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation>Info sul server</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="69"/>
@@ -110,8 +103,8 @@
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="54"/>
-        <source>Say hi (Coming soon)</source>
-        <translation>Dì ciao (Presto in arrivo)</translation>
+        <source>Say hi ;)</source>
+        <translation>Dì ciao ;)</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="109"/>
