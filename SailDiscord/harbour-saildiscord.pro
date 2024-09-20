@@ -67,3 +67,7 @@ python.files = python
 python.path = /usr/share/$${TARGET}
 
 INSTALLS += images python
+
+DEFINES += APP_VERSION=\\\"$$VERSION\\\"
+DEFINES += APP_RELEASE=\\\"$$RELEASE\\\"
+include(libs/opal-cached-defines.pri)

@@ -54,7 +54,9 @@ Short description of my Sailfish OS Application
 
 %build
 
-%qmake5 
+%qmake5 \
+    VERSION=%{version} \
+    RELEASE=%{release}
 
 %make_build
 
