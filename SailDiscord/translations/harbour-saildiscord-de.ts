@@ -28,6 +28,10 @@
         <source>Italian</source>
         <translation type="unfinished">Italienisch</translation>
     </message>
+    <message>
+        <source>Testers</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutServerPage</name>

@@ -9,7 +9,7 @@ AboutPageBase {
     id: page
     allowedOrientations: Orientation.All
 
-    appName: "SailDiscord"
+    appName: "Sailcord"
     appIcon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
     appVersion: APP_VERSION
     appRelease: APP_RELEASE
@@ -31,12 +31,32 @@ AboutPageBase {
     ]
     contributionSections: [
         ContributionSection {
+            groups: [
+                ContributionGroup {
+                    title: qsTr("Testers")
+                    entries: ["legacychimera247"]
+                }
+            ]
+        },
+        ContributionSection {
             title: qsTr("Translations")
             groups: [
                 ContributionGroup {
                     title: qsTr("Italian")
                     entries: ["legacychimera247"]
                 }
+            ]
+        }
+    ]
+
+    extraSections: [
+        InfoSection {
+            buttons: [
+                InfoButton {
+                    text: "Telegram"
+                    onClicked: page.openOrCopyUrl("https://t.me/saildiscord")
+                }
+
             ]
         }
 
