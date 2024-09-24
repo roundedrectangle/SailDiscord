@@ -26,6 +26,11 @@
         <translation>Клиент Discord для SailfishOS</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <source>Tester</source>
+        <translation>Тестировщик</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Translations</source>
         <translation>Перевод</translation>

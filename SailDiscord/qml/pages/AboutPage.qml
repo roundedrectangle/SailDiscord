@@ -28,7 +28,7 @@ AboutPageBase {
             homepage: "https://discordpy-self.rtfd.io/en/latest/"
         },
         Attribution {
-            name: "Tester"
+            name: qsTr("Tester")
             entries: "247"
             homepage: "https://github.com/legacychimera247"
         }

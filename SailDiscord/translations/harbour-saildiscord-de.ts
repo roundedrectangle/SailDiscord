@@ -36,6 +36,10 @@
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Tester</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutServerPage</name>

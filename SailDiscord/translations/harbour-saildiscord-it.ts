@@ -26,6 +26,11 @@
         <translation>Un client Discord per Sailfish OS</translation>
     </message>
     <message>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <source>Tester</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
         <source>Translations</source>
         <translation>Traduzioni</translation>
