@@ -5,6 +5,7 @@
 #include <QScopedPointer>
 #include <QGuiApplication>
 #include <QQuickView>
+#include <QQmlContext>
 
 #include <sailfishapp.h>
 
