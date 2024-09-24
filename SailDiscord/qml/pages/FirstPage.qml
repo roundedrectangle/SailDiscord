@@ -38,15 +38,10 @@ Page {
 
     Connections {
         target: appConfiguration
-
         onTokenChanged: updatePage()
     }
 
-    Component.onCompleted: {
-        //appConfiguration.setToken("")
-        console.log("Completed!")
-        updatePage()
-    }
+    Component.onCompleted: updatePage()
 
     SilicaListView {
         id: firstPageContainer
