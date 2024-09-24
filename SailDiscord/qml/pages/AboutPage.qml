@@ -26,24 +26,21 @@ AboutPageBase {
             licenses:License { spdxId: "MIT" }
             sources: "https://github.com/dolfies/discord.py-self"
             homepage: "https://discordpy-self.rtfd.io/en/latest/"
+        },
+        Attribution {
+            name: "Tester"
+            entries: "247"
+            homepage: "https://github.com/legacychimera247"
         }
 
     ]
     contributionSections: [
         ContributionSection {
-            groups: [
-                ContributionGroup {
-                    title: qsTr("Testers")
-                    entries: ["legacychimera247"]
-                }
-            ]
-        },
-        ContributionSection {
             title: qsTr("Translations")
             groups: [
                 ContributionGroup {
                     title: qsTr("Italian")
-                    entries: ["legacychimera247"]
+                    entries: ["247"]
                 }
             ]
         }
@@ -56,9 +53,11 @@ AboutPageBase {
                     text: "Telegram"
                     onClicked: page.openOrCopyUrl("https://t.me/saildiscord")
                 }
-
             ]
+        },
+        InfoSection {
+            title: qsTr("Disclaimer")
+            text: qsTr("Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord's terms of service. Use at your own risk")
         }
-
     ]
 }

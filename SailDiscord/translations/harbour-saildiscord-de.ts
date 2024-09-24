@@ -29,7 +29,11 @@
         <translation type="unfinished">Italienisch</translation>
     </message>
     <message>
-        <source>Testers</source>
+        <source>Disclaimer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
