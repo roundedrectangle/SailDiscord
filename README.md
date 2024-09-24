@@ -31,6 +31,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 ## Known issues
 - Server list does not follow same sorting as in the real discord. *probably not possible yet because this is not implemented in discord.py-self*
 - App lags in a text channel sometimes
+- App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
 
 ## Screenshots
 <p float="left">
