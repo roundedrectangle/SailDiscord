@@ -38,12 +38,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Disclaimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Дисклеймер</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Discord это торговая марка Discord Inc. Sailcord никаким образом не связан с Discord Inc. Использование Sailcord нарушает условия использования Discord. Используйте на свой страх и риск</translation>
     </message>
 </context>
 <context>
@@ -97,12 +97,12 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>Please login</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, войдите</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="21"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Войти</translation>
     </message>
 </context>
 <context>
