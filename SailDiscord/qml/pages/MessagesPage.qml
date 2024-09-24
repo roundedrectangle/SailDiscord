@@ -20,7 +20,8 @@ Page {
     }
 
     function sendMessage() {
-        python.sendMessage(sendField.text)
+        if (!isDemo) python.sendMessage(sendField.text)
+        else msgModel.appendDemo(true, sendField.text)
         sendField.text = ""
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
@@ -136,19 +137,19 @@ Page {
 
         property int updateCounter: 0
 
+        function appendDemo(isyou, thecontents) {
+            insert(0, {
+               messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
+               _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
+               _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasUpdated: false
+           })
+        }
+
         function generateDemo() {
             var repeatString = function(string, count) {
                 var result = "";
                 for (var i = 0; i < count; i++) result += string;
                 return result;
-            };
-
-            var appendDemo = function(isyou, thecontents) {
-                append({
-                           messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
-                           _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-                           _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasUpdated: false
-                       })
             }
 
             // Append demo messages
