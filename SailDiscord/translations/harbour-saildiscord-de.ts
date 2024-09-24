@@ -77,6 +77,17 @@
     </message>
 </context>
 <context>
+    <name>LoginDialog</name>
+    <message>
+        <source>Please login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessagesPage</name>
     <message>
         <source>No messages</source>

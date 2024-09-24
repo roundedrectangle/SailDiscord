@@ -6,13 +6,13 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <location filename="../qml/pages/FirstPage.qml" line="97"/>
+        <location filename="../qml/pages/FirstPage.qml" line="92"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Info sul server</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="64"/>
+        <location filename="../qml/pages/FirstPage.qml" line="59"/>
         <source>About</source>
         <comment>App</comment>
         <translation>A proposito di</translation>
@@ -74,12 +74,12 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="56"/>
+        <location filename="../qml/pages/FirstPage.qml" line="51"/>
         <source>Loading</source>
         <translation>Sto caricando</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="69"/>
+        <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
@@ -93,19 +93,32 @@
     </message>
 </context>
 <context>
+    <name>LoginDialog</name>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="20"/>
+        <source>Please login</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="21"/>
+        <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="53"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="54"/>
         <source>No messages</source>
         <translation>Nessun messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="54"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="55"/>
         <source>Say hi ;)</source>
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="109"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="110"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>

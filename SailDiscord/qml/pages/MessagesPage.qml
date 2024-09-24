@@ -64,7 +64,7 @@ Page {
                     function checkForUpdate() {
                         var rng = getVisibleIndexRange()
                         for (var i=rng[1]; i<=rng[0]; i++) {
-                            if (i>0 && i%29 == 0) {
+                            if (i>0 && i%28 == 0) {
                                 if (!msgModel.get(i)._wasUpdated) {
                                     msgModel.get(i)._wasUpdated = true
                                     python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
