@@ -74,7 +74,7 @@ def send_message(message, is_history=False):
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
-    current_channel: Optional[discord.abc.GuildChannel] = None
+    current_channel: Optional[discord.TextChannel] = None
     loop = None
     current_channel_deletion_pending = False
 
@@ -117,6 +117,7 @@ class MyClient(discord.Client):
         #asyncio.run(guild.subscribe())
 
         self.run_asyncio_threadsafe(self.get_last_messages())
+        self.run_asyncio_threadsafe(self.current_channel.ack())
 
     def unset_current_channel(self):
         # This will be used when discord.py-self 2.1 will be out.
