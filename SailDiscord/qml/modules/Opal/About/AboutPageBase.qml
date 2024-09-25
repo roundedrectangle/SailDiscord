@@ -33,6 +33,7 @@ property alias _iconItem:_icon
 property alias _develInfoSection:_develInfo
 property alias _licenseInfoSection:_licenseInfo
 property alias _donationsInfoSection:_donationsInfo
+property alias versionText:_versionText
 readonly property Attribution _effectiveSelfAttribution:Attribution{name:appName
 entries:__effectiveMainAttribs
 licenses:page.licenses
@@ -79,7 +80,8 @@ text:appName
 color:Theme.highlightColor
 font.pixelSize:Theme.fontSizeLarge
 horizontalAlignment:Text.AlignHCenter
-}Label{width:parent.width
+}Label{id:_versionText
+width:parent.width
 visible:String(appVersion)!==""
 text:qsTranslate("Opal.About","Version %1").arg(Func.formatAppVersion(appVersion,appRelease,appReleaseType))
 wrapMode:Text.Wrap

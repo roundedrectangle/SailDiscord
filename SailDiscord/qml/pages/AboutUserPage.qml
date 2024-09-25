@@ -21,6 +21,8 @@ AboutPageBase {
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
     description: ""
+    appVersion: ""
+    versionText.text: appVersion
 
     extraSections: [
         InfoSection {
@@ -31,7 +33,8 @@ AboutPageBase {
     ]
 
     Component.onCompleted: {
-        python.setHandler("user"+userid, function(bio, _date) {description = bio; memberSince = new Date(_date);})
+        python.setHandler("user"+userid, function(bio, _date) {description = bio; memberSince = new Date(_date); appVersion = "online";})
         python.requestUserInfo(userid)
     }
+
 }
