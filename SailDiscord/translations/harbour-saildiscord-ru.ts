@@ -18,7 +18,7 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="20"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="24"/>
         <location filename="../qml/pages/MessagesPage.qml" line="99"/>
         <source>About</source>
         <comment>User</comment>
@@ -69,7 +69,7 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
         <source>Member since</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,29 +146,29 @@
 <context>
     <name>Opal.About</name>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="56"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="55"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="86"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="84"/>
         <source>Version %1</source>
         <translation>Версия %1</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="102"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="100"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="22"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="31"/>
         <source>Development</source>
         <translation>Разработка</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="105"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="103"/>
         <source>show contributors</source>
         <translation>Показать участников</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="107"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="105"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="51"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="57"/>
         <location filename="../qml/modules/Opal/About/private/LicenseListPart.qml" line="47"/>
@@ -176,18 +176,18 @@
         <translation>Домашняя страница</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="110"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="108"/>
         <location filename="../qml/modules/Opal/About/private/ChangelogPage.qml" line="16"/>
         <source>Changelog</source>
         <translation>Список изменений</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="113"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="111"/>
         <source>Translations</source>
         <translation>Перевод</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="116"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="114"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="50"/>
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="58"/>
         <location filename="../qml/modules/Opal/About/private/LicenseListPart.qml" line="50"/>
@@ -195,17 +195,17 @@
         <translation>Исходный код</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="125"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="123"/>
         <source>Donations</source>
         <translation>Пожертвования</translation>
     </message>
     <message>
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="131"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="129"/>
         <source>License</source>
         <translation>Лицензия</translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="136"/>
+        <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="134"/>
         <source>show license(s)</source>
         <translation>
             <numerusform>показать лицензию</numerusform>
@@ -562,32 +562,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="41"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="52"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="53"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="43"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="54"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="44"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="55"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>
