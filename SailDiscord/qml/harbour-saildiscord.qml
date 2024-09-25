@@ -16,6 +16,7 @@ ApplicationWindow {
 
         onAboutToQuit: {
             console.log("app quiting!") // TODO: set status to offline
+            python.disconnectClient()
         }
     }
 
@@ -138,6 +139,10 @@ ApplicationWindow {
 
         function requestOlderHistory(messageId) {
             python.call('communicator.comm.get_history_messages', [messageId], function() {})
+        }
+
+        function disconnectClient() {
+            python.call_sync('communicator.comm.disconnect')
         }
     }
 }
