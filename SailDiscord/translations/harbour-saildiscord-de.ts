@@ -443,4 +443,32 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>status</name>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do Not Disturb</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invisible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(Phone)</source>
+        <comment>Used with e.g. Online (Phone)</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

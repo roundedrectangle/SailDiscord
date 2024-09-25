@@ -139,10 +139,15 @@ class MyClient(discord.Client):
         return ch and se
 
     async def send_user_info(self, user_id):
-        pyotherside.send("requested user info on "+user_id)
-        user = await self.fetch_user(user_id)
-        profile = await user.profile()
-        pyotherside.send(f"user{user_id}", profile.bio, date_to_qmlfriendly_timestamp(profile.created_at))
+        status, is_on_mobile = 0, False # default
+        if self.ensure_current_channel():
+            profile = await self.current_server.fetch_member_profile(user_id)
+            if StatusMapping.has_value(profile.status):
+                status = StatusMapping(profile.status).index
+                pyotherside.send(f"has value {status}")
+            is_on_mobile = profile.is_on_mobile()
+        else: profile = await self.fetch_user_profile(user_id)
+        pyotherside.send(f"user{user_id}", profile.bio or '', date_to_qmlfriendly_timestamp(profile.created_at), status, is_on_mobile)
 
 class Communicator:
     def __init__(self):
@@ -211,7 +216,6 @@ class Communicator:
     
     @attributeerror_safe
     def request_user_info(self, user_id):
-        pyotherside.send("requesting info on "+user_id)
         self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id))
 
 

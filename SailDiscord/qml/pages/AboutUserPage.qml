@@ -22,7 +22,7 @@ AboutPageBase {
     _develInfoSection.visible: false
     description: ""
     appVersion: ""
-    versionText.text: appVersion
+    versionText.text: appVersion // a workaround in AboutPageBase, merging it to upstream is probably not a good idea...
 
     extraSections: [
         InfoSection {
@@ -33,7 +33,19 @@ AboutPageBase {
     ]
 
     Component.onCompleted: {
-        python.setHandler("user"+userid, function(bio, _date) {description = bio; memberSince = new Date(_date); appVersion = "online";})
+        python.setHandler("user"+userid, function(bio, _date, status, onMobile) {
+            description = bio
+            memberSince = new Date(_date)
+            appVersion = ["",
+                          qsTranslate("status", "Online"),
+                          qsTranslate("status", "Offline"),
+                          qsTranslate("status", "Do Not Disturb"),
+                          qsTranslate("status", "Invisible"),
+                          qsTranslate("status", "Idle")
+                    ][status]
+            if (onMobile && appVersion != "")
+                appVersion += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+        })
         python.requestUserInfo(userid)
     }
 

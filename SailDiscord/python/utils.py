@@ -4,6 +4,8 @@ from typing import Callable, Union, Optional # TODO: use collections.abc.Callabl
 import functools
 import time
 from contextlib import suppress
+from enum import Enum
+import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
 
@@ -33,3 +35,26 @@ async def cancel_gen(agen):
 def date_to_qmlfriendly_timestamp(date: datetime):
     """Convert to UTC Unix timestamp using milliseconds"""
     return date.replace(tzinfo=timezone.utc).timestamp()*1000
+
+class classproperty(property):
+    def __get__(self, owner_self, owner_cls):
+        return self.fget(owner_cls)
+
+class ListEnum(Enum):
+    @property
+    def index(self):
+        return list(StatusMapping).index(self)
+    @classproperty
+    def list(cls):
+        return list(cls)
+    @classmethod
+    def has_value(cls, v):
+        return v in set(i.value for i in cls)
+
+class StatusMapping(ListEnum):
+    UNKNOWN = discord.Status.unknown
+    ONLINE = discord.Status.online
+    OFFLINE = discord.Status.offline
+    DND = discord.Status.dnd
+    INVISIBLE = discord.Status.invisible
+    IDLE = discord.Status.idle
