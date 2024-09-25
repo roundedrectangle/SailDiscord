@@ -14,10 +14,7 @@ ApplicationWindow {
     Connections {
         target: Qt.application
 
-        onAboutToQuit: {
-            console.log("app quiting!") // TODO: set status to offline
-            python.disconnectClient()
-        }
+        onAboutToQuit: python.disconnectClient()
     }
 
     QtObject {

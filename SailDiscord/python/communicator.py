@@ -139,10 +139,6 @@ class MyClient(discord.Client):
         se = (self.current_server == server) if server != None else True
         return ch and se
 
-    async def disconnect(self):
-        pyotherside.send("CLOSING...")
-        await self.close()
-        pyotherside.send("Close completed!")
 
 class Communicator:
     def __init__(self):
@@ -205,12 +201,9 @@ class Communicator:
     def get_history_messages(self, before_id):
         self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)))
 
+    @exception_decorator(asyncio.CancelledError)
     def disconnect(self):
-        pyotherside.send("DISCONNECTING!")
-        f = self.client.run_asyncio_threadsafe(self.client.disconnect())
-        #pyotherside.send(str(type(f)), str(f.result()))
-        #f.result(1000000)
-        #asyncio.gather(f)\
+        self.client.run_asyncio_threadsafe(self.client.close()).result()
 
 
 comm = Communicator()
