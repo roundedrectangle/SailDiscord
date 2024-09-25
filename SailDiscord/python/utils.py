@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 import pyotherside
 from typing import Callable, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
@@ -28,3 +29,7 @@ async def cancel_gen(agen):
     with suppress(asyncio.CancelledError):
         await task
     await agen.aclose()
+
+def date_to_qmlfriendly_timestamp(date: datetime):
+    """Convert to UTC Unix timestamp using milliseconds"""
+    return date.replace(tzinfo=timezone.utc).timestamp()*1000

@@ -80,65 +80,39 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod], function() {})
+            call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod])
 
             initialized = true
         }
 
-        onError: {
-            // when an exception is raised, this error handler will be called
-            console.log('python error: ' + traceback);
-            //Notices.show("err: "+traceback, Notice.Long, Notice.Center)
-        }
-
-        onReceived: {
-            // asychronous messages from Python arrive here
-            // in Python, this can be accomplished via pyotherside.send()
-            console.log('got message from python: ' + data);
-            //Notices.show("dat: "+data, Notice.Long, Notice.Center)
-        }
+        onError: console.log('python error: ' + traceback)
+        onReceived: console.log('got message from python: ' + data)
 
         function login(token) {
             myPage.loading = true;
-            call('communicator.comm.login', [token], function() {})
+            call('communicator.comm.login', [token])
         }
-
         function updateServer(what, updater) {
             var arr = what.split('~')
             const id = arr.shift()
             updater(myPage.serversModel.findById(id), arr.join(' '))
         }
-        function requestChannels(guildid){
-            call('communicator.comm.get_channels', [guildid], function () {})
-        }
 
-        function setCurrentChannel(guildid, channelid) {
-            call('communicator.comm.set_channel', [guildid, channelid], function() {})
-        }
+        function requestChannels(guildid){ call('communicator.comm.get_channels', [guildid], function () {}) }
+        function setCurrentChannel(guildid, channelid) { call('communicator.comm.set_channel', [guildid, channelid])}
+        function resetCurrentChannel() { setCurrentChannel("", "") }
 
-        function resetCurrentChannel() {
-            setCurrentChannel("", "")
-        }
-
-        function clearCache() {
-            call('communicator.comm.clear_cache', [], function() {})
-        }
-
+        function clearCache() { call('communicator.comm.clear_cache', []) }
         function setCachePeriod(period) {
             if (!initialized) return;
-            python.call('communicator.comm.set_cache_period', [period], function() {})
+            python.call('communicator.comm.set_cache_period', [period])
         }
 
-        function sendMessage(text) {
-            python.call('communicator.comm.send_message', [text], function() {})
-        }
+        function sendMessage(text) { python.call('communicator.comm.send_message', [text]) }
+        function requestOlderHistory(messageId) { python.call('communicator.comm.get_history_messages', [messageId])}
 
-        function requestOlderHistory(messageId) {
-            python.call('communicator.comm.get_history_messages', [messageId], function() {})
-        }
+        function disconnectClient() { python.call_sync('communicator.comm.disconnect') }
 
-        function disconnectClient() {
-            python.call_sync('communicator.comm.disconnect')
-        }
+        function requestUserInfo(userId) { python.call('communicator.comm.request_user_info', [userId])}
     }
 }

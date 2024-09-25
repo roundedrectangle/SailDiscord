@@ -12,17 +12,26 @@ AboutPageBase {
     property string userid
     property string name
     property string icon
+    property date memberSince
 
     appName: name
     appIcon: icon == "None" ? "" : icon
-    //description: qsTr("Member count: ")+memberCount
 
     _pageHeaderItem.title: qsTranslate("About", "About", "User")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
     description: ""
 
+    extraSections: [
+        InfoSection {
+            title: qsTr("Member since")
+            text: Format.formatDate(memberSince, Formatter.DateFull)
+        }
+
+    ]
+
     Component.onCompleted: {
-        console.log(userid)
+        python.setHandler("user"+userid, function(bio, _date) {description = bio; memberSince = new Date(_date);})
+        python.requestUserInfo(userid)
     }
 }

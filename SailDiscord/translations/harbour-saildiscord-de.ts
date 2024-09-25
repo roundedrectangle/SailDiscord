@@ -54,6 +54,13 @@
     </message>
 </context>
 <context>
+    <name>AboutUserPage</name>
+    <message>
+        <source>Member since</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <source>Channel unsupported</source>

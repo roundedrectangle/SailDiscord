@@ -67,6 +67,14 @@
     </message>
 </context>
 <context>
+    <name>AboutUserPage</name>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="27"/>
+        <source>Member since</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>

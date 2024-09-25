@@ -66,7 +66,7 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
         str(message.guild.id), str(message.channel.id),
         str(message.id), str(message.author.name), str(message.content),
         icon, message.author.id == comm.client.user.id,
-        message.created_at.replace(tzinfo=timezone.utc).timestamp()*1000, # Convert to UTC Unix timestamp using milliseconds
+        date_to_qmlfriendly_timestamp(message.created_at),
         is_history, str(message.author.id))
 
     if icon != '':
@@ -138,6 +138,11 @@ class MyClient(discord.Client):
         se = (self.current_server == server) if server != None else True
         return ch and se
 
+    async def send_user_info(self, user_id):
+        pyotherside.send("requested user info on "+user_id)
+        user = await self.fetch_user(user_id)
+        profile = await user.profile()
+        pyotherside.send(f"user{user_id}", profile.bio, date_to_qmlfriendly_timestamp(profile.created_at))
 
 class Communicator:
     def __init__(self):
@@ -204,8 +209,10 @@ class Communicator:
     def disconnect(self):
         self.client.run_asyncio_threadsafe(self.client.close()).result()
     
-    def request_additional_info(user_id):
-        pass
+    @attributeerror_safe
+    def request_user_info(self, user_id):
+        pyotherside.send("requesting info on "+user_id)
+        self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id))
 
 
 comm = Communicator()
