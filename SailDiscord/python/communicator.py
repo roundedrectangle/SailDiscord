@@ -9,7 +9,7 @@ import asyncio, shutil
 from pathlib import Path
 import itertools
 from datetime import datetime, timezone
-from typing import Optional, Union # TODO: use pipe (|) (needs newer python)
+from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python)
 
 from exceptions import *
 from utils import *
@@ -56,7 +56,7 @@ def send_channels(guild: discord.Guild, user_id):
             send_channel(c, user_id)
 
 
-def send_message(message, is_history=False):
+def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
 
     icon = '' if message.author.display_avatar == None else \
@@ -67,7 +67,7 @@ def send_message(message, is_history=False):
         str(message.id), str(message.author.name), str(message.content),
         icon, message.author.id == comm.client.user.id,
         message.created_at.replace(tzinfo=timezone.utc).timestamp()*1000, # Convert to UTC Unix timestamp using milliseconds
-        is_history)
+        is_history, str(message.author.id))
 
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
@@ -81,7 +81,6 @@ class MyClient(discord.Client):
     async def on_ready(self, first_run=True):
         pyotherside.send('logged_in', str(self.user.name))
         send_servers(self.guilds)
-        pyotherside.send(str(self.status))
 
         # Setup control variables
         self.current_server = None
@@ -204,6 +203,9 @@ class Communicator:
     @exception_decorator(asyncio.CancelledError)
     def disconnect(self):
         self.client.run_asyncio_threadsafe(self.client.close()).result()
+    
+    def request_additional_info(user_id):
+        pass
 
 
 comm = Communicator()

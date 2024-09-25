@@ -13,6 +13,11 @@
         <comment>App</comment>
         <translation type="unfinished">Über</translation>
     </message>
+    <message>
+        <source>About</source>
+        <comment>User</comment>
+        <translation type="unfinished">Über</translation>
+    </message>
 </context>
 <context>
     <name>AboutPage</name>

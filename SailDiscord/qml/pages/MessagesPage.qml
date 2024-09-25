@@ -94,6 +94,12 @@ Page {
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
+
+                        menu: Component { ContextMenu {
+                            MenuItem { text: qsTranslate("About", "About", "User")
+                                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: author, icon: pfp })
+                            }
+                        }}
                     }
                 }
             }
@@ -177,11 +183,11 @@ Page {
                 return
             }
 
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history, userid) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false}
+                    _wasUpdated: false, userid: userid}
                 if (!history) insert(0, data); else append(data);
             })
         }

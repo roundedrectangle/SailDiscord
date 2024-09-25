@@ -13,7 +13,6 @@ ApplicationWindow {
 
     Connections {
         target: Qt.application
-
         onAboutToQuit: python.disconnectClient()
     }
 

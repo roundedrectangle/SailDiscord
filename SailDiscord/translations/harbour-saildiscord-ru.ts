@@ -17,6 +17,13 @@
         <comment>App</comment>
         <translation>О программе</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="20"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="99"/>
+        <source>About</source>
+        <comment>User</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutPage</name>
@@ -123,7 +130,7 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="110"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="116"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
