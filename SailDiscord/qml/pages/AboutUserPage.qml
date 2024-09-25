@@ -9,9 +9,10 @@ AboutPageBase {
     id: page
     allowedOrientations: Orientation.All
 
-    property string userid
+    property string userid: "-1"
     property string name
     property string icon
+    property bool isClient: false
 
     property date memberSince
     property string _status
@@ -24,14 +25,13 @@ AboutPageBase {
     _pageHeaderItem.title: qsTranslate("About", "About", "User")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
-    appVersion: "." // makes it visible
+    appVersion: _status != "" // makes it visible
     licenses: License {spdxId: "WTFPL"} // suppress No license errors
 
     BusyLabel {
         id: busyIndicator
         parent: flickable
         running: true
-
         onRunningChanged: _develInfoSection.parent.visible = !running
     }
 
@@ -44,20 +44,27 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = false
-        python.setHandler("user"+userid, function(bio, _date, status, onMobile) {
+        console.log("user"+(isClient?"":userid))
+
+        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
             description = bio
             memberSince = new Date(_date)
-            _status = ["",
-                          qsTranslate("status", "Online"),
-                          qsTranslate("status", "Offline"),
-                          qsTranslate("status", "Do Not Disturb"),
-                          qsTranslate("status", "Invisible"),
-                          qsTranslate("status", "Idle")
-                    ][status]
-            if (onMobile && _status != "")
-                _status += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+            _status = constructStatus(status, onMobile)
             busyIndicator.running = false
         })
-        python.requestUserInfo(userid)
+        python.requestUserInfo(userid) // for client, it will be -1
+    }
+
+    function constructStatus(statusIndex, onMobile) {
+        var result = ["",
+                      qsTranslate("status", "Online"),
+                      qsTranslate("status", "Offline"),
+                      qsTranslate("status", "Do Not Disturb"),
+                      qsTranslate("status", "Invisible"),
+                      qsTranslate("status", "Idle")
+                ][statusIndex]
+        if (onMobile && result !== "")
+            result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+        return result
     }
 }

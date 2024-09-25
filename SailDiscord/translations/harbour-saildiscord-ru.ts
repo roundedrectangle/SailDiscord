@@ -18,7 +18,7 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="24"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <location filename="../qml/pages/MessagesPage.qml" line="99"/>
         <source>About</source>
         <comment>User</comment>
@@ -562,32 +562,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="52"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="54"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="55"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="67"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>

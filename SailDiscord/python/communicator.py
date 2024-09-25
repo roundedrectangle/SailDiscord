@@ -72,6 +72,14 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
 
+def send_user(user: Union[discord.ClientUser, discord.MemberProfile, discord.UserProfile]):
+    status, is_on_mobile = 0, False # default
+    if isinstance(user, (discord.MemberProfile, discord.ClientUser)):
+        if StatusMapping.has_value(user.status):
+            status = StatusMapping(user.status).index
+        is_on_mobile = user.is_on_mobile()
+    pyotherside.send(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.TextChannel] = None
@@ -139,15 +147,13 @@ class MyClient(discord.Client):
         return ch and se
 
     async def send_user_info(self, user_id):
-        status, is_on_mobile = 0, False # default
-        if self.ensure_current_channel():
-            profile = await self.current_server.fetch_member_profile(user_id)
-            if StatusMapping.has_value(profile.status):
-                status = StatusMapping(profile.status).index
-                pyotherside.send(f"has value {status}")
-            is_on_mobile = profile.is_on_mobile()
-        else: profile = await self.fetch_user_profile(user_id)
-        pyotherside.send(f"user{user_id}", profile.bio or '', date_to_qmlfriendly_timestamp(profile.created_at), status, is_on_mobile)
+        if user_id == -1: user = self.user
+        elif self.ensure_current_channel():
+            user = await self.current_server.fetch_member_profile(user_id)
+        else: user = await self.fetch_user_profile(user_id)
+        
+        await self.loop.run_in_executor(None, send_user, user)
+    
 
 class Communicator:
     def __init__(self):
@@ -216,7 +222,9 @@ class Communicator:
     
     @attributeerror_safe
     def request_user_info(self, user_id):
-        self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id))
+        if user_id == -1:
+            self.client.run_asyncio_threadsafe(self.client.send_client_info())
+        else: self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id))
 
 
 comm = Communicator()
