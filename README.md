@@ -42,7 +42,7 @@ I can forget about my projects and pause the developing, but then I come back (n
 	<img src="pictures/About.png" alt="Server list" width="200"/>
 </p>
 
-*Screenshots are for version 0.2.2*
+*Screenshots are for version 0.3.2*
 
 ## Build
 
