@@ -1,4 +1,4 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-saildiscord
@@ -40,7 +40,7 @@ Requires: python3-pip
 # >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
 %global _missing_build_ids_terminate_build 0
-%define __requires_exclude ^libXau.*$
+%define __requires_exclude ^libXau|libbrotlicommo|libfreetype|libjpeg|liblzma|libsharpyuv|libwebp|python3dist(attrs)|python3dist(idna)|python3dist(pyopenssl).*$
 # << macros
 
 

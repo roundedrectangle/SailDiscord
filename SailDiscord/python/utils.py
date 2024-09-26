@@ -1,10 +1,14 @@
+import sys
 from datetime import datetime, timezone
 import pyotherside
 from typing import Callable, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
-import time
 from contextlib import suppress
 from enum import Enum
+from pathlib import Path
+
+script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
+sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
