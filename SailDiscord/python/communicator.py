@@ -73,18 +73,20 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
 
-def send_user(user: Union[discord.Client, discord.MemberProfile, discord.UserProfile]):
+def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
-    if isinstance(user, (discord.MemberProfile, discord.Client)):
+    if isinstance(user, discord.MemberProfile):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    pyotherside.send("finishing")
-    pyotherside.send(f"!user{'' if isinstance(user, discord.Client) else user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
-    #except Exception as e: pyotherside.send(f"ERROR OCCURED {e}, {type(e)}")
-    pyotherside.send("almost there")
-    pyotherside.send(f"user{'' if isinstance(user, discord.Client) else user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
-    pyotherside.send("DONE.")
+    pyotherside.send(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+
+def send_myself(client: discord.Client):
+    user = client.user
+    status = 0 # default
+    if StatusMapping.has_value(client.status):
+        status = StatusMapping(client.status).index
+    pyotherside.send("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile())
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
@@ -157,7 +159,9 @@ class MyClient(discord.Client):
 
     async def send_user_info(self, user_id):
         user_id = int(user_id)
-        if user_id == -1: user = self
+        if user_id == -1:
+            send_myself(self)
+            return
         elif self.ensure_current_channel():
             user = await self.current_server.fetch_member_profile(user_id)
         else: user = await self.fetch_user_profile(user_id)
