@@ -69,7 +69,7 @@
         <location filename="../qml/pages/MessagesPage.qml" line="99"/>
         <source>About</source>
         <comment>User</comment>
-        <translation type="unfinished">О программе</translation>
+        <translation>О программе</translation>
     </message>
 </context>
 <context>
@@ -77,7 +77,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
         <source>Discord member since</source>
-        <translation type="unfinished"></translation>
+        <translation>Участник Discord с</translation>
     </message>
 </context>
 <context>
@@ -507,7 +507,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>Reset tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>Сбросить туториал</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="199"/>
@@ -575,33 +575,33 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Онлайн</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Оффлайн</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беспокоить</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Невидимый</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Занят</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="65"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(телефон)</translation>
     </message>
 </context>
 </TS>
