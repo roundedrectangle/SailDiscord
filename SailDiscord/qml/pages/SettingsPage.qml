@@ -184,7 +184,6 @@ Page {
                                     text: qsTr("Log out")
                                     onClicked: appConfiguration.token = ""
                                 }
-
                                 Button {
                                     text: qsTr("Clear cache")
                                     onClicked: python.clearCache()
@@ -192,6 +191,10 @@ Page {
                             }
 
                             ButtonLayout {
+                                Button {
+                                    text: qsTr("Reset tutorial")
+                                    onClicked: appConfiguration.usernameTutorialCompleted = false
+                                }
                                 Button {
                                     text: qsTr("Reset all settings")
                                     onClicked: {

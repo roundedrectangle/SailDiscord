@@ -442,6 +442,10 @@
         <source>Focus input message area on channel open</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>status</name>

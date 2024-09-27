@@ -34,11 +34,14 @@ Page {
             loggingIn = false
             python.login(appConfiguration.token)
         }
+
+        if (!appConfiguration.usernameTutorialCompleted) completeTutorialTimer.start()
     }
 
     Connections {
         target: appConfiguration
         onTokenChanged: updatePage()
+        onUsernameTutorialCompletedChanged: updatePage()
     }
 
     Component.onCompleted: updatePage()
@@ -73,9 +76,28 @@ Page {
             MouseArea {
                 anchors.fill: parent
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: "" })
-                onPressed: console.log("Pressed")
-                onReleased: console.log("Released")
             }
+            TapInteractionHint {
+                id: tapHint
+                anchors.centerIn: parent
+                taps: 1
+                running: !appConfiguration.usernameTutorialCompleted
+            }
+        }
+
+        InteractionHintLabel {
+            id: hintText
+            anchors.bottom: parent.bottom
+            text: "Tap your username to access information"
+            Behavior on opacity { FadeAnimation {} }
+            visible: opacity > 0
+            opacity: appConfiguration.usernameTutorialCompleted ? 0 : 1
+        }
+
+        Timer {
+            id: completeTutorialTimer
+            interval: 4000
+            onTriggered: appConfiguration.usernameTutorialCompleted = true
         }
 
         model: serversModel

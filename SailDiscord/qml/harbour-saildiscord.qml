@@ -37,6 +37,7 @@ ApplicationWindow {
         path: "/apps/harbour-saildiscord"
 
         property string token: ""
+        property bool usernameTutorialCompleted: false
 
         Component.onCompleted: {
             //clear()
