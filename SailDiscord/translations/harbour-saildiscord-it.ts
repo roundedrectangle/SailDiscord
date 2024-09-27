@@ -15,7 +15,7 @@
         <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>About</source>
         <comment>App</comment>
-        <translation>A proposito di</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
@@ -35,7 +35,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Tester</source>
-        <translation type="unfinished"></translation>
+        <translation>Tester</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="39"/>
@@ -50,12 +50,12 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Disclaimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Disclaimer</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="60"/>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Discord è un marchio registrato di Discord Inc. Sailcord non è in nessun modo associato a Discord Inc. Usando Sailcord si violano i termini di servizio di Discord. Usarlo a proprio rischio</translation>
     </message>
 </context>
 <context>
@@ -117,12 +117,12 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>Please login</source>
-        <translation type="unfinished"></translation>
+        <translation>Per favore accedi</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="21"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Accesso</translation>
     </message>
 </context>
 <context>
@@ -173,7 +173,7 @@
         <location filename="../qml/modules/Opal/About/private/ContributorsPage.qml" line="57"/>
         <location filename="../qml/modules/Opal/About/private/LicenseListPart.qml" line="47"/>
         <source>Homepage</source>
-        <translation>Pagina iniziale</translation>
+        <translation>Homepage</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/About/AboutPageBase.qml" line="108"/>
