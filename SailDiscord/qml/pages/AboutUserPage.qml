@@ -43,15 +43,12 @@ AboutPageBase {
     ]
 
     Component.onCompleted: {
-        _develInfoSection.parent.visible = false
-        console.log(isClient)
-        console.log("user"+(isClient?"":userid))
-
-        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
+        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, icon) {
             description = bio
             memberSince = new Date(_date)
             _status = constructStatus(status, onMobile)
             busyIndicator.running = false
+            if (icon != undefined) page.icon = icon
         })
         python.requestUserInfo(userid) // for client, it will be -1
     }

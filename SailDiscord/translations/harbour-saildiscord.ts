@@ -562,32 +562,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="68"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="65"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>
