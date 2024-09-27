@@ -18,7 +18,7 @@ AboutPageBase {
     appIcon: icon == "None" ? "" : icon
     description: qsTr("Member count: ")+memberCount
 
-    _pageHeaderItem.title: qsTranslate("About", "About", "Server")
+    _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
 }

@@ -23,7 +23,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTranslate("About", "About", "Server")
+                text: qsTranslate("AboutServer", "About", "Server")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                     serverid: serverid,
                     name: name,

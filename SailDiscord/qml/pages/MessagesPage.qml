@@ -96,7 +96,7 @@ Page {
                         onInnerWidthChanged: updateMasterWidth()
 
                         menu: Component { ContextMenu {
-                            MenuItem { text: qsTranslate("About", "About", "User")
+                            MenuItem { text: qsTranslate("AboutUser", "About", "User")
                                 onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: author, icon: pfp })
                             }
                         }}

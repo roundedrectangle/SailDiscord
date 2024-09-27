@@ -2,27 +2,12 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>About</name>
-    <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <location filename="../qml/pages/FirstPage.qml" line="121"/>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation>О сервере</translation>
-    </message>
+    <name>AboutApp</name>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>About</source>
         <comment>App</comment>
         <translation>О программе</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="99"/>
-        <source>About</source>
-        <comment>User</comment>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -59,6 +44,17 @@
     </message>
 </context>
 <context>
+    <name>AboutServer</name>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
+        <location filename="../qml/pages/FirstPage.qml" line="121"/>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation>О сервере</translation>
+    </message>
+</context>
+<context>
     <name>AboutServerPage</name>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
@@ -67,10 +63,20 @@
     </message>
 </context>
 <context>
+    <name>AboutUser</name>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="99"/>
+        <source>About</source>
+        <comment>User</comment>
+        <translation type="unfinished">О программе</translation>
+    </message>
+</context>
+<context>
     <name>AboutUserPage</name>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
-        <source>Member since</source>
+        <source>Discord member since</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

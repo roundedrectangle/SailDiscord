@@ -22,7 +22,7 @@ AboutPageBase {
     appName: name
     appIcon: icon == "None" ? "" : icon
 
-    _pageHeaderItem.title: qsTranslate("About", "About", "User")
+    _pageHeaderItem.title: qsTranslate("AboutUser", "About", "User")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
     appVersion: _status != "" // makes it visible
@@ -37,7 +37,7 @@ AboutPageBase {
 
     extraSections: [
         InfoSection {
-            title: qsTr("Member since")
+            title: qsTr("Discord member since")
             text: Format.formatDate(memberSince, Formatter.DateFull)
         }
     ]

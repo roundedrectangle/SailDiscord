@@ -2,20 +2,10 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>About</name>
-    <message>
-        <source>About</source>
-        <comment>Server</comment>
-        <translation type="unfinished">Über</translation>
-    </message>
+    <name>AboutApp</name>
     <message>
         <source>About</source>
         <comment>App</comment>
-        <translation type="unfinished">Über</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <comment>User</comment>
         <translation type="unfinished">Über</translation>
     </message>
 </context>
@@ -47,6 +37,14 @@
     </message>
 </context>
 <context>
+    <name>AboutServer</name>
+    <message>
+        <source>About</source>
+        <comment>Server</comment>
+        <translation type="unfinished">Über</translation>
+    </message>
+</context>
+<context>
     <name>AboutServerPage</name>
     <message>
         <source>Member count: </source>
@@ -54,9 +52,17 @@
     </message>
 </context>
 <context>
+    <name>AboutUser</name>
+    <message>
+        <source>About</source>
+        <comment>User</comment>
+        <translation type="unfinished">Über</translation>
+    </message>
+</context>
+<context>
     <name>AboutUserPage</name>
     <message>
-        <source>Member since</source>
+        <source>Discord member since</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
