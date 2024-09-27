@@ -12,7 +12,15 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Sun Apr 13 2014 Jack Tar <jack.tar@example.com> 0.0.1-1
-- Scrubbed the deck
-- Hoisted the sails
+# for now this is unused
 
+* 0.3.3-1
+- Fixed aarch64 dependencies
+- Messages in an opened channel are automatically marked as read in real Discord
+- On app close, status is set to Offline now
+- Added an About user page
+    - To see information about you, click on your username in servers list
+- New Italian translations (thanks 247) and Russian translations
+
+* 0.3.2-1
+- Initial beta release. All previous versions are considered alpha versions
