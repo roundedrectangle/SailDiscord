@@ -60,6 +60,8 @@ Then open the app. If you ever want to switch back to the production version, ty
 
 	python3 -m pip uninstall discord.py-self
 
+SailJail will NOT work in this case
+
 ### Some general build issues
 
 - ~You might need to remove the build_folder/deps/google/_upb folder~ Should not be needed now.

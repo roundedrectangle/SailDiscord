@@ -44,6 +44,7 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = false
+        console.log(isClient)
         console.log("user"+(isClient?"":userid))
 
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {

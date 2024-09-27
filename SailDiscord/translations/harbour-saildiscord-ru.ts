@@ -6,7 +6,7 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <location filename="../qml/pages/FirstPage.qml" line="92"/>
+        <location filename="../qml/pages/FirstPage.qml" line="99"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>О сервере</translation>
@@ -562,32 +562,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="65"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="67"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="68"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>

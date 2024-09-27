@@ -10,6 +10,7 @@ from pathlib import Path
 import itertools
 from datetime import datetime, timezone
 from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python)
+from concurrent.futures._base import CancelledError
 
 from exceptions import *
 from utils import *
@@ -72,13 +73,18 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     if icon != '':
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
 
-def send_user(user: Union[discord.ClientUser, discord.MemberProfile, discord.UserProfile]):
+def send_user(user: Union[discord.Client, discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
-    if isinstance(user, (discord.MemberProfile, discord.ClientUser)):
+    if isinstance(user, (discord.MemberProfile, discord.Client)):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    pyotherside.send(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+    pyotherside.send("finishing")
+    pyotherside.send(f"!user{'' if isinstance(user, discord.Client) else user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+    #except Exception as e: pyotherside.send(f"ERROR OCCURED {e}, {type(e)}")
+    pyotherside.send("almost there")
+    pyotherside.send(f"user{'' if isinstance(user, discord.Client) else user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+    pyotherside.send("DONE.")
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
@@ -115,8 +121,11 @@ class MyClient(discord.Client):
                 break
             send_message(m, True)
 
-    def run_asyncio_threadsafe(self, courutine):
-        return asyncio.run_coroutine_threadsafe(courutine, self.loop)
+    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None):
+        """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
+        future = asyncio.run_coroutine_threadsafe(courutine, self.loop)
+        if result_required: return future.result(timeout)
+        return future
 
     def set_current_channel(self, guild, channel):
         self.current_server = guild
@@ -147,12 +156,14 @@ class MyClient(discord.Client):
         return ch and se
 
     async def send_user_info(self, user_id):
-        if user_id == -1: user = self.user
+        user_id = int(user_id)
+        if user_id == -1: user = self
         elif self.ensure_current_channel():
             user = await self.current_server.fetch_member_profile(user_id)
         else: user = await self.fetch_user_profile(user_id)
-        
-        await self.loop.run_in_executor(None, send_user, user)
+
+        #await self.loop.run_in_executor(None, send_user, user)
+        send_user(user)
     
 
 class Communicator:
@@ -216,15 +227,13 @@ class Communicator:
     def get_history_messages(self, before_id):
         self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)))
 
-    @exception_decorator(asyncio.CancelledError)
+    @exception_decorator(CancelledError)
     def disconnect(self):
-        self.client.run_asyncio_threadsafe(self.client.close()).result()
+        self.client.run_asyncio_threadsafe(self.client.close(), True)
     
-    @attributeerror_safe
-    def request_user_info(self, user_id):
-        if user_id == -1:
-            self.client.run_asyncio_threadsafe(self.client.send_client_info())
-        else: self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id))
+    #@attributeerror_safe
+    def request_user_info(self, user_id:int=None):
+        self.client.run_asyncio_threadsafe(self.client.send_user_info(-1 if user_id in (None, "") else user_id), True)
 
 
 comm = Communicator()

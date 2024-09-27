@@ -69,6 +69,13 @@ Page {
         header: PageHeader {
             id: header_name
             title: username
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: "" })
+                onPressed: console.log("Pressed")
+                onReleased: console.log("Released")
+            }
         }
 
         model: serversModel

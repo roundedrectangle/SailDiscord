@@ -85,8 +85,8 @@ ApplicationWindow {
             initialized = true
         }
 
-        onError: console.log('python error: ' + traceback)
-        onReceived: console.log('got message from python: ' + data)
+        onError: console.log("python error: " + traceback)
+        onReceived: console.log("got message from python: " + data)
 
         function login(token) {
             myPage.loading = true;
