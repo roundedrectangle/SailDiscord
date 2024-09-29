@@ -69,7 +69,7 @@
         <location filename="../qml/pages/MessagesPage.qml" line="99"/>
         <source>About</source>
         <comment>User</comment>
-        <translation>О программе</translation>
+        <translation>О пользователе</translation>
     </message>
 </context>
 <context>
