@@ -1,4 +1,6 @@
-# SailDiscord
+# Sailcord
+
+Previously SailDiscord
 
 An unofficial SailfishOS Discord client
 
