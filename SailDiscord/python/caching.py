@@ -159,4 +159,3 @@ class Cacher:
             return self.session_cached[type.name.lower()][str(id)] == finished
         else:
             return True
-  

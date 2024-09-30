@@ -183,7 +183,7 @@ Page {
                 return
             }
 
-            python.setHandler("message", function (_serverid, _channelid, _id, _author, _contents, _icon, _sent, _date, history, userid) {
+            python.setHandler("message", function (_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history, _contents) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
                 var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,

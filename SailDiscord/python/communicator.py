@@ -37,10 +37,6 @@ def send_servers(guilds):
         if icon != '':
             comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
-def permissions_for(channel, user_id) -> discord.Permissions:
-    member = channel.guild.get_member(user_id)
-    return None if member == None else channel.permissions_for(member)
-
 def send_channel(c, user_id):
     if c.type == discord.ChannelType.category:
         return
@@ -56,22 +52,28 @@ def send_channels(guild: discord.Guild, user_id):
         for c in category.channels:
             send_channel(c, user_id)
 
+def generate_base_message(message: Union[discord.Message, Any], is_history=False):
+    """Returns a sequence of the base author-dependent message callback arguments to pass at the start"""
+    icon = '' if message.author.display_avatar == None else \
+            str(comm.cacher.get_cached_path(message.author.id, ImageType.USER, default=message.author.display_avatar))
+    
+    if icon != '':
+        comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
+    
+    return (str(message.guild.id), str(message.channel.id),
+            str(message.id), date_to_qmlfriendly_timestamp(message.created_at),
+            str(message.author.id), message.author.id == comm.client.user.id,
+            str(message.author.name), icon, is_history
+        )
+
+def send_default_message(message: Union[discord.Message, Any], is_history=False):
+    pyotherside.send('message', *generate_base_message(message, is_history), message.content)
 
 def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-
-    icon = '' if message.author.display_avatar == None else \
-            str(comm.cacher.get_cached_path(message.author.id, ImageType.USER, default=message.author.display_avatar))
-
-    pyotherside.send('message',
-        str(message.guild.id), str(message.channel.id),
-        str(message.id), str(message.author.name), str(message.content),
-        icon, message.author.id == comm.client.user.id,
-        date_to_qmlfriendly_timestamp(message.created_at),
-        is_history, str(message.author.id))
-
-    if icon != '':
-        comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
+    t = message.type
+    if t in (discord.MessageType.default, discord.MessageType.reply):
+        send_default_message(message, is_history)
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
@@ -112,9 +114,7 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         if self.ensure_current_channel(message.channel, message.guild):
-            #pyotherside.send(f"Got message from {message.author} in server {message.guild.name}: {message.content}")
             send_message(message)
-            #await message.channel.send('pong')
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
         ch = self.get_channel(self.current_channel.id)

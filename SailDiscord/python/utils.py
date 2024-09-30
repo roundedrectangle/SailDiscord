@@ -62,3 +62,7 @@ class StatusMapping(ListEnum):
     DND = discord.Status.dnd
     INVISIBLE = discord.Status.invisible
     IDLE = discord.Status.idle
+
+def permissions_for(channel, user_id) -> Optional[discord.Permissions]:
+    member = channel.guild.get_member(user_id)
+    return None if member == None else channel.permissions_for(member)
