@@ -37,6 +37,52 @@ Page {
                         width: section.width
                         spacing: Theme.paddingSmall
 
+                        SectionHeader { text: qsTr("Channels list") }
+
+                        TextSwitch {
+                            text: qsTr("Ignore private setting for channels and channel categories")
+                            onCheckedChanged: appSettings.ignorePrivate = checked
+                            Component.onCompleted: checked = appSettings.ignorePrivate
+                        }
+
+                        SectionHeader { text: qsTr("Messages") }
+
+                        TextSwitch {
+                            text: qsTr("Use default type on unknown types")
+                            checked: appSettings.defaultUnknownMessages
+                            onCheckedChanged: appSettings.defaultUnknownMessages = checked
+                        }
+
+                        SectionHeader { text: qsTr("Message field") }
+
+                        TextSwitch {
+                            text: qsTr("Send messages by enter")
+                            checked: appSettings.sendByEnter
+                            onCheckedChanged: appSettings.sendByEnter = checked
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Focus input message area after send")
+                            checked: appSettings.focusAfterSend
+                            onCheckedChanged: appSettings.focusAfterSend = checked
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Focus input message area on channel open")
+                            checked: appSettings.focudOnChatOpen
+                            onCheckedChanged: appSettings.focudOnChatOpen = checked
+                        }
+                    }
+                }
+
+                ExpandingSection {
+                    id: lookSection
+                    title: qsTr("Look and feel")
+
+                    content.sourceComponent: Column {
+                        width: lookSection.width
+                        spacing: Theme.paddingSmall
+
                         SectionHeader { text: qsTr("Servers list") }
 
                         TextSwitch {
@@ -45,13 +91,6 @@ Page {
                             Component.onCompleted: checked = appSettings.emptySpace
                         }
 
-                        SectionHeader { text: qsTr("Channels list") }
-
-                        TextSwitch {
-                            text: qsTr("Ignore private setting for channels and channel categories")
-                            onCheckedChanged: appSettings.ignorePrivate = checked
-                            Component.onCompleted: checked = appSettings.ignorePrivate
-                        }
 
                         SectionHeader { text: qsTr("Messages") }
 
@@ -82,15 +121,15 @@ Page {
                         }
 
                         ComboBox {
-                            property var values: ["n", "s", "r", "a"]
+                            property var values: ["a", "n", "s", "r"]
                             label: qsTr("Extra padding")
                             description: qsTr("Sets for which messages extra padding should apply")
                             currentIndex: values.indexOf(appSettings.messagesPadding) == -1 ? 0 : values.indexOf(appSettings.messagesPadding)
                             menu: ContextMenu {
-                                MenuItem { text: qsTr("none (default)") }
+                                MenuItem { text: qsTr("all (default)") }
+                                MenuItem { text: qsTr("none") }
                                 MenuItem { text: qsTr("sent") }
                                 MenuItem { text: qsTr("received") }
-                                MenuItem { text: qsTr("all") }
                             }
 
                             onCurrentItemChanged: appSettings.messagesPadding = values[currentIndex]
@@ -124,21 +163,16 @@ Page {
                             visible: appSettings.messageGrouping !== "n"
                             description: qsTr("Set extra padding for new messages from the same author")
 
-                            property var values: ["n", "s", "p"]
+                            property var values: ["p", "s", "n"]
                             currentIndex: values.indexOf(appSettings.oneAuthorPadding) == -1 ? 0 : values.indexOf(appSettings.oneAuthorPadding)
                             menu: ContextMenu {
-                                MenuItem { text: qsTr("no (default)") }
+                                MenuItem { text: qsTr("as pfp (default)") }
                                 MenuItem { text: qsTr("small") }
-                                MenuItem { text: qsTr("as pfp") }
+                                MenuItem { text: qsTr("no") }
                             }
                             onCurrentItemChanged: appSettings.oneAuthorPadding = values[currentIndex]
                         }
 
-                        TextSwitch {
-                            text: qsTr("Use default type on unknown types")
-                            checked: appSettings.defaultUnknownMessages
-                            onCheckedChanged: appSettings.defaultUnknownMessages = checked
-                        }
 
                         ButtonLayout {
                             Button {
@@ -149,26 +183,6 @@ Page {
                         }
 
                         Item {width: 1; height: Theme.paddingLarge}
-
-                        SectionHeader { text: qsTr("Message field") }
-
-                        TextSwitch {
-                            text: qsTr("Send messages by enter")
-                            checked: appSettings.sendByEnter
-                            onCheckedChanged: appSettings.sendByEnter = checked
-                        }
-
-                        TextSwitch {
-                            text: qsTr("Focus input message area after send")
-                            checked: appSettings.focusAfterSend
-                            onCheckedChanged: appSettings.focusAfterSend = checked
-                        }
-
-                        TextSwitch {
-                            text: qsTr("Focus input message area on channel open")
-                            checked: appSettings.focudOnChatOpen
-                            onCheckedChanged: appSettings.focudOnChatOpen = checked
-                        }
                     }
                 }
 

@@ -321,19 +321,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>none (default)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>sent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>received</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>all</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -353,15 +345,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>no (default)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>small</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>as pfp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -462,6 +446,22 @@
     </message>
     <message>
         <source>Use default type on unknown types</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Look and feel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>all (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>as pfp (default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>no</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

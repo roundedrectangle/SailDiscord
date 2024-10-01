@@ -338,250 +338,252 @@
         <translation>Comportamento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="40"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
         <source>Servers list</source>
         <translation>Lista server</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="43"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Keep empty space in servers without icons</source>
         <translation>Lascia uno spazio vuoto per i server senza immagine</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="40"/>
         <source>Channels list</source>
         <translation>Lista canali</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="51"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="43"/>
         <source>Ignore private setting for channels and channel categories</source>
         <translation>Ignora le impostazioni private per i canali e le categorie di canali</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Messages</source>
         <translation>Messaggi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <source>Look and feel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
         <source>Sent messages</source>
         <translation>Messaggi inviati</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>reversed (default)</source>
         <translation>al contrario (predefinito)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>align right</source>
         <translation>allinea a destra</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="67"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
         <source>nothing</source>
         <translation>niente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="74"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="113"/>
         <source>Less maximum width</source>
         <translation>Minore larghezza massima</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="77"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Adds a padding to the left side of a sent message.</source>
         <translation>Aggiunge una spaziatura al lato sinistro di un messaggio inviato.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="78"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation>Imposta i messaggi inviati al contrario o allineati a destra.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="123"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="162"/>
         <source>Extra padding</source>
         <translation>Spaziatura aggiuntiva</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="90"/>
-        <source>none (default)</source>
-        <translation>nessuna (predefinito)</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="91"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="131"/>
         <source>sent</source>
         <translation>inviati</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="92"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="132"/>
         <source>received</source>
         <translation>ricevuti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="93"/>
-        <source>all</source>
-        <translation>tutti</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="62"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="87"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="126"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation>Imposta per quali messaggi la spaziatura aggiuntiva dovrebbe essere applicata</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="139"/>
         <source>Align sent messages text to right</source>
         <translation>Allinea il testo dei messaggi inviati a destra</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="111"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>Message grouping</source>
         <translation>Raggruppa messaggi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="114"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
         <source>author &amp; time (default)</source>
         <translation>Autore &amp; data (predefinito)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="154"/>
         <source>author</source>
         <translation>Autore</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="155"/>
         <source>none</source>
         <translation>nessuno</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
-        <source>no (default)</source>
-        <translation>no (predefinito)</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="131"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="170"/>
         <source>small</source>
         <translation>piccola</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="132"/>
-        <source>as pfp</source>
-        <translation>come immagine di profilo</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="164"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation>Imposta spaziatura aggiuntiva per nuovi messaggi dallo stesso autore</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="51"/>
         <source>Use default type on unknown types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="145"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="179"/>
         <source>Preview</source>
         <translation>Anteprima</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
         <source>Message field</source>
         <translation>Campo messaggi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>Send messages by enter</source>
         <translation>Invia messaggi con tasto invio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="162"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
         <source>Focus input message area after send</source>
         <translation>Focus su campo invio messaggi dopo l&apos;invio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
         <source>Focus input message area on channel open</source>
         <translation>Focus su campo invio messaggi quando si apre un canale</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="179"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
+        <source>all (default)</source>
+        <translation>tutti (predefinito)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
+        <source>as pfp (default)</source>
+        <translation>come immagine di profilo (predefinito)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="171"/>
+        <source>no</source>
+        <translation>no</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="193"/>
         <source>Session</source>
         <translation>Sessione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="190"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="204"/>
         <source>Log out</source>
         <translation>Disconnettiti</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="194"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="208"/>
         <source>Clear cache</source>
         <translation>Elimina cache</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="201"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="205"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
         <source>Reset all settings</source>
         <translation>Ripristina impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="257"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="271"/>
         <source>Settings reset</source>
         <translation>Ripristinando le impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="258"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
         <source>Please restart the app</source>
         <translation>Per favore riavvia l&apos;applicazione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="221"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Never</source>
         <translation>Mai</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="222"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>On app restart</source>
         <translation>Al riavvio dell&apos;applicazione</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="251"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Cambia il numero di volte che la cache viene aggiornata. Un riavvio potrebbe essere necessario</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>Hourly</source>
         <translation>Ogni ora</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>Daily</source>
         <translation>Giornalmente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="225"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="239"/>
         <source>Weekly</source>
         <translation>Settimanalmente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="240"/>
         <source>Monthly</source>
         <translation>Mensilmente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="227"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="241"/>
         <source>Half-yearly</source>
         <translation>Semestrale</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="242"/>
         <source>Yearly</source>
         <translation>Annualmente</translation>
     </message>

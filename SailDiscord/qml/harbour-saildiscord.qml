@@ -51,18 +51,18 @@ ApplicationWindow {
             id: appSettings
             path: "settings"
 
-            property bool emptySpace: false
+            property bool emptySpace: true
             property bool ignorePrivate: false
-            property bool messagesLessWidth: false
-            property bool alignMessagesText: false
+            property bool messagesLessWidth: true
+            property bool alignMessagesText: true
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
             property bool defaultUnknownMessages: false
 
             property string sentBehaviour: "r"
-            property string messagesPadding: "n"
-            property string oneAuthorPadding: "n"
+            property string messagesPadding: "a"
+            property string oneAuthorPadding: "a"
             property string messageGrouping: "d"
 
             property int cachePeriod: 1
