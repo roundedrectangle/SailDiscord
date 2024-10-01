@@ -57,10 +57,11 @@ ListItem {
 
         ListImage {
             id: profileIcon
-            source: _firstSameAuthor ? pfp : ""
+            icon: _firstSameAuthor ? pfp : ""
             height: Theme.iconSizeLarge
             visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
             opacity: _firstSameAuthor ? 1 : 0
+            errorString: author
         }
 
         Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;

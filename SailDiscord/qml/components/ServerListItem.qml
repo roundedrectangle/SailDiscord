@@ -25,6 +25,7 @@ ListItem {
                 icon: root.icon
                 maxHeight: root.height
                 forceVisibility: appSettings.emptySpace
+                errorString: title
             }
 
             Item { id: iconPadding; height: 1; width: _iconAvailable ? Theme.paddingLarge : 0; }

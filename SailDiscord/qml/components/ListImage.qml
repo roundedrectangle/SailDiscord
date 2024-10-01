@@ -6,6 +6,7 @@ Image {
     property int maxHeight
     property string icon: ''
     property bool forceVisibility: false // force to be visible and full size even when no icon is available
+    property bool errorString
 
     id: roundedIcon
     source: (icon != "None" && icon != '') ? icon : ''
@@ -30,7 +31,7 @@ Image {
         }
     }
 
-    onStatusChanged: if (status == Image.Error) shared.imageLoadError(title)
+    onStatusChanged: if (status == Image.Error && errorString.length > 0) shared.imageLoadError(errorString)
 
     ProgressCircle {
         id: progressCircle
