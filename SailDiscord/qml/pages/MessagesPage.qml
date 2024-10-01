@@ -80,7 +80,8 @@ Page {
                         sourceComponent:
                             switch (type) {
                             case 'join': return joinedItem
-                            case '': default: return defaultItem
+                            case '': return defaultItem
+                            case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : unknownItem
                             }
 
                         Component {
@@ -110,14 +111,25 @@ Page {
 
                         Component {
                             id: joinedItem
-                            Column {
+                            Label {
+                                textFormat: "RichText"
+                                text: qsTr("%1 joined the server").arg('<font color="'+Theme.highlightColor+'">'+_author+'</font>')
+                                horizontalAlignment: Text.AlignHCenter
+                                color: Theme.secondaryHighlightColor
                                 width: parent.width
-                                Label {
-                                    textFormat: "RichText"
-                                    text: qsTr("%1 joined the server").arg('<font color="'+Theme.highlightColor+'">'+_author+'</font>')
-                                    anchors.horizontalCenter: parent.horizontalCenter
-                                    color: Theme.secondaryHighlightColor
-                                }
+                                wrapMode: Text.Wrap
+                            }
+                        }
+
+                        Component {
+                            id: unknownItem
+                            Label {
+                                textFormat: "RichText"
+                                text: qsTr("Unknown message type: %1").arg('<font color="'+Theme.highlightColor+'">'+APIType+'</font>')
+                                horizontalAlignment: Text.AlignHCenter
+                                color: Theme.secondaryHighlightColor
+                                width: parent.width
+                                wrapMode: Text.Wrap
                             }
                         }
                     }
@@ -204,9 +216,10 @@ Page {
                 var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userid,
-                    _contents: '' } // default
+                    _contents: '', APIType: '' } // default
 
-                if (type === '') data._contents = arguments[9]
+                if (type === '' || type === 'unknown') data._contents = arguments[9]
+                if (type === 'unknown') data.APIType = arguments[10]
                 if (history) append(data); else insert(0, data)
             }
         }
@@ -219,6 +232,7 @@ Page {
 
             python.setHandler("message", constructCallback(''))
             python.setHandler("newmember", constructCallback('join'))
+            python.setHandler("uknownmessage", constructCallback('unknown'))
         }
 
         onCountChanged: messagesList.forceLayout()

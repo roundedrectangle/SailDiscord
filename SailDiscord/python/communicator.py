@@ -74,6 +74,7 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
         pyotherside.send('message', *base, message.content)
     elif t == discord.MessageType.new_member:
         pyotherside.send('newmember', *base)
+    else: pyotherside.send('uknownmessage', *base, message.content, str(message.type.name))
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default

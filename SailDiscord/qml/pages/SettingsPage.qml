@@ -134,6 +134,12 @@ Page {
                             onCurrentItemChanged: appSettings.oneAuthorPadding = values[currentIndex]
                         }
 
+                        TextSwitch {
+                            text: qsTr("Use default type on unknown types")
+                            checked: appSettings.defaultUnknownMessages
+                            onCheckedChanged: appSettings.defaultUnknownMessages = checked
+                        }
+
                         ButtonLayout {
                             Button {
                                 text: qsTr("Preview")

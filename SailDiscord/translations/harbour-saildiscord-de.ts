@@ -127,6 +127,10 @@
         <source>%1 joined the server</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Unknown message type: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Opal.About</name>
@@ -454,6 +458,10 @@
     </message>
     <message>
         <source>Reset tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use default type on unknown types</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

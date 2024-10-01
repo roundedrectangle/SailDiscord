@@ -58,6 +58,7 @@ ApplicationWindow {
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
+            property bool defaultUnknownMessages: false
 
             property string sentBehaviour: "r"
             property string messagesPadding: "n"
