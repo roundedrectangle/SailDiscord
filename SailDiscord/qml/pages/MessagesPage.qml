@@ -75,32 +75,36 @@ Page {
 
                     onContentYChanged: checkForUpdate()
 
-                    delegate: MessageItem {
-                        contents: _contents
-                        author: _author
-                        pfp: _pfp
-                        sent: _sent
-                        date: _date
-                        sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
-                        masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
-                        masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
+                    delegate: Loader {
+                        width: parent.width
+                        sourceComponent: MessageItem {
+                            contents: _contents
+                            author: _author
+                            pfp: _pfp
+                            sent: _sent
+                            date: _date
+                            sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
+                            masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
+                            masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
 
-                        function updateMasterWidth() {
-                            msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
-                        }
-
-                        Component.onCompleted: {
-                            updateMasterWidth()
-                        }
-                        onMasterWidthChanged: updateMasterWidth()
-                        onInnerWidthChanged: updateMasterWidth()
-
-                        menu: Component { ContextMenu {
-                            MenuItem { text: qsTranslate("AboutUser", "About", "User")
-                                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: author, icon: pfp })
+                            function updateMasterWidth() {
+                                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                             }
-                        }}
+
+                            Component.onCompleted: {
+                                updateMasterWidth()
+                            }
+                            onMasterWidthChanged: updateMasterWidth()
+                            onInnerWidthChanged: updateMasterWidth()
+
+                            menu: Component { ContextMenu {
+                                MenuItem { text: qsTranslate("AboutUser", "About", "User")
+                                    onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: author, icon: pfp })
+                                }
+                            }}
+                        }
                     }
+
                 }
             }
 
@@ -185,7 +189,15 @@ Page {
 
             python.setHandler("message", function (_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history, _contents) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return;
-                var data = {messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
+                var data = {type: "", messageId: _id, _author: _author, _contents: _contents, _pfp: _icon,
+                    _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
+                    _wasUpdated: false, userid: userid}
+                if (!history) insert(0, data); else append(data);
+            })
+
+            python.setHandler("newmember", function (_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history) {
+                if ((_serverid != guildid) || (_channelid != channelid)) return;
+                var data = {type: "new", messageId: _id, _author: _author, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userid}
                 if (!history) insert(0, data); else append(data);

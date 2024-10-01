@@ -66,14 +66,14 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
             str(message.author.name), icon, is_history
         )
 
-def send_default_message(message: Union[discord.Message, Any], is_history=False):
-    pyotherside.send('message', *generate_base_message(message, is_history), message.content)
-
 def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
     t = message.type
+    base = generate_base_message(message, is_history)
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        send_default_message(message, is_history)
+        pyotherside.send('message', *base, message.content)
+    elif t == discord.MessageType.new_member:
+        pyotherside.send('newmember', *base)
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
