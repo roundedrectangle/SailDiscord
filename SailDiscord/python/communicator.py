@@ -242,7 +242,7 @@ class Communicator:
     def disconnect(self):
         self.client.run_asyncio_threadsafe(self.client.close(), True)
     
-    #@attributeerror_safe
+    @attributeerror_safe
     def request_user_info(self, user_id:int=None):
         self.client.run_asyncio_threadsafe(self.client.send_user_info(-1 if user_id in (None, "") else user_id), True)
 

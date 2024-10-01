@@ -64,7 +64,7 @@ Page {
                     function checkForUpdate() {
                         var rng = getVisibleIndexRange()
                         for (var i=rng[1]; i<=rng[0]; i++) {
-                            if (i>0 && i%28 == 0) {
+                            if (i>0 && i%27 == 0) {
                                 if (!msgModel.get(i)._wasUpdated) {
                                     msgModel.get(i)._wasUpdated = true
                                     python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
@@ -110,8 +110,14 @@ Page {
 
                         Component {
                             id: joinedItem
-                            Item {
-
+                            Column {
+                                width: parent.width
+                                Label {
+                                    textFormat: "RichText"
+                                    text: qsTr("%1 joined the server").arg('<font color="'+Theme.highlightColor+'">'+_author+'</font>')
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    color: Theme.secondaryHighlightColor
+                                }
                             }
                         }
                     }
@@ -197,11 +203,11 @@ Page {
                 if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userid}
+                    _wasUpdated: false, userid: userid,
+                    _contents: '' } // default
 
-                if (type === '') data['_contents'] = arguments[9]
-
-                if (!history) insert(0, data); else append(data)
+                if (type === '') data._contents = arguments[9]
+                if (history) append(data); else insert(0, data)
             }
         }
 
