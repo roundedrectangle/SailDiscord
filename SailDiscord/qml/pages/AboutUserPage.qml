@@ -43,6 +43,7 @@ AboutPageBase {
     ]
 
     Component.onCompleted: {
+        _develInfoSection.parent.visible = !busyIndicator.running
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, icon) {
             description = bio
             memberSince = new Date(_date)

@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 ListItem {
+    property string authorid
     property string contents
     property string author
     property string pfp
@@ -105,4 +106,10 @@ ListItem {
             Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
         }
     }
+
+    menu: Component { ContextMenu {
+        MenuItem { text: qsTranslate("AboutUser", "About", "User")
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
+        }
+    }}
 }

@@ -65,8 +65,8 @@
 <context>
     <name>AboutUser</name>
     <message>
+        <location filename="../qml/components/MessageItem.qml" line="111"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="101"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -143,7 +143,7 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="120"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="131"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
@@ -572,32 +572,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="65"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>
