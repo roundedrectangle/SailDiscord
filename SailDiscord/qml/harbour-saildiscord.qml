@@ -4,6 +4,7 @@ import "pages"
 import io.thp.pyotherside 1.5
 import harboursaildiscord.Logic 1.0
 import Nemo.Configuration 1.0
+import QtGraphicalEffects 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -27,6 +28,8 @@ ApplicationWindow {
           }
           console.log(f)
         }
+
+        function imageLoadError(name) { Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name), Notice.Long, Notice.Top) }
     }
 
     SettingsMigrationAssistant { id: migrateSettings }

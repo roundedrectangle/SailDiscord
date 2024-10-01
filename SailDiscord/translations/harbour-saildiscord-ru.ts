@@ -66,7 +66,7 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="99"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="101"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -91,10 +91,9 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="83"/>
-        <location filename="../qml/components/ServerListItem.qml" line="49"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="32"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation>Произошла ошибка при загрузке изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -144,7 +143,7 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="116"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="120"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

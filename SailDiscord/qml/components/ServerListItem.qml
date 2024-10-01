@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 ListItem {
+    id: root
     property string title
     property string icon
 
@@ -20,46 +21,10 @@ ListItem {
         Row {
             //spacing: _iconAvailable ? Theme.paddingLarge : 0
 
-            Image {
-                id: profileIcon
-                source: hasIcon ? icon : ""
-                height: (parent.parent.parent.height-4*Theme.paddingSmall)
-                width: height
-
-                visible: _iconAvailable
-
-                property bool rounded: true
-                property bool adapt: true
-
-                layer.enabled: rounded
-                layer.effect: OpacityMask {
-                    maskSource: Item {
-                        width: profileIcon.width
-                        height: profileIcon.height
-                        Rectangle {
-                            anchors.centerIn: parent
-                            width: profileIcon.adapt ? profileIcon.width : Math.min(profileIcon.width, profileIcon.height)
-                            height: profileIcon.adapt ? profileIcon.height : width
-                            radius: Math.min(width, height)
-                        }
-                    }
-                }
-
-                onStatusChanged: if (status == Image.Error)
-                    Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(title), Notice.Long, Notice.Top)
-
-                ProgressCircle {
-                    id: progressCircle
-                    anchors.fill: parent
-                    visible: parent.status == Image.Loading
-
-                    Timer {
-                        interval: 32
-                        repeat: true
-                        onTriggered: progressCircle.value = (progressCircle.value + 0.01) % 1.0
-                        running: parent.parent.status == Image.Loading
-                    }
-                }
+            ListImage {
+                icon: root.icon
+                maxHeight: root.height
+                forceVisibility: appSettings.emptySpace
             }
 
             Item { id: iconPadding; height: 1; width: _iconAvailable ? Theme.paddingLarge : 0; }

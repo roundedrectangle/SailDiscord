@@ -22,6 +22,7 @@ SOURCES += \
 
 DISTFILES += \
     harbour-saildiscord.desktop \
+    qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
     qml/components/ServerListItem.qml \
     qml/components/SettingsComboBox.qml \

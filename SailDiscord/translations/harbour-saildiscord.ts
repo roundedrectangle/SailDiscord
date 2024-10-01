@@ -66,7 +66,7 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="99"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="101"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -91,8 +91,7 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="83"/>
-        <location filename="../qml/components/ServerListItem.qml" line="49"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="32"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -144,7 +143,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="116"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="120"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
