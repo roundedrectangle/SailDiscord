@@ -85,7 +85,7 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
-        <translation>Канал неподдерживается</translation>
+        <translation>Канал не поддерживается</translation>
     </message>
 </context>
 <context>
