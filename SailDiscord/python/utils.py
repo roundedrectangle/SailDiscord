@@ -1,7 +1,8 @@
 import sys
 from datetime import datetime, timezone
+from caching import Cacher
 import pyotherside
-from typing import Callable, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
+from typing import Callable, List, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 from contextlib import suppress
 from enum import Enum
@@ -66,3 +67,12 @@ class StatusMapping(ListEnum):
 def permissions_for(channel, user_id) -> Optional[discord.Permissions]:
     member = channel.guild.get_member(user_id)
     return None if member == None else channel.permissions_for(member)
+
+def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
+    """Converts to QML-friendly attachment format, object (dict)"""
+    # TODO: caching, more types
+    res = []
+    for a in attachments:
+        if (a.content_type or '').startswith('image'):
+            res.append({"url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()})
+    return res

@@ -96,6 +96,7 @@ Page {
                                 sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
                                 masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
                                 masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
+                                attachments: _attachments
 
                                 function updateMasterWidth() {
                                     msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -211,15 +212,15 @@ Page {
         }
 
         function constructCallback(type) {
-            return function(_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history) {
+            return function(_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history, attachments) {
                 if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userid,
+                    _wasUpdated: false, userid: userid, _attachments: attachments,
                     _contents: '', APIType: '' } // default
 
-                if (type === '' || type === 'unknown') data._contents = arguments[9]
-                if (type === 'unknown') data.APIType = arguments[10]
+                if (type === '' || type === 'unknown') data._contents = arguments[10]
+                if (type === 'unknown') data.APIType = arguments[11]
                 if (history) append(data); else insert(0, data)
             }
         }

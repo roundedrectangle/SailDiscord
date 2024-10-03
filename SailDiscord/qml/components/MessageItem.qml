@@ -10,6 +10,7 @@ ListItem {
     property bool sent // If the message is sent by the user connected to the client
     property bool sameAuthorAsBefore
     property date date
+    property var attachments
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -113,4 +114,10 @@ ListItem {
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
         }
     }}
+
+    Component.onCompleted: {
+        try {
+            console.log(attachments.get(0)['url'])
+        } catch(e) {}
+    }
 }

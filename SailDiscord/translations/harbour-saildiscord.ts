@@ -65,7 +65,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="112"/>
+        <location filename="../qml/components/MessageItem.qml" line="113"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -143,17 +143,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="116"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="117"/>
         <source>%1 joined the server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="128"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="129"/>
         <source>Unknown message type: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="149"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="150"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
