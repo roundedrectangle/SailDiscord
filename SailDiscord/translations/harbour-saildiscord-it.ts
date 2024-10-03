@@ -65,7 +65,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="113"/>
+        <location filename="../qml/components/MessageItem.qml" line="135"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
