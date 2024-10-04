@@ -18,7 +18,7 @@ SlideshowView {
         property var itemModel: model
         width: parent.width
         height: parent.height
-        onClicked: pageStack.push(Qt.resolvedUrl("../pages/FullscreenAttachmentPage.qml"), {model: itemModel})
+        onClicked: pageStack.push(Qt.resolvedUrl("../pages/FullscreenAttachmentPage.qml"), {itemModel: itemModel})
 
         GeneralAttachmentView { model: parent.itemModel }
     }

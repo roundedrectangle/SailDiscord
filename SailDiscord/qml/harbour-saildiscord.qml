@@ -30,6 +30,10 @@ ApplicationWindow {
         }
 
         function imageLoadError(name) { Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name), Notice.Long, Notice.Top) }
+
+        function download(url) {
+            console.log("TODO: download file "+url)
+        }
     }
 
     SettingsMigrationAssistant { id: migrateSettings }
