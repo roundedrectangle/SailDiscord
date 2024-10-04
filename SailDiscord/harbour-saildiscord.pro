@@ -22,7 +22,7 @@ SOURCES += \
 
 DISTFILES += \
     harbour-saildiscord.desktop \
-    qml/components/AttachmentPreview.qml \
+    qml/components/AttachmentsPreview.qml \
     qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
     qml/components/ServerListItem.qml \

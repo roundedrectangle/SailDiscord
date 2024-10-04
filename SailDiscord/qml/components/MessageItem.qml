@@ -114,9 +114,7 @@ ListItem {
             }
         }
 
-        AttachmentPreview {
-            attachments: root.attachments
-        }
+        AttachmentsPreview { model: root.attachments }
     }
 
     menu: Component { ContextMenu {
@@ -124,10 +122,4 @@ ListItem {
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
         }
     }}
-
-    Component.onCompleted: {
-        try {
-            //console.log(attachments.get(0)['type'])
-        } catch(e) {}
-    }
 }

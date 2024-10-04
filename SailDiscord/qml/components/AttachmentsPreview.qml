@@ -2,21 +2,20 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 SlideshowView {
-    property var attachments
-    //property int maxHeight: -1
-
     width: parent.width
     height: {
         if (attachments.count > 0) {
-            if (attachments.get(0).maxheight > -1) {
-                //console.log(maxHeight, Theme.dp(500))
-                //console.log(Math.min(maxHeight, Theme.dp(500)), attachments.get(0).url)
-                return Math.min(attachments.get(0).maxheight, Theme.dp(500))
-            } else return Theme.itemSizeLarge
-        } else return 0
+            JSON.stringify(attachments.get(0)) // Wait until object is initialized FIXME: find a better way
+            if (attachments.get(0).maxheight > -1)
+                if (Math.abs(attachments.get(0).maxwidth - attachments.get(0).maxheight) < Theme.dp(50))
+                //if (attachments.get(0).maxwidth < Theme.dp(500))
+                    return Theme.dp(500)
+                else return Math.max(Math.min(attachments.get(0).maxheight, Theme.dp(500)), Theme.dp(200))
+            else return Theme.itemSizeLarge
+        } return 0
     }
-    //height: attachments.count < 1 ? 0 : (maxHeight < 0 ? Theme.itemSizeLarge : (Math.min(maxHeight, Theme.dp(500))))
-    model: attachments
+
+    Component.onCompleted: console.log(height)
 
     delegate: MouseArea {
         width: parent.width
@@ -40,11 +39,6 @@ SlideshowView {
                 width: parent.width
                 height: parent.height
                 fillMode: Image.PreserveAspectFit
-
-                /*onStatusChanged: if (status == Image.Ready){
-                    maxHeight = Math.max(sourceSize.height, maxHeight)
-                                     console.log(maxHeight, url)
-                                 }*/
             }
         }
 

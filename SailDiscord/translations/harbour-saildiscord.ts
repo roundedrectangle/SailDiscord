@@ -65,7 +65,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="123"/>
+        <location filename="../qml/components/MessageItem.qml" line="121"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -81,9 +81,9 @@
     </message>
 </context>
 <context>
-    <name>AttachmentPreview</name>
+    <name>AttachmentsPreview</name>
     <message>
-        <location filename="../qml/components/AttachmentPreview.qml" line="55"/>
+        <location filename="../qml/components/AttachmentsPreview.qml" line="52"/>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>

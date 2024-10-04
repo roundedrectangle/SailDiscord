@@ -67,7 +67,7 @@
     </message>
 </context>
 <context>
-    <name>AttachmentPreview</name>
+    <name>AttachmentsPreview</name>
     <message>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
