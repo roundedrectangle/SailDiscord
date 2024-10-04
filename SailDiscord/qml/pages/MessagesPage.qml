@@ -256,6 +256,7 @@ Page {
         // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
         python.setHandler("message", function() {}) // undefined is not used for messages not to be logged
         python.setHandler("join", function() {})
+        python.setHandler("uknownmessage", function() {})
         python.resetCurrentChannel()
     }
 }

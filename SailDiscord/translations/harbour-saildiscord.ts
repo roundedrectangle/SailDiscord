@@ -65,7 +65,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="135"/>
+        <location filename="../qml/components/MessageItem.qml" line="123"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -77,6 +77,14 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
         <source>Discord member since</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AttachmentPreview</name>
+    <message>
+        <location filename="../qml/components/AttachmentPreview.qml" line="55"/>
+        <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

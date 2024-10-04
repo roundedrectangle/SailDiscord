@@ -5,7 +5,7 @@ import pyotherside
 from typing import Callable, List, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 from contextlib import suppress
-from enum import Enum
+from enum import Enum, auto
 from pathlib import Path
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
@@ -68,11 +68,27 @@ def permissions_for(channel, user_id) -> Optional[discord.Permissions]:
     member = channel.guild.get_member(user_id)
     return None if member == None else channel.permissions_for(member)
 
+class AttachmentMapping(Enum):
+    UNKNOWN = auto()
+    IMAGE = auto()
+
+    @classmethod
+    def from_attachment(cls, attachment: discord.Attachment):
+        t = (attachment.content_type or '').split('/')[0] # e.g.: image/png to image
+        if t == 'image':
+            return cls.IMAGE
+        else: return cls.UNKNOWN
+
+def attachment_type(attachment: discord.Attachment):
+    t = attachment.content_type or ''
+    if t.startswith('image'):
+        return AttachmentMapping.IMAGE
+
 def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
     """Converts to QML-friendly attachment format, object (dict)"""
     # TODO: caching, more types
-    res = []
-    for a in attachments:
-        if (a.content_type or '').startswith('image'):
-            res.append({"url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()})
+    res = [{"_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": a.content_type, "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
+    if len(res) > 0:
+        res[0]['maxheight'] = max((a.height or -1) if a.content_type.startswith('image') else -1 for a in attachments)
+        res[0]['maxwidth'] = max((a.width or -1) if a.content_type.startswith('image') else -1 for a in attachments)
     return res

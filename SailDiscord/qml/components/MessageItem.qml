@@ -25,6 +25,7 @@ ListItem {
 
     property alias innerWidth: row.width
 
+    id: root
     width: parent.width
     contentHeight: column.height
 
@@ -113,21 +114,8 @@ ListItem {
             }
         }
 
-        SlideshowView {
-            width: parent.width
-            height: attachments.get(0) === undefined ? 0 : Theme.itemSizeExtraLarge
-            model: attachments
-
-            delegate: MouseArea {
-                width: parent.width
-                height: parent.height
-                onClicked: console.log("TODO: load full-screen SlideshowView")
-                Image {
-                    source: url
-                    width: parent.width
-                    height: parent.height
-                }
-            }
+        AttachmentPreview {
+            attachments: root.attachments
         }
     }
 
@@ -139,7 +127,7 @@ ListItem {
 
     Component.onCompleted: {
         try {
-            console.log(attachments.get(0)['url'])
+            //console.log(attachments.get(0)['type'])
         } catch(e) {}
     }
 }

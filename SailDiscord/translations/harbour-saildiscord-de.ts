@@ -67,6 +67,13 @@
     </message>
 </context>
 <context>
+    <name>AttachmentPreview</name>
+    <message>
+        <source>Attachment unsupported: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <source>Channel unsupported</source>
