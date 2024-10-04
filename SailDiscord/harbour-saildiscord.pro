@@ -23,6 +23,7 @@ SOURCES += \
 DISTFILES += \
     harbour-saildiscord.desktop \
     qml/components/AttachmentsPreview.qml \
+    qml/components/GeneralAttachmentView.qml \
     qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
     qml/components/ServerListItem.qml \
@@ -34,6 +35,7 @@ DISTFILES += \
     qml/pages/AboutUserPage.qml \
     qml/pages/ChannelsPage.qml \
     qml/pages/FirstPage.qml \
+    qml/pages/FullscreenAttachmentPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/MessagesPage.qml \
     qml/pages/SettingsPage.qml \

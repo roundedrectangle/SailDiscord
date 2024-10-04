@@ -81,14 +81,6 @@
     </message>
 </context>
 <context>
-    <name>AttachmentsPreview</name>
-    <message>
-        <location filename="../qml/components/AttachmentsPreview.qml" line="52"/>
-        <source>Attachment unsupported: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelsPage</name>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
@@ -115,6 +107,14 @@
         <location filename="../qml/pages/FirstPage.qml" line="67"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
+    </message>
+</context>
+<context>
+    <name>GeneralAttachmentView</name>
+    <message>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="33"/>
+        <source>Attachment unsupported: %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

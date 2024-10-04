@@ -67,13 +67,6 @@
     </message>
 </context>
 <context>
-    <name>AttachmentsPreview</name>
-    <message>
-        <source>Attachment unsupported: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ChannelsPage</name>
     <message>
         <source>Channel unsupported</source>
@@ -95,6 +88,13 @@
     </message>
     <message>
         <source>Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GeneralAttachmentView</name>
+    <message>
+        <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
