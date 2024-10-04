@@ -112,7 +112,7 @@
 <context>
     <name>GeneralAttachmentView</name>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="33"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="34"/>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>

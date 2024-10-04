@@ -19,8 +19,7 @@ Item {
         id: imagePreview
         Image {
             source: model.url
-            width: parent.width
-            height: parent.height
+            anchors.fill: parent
             fillMode: Image.PreserveAspectFit
         }
     }

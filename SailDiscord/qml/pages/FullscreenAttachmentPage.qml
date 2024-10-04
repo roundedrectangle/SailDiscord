@@ -3,50 +3,60 @@ import Sailfish.Silica 1.0
 import '../components'
 
 FullscreenContentPage {
-    id: root
-    property var itemModel
+    property var model
+    property int index
 
-    MouseArea {
+    SlideshowView {
+        id: slideshow
         anchors.fill: parent
-        onClicked: overlay.enabled = !overlay.enabled
-        GeneralAttachmentView { model: itemModel }
-    }
+        model: parent.model
 
-    Item {
-        id: overlay
+        //Component.onCompleted: positionViewAtIndex(index, PathView.Contain) // currentIndex is not available for some reason
 
-        enabled: true // toggle this when active/non-active changes
-        anchors.fill: parent
-        opacity: enabled ? 1.0 : 0.0
-        Behavior on opacity { FadeAnimator {}}
+        delegate: MouseArea {
+            property var itemModel: model
+            onClicked: overlay.enabled = !overlay.enabled
+            width: slideshow.width
+            height: slideshow.height
+            GeneralAttachmentView { model: itemModel }
 
-        IconButton {
-            y: Theme.paddingLarge
-            anchors {
-                right: parent.right
-                rightMargin: Theme.horizontalPageMargin
-            }
-            icon.source: "image://theme/icon-m-dismiss"
-            onClicked: pageStack.pop()
-        }
+            Item {
+                id: overlay
 
-        Row {
-            anchors  {
-                bottom: parent.bottom
-                bottomMargin: Theme.paddingLarge
-                horizontalCenter: parent.horizontalCenter
-            }
-            spacing: Theme.paddingLarge
+                enabled: true // toggle this when active/non-active changes
+                anchors.fill: parent
+                opacity: enabled ? 1.0 : 0.0
+                Behavior on opacity { FadeAnimator {}}
 
-            IconButton {
-                icon.source: "image://theme/icon-m-downloads"
-                onClicked: shared.download(itemModel.url)
-            }
+                IconButton {
+                    y: Theme.paddingLarge
+                    anchors {
+                        right: parent.right
+                        rightMargin: Theme.horizontalPageMargin
+                    }
+                    icon.source: "image://theme/icon-m-dismiss"
+                    onClicked: pageStack.pop()
+                }
 
-            IconButton {
-                icon.source: "image://theme/icon-m-share"
-                onClicked: {
-                    console.log("TODO: share...")
+                Row {
+                    anchors  {
+                        bottom: parent.bottom
+                        bottomMargin: Theme.paddingLarge
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    spacing: Theme.paddingLarge
+
+                    IconButton {
+                        icon.source: "image://theme/icon-m-downloads"
+                        onClicked: shared.download(itemModel.url)
+                    }
+
+                    IconButton {
+                        icon.source: "image://theme/icon-m-share"
+                        onClicked: {
+                            console.log("TODO: share...")
+                        }
+                    }
                 }
             }
         }
