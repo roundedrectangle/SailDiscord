@@ -79,6 +79,14 @@
         <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error getting token: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Python error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -469,6 +477,13 @@
     </message>
     <message>
         <source>no</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-saildiscord</name>
+    <message>
+        <source>Downloaded file %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

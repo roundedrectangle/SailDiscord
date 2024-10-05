@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import '../components'
+import Sailfish.Share 1.0
 
 FullscreenContentPage {
     property var model
@@ -11,7 +12,7 @@ FullscreenContentPage {
         anchors.fill: parent
         model: parent.model
 
-        //Component.onCompleted: positionViewAtIndex(index, PathView.Contain) // currentIndex is not available for some reason
+        //Component.onCompleted: positionViewAtIndex(index, PathView.Contain) // currentIndex is not available for some reason; this doesn't work too
 
         delegate: MouseArea {
             property var itemModel: model
@@ -53,9 +54,7 @@ FullscreenContentPage {
 
                     IconButton {
                         icon.source: "image://theme/icon-m-share"
-                        onClicked: {
-                            console.log("TODO: share...")
-                        }
+                        onClicked: shared.shareFile(itemModel.url, itemModel.filename, itemModel.realtype)
                     }
                 }
             }

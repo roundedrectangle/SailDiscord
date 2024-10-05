@@ -2,6 +2,7 @@
 
 # if __name__ == "__main__":
 #     pass
+import io
 import sys, time
 from pyotherside import send as qsend
 from threading import Thread
@@ -258,6 +259,13 @@ class Communicator:
             with open(dest, 'wb') as f:
                 for chunk in r:
                     f.write(chunk)
+
+    def get_contents(self, url):
+        """Returns URL data"""
+        r = requests.get(url, stream=True)
+        if r.status_code == 200:
+            return str(r.content)
+        raise RuntimeError(f"Status code {r.status_code} is not 200. Cannot download {url}")
 
 
 comm = Communicator()

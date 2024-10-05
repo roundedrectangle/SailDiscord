@@ -6,6 +6,7 @@ import harboursaildiscord.Logic 1.0
 import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
+import Sailfish.Share 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -24,6 +25,8 @@ ApplicationWindow {
         onReplacesIdChanged: if (replacesId !== 0) replacesId = 0
         isTransient: true
     }
+
+    ShareAction { id: shareApi }
 
     QtObject {
         id: shared
@@ -61,6 +64,14 @@ ApplicationWindow {
             notifier.icon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Python error: %1").arg(e)
             notifier.publish()
+        }
+
+        function shareFile(url, name, mime) {
+            python.call('communicator.comm.get_contents', [url], function(data) {
+                //shareApi.mimeType = mime
+                shareApi.resources = [{data: data, name: name}]
+                shareApi.trigger()
+            })
         }
     }
 
