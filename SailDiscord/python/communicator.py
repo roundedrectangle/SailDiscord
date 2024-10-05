@@ -2,7 +2,6 @@
 
 # if __name__ == "__main__":
 #     pass
-import io
 import sys, time
 from pyotherside import send as qsend
 from threading import Thread
@@ -199,11 +198,11 @@ class Communicator:
         self.loginth = Thread(target=self._login)
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str):
+    def set_constants(self, cache: str, cache_period, downloads: str, temp: str):
         if self.cacher != None:
             self.set_cache_period(cache_period)
             return
-        self.cacher = Cacher(cache, cache_period)
+        self.cacher = Cacher(cache, temp, cache_period)
         self.downloads = Path(downloads)
 
     def set_cache_period(self, cache_period):
@@ -245,6 +244,7 @@ class Communicator:
 
     @exception_decorator(CancelledError)
     def disconnect(self):
+        shutil.rmtree(self.cacher.temp, ignore_errors=True)
         self.client.run_asyncio_threadsafe(self.client.close(), True)
     
     @attributeerror_safe
@@ -260,12 +260,9 @@ class Communicator:
                 for chunk in r:
                     f.write(chunk)
 
-    def get_contents(self, url):
-        """Returns URL data"""
-        r = requests.get(url, stream=True)
-        if r.status_code == 200:
-            return str(r.content)
-        raise RuntimeError(f"Status code {r.status_code} is not 200. Cannot download {url}")
+    def save_temp(self, url, name):
+        """Returns saved temp file path"""
+        return str(self.cacher.save_temporary(url, name))
 
 
 comm = Communicator()

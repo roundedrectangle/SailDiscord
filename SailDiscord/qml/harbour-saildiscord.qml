@@ -67,9 +67,9 @@ ApplicationWindow {
         }
 
         function shareFile(url, name, mime) {
-            python.call('communicator.comm.get_contents', [url], function(data) {
-                //shareApi.mimeType = mime
-                shareApi.resources = [{data: data, name: name}]
+            python.call('communicator.comm.save_temp', [url, name], function(path) {
+                shareApi.mimeType = mime
+                shareApi.resources = [path]
                 shareApi.trigger()
             })
         }
@@ -128,7 +128,7 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download])
+            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, StandardPaths.temporary])
 
             initialized = true
         }

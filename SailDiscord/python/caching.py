@@ -83,10 +83,12 @@ class Cacher:
     def update_period(self, value: AnyTimedelta):
         self._update_period = convert_to_timedelta(value)
 
-    def __init__(self, cache: AnyPath, update_period: AnyTimedelta):
+    def __init__(self, cache: AnyPath, temp: AnyPath, update_period: AnyTimedelta):
         self._update_period = None
 
         self.cache = Path(cache)
+        self.temp = Path(temp) / 'harbour-saildiscord'
+        self.temp.mkdir(parents=True, exist_ok=True)
         self.update_period = update_period
 
         self.session_cached = {}
@@ -123,6 +125,15 @@ class Cacher:
     def verify_image(self, id, type: ImageType):
         """Returns if an image is not broken and is cached"""
         return self.broken_image(id, type) == None
+
+    def save_temporary(self, url: str, filename: AnyPath):
+        dest = self.temp / filename
+        r = requests.get(url, stream=True)
+        if r.status_code == 200:
+            with open(dest, 'wb') as f:
+                for chunk in r:
+                    f.write(chunk)
+        return dest
 
     def cache_image(self, url, id, type: ImageType):
         if self.update_period == None: return # Never set in settings
