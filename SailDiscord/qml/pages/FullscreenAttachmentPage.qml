@@ -48,7 +48,7 @@ FullscreenContentPage {
 
                     IconButton {
                         icon.source: "image://theme/icon-m-downloads"
-                        onClicked: shared.download(itemModel.url)
+                        onClicked: shared.download(itemModel.url, itemModel.filename)
                     }
 
                     IconButton {

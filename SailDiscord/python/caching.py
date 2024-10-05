@@ -5,7 +5,7 @@ from enum import Enum, auto
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from threading import Thread
-import pyotherside
+from pyotherside import send as qsend
 from typing import Union
 
 from exceptions import *
@@ -71,7 +71,7 @@ def convert_to_timedelta(data: AnyTimedelta) -> TimedeltaResult:
             return CachePeriodMapping[data]
         else: return data # Already converted
     except:
-        pyotherside.send(f"An error occured when converting timedeltas.\ndata of type {type(data)}: {data}\nFalling back to None.")
+        qsend(f"An error occured when converting timedeltas.\ndata of type {type(data)}: {data}\nFalling back to None.")
         return None # failsafe
 
 class Cacher:
@@ -141,7 +141,7 @@ class Cacher:
 
     def set_cached_session(self, id, type: ImageType, finished=True):
         self.session_cached[type.name.lower()][str(id)] = finished
-        #pyotherside.send(f"SET {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
+        #qsend(f"SET {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
 
     def has_cached_session(self, id, type: ImageType, finished=None):
         """Returns was ever the image cached in the current session.
@@ -150,7 +150,7 @@ class Cacher:
             - True for checking finished only
             - False for checking in progress only
             - Anything else (or None) for checking any/both"""
-        #pyotherside.send(f"HAS {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
+        #qsend(f"HAS {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
 
         if str(id) not in self.session_cached[type.name.lower()]:
             return False

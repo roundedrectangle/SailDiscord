@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime, timezone
 from caching import Cacher
-import pyotherside
+from pyotherside import send as qsend
 from typing import Callable, List, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 from contextlib import suppress
@@ -22,7 +22,7 @@ def exception_decorator(*exceptions: Exception):
             try:
                 return func(*args, **kwargs)
             except exceptions as e:
-                pyotherside.send(f"An error occured while running function '{func.__name__}': {type(e).__name__}: {e}")
+                qsend(f"An error occured while running function '{func.__name__}': {type(e).__name__}: {e}")
 
         return f
     return decorator
@@ -87,7 +87,7 @@ def attachment_type(attachment: discord.Attachment):
 def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
     """Converts to QML-friendly attachment format, object (dict)"""
     # TODO: caching, more types
-    res = [{"maxheight": -2, "maxwidth": -2, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": a.content_type, "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
+    res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": a.content_type, "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
     if len(res) > 0:
         res[0]['maxheight'] = max((a.height or -1) if a.content_type.startswith('image') else -1 for a in attachments)
         res[0]['maxwidth'] = max((a.width or -1) if a.content_type.startswith('image') else -1 for a in attachments)

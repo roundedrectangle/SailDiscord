@@ -18,7 +18,7 @@ from caching import Cacher, ImageType, CachePeriodMapping
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
-import discord
+import discord, requests
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -179,7 +179,7 @@ class MyClient(discord.Client):
     
 
 class Communicator:
-    downloads: Optional[str] = None
+    downloads: Optional[Path] = None
     cacher: Optional[Cacher] = None
     token: str = ''
     loginth: Thread
@@ -203,7 +203,7 @@ class Communicator:
             self.set_cache_period(cache_period)
             return
         self.cacher = Cacher(cache, cache_period)
-        self.downloads = downloads
+        self.downloads = Path(downloads)
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
@@ -250,8 +250,14 @@ class Communicator:
     def request_user_info(self, user_id:int=None):
         self.client.run_asyncio_threadsafe(self.client.send_user_info(-1 if user_id in (None, "") else user_id), True)
 
-    def download_file(self, url):
+    def download_file(self, url, filename):
+        dest = self.downloads / filename
         self.ensure_constants()
-        qsend(f"TODO: download file {url} to {self.downloads}")
+        r = requests.get(url, stream=True)
+        if r.status_code == 200:
+            with open(dest, 'wb') as f:
+                for chunk in r:
+                    f.write(chunk)
+
 
 comm = Communicator()

@@ -5,6 +5,7 @@ import io.thp.pyotherside 1.5
 import harboursaildiscord.Logic 1.0
 import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
+import Nemo.Notifications 1.0
 
 ApplicationWindow {
     id: mainWindow
@@ -15,6 +16,13 @@ ApplicationWindow {
     Connections {
         target: Qt.application
         onAboutToQuit: python.disconnectClient()
+    }
+
+    Notification { // Notifies about app status
+        id: notifier
+        replacesId: 0
+        onReplacesIdChanged: if (replacesId !== 0) replacesId = 0
+        isTransient: true
     }
 
     QtObject {
@@ -29,12 +37,30 @@ ApplicationWindow {
           console.log(f)
         }
 
-        function imageLoadError(name) { Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name), Notice.Long, Notice.Top) }
+        function imageLoadError(name) {
+            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.body = qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name)
+            notifier.publish()
+        }
 
-        function download(url) {
-            python.call('communicator.comm.download_file', [url], function(r) {
-                console.log("TODO: show notification")
+        function download(url, name) {
+            python.call('communicator.comm.download_file', [url, name], function(r) {
+                notifier.icon = "image://theme/icon-lock-information"
+                notifier.body = qsTr("Downloaded file %1").arg(name)
+                notifier.publish()
             })
+        }
+
+        function tokenError(e) {
+            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.body = qsTranslate("Errors", "Error getting token: %1").arg(e)
+            notifier.publish()
+        }
+
+        function pythonError(e) {
+            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.body = qsTranslate("Errors", "Python error: %1").arg(e)
+            notifier.publish()
         }
     }
 
@@ -96,7 +122,10 @@ ApplicationWindow {
             initialized = true
         }
 
-        onError: console.log("python error: " + traceback)
+        onError: {
+            console.log("Python error: "+traceback)
+            shared.pythonError(traceback)
+        }
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {
