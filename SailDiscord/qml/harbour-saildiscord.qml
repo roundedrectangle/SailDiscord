@@ -32,7 +32,9 @@ ApplicationWindow {
         function imageLoadError(name) { Notices.show(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name), Notice.Long, Notice.Top) }
 
         function download(url) {
-            console.log("TODO: download file "+url)
+            python.call('communicator.comm.download_file', [url], function(r) {
+                console.log("TODO: show notification")
+            })
         }
     }
 
@@ -89,7 +91,7 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_cache', [StandardPaths.cache, appSettings.cachePeriod])
+            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download])
 
             initialized = true
         }

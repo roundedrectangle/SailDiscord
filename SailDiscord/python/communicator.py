@@ -3,7 +3,7 @@
 # if __name__ == "__main__":
 #     pass
 import sys, time
-import pyotherside
+from pyotherside import send as qsend
 from threading import Thread
 import asyncio, shutil
 from pathlib import Path
@@ -25,7 +25,7 @@ import discord
 QMLLIVE_DEBUG = True
 
 def send_servers(guilds):
-    comm.ensure_cache()
+    comm.ensure_constants()
     lst = list(guilds)
     for g in reversed(lst):
         count = g.member_count if g.member_count != None else -1
@@ -33,7 +33,7 @@ def send_servers(guilds):
         icon = '' if g.icon == None else \
                 str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
 
-        pyotherside.send('server', str(g.id), str(g.name), icon, count)
+        qsend('server', str(g.id), str(g.name), icon, count)
         if icon != '':
             comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
 
@@ -42,7 +42,7 @@ def send_channel(c, user_id):
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
     text_sending_allowed = c.type == discord.ChannelType.text and permissions_for(c, user_id).send_messages
-    pyotherside.send(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''), str(c.id), str(c.name), permissions_for(c, user_id).view_channel, str(getattr(getattr(c, 'type'), 'name')), text_sending_allowed)
+    qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''), str(c.id), str(c.name), permissions_for(c, user_id).view_channel, str(getattr(getattr(c, 'type'), 'name')), text_sending_allowed)
 
 def send_channels(guild: discord.Guild, user_id):
     for c in guild.channels:
@@ -71,10 +71,10 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     t = message.type
     base = generate_base_message(message, is_history)
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        pyotherside.send('message', *base, message.content)
+        qsend('message', *base, message.content)
     elif t == discord.MessageType.new_member:
-        pyotherside.send('newmember', *base)
-    else: pyotherside.send('uknownmessage', *base, message.content, str(message.type.name))
+        qsend('newmember', *base)
+    else: qsend('uknownmessage', *base, message.content, str(message.type.name))
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
@@ -82,7 +82,7 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    pyotherside.send(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
 
 def send_myself(client: discord.Client):
     user = client.user
@@ -93,7 +93,7 @@ def send_myself(client: discord.Client):
     icon = '' if user.display_avatar == None else \
             str(comm.cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
     
-    pyotherside.send("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile(), icon)
+    qsend("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile(), icon)
 
     if icon != '':
         comm.cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
@@ -105,7 +105,7 @@ class MyClient(discord.Client):
     current_channel_deletion_pending = False
 
     async def on_ready(self, first_run=True):
-        pyotherside.send('logged_in', str(self.user.name))
+        qsend('logged_in', str(self.user.name))
         send_servers(self.guilds)
 
         # Setup control variables
@@ -179,12 +179,15 @@ class MyClient(discord.Client):
     
 
 class Communicator:
+    downloads: Optional[str] = None
+    cacher: Optional[Cacher] = None
+    token: str = ''
+    loginth: Thread
+    client: MyClient
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
         self.client = MyClient(guild_subscriptions=False)
-        self.token = ''
-        self.cacher = None
 
     def login(self, token):
         if self.loginth.is_alive():
@@ -195,19 +198,19 @@ class Communicator:
         self.loginth = Thread(target=self._login)
         self.loginth.start()
 
-    def set_cache(self, cache, cache_period):
+    def set_constants(self, cache: str, cache_period, downloads: str):
         if self.cacher != None:
             self.set_cache_period(cache_period)
             return
         self.cacher = Cacher(cache, cache_period)
-        #pyotherside.send(self.cacher.update_required(1021310444167778364, ImageType.SERVER))
+        self.downloads = downloads
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
         self.cacher.update_period = cache_period
 
-    def ensure_cache(self):
-        while self.cacher == None: pass
+    def ensure_constants(self):
+        while None in (self.cacher, self.downloads): pass
 
     def clear_cache(self):
         shutil.rmtree(self.cacher.cache, ignore_errors=True)
@@ -229,7 +232,7 @@ class Communicator:
                 channel = guild.get_channel(int(channel_id))
                 self.client.set_current_channel(guild, channel)
             except Exception as e:
-                pyotherside.send(f"ERROR: couldn't set current_server: {e}. Falling back to None")
+                qsend(f"ERROR: couldn't set current_server: {e}. Falling back to None")
                 self.client.unset_current_channel()
     
     def send_message(self, message_text):
@@ -247,5 +250,8 @@ class Communicator:
     def request_user_info(self, user_id:int=None):
         self.client.run_asyncio_threadsafe(self.client.send_user_info(-1 if user_id in (None, "") else user_id), True)
 
+    def download_file(self, url):
+        self.ensure_constants()
+        qsend(f"TODO: download file {url} to {self.downloads}")
 
 comm = Communicator()
