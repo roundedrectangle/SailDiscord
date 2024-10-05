@@ -23,7 +23,7 @@ ListItem {
 
             ListImage {
                 icon: root.icon
-                maxHeight: root.height
+                height: root.contentHeight - Theme.paddingSmall*4
                 forceVisibility: appSettings.emptySpace
                 errorString: title
             }

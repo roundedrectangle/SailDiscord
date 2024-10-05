@@ -83,7 +83,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="113"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
     </message>

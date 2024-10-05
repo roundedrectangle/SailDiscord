@@ -17,5 +17,5 @@ OrganizationName=io.github.roundedrectangle
 # ApplicationName does not have to be identical to Name
 ApplicationName=harbour-saildiscord
 # Add the required permissions here
-Permissions=Internet;WebView
+Permissions=Internet;WebView;Downloads
 

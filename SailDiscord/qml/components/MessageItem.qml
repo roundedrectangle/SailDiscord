@@ -64,7 +64,6 @@ ListItem {
             ListImage {
                 id: profileIcon
                 icon: _firstSameAuthor ? pfp : ""
-                height: Theme.iconSizeLarge
                 visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
                 opacity: _firstSameAuthor ? 1 : 0
                 errorString: author
@@ -120,6 +119,11 @@ ListItem {
     menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
+        }
+
+        MenuItem { text: qsTr("Copy")
+            onClicked: Clipboard.text = contents
+            visible: contents.length > 0
         }
     }}
 }

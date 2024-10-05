@@ -41,10 +41,10 @@ Page {
         }
 
         delegate: ListItem {
-            property bool hadFirst: false
             width: parent.width
-
             Row {
+                width: parent.width - Theme.horizontalPageMargin*2
+                anchors.horizontalCenter: parent.horizontalCenter
                 Icon {
                     source: {
                         switch (icon) {

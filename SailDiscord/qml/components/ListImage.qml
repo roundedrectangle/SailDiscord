@@ -3,14 +3,13 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 Image {
-    property int maxHeight
     property string icon: ''
     property bool forceVisibility: false // force to be visible and full size even when no icon is available
     property bool errorString
 
     id: roundedIcon
     source: (icon != "None" && icon != '') ? icon : ''
-    height: maxHeight-4*Theme.paddingSmall
+    height: Theme.iconSizeLarge
     width: visible ? height : 0
     visible: source != "" || forceVisibility
 
