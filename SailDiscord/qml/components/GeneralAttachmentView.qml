@@ -1,9 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtGraphicalEffects 1.0
 // This file has logic for general attachment displaying functionality for all supported types.
 
 Item {
     property var model
+    property bool showSpoiler: true
     anchors.fill: parent
 
     Loader {
@@ -17,10 +19,28 @@ Item {
 
     Component {
         id: imagePreview
-        Image {
-            source: model.url
-            anchors.fill: parent
-            fillMode: Image.PreserveAspectFit
+        Item {
+            Image {
+                id: img
+                source: model.url
+                anchors.fill: parent
+                fillMode: Image.PreserveAspectFit
+                visible: !(model.spoiler && showSpoiler)
+            }
+
+            FastBlur {
+                visible: !img.visible
+                anchors.fill: img
+                source: img
+                radius: 100
+
+                Label {
+                    text: qsTr("SPOILER")
+                    anchors.centerIn: parent
+                    font.bold: true
+                    color: Theme.highlightColor
+                }
+            }
         }
     }
 

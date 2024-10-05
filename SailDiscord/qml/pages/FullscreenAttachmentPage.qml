@@ -19,7 +19,7 @@ FullscreenContentPage {
             onClicked: overlay.enabled = !overlay.enabled
             width: slideshow.width
             height: slideshow.height
-            GeneralAttachmentView { model: itemModel }
+            GeneralAttachmentView { model: itemModel; showSpoiler: false }
 
             Item {
                 id: overlay
@@ -39,22 +39,34 @@ FullscreenContentPage {
                     onClicked: pageStack.pop()
                 }
 
-                Row {
+                Column {
                     anchors  {
                         bottom: parent.bottom
                         bottomMargin: Theme.paddingLarge
-                        horizontalCenter: parent.horizontalCenter
                     }
-                    spacing: Theme.paddingLarge
+                    width: parent.width
 
-                    IconButton {
-                        icon.source: "image://theme/icon-m-downloads"
-                        onClicked: shared.download(itemModel.url, itemModel.filename)
+                    Label {
+                        text: itemModel.alt
+                        wrapMode: Text.Wrap
+                        width: parent.width - Theme.horizontalPageMargin*2
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        horizontalAlignment: Text.AlignHCenter
                     }
 
-                    IconButton {
-                        icon.source: "image://theme/icon-m-share"
-                        onClicked: shared.shareFile(itemModel.url, itemModel.filename, itemModel.realtype)
+                    Row {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: Theme.paddingLarge
+
+                        IconButton {
+                            icon.source: "image://theme/icon-m-downloads"
+                            onClicked: shared.download(itemModel.url, itemModel.filename)
+                        }
+
+                        IconButton {
+                            icon.source: "image://theme/icon-m-share"
+                            onClicked: shared.shareFile(itemModel.url, itemModel.filename, itemModel.realtype)
+                        }
                     }
                 }
             }

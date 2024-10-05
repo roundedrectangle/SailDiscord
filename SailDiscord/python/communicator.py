@@ -92,7 +92,7 @@ def send_myself(client: discord.Client):
 
     icon = '' if user.display_avatar == None else \
             str(comm.cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
-    
+
     qsend("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile(), icon)
 
     if icon != '':
