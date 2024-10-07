@@ -198,11 +198,11 @@ class Communicator:
         self.loginth = Thread(target=self._login)
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, temp: str):
+    def set_constants(self, cache: str, cache_period, downloads: str):
         if self.cacher != None:
             self.set_cache_period(cache_period)
             return
-        self.cacher = Cacher(cache, temp, cache_period)
+        self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
 
     def set_cache_period(self, cache_period):
@@ -244,7 +244,7 @@ class Communicator:
 
     @exception_decorator(CancelledError)
     def disconnect(self):
-        shutil.rmtree(self.cacher.temp, ignore_errors=True)
+        self.cacher.clear_temporary()
         self.client.run_asyncio_threadsafe(self.client.close(), True)
     
     @attributeerror_safe

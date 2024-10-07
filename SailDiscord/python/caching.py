@@ -1,5 +1,6 @@
 """Cache operations"""
 
+import shutil
 import sys
 from enum import Enum, auto
 from pathlib import Path
@@ -83,11 +84,12 @@ class Cacher:
     def update_period(self, value: AnyTimedelta):
         self._update_period = convert_to_timedelta(value)
 
-    def __init__(self, cache: AnyPath, temp: AnyPath, update_period: AnyTimedelta):
+    def __init__(self, cache: AnyPath, update_period: AnyTimedelta):
         self._update_period = None
 
         self.cache = Path(cache)
-        self.temp = Path(temp) / 'harbour-saildiscord'
+        self.temp = Path(cache) / 'temporary' # FIXME: use StandardPaths.Temporary without private-tmp instead
+        self.clear_temporary()
         self.temp.mkdir(parents=True, exist_ok=True)
         self.update_period = update_period
 
@@ -134,6 +136,9 @@ class Cacher:
                 for chunk in r:
                     f.write(chunk)
         return dest
+
+    def clear_temporary(self):
+        shutil.rmtree(self.temp, ignore_errors=True)
 
     def cache_image(self, url, id, type: ImageType):
         if self.update_period == None: return # Never set in settings

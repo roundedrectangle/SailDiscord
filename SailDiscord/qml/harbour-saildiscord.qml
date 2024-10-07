@@ -128,7 +128,7 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, StandardPaths.temporary])
+            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download])
 
             initialized = true
         }
