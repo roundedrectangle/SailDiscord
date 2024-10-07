@@ -93,17 +93,17 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="45"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при загрузки изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="59"/>
         <source>Error getting token: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка при получении токена: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="65"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка Python: %1</translation>
     </message>
 </context>
 <context>
@@ -124,12 +124,12 @@
     <message>
         <location filename="../qml/components/GeneralAttachmentView.qml" line="38"/>
         <source>SPOILER</source>
-        <translation type="unfinished"></translation>
+        <translation>СПОЙЛЕР</translation>
     </message>
     <message>
         <location filename="../qml/components/GeneralAttachmentView.qml" line="54"/>
         <source>Attachment unsupported: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Приложение не поддерживается: %1</translation>
     </message>
 </context>
 <context>
@@ -158,7 +158,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="124"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать</translation>
     </message>
 </context>
 <context>
@@ -176,12 +176,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="117"/>
         <source>%1 joined the server</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 присоединился к серверу</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="129"/>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Неизвестный тип сообщения: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="150"/>
@@ -395,7 +395,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Look and feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="100"/>
@@ -494,7 +494,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="51"/>
         <source>Use default type on unknown types</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать стандартный тип на неизвестных типах</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="179"/>
@@ -622,7 +622,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="52"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачан файл %1</translation>
     </message>
 </context>
 <context>
