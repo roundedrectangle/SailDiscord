@@ -105,6 +105,10 @@
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>SPOILER</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LicenseListPart</name>
@@ -121,6 +125,13 @@
     </message>
     <message>
         <source>Login</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageItem</name>
+    <message>
+        <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

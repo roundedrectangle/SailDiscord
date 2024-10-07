@@ -65,7 +65,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="121"/>
+        <location filename="../qml/components/MessageItem.qml" line="120"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -83,7 +83,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="113"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
     </message>
@@ -122,7 +122,12 @@
 <context>
     <name>GeneralAttachmentView</name>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="34"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="38"/>
+        <source>SPOILER</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="54"/>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,6 +151,14 @@
         <location filename="../qml/pages/LoginDialog.qml" line="21"/>
         <source>Login</source>
         <translation>Accesso</translation>
+    </message>
+</context>
+<context>
+    <name>MessageItem</name>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="124"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
