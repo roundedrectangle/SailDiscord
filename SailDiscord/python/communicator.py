@@ -71,10 +71,10 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     t = message.type
     base = generate_base_message(message, is_history)
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        qsend('message', *base, message.content)
+        qsend('message', *base, message.content, str(getattr(message.reference, 'message_id', -1)))
     elif t == discord.MessageType.new_member:
         qsend('newmember', *base)
-    else: qsend('uknownmessage', *base, message.content, str(message.type.name))
+    else: qsend('uknownmessage', *base, message.content, str(getattr(message.reference, 'message_id', -1)), str(t))
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
@@ -263,6 +263,9 @@ class Communicator:
     def save_temp(self, url, name):
         """Returns saved temp file path"""
         return str(self.cacher.save_temporary(url, name))
+
+    def request_reply(self, id):
+        reply()
 
 
 comm = Communicator()

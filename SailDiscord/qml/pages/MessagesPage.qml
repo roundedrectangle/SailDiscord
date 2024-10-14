@@ -219,8 +219,11 @@ Page {
                     _wasUpdated: false, userid: userid, _attachments: attachments,
                     _contents: '', APIType: '' } // default
 
-                if (type === '' || type === 'unknown') data._contents = arguments[10]
-                if (type === 'unknown') data.APIType = arguments[11]
+                if (type === '' || type === 'unknown') {
+                    data._contents = arguments[10]
+                    data._replyid = arguments[11]
+                }
+                if (type === 'unknown') data.APIType = arguments[12]
                 if (history) append(data); else insert(0, data)
             }
         }
