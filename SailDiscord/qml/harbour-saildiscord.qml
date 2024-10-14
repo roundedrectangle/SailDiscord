@@ -14,10 +14,7 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    Connections {
-        target: Qt.application
-        onAboutToQuit: python.disconnectClient()
-    }
+    Component.onDestruction: python.disconnectClient()
 
     Notification { // Notifies about app status
         id: notifier

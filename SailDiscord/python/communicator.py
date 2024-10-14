@@ -265,7 +265,7 @@ class Communicator:
         return str(self.cacher.save_temporary(url, name))
 
     def request_reply(self, id):
-        reply()
+        pass#reply()
 
 
 comm = Communicator()
