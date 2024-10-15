@@ -11,6 +11,7 @@ import itertools
 from datetime import datetime, timezone
 from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python)
 from concurrent.futures._base import CancelledError
+from urllib import parse
 
 from exceptions import *
 from utils import *
@@ -183,11 +184,11 @@ class Communicator:
     cacher: Optional[Cacher] = None
     token: str = ''
     loginth: Thread
-    client: MyClient
+    client: MyClient = None
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
-        self.client = MyClient(guild_subscriptions=False)
+        self.client = self.client = MyClient(guild_subscriptions=False)
 
     def login(self, token):
         if self.loginth.is_alive():
@@ -198,16 +199,29 @@ class Communicator:
         self.loginth = Thread(target=self._login)
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
         if self.cacher != None:
             self.set_cache_period(cache_period)
             return
         self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
+        self.set_proxy(proxy)
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
         self.cacher.update_period = cache_period
+    
+    def set_proxy(self, proxy):
+        if proxy == None:
+            self.client.http.proxy = None
+            return
+
+        p = parse.urlparse(proxy, 'http') # https://stackoverflow.com/a/21659195
+        netloc = p.netloc or p.path
+        path = p.path if p.netloc else ''
+        p = parse.ParseResult('http', netloc, path, *p[3:])
+
+        self.client.http.proxy = p.geturl()
 
     def ensure_constants(self):
         while None in (self.cacher, self.downloads): pass

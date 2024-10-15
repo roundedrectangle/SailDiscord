@@ -7,6 +7,7 @@ import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
+import Nemo.DBus 2.0
 
 ApplicationWindow {
     id: mainWindow
@@ -24,6 +25,31 @@ ApplicationWindow {
     }
 
     ShareAction { id: shareApi }
+
+    DBusInterface {
+        id: globalProxy
+        bus: DBus.SystemBus
+        service: 'net.connman'
+        path: '/'
+        iface: 'org.sailfishos.connman.GlobalProxy'
+
+        //signalsEnabled: true // Proxy updates aren't supported by the python library
+        //function propertyChanged(name, value) { updateProxy() }
+
+        property string url
+        Component.onCompleted: updateProxy()
+
+        function updateProxy() {
+            // Sets the `url` to the global proxy URL, if enabled. Only manual proxy is supported, only the first address is used and excludes are not supported: FIXME
+            // When passing only one parameter, you can pass it without putting it into an array (aka [] brackets)
+            typedCall('GetProperty', {type: 's', value: 'Active'}, function (active){
+                if (active) typedCall('GetProperty', {type: 's', value: 'Configuration'}, function(conf) {
+                    if (conf['Method'] === 'manual') url = conf['Servers'][0]
+                    else url=''
+                }, function(e){url=''}); else url=''
+            }, function(e){url=''})
+        }
+    }
 
     QtObject {
         id: shared
@@ -111,6 +137,11 @@ ApplicationWindow {
         }
     }
 
+    Connections {
+        target: globalProxy
+        onUrlChanged: python.call('communicator.comm.set_proxy', [globalProxy.url])
+    }
+
     Python {
         id: python
         property bool initialized: false
@@ -125,7 +156,7 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download])
+            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, globalProxy.url])
 
             initialized = true
         }
@@ -159,7 +190,10 @@ ApplicationWindow {
         function sendMessage(text) { python.call('communicator.comm.send_message', [text]) }
         function requestOlderHistory(messageId) { python.call('communicator.comm.get_history_messages', [messageId])}
 
-        function disconnectClient() { python.call_sync('communicator.comm.disconnect') }
+        function disconnectClient() {
+            if (!initialized) return;
+            python.call_sync('communicator.comm.disconnect')
+        }
 
         function requestUserInfo(userId) { python.call('communicator.comm.request_user_info', [userId])}
     }
