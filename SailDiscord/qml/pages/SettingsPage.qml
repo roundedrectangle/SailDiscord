@@ -257,6 +257,49 @@ Page {
                         }
                     }
                 }
+
+                ExpandingSection {
+                    id: advancedSection
+                    title: qsTr("Advanced")
+                    content.sourceComponent: Column {
+                        width: lookSection.width
+                        spacing: Theme.paddingSmall
+
+                        SectionHeader { text: qsTr("Networking") }
+
+                        Label {
+                            width: parent.width - 2*x
+                            x: Theme.horizontalPageMargin
+                            wrapMode: Text.Wrap
+                            text: qsTr("Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply")
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: Theme.secondaryHighlightColor
+                            bottomPadding: Theme.paddingMedium
+                        }
+
+                        ComboBox {
+                            id: proxyTypeBox
+                            property var values: ["g", "n", "c"]
+                            label: qsTr("Proxy")
+                            currentIndex: values.indexOf(appSettings.proxyType) == -1 ? 0 : values.indexOf(appSettings.proxyType)
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("global proxy") }
+                                MenuItem { text: qsTr("disable") }
+                                MenuItem { text: qsTr("custom") }
+                            }
+
+                           onCurrentItemChanged: appSettings.proxyType = values[currentIndex]
+                        }
+
+                        TextField {
+                            enabled: proxyTypeBox.values[proxyTypeBox.currentIndex] == "c"
+                            label: qsTr("HTTP proxy address")
+                            description: qsTr("Specify port by semicolon, if required")
+                            text: appSettings.customProxy
+                            onTextChanged: appSettings.customProxy = text
+                        }
+                    }
+                }
             }
         }
     }

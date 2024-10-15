@@ -117,21 +117,28 @@ ApplicationWindow {
             id: appSettings
             path: "settings"
 
-            property bool emptySpace: true
+            // Behavior
             property bool ignorePrivate: false
-            property bool messagesLessWidth: true
-            property bool alignMessagesText: true
+            property bool defaultUnknownMessages: false
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
-            property bool defaultUnknownMessages: false
 
+            // Look and feel
+            property bool emptySpace: true
             property string sentBehaviour: "r"
+            property bool messagesLessWidth: true
             property string messagesPadding: "a"
-            property string oneAuthorPadding: "a"
+            property bool alignMessagesText: true
             property string messageGrouping: "d"
+            property string oneAuthorPadding: "a"
 
+            // Session
             property int cachePeriod: 1
+
+            // Advanced
+            property string proxyType: "g"
+            property string customProxy: ""
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
