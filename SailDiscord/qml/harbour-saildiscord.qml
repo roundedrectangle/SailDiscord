@@ -33,8 +33,8 @@ ApplicationWindow {
         path: '/'
         iface: 'org.sailfishos.connman.GlobalProxy'
 
-        //signalsEnabled: true // Proxy updates aren't supported by the python library
-        //function propertyChanged(name, value) { updateProxy() }
+        signalsEnabled: true
+        function propertyChanged(name, value) { updateProxy() }
 
         property string url
         Component.onCompleted: updateProxy()
