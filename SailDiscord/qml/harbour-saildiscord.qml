@@ -146,7 +146,7 @@ ApplicationWindow {
 
     Connections {
         target: globalProxy
-        onUrlChanged: python.call('communicator.comm.set_proxy', [globalProxy.url])
+        onUrlChanged: python.updateProxy()
     }
 
     Python {
@@ -203,5 +203,18 @@ ApplicationWindow {
         }
 
         function requestUserInfo(userId) { python.call('communicator.comm.request_user_info', [userId])}
+
+        function updateProxy() {
+            switch (appSettings.proxyType) {
+            case "g":
+                python.call('communicator.comm.set_proxy', [globalProxy.url])
+                return
+            case "n":
+                python.call('communicator.comm.set_proxy', [''])
+                return
+            case "c":
+                python.call('communicator.comm.set_proxy', [appSettings.customProxy])
+            }
+        }
     }
 }
