@@ -185,16 +185,20 @@ class Communicator:
     token: str = ''
     loginth: Thread
     client: MyClient = None
+
+    def reinit_client(self):
+        qsend("Attemping to create a new client instance...")
+        if getattr(self.client, 'is_closed', lambda:True)():
+            qsend("creating a new client instance...")
+            self.client = MyClient(guild_subscriptions=False)
+
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
-        self.client = self.client = MyClient(guild_subscriptions=False)
+        self.reinit_client()
 
     def login(self, token):
-        if self.loginth.is_alive():
-            if QMLLIVE_DEBUG:
-                asyncio.run(self.client.on_ready(False))
-            return
+        if QMLLIVE_DEBUG: self.reinit_client()
         self.token = token
         self.loginth = Thread(target=self._login)
         self.loginth.start()
@@ -212,7 +216,7 @@ class Communicator:
         self.cacher.update_period = cache_period
     
     def set_proxy(self, proxy):
-        if proxy == None:
+        if not proxy:
             self.client.http.proxy = None
             return
 
