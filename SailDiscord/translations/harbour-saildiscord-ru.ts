@@ -91,17 +91,17 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="72"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="68"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Произошла ошибка при загрузки изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="86"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="82"/>
         <source>Error getting token: %1</source>
         <translation>Ошибка при получении токена: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="92"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="88"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -665,7 +665,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="79"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="75"/>
         <source>Downloaded file %1</source>
         <translation>Скачан файл %1</translation>
     </message>

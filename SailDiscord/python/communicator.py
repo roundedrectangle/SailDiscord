@@ -187,9 +187,7 @@ class Communicator:
     client: MyClient = None
 
     def reinit_client(self):
-        qsend("Attemping to create a new client instance...")
         if getattr(self.client, 'is_closed', lambda:True)():
-            qsend("creating a new client instance...")
             self.client = MyClient(guild_subscriptions=False)
 
     def __init__(self):
