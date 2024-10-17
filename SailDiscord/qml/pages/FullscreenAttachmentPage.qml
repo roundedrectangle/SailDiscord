@@ -21,7 +21,8 @@ FullscreenContentPage {
             width: slideshow.width
             height: slideshow.height
             GeneralAttachmentView {
-                model: itemModel; showSpoiler: false; zoomAllowed: true
+                model: itemModel
+                fullscreen: true
                 onToggleControls: overlay.enabled = !overlay.enabled
             }
 
