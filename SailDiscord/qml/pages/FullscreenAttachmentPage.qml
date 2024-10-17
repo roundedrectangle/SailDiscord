@@ -25,54 +25,54 @@ FullscreenContentPage {
                 fullscreen: true
                 onToggleControls: overlay.enabled = !overlay.enabled
             }
+        }
+    }
 
-            Item {
-                id: overlay
+    Item {
+        id: overlay
 
-                enabled: true // toggle this when active/non-active changes
-                anchors.fill: parent
-                opacity: enabled ? 1.0 : 0.0
-                Behavior on opacity { FadeAnimator {}}
+        enabled: true // toggle this when active/non-active changes
+        anchors.fill: parent
+        opacity: enabled ? 1.0 : 0.0
+        Behavior on opacity { FadeAnimator {}}
+
+        IconButton {
+            y: Theme.paddingLarge
+            anchors {
+                right: parent.right
+                rightMargin: Theme.horizontalPageMargin
+            }
+            icon.source: "image://theme/icon-m-dismiss"
+            onClicked: pageStack.pop()
+        }
+
+        Column {
+            anchors  {
+                bottom: parent.bottom
+                bottomMargin: Theme.paddingLarge
+            }
+            width: parent.width
+
+            Label {
+                text: model.get(slideshow.currentIndex).alt
+                wrapMode: Text.Wrap
+                width: parent.width - Theme.horizontalPageMargin*2
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
+            }
+
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingLarge
 
                 IconButton {
-                    y: Theme.paddingLarge
-                    anchors {
-                        right: parent.right
-                        rightMargin: Theme.horizontalPageMargin
-                    }
-                    icon.source: "image://theme/icon-m-dismiss"
-                    onClicked: pageStack.pop()
+                    icon.source: "image://theme/icon-m-downloads"
+                    onClicked: shared.download(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename)
                 }
 
-                Column {
-                    anchors  {
-                        bottom: parent.bottom
-                        bottomMargin: Theme.paddingLarge
-                    }
-                    width: parent.width
-
-                    Label {
-                        text: itemModel.alt
-                        wrapMode: Text.Wrap
-                        width: parent.width - Theme.horizontalPageMargin*2
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    Row {
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        spacing: Theme.paddingLarge
-
-                        IconButton {
-                            icon.source: "image://theme/icon-m-downloads"
-                            onClicked: shared.download(itemModel.url, itemModel.filename)
-                        }
-
-                        IconButton {
-                            icon.source: "image://theme/icon-m-share"
-                            onClicked: shared.shareFile(itemModel.url, itemModel.filename, itemModel.realtype)
-                        }
-                    }
+                IconButton {
+                    icon.source: "image://theme/icon-m-share"
+                    onClicked: shared.shareFile(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename, model.get(slideshow.currentIndex).realtype)
                 }
             }
         }
