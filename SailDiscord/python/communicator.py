@@ -7,8 +7,7 @@ from pyotherside import send as qsend
 from threading import Thread
 import asyncio, shutil
 from pathlib import Path
-import itertools
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python)
 from concurrent.futures._base import CancelledError
 from urllib import parse
@@ -21,8 +20,6 @@ from caching import Cacher, ImageType, CachePeriodMapping
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import discord, requests
-
-discord.utils.setup_logging()
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -182,7 +179,7 @@ class MyClient(discord.Client):
         #await self.loop.run_in_executor(None, send_user, user)
         send_user(user)
 
-    def disconnect(self):
+    def begin_disconnect(self):
         self.pending_close_task = self.loop.create_task(self.close())
 
 class Communicator:
@@ -192,28 +189,18 @@ class Communicator:
     loginth: Thread
     client: MyClient = None
 
-    def reinit_client(self):
-        if self.client != None:
-            if self.client.is_closed():
-                qsend("Deleting client in progress!")
-                #del self.client
-                # self.client = None
-                # try:self.loginth.join(0)
-                # except e:qsend(f"ERROR JOINING: {type(e).__name__}: {e}")
-            else:return
-        self.client = MyClient(guild_subscriptions=False)
-
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
-        self.reinit_client()
+        self.client = MyClient(guild_subscriptions=False)
+        discord.utils.setup_logging()
 
     def login(self, token):
-        if QMLLIVE_DEBUG: self.reinit_client()
+        if QMLLIVE_DEBUG and self.client.is_closed():
+            self.client = MyClient(guild_subscriptions=False)
         self.token = token
-        self.loginth = Thread(target=self._login)
+        self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
-        # Thread(target=self.thtest).start()
 
     def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
         if self.cacher != None:
@@ -245,32 +232,13 @@ class Communicator:
     def clear_cache(self):
         shutil.rmtree(self.cacher.cache, ignore_errors=True)
 
-    async def _runner(self):
-        try:
-            qsend("RUN.")
-            await asyncio.wait_for(self.client.start(self.token), 25)
-            # Once QMLLive is being restarted, pyotherside.send/qsend no longer works.
-            # We have to use something like the logging module instead
-            logging.info("Start done-")
-            if self.client.pending_close_task:
-                await self.client.pending_close_task
-                logging.info("Close awaited!!")
-            else:
-                logging.info("No task...")
-        except Exception as e:
-            logging.info(f"{type(e).__name__}: {e}")
-
-    def _login(self):
-        qsend(f"Logging in using token {self.token}")
-        asyncio.run(self._runner())
-        qsend("DEAD!")
-
-    def thtest(self):
-        a=0
-        while True:
-            logging.info(a)
-            a+=1
-            time.sleep(1)
+    async def _login(self):
+        await self.client.start(self.token)
+        # Once QMLLive is being restarted, pyotherside.send/qsend no longer works.
+        # We have to use something like the logging module instead
+        if self.client.pending_close_task:
+            await self.client.pending_close_task
+            logging.info("Client was disconnected")
 
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
@@ -300,13 +268,8 @@ class Communicator:
     def disconnect(self):
         self.cacher.clear_temporary()
 
-        self.client.disconnect()
-        logging.info("Joining...")
-        self.loginth.join()
-        logging.info("Joined.")
-        # self.client.run_asyncio_threadsafe(self.client.close(), True)
-        # try:self.client.run_asyncio_threadsafe(self.client.close(), True)
-        # except: pass
+        self.client.begin_disconnect()
+        self.loginth.join() # App gets terminated once this function ends, so we end it only once the thread finishes
     
     @attributeerror_safe
     def request_user_info(self, user_id:int=None):
