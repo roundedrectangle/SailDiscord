@@ -12,7 +12,6 @@ from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python
 from concurrent.futures._base import CancelledError
 from urllib import parse
 import logging
-import aiohttp.connector
 
 from exceptions import *
 from utils import *
@@ -20,7 +19,7 @@ from caching import Cacher, ImageType, CachePeriodMapping
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
-import discord, requests
+import discord, requests, aiohttp.connector
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again

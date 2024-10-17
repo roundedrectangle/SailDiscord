@@ -169,7 +169,7 @@ ApplicationWindow {
             initialized = true
         }
 
-        onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(e))
+        onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {
