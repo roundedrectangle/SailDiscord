@@ -70,7 +70,7 @@
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
-        <translation type="unfinished">Info</translation>
+        <translation>Info</translation>
     </message>
 </context>
 <context>
@@ -78,7 +78,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
         <source>Discord member since</source>
-        <translation type="unfinished"></translation>
+        <translation>Su Discord da</translation>
     </message>
 </context>
 <context>
@@ -94,22 +94,22 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="80"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore caricamento immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="161"/>
         <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Connessione fallita: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="162"/>
         <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Accesso fallito: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="172"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore python: %1</translation>
     </message>
 </context>
 <context>
@@ -130,12 +130,12 @@
     <message>
         <location filename="../qml/components/GeneralAttachmentView.qml" line="41"/>
         <source>SPOILER</source>
-        <translation type="unfinished"></translation>
+        <translation>SPOILER</translation>
     </message>
     <message>
         <location filename="../qml/components/GeneralAttachmentView.qml" line="65"/>
         <source>Attachment unsupported: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Allegato non supportato: %1</translation>
     </message>
 </context>
 <context>
@@ -151,17 +151,17 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="25"/>
         <source>Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation>Impostazioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use token</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa token</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa pagina web</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="41"/>
@@ -176,7 +176,7 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="94"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Token</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="124"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia</translation>
     </message>
 </context>
 <context>
@@ -202,12 +202,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="117"/>
         <source>%1 joined the server</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 è entrato nel server</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="129"/>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio sconosciuto: %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="150"/>
@@ -423,7 +423,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Look and feel</source>
-        <translation type="unfinished"></translation>
+        <translation>Aspetto</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="100"/>
@@ -522,7 +522,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="51"/>
         <source>Use default type on unknown types</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa tipo predefiito su messaggi sconosciuti</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="179"/>
@@ -582,7 +582,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="215"/>
         <source>Reset tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristina tutorial</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="219"/>
@@ -592,57 +592,57 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="263"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanzato</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="268"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Rete</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
-        <translation type="unfinished"></translation>
+        <translation>La pagina di accesso usa sempre le impostazioni globali del proxy nonostante queste impostazioni. Allegati, avatar e altri elementi statici potrebbero non usare questo proxy del tutto. Riavvia per applicare</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="281"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Proxy</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="284"/>
         <source>global proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>proxy globale</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="285"/>
         <source>disable</source>
-        <translation type="unfinished"></translation>
+        <translation>disabilita</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="286"/>
         <source>custom</source>
-        <translation type="unfinished"></translation>
+        <translation>personalizzato</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="293"/>
         <source>HTTP proxy address</source>
-        <translation type="unfinished"></translation>
+        <translation>indirizzo proxy HTTP</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="294"/>
         <source>Specify port by semicolon, if required</source>
-        <translation type="unfinished"></translation>
+        <translation>Specifica la porta con un punto e virgola, se richiesto</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Debugging</source>
-        <translation type="unfinished"></translation>
+        <translation>Debuggando</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
         <source>Show info messages in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra info messaggi nelle notifiche</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="318"/>
@@ -705,7 +705,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="85"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>File scaricato %1</translation>
     </message>
 </context>
 <context>
@@ -713,33 +713,33 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>In linea</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Non in linea</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Non disturbare</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Invisibile</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Occupato</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Telefono)</translation>
     </message>
 </context>
 </TS>
