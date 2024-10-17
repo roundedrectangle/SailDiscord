@@ -87,6 +87,14 @@ ApplicationWindow {
             notifier.icon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Python error: %1").arg(e)
             notifier.publish()
+            console.log("Python error: "+e)
+        }
+
+        function connectionError(e) {
+            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.body = qsTranslate("Errors", "Connection error: %1").arg(e)
+            notifier.publish()
+            console.log("Connection error: "+e)
         }
 
         function shareFile(url, name, mime) {
@@ -159,6 +167,7 @@ ApplicationWindow {
                 myPage.username = _username;
             })
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id}) })
+            setHandler('connectionError', function(e){ shared.connectionError(e) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
@@ -168,10 +177,7 @@ ApplicationWindow {
             initialized = true
         }
 
-        onError: {
-            console.log("Python error: "+traceback)
-            shared.pythonError(traceback)
-        }
+        onError: shared.pythonError(traceback)
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {

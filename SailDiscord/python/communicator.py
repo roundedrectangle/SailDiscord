@@ -12,6 +12,7 @@ from typing import Any, Optional, Union # TODO: use pipe (|) (needs newer python
 from concurrent.futures._base import CancelledError
 from urllib import parse
 import logging
+import aiohttp.connector
 
 from exceptions import *
 from utils import *
@@ -233,12 +234,15 @@ class Communicator:
         shutil.rmtree(self.cacher.cache, ignore_errors=True)
 
     async def _login(self):
-        await self.client.start(self.token)
-        # Once QMLLive is being restarted, pyotherside.send/qsend no longer works.
+        try:
+            await self.client.start(self.token)
+        except aiohttp.connector.ClientConnectorError as e:
+            qsend("connectionError", str(e))
+        # Once the app is being closed, pyotherside.send/qsend no longer works since ApplicationWindow is partitialy destructed.
         # We have to use something like the logging module instead
         if self.client.pending_close_task:
             await self.client.pending_close_task
-            logging.info("Client was disconnected")
+            logging.info("Client was disconnected succsessfully")
 
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
