@@ -128,12 +128,12 @@
 <context>
     <name>GeneralAttachmentView</name>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="38"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="50"/>
         <source>SPOILER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="54"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="253"/>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>

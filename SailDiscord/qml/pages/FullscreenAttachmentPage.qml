@@ -11,6 +11,7 @@ FullscreenContentPage {
         id: slideshow
         anchors.fill: parent
         model: parent.model
+        clip: true
 
         //Component.onCompleted: positionViewAtIndex(index, PathView.Contain) // currentIndex is not available for some reason; this doesn't work too
 
@@ -19,7 +20,7 @@ FullscreenContentPage {
             onClicked: overlay.enabled = !overlay.enabled
             width: slideshow.width
             height: slideshow.height
-            GeneralAttachmentView { model: itemModel; showSpoiler: false }
+            GeneralAttachmentView { model: itemModel; showSpoiler: false; zoomAllowed: true }
 
             Item {
                 id: overlay
