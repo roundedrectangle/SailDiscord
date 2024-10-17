@@ -99,12 +99,12 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="161"/>
         <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="162"/>
         <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка вход: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="172"/>
@@ -151,17 +151,17 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="25"/>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use token</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать токен</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use web page</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать веб-страницу</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="41"/>
@@ -176,7 +176,7 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="94"/>
         <source>Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Токен</translation>
     </message>
 </context>
 <context>
@@ -590,57 +590,57 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="263"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Дополнительно</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="268"/>
         <source>Networking</source>
-        <translation type="unfinished"></translation>
+        <translation>Сеть</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Страница входа всегда использует глобальный прокси-сервер, независимо от этих настроек. Приложения, аватары и другие статические элементы могут не использовать прокси-сервер вообще. Перезапустите приложение для применения</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="281"/>
         <source>Proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>Прокси-сервер</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="284"/>
         <source>global proxy</source>
-        <translation type="unfinished"></translation>
+        <translation>глобальный прокси-сервер</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="285"/>
         <source>disable</source>
-        <translation type="unfinished"></translation>
+        <translation>отключить</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="286"/>
         <source>custom</source>
-        <translation type="unfinished"></translation>
+        <translation>свой</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="293"/>
         <source>HTTP proxy address</source>
-        <translation type="unfinished"></translation>
+        <translation>Адрес HTTP-прокси</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="294"/>
         <source>Specify port by semicolon, if required</source>
-        <translation type="unfinished"></translation>
+        <translation>Указывайте порт через двоеточие, если потребуется</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Debugging</source>
-        <translation type="unfinished"></translation>
+        <translation>Отладка</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
         <source>Show info messages in notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать информационные сообщения в уведомлениях</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="318"/>
