@@ -70,8 +70,13 @@ SailJail will NOT work in this case
 
 The code is based on:
 
-- [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber)
-- [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator)
+- a lot:
+  - [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber) - most of the UI
+
+- a little:
+  - [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator) - early packaging issues
+  - https://github.com/Rapptz/discord.py/issues/9690#issuecomment-2417783032 - going offline/closing connection
+
 
 Core functionality:
 

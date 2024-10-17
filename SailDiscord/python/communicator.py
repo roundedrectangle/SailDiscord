@@ -104,6 +104,7 @@ class MyClient(discord.Client):
     current_channel: Optional[discord.TextChannel] = None
     loop = None
     current_channel_deletion_pending = False
+    pending_close_task: Optional[asyncio.Task] = None
 
     async def on_ready(self, first_run=True):
         qsend('logged_in', str(self.user.name))
@@ -177,7 +178,9 @@ class MyClient(discord.Client):
 
         #await self.loop.run_in_executor(None, send_user, user)
         send_user(user)
-    
+
+    def disconnect(self):
+        self.pending_close_task = self.loop.create_task(self.close())
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -187,8 +190,16 @@ class Communicator:
     client: MyClient = None
 
     def reinit_client(self):
-        if getattr(self.client, 'is_closed', lambda:True)():
-            self.client = MyClient(guild_subscriptions=False)
+        if self.client != None:
+            if self.client.is_closed():
+                qsend("Deleting client in progress!")
+                #del self.client
+                self.client = None
+                # try:self.loginth.join(0)
+                # except e:qsend(f"ERROR JOINING: {type(e).__name__}: {e}")
+            else:return
+        self.client = MyClient(guild_subscriptions=False)
+        self.client.__init__
 
     def __init__(self):
         self.loginth = Thread()
@@ -231,8 +242,16 @@ class Communicator:
     def clear_cache(self):
         shutil.rmtree(self.cacher.cache, ignore_errors=True)
 
+    async def _runner(self):
+        await self.client.start(self.token)
+        if self.client.pending_close_task:
+            await self.client.pending_close_task
+            qsend("Close awaited!!")
+
     def _login(self):
-        self.client.run(self.token)
+        qsend(f"Logging in using token {self.token}")
+        asyncio.run(self._runner())
+        qsend("DEAD!")
 
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
@@ -261,7 +280,12 @@ class Communicator:
     @exception_decorator(CancelledError)
     def disconnect(self):
         self.cacher.clear_temporary()
-        self.client.run_asyncio_threadsafe(self.client.close(), True)
+
+        self.client.disconnect()
+        self.loginth.join()
+        # self.client.run_asyncio_threadsafe(self.client.close(), True)
+        # try:self.client.run_asyncio_threadsafe(self.client.close(), True)
+        # except: pass
     
     @attributeerror_safe
     def request_user_info(self, user_id:int=None):
