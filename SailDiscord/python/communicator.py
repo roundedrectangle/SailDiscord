@@ -207,6 +207,7 @@ class Communicator:
     def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
         if self.cacher != None:
             self.set_cache_period(cache_period)
+            self.cacher.recreate_temporary()
             return
         self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)

@@ -90,7 +90,7 @@ class Cacher:
         self.cache = Path(cache)
         self.temp = Path(cache) / 'temporary' # FIXME: use StandardPaths.Temporary without private-tmp instead
         self.clear_temporary()
-        self.temp.mkdir(parents=True, exist_ok=True)
+        self.recreate_temporary()
         self.update_period = update_period
 
         self.session_cached = {}
@@ -139,6 +139,9 @@ class Cacher:
 
     def clear_temporary(self):
         shutil.rmtree(self.temp, ignore_errors=True)
+    
+    def recreate_temporary(self):
+        self.temp.mkdir(parents=True, exist_ok=True)
 
     def cache_image(self, url, id, type: ImageType):
         if self.update_period == None: return # Never set in settings
