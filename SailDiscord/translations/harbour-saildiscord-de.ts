@@ -87,6 +87,10 @@
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Connection error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -524,6 +528,14 @@
     </message>
     <message>
         <source>Specify port by semicolon, if required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Debugging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show info messages in notifications</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

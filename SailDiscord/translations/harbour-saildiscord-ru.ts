@@ -105,6 +105,11 @@
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="95"/>
+        <source>Connection error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>FirstPage</name>
@@ -572,47 +577,57 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="283"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="281"/>
         <source>Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="286"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="284"/>
         <source>global proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="287"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="285"/>
         <source>disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="286"/>
         <source>custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="296"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="293"/>
         <source>HTTP proxy address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="297"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="294"/>
         <source>Specify port by semicolon, if required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
+        <source>Debugging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
+        <source>Show info messages in notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="318"/>
         <source>Settings reset</source>
         <translation>Настройки сброшены</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>

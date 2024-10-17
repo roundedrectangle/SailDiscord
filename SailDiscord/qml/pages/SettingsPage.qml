@@ -266,7 +266,6 @@ Page {
                         spacing: Theme.paddingSmall
 
                         SectionHeader { text: qsTr("Networking") }
-
                         Label {
                             width: parent.width - 2*x
                             x: Theme.horizontalPageMargin
@@ -276,7 +275,6 @@ Page {
                             color: Theme.secondaryHighlightColor
                             bottomPadding: Theme.paddingMedium
                         }
-
                         ComboBox {
                             id: proxyTypeBox
                             property var values: ["g", "n", "c"]
@@ -290,13 +288,19 @@ Page {
 
                            onCurrentItemChanged: appSettings.proxyType = values[currentIndex]
                         }
-
                         TextField {
                             enabled: proxyTypeBox.values[proxyTypeBox.currentIndex] == "c"
                             label: qsTr("HTTP proxy address")
                             description: qsTr("Specify port by semicolon, if required")
                             text: appSettings.customProxy
                             onTextChanged: appSettings.customProxy = text
+                        }
+
+                        SectionHeader { text: qsTr("Debugging") }
+                        TextSwitch {
+                            text: qsTr("Show info messages in notifications")
+                            checked: appSettings.infoInNotifications
+                            onCheckedChanged: appSettings.infoInNotifications = checked
                         }
                     }
                 }

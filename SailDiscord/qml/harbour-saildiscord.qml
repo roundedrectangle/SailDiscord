@@ -21,7 +21,7 @@ ApplicationWindow {
         id: notifier
         replacesId: 0
         onReplacesIdChanged: if (replacesId !== 0) replacesId = 0
-        isTransient: true
+        isTransient: !appSettings.infoInNotifications
     }
 
     ShareAction { id: shareApi }
@@ -64,34 +64,34 @@ ApplicationWindow {
         }
 
         function imageLoadError(name) {
-            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.appIcon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name)
             notifier.publish()
         }
 
         function download(url, name) {
             python.call('communicator.comm.download_file', [url, name], function(r) {
-                notifier.icon = "image://theme/icon-lock-information"
+                notifier.appIcon = "image://theme/icon-lock-information"
                 notifier.body = qsTr("Downloaded file %1").arg(name)
                 notifier.publish()
             })
         }
 
         function tokenError(e) {
-            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.appIcon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Error getting token: %1").arg(e)
             notifier.publish()
         }
 
         function pythonError(e) {
-            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.appIcon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Python error: %1").arg(e)
             notifier.publish()
             console.log("Python error: "+e)
         }
 
         function connectionError(e) {
-            notifier.icon = "image://theme/icon-lock-warning"
+            notifier.appIcon = "image://theme/icon-lock-warning"
             notifier.body = qsTranslate("Errors", "Connection error: %1").arg(e)
             notifier.publish()
             console.log("Connection error: "+e)
@@ -147,6 +147,7 @@ ApplicationWindow {
             // Advanced
             property string proxyType: "g"
             property string customProxy: ""
+            property bool infoInNotifications: false
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
@@ -154,7 +155,7 @@ ApplicationWindow {
 
     Connections {
         target: globalProxy
-        onUrlChanged: python.updateProxy()
+        onUrlChanged: python.call('communicator.comm.set_proxy', [python.getProxy()])
     }
 
     Python {
@@ -172,7 +173,7 @@ ApplicationWindow {
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
 
-            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, globalProxy.url])
+            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()])
 
             initialized = true
         }
@@ -210,16 +211,11 @@ ApplicationWindow {
 
         function requestUserInfo(userId) { python.call('communicator.comm.request_user_info', [userId])}
 
-        function updateProxy() {
+        function getProxy() {
             switch (appSettings.proxyType) {
-            case "g":
-                python.call('communicator.comm.set_proxy', [globalProxy.url])
-                return
-            case "n":
-                python.call('communicator.comm.set_proxy', [''])
-                return
-            case "c":
-                python.call('communicator.comm.set_proxy', [appSettings.customProxy])
+            case "g": return globalProxy.url
+            case "n": return ''
+            case "c": return appSettings.customProxy
             }
         }
     }
