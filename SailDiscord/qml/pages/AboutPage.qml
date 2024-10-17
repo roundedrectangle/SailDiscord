@@ -16,10 +16,10 @@ AboutPageBase {
     sourcesUrl: "https://github.com/roundedrectangle/SailDiscord"
     licenses: License { spdxId: "GPL-3.0-or-later" }
     description: qsTr("A SailfishOS Discord client")
+    autoAddOpalAttributions: true
 
     authors: "roundedrectangle"
     attributions: [
-        OpalAboutAttribution { },
         Attribution {
             name: "discord.py-self"
             entries: "2015-present Rapptz"

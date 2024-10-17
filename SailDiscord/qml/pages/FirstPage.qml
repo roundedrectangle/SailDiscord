@@ -120,7 +120,7 @@ Page {
                     MenuItem {
                         text: qsTranslate("AboutServer", "About", "Server")
                         onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
-                             serverid: id,
+                             serverid: _id,
                              name: name,
                              icon: icon,
                              memberCount: memberCount
