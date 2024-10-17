@@ -5,6 +5,7 @@
     <name>AboutApp</name>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="62"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
         <translation>Info</translation>
@@ -148,14 +149,34 @@
 <context>
     <name>LoginDialog</name>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="20"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="25"/>
+        <source>Settings</source>
+        <translation type="unfinished">Impostazioni</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
+        <source>Use token</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
+        <source>Use web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="41"/>
         <source>Please login</source>
         <translation>Per favore accedi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="21"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="42"/>
         <source>Login</source>
         <translation>Accesso</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="94"/>
+        <source>Token</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

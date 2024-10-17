@@ -205,7 +205,7 @@ ApplicationWindow {
         function requestOlderHistory(messageId) { python.call('communicator.comm.get_history_messages', [messageId])}
 
         function disconnectClient() {
-            if (!initialized) return;
+            if (!initialized || appConfiguration.token.length <= 0) return;
             python.call_sync('communicator.comm.disconnect')
         }
 

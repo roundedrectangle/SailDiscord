@@ -8,26 +8,58 @@ Dialog {
     id: loginDialog
     backNavigation: false
 
-    canAccept: webview.getToken() !== ""
-    onAccepted: appConfiguration.token = webview.getToken()
+    canAccept: loader.token !== ""
+    onAccepted: appConfiguration.token = loader.token
 
-    Column {
-        id: column
+    property bool useToken: false
+
+    SilicaFlickable {
         anchors.fill: parent
+        PullDownMenu {
+            MenuItem {
+                text: qsTranslate("AboutApp", "About", "App")
+                onClicked: pageStack.push("AboutPage.qml")
+            }
 
-        DialogHeader {
-            id: header
-            title: qsTr("Please login")
-            acceptText: qsTr("Login")
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push("SettingsPage.qml")
+            }
+
+            MenuItem {
+                text: useToken ? qsTr("Use web page") : qsTr("Use token")
+                onClicked: useToken = !useToken
+            }
         }
 
+        Column {
+            id: column
+            anchors.fill: parent
+
+            DialogHeader {
+                id: header
+                title: qsTr("Please login")
+                acceptText: qsTr("Login")
+            }
+
+            Loader {
+                id: loader
+                property string token: status == Loader.Ready ? (useToken ? item.token : item.getToken()) : ""
+                width: parent.width
+                height: parent.height - header.height
+                sourceComponent: useToken ? tokenLogin : webViewLogin
+            }
+        }
+    }
+
+    Component {
+        id: webViewLogin
         WebView {
             property string discord_token: ""
 
             id: webview
             url: "https://discord.com/login"
-            width: parent.width
-            height: parent.height - header.height
+            anchors.fill: parent
 
              function getToken() {
                  // if the webpage is loaded and there's a token, return it (string).
@@ -46,6 +78,21 @@ Dialog {
                      function (err) { Notices.show("Error getting token: "+err) } // error callback
                  )
              }
-       }
+        }
+    }
+
+    Component {
+        id: tokenLogin
+
+        Column {
+            anchors.fill: parent
+            property alias token: field.text
+
+            TextField {
+                id: field
+                width: parent.width
+                label: qsTr("Token")
+            }
+        }
     }
 }

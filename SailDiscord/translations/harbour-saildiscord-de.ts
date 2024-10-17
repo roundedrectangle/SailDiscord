@@ -131,6 +131,22 @@
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use token</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use web page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Token</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessageItem</name>
