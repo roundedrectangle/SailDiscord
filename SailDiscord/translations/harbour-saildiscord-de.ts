@@ -80,15 +80,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error getting token: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Connection error: %1</source>
+        <source>Connection failure: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

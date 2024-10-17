@@ -239,6 +239,8 @@ class Communicator:
             await self.client.start(self.token)
         except aiohttp.connector.ClientConnectorError as e:
             qsend("connectionError", str(e))
+        except discord.errors.LoginFailure as e:
+            qsend("loginFailure", str(e))
         # Once the app is being closed, pyotherside.send/qsend no longer works since ApplicationWindow is partitialy destructed.
         # We have to use something like the logging module instead
         if self.client.pending_close_task:

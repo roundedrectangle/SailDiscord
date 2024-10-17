@@ -75,7 +75,7 @@ Dialog {
                      "return (webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m?.exports?.default?.getToken).exports.default.getToken()",
 
                      function (res) { if (res !== null) webview.discord_token = res }, // callback: if there is a token, store it in discord_token
-                     function (err) { Notices.show("Error getting token: "+err) } // error callback
+                     function (err) {}// showError(qsTranslate("Errors", "Error getting token: %1").arg(err)) } // error callback
                  )
              }
         }

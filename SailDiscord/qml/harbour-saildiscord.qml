@@ -63,38 +63,27 @@ ApplicationWindow {
           console.log(f)
         }
 
-        function imageLoadError(name) {
-            notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name)
+        function showInfo(text) {
+            notifier.appIcon = "image://theme/icon-lock-information"
+            notifier.body = text
             notifier.publish()
+        }
+
+        function showError(text) {
+            notifier.appIcon = "image://theme/icon-lock-warning"
+            notifier.body = text
+            notifier.publish()
+            console.log(text)
+        }
+
+        function imageLoadError(name) {
+            showError(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name))
         }
 
         function download(url, name) {
             python.call('communicator.comm.download_file', [url, name], function(r) {
-                notifier.appIcon = "image://theme/icon-lock-information"
-                notifier.body = qsTr("Downloaded file %1").arg(name)
-                notifier.publish()
+                showInfo(qsTr("Downloaded file %1").arg(name))
             })
-        }
-
-        function tokenError(e) {
-            notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = qsTranslate("Errors", "Error getting token: %1").arg(e)
-            notifier.publish()
-        }
-
-        function pythonError(e) {
-            notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = qsTranslate("Errors", "Python error: %1").arg(e)
-            notifier.publish()
-            console.log("Python error: "+e)
-        }
-
-        function connectionError(e) {
-            notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = qsTranslate("Errors", "Connection error: %1").arg(e)
-            notifier.publish()
-            console.log("Connection error: "+e)
         }
 
         function shareFile(url, name, mime) {
@@ -168,7 +157,9 @@ ApplicationWindow {
                 myPage.username = _username;
             })
             setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id}) })
-            setHandler('connectionError', function(e){ shared.connectionError(e) })
+
+            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
+            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function () {})
@@ -178,7 +169,7 @@ ApplicationWindow {
             initialized = true
         }
 
-        onError: shared.pythonError(traceback)
+        onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(e))
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {

@@ -92,23 +92,23 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="68"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="80"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="82"/>
-        <source>Error getting token: %1</source>
+        <location filename="../qml/harbour-saildiscord.qml" line="161"/>
+        <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="88"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="162"/>
+        <source>Login failure: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="172"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="95"/>
-        <source>Connection error: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -703,7 +703,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="75"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="85"/>
         <source>Downloaded file %1</source>
         <translation type="unfinished"></translation>
     </message>
