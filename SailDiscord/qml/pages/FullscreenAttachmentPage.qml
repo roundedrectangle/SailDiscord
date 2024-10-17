@@ -4,6 +4,7 @@ import '../components'
 import Sailfish.Share 1.0
 
 FullscreenContentPage {
+    allowedOrientations: Orientation.All
     property var model
     property int index
 
@@ -15,12 +16,14 @@ FullscreenContentPage {
 
         //Component.onCompleted: positionViewAtIndex(index, PathView.Contain) // currentIndex is not available for some reason; this doesn't work too
 
-        delegate: MouseArea {
+        delegate: Item {
             property var itemModel: model
-            onClicked: overlay.enabled = !overlay.enabled
             width: slideshow.width
             height: slideshow.height
-            GeneralAttachmentView { model: itemModel; showSpoiler: false; zoomAllowed: true }
+            GeneralAttachmentView {
+                model: itemModel; showSpoiler: false; zoomAllowed: true
+                onToggleControls: overlay.enabled = !overlay.enabled
+            }
 
             Item {
                 id: overlay

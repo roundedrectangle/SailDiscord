@@ -76,7 +76,7 @@ The code is based on:
 - a little:
   - [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator) - early packaging issues
   - https://github.com/Rapptz/discord.py/issues/9690#issuecomment-2417783032 - going offline/closing connection
-
+  - hhttps://github.com/ichthyosaurus/harbour-file-browser - zoom pictures
 
 Core functionality:
 

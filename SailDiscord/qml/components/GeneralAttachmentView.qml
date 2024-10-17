@@ -9,6 +9,8 @@ Item {
     property bool zoomAllowed: false
     anchors.fill: parent
 
+    signal toggleControls
+
     Loader {
         anchors.fill: parent
         sourceComponent:
@@ -27,10 +29,6 @@ Item {
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectFit
                 visible: !(model.spoiler && showSpoiler)
-
-                Drag.active: dragArea.drag.active
-                Drag.hotSpot.x: 10
-                Drag.hotSpot.y: 10
             }
 
             FastBlur {
@@ -50,6 +48,7 @@ Item {
     }
 
     Component {
+        // TODO: cleanup and organize this mess
         id: imageFullscreenPreview
         Flickable {
             id: flick
@@ -89,14 +88,7 @@ Item {
                     Behavior on opacity { FadeAnimator { duration: 250 } }
 
                     onStatusChanged: {
-                        if (status === Image.Ready) {
-                            fitToScreen()
-                            statusLoader.sourceComponent = undefined
-                        } else if (status === Image.Loading) {
-                            statusLoader.sourceComponent = loadingIndicator
-                        } else if (status === Image.Error) {
-                            statusLoader.sourceComponent = failedLoading
-                        }
+                        if (status === Image.Ready) fitToScreen()
                     }
 
                     onScaleChanged: {
@@ -183,11 +175,7 @@ Item {
                         if (pinchRequested) {
                             pinchRequested = false;
                             return;
-                        } else if (_titleOverlayItem.visible) {
-                            _titleOverlayItem.hide();
-                        } else {
-                            _titleOverlayItem.show();
-                        }
+                        } else toggleControls()
                     }
                 }
 
