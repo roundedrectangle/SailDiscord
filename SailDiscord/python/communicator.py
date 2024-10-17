@@ -116,9 +116,10 @@ class MyClient(discord.Client):
         if first_run:
             self.loop = asyncio.get_running_loop()
 
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
             send_message(message)
+            await message.ack()
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
         ch = self.get_channel(self.current_channel.id)
