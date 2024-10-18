@@ -66,7 +66,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="120"/>
+        <location filename="../qml/components/MessageItem.qml" line="126"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -182,7 +182,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="124"/>
+        <location filename="../qml/components/MessageItem.qml" line="130"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
@@ -200,17 +200,17 @@
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="117"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="118"/>
         <source>%1 joined the server</source>
         <translation>%1 è entrato nel server</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="129"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Unknown message type: %1</source>
         <translation>Messaggio sconosciuto: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="150"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="151"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>

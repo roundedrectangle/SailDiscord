@@ -67,8 +67,7 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
             str(message.author.name), icon, is_history, convert_attachments(message.attachments, comm.cacher)
         )
 
-def send_message(message: Union[discord.Message, Any], is_history=False, reply_to: Optional[Union[discord.MessageReference, Any]]=None):
-    """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+def generate_message(message: Union[discord.Message, Any], is_history=False):
     t = message.type
     base = generate_base_message(message, is_history)
     event, args = '', tuple()
@@ -78,8 +77,12 @@ def send_message(message: Union[discord.Message, Any], is_history=False, reply_t
         event, args = 'newmember', base
     else: event, args = 'uknownmessage', (*base, message.content, str(getattr(message.reference, 'message_id', -1)), str(t))
 
-    if reply_to: qsend('ref', reply_to.message_id, event, *args)
-    else: qsend(event, *args)
+    return (event, args)
+
+def send_message(message: Union[discord.Message, Any], is_history=False):
+    """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+    event, args = generate_message(message, is_history)
+    qsend(event, *args)
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
@@ -187,10 +190,10 @@ class MyClient(discord.Client):
     def begin_disconnect(self):
         self.pending_close_task = self.loop.create_task(self.close())
     
-    async def send_reference(self, ref_id, reply_id):
-        ref = await self.current_channel.fetch_message(ref_id)
-        reply = self.current_channel.get_partial_message(reply_id)
-        send_message(ref, reply_to=reply)
+    # async def send_reference(self, ref_id, reply_id):
+    #     ref = await self.current_channel.fetch_message(ref_id)
+    #     reply = self.current_channel.get_partial_message(reply_id)
+    #     send_message(ref, reply_to=reply)
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -304,8 +307,10 @@ class Communicator:
         """Returns saved temp file path"""
         return str(self.cacher.save_temporary(url, name))
 
-    def request_reply(self, message_id):
-        self.client.run_asyncio_threadsafe(self.client.send_reference(message_id))
+    def get_reference(self, message_id):
+        m = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True)
+        event, args = generate_message(m)
+        return (event, *args)
 
 
 comm = Communicator()

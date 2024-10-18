@@ -11,6 +11,7 @@ ListItem {
     property bool sameAuthorAsBefore
     property date date
     property var attachments
+    property string reference
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -32,6 +33,11 @@ ListItem {
     Column {
         id: column
         width: parent.width
+
+        Label {
+            visible: reference != '-1'
+            text: "A reference should be here..."
+        }
 
         Row {
             id: row
