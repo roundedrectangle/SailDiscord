@@ -308,7 +308,7 @@ class Communicator:
         return str(self.cacher.save_temporary(url, name))
 
     def get_reference(self, message_id):
-        m = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True)
+        m = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(int(message_id)), True)
         event, args = generate_message(m)
         return (event, *args)
 

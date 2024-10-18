@@ -35,8 +35,15 @@ ListItem {
         width: parent.width
 
         Label {
+            property bool loaded: false
             visible: reference != '-1'
-            text: "A reference should be here..."
+            text: qsTr("Loading reference...")
+            color: loaded ? Theme.primaryColor : Theme.secondaryColor
+
+            Component.onCompleted: {
+                if (reference == '-1') return
+                python.getReference(reference, function(data) { text = data[11]; loaded = true })
+            }
         }
 
         Row {

@@ -66,7 +66,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="126"/>
+        <location filename="../qml/components/MessageItem.qml" line="133"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -182,7 +182,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="130"/>
+        <location filename="../qml/components/MessageItem.qml" line="137"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>

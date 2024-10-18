@@ -189,18 +189,18 @@ ApplicationWindow {
         function clearCache() { call('communicator.comm.clear_cache', []) }
         function setCachePeriod(period) {
             if (!initialized) return;
-            python.call('communicator.comm.set_cache_period', [period])
+            call('communicator.comm.set_cache_period', [period])
         }
 
-        function sendMessage(text) { python.call('communicator.comm.send_message', [text]) }
-        function requestOlderHistory(messageId) { python.call('communicator.comm.get_history_messages', [messageId])}
+        function sendMessage(text) { call('communicator.comm.send_message', [text]) }
+        function requestOlderHistory(messageId) { call('communicator.comm.get_history_messages', [messageId])}
 
         function disconnectClient() {
             if (!initialized || appConfiguration.token.length <= 0) return;
-            python.call_sync('communicator.comm.disconnect')
+            call_sync('communicator.comm.disconnect')
         }
 
-        function requestUserInfo(userId) { python.call('communicator.comm.request_user_info', [userId])}
+        function requestUserInfo(userId) { call('communicator.comm.request_user_info', [userId])}
 
         function getProxy() {
             switch (appSettings.proxyType) {
@@ -208,6 +208,12 @@ ApplicationWindow {
             case "n": return ''
             case "c": return appSettings.customProxy
             }
+        }
+
+        function getReference(ref, callback) {
+            call('communicator.comm.get_reference', [ref], callback)
+            //return constructCallback(event).apply(null, arguments)
+            //console.log(arguments)
         }
     }
 }
