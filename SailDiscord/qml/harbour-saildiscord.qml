@@ -210,10 +210,8 @@ ApplicationWindow {
             }
         }
 
-        function getReference(ref, callback) {
-            call('communicator.comm.get_reference', [ref], callback)
-            //return constructCallback(event).apply(null, arguments)
-            //console.log(arguments)
+        function getReference(channel, message, callback) {
+            call('communicator.comm.get_reference', [channel, message], callback)
         }
     }
 }

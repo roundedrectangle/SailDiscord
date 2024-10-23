@@ -97,7 +97,7 @@ Page {
                                 masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
                                 masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
                                 attachments: _attachments
-                                reference: _refid
+                                reference: _ref
 
                                 function updateMasterWidth() {
                                     msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -222,7 +222,7 @@ Page {
 
                 if (type === '' || type === 'unknown') {
                     data._contents = arguments[10]
-                    data._refid = arguments[11]
+                    data._ref = arguments[11]
                 }
                 if (type === 'unknown') data.APIType = arguments[12]
                 if (history) append(data); else insert(0, data)

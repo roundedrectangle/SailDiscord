@@ -3,28 +3,12 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 ListItem {
-    property string authorid
-    property string contents
-    property string author
-    property string pfp
-    property bool sent // If the message is sent by the user connected to the client
-    property bool sameAuthorAsBefore
-    property date date
-    property var attachments
     property var reference
 
-    property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
-    property date masterDate // Date of previous element
-
-    property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
-        case "n": return true
-        case "a": return !sameAuthorAsBefore
-        case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) // 5 minutes
-    }
-    property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0 // Width required to substract
-    property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
-
-    property alias innerWidth: row.width
+    property string contents
+    property string author
+    property date date
+    property bool loaded: false
 
     id: root
     width: parent.width
@@ -34,18 +18,23 @@ ListItem {
         id: column
         width: parent.width
 
-        Loader {
-            sourceComponent: reference[0] == '' ? null : referenceComponent
-            width: parent.width
-            height: item == undefined ? 0 : item.contentHeight
+        Label {
+            text: contents
+        }
+
+        /*Loader {
+            sourceComponent: reference == '-1' ? null : referenceComponent
+            anchors.fill: parent
             asynchronous: true
             Component {
                 id: referenceComponent
-                MessageReference { reference: root.reference }
+                MessageReference {
+
+                }
             }
         }
 
-        /*Label {
+        Label {
             property bool loaded: false
             visible: reference != '-1'
             text: qsTr("Loading reference...")
@@ -55,7 +44,7 @@ ListItem {
                 if (reference == '-1') return
                 python.getReference(reference, function(data) { text = data[11]; loaded = true })
             }
-        }*/
+        }
 
         Row {
             id: row
@@ -137,17 +126,11 @@ ListItem {
             }
         }
 
-        AttachmentsPreview { model: root.attachments }
+        AttachmentsPreview { model: root.attachments }*/
     }
 
-    menu: Component { ContextMenu {
-        MenuItem { text: qsTranslate("AboutUser", "About", "User")
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
-        }
-
-        MenuItem { text: qsTr("Copy")
-            onClicked: Clipboard.text = contents
-            visible: contents.length > 0
-        }
-    }}
+    Component.onCompleted: {
+        if (reference['type'] == 0) return
+        python.getReference(reference['channel'], reference['message'], function(data) { contents = data[11]; author = data[7]; date = new Date(data[4]); loaded = true })
+    }
 }

@@ -70,12 +70,24 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
 def generate_message(message: Union[discord.Message, Any], is_history=False):
     t = message.type
     base = generate_base_message(message, is_history)
-    event, args = '', tuple()
+    ref = {'type': 0, # No reference
+        'channel': '-1', 'message': '-1'}
+    if message.reference:
+        ref['channel'] = str(message.reference.channel_id)
+        ref['message'] = str(message.reference.message_id)
+        if comm.client.ensure_current_channel(message.reference.channel_id, message.reference.guild_id):
+            ref['type'] = 2 # Reply
+            ref['channel'] = '-1'
+        elif message.type != discord.MessageType.pins_add:
+            ref['type'] = 3 # Forward
+        else: ref['type'] = 1 # Unknown
+
+    event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, str(getattr(message.reference, 'message_id', -1)))
+        event, args = 'message', (*base, message.content, ref)
     elif t == discord.MessageType.new_member:
         event, args = 'newmember', base
-    else: event, args = 'uknownmessage', (*base, message.content, str(getattr(message.reference, 'message_id', -1)), str(t))
+    else: event, args = 'uknownmessage', (*base, message.content, ref)
 
     return (event, args)
 
@@ -153,7 +165,7 @@ class MyClient(discord.Client):
         # This will be used when discord.py-self 2.1 will be out.
         #asyncio.run(guild.subscribe())
 
-        self.run_asyncio_threadsafe(self.get_last_messages())
+        self.run_asyncio_threadsafe(self.get_last_messages(), True)
         self.run_asyncio_threadsafe(self.current_channel.ack())
 
     def unset_current_channel(self):
@@ -268,13 +280,13 @@ class Communicator:
         if guild_id in GeneralNone:
             self.client.unset_current_channel()
         else:
-            try:
+            # try:
                 guild = self.client.get_guild(int(guild_id))
                 channel = guild.get_channel(int(channel_id))
                 self.client.set_current_channel(guild, channel)
-            except Exception as e:
-                qsend(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-                self.client.unset_current_channel()
+            # except Exception as e:
+            #     qsend(f"ERROR: couldn't set current_server: {e}. Falling back to None")
+            #     self.client.unset_current_channel()
     
     def send_message(self, message_text):
         self.client.send_message(message_text)
@@ -307,8 +319,12 @@ class Communicator:
         """Returns saved temp file path"""
         return str(self.cacher.save_temporary(url, name))
 
-    def get_reference(self, message_id):
-        m = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(int(message_id)), True)
+    def get_reference(self, channel_id, message_id):
+        if channel_id == '-1':
+            ch = self.client.current_channel
+        else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
+        logging.info(message_id, channel_id)
+        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
         event, args = generate_message(m)
         return (event, *args)
 

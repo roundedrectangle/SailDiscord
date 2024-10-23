@@ -26,6 +26,7 @@ DISTFILES += \
     qml/components/GeneralAttachmentView.qml \
     qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
+    qml/components/MessageReference.qml \
     qml/components/ServerListItem.qml \
     qml/components/SettingsComboBox.qml \
     qml/components/ZoomableImage.qml \
