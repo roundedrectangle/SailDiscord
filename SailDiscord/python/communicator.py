@@ -73,12 +73,11 @@ def generate_message(message: Union[discord.Message, Any], is_history=False):
     ref = {'type': 0, # No reference
         'channel': '-1', 'message': '-1'}
     if message.reference:
-        ref['channel'] = str(message.reference.channel_id)
-        ref['message'] = str(message.reference.message_id)
+        ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
         if comm.client.ensure_current_channel(message.reference.channel_id, message.reference.guild_id):
             ref['type'] = 2 # Reply
             ref['channel'] = '-1'
-        elif message.type != discord.MessageType.pins_add:
+        elif message.flags.is_crossposted: # doesn't work; TODO
             ref['type'] = 3 # Forward
         else: ref['type'] = 1 # Unknown
 
@@ -183,8 +182,10 @@ class MyClient(discord.Client):
     def ensure_current_channel(self, channel=None, server=None):
         if (self.current_server == None) or (self.current_channel == None):
             return
-        ch = (self.current_channel == channel) if channel != None else True
-        se = (self.current_server == server) if server != None else True
+        cch = self.current_channel.id if isinstance(channel, int) else self.current_channel
+        ccs = self.current_server.id if isinstance(server, int) else self.current_server
+        ch = (cch == channel) if channel != None else True
+        se = (ccs == server) if server != None else True
         return ch and se
 
     async def send_user_info(self, user_id):

@@ -35,14 +35,10 @@ ListItem {
         width: parent.width
 
         Loader {
-            sourceComponent: reference[0] == '' ? null : referenceComponent
+            sourceComponent: reference['type'] == 2 || reference['type'] == 1 ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true
-            Component {
-                id: referenceComponent
-                MessageReference { reference: root.reference }
-            }
         }
 
         /*Label {
@@ -138,6 +134,13 @@ ListItem {
         }
 
         AttachmentsPreview { model: root.attachments }
+
+        Loader {
+            sourceComponent: reference['type'] == 3 ? referenceComponent : null
+            width: parent.width
+            height: item == undefined ? 0 : item.contentHeight
+            asynchronous: true
+        }
     }
 
     menu: Component { ContextMenu {
@@ -150,4 +153,9 @@ ListItem {
             visible: contents.length > 0
         }
     }}
+
+    Component {
+        id: referenceComponent
+        MessageReference { reference: root.reference }
+    }
 }

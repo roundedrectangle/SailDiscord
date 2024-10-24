@@ -130,7 +130,14 @@ ListItem {
     }
 
     Component.onCompleted: {
+        console.log("Initializing...")
         if (reference['type'] == 0) return
-        python.getReference(reference['channel'], reference['message'], function(data) { contents = data[11]; author = data[7]; date = new Date(data[4]); loaded = true })
+        python.getReference(reference['channel'], reference['message'], function(data) {
+            console.log(data, reference['type'])
+            contents = data[11]
+            author = data[7]
+            date = new Date(data[4])
+            loaded = true
+        })
     }
 }
