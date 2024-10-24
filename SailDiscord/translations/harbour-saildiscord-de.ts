@@ -169,14 +169,6 @@
         <source>Say hi ;)</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>%1 joined the server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Unknown message type: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Opal.About</name>
@@ -552,6 +544,17 @@
     </message>
     <message>
         <source>Show info messages in notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SystemMessageItem</name>
+    <message>
+        <source>%1 joined the server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unknown message type: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

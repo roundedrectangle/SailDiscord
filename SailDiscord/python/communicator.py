@@ -86,10 +86,10 @@ def generate_message(message: discord.Message, is_history=False):
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content or '', ref)
+        event, args = 'message', (*base, message.content, ref)
     elif t == discord.MessageType.new_member:
         event, args = 'newmember', base
-    else: event, args = 'uknownmessage', (*base, message.content or '', ref)
+    else: event, args = 'uknownmessage', (*base, message.content, ref, message.type.name)
 
     return (event, args)
 

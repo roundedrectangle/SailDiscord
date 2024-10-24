@@ -29,6 +29,7 @@ DISTFILES += \
     qml/components/MessageReference.qml \
     qml/components/ServerListItem.qml \
     qml/components/SettingsComboBox.qml \
+    qml/components/SystemMessageItem.qml \
     qml/components/ZoomableImage.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \

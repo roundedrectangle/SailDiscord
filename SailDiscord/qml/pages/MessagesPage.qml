@@ -79,9 +79,9 @@ Page {
                         width: parent.width
                         sourceComponent:
                             switch (type) {
-                            case 'join': return joinedItem
                             case '': return defaultItem
-                            case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : unknownItem
+                            case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : systemItem
+                            default: return systemItem
                             }
 
                         Component {
@@ -112,27 +112,8 @@ Page {
                         }
 
                         Component {
-                            id: joinedItem
-                            Label {
-                                textFormat: "RichText"
-                                text: qsTr("%1 joined the server").arg('<font color="'+Theme.highlightColor+'">'+_author+'</font>')
-                                horizontalAlignment: Text.AlignHCenter
-                                color: Theme.secondaryHighlightColor
-                                width: parent.width
-                                wrapMode: Text.Wrap
-                            }
-                        }
-
-                        Component {
-                            id: unknownItem
-                            Label {
-                                textFormat: "RichText"
-                                text: qsTr("Unknown message type: %1").arg('<font color="'+Theme.highlightColor+'">'+APIType+'</font>')
-                                horizontalAlignment: Text.AlignHCenter
-                                color: Theme.secondaryHighlightColor
-                                width: parent.width
-                                wrapMode: Text.Wrap
-                            }
+                            id: systemItem
+                            SystemMessageItem {}
                         }
                     }
 
@@ -217,14 +198,13 @@ Page {
                 if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
                     _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userid, _attachments: attachments,
-                    _contents: '', APIType: '' } // default
+                    _wasUpdated: false, userid: userid, _attachments: attachments}
 
-                if (type === '' || type === 'unknown') {
+                if (type === "" || type === "unknown") {
                     data._contents = arguments[10]
                     data._ref = arguments[11]
                 }
-                if (type === 'unknown') data.APIType = arguments[12]
+                if (type === "unknown") data.APIType = arguments[12]
                 if (history) append(data); else insert(0, data)
             }
         }

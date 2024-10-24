@@ -200,17 +200,7 @@
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="118"/>
-        <source>%1 joined the server</source>
-        <translation>%1 è entrato nel server</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
-        <source>Unknown message type: %1</source>
-        <translation>Messaggio sconosciuto: %1</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="151"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>
@@ -698,6 +688,19 @@
         <location filename="../qml/pages/SettingsPage.qml" line="242"/>
         <source>Yearly</source>
         <translation>Annualmente</translation>
+    </message>
+</context>
+<context>
+    <name>SystemMessageItem</name>
+    <message>
+        <location filename="../qml/components/SystemMessageItem.qml" line="8"/>
+        <source>%1 joined the server</source>
+        <translation type="unfinished">%1 è entrato nel server</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SystemMessageItem.qml" line="10"/>
+        <source>Unknown message type: %1</source>
+        <translation type="unfinished">Messaggio sconosciuto: %1</translation>
     </message>
 </context>
 <context>
