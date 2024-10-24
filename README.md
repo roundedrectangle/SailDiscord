@@ -25,11 +25,38 @@ Very very WIP
 - [ ] More features?
 
 ## Known issues
+
 - Server list does not follow same sorting as in the real discord. *probably not possible yet because this is not implemented in discord.py-self*
 - App lags in a text channel sometimes
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
 
+## Troubleshooting
+
+### Nothing loads on 0.4.1
+
+Update to 0.4.2. 0.4.2 might show you that you are using 0.4.1, but that is just a bug which you can safely ignore as long as everything works.
+
+### Login page isn't loading!
+
+Check if you are able to open https://discord.com/login in the native browser. If you can't, here are the possible workarounds:
+
+- Update to [ESR91 beta](https://www.flypig.co.uk/geckoinstall)
+- Login using token (see below)
+
+## Logging in via token
+
+See [discord.py-self docs page](https://discordpy-self.readthedocs.io/en/latest/authenticating.html) for up to date information. In short, you should:
+
+- Login into discord with a desktop web browser
+- Open developer tools (ctrl+shift+i on most browsers) and click on Console
+- Type this code and press enter:
+	`(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m? exports?.default?.getToken).exports.default.getToken()`
+- Copy the token it will show you
+
+After obtaining you token, in Sailcord top menu, when logging in, choose Login with token. Then paste your token and click Accept.
+
 ## Screenshots
+
 <p float="left">
 	<img src="pictures/FirstPage.png" alt="Server list" width="200"/>
 	<img src="pictures/Channels.png" alt="Server list" width="200"/>
