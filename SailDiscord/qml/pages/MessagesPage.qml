@@ -113,7 +113,7 @@ Page {
 
                         Component {
                             id: systemItem
-                            SystemMessageItem {}
+                            SystemMessageItem { _model: model; horizontalAlignment: Text.AlignHCenter }
                         }
                     }
 
@@ -193,31 +193,12 @@ Page {
             appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
         }
 
-        function constructCallback(type) {
-            return function(_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history, attachments) {
-                if ((_serverid != guildid) || (_channelid != channelid)) return
-                var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
-                    _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userid, _attachments: attachments}
-
-                if (type === "" || type === "unknown") {
-                    data._contents = arguments[10]
-                    data._ref = arguments[11]
-                }
-                if (type === "unknown") data.APIType = arguments[12]
-                if (history) append(data); else insert(0, data)
-            }
-        }
-
         Component.onCompleted: {
-            if (isDemo) {
-                generateDemo()
-                return
-            }
-
-            python.setHandler("message", constructCallback(''))
-            python.setHandler("newmember", constructCallback('join'))
-            python.setHandler("uknownmessage", constructCallback('unknown'))
+            if (isDemo) generateDemo()
+            else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
+                if (data.type === undefined) console.log(JSON.stringify(data))
+                if (history) msgModel.append(data); else msgModel.insert(0, data)
+            })
         }
 
         onCountChanged: messagesList.forceLayout()
@@ -237,10 +218,7 @@ Page {
 
     Component.onDestruction: {
         if (isDemo) return
-        // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
-        python.setHandler("message", function() {}) // undefined is not used for messages not to be logged
-        python.setHandler("join", function() {})
-        python.setHandler("uknownmessage", function() {})
+        shared.cleanupMessageCallbacks()
         python.resetCurrentChannel()
     }
 }

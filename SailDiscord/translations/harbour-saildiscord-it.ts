@@ -66,7 +66,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="147"/>
+        <location filename="../qml/components/MessageItem.qml" line="134"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -97,17 +97,17 @@
         <translation>Errore caricamento immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="161"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Connection failure: %1</source>
         <translation>Connessione fallita: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="162"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Login failure: %1</source>
         <translation>Accesso fallito: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="172"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
         <source>Python error: %1</source>
         <translation>Errore python: %1</translation>
     </message>
@@ -182,7 +182,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="151"/>
+        <location filename="../qml/components/MessageItem.qml" line="138"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
@@ -693,12 +693,12 @@
 <context>
     <name>SystemMessageItem</name>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="8"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="14"/>
         <source>%1 joined the server</source>
         <translation type="unfinished">%1 è entrato nel server</translation>
     </message>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="10"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="17"/>
         <source>Unknown message type: %1</source>
         <translation type="unfinished">Messaggio sconosciuto: %1</translation>
     </message>

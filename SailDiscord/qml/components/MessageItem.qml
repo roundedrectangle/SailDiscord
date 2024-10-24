@@ -34,28 +34,15 @@ ListItem {
         id: column
         width: parent.width
 
-        /*Loader {
+        Loader {
             sourceComponent: reference['type'] == 2 || reference['type'] == 1 ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true
-        }*/
-
-        /*Label {
-            property bool loaded: false
-            visible: reference != '-1'
-            text: qsTr("Loading reference...")
-            color: loaded ? Theme.primaryColor : Theme.secondaryColor
-
-            Component.onCompleted: {
-                if (reference == '-1') return
-                python.getReference(reference, function(data) { text = data[11]; loaded = true })
-            }
-        }*/
+        }
 
         Row {
             id: row
-            //width: parent.width
             width: {
                 if(_firstSameAuthor) {
                     if (appSettings.sentBehaviour !== "n")
@@ -135,12 +122,12 @@ ListItem {
 
         AttachmentsPreview { model: root.attachments }
 
-        /*Loader {
+        Loader {
             sourceComponent: reference['type'] == 3 ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true
-        }*/
+        }
     }
 
     menu: Component { ContextMenu {
