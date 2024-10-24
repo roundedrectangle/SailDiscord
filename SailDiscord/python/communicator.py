@@ -67,9 +67,10 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
             str(message.author.name), icon, is_history, convert_attachments(message.attachments, comm.cacher)
         )
 
-def generate_message(message: Union[discord.Message, Any], is_history=False):
+def generate_message(message: discord.Message, is_history=False):
     t = message.type
     base = generate_base_message(message, is_history)
+
     ref = {'type': 0, # No reference
         'channel': '-1', 'message': '-1'}
     if message.reference:
@@ -77,16 +78,18 @@ def generate_message(message: Union[discord.Message, Any], is_history=False):
         if comm.client.ensure_current_channel(message.reference.channel_id, message.reference.guild_id):
             ref['type'] = 2 # Reply
             ref['channel'] = '-1'
-        elif message.flags.is_crossposted: # doesn't work; TODO
+        # message.flags.is_crossposted (.crossposted?) - followed channels feature, not forwarded messages
+        # imagine not making a forward option for 9 years...
+        elif not message.is_system(): # FIXME once discord.py-self implements https://discord.com/developers/docs/change-log#message-forwarding-rollout
             ref['type'] = 3 # Forward
         else: ref['type'] = 1 # Unknown
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, ref)
+        event, args = 'message', (*base, message.content or '', ref)
     elif t == discord.MessageType.new_member:
         event, args = 'newmember', base
-    else: event, args = 'uknownmessage', (*base, message.content, ref)
+    else: event, args = 'uknownmessage', (*base, message.content or '', ref)
 
     return (event, args)
 
@@ -324,7 +327,6 @@ class Communicator:
         if channel_id == '-1':
             ch = self.client.current_channel
         else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
-        logging.info(message_id, channel_id)
         m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
         event, args = generate_message(m)
         return (event, *args)
