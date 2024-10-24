@@ -48,11 +48,9 @@ ListItem {
     }
 
     Component.onCompleted: {
-        console.log("Initializing...")
         if (reference.type == 0) return
         python.getReference(reference.channel, reference.message, function(data) {
-            _resolvedReference = shared.constructMessageCallback(shared.convertCallbackType(data[0]), undefined, undefined, function(_, __){}).apply(data.shift())
-            console.log("Found for "+_resolvedReference)
+            shared.constructMessageCallback(shared.convertCallbackType(data[0]), undefined, undefined, function(_, data) {_resolvedReference = data}).apply(null, data.slice(1))
             switch (data[0]) {
             case "message":
                 contents = data[11]
