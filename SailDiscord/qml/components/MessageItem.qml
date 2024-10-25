@@ -59,7 +59,7 @@ ListItem {
             // reverse if sent and set to reversed
             layoutDirection: (sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
 
-            Item { id: leftPadding; height: 1; width: Theme.horizontalPageMargin }
+            Item { id: leftPadding; height: 1; width: Theme.horizontalPageMargin
                 visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
             }
 

@@ -355,14 +355,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>sent</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>received</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sets for which messages extra padding should apply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -476,10 +468,6 @@
     </message>
     <message>
         <source>Use default type on unknown types</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>all (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
