@@ -77,7 +77,7 @@ Page {
 
                 ExpandingSection {
                     id: lookSection
-                    title: qsTr("Look and feel")
+                    title: qsTr("Appearance")
 
                     content.sourceComponent: Column {
                         width: lookSection.width
@@ -107,32 +107,6 @@ Page {
                             }
 
                             onCurrentItemChanged: appSettings.sentBehaviour = values[currentIndex]
-                        }
-
-                        TextSwitch {
-                            text: qsTr("Less maximum width")
-                            enabled: sentMessagesBox.currentIndex != 2
-                            description: sentMessagesBox.currentIndex != 2 ?
-                                             qsTr("Adds a padding to the left side of a sent message.")
-                                           : qsTr("Set Sent messages to reversed or align right to enable.")
-
-                            Component.onCompleted: checked = appSettings.messagesLessWidth
-                            onCheckedChanged: appSettings.messagesLessWidth = checked
-                        }
-
-                        ComboBox {
-                            property var values: ["a", "n", "s", "r"]
-                            label: qsTr("Extra padding")
-                            description: qsTr("Sets for which messages extra padding should apply")
-                            currentIndex: values.indexOf(appSettings.messagesPadding) == -1 ? 0 : values.indexOf(appSettings.messagesPadding)
-                            menu: ContextMenu {
-                                MenuItem { text: qsTr("all (default)") }
-                                MenuItem { text: qsTr("none") }
-                                MenuItem { text: qsTr("sent") }
-                                MenuItem { text: qsTr("received") }
-                            }
-
-                            onCurrentItemChanged: appSettings.messagesPadding = values[currentIndex]
                         }
 
                         TextSwitch {

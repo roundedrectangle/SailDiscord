@@ -164,8 +164,6 @@ ApplicationWindow {
             // Look and feel
             property bool emptySpace: true
             property string sentBehaviour: "r"
-            property bool messagesLessWidth: true
-            property string messagesPadding: "a"
             property bool alignMessagesText: true
             property string messageGrouping: "d"
             property string oneAuthorPadding: "a"

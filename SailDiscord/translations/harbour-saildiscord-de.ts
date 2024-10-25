@@ -351,10 +351,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Less maximum width</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Extra padding</source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,10 +364,6 @@
     </message>
     <message>
         <source>Sets for which messages extra padding should apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Adds a padding to the left side of a sent message.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -487,10 +479,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Look and feel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>all (default)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -544,6 +532,10 @@
     </message>
     <message>
         <source>Show info messages in notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

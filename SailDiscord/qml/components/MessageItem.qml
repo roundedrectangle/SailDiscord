@@ -21,7 +21,7 @@ ListItem {
         case "a": return !sameAuthorAsBefore
         case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) // 5 minutes
     }
-    property bool _sentLessWidth: (appSettings.messagesLessWidth && sent) ? Theme.paddingLarge : 0 // Width required to substract
+    property bool _sentLessWidth: sent ? Theme.paddingLarge : 0 // Width required to substract
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
     property alias innerWidth: row.width
@@ -59,12 +59,7 @@ ListItem {
             // reverse if sent and set to reversed
             layoutDirection: (sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
 
-            Item { id: leftPadding; height: 1; width: switch (appSettings.messagesPadding) {
-               default: case "n": return 0
-               case "s": return (visible && sent) ? Theme.horizontalPageMargin : 0
-               case "r": return (visible && sent) ? 0 : Theme.horizontalPageMargin
-               case "a": return visible ? Theme.horizontalPageMargin : 0
-            }
+            Item { id: leftPadding; height: 1; width: Theme.horizontalPageMargin }
                 visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
             }
 
