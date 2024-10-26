@@ -66,8 +66,8 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="130"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="27"/>
+        <location filename="../qml/components/MessageItem.qml" line="132"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -76,17 +76,22 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="53"/>
         <source>This user is a system account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>This user is a bot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
+        <source>Username</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="71"/>
         <source>Discord member since</source>
         <translation type="unfinished"></translation>
     </message>
@@ -192,7 +197,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="134"/>
+        <location filename="../qml/components/MessageItem.qml" line="136"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,7 +215,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="134"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="135"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
@@ -704,32 +709,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="88"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="96"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="89"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="97"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="90"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="98"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="91"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="100"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="95"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="103"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>

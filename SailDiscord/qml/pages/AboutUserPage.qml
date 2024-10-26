@@ -13,11 +13,13 @@ AboutPageBase {
     property string name
     property string icon
     property bool isClient: false
+    property bool nicknameGiven: false
 
     property date memberSince
     property string _status
     property bool isBot: false
     property bool isSystem: false
+    property string username: ""
 
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
 
@@ -61,6 +63,11 @@ AboutPageBase {
             }
         },
         InfoSection {
+            title: qsTr("Username")
+            visible: username
+            text: username
+        },
+        InfoSection {
             title: qsTr("Discord member since")
             text: Format.formatDate(memberSince, Formatter.DateFull)
         }
@@ -76,8 +83,9 @@ AboutPageBase {
             if (isClient) {
                 page.icon = arguments[4]
             } else {
-                isBot = arguments[4]
-                isSystem = arguments[5]
+                username = nicknameGiven ? arguments[4] : ''
+                isBot = arguments[5]
+                isSystem = arguments[6]
             }
         })
         python.requestUserInfo(userid) // for client, it will be -1

@@ -3,7 +3,6 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 ListItem {
-    property string authorid
     property string contents
     property string author
     property string pfp
@@ -12,8 +11,11 @@ ListItem {
     property date date
     property var attachments
     property var reference
+
+    property string authorid // About
     property bool edited
     property bool bot
+    property bool nick
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -128,7 +130,7 @@ ListItem {
 
     menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp })
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp, nicknameGiven: nick })
         }
 
         MenuItem { text: qsTr("Copy")

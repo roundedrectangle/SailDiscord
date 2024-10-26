@@ -66,7 +66,9 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
             bool(message.edited_at),
 
             {"id": str(message.author.id), "sent": message.author.id == comm.client.user.id,
-            "name": str(message.author.name), "pfp": icon, "bot": message.author.bot},
+            "name": str(getattr(message.author, 'nick', None) or message.author.name),
+            "nick_avail": bool(getattr(message.author, 'nick', None)), # hasattr doesn't handle None values
+            "pfp": icon, "bot": message.author.bot},
             
             is_history, convert_attachments(message.attachments, comm.cacher)
         )
@@ -108,7 +110,7 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.bot, user.system)
+    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.name, user.bot, user.system)
 
 def send_myself(client: discord.Client):
     user = client.user

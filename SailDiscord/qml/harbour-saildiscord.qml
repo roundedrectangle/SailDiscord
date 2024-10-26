@@ -102,7 +102,7 @@ ApplicationWindow {
                     type: type, messageId: _id, _author: userinfo.name, _pfp: userinfo.pfp,
                     _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
-                    flags: {edit: edited, bot: userinfo.bot},
+                    flags: {edit: edited, bot: userinfo.bot, nickAvailable: userinfo.nick_avail},
                 }
 
                 if (type === "" || type === "unknown") {
