@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 Label {
     property var _model
+    property color highlightColor: Theme.highlightColor
 
     color: Theme.secondaryHighlightColor
     wrapMode: Text.Wrap
@@ -17,5 +18,5 @@ Label {
             return _genText(qsTr("Unknown message type: %1"), _model.APIType)
         default: console.log("not found for "+_model.type)
     }
-    function _genText(escaped, highlighted) { return escaped.arg(Theme.highlightText(highlighted, highlighted, Theme.highlightColor)) }
+    function _genText(escaped, highlighted) { return escaped.arg(Theme.highlightText(highlighted, highlighted, highlightColor)) }
 }

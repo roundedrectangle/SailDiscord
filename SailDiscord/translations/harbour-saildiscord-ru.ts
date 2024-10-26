@@ -97,17 +97,17 @@
         <translation>Произошла ошибка при загрузки изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Login failure: %1</source>
         <translation>Ошибка вход: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="211"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="209"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -673,12 +673,12 @@
 <context>
     <name>SystemMessageItem</name>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="14"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="15"/>
         <source>%1 joined the server</source>
         <translation type="unfinished">%1 присоединился к серверу</translation>
     </message>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="17"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="18"/>
         <source>Unknown message type: %1</source>
         <translation type="unfinished">Неизвестный тип сообщения: %1</translation>
     </message>

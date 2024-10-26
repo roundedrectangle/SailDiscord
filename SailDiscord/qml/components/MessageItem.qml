@@ -35,7 +35,7 @@ ListItem {
         width: parent.width
 
         Loader {
-            sourceComponent: reference['type'] == 2 || (appSettings.defaultUnknownReferences && reference['type'] == 1) ? referenceComponent : null
+            sourceComponent: (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true
@@ -113,7 +113,7 @@ ListItem {
         AttachmentsPreview { model: root.attachments }
 
         Loader {
-            sourceComponent: reference['type'] == 3 ? referenceComponent : null
+            sourceComponent: reference.type == 3 ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true

@@ -116,8 +116,6 @@ ApplicationWindow {
             case "message": return ''
             case "newmember": return 'join'
             case "unkownmessage": return 'unknown'
-            default:
-                console.log("UNKNOWN CALLBACK TYPE: "+pyType)
             }
         }
 
