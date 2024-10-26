@@ -7,43 +7,29 @@ ListItem {
     property string title
     property string icon
 
-    property bool hasIcon: icon != "None" && icon != ""
-
-    property bool _iconAvailable: hasIcon || appSettings.emptySpace
+    property bool _iconAvailable: (icon != "None" && icon != "") || appSettings.emptySpace
 
     contentWidth: parent.width
-    contentHeight: _iconAvailable ? Theme.itemSizeLarge : Theme.itemSizeSmall;
+    contentHeight: _iconAvailable ? Theme.itemSizeLarge : Theme.itemSizeSmall
 
-    Column {
+    Row {
         width: parent.width - Theme.horizontalPageMargin*2
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        Row {
-            //spacing: _iconAvailable ? Theme.paddingLarge : 0
+        anchors.centerIn: parent
+        spacing: _iconAvailable ? Theme.paddingLarge : 0
 
-            ListImage {
-                icon: root.icon
-                height: root.contentHeight - Theme.paddingSmall*4
-                forceVisibility: appSettings.emptySpace
-                errorString: title
-            }
+        ListImage {
+            id: profileIcon
+            icon: root.icon
+            height: root.contentHeight - Theme.paddingSmall*4
+            forceVisibility: appSettings.emptySpace
+            errorString: title
+        }
 
-            Item { id: iconPadding; height: 1; width: _iconAvailable ? Theme.paddingLarge : 0; }
-
-            Label {
-                //width: (parent.width - profileIcon.width - iconPadding.width)
-                text: title
-                //fontSizeMode: Text.HorizontalFit
-                //minimumPixelSize: 1
-                //font.pixelSize: 50
-
-                //truncationMode: TruncationMode.Fade
-                //horizontalAlignment: Text.AlignLeft
-
-                //anchors.horizontalCenter: parent.horizontalCenter
-                //horizontalAlignment: Text.AlignLeft
-                //truncationMode: TruncationMode.Fade
-            }
+        Label {
+            anchors.verticalCenter: parent.verticalCenter
+            width: parent.width - profileIcon.width - parent.spacing*1
+            truncationMode: TruncationMode.Fade
+            text: title
         }
     }
 }

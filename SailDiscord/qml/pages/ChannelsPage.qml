@@ -45,7 +45,9 @@ Page {
             Row {
                 width: parent.width - Theme.horizontalPageMargin*2
                 anchors.horizontalCenter: parent.horizontalCenter
-                Icon {
+                spacing: Theme.paddingLarge
+
+                Icon { id: channelIcon
                     source: {
                         switch (icon) {
                             case "voice":
@@ -72,10 +74,11 @@ Page {
                     }
                 }
 
-                Item { height: 1; width: Theme.paddingLarge; }
-
                 Label {
                     text: name
+                    width: parent.width - channelIcon.width - parent.spacing*1
+                    truncationMode: TruncationMode.Fade
+                    anchors.verticalCenter: parent.verticalCenter
                 }
             }
 
