@@ -51,7 +51,7 @@ ListItem {
                     else return parent.width-_sentLessWidth
                 } else return Math.max(masterWidth,
                                        Math.min(parent.width-_sentLessWidth,
-                                                _infoWidth + contentsLbl.implicitWidth));
+                                                _infoWidth + contentsLbl.implicitWidth))
             }
             height: !_firstSameAuthor ? textContainer.height : childrenRect.height
             // align right if sent and set to reversed/right aligned
@@ -78,13 +78,8 @@ ListItem {
 
             Column {
                 id: textContainer
-                width: {
-                    if(_firstSameAuthor) {
-                        if (appSettings.sentBehaviour === "a") // If sentBehaviour is right-aligned,
-                        return Math.min(parent.width - _infoWidth, Math.max(contentsLbl.paintedWidth, infoRow.width))
-                        else return (parent.width - _infoWidth)
-                    } else return parent.width - _infoWidth;
-                }
+                width: parent.width - _infoWidth
+
                 Row {
                     id: infoRow
                     visible: _firstSameAuthor
@@ -106,9 +101,10 @@ ListItem {
                     id: contentsLbl
                     text: contents
                     wrapMode: Text.Wrap
-                    width: Math.min(parent.width, implicitWidth)
-                                   // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                    anchors.right: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? parent.right : undefined
+                    width: parent.width
+                                      // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
+                    horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
+                    Rectangle{anchors.fill:parent;color:"red"}
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
