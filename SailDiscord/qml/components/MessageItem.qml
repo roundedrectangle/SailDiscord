@@ -12,6 +12,8 @@ ListItem {
     property date date
     property var attachments
     property var reference
+    property bool edited
+    property bool bot
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -84,6 +86,10 @@ ListItem {
                     id: infoRow
                     visible: _firstSameAuthor
                     spacing: Theme.paddingSmall
+
+                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-developer"; visible: bot }
+                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: edited }
+
                     Label {
                         id: authorLbl
                         text: author

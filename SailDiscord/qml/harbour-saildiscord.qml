@@ -95,18 +95,21 @@ ApplicationWindow {
         }
 
         function constructMessageCallback(type, guildid, channelid, finalCallback) {
-            return function(_serverid, _channelid, _id, _date, userid, _sent, _author, _icon, history, attachments) {
+            return function(_serverid, _channelid, _id, _date, edited, userinfo, history, attachments) {
                 if (guildid != undefined && channelid != undefined)
                     if ((_serverid != guildid) || (_channelid != channelid)) return
-                var data = {type: type, messageId: _id, _author: _author, _pfp: _icon,
-                    _sent: _sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userid, _attachments: attachments}
+                var data = {
+                    type: type, messageId: _id, _author: userinfo.name, _pfp: userinfo.pfp,
+                    _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
+                    _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
+                    flags: {edit: edited, bot: userinfo.bot},
+                }
 
                 if (type === "" || type === "unknown") {
-                    data._contents = arguments[10]
-                    data._ref = arguments[11]
+                    data._contents = arguments[8]
+                    data._ref = arguments[9]
                 }
-                if (type === "unknown") data.APIType = arguments[12]
+                if (type === "unknown") data.APIType = arguments[10]
                 finalCallback(history, data)
             }
         }

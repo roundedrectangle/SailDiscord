@@ -63,8 +63,12 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
     
     return (str(message.guild.id), str(message.channel.id),
             str(message.id), date_to_qmlfriendly_timestamp(message.created_at),
-            str(message.author.id), message.author.id == comm.client.user.id,
-            str(message.author.name), icon, is_history, convert_attachments(message.attachments, comm.cacher)
+            bool(message.edited_at),
+
+            {"id": str(message.author.id), "sent": message.author.id == comm.client.user.id,
+            "name": str(message.author.name), "pfp": icon, "bot": message.author.bot},
+            
+            is_history, convert_attachments(message.attachments, comm.cacher)
         )
 
 def generate_message(message: discord.Message, is_history=False):

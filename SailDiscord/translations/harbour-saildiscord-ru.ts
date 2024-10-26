@@ -66,7 +66,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="124"/>
+        <location filename="../qml/components/MessageItem.qml" line="129"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
         <source>About</source>
         <comment>User</comment>
@@ -97,17 +97,17 @@
         <translation>Произошла ошибка при загрузки изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Login failure: %1</source>
         <translation>Ошибка вход: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="209"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -182,7 +182,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="128"/>
+        <location filename="../qml/components/MessageItem.qml" line="133"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
@@ -200,7 +200,7 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="134"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
