@@ -53,6 +53,23 @@ Page {
                             onCheckedChanged: appSettings.defaultUnknownMessages = checked
                         }
 
+                        SectionHeader { text: qsTr("References") }
+                        Label {
+                            width: parent.width - 2*x
+                            x: Theme.horizontalPageMargin
+                            wrapMode: Text.Wrap
+                            text: qsTr("The only supported references at the moment are replied and forwarded messages")
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: Theme.secondaryHighlightColor
+                            bottomPadding: Theme.paddingMedium
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Use default type on unknown types")
+                            checked: appSettings.defaultUnknownReferences
+                            onCheckedChanged: appSettings.defaultUnknownReferences = checked
+                        }
+
                         SectionHeader { text: qsTr("Message field") }
 
                         TextSwitch {
@@ -222,12 +239,13 @@ Page {
                         }
 
                         Label {
+                            width: parent.width - 2*x
+                            x: Theme.horizontalPageMargin
+                            wrapMode: Text.Wrap
                             text: qsTr("Changes how often the cache is updated. App restart might be required")
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.secondaryColor
-                            wrapMode: Text.Wrap
-                            width: parent.width - Theme.horizontalPageMargin
-                            anchors.horizontalCenter: parent.horizontalCenter
+                            bottomPadding: Theme.paddingMedium
                         }
                     }
                 }

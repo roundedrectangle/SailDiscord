@@ -12,12 +12,13 @@ ListItem {
     property bool loaded: false
 
     id: root
-    width: parent.width
+    width: parent.width - Theme.horizontalPageMargin*2
     contentHeight: row.height
 
     Row {
         id: row
         width: parent.width
+        anchors.horizontalCenter: parent.horizontalCenter
 
         Icon {
             id: icon

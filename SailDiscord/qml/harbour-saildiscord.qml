@@ -157,6 +157,7 @@ ApplicationWindow {
             // Behavior
             property bool ignorePrivate: false
             property bool defaultUnknownMessages: false
+            property bool defaultUnknownReferences: false
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
