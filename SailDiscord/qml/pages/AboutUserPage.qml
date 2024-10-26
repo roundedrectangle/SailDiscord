@@ -16,6 +16,8 @@ AboutPageBase {
 
     property date memberSince
     property string _status
+    property bool isBot: false
+    property bool isSystem: false
 
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
 
@@ -37,6 +39,28 @@ AboutPageBase {
 
     extraSections: [
         InfoSection {
+            visible: isBot || isSystem
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingLarge
+
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-setting"
+                    onClicked: Notices.show(qsTr("This user is a system account"), Notice.Short, Notice.Bottom)
+                    visible: isSystem
+                }
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-game-controller"
+                    onClicked: Notices.show(qsTr("This user is a bot"), Notice.Short, Notice.Bottom)
+                    visible: isBot
+                }
+            }
+        },
+        InfoSection {
             title: qsTr("Discord member since")
             text: Format.formatDate(memberSince, Formatter.DateFull)
         }
@@ -44,12 +68,17 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
-        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, icon) {
+        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
             description = bio
             memberSince = new Date(_date)
             _status = constructStatus(status, onMobile)
             busyIndicator.running = false
-            if (icon != undefined) page.icon = icon
+            if (isClient) {
+                page.icon = arguments[4]
+            } else {
+                isBot = arguments[4]
+                isSystem = arguments[5]
+            }
         })
         python.requestUserInfo(userid) // for client, it will be -1
     }

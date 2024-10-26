@@ -66,8 +66,8 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="129"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="25"/>
+        <location filename="../qml/components/MessageItem.qml" line="130"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="27"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -76,7 +76,17 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="40"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
+        <source>This user is a system account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="58"/>
+        <source>This user is a bot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="64"/>
         <source>Discord member since</source>
         <translation>Участник Discord с</translation>
     </message>
@@ -84,7 +94,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="115"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -182,7 +192,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="133"/>
+        <location filename="../qml/components/MessageItem.qml" line="134"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
@@ -694,32 +704,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="59"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="88"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="89"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="90"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="91"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="92"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="95"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>

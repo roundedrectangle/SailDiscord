@@ -65,6 +65,14 @@
         <source>Discord member since</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This user is a system account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This user is a bot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChannelsPage</name>

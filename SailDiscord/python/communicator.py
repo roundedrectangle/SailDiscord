@@ -108,7 +108,7 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile)
+    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.bot, user.system)
 
 def send_myself(client: discord.Client):
     user = client.user
@@ -119,6 +119,7 @@ def send_myself(client: discord.Client):
     icon = '' if user.display_avatar == None else \
             str(comm.cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
 
+    # We are not bots or system users. Or are we?
     qsend("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile(), icon)
 
     if icon != '':
