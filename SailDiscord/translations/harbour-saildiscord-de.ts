@@ -526,6 +526,14 @@
         <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>References</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The only supported references at the moment are replied and forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SystemMessageItem</name>

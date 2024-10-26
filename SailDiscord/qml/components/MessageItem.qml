@@ -35,7 +35,7 @@ ListItem {
         width: parent.width
 
         Loader {
-            sourceComponent: reference['type'] == 2 || reference['type'] == 1 ? referenceComponent : null
+            sourceComponent: reference['type'] == 2 || (appSettings.defaultUnknownReferences && reference['type'] == 1) ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
             asynchronous: true
@@ -104,7 +104,6 @@ ListItem {
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-                    Rectangle{anchors.fill:parent;color:"red"}
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
