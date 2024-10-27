@@ -49,7 +49,7 @@ AboutPageBase {
                 IconButton {
                     icon.color: Theme.secondaryHighlightColor
                     icon.highlightColor: Theme.secondaryColor
-                    icon.source: "image://theme/icon-m-setting"
+                    icon.source: "image://theme/icon-m-device-lock"
                     onClicked: Notices.show(qsTr("This user is a system account"), Notice.Short, Notice.Bottom)
                     visible: isSystem
                 }

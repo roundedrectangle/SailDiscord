@@ -101,6 +101,7 @@ Page {
                                 bot: flags.bot
                                 edited: flags.edit
                                 nick: flags.nickAvailable
+                                system: flags.system
 
                                 function updateMasterWidth() {
                                     msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)

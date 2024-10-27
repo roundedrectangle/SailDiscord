@@ -66,7 +66,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="132"/>
+        <location filename="../qml/components/MessageItem.qml" line="134"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
@@ -197,7 +197,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="136"/>
+        <location filename="../qml/components/MessageItem.qml" line="138"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
@@ -215,7 +215,7 @@
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="135"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="136"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>
