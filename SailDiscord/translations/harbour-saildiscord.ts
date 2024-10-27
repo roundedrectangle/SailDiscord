@@ -430,6 +430,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <source>Replies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <source>The only supported reply types at the moment are replied and forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="73"/>
         <source>Message field</source>
         <translation type="unfinished"></translation>
@@ -497,16 +507,6 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="130"/>
         <source>Align sent messages text to right</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
-        <source>References</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
-        <source>The only supported references at the moment are replied and forwarded messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

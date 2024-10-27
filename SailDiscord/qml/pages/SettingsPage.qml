@@ -53,12 +53,12 @@ Page {
                             onCheckedChanged: appSettings.defaultUnknownMessages = checked
                         }
 
-                        SectionHeader { text: qsTr("References") }
+                        SectionHeader { text: qsTr("Replies") }
                         Label {
                             width: parent.width - 2*x
                             x: Theme.horizontalPageMargin
                             wrapMode: Text.Wrap
-                            text: qsTr("The only supported references at the moment are replied and forwarded messages")
+                            text: qsTr("The only supported reply types at the moment are replied and forwarded messages")
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.secondaryHighlightColor
                             bottomPadding: Theme.paddingMedium

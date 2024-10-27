@@ -78,17 +78,17 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="53"/>
         <source>This user is a system account</source>
-        <translation type="unfinished"></translation>
+        <translation>Это системный аккаунт</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
         <source>This user is a bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Это бот</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя пользователя</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="71"/>
@@ -424,6 +424,16 @@
         <translation>Сообщения</translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <source>Replies</source>
+        <translation>Ответы</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <source>The only supported reply types at the moment are replied and forwarded messages</source>
+        <translation>Только сообщения с ответами и пересланные сообщения поддерживаются как типы ответов в настоящий момент.</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Sent messages</source>
         <translation>Отправленные сообщения</translation>
@@ -510,16 +520,6 @@
         <translation>Поле ввода сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
-        <source>References</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
-        <source>The only supported references at the moment are replied and forwarded messages</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>
         <source>Send messages by enter</source>
         <translation>Отправка сообщений клавишей ввод</translation>
@@ -537,7 +537,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="97"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="160"/>
@@ -690,12 +690,12 @@
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="15"/>
         <source>%1 joined the server</source>
-        <translation type="unfinished">%1 присоединился к серверу</translation>
+        <translation>%1 присоединился к серверу</translation>
     </message>
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="18"/>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished">Неизвестный тип сообщения: %1</translation>
+        <translation>Неизвестный тип сообщения: %1</translation>
     </message>
 </context>
 <context>

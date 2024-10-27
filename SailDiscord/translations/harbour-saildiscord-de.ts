@@ -539,11 +539,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>References</source>
+        <source>Replies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The only supported references at the moment are replied and forwarded messages</source>
+        <source>The only supported reply types at the moment are replied and forwarded messages</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

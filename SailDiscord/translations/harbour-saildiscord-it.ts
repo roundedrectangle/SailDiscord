@@ -426,6 +426,16 @@
         <translation>Messaggi</translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <source>Replies</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <source>The only supported reply types at the moment are replied and forwarded messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Sent messages</source>
         <translation>Messaggi inviati</translation>
@@ -510,16 +520,6 @@
         <location filename="../qml/pages/SettingsPage.qml" line="73"/>
         <source>Message field</source>
         <translation>Campo messaggi</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
-        <source>References</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
-        <source>The only supported references at the moment are replied and forwarded messages</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>

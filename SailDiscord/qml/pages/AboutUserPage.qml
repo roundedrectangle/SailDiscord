@@ -86,7 +86,7 @@ AboutPageBase {
                 username = nicknameGiven ? arguments[4] : ''
                 isBot = arguments[5]
                 isSystem = arguments[6]
-                if (arguments[7]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
+                if (arguments[7]) _develInfoSection.parent.children[2].children[0].color = arguments[7]
             }
         })
         python.requestUserInfo(userid) // for client, it will be -1
