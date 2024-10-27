@@ -68,7 +68,8 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
             {"id": str(message.author.id), "sent": message.author.id == comm.client.user.id,
             "name": str(getattr(message.author, 'nick', None) or message.author.name),
             "nick_avail": bool(getattr(message.author, 'nick', None)), # hasattr doesn't handle None values
-            "pfp": icon, "bot": message.author.bot, "system": message.author.system},
+            "pfp": icon, "bot": message.author.bot, "system": message.author.system,
+            "color": '' if message.author.color in (discord.Color.default(), None) else str(message.author.color)},
             
             is_history, convert_attachments(message.attachments, comm.cacher)
         )
@@ -106,11 +107,12 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
+    color = '' if user.color in (None, discord.Color.default()) else str(user.color)
     if isinstance(user, discord.MemberProfile):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.name, user.bot, user.system)
+    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.name, user.bot, user.system, color)
 
 def send_myself(client: discord.Client):
     user = client.user

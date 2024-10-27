@@ -98,10 +98,7 @@ Page {
                                 masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
                                 attachments: _attachments
                                 reference: _ref
-                                bot: flags.bot
-                                edited: flags.edit
-                                nick: flags.nickAvailable
-                                system: flags.system
+                                flags: _flags
 
                                 function updateMasterWidth() {
                                     msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)

@@ -13,11 +13,7 @@ ListItem {
     property var reference
 
     property string authorid // User-related
-    property bool bot
-    property bool system
-    property bool nick
-
-    property bool edited
+    property var flags
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -87,17 +83,19 @@ ListItem {
                 width: parent.width - _infoWidth
 
                 Row {
+                    // TODO: truncate large nicknames
                     id: infoRow
                     visible: _firstSameAuthor
+                    spacing: Theme.paddingSmall
 
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-secure"; visible: system }
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-developer"; visible: bot }
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: edited }
+                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-secure"; visible: flags.system }
+                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-developer"; visible: flags.bot }
+                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: flags.edit }
 
                     Label {
                         id: authorLbl
                         text: author
-                        color: Theme.secondaryColor
+                        color: flags.color ? flags.color : Theme.secondaryColor
                     }
 
                     Label {
@@ -132,7 +130,7 @@ ListItem {
 
     menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp, nicknameGiven: nick })
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp, nicknameGiven: flags.nickAvailable })
         }
 
         MenuItem { text: qsTr("Copy")
