@@ -93,6 +93,10 @@ SailJail will NOT work in this case
 	- The fix has been found, and it turns out very simple. Open the project in Sailfish IDE, right click on it in the file structure and click Run QMake.
 - You might need to `cd` into the build folder, run `sfdk config target=<a target>` and then `sfdk build-shell --maintain`, finally inside that shell run `python3 -m pip install --upgrade pip`.
 
+### Code Design
+
+- When sharing IDs between Python and QML, we convert them to strings. QML can mess up large integers so we use strings. We never really operate IDs in QML except for sending them back to Python in exchange for other data.
+
 ## Credits
 
 The code is based on:
