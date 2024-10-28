@@ -27,7 +27,7 @@ Very very WIP
 ## Known issues
 
 - Server list does not follow same sorting as in the real discord. *probably not possible yet because this is not implemented in discord.py-self*
-- App lags in a text channel sometimes
+- App lags in a text channel sometimes. Very similar to the issue below except this one lags besides being slow
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
 
 ## Troubleshooting
@@ -43,7 +43,7 @@ Check if you are able to open https://discord.com/login in the native browser. I
 - Update to [ESR91 beta](https://www.flypig.co.uk/geckoinstall)
 - Login using token (see below)
 
-## Logging in via token
+### Logging in via token
 
 See [discord.py-self docs page](https://discordpy-self.readthedocs.io/en/latest/authenticating.html) for up to date information. In short, you should:
 
@@ -107,7 +107,7 @@ The code is based on:
 - a little:
   - [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator) - early packaging issues
   - https://github.com/Rapptz/discord.py/issues/9690#issuecomment-2417783032 - going offline/closing connection
-  - hhttps://github.com/ichthyosaurus/harbour-file-browser - zoom pictures
+  - https://github.com/ichthyosaurus/harbour-file-browser - zoom pictures
 
 Core functionality:
 
