@@ -41,6 +41,10 @@ AboutPageBase {
                 ContributionGroup {
                     title: qsTr("Italian")
                     entries: ["247"]
+                },
+                ContributionGroup {
+                    title: qsTr("Swedish")
+                    entries: ["eson57"]
                 }
             ]
         }

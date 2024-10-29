@@ -61,7 +61,8 @@ CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
     translations/harbour-saildiscord-de.ts \
     translations/harbour-saildiscord-it.ts \
-    translations/harbour-saildiscord-ru.ts
+    translations/harbour-saildiscord-ru.ts \
+    translations/harbour-saildiscord-sv.ts
 
 HEADERS += \
     src/settings.h
