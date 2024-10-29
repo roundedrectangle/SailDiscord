@@ -23,7 +23,7 @@ ListItem {
         case "a": return !sameAuthorAsBefore
         case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) // 5 minutes
     }
-    property bool _sentLessWidth: sent ? Theme.paddingLarge : 0 // Width required to substract
+    property real _substractedInnerWidth: width - (sent ? Theme.paddingLarge : 0)
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
     property alias innerWidth: row.width
@@ -48,11 +48,11 @@ ListItem {
             width: {
                 if(_firstSameAuthor) {
                     if (appSettings.sentBehaviour !== "n")
-                        return Math.min(parent.width - _sentLessWidth,
+                        return Math.min(_substractedInnerWidth,
                                         _infoWidth + Math.max(contentsLbl.implicitWidth, infoRow.width));
-                    else return parent.width-_sentLessWidth
+                    else return _substractedInnerWidth
                 } else return Math.max(masterWidth,
-                                       Math.min(parent.width-_sentLessWidth,
+                                       Math.min(_substractedInnerWidth,
                                                 _infoWidth + contentsLbl.implicitWidth))
             }
             height: !_firstSameAuthor ? textContainer.height : childrenRect.height
