@@ -21,6 +21,7 @@ Very very WIP
 - [X] About page
 - [ ] Caching
 	- [X] Avatars
+- [X] References (forwarded, replies)
 - [ ] Automate translating, maybe with something like weblate
 - [ ] More features?
 
