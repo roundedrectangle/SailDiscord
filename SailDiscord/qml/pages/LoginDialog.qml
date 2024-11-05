@@ -7,6 +7,7 @@ import harboursaildiscord.Logic 1.0
 Dialog {
     id: loginDialog
     backNavigation: false
+    allowedOrientations: Orientation.All
 
     canAccept: loader.token !== ""
     onAccepted: appConfiguration.token = loader.token

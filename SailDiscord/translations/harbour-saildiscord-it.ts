@@ -5,7 +5,7 @@
     <name>AboutApp</name>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="62"/>
-        <location filename="../qml/pages/LoginDialog.qml" line="20"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="21"/>
         <source>About</source>
         <comment>App</comment>
         <translation>Info</translation>
@@ -71,7 +71,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="136"/>
+        <location filename="../qml/components/MessageItem.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
@@ -169,32 +169,32 @@
 <context>
     <name>LoginDialog</name>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="25"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="26"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="31"/>
         <source>Use token</source>
         <translation>Usa token</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="31"/>
         <source>Use web page</source>
         <translation>Usa pagina web</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="41"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="42"/>
         <source>Please login</source>
         <translation>Per favore accedi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="42"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="43"/>
         <source>Login</source>
         <translation>Accesso</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="94"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="95"/>
         <source>Token</source>
         <translation>Token</translation>
     </message>
@@ -202,7 +202,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="140"/>
+        <location filename="../qml/components/MessageItem.qml" line="142"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
