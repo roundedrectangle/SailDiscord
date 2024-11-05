@@ -51,8 +51,8 @@ See [discord.py-self docs page](https://discordpy-self.readthedocs.io/en/latest/
 - Login into discord with a desktop web browser
 - Open developer tools (ctrl+shift+i on most browsers) and click on Console
 - Type this code and press enter:
-	`(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m? exports?.default?.getToken).exports.default.getToken()`
-- Copy the token it will show you
+	`(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m?.exports?.default?.getToken).exports.default.getToken()`
+- Copy the token it will show you without the quotes (`"`)
 
 After obtaining you token, in Sailcord top menu, when logging in, choose Login with token. Then paste your token and click Accept.
 
