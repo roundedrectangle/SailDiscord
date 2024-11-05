@@ -216,7 +216,7 @@ ApplicationWindow {
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {
-            myPage.loading = true;
+            myPage.loading = true
             call('communicator.comm.login', [token])
         }
         function updateServer(what, updater) {

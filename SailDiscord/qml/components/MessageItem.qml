@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
+import '../modules/Opal/LinkHandler'
 
 ListItem {
     property string contents
@@ -105,10 +106,13 @@ ListItem {
                     }
                 }
 
-                Label {
+                LinkedLabel {
                     id: contentsLbl
-                    text: contents
-                    wrapMode: Text.Wrap
+                    plainText: contents
+                    color: Theme.primaryColor
+                    linkColor: Theme.highlightColor
+                    defaultLinkActions: false
+                    onLinkActivated: LinkHandler.openOrCopyUrl(link)
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
