@@ -163,7 +163,7 @@ Page {
         function combineObjects(obj1, obj2) {
             var res = obj1
             for (var attrname in obj2) {
-                if (res[attrname] != undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
+                if (res[attrname] !== undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
                     res[attrname] = combineObjects(res[attrname], obj2[attrname])
                 else res[attrname] = obj2[attrname]
             }
@@ -177,13 +177,15 @@ Page {
                                       _flags: {edit: false, bot: false, nickAvailable: false,
                                           system: false, color: undefined},
                                       _sent: false, _contents: "", _author: "unknown", _pfp: '',
-                                         _ref: "", _attachments: [],
+                                         _ref: {}, _attachments: [],
                                   }, toAppend))
         }
 
-        function appendDemo(isyou, thecontents) {
-            // Classic version
-            appendDemo2({_sent: isyou, _contents: thecontents, _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"})
+        function appendDemo(isyou, thecontents, additionalOptions) {
+            additionalOptions = additionalOptions !== undefined ? additionalOptions : {}
+            appendDemo2(combineObjects(
+                            {_sent: isyou, _contents: thecontents, _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
+                            additionalOptions))
         }
 
         function generateDemo() {
@@ -194,7 +196,6 @@ Page {
             }
 
             // Append demo messages
-
             appendDemo(true, "First message!")
             appendDemo(true, "Second message")
             appendDemo(true, "A l "+repeatString("o ", 100)+"ng message.")
@@ -210,6 +211,18 @@ Page {
             appendDemo(false, repeatString("Hello, world. ", 50))
             appendDemo(false, "Second message")
             appendDemo(false, "A l "+repeatString("o ", 100)+"ng message.")
+
+            appendDemo(false, "Some long messages...")
+
+
+            // TODO
+            //appendDemo(true, "Hey everyone, look at this pic!", {_attachments: [{}]})
+
+            appendDemo2({_contents: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
+            appendDemo2({_contents: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
+            appendDemo2({_contents: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
+            appendDemo(true, "Edited message...", {_flags: {edit: true}})
+            appendDemo(true, "First message!")
         }
 
         Component.onCompleted: {

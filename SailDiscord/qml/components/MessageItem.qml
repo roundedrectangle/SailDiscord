@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 import '../modules/Opal/LinkHandler'
 
+// TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
     property string contents
     property string author
@@ -111,13 +112,14 @@ ListItem {
                 LinkedLabel {
                     id: contentsLbl
                     plainText: contents
+                    width: parent.width
+                                      // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
+                    horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
+
                     color: Theme.primaryColor
                     linkColor: Theme.highlightColor
                     defaultLinkActions: false
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
-                    width: parent.width
-                                      // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                    horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
@@ -136,6 +138,7 @@ ListItem {
 
     menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
+            visible: authorid != '-1'
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp, nicknameGiven: flags.nickAvailable })
         }
 
