@@ -55,7 +55,7 @@ ListItem {
                 } else res = Math.max(masterWidth,
                                        Math.min(parent.width,
                                                 _infoWidth + contentsLbl.implicitWidth))
-                /*if (sent)*/ console.log(contents, res -= Theme.paddingLarge)
+                /*if (sent)*/ res -= Theme.paddingLarge
                 return res
             }
             height: !_firstSameAuthor ? textContainer.height : childrenRect.height

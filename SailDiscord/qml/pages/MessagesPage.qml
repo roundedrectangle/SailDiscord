@@ -160,12 +160,30 @@ Page {
 
         property int updateCounter: 0
 
+        function combineObjects(obj1, obj2) {
+            var res = obj1
+            for (var attrname in obj2) {
+                if (res[attrname] != undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
+                    res[attrname] = combineObjects(res[attrname], obj2[attrname])
+                else res[attrname] = obj2[attrname]
+            }
+            return res
+        }
+
+        function appendDemo2(toAppend) {
+            insert(0, combineObjects({type: '', messageId: '-1', userid: '-1',
+                                      _from_history: true, _wasUpdated: false,
+                                      _masterWidth: -1, _date: new Date(),
+                                      _flags: {edit: false, bot: false, nickAvailable: false,
+                                          system: false, color: undefined},
+                                      _sent: false, _contents: "", _author: "unknown", _pfp: '',
+                                         _ref: "", _attachments: [],
+                                  }, toAppend))
+        }
+
         function appendDemo(isyou, thecontents) {
-            insert(0, {
-               messageId: "-1", _author: isyou ? "you" : "notyou", _contents: thecontents,
-               _pfp: isyou ? "https://cdn.discordapp.com/embed/avatars/0.png" : "https://cdn.discordapp.com/embed/avatars/1.png",
-               _sent: isyou, _masterWidth: -1, _date: new Date(), _from_history: true, _wasUpdated: false
-           })
+            // Classic version
+            appendDemo2({_sent: isyou, _contents: thecontents, _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"})
         }
 
         function generateDemo() {
