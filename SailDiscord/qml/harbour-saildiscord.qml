@@ -8,6 +8,7 @@ import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
 import Nemo.DBus 2.0
+import "modules/js/showdown.min.js" as ShowDown
 
 ApplicationWindow {
     id: mainWindow
@@ -50,6 +51,10 @@ ApplicationWindow {
             }, function(e){url=''})
         }
     }
+
+    property var showdown: new ShowDown.showdown.Converter({
+            simplifiedAutoLink: true,
+        })
 
     QtObject {
         id: shared
@@ -136,6 +141,11 @@ ApplicationWindow {
             python.setHandler("message", function() {}) // undefined is not used for messages not to be logged
             python.setHandler("join", function() {})
             python.setHandler("uknownmessage", function() {})
+        }
+
+        function markdown(text) {
+            return "<style>a:link{color:" + Theme.highlightColor + ";}</style>"
+                    +showdown.makeHtml(text)
         }
     }
 

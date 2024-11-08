@@ -77,7 +77,7 @@ ListItem {
     Component.onCompleted: {
         if (reference.type == 0) return
         python.getReference(reference.channel, reference.message, function(data) {
-            if (!root) return
+            if (!root || !data) return
             _resolvedType = shared.convertCallbackType(data[0])
 
             shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, data.slice(1))

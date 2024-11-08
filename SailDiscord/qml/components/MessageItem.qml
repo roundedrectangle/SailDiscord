@@ -22,8 +22,8 @@ ListItem {
 
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
         case "n": return true
-        case "a": return !sameAuthorAsBefore
-        case "d": return !(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) // 5 minutes
+        case "a": return !sameAuthorAsBefore || referenceLoader.item != undefined
+        case "d": return (!(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
     }
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
@@ -38,6 +38,7 @@ ListItem {
         width: parent.width
 
         Loader {
+            id: referenceLoader
             sourceComponent: (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.contentHeight
@@ -109,39 +110,21 @@ ListItem {
                     }
                 }
 
-                /*Row {
-                    width: parent.width
-                    height: parent.height
-                    LinkedLabel {
-                        id: contentsLbl
-                        textFormat: Text.RichText
-                        plainText: contents
-                        width: parent.width - editedIcon.width
-                                          // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                        horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-
-                        color: Theme.primaryColor
-                        linkColor: Theme.highlightColor
-                        defaultLinkActions: false
-                        onLinkActivated: LinkHandler.openOrCopyUrl(link)
-                    }
-
-                    Icon {
-                        id: editedIcon; anchors.verticalCenter: parent.verticalCenter
-                        source: "image://theme/icon-s-edit"; visible: flags.edit
-                        width: visible ? implicitWidth : 0; height: visible ? implicitHeight : 0
-                        anchors.bottom: parent.bottom
-                        anchors.top: anchors.bottom - height
-                    }
+                /*Icon {
+                    id: editedIcon; anchors.verticalCenter: parent.verticalCenter
+                    source: "image://theme/icon-s-edit"; visible: flags.edit
+                    width: visible ? implicitWidth : 0; height: visible ? implicitHeight : 0
+                    anchors.bottom: parent.bottom
+                    anchors.top: anchors.bottom - height
                 }*/
 
                 Label {
                     // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they will break with markdown support
                     id: contentsLbl
+                    wrapMode: Text.Wrap
                     textFormat: Text.RichText
-                    text: "<style>a:link{color:" + linkColor + ";}</style>" // Fix link color
-                               + contents
-                               + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                    text: shared.markdown(contents)
+                          + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined

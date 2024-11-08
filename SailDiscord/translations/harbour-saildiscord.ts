@@ -71,7 +71,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="169"/>
+        <location filename="../qml/components/MessageItem.qml" line="166"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
@@ -112,22 +112,22 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="80"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="83"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="211"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="205"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="215"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="222"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -202,12 +202,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="143"/>
-        <source>(edited)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="174"/>
+        <location filename="../qml/components/MessageItem.qml" line="171"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -754,7 +749,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="85"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="88"/>
         <source>Downloaded file %1</source>
         <translation type="unfinished"></translation>
     </message>
