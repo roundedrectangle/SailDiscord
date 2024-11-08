@@ -119,7 +119,6 @@ Page {
                             currentIndex: values.indexOf(appSettings.sentBehaviour) == -1 ? 0 : values.indexOf(appSettings.sentBehaviour)
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("reversed (default)") }
-                                //MenuItem { text: qsTr("align right") }
                                 MenuItem { text: qsTr("nothing") }
                             }
 

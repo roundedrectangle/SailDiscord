@@ -47,19 +47,7 @@ ListItem {
 
         Row {
             id: row
-            width: parent.width - Theme.paddingLarge/*{
-                var res = 0
-                if(_firstSameAuthor) {
-                    if (appSettings.sentBehaviour !== "n")
-                        res = Math.min(parent.width,
-                                        _infoWidth + Math.max(contentsLbl.width, infoRow.width));
-                    else return _substractedInnerWidth
-                } else res = Math.max(masterWidth,
-                                       Math.min(parent.width,
-                                                _infoWidth + contentsLbl.width))
-                /*if (sent)/ res -= Theme.paddingLarge
-                return res
-            }*/
+            width: parent.width - Theme.paddingLarge
             height: !_firstSameAuthor ? textContainer.height : childrenRect.height
             // align right if sent and set to reversed/right aligned
             anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined

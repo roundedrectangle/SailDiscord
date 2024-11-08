@@ -170,6 +170,17 @@
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>(edited)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageReference</name>
+    <message>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesPage</name>
@@ -391,10 +402,6 @@
     </message>
     <message>
         <source>reversed (default)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>align right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
