@@ -29,6 +29,19 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
+        ViewPlaceholder {
+            enabled: msgModel.count === 0 && !waitForMessagesTimer.running
+            text: qsTr("No messages")
+            hintText: qsTr("Say hi ;)")
+
+            Timer {
+                id: waitForMessagesTimer
+                interval: 500
+                running: true
+                onTriggered: parent.enabled
+            }
+        }
+
         Column {
             width: parent.width
             height: parent.height
@@ -48,12 +61,6 @@ Page {
                     model: msgModel
                     clip: true
                     verticalLayoutDirection: ListView.BottomToTop
-
-                    ViewPlaceholder {
-                        enabled: msgModel.count === 0
-                        text: qsTr("No messages")
-                        hintText: qsTr("Say hi ;)")
-                    }
 
                     function getVisibleIndexRange() { // this one actually works!
                         var center_x = messagesList.x + messagesList.width / 2
