@@ -29,6 +29,10 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
+        BusyLabel {
+            running: msgModel.count === 0 && waitForMessagesTimer.running
+        }
+
         ViewPlaceholder {
             enabled: msgModel.count === 0 && !waitForMessagesTimer.running
             text: qsTr("No messages")
@@ -36,9 +40,8 @@ Page {
 
             Timer {
                 id: waitForMessagesTimer
-                interval: 500
+                interval: 2500
                 running: true
-                onTriggered: parent.enabled
             }
         }
 

@@ -108,16 +108,21 @@ ListItem {
 
                 Label {
                     // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
-                    id: contentsLbl
                     wrapMode: Text.Wrap
                     textFormat: Text.RichText
-                    text: shared.markdown(contents
-                          + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
-                                          )
+                    text: contents
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
+
+                    Timer {
+                        running: true
+                        interval: 350
+                        onTriggered: parent.text = shared.markdown(contents
+                                                            + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                                            )
+                    }
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }

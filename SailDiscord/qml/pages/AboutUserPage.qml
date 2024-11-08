@@ -75,8 +75,9 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
+        _develInfoSection.parent.children[3].textFormat = Text.RichText
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
-            description = bio
+            description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)
             _status = constructStatus(status, onMobile)
             busyIndicator.running = false

@@ -66,9 +66,16 @@ ListItem {
                 id: defaultItem
                 Label {
                     width: parent.width
+                    textFormat: Text.RichText
                     text: _resolvedReference._contents
                     wrapMode: Text.Wrap
                     color: Theme.secondaryColor
+
+                    Timer {
+                        running: true
+                        interval: 350
+                        onTriggered: parent.text = shared.markdown(_resolvedReference._contents, Theme.secondaryHighlightColor)
+                    }
                 }
             }
         }
@@ -81,6 +88,7 @@ ListItem {
             _resolvedType = shared.convertCallbackType(data[0])
 
             shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, data.slice(1))
+            contentLoader.sourceComponent = null // reload
             switch (data[0]) {
             case "message":
                 infoLoader.sourceComponent = defaultInfoItem
@@ -95,7 +103,7 @@ ListItem {
         })
     }
 
-    menu: Component { ContextMenu {
+    /*menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
             visible: _resolvedReference.userid != '-1'
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference._author, icon: _resolvedReference._pfp, nicknameGiven: _resolvedReference._flags.nickAvailable })
@@ -105,7 +113,7 @@ ListItem {
             onClicked: Clipboard.text = _resolvedReference._contents
             visible: _resolvedReference._contents.length > 0
         }
-    }}
+    }}*/
 
     /*Component { // TODO
         id: referencePage

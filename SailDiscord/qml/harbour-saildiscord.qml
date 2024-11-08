@@ -142,8 +142,9 @@ ApplicationWindow {
             python.setHandler("uknownmessage", function() {})
         }
 
-        function markdown(text) {
-            return "<style>a:link{color:" + Theme.highlightColor + ";}</style>"
+        function markdown(text, linkColor) {
+            linkColor = linkColor ? linkColor : Theme.highlightColor
+            return "<style>a:link{color:" + linkColor + ";}</style>"
                     +showdown.makeHtml(text)
         }
     }
