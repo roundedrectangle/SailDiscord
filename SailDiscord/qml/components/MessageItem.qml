@@ -47,19 +47,19 @@ ListItem {
 
         Row {
             id: row
-            width: {
+            width: parent.width - Theme.paddingLarge/*{
                 var res = 0
                 if(_firstSameAuthor) {
                     if (appSettings.sentBehaviour !== "n")
                         res = Math.min(parent.width,
-                                        _infoWidth + Math.max(contentsLbl.implicitWidth, infoRow.width));
+                                        _infoWidth + Math.max(contentsLbl.width, infoRow.width));
                     else return _substractedInnerWidth
                 } else res = Math.max(masterWidth,
                                        Math.min(parent.width,
-                                                _infoWidth + contentsLbl.implicitWidth))
-                /*if (sent)*/ res -= Theme.paddingLarge
+                                                _infoWidth + contentsLbl.width))
+                /*if (sent)/ res -= Theme.paddingLarge
                 return res
-            }
+            }*/
             height: !_firstSameAuthor ? textContainer.height : childrenRect.height
             // align right if sent and set to reversed/right aligned
             anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
@@ -92,15 +92,23 @@ ListItem {
                     id: infoRow
                     visible: _firstSameAuthor
                     spacing: Theme.paddingSmall
+                    width: Math.min(parent.width, implicitWidth)//iconRow.width + authorLbl.width + timeLbl.width)
+                    anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
 
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-secure"; visible: flags.system }
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-developer"; visible: flags.bot }
-                    //Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: flags.edit }
+                    Row {
+                        id: iconRow
+                        spacing: Theme.paddingSmall
+                        anchors.verticalCenter: parent.verticalCenter
+                        Icon { source: "image://theme/icon-s-secure"; visible: flags.system }
+                        Icon { source: "image://theme/icon-s-developer"; visible: flags.bot }
+                    }
 
                     Label {
                         id: authorLbl
+                        width: Math.min(parent.parent.width - iconRow.width - timeLbl.width - parent.spacing*2, implicitWidth)
                         text: author
                         color: flags.color ? flags.color : Theme.secondaryColor
+                        truncationMode: TruncationMode.Fade
                     }
 
                     Label {
@@ -110,21 +118,14 @@ ListItem {
                     }
                 }
 
-                /*Icon {
-                    id: editedIcon; anchors.verticalCenter: parent.verticalCenter
-                    source: "image://theme/icon-s-edit"; visible: flags.edit
-                    width: visible ? implicitWidth : 0; height: visible ? implicitHeight : 0
-                    anchors.bottom: parent.bottom
-                    anchors.top: anchors.bottom - height
-                }*/
-
                 Label {
-                    // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they will break with markdown support
+                    // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
                     id: contentsLbl
                     wrapMode: Text.Wrap
                     textFormat: Text.RichText
-                    text: shared.markdown(contents)
+                    text: shared.markdown(contents
                           + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                          )
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined

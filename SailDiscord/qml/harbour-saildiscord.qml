@@ -161,7 +161,9 @@ ApplicationWindow {
 
         Component.onCompleted: {
             //clear()
-            migrateSettings.migrateConfiguration()
+            migrateSettings.migrateConfiguration() // Delete C++ settings
+            if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
+                appSettings.sentBehaviour = "r"
         }
 
         ConfigurationGroup {

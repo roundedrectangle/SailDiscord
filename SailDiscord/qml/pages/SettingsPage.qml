@@ -113,13 +113,13 @@ Page {
 
                         ComboBox {
                             id: sentMessagesBox
-                            property var values: ["r", "a", "n"]
+                            property var values: ["r", "n"]
                             label: qsTr("Sent messages")
                             description: qsTr("Sets for which messages extra padding should apply")
                             currentIndex: values.indexOf(appSettings.sentBehaviour) == -1 ? 0 : values.indexOf(appSettings.sentBehaviour)
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("reversed (default)") }
-                                MenuItem { text: qsTr("align right") }
+                                //MenuItem { text: qsTr("align right") }
                                 MenuItem { text: qsTr("nothing") }
                             }
 
