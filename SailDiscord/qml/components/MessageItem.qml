@@ -41,7 +41,7 @@ ListItem {
             id: referenceLoader
             sourceComponent: (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) ? referenceComponent : null
             width: parent.width
-            height: item == undefined ? 0 : item.contentHeight
+            height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
         }
 
@@ -134,7 +134,7 @@ ListItem {
         Loader {
             sourceComponent: reference.type == 3 ? referenceComponent : null
             width: parent.width
-            height: item == undefined ? 0 : item.contentHeight
+            height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
         }
     }

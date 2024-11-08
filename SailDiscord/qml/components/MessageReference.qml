@@ -69,7 +69,7 @@ ListItem {
                     textFormat: Text.RichText
                     text: _resolvedReference._contents
                     wrapMode: Text.Wrap
-                    color: Theme.secondaryColor
+                    color: highlighted ? Theme.highlightColor : Theme.secondaryColor
 
                     Timer {
                         running: true
@@ -103,17 +103,17 @@ ListItem {
         })
     }
 
-    /*menu: Component { ContextMenu {
+    menu: Component { ContextMenu {
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
-            visible: _resolvedReference.userid != '-1'
+            visible: !!_resolvedReference && _resolvedReference.userid != '-1' && !!_resolvedReference.userid
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference._author, icon: _resolvedReference._pfp, nicknameGiven: _resolvedReference._flags.nickAvailable })
         }
 
         MenuItem { text: qsTr("Copy")
             onClicked: Clipboard.text = _resolvedReference._contents
-            visible: _resolvedReference._contents.length > 0
+            visible: !!_resolvedReference && !!_resolvedReference._contents
         }
-    }}*/
+    }}
 
     /*Component { // TODO
         id: referencePage

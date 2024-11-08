@@ -71,8 +71,8 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="138"/>
-        <location filename="../qml/components/MessageReference.qml" line="99"/>
+        <location filename="../qml/components/MessageItem.qml" line="143"/>
+        <location filename="../qml/components/MessageReference.qml" line="108"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
@@ -118,17 +118,17 @@
         <translation>Kunde inte läsa in bild %1. Rapportera gärna till utvecklare</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="211"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
         <source>Connection failure: %1</source>
         <translation>Anslutningsfel: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="213"/>
         <source>Login failure: %1</source>
         <translation>Inloggningsfel: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="222"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="223"/>
         <source>Python error: %1</source>
         <translation>Pythonfel: %1</translation>
     </message>
@@ -203,12 +203,12 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="115"/>
+        <location filename="../qml/components/MessageItem.qml" line="123"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="143"/>
+        <location filename="../qml/components/MessageItem.qml" line="148"/>
         <source>Copy</source>
         <translation>Kopiera</translation>
     </message>
@@ -216,7 +216,7 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="104"/>
+        <location filename="../qml/components/MessageReference.qml" line="113"/>
         <source>Copy</source>
         <translation type="unfinished">Kopiera</translation>
     </message>
@@ -224,17 +224,17 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="34"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="38"/>
         <source>No messages</source>
         <translation>Inga meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="35"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="39"/>
         <source>Say hi ;)</source>
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="140"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="143"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>
@@ -768,32 +768,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="97"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="98"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="98"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="100"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="100"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="101"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="101"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="102"/>
         <source>Idle</source>
         <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="104"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>
