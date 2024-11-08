@@ -170,6 +170,10 @@
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>(edited)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesPage</name>

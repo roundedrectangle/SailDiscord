@@ -215,7 +215,7 @@ Page {
             appendDemo(false, "Some long messages...")
 
 
-            // TODO
+            // TODO: attachments and replies
             //appendDemo(true, "Hey everyone, look at this pic!", {_attachments: [{}]})
 
             appendDemo2({_contents: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})

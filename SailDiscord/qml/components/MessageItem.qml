@@ -94,7 +94,7 @@ ListItem {
 
                     Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-secure"; visible: flags.system }
                     Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-developer"; visible: flags.bot }
-                    Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: flags.edit }
+                    //Icon { anchors.verticalCenter: parent.verticalCenter; source: "image://theme/icon-s-edit"; visible: flags.edit }
 
                     Label {
                         id: authorLbl
@@ -109,16 +109,42 @@ ListItem {
                     }
                 }
 
-                LinkedLabel {
+                /*Row {
+                    width: parent.width
+                    height: parent.height
+                    LinkedLabel {
+                        id: contentsLbl
+                        textFormat: Text.RichText
+                        plainText: contents
+                        width: parent.width - editedIcon.width
+                                          // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
+                        horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
+
+                        color: Theme.primaryColor
+                        linkColor: Theme.highlightColor
+                        defaultLinkActions: false
+                        onLinkActivated: LinkHandler.openOrCopyUrl(link)
+                    }
+
+                    Icon {
+                        id: editedIcon; anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-edit"; visible: flags.edit
+                        width: visible ? implicitWidth : 0; height: visible ? implicitHeight : 0
+                        anchors.bottom: parent.bottom
+                        anchors.top: anchors.bottom - height
+                    }
+                }*/
+
+                Label {
+                    // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they will break with markdown support
                     id: contentsLbl
-                    plainText: contents
+                    textFormat: Text.RichText
+                    text: "<style>a:link{color:" + linkColor + ";}</style>" // Fix link color
+                               + contents
+                               + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-
-                    color: Theme.primaryColor
-                    linkColor: Theme.highlightColor
-                    defaultLinkActions: false
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
                 }
 
