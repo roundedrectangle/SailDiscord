@@ -17,8 +17,7 @@ CONFIG += sailfishapp
 PKGCONFIG += qt5embedwidget
 
 SOURCES += \
-    src/harbour-saildiscord.cpp \
-    src/settings.cpp
+    src/harbour-saildiscord.cpp
 
 DISTFILES += \
     harbour-saildiscord.desktop \
@@ -64,8 +63,7 @@ TRANSLATIONS += \
     translations/harbour-saildiscord-ru.ts \
     translations/harbour-saildiscord-sv.ts
 
-HEADERS += \
-    src/settings.h
+HEADERS +=
 
 images.files = images
 images.path = /usr/share/$${TARGET}

@@ -2,7 +2,6 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
 import io.thp.pyotherside 1.5
-import harboursaildiscord.Logic 1.0
 import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
@@ -149,8 +148,6 @@ ApplicationWindow {
         }
     }
 
-    SettingsMigrationAssistant { id: migrateSettings }
-
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one
         id: appConfiguration
@@ -160,8 +157,6 @@ ApplicationWindow {
         property bool usernameTutorialCompleted: false
 
         Component.onCompleted: {
-            //clear()
-            migrateSettings.migrateConfiguration() // Delete C++ settings
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
                 appSettings.sentBehaviour = "r"
         }

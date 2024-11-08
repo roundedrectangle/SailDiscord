@@ -9,8 +9,6 @@
 
 #include <sailfishapp.h>
 
-#include "settings.h"
-
 #include "requires_defines.h"
 
 int main(int argc, char *argv[])
@@ -19,7 +17,6 @@ int main(int argc, char *argv[])
     app->setApplicationName("harbour-saildiscord");
     app->setOrganizationDomain("io.github.roundedrectangle");
     app->setOrganizationName("io.github.roundedrectangle");
-    qmlRegisterType<SettingsMigrationAssistant>("harboursaildiscord.Logic", 1, 0, "SettingsMigrationAssistant");
 
     QScopedPointer<QQuickView> view(SailfishApp::createView());
     view->rootContext()->setContextProperty("APP_VERSION", QString(APP_VERSION));
