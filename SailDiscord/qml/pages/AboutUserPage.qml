@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../modules/Opal/About"
+import "../modules/Opal/LinkHandler"
 
 // This code uses some hacky ways to modify Opal.About to make it work with a user. Opal.About was not designed for this
 
@@ -76,6 +77,12 @@ AboutPageBase {
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
         _develInfoSection.parent.children[3].textFormat = Text.RichText
+        _develInfoSection.parent.children[3].linkActivated.connect(function(link) {
+            // Workaround for replacing default ExternalUrlPage with the latest LinkHandler
+            pageStack.completeAnimation()
+            pageStack.pop(undefined, PageStackAction.Immediate)
+            LinkHandler.openOrCopyUrl(link)
+        })
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)

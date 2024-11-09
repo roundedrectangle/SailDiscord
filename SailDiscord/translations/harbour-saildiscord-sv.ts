@@ -73,7 +73,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="107"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
@@ -82,22 +82,22 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="53"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="54"/>
         <source>This user is a system account</source>
         <translation>Denna användare är ett systemkonto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="60"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>This user is a bot</source>
         <translation>Detta är en användarbot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="66"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="67"/>
         <source>Username</source>
         <translation>Användarnamn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="71"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="72"/>
         <source>Discord member since</source>
         <translation>Discord-medlem sedan</translation>
     </message>
@@ -768,32 +768,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="98"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="106"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="100"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="107"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="101"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="102"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
         <source>Idle</source>
         <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="112"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>
