@@ -36,7 +36,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Swedish</source>
-        <translation type="unfinished">Шведский</translation>
+        <translation>Шведский</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
@@ -71,7 +71,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="144"/>
+        <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="107"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
@@ -203,12 +203,12 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="124"/>
+        <location filename="../qml/components/MessageItem.qml" line="125"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(изменено)</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="150"/>
+        <location filename="../qml/components/MessageItem.qml" line="156"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
@@ -218,7 +218,7 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="112"/>
         <source>Copy</source>
-        <translation type="unfinished">Скопировать</translation>
+        <translation>Скопировать</translation>
     </message>
 </context>
 <context>
