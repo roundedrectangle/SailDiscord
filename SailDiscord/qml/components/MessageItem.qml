@@ -64,6 +64,8 @@ ListItem {
                 visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
                 opacity: _firstSameAuthor ? 1 : 0
                 errorString: author
+                highlightOnClick: true
+                onClicked: openAboutUser()
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
@@ -139,10 +141,16 @@ ListItem {
         }
     }
 
+    function openAboutUser() {
+        pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"),
+                       { userid: authorid, name: author, icon: pfp, nicknameGiven: flags.nickAvailable }
+                       )
+    }
+
     menu: Component { ContextMenu {
-        MenuItem { text: qsTranslate("AboutUser", "About", "User")
+        MenuItem {text: qsTranslate("AboutUser", "About", "User")
             visible: authorid != '-1'
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: authorid, name: author, icon: pfp, nicknameGiven: flags.nickAvailable })
+            onClicked: openAboutUser()
         }
 
         MenuItem { text: qsTr("Copy")

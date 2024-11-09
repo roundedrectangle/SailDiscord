@@ -2,7 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
-Image {
+HighlightImage {
     property string icon: ''
     property bool forceVisibility: false // force to be visible and full size even when no icon is available
     property bool errorString
@@ -15,6 +15,10 @@ Image {
 
     property bool rounded: true
     property bool adapt: true
+
+    signal clicked
+    property bool highlightOnClick
+    highlighted: false
 
     layer.enabled: rounded
     layer.effect: OpacityMask {
@@ -43,5 +47,16 @@ Image {
             onTriggered: progressCircle.value = (progressCircle.value + 0.01) % 1.0
             running: parent.parent.status == Image.Loading
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: parent.clicked()
+
+        hoverEnabled: true
+        onPressed: if (highlightOnClick) parent.highlighted = true
+        onEntered: if (highlightOnClick) parent.highlighted = true
+        onReleased: parent.highlighted = false
+        onExited: parent.highlighted = false
     }
 }

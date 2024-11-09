@@ -71,8 +71,8 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="143"/>
-        <location filename="../qml/components/MessageReference.qml" line="108"/>
+        <location filename="../qml/components/MessageItem.qml" line="144"/>
+        <location filename="../qml/components/MessageReference.qml" line="107"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="29"/>
         <source>About</source>
         <comment>User</comment>
@@ -203,12 +203,12 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="123"/>
+        <location filename="../qml/components/MessageItem.qml" line="124"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="148"/>
+        <location filename="../qml/components/MessageItem.qml" line="150"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -216,7 +216,7 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="113"/>
+        <location filename="../qml/components/MessageReference.qml" line="112"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
