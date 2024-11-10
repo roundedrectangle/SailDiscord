@@ -22,6 +22,7 @@ Very very WIP
 - [ ] Caching
 	- [X] Avatars
 - [X] References (forwarded, replies)
+- [X] Markdown
 - [ ] Automate translating, maybe with something like weblate
 - [ ] More features?
 
