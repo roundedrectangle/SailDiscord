@@ -8,6 +8,10 @@ Very very WIP
 
 **By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
 
+Join the [Telegram channel](https://t.me/saildiscord) for Sailcord development logs and releases.
+
+Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Besides general SailfishOS discussion, it also has several Sailcord-related channels including info, discussion and major announcements like releases.
+
 ## TODO
 
 - [X] Login using Discord
