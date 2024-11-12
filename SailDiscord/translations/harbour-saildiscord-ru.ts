@@ -609,7 +609,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>High-contrast mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим высокой контрастности</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="188"/>
