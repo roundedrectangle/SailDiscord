@@ -14,11 +14,29 @@ AboutPageBase {
     property string icon
     property string memberCount
 
-    appName: name
-    appIcon: icon == "None" ? "" : icon
-    description: qsTr("Member count: ")+memberCount
+    property bool easterEgg: false
+
+    appName: easterEgg ? "RoundedRectangle's server" : name
+    appIcon: icon == "None" ? "" : (easterEgg ? Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name)) : icon)
+    description: qsTr("Member count: ")+ (easterEgg ? 3 : memberCount)
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
+
+    extraSections: InfoSection {
+        visible: easterEgg
+        title: "Third member"
+        text: "Third member is @kozelderezel, which is developer's second account."
+    }
+
+    PullDownMenu {
+        parent: page.flickable
+        enabled: serverid == "1261605062162251848" && !easterEgg
+        visible: enabled
+        MenuItem {
+            text: "Two members mode"
+            onClicked: easterEgg = true
+        }
+    }
 }
