@@ -163,6 +163,11 @@ Page {
                             onCurrentItemChanged: appSettings.oneAuthorPadding = values[currentIndex]
                         }
 
+                        TextSwitch {
+                            text: qsTr("High-contrast mode")
+                            onCheckedChanged: appSettings.highContrastMessages = checked
+                            Component.onCompleted: checked = appSettings.highContrastMessages
+                        }
 
                         ButtonLayout {
                             Button {

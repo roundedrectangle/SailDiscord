@@ -52,7 +52,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="24"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
         <location filename="../qml/pages/FirstPage.qml" line="121"/>
         <source>About</source>
@@ -63,7 +63,7 @@
 <context>
     <name>AboutServerPage</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <source>Member count: </source>
         <translation>Membri: </translation>
     </message>
@@ -71,7 +71,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="151"/>
+        <location filename="../qml/components/MessageItem.qml" line="159"/>
         <location filename="../qml/components/MessageReference.qml" line="107"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <source>About</source>
@@ -203,12 +203,12 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="125"/>
+        <location filename="../qml/components/MessageItem.qml" line="133"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="156"/>
+        <location filename="../qml/components/MessageItem.qml" line="164"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>

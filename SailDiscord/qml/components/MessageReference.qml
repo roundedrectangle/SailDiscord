@@ -42,7 +42,7 @@ ListItem {
                     id: systemItem
                     SystemMessageItem {
                         _model: _resolvedReference
-                        color: Theme.secondaryColor
+                        label.color: Theme.secondaryColor
                         highlightColor: Theme.secondaryHighlightColor
                     }
                 }

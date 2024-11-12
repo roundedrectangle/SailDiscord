@@ -94,6 +94,15 @@ Page {
                             default: return systemItem
                             }
 
+                        Rectangle {
+                            anchors.fill: parent
+                            visible: appSettings.highContrastMessages && parent.status == Loader.Ready
+                            gradient: Gradient {
+                                GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0) }
+                                GradientStop { position: 1.0; color: Theme.rgba(Theme.secondaryColor, 0.1) }
+                            }
+                        }
+
                         Component {
                             id: defaultItem
                             MessageItem {
@@ -124,7 +133,7 @@ Page {
 
                         Component {
                             id: systemItem
-                            SystemMessageItem { _model: model; horizontalAlignment: Text.AlignHCenter }
+                            SystemMessageItem { _model: model; label.horizontalAlignment: Text.AlignHCenter }
                         }
                     }
 

@@ -180,6 +180,7 @@ ApplicationWindow {
             property bool alignMessagesText: true
             property string messageGrouping: "d"
             property string oneAuthorPadding: "a"
+            property bool highContrastMessages: false
 
             // Session
             property int cachePeriod: 1
