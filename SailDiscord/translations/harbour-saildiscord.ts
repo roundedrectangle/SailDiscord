@@ -4,8 +4,8 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="62"/>
-        <location filename="../qml/pages/LoginDialog.qml" line="21"/>
+        <location filename="../qml/pages/FirstPage.qml" line="61"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
         <translation type="unfinished"></translation>
@@ -52,9 +52,9 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <location filename="../qml/pages/FirstPage.qml" line="121"/>
+        <location filename="../qml/pages/FirstPage.qml" line="120"/>
         <source>About</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -63,7 +63,7 @@
 <context>
     <name>AboutServerPage</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
         <source>Member count: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -71,7 +71,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="159"/>
+        <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="107"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <source>About</source>
@@ -118,17 +118,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="212"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="221"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="213"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="222"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="223"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="232"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -136,12 +136,12 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="54"/>
+        <location filename="../qml/pages/FirstPage.qml" line="53"/>
         <source>Loading</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="67"/>
+        <location filename="../qml/pages/FirstPage.qml" line="66"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -170,32 +170,32 @@
 <context>
     <name>LoginDialog</name>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="26"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="25"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="31"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use web page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="31"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="30"/>
         <source>Use token</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="42"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="41"/>
         <source>Please login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="43"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="42"/>
         <source>Login</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="95"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="94"/>
         <source>Token</source>
         <translation type="unfinished"></translation>
     </message>
@@ -203,12 +203,12 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="133"/>
+        <location filename="../qml/components/MessageItem.qml" line="125"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="164"/>
+        <location filename="../qml/components/MessageItem.qml" line="156"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,7 +234,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="143"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="152"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
@@ -602,142 +602,147 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="169"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
+        <source>High-contrast mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="188"/>
         <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="194"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="198"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="203"/>
         <source>Clear cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="205"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
         <source>Reset all settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="225"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="230"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
         <source>On app restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="227"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Hourly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Daily</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="234"/>
         <source>Weekly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="230"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Monthly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>Half-yearly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>Yearly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="244"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="254"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
         <source>Networking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="269"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
         <source>Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="275"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
         <source>global proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="281"/>
         <source>disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
         <source>custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="284"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="289"/>
         <source>HTTP proxy address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="285"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="290"/>
         <source>Specify port by semicolon, if required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="290"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="295"/>
         <source>Debugging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="292"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="297"/>
         <source>Show info messages in notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="309"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Settings reset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="310"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>
@@ -745,12 +750,12 @@
 <context>
     <name>SystemMessageItem</name>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="15"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="21"/>
         <source>%1 joined the server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/SystemMessageItem.qml" line="18"/>
+        <location filename="../qml/components/SystemMessageItem.qml" line="24"/>
         <source>Unknown message type: %1</source>
         <translation type="unfinished"></translation>
     </message>

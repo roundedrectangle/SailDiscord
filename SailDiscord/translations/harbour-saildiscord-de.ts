@@ -592,6 +592,10 @@
         <source>The only supported reply types at the moment are replied and forwarded messages</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>High-contrast mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SystemMessageItem</name>
