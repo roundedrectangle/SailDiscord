@@ -156,6 +156,7 @@ ApplicationWindow {
 
         property string token: ""
         property bool usernameTutorialCompleted: false
+        property bool legacyMode: false
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
@@ -208,7 +209,14 @@ ApplicationWindow {
                 myPage.loading = false;
                 myPage.username = _username;
             })
-            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) { myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id}) })
+            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) {
+                if (appConfiguration.legacyMode && _id == "1261605062162251848") {
+                    _name = "RoundedRectangle's server"
+                    _icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
+                    _memberCount = 3
+                }
+                myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id})
+            })
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })

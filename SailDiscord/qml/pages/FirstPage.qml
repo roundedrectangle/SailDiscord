@@ -15,7 +15,6 @@ Page {
     property string username: ""
 
     property alias serversModel: serversModel
-
     Timer {
         //credit: Fernschreiber
         id: openLoginDialogTimer
