@@ -53,13 +53,10 @@ Page {
         BusyLabel { running: loading }
 
         PullDownMenu {
-            busy: loading
-
             MenuItem {
                 text: qsTranslate("AboutApp", "About", "App")
                 onClicked: pageStack.push("AboutPage.qml")
             }
-
             MenuItem {
                 text: qsTr("Settings")
                 onClicked: pageStack.push("SettingsPage.qml")
@@ -67,7 +64,6 @@ Page {
         }
 
         header: PageHeader {
-            id: header_name
             title: username
 
             MouseArea {
@@ -130,13 +126,13 @@ Page {
         section {
             property: "modelIndex"
             delegate: Loader {
+                width: parent.width
                 sourceComponent:
                     if (!serversModel.get(Number(section)).folder ||
                             Object.keys(serversModel.get(Number(section)).folder).length == 0)
                         return section == 0 ? undefined : separatorComponent
                     else return folderComponent
-                width: parent.width
-                Component.onCompleted: console.log(serversModel.get(Number(section)).folder)
+
                 Component {
                     id: folderComponent
                     SectionHeader {
