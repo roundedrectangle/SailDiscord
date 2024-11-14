@@ -218,9 +218,9 @@ ApplicationWindow {
                 // heads up: QQMLListModel can convert:
                 // arrays to QQMLListModel instances
                 // undefined to empty objects aka {} when other elements are objects
-                if (!firstInFolder) folder = {}
+                //if (!firstInFolder) folder = {}
                 var i = myPage.serversModel.count
-                myPage.serversModel.insert(i, {_id: _id, name: name, image: icon, memberCount: memberCount, modelIndex: i, folder: folder})
+                myPage.serversModel.insert(i, {_id: _id, name: name, image: icon, memberCount: memberCount, modelIndex: i, folder: folder, folderDisplayed: firstInFolder})
             })
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
