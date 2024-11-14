@@ -98,6 +98,8 @@ Page {
         delegate: Loader {
             sourceComponent: folder ? serverFolderComponent : serverItemComponent
             Component.onCompleted: if (folder) console.log(JSON.stringify(serversModel.get(index)))
+            width: parent.width
+            property var _index: index
             Component {
                 id: serverItemComponent
                 ServerListItem {
@@ -110,9 +112,38 @@ Page {
 
             Component {
                 id: serverFolderComponent
-                // TODO: ColumnView
-                Item {
-                    Component.onCompleted: console.log("Hello, World from a folder!")
+                Column {
+                    width: parent.width
+                    SectionHeader {
+                        id: folderHeader
+                        visible: name
+                        color: myPage.serversModel.get(_index).color == "" ? palette.highlightColor : myPage.serversModel.get(_index).color
+                        text: name
+                    }
+                    Row {
+                        width: parent.width
+                        Item {
+                            width: Theme.paddingLarge
+                            height: parent.height
+                            Rectangle {
+                                width: Theme.paddingSmall
+                                color: folderHeader.color
+                                height: parent.height
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                        }
+
+                        ColumnView {
+                            model: myPage.serversModel.get(_index).servers
+                            delegate: ServerListItem {
+                                serverid: _id
+                                title: name
+                                icon: image
+                                members: memberCount
+                            }
+                            itemHeight: Theme.itemSizeLarge
+                        }
+                    }
                 }
             }
         }
