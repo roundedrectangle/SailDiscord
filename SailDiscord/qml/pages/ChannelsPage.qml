@@ -35,9 +35,7 @@ Page {
 
         section {
             property: "categoryname"
-            delegate: SectionHeader {
-                text: section
-            }
+            delegate: SectionHeader { text: section }
         }
 
         delegate: ListItem {

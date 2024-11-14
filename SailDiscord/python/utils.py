@@ -37,7 +37,7 @@ async def cancel_gen(agen):
         await task
     await agen.aclose()
 
-def date_to_qmlfriendly_timestamp(date: datetime):
+def qml_date(date: datetime):
     """Convert to UTC Unix timestamp using milliseconds"""
     return date.replace(tzinfo=timezone.utc).timestamp()*1000
 
@@ -92,3 +92,14 @@ def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
         res[0]['maxheight'] = max((a.height or -1) if a.content_type.startswith('image') else -1 for a in attachments)
         res[0]['maxwidth'] = max((a.width or -1) if a.content_type.startswith('image') else -1 for a in attachments)
     return res
+
+def hex_color(color: discord.Color):
+    return '' if color in (None, discord.Color.default()) else str(color)
+
+def dict_folder(folder: discord.GuildFolder) -> dict:
+    if not isinstance(folder, discord.GuildFolder): return
+    return {
+        '_id': folder.id,
+        'name': folder.name,
+        'color': hex_color(folder.color),
+    }

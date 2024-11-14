@@ -209,13 +209,18 @@ ApplicationWindow {
                 myPage.loading = false;
                 myPage.username = _username;
             })
-            setHandler('server', function(_id, _name, _icon, _memberCount, _cached) {
+            setHandler('server', function(_id, folder, firstInFolder, name, icon, memberCount) {
                 if (appConfiguration.legacyMode && _id == "1261605062162251848") {
                     _name = "RoundedRectangle's server"
                     _icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
                     _memberCount = 3
                 }
-                myPage.serversModel.append({_id: _id, name: _name, image: _icon, memberCount: _memberCount, cached: _cached, sectionId: myPage.serversModel.count == 0 ? "undefined" : _id})
+                // heads up: QQMLListModel can convert:
+                // arrays to QQMLListModel instances
+                // undefined to empty objects aka {} when other elements are objects
+                if (!firstInFolder) folder = {}
+                var i = myPage.serversModel.count
+                myPage.serversModel.insert(i, {_id: _id, name: name, image: icon, memberCount: memberCount, modelIndex: i, folder: folder})
             })
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })

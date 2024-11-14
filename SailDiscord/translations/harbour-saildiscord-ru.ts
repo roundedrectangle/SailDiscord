@@ -105,7 +105,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="115"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="113"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -118,17 +118,17 @@
         <translation>Произошла ошибка при загрузки изображения %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="221"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="223"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="222"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="224"/>
         <source>Login failure: %1</source>
         <translation>Ошибка вход: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="232"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="234"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>

@@ -130,17 +130,28 @@ Page {
         }
 
         section {
-            property: "_id"
-            delegate: Separator {
-                color: Theme.primaryColor
+            property: "modelIndex"
+            delegate: Loader {
+                sourceComponent:
+                    if (!serversModel.get(Number(section)).folder ||
+                            Object.keys(serversModel.get(Number(section)).folder).length == 0)
+                        return section == 0 ? undefined : separatorComponent
+                    else return folderComponent
                 width: parent.width
-                horizontalAlignment: Qt.AlignHCenter
-
-                Component.onCompleted: {
-                    // why is this required?
-                    visible = section != serversModel.get(0)._id;
-                    opacity = visible ? 1 : 0
-                    height = visible ? undefined : 0
+                Component.onCompleted: console.log(serversModel.get(Number(section)).folder)
+                Component {
+                    id: folderComponent
+                    SectionHeader {
+                        text: serversModel.get(Number(section)).folder.name
+                    }
+                }
+                Component {
+                    id: separatorComponent
+                    Separator {
+                        color: Theme.primaryColor
+                        width: parent.width
+                        horizontalAlignment: Qt.AlignHCenter
+                    }
                 }
             }
         }

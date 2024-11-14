@@ -25,18 +25,26 @@ import discord, requests, aiohttp.connector
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-def send_servers(guilds):
+def send_server(g: discord.Guild, folder: Optional[discord.GuildFolder]=None, first_folder:bool=True):
+    """first_folder defaults to True for no folders"""
+    icon = '' if g.icon == None else \
+            str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
+
+    qsend('server', str(g.id), dict_folder(folder), first_folder, str(g.name), icon,
+        -1 if g.member_count is None else g.member_count,
+    )
+    if icon != '':
+        comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
+
+def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]]):
     comm.ensure_constants()
-    lst = list(guilds)
-    for g in reversed(lst):
-        count = g.member_count if g.member_count != None else -1
-
-        icon = '' if g.icon == None else \
-                str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
-
-        qsend('server', str(g.id), str(g.name), icon, count)
-        if icon != '':
-            comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
+    for g in guilds:
+        if isinstance(g, discord.Guild):
+            send_server(g)
+        elif isinstance(g, discord.GuildFolder):
+            send_server(g.guilds[0], g)
+            for j in g.guilds[1:]:
+                send_server(j, g, False)
 
 def send_channel(c, user_id):
     if c.type == discord.ChannelType.category:
@@ -62,14 +70,14 @@ def generate_base_message(message: Union[discord.Message, Any], is_history=False
         comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
     
     return (str(message.guild.id), str(message.channel.id),
-            str(message.id), date_to_qmlfriendly_timestamp(message.created_at),
+            str(message.id), qml_date(message.created_at),
             bool(message.edited_at),
 
             {"id": str(message.author.id), "sent": message.author.id == comm.client.user.id,
             "name": str(getattr(message.author, 'nick', None) or message.author.name),
             "nick_avail": bool(getattr(message.author, 'nick', None)), # hasattr doesn't handle None values
             "pfp": icon, "bot": message.author.bot, "system": message.author.system,
-            "color": '' if message.author.color in (discord.Color.default(), None) else str(message.author.color)},
+            "color": hex_color(message.author.color)},
             
             is_history, convert_attachments(message.attachments, comm.cacher)
         )
@@ -107,12 +115,11 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
 
 def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     status, is_on_mobile = 0, False # default
-    color = '' if user.color in (None, discord.Color.default()) else str(user.color)
     if isinstance(user, discord.MemberProfile):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, is_on_mobile, user.name, user.bot, user.system, color)
+    qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, user.name, user.bot, user.system, hex_color(user.color))
 
 def send_myself(client: discord.Client):
     user = client.user
@@ -124,7 +131,7 @@ def send_myself(client: discord.Client):
             str(comm.cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
 
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', date_to_qmlfriendly_timestamp(user.created_at), status, client.is_on_mobile(), icon)
+    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), icon)
 
     if icon != '':
         comm.cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
@@ -138,7 +145,7 @@ class MyClient(discord.Client):
 
     async def on_ready(self, first_run=True):
         qsend('logged_in', str(self.user.name))
-        send_servers(self.guilds)
+        send_servers(self.sorted_guilds_and_folders)
 
         # Setup control variables
         self.current_server = None
@@ -209,16 +216,19 @@ class MyClient(discord.Client):
             user = await self.current_server.fetch_member_profile(user_id)
         else: user = await self.fetch_user_profile(user_id)
 
-        #await self.loop.run_in_executor(None, send_user, user)
         send_user(user)
 
     def begin_disconnect(self):
         self.pending_close_task = self.loop.create_task(self.close())
     
-    # async def send_reference(self, ref_id, reply_id):
-    #     ref = await self.current_channel.fetch_message(ref_id)
-    #     reply = self.current_channel.get_partial_message(reply_id)
-    #     send_message(ref, reply_to=reply)
+    @property
+    def sorted_guilds_and_folders(self) -> List[Union[discord.Guild, discord.GuildFolder]]:
+        folders, loaded_ids = [], []
+        if self.settings:
+            for f in self.settings.guild_folders:
+                folders.append(f if f.id or len(f) != 1 else f.guilds[0])
+                loaded_ids += (g.id for g in f.guilds)
+        return folders + list(g for g in self.guilds if g.id not in loaded_ids)
 
 class Communicator:
     downloads: Optional[Path] = None
