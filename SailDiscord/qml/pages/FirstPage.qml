@@ -95,36 +95,24 @@ Page {
 
         model: serversModel
 
-        delegate: ServerListItem {
-            title: name
-            icon: image
-            /*Rectangle {
-                visible: folder !== undefined
-                color: folder !== undefined ? folder.color : "transparent"
-                anchors.fill: parent
-                z: -1
-            }*/
-
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
-                    serverid: _id,
-                    name: name,
-                    icon: icon,
-                    memberCount: memberCount
-                })
+        delegate: Loader {
+            sourceComponent: folder ? serverFolderComponent : serverItemComponent
+            Component.onCompleted: if (folder) console.log(JSON.stringify(serversModel.get(index)))
+            Component {
+                id: serverItemComponent
+                ServerListItem {
+                    serverid: _id
+                    title: name
+                    icon: image
+                    members: memberCount
+                }
             }
 
-            menu: Component {
-                ContextMenu {
-                    MenuItem {
-                        text: qsTranslate("AboutServer", "About", "Server")
-                        onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
-                             serverid: _id,
-                             name: name,
-                             icon: icon,
-                             memberCount: memberCount
-                         })
-                    }
+            Component {
+                id: serverFolderComponent
+                // TODO: ColumnView
+                Item {
+                    Component.onCompleted: console.log("Hello, World from a folder!")
                 }
             }
         }

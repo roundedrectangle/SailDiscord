@@ -4,8 +4,10 @@ import QtGraphicalEffects 1.0
 
 ListItem {
     id: root
+    property string serverid
     property string title
     property string icon
+    property string members
 
     property bool _iconAvailable: (icon != "None" && icon != "") || appSettings.emptySpace
 
@@ -30,6 +32,18 @@ ListItem {
             width: parent.width - profileIcon.width - parent.spacing*1
             truncationMode: TruncationMode.Fade
             text: title
+        }
+    }
+
+    onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: serverid, name: title, icon: image, memberCount: members })
+    menu: Component {
+        ContextMenu {
+            MenuItem {
+                text: qsTranslate("AboutServer", "About", "Server")
+                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
+                                          { serverid: serverid, name: title, icon: image, memberCount: members }
+                                          )
+            }
         }
     }
 }

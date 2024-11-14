@@ -229,11 +229,13 @@ ApplicationWindow {
             setHandler('server', function() { myPage.serversModel.append(shared.processServer.apply(null, arguments)) }
             )
             setHandler('serverfolder', function(_id, name, color, servers) {
+                var data = {folder: true, _id: _id, name: name, color: color, servers: []}
                 servers.forEach(function(server, i) {
                     // For now just the folders properties logic (name, color, etc.)
                     console.log("Folder found:", name, "color", color, "id", _id)
-                    myPage.serversModel.append(shared.processServer.apply(null, server))
+                    data.servers.push(shared.processServer.apply(null, server))
                 })
+                myPage.serversModel.append(data)
             })
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
