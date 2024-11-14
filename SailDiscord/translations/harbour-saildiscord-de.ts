@@ -90,25 +90,6 @@
     </message>
 </context>
 <context>
-    <name>Errors</name>
-    <message>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FirstPage</name>
     <message>
         <source>Settings</source>
@@ -601,13 +582,6 @@
     </message>
     <message>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>harbour-saildiscord</name>
-    <message>
-        <source>Downloaded file %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

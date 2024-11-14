@@ -54,7 +54,6 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
-        <location filename="../qml/pages/FirstPage.qml" line="116"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Om</translation>
@@ -108,29 +107,6 @@
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
         <translation>Kanalen stöds ej</translation>
-    </message>
-</context>
-<context>
-    <name>Errors</name>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="84"/>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation>Kunde inte läsa in bild %1. Rapportera gärna till utvecklare</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="226"/>
-        <source>Connection failure: %1</source>
-        <translation>Anslutningsfel: %1</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="227"/>
-        <source>Login failure: %1</source>
-        <translation>Inloggningsfel: %1</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="237"/>
-        <source>Python error: %1</source>
-        <translation>Pythonfel: %1</translation>
     </message>
 </context>
 <context>
@@ -755,14 +731,6 @@
         <location filename="../qml/components/SystemMessageItem.qml" line="24"/>
         <source>Unknown message type: %1</source>
         <translation>Okänd meddelandetyp: %1</translation>
-    </message>
-</context>
-<context>
-    <name>harbour-saildiscord</name>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="89"/>
-        <source>Downloaded file %1</source>
-        <translation>Laddade ner filen %1</translation>
     </message>
 </context>
 <context>

@@ -54,7 +54,6 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
-        <location filename="../qml/pages/FirstPage.qml" line="116"/>
         <source>About</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -107,29 +106,6 @@
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Errors</name>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="84"/>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="226"/>
-        <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="227"/>
-        <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="237"/>
-        <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -752,14 +728,6 @@
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="24"/>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>harbour-saildiscord</name>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="89"/>
-        <source>Downloaded file %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -25,26 +25,23 @@ import discord, requests, aiohttp.connector
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-def send_server(g: discord.Guild, folder: Optional[discord.GuildFolder]=None, first_folder:bool=False):
+def gen_server(g: discord.Guild):
     """first_folder defaults to True for no folders"""
     icon = '' if g.icon == None else \
             str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
-
-    qsend('server', str(g.id), dict_folder(folder), first_folder, str(g.name), icon,
-        -1 if g.member_count is None else g.member_count,
-    )
     if icon != '':
         comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
+    return (str(g.id), g.name, icon,
+        -1 if g.member_count is None else g.member_count,
+    )
 
 def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]]):
     comm.ensure_constants()
     for g in guilds:
         if isinstance(g, discord.Guild):
-            send_server(g)
+            qsend('server', *gen_server(g))
         elif isinstance(g, discord.GuildFolder):
-            send_server(g.guilds[0], g, True)
-            for j in g.guilds[1:]:
-                send_server(j, g)
+            qsend('serverfolder', str(g.id), g.name or '', hex_color(g.color), [gen_server(i) for i in g.guilds])
 
 def send_channel(c, user_id):
     if c.type == discord.ChannelType.category:

@@ -98,12 +98,12 @@ Page {
         delegate: ServerListItem {
             title: name
             icon: image
-            Rectangle {
+            /*Rectangle {
                 visible: folder !== undefined
                 color: folder !== undefined ? folder.color : "transparent"
                 anchors.fill: parent
                 z: -1
-            }
+            }*/
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("ChannelsPage.qml"), {
@@ -130,11 +130,11 @@ Page {
         }
 
         section {
-            property: "modelIndex"
+            property: "_id"
             delegate: Loader {
                 width: parent.width
-                sourceComponent:
-                    serversModel.get(Number(section)).folderDisplayed ? folderComponent :
+                sourceComponent:section == serversModel.get(0)._id ? undefined : separatorComponent
+                    /*serversModel.get(Number(section)).folderDisplayed ? folderComponent :
                         (section == 0 ? undefined : separatorComponent)
                 Component.onCompleted: if (section == 0) console.log(serversModel.get(Number(section)).folderDisplayed)
 
@@ -148,7 +148,7 @@ Page {
                         }
                         text: serversModel.get(Number(section)).folder.name
                     }
-                }
+                }*/
                 Component {
                     id: separatorComponent
                     Separator {
