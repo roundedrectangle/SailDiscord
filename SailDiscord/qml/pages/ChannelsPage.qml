@@ -17,9 +17,8 @@ Page {
         model: chModel
         anchors.fill: parent
 
-        header: PageHeader {
-            title: name
-        }
+        header: PageHeader { title: name }
+        VerticalScrollDecorator {}
 
         PullDownMenu {
             MenuItem {

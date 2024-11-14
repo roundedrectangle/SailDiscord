@@ -65,6 +65,8 @@ Page {
                     clip: true
                     verticalLayoutDirection: ListView.BottomToTop
 
+                    VerticalScrollDecorator {}
+
                     function getVisibleIndexRange() { // this one actually works!
                         var center_x = messagesList.x + messagesList.width / 2
                         return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),

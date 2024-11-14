@@ -49,10 +49,8 @@ Page {
         id: firstPageContainer
         anchors.fill: parent
 
-        BusyLabel {
-            text: qsTr("Loading")
-            running: loading
-        }
+        VerticalScrollDecorator {}
+        BusyLabel { running: loading }
 
         PullDownMenu {
             busy: loading

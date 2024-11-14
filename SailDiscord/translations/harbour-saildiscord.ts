@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="61"/>
+        <location filename="../qml/pages/FirstPage.qml" line="59"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -53,8 +53,8 @@
     <name>AboutServer</name>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <location filename="../qml/pages/ChannelsPage.qml" line="26"/>
-        <location filename="../qml/pages/FirstPage.qml" line="120"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
+        <location filename="../qml/pages/FirstPage.qml" line="118"/>
         <source>About</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -105,7 +105,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="113"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
     </message>
@@ -118,17 +118,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="223"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="226"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="224"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="227"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="234"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="237"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -136,12 +136,7 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="53"/>
-        <source>Loading</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="66"/>
+        <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,7 +229,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="152"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="154"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
