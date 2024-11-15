@@ -230,11 +230,7 @@ ApplicationWindow {
             )
             setHandler('serverfolder', function(_id, name, color, servers) {
                 var data = {folder: true, _id: _id, name: name, color: color, servers: []}
-                servers.forEach(function(server, i) {
-                    // For now just the folders properties logic (name, color, etc.)
-                    console.log("Folder found:", name, "color", color, "id", _id)
-                    data.servers.push(shared.processServer.apply(null, server))
-                })
+                servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 myPage.serversModel.append(data)
             })
 

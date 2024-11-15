@@ -97,7 +97,6 @@ Page {
 
         delegate: Loader {
             sourceComponent: folder ? serverFolderComponent : serverItemComponent
-            Component.onCompleted: if (folder) console.log(JSON.stringify(serversModel.get(index)))
             width: parent.width
             property var _index: index
             Component {
@@ -152,22 +151,7 @@ Page {
             property: "_id"
             delegate: Loader {
                 width: parent.width
-                sourceComponent:section == serversModel.get(0)._id ? undefined : separatorComponent
-                    /*serversModel.get(Number(section)).folderDisplayed ? folderComponent :
-                        (section == 0 ? undefined : separatorComponent)
-                Component.onCompleted: if (section == 0) console.log(serversModel.get(Number(section)).folderDisplayed)
-
-                Component {
-                    id: folderComponent
-                    SectionHeader {
-                        Rectangle {
-                            anchors.fill: parent
-                            color: serversModel.get(Number(section)).folder.color
-                            z: -1
-                        }
-                        text: serversModel.get(Number(section)).folder.name
-                    }
-                }*/
+                sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
                 Component {
                     id: separatorComponent
                     Separator {
