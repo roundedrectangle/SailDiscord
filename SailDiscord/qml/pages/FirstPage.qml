@@ -98,7 +98,8 @@ Page {
         delegate: Loader {
             sourceComponent: folder ? serverFolderComponent : serverItemComponent
             width: parent.width
-            property var _index: index
+            property var _color: folder ? color : undefined
+            property var _servers: folder ? servers : undefined
             Component {
                 id: serverItemComponent
                 ServerListItem {
@@ -115,7 +116,7 @@ Page {
                     SectionHeader {
                         id: folderHeader
                         visible: name
-                        color: myPage.serversModel.get(_index).color == "" ? palette.highlightColor : myPage.serversModel.get(_index).color
+                        color: _color == "" ? palette.highlightColor : _color
                         text: name
                     }
                     Row {
@@ -132,7 +133,7 @@ Page {
                         }
 
                         ColumnView {
-                            model: myPage.serversModel.get(_index).servers
+                            model: _servers
                             delegate: serverItemComponent
                             itemHeight: Theme.itemSizeLarge
                         }

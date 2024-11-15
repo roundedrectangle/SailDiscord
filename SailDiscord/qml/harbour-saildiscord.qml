@@ -137,9 +137,9 @@ ApplicationWindow {
 
         function cleanupMessageCallbacks() {
             // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
-            python.setHandler("message", function() {}) // undefined is not used for messages not to be logged
-            python.setHandler("join", function() {})
-            python.setHandler("uknownmessage", function() {})
+            python.reset("message")
+            python.reset("join")
+            python.reset("uknownmessage")
         }
 
         function markdown(text, linkColor) {
@@ -252,6 +252,16 @@ ApplicationWindow {
             updater(myPage.serversModel.findById(id), arr.join(' '))
         }
 
+        function request(func, handlerName, args, handler) {
+            setHandler(handlerName, handler)
+            call('communicator.comm.'+func, args)
+        }
+        function reset(handler) {
+            // we unset handler so app won't crash on operating destroyed items
+            // undefined is not used for messages not to be logged
+            python.setHandler(handler, function() {})
+        }
+
         function requestChannels(guildid){ call('communicator.comm.get_channels', [guildid], function () {}) }
         function setCurrentChannel(guildid, channelid) { call('communicator.comm.set_channel', [guildid, channelid])}
         function resetCurrentChannel() { setCurrentChannel("", "") }
@@ -281,7 +291,5 @@ ApplicationWindow {
         }
 
         function getReference(channel, message, callback) { call('communicator.comm.get_reference', [channel, message], callback)}
-
-        function requestServerInfo(serverId) { call('communicator.comm.request_server_info', [serverId]) }
     }
 }

@@ -65,7 +65,7 @@ AboutPageBase {
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
         _legacyMode = appConfiguration.legacyMode // Only activate once in a session
-        python.setHandler('serverinfo'+serverid, function(memberCount, features) {
+        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, features) {
             _memberCount = memberCount
             _features = features
             if (_legacyMode) {
@@ -74,6 +74,5 @@ AboutPageBase {
             }
             busyIndicator.running = false
         })
-        python.requestServerInfo(serverid)
     }
 }

@@ -34,7 +34,7 @@ ListItem {
         }
     }
 
-    onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: serverid, name: title, icon: image, memberCount: members })
+    onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: serverid, name: title, icon: image })
     menu: Component {
         ContextMenu {
             MenuItem {
