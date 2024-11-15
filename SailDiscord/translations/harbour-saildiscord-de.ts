@@ -55,10 +55,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Community Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>This server is a community server</source>
         <translation type="unfinished"></translation>
     </message>

@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="57"/>
+        <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -69,11 +69,6 @@
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="51"/>
-        <source>Community Server</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="52"/>
         <source>This server is a community server</source>
         <translation type="unfinished"></translation>
     </message>
@@ -128,17 +123,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="231"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="251"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="232"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="252"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="242"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="261"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,7 +141,7 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="61"/>
+        <location filename="../qml/pages/FirstPage.qml" line="68"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>

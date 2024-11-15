@@ -11,7 +11,7 @@ import "modules/js/showdown.min.js" as ShowDown
 
 ApplicationWindow {
     id: mainWindow
-    initialPage: FirstPage { id: myPage } // TODO: bring back Component without removing Python from mainWindow
+    initialPage: Component { FirstPage { } } // TODO: bring back Component without removing Python from mainWindow
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
@@ -215,10 +215,10 @@ ApplicationWindow {
         id: python
         property bool initialized: false
 
-        Component.onCompleted: {
+        /*Component.onCompleted: {
             setHandler('logged_in', function(_username) {
-                myPage.loading = false;
-                myPage.username = _username;
+                myPage.loading = false
+                myPage.username = _username
             })
             setHandler('server', function() { myPage.serversModel.append(shared.processServer.apply(null, arguments)) }
             )
@@ -237,20 +237,39 @@ ApplicationWindow {
             call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()])
 
             initialized = true
+        }*/
+
+        function init(loggedInHandler, serverHandler, folderHandler) {
+            setHandler('logged_in', loggedInHandler) // function(username)
+            setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
+            setHandler('serverfolder', function(_id, name, color, servers) {
+                var data = {folder: true, _id: _id, name: name, color: color, servers: []}
+                servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
+                folderHandler(data)
+            }) // function(folderObject)
+
+            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
+            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
+
+            addImportPath(Qt.resolvedUrl("../python"))
+            importModule('communicator', function() {
+                call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()])
+                initialized = true
+            })
         }
 
         onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
         onReceived: console.log("got message from python: " + data)
 
         function login(token) {
-            myPage.loading = true
+            //myPage.loading = true
             call('communicator.comm.login', [token])
         }
-        function updateServer(what, updater) {
+        /*function updateServer(what, updater) {
             var arr = what.split('~')
             const id = arr.shift()
             updater(myPage.serversModel.findById(id), arr.join(' '))
-        }
+        }*/
 
         function request(func, handlerName, args, handler) {
             setHandler(handlerName, handler)

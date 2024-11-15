@@ -31,6 +31,7 @@ Page {
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
             loggingIn = false
+            loading = true
             python.login(appConfiguration.token)
         }
 
@@ -43,7 +44,13 @@ Page {
         onUsernameTutorialCompletedChanged: updatePage()
     }
 
-    Component.onCompleted: updatePage()
+    Component.onCompleted: {
+        python.init(function(u) {
+            loading = false
+            username = u
+        }, serversModel.append, serversModel.append)
+        updatePage()
+    }
 
     SilicaListView {
         id: firstPageContainer
