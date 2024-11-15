@@ -14,7 +14,7 @@ AboutPageBase {
     property string icon
 
     property string _memberCount
-    property var _features: {community: false}
+    property var _features: ({community:false, partnered:false, verified:false})
 
     appName: name
     appIcon: icon == "None" ? "" : icon
@@ -46,9 +46,35 @@ AboutPageBase {
             title: "Third member"
             text: "Third member is @kozelderezel, which is developer's second account."
         },
-        // Additional data; subject to change
-        InfoSection { visible: _features.community
-            text: qsTr("This server is a community server")
+        // Additional data
+        InfoSection {
+            visible: _features.community || _features.partnered || _features.verified
+            Row {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: Theme.paddingLarge
+
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-home"
+                    onClicked: Notices.show(qsTr("This server is a community server"), Notice.Short, Notice.Bottom)
+                    visible: _features.community
+                }
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-company"
+                    onClicked: Notices.show(qsTr("This server is a partnered server"), Notice.Short, Notice.Bottom)
+                    visible: _features.partnered
+                }
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-acknowledge"
+                    onClicked: Notices.show(qsTr("This server is a verified server"), Notice.Short, Notice.Bottom)
+                    visible: _features.verified
+                }
+            }
         }
 
     ]
@@ -64,7 +90,7 @@ AboutPageBase {
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
-        _features = {community: false}
+        _features = {community:false, partnered:false, verified:false}
         _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
         python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, features) {
             if (_legacyMode) {
