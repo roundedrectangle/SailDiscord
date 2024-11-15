@@ -63,6 +63,7 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
+        _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
         _features = {community: false}
         _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
         python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, features) {

@@ -33,16 +33,18 @@ ListItem {
     width: parent.width
     contentHeight: column.height
 
+    Component.onCompleted: if (contents.indexOf("quote of the day") !== -1) console.log(attachments, JSON.stringify(attachments))
+
     Column {
         id: column
         width: parent.width
 
         Loader {
             id: referenceLoader
-            sourceComponent: (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
+            Component.onCompleted: if (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
 
         Row {
@@ -134,10 +136,10 @@ ListItem {
         AttachmentsPreview { model: root.attachments }
 
         Loader {
-            sourceComponent: reference.type == 3 ? referenceComponent : null
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
+            Component.onCompleted: if (reference.type == 3) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
     }
 
