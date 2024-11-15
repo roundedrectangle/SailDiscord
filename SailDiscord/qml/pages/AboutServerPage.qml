@@ -14,7 +14,7 @@ AboutPageBase {
     property string icon
 
     property string _memberCount
-    property var _features: ({})
+    property var _features: {community: false}
 
     appName: name
     appIcon: icon == "None" ? "" : icon
@@ -48,7 +48,6 @@ AboutPageBase {
         },
         // Additional data; subject to change
         InfoSection { visible: _features.community
-            title: qsTr("Community Server")
             text: qsTr("This server is a community server")
         }
 
@@ -64,14 +63,15 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
-        _legacyMode = appConfiguration.legacyMode // Only activate once in a session
+        _features = {community: false}
+        _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
         python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, features) {
+            if (_legacyMode) {
+                memberCount = 2
+                features.community = false
+            }
             _memberCount = memberCount
             _features = features
-            if (_legacyMode) {
-                _memberCount = 2
-                _features = {}
-            }
             busyIndicator.running = false
         })
     }
