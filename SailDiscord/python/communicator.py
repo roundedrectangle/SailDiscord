@@ -131,7 +131,12 @@ def send_myself(client: discord.Client):
         comm.cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
 
 def send_guild_info(g: discord.Guild):
-    qsend(f'serverinfo{g.id}', str(-1 if g.member_count is None else g.member_count))
+    qsend(f'serverinfo{g.id}',
+        str(-1 if g.member_count is None else g.member_count),
+        {feature.lower(): feature in g.features for feature in
+            ('VERIFIED','PARTNERED','COMMUNITY','DISCOVERABLE','FEATURABLE')
+        },
+    )
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None

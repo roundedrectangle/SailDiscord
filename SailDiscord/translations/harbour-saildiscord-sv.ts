@@ -53,7 +53,7 @@
     <name>AboutServer</name>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="41"/>
-        <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
         <source>About</source>
         <comment>Server</comment>
@@ -63,9 +63,19 @@
 <context>
     <name>AboutServerPage</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="20"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <source>Member count: </source>
         <translation>Medlemsantal: </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="51"/>
+        <source>Community Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="52"/>
+        <source>This server is a community server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

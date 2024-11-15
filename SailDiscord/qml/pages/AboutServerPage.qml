@@ -14,6 +14,7 @@ AboutPageBase {
     property string icon
 
     property string _memberCount
+    property var _features: ({})
 
     appName: name
     appIcon: icon == "None" ? "" : icon
@@ -44,7 +45,13 @@ AboutPageBase {
         InfoSection { visible: _legacyMode
             title: "Third member"
             text: "Third member is @kozelderezel, which is developer's second account."
+        },
+        // Additional data; subject to change
+        InfoSection { visible: _features.community
+            title: qsTr("Community Server")
+            text: qsTr("This server is a community server")
         }
+
     ]
 
     // Load additional data
@@ -58,10 +65,12 @@ AboutPageBase {
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
         _legacyMode = appConfiguration.legacyMode // Only activate once in a session
-        python.setHandler('serverinfo'+serverid, function(memberCount) {
+        python.setHandler('serverinfo'+serverid, function(memberCount, features) {
             _memberCount = memberCount
+            _features = features
             if (_legacyMode) {
                 _memberCount = 2
+                _features = {}
             }
             busyIndicator.running = false
         })
