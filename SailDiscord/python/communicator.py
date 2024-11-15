@@ -33,7 +33,6 @@ def gen_server(g: discord.Guild):
     return (str(g.id), g.name, icon)
 
 def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]]):
-    comm.ensure_constants()
     for g in guilds:
         if isinstance(g, discord.Guild):
             qsend('server', *gen_server(g))
@@ -147,7 +146,12 @@ class MyClient(discord.Client):
 
     async def on_ready(self, first_run=True):
         qsend('logged_in', str(self.user.name))
-        send_servers(self.sorted_guilds_and_folders)
+        comm.ensure_constants()
+        if comm.server_folders:
+            send_servers(self.sorted_guilds_and_folders)
+        else:
+            for g in self.guilds:
+                qsend('server', *gen_server(g))
 
         # Setup control variables
         self.current_server = None
@@ -238,6 +242,7 @@ class Communicator:
     token: str = ''
     loginth: Thread
     client: MyClient = None
+    server_folders: bool = False
 
     def __init__(self):
         self.loginth = Thread()
@@ -252,7 +257,7 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, server_folders: bool):
         if self.cacher != None:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
@@ -260,6 +265,7 @@ class Communicator:
         self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
         self.set_proxy(proxy)
+        self.server_folders = server_folders
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""

@@ -201,6 +201,7 @@ ApplicationWindow {
             property string proxyType: "g"
             property string customProxy: ""
             property bool infoInNotifications: false
+            property bool folders: true
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
@@ -214,30 +215,6 @@ ApplicationWindow {
     Python {
         id: python
         property bool initialized: false
-
-        /*Component.onCompleted: {
-            setHandler('logged_in', function(_username) {
-                myPage.loading = false
-                myPage.username = _username
-            })
-            setHandler('server', function() { myPage.serversModel.append(shared.processServer.apply(null, arguments)) }
-            )
-            setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {folder: true, _id: _id, name: name, color: color, servers: []}
-                servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
-                myPage.serversModel.append(data)
-            })
-
-            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
-            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
-
-            addImportPath(Qt.resolvedUrl("../python"))
-            importModule('communicator', function () {})
-
-            call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()])
-
-            initialized = true
-        }*/
 
         function init(loggedInHandler, serverHandler, folderHandler) {
             setHandler('logged_in', loggedInHandler) // function(username)
@@ -253,7 +230,7 @@ ApplicationWindow {
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function() {
-                call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()])
+                call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), appSettings.folders])
                 initialized = true
             })
         }
@@ -261,15 +238,7 @@ ApplicationWindow {
         onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
         onReceived: console.log("got message from python: " + data)
 
-        function login(token) {
-            //myPage.loading = true
-            call('communicator.comm.login', [token])
-        }
-        /*function updateServer(what, updater) {
-            var arr = what.split('~')
-            const id = arr.shift()
-            updater(myPage.serversModel.findById(id), arr.join(' '))
-        }*/
+        function login(token) { call('communicator.comm.login', [token]) }
 
         function request(func, handlerName, args, handler) {
             setHandler(handlerName, handler)

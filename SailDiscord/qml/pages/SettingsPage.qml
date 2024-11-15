@@ -298,6 +298,14 @@ Page {
                             checked: appSettings.infoInNotifications
                             onCheckedChanged: appSettings.infoInNotifications = checked
                         }
+
+                        SectionHeader { text: qsTr("Experimental") }
+                        TextSwitch {
+                            text: qsTr("Order servers as in real Discord and show folders")
+                            description: qsTr("Requires app restart")
+                            checked: appSettings.folders
+                            onCheckedChanged: appSettings.folders = checked
+                        }
                     }
                 }
             }
