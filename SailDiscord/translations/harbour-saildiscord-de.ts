@@ -49,17 +49,6 @@
     </message>
 </context>
 <context>
-    <name>AboutServerPage</name>
-    <message>
-        <source>Member count: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>This server is a community server</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>AboutUser</name>
     <message>
         <source>About</source>

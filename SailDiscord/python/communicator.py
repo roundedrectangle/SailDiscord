@@ -262,9 +262,9 @@ class Communicator:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
             return
+        self.set_proxy(proxy)
         self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
-        self.set_proxy(proxy)
         self.server_folders = server_folders
 
     def set_cache_period(self, cache_period):
@@ -284,7 +284,7 @@ class Communicator:
         self.client.http.proxy = p.geturl()
 
     def ensure_constants(self):
-        while None in (self.cacher, self.downloads): pass
+        while None in (self.cacher, self.downloads, self.server_folders): pass
 
     def clear_cache(self):
         shutil.rmtree(self.cacher.cache, ignore_errors=True)

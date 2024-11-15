@@ -53,23 +53,9 @@
     <name>AboutServer</name>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="41"/>
-        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
         <source>About</source>
         <comment>Server</comment>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>AboutServerPage</name>
-    <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
-        <source>Member count: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="51"/>
-        <source>This server is a community server</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
