@@ -12,11 +12,12 @@ AboutPageBase {
     property string serverid
     property string name
     property string icon
-    property string memberCount
+
+    property string _memberCount
 
     appName: name
     appIcon: icon == "None" ? "" : icon
-    description: qsTr("Member count: ") + memberCount
+    description: qsTr("Member count: ") + _memberCount
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
@@ -45,5 +46,25 @@ AboutPageBase {
             text: "Third member is @kozelderezel, which is developer's second account."
         }
     ]
-    Component.onCompleted: _legacyMode = appConfiguration.legacyMode // Only activate once in a session
+
+    // Load additional data
+    BusyLabel {
+        id: busyIndicator
+        parent: flickable
+        running: true
+        onRunningChanged: _develInfoSection.parent.visible = !running
+    }
+
+    Component.onCompleted: {
+        _develInfoSection.parent.visible = !busyIndicator.running
+        _legacyMode = appConfiguration.legacyMode // Only activate once in a session
+        python.setHandler('serverinfo'+serverid, function(memberCount) {
+            _memberCount = memberCount
+            if (_legacyMode) {
+                _memberCount = 2
+            }
+            busyIndicator.running = false
+        })
+        python.requestServerInfo(serverid)
+    }
 }

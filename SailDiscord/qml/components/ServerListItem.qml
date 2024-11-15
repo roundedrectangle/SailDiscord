@@ -7,7 +7,6 @@ ListItem {
     property string serverid
     property string title
     property string icon
-    property string members
 
     property bool _iconAvailable: (icon != "None" && icon != "") || appSettings.emptySpace
 
@@ -41,7 +40,7 @@ ListItem {
             MenuItem {
                 text: qsTranslate("AboutServer", "About", "Server")
                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
-                                          { serverid: serverid, name: title, icon: image, memberCount: members }
+                                          { serverid: serverid, name: title, icon: image }
                                           )
             }
         }

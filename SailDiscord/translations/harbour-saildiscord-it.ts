@@ -52,8 +52,8 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="42"/>
-        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
+        <location filename="../qml/components/ServerListItem.qml" line="41"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
         <source>About</source>
         <comment>Server</comment>
@@ -63,7 +63,7 @@
 <context>
     <name>AboutServerPage</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="19"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="20"/>
         <source>Member count: </source>
         <translation>Membri: </translation>
     </message>
@@ -105,7 +105,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="111"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
     </message>
@@ -118,17 +118,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="241"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="231"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="242"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="232"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="252"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="242"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>

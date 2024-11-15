@@ -26,8 +26,7 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                     serverid: serverid,
                     name: name,
-                    icon: icon,
-                    memberCount: memberCount
+                    icon: icon
                 })
             }
         }

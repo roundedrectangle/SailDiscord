@@ -105,7 +105,6 @@ Page {
                     serverid: _id
                     title: name
                     icon: image
-                    members: memberCount
                 }
             }
 
@@ -134,12 +133,7 @@ Page {
 
                         ColumnView {
                             model: myPage.serversModel.get(_index).servers
-                            delegate: ServerListItem {
-                                serverid: _id
-                                title: name
-                                icon: image
-                                members: memberCount
-                            }
+                            delegate: serverItemComponent
                             itemHeight: Theme.itemSizeLarge
                         }
                     }

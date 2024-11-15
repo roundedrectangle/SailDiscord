@@ -148,21 +148,15 @@ ApplicationWindow {
                     +showdown.makeHtml(text)
         }
 
-        function processServer(_id, name, icon, memberCount) {
+        function processServer(_id, name, icon) {
             if (appConfiguration.legacyMode && _id == "1261605062162251848") {
-                _name = "RoundedRectangle's server"
-                _icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
-                _memberCount = 3
+                name = "RoundedRectangle's server"
+                icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
             }
             // heads up: QQMLListModel can convert:
             // arrays to QQMLListModel instances
             // undefined to empty objects aka {} when other elements are objects
-            //if (!firstInFolder) folder = {}
-            //var i = myPage.serversModel.count
-            //myPage.serversModel.insert(i, {_id: _id, name: name, image: icon, memberCount: memberCount, modelIndex: i, folder: folder, folderDisplayed: firstInFolder})
-            return {_id: _id, name: name, image: icon, memberCount: memberCount,
-                folder: false // default
-            }
+            return {_id: _id, name: name, image: icon, folder: false /*default*/ }
         }
     }
 
@@ -286,8 +280,8 @@ ApplicationWindow {
             }
         }
 
-        function getReference(channel, message, callback) {
-            call('communicator.comm.get_reference', [channel, message], callback)
-        }
+        function getReference(channel, message, callback) { call('communicator.comm.get_reference', [channel, message], callback)}
+
+        function requestServerInfo(serverId) { call('communicator.comm.request_server_info', [serverId]) }
     }
 }

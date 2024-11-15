@@ -26,14 +26,11 @@ import discord, requests, aiohttp.connector
 QMLLIVE_DEBUG = True
 
 def gen_server(g: discord.Guild):
-    """first_folder defaults to True for no folders"""
     icon = '' if g.icon == None else \
             str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
     if icon != '':
         comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
-    return (str(g.id), g.name, icon,
-        -1 if g.member_count is None else g.member_count,
-    )
+    return (str(g.id), g.name, icon)
 
 def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]]):
     comm.ensure_constants()
@@ -132,6 +129,9 @@ def send_myself(client: discord.Client):
 
     if icon != '':
         comm.cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
+
+def send_guild_info(g: discord.Guild):
+    qsend(f'serverinfo{g.id}', str(-1 if g.member_count is None else g.member_count))
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
@@ -324,7 +324,7 @@ class Communicator:
     
     @attributeerror_safe
     def request_user_info(self, user_id:int=None):
-        self.client.run_asyncio_threadsafe(self.client.send_user_info(-1 if user_id in (None, "") else user_id), True)
+        self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1), True)
 
     def download_file(self, url, filename):
         dest = self.downloads / filename
@@ -346,6 +346,17 @@ class Communicator:
         m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
         event, args = generate_message(m)
         return (event, *args)
+
+    @attributeerror_safe
+    def request_server_info(self, server_id:int=None):
+        if not server_id:
+            logging.warning(f"Requested info for a server with non-truthful ID: {server_id}")
+            return
+        try: server_id = int(server_id)
+        except ValueError:
+            logging.warning(f"Requested info for a server with non-integer ID: {server_id}")
+            return
+        send_guild_info(self.client.run_asyncio_threadsafe(self.client.fetch_guild(server_id), True))
 
 
 comm = Communicator()
