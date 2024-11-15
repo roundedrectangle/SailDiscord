@@ -181,6 +181,10 @@
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reply</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MessagesPage</name>
@@ -594,6 +598,18 @@
     </message>
     <message>
         <source>High-contrast mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Experimental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Order servers as in real Discord and show folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires app restart</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

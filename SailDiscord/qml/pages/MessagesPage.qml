@@ -249,7 +249,6 @@ Page {
         Component.onCompleted: {
             if (isDemo) generateDemo()
             else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
-                if (data.type === undefined) console.log(JSON.stringify(data))
                 if (history) msgModel.append(data); else msgModel.insert(0, data)
             })
         }

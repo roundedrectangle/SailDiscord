@@ -77,7 +77,7 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="151"/>
-        <location filename="../qml/components/MessageReference.qml" line="107"/>
+        <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <source>About</source>
         <comment>User</comment>
@@ -123,17 +123,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="251"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="236"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="252"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="237"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="261"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="246"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -216,9 +216,14 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="112"/>
+        <location filename="../qml/components/MessageReference.qml" line="114"/>
         <source>Copy</source>
         <translation type="unfinished">Kopiera</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/MessageReference.qml" line="134"/>
+        <source>Reply</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -739,12 +744,27 @@
         <translation>Visa infomeddelanden i aviseringar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="302"/>
+        <source>Experimental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
+        <source>Order servers as in real Discord and show folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <source>Requires app restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="322"/>
         <source>Settings reset</source>
         <translation>Återställ inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>
@@ -773,32 +793,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="106"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="106"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="107"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="107"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="110"/>
         <source>Idle</source>
         <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="112"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="113"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>

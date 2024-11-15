@@ -158,6 +158,14 @@ ApplicationWindow {
             // undefined to empty objects aka {} when other elements are objects
             return {_id: _id, name: name, image: icon, folder: false /*default*/ }
         }
+
+        function attachmentsToListModel(_parent, attachments) {
+            // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
+            // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
+            var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', _parent)
+            attachments.forEach(function(attachment, i) { listModel.append(attachment) })
+            return listModel
+        }
     }
 
     ConfigurationGroup {

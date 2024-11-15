@@ -7,7 +7,7 @@ ListItem {
 
     property var _resolvedReference
     property var _resolvedType
-    property var _resolvedUpdater: function(){console.warn("_resolvedUpdater was called but it isn't initialized yet! This should not happen")}
+    property var _resolvedUpdater: function() {}
 
     id: root
     width: parent.width
@@ -89,9 +89,7 @@ ListItem {
             _resolvedType = shared.convertCallbackType(data[0])
 
             shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, data.slice(1))
-            var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', root)
-            _resolvedReference._attachments.forEach(function(attachment, i) { listModel.append(attachment) })
-            _resolvedReference._attachments = listModel
+            _resolvedReference._attachments = shared.attachmentsToListModel(root, _resolvedReference._attachments)
             contentLoader.sourceComponent = null // reload
             switch (data[0]) {
             case "message":
@@ -119,62 +117,51 @@ ListItem {
         }
     }}
 
-    onClicked: pageStack.push(referencePage, {setResolvedUpdater: function(updater){ console.log("Resolved updater set...");_resolvedUpdater = updater }})
+    onClicked: pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
     on_ResolvedReferenceChanged: _resolvedUpdater()
     on_ResolvedTypeChanged: _resolvedUpdater()
     Component {
         id: referencePage
         Page {
             property var setResolvedUpdater
-            Component.onCompleted: {setResolvedUpdater(pageLoader.updateSource);console.log(setResolvedUpdater, typeof setResolvedUpdater, JSON.stringify(setResolvedUpdater))}
+            Component.onCompleted: setResolvedUpdater(pageLoader.updateSource)
             SilicaFlickable {
                 anchors.fill: parent
-                Loader {
-                    id: pageLoader
+                contentHeight: pageColumn.height
+                Column {
+                    id: pageColumn
                     width: parent.width
+                    PageHeader { title: qsTr("Reply") }
 
-                    function updateSource() {
-                        var args = {authorid: _resolvedReference.userid,
-                            contents: _resolvedReference._contents,
-                            author: _resolvedReference._author,
-                            pfp: _resolvedReference._pfp,
-                            sent: _resolvedReference._sent,
-                            date: _resolvedReference._date,
-                            sameAuthorAsBefore: false,
-                            masterWidth: -1,
-                            masterDate: new Date(1),
-                            attachments: _resolvedReference._attachments,
-                            reference: _resolvedReference._ref,
-                            flags: _resolvedReference._flags}
-                        switch (_resolvedType) {
-                        case '': setSource("MessageItem.qml", args);break
-                        case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", args);else sourceComponent = systemItem;break
-                        default: sourceComponent = systemItem
+                    Loader {
+                        id: pageLoader
+                        width: parent.width
+
+                        function updateSource() {
+                            var args = {authorid: _resolvedReference.userid,
+                                contents: _resolvedReference._contents,
+                                author: _resolvedReference._author,
+                                pfp: _resolvedReference._pfp,
+                                sent: _resolvedReference._sent,
+                                date: _resolvedReference._date,
+                                sameAuthorAsBefore: false,
+                                masterWidth: -1,
+                                masterDate: new Date(1),
+                                attachments: _resolvedReference._attachments,
+                                reference: _resolvedReference._ref,
+                                flags: _resolvedReference._flags}
+                            switch (_resolvedType) {
+                            case '': setSource("MessageItem.qml", args);break
+                            case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", args);else sourceComponent = systemItem;break
+                            default: sourceComponent = systemItem
+                            }
                         }
-                    }
-                    Component.onCompleted: updateSource()
+                        Component.onCompleted: updateSource()
 
-                    /*Component {
-                        id: defaultItem
-                        MessageItem {
-                            authorid: _resolvedReference.userid
-                            contents: _resolvedReference._contents
-                            author: _resolvedReference._author
-                            pfp: _resolvedReference._pfp
-                            sent: _resolvedReference._sent
-                            date: _resolvedReference._date
-                            sameAuthorAsBefore: false
-                            masterWidth: -1
-                            masterDate: new Date(1)
-                            attachments: _resolvedReference._attachments
-                            reference: _resolvedReference._ref
-                            flags: _resolvedReference._flags
+                        Component {
+                            id: systemItem
+                            SystemMessageItem { _model: _resolvedReference; label.horizontalAlignment: Text.AlignHCenter }
                         }
-                    }*/
-
-                    Component {
-                        id: systemItem
-                        SystemMessageItem { _model: _resolvedReference; label.horizontalAlignment: Text.AlignHCenter }
                     }
                 }
             }

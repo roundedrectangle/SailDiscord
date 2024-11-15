@@ -33,8 +33,6 @@ ListItem {
     width: parent.width
     contentHeight: column.height
 
-    Component.onCompleted: if (contents.indexOf("quote of the day") !== -1) console.log(attachments, JSON.stringify(attachments))
-
     Column {
         id: column
         width: parent.width
