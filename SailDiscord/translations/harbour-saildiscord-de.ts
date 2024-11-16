@@ -621,10 +621,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Requires app restart</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Logged out</source>
         <translation type="unfinished"></translation>
     </message>
@@ -635,6 +631,10 @@
     <message>
         <source>Settings reset</source>
         <comment>Past tense</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Requires refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

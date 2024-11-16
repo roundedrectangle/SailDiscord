@@ -1,8 +1,6 @@
 """Cache operations"""
 
-import logging
-import shutil
-import sys
+import sys, shutil
 from enum import Enum, auto
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -55,7 +53,6 @@ def verify_pillow(path: AnyPath):
 
 def download_pillow(url, proxies: Optional[dict]):
     """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
-    logging.info(f"Downloading {url} with proxies {proxies}")
     try: r = requests.get(url, stream=True, proxies=proxies)
     except requests.ConnectionError as e:
         qsend("cacheConnectionError", str(e))

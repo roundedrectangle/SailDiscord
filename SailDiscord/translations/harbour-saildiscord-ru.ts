@@ -745,7 +745,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
-        <source>Requires app restart</source>
+        <source>Requires refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
