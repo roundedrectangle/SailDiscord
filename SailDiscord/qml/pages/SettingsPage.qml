@@ -29,8 +29,6 @@ Page {
             ExpandingSectionGroup {
                 ExpandingSection {
                     id: section
-
-                    //property int sectionIndex: model.index
                     title: qsTr("Behaviour")
 
                     content.sourceComponent: Column {
@@ -183,8 +181,6 @@ Page {
 
                 ExpandingSection {
                     id: sessionSection
-
-                    //property int sectionIndex: model.index
                     title: qsTr("Session")
 
                     content.sourceComponent: Column {
@@ -197,11 +193,11 @@ Page {
                             ButtonLayout {
                                 Button {
                                     text: qsTr("Log out")
-                                    onClicked: appConfiguration.token = ""
+                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Logged out"), function(){ appConfiguration.token = "" })
                                 }
                                 Button {
                                     text: qsTr("Clear cache")
-                                    onClicked: python.clearCache()
+                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Cleared cache"), function(){ python.clearCache() })
                                 }
                             }
 
@@ -212,10 +208,10 @@ Page {
                                 }
                                 Button {
                                     text: qsTr("Reset all settings")
-                                    onClicked: {
+                                    onClicked: Remorse.popupAction(settingsPage, qsTranslate("SettingsPage", "Settings reset", "Past tense"), function() {
                                         appSettings.clear()
                                         pageStack.push(settingsResetPage)
-                                    }
+                                    })
                                 }
                             }
                         }
@@ -317,9 +313,10 @@ Page {
         Page {
             backNavigation: false
             SilicaFlickable {
+                anchors.fill: parent
                 ViewPlaceholder {
                     enabled: true
-                    text: qsTr("Settings reset")
+                    text: qsTranslate("SettingsPage", "Settings reset", "Past tense")
                     hintText: qsTr("Please restart the app")
                 }
             }

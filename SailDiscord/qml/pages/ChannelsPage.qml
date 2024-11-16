@@ -106,6 +106,7 @@ Page {
         Page {
             property string channelType
             SilicaFlickable {
+                anchors.fill: parent
                 ViewPlaceholder {
                     enabled: true
                     text: qsTr("Channel unsupported")
