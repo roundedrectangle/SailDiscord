@@ -240,7 +240,7 @@ ApplicationWindow {
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('communicator', function() {
-                call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), appSettings.folders])
+                reloadConstants()
                 initialized = true
             })
         }
@@ -292,7 +292,10 @@ ApplicationWindow {
 
         function refresh() {
             disconnectClient()
+            reloadConstants()
             _refreshFirstPage()
         }
+
+        function reloadConstants() { call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), appSettings.folders]) }
     }
 }

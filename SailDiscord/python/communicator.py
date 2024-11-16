@@ -260,6 +260,7 @@ class Communicator:
         self.loginth.start()
 
     def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, server_folders: bool):
+        self.server_folders = server_folders
         if self.cacher != None:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
@@ -267,7 +268,6 @@ class Communicator:
         self.set_proxy(proxy)
         self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
-        self.server_folders = server_folders
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""

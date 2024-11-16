@@ -298,7 +298,7 @@ Page {
                         SectionHeader { text: qsTr("Experimental") }
                         TextSwitch {
                             text: qsTr("Order servers as in real Discord and show folders")
-                            description: qsTr("Requires app restart")
+                            description: qsTr("Requires refresh")
                             checked: appSettings.folders
                             onCheckedChanged: appSettings.folders = checked
                         }

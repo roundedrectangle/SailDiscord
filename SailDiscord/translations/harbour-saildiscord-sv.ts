@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="64"/>
+        <location filename="../qml/pages/FirstPage.qml" line="68"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -53,10 +53,39 @@
     <name>AboutServer</name>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="41"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Om</translation>
+    </message>
+</context>
+<context>
+    <name>AboutServerPage</name>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
+        <source>%1 online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
+        <source>%1 members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="66"/>
+        <source>This server is a community server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="73"/>
+        <source>This server is a partnered server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutServerPage.qml" line="80"/>
+        <source>This server is a verified server</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -96,7 +125,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="111"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
         <source>Channel unsupported</source>
         <translation>Kanalen stöds ej</translation>
     </message>
@@ -109,17 +138,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="236"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="238"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="237"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="239"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="246"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="248"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -127,9 +156,14 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="68"/>
+        <location filename="../qml/pages/FirstPage.qml" line="72"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="76"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -448,309 +482,321 @@
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="34"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="32"/>
         <source>Behaviour</source>
         <translation>Beteende</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
         <source>Servers list</source>
         <translation>Serverlista</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>Keep empty space in servers without icons</source>
         <translation>Bevara tomt utrymme i servrar utan ikoner</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="40"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="38"/>
         <source>Channels list</source>
         <translation>Kanallista</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="43"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="41"/>
         <source>Ignore private setting for channels and channel categories</source>
         <translation>Ignorera privata inställningar för kanaler och kanalkategorier</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="48"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="112"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="46"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="110"/>
         <source>Messages</source>
         <translation>Meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="51"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="68"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="49"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
         <source>Use default type on unknown types</source>
         <translation>Använd standardtyp på okända typer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Replies</source>
         <translation>Svar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="61"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>The only supported reply types at the moment are replied and forwarded messages</source>
         <translation>De enda svarstyper som stöds för tillfället är besvarade och vidarebefordrade meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="73"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
         <source>Message field</source>
         <translation>Meddelandefält</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="76"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="74"/>
         <source>Send messages by enter</source>
         <translation>Skicka meddelanden med Retur</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="82"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Focus input message area after send</source>
         <translation>Fokusera inmatningsfältett efter sändning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="88"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
         <source>Focus input message area on channel open</source>
         <translation>Fokusera inmatningsfältet vid kanalöppning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
         <source>Sent messages</source>
         <translation>Skickade meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="118"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation>Ställer in för vilka meddelanden extra utfyllnad skall gälla</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="121"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>reversed (default)</source>
         <translation>Omvänt (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="120"/>
         <source>nothing</source>
         <translation>inget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="132"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation>Ställ in &quot;Skickade meddelanden&quot; på &quot;omvänt&quot; eller &quot;justera åt höger&quot; för att aktivera.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>Extra padding</source>
         <translation>Extra utfyllnad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="97"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Appearance</source>
         <translation>Utseende</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="145"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
         <source>none</source>
         <translation>inget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="127"/>
         <source>Align sent messages text to right</source>
         <translation>Justera skickade meddelandetexter åt höger</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="140"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>Message grouping</source>
         <translation>Meddelandegruppering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="141"/>
         <source>author &amp; time (default)</source>
         <translation>författare och tid (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="144"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
         <source>author</source>
         <translation>författare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="154"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation>Ange extra utfyllnad för nya meddelanden från samma författare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
         <source>as pfp (default)</source>
         <translation>Som PFP (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="158"/>
         <source>small</source>
         <translation>liten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>no</source>
         <translation>nej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="165"/>
         <source>High-contrast mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
         <source>Preview</source>
         <translation>Förhandsvisning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="188"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
         <source>Session</source>
         <translation>Session</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
         <source>Log out</source>
         <translation>Logga ut</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="203"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
         <source>Clear cache</source>
         <translation>Rensa cachen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="200"/>
+        <source>Cleared cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="206"/>
         <source>Reset tutorial</source>
         <translation>Återställ handledning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Reset all settings</source>
         <translation>Återställ alla inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="230"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="211"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <source>Settings reset</source>
+        <comment>Past tense</comment>
+        <translation type="unfinished">Återställ inställningar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
         <source>Never</source>
         <translation>Aldrig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="227"/>
         <source>On app restart</source>
         <translation>Vid appomstart</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
         <source>Hourly</source>
         <translation>Varje timma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>Daily</source>
         <translation>Varje dag</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="234"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="230"/>
         <source>Weekly</source>
         <translation>Varje vecka</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
         <source>Monthly</source>
         <translation>Varje månad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Half-yearly</source>
         <translation>Varje halvår</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Yearly</source>
         <translation>Varje år</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Ändrar hur ofta cachen uppdateras. Omstart av appen kan krävas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
         <source>Advanced</source>
         <translation>Avancerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
         <source>Networking</source>
         <translation>Nätverk</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="269"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="265"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation>Inloggningssidan använder alltid den globala proxyn oavsett dessa inställningar. Bilagor, avatarer och andra statiska element kanske inte använder proxy alls. Starta om appen för att tillämpa.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="280"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
         <source>global proxy</source>
         <translation>global proxy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="281"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
         <source>disable</source>
         <translation>inaktivera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="278"/>
         <source>custom</source>
         <translation>anpassat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="289"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="285"/>
         <source>HTTP proxy address</source>
         <translation>HTTP proxyadress</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="290"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="286"/>
         <source>Specify port by semicolon, if required</source>
         <translation>Specificera portnummer med semikolon, vid behov.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="295"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="291"/>
         <source>Debugging</source>
         <translation>Felsökning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="297"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="293"/>
         <source>Show info messages in notifications</source>
         <translation>Visa infomeddelanden i aviseringar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="302"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Experimental</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>Order servers as in real Discord and show folders</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
         <source>Requires app restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="322"/>
-        <source>Settings reset</source>
-        <translation>Återställ inställningar</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="323"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>

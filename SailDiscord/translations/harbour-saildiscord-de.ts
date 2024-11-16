@@ -49,6 +49,29 @@
     </message>
 </context>
 <context>
+    <name>AboutServerPage</name>
+    <message>
+        <source>%1 online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This server is a community server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This server is a partnered server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This server is a verified server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AboutUser</name>
     <message>
         <source>About</source>
@@ -105,6 +128,10 @@
     <name>FirstPage</name>
     <message>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -474,10 +501,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings reset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,6 +622,19 @@
     </message>
     <message>
         <source>Requires app restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logged out</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cleared cache</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings reset</source>
+        <comment>Past tense</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
