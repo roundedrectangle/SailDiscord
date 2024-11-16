@@ -14,11 +14,17 @@ AboutPageBase {
     property string icon
 
     property string _memberCount
+    property string _onlineCount
     property var _features: ({community:false, partnered:false, verified:false})
 
     appName: name
     appIcon: icon == "None" ? "" : icon
-    description: qsTr("Member count: ") + _memberCount
+    description: (_onlineCount != '-1' ? ('<font color="'+Theme.highlightColor+'">'+qsTr("%1 online").arg(_onlineCount)+"</font> ") : "")+
+                 (_memberCount != '-1' ? ('<font color="'+Theme.secondaryHighlightColor+'">'+qsTr("%1 members").arg(_memberCount)+"</font>") : "")
+/*description: ((_onlineCount != '-1' && _memberCount != '-1') ? '<font color="green">●</font> ' : "")+
+(_onlineCount != '-1' ? qsTr("%1 online").arg(_onlineCount) : "")+
+((_onlineCount != '-1' && _memberCount != '-1') ? '  <font color="gray">●</font> ' : "")+
+(_memberCount != '-1' ? qsTr("%1 members").arg(_memberCount) : "")*/
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
@@ -92,12 +98,14 @@ AboutPageBase {
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
         _features = {community:false, partnered:false, verified:false}
         _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
-        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, features) {
+        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, onlineCount, features) {
             if (_legacyMode) {
-                memberCount = 2
+                memberCount = 3
+                onlineCount = 1
                 features.community = false
             }
             _memberCount = memberCount
+            _onlineCount = onlineCount
             _features = features
             busyIndicator.running = false
         })

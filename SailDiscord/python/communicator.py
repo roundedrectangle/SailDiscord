@@ -132,6 +132,7 @@ def send_myself(client: discord.Client):
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',
         str(-1 if g.member_count is None else g.member_count),
+        str(-1 if g.online_count is None else g.online_count),
         {feature.lower(): feature in g.features for feature in
             ('VERIFIED','PARTNERED','COMMUNITY','DISCOVERABLE','FEATURABLE')
         },
