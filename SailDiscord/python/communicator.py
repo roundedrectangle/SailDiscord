@@ -145,7 +145,7 @@ class MyClient(discord.Client):
     current_channel_deletion_pending = False
     pending_close_task: Optional[asyncio.Task] = None
 
-    async def on_ready(self, first_run=True):
+    async def on_ready(self):
         qsend('logged_in', str(self.user.name))
         comm.ensure_constants()
         if comm.server_folders:
@@ -156,8 +156,7 @@ class MyClient(discord.Client):
 
         # Setup control variables
         self.current_server = None
-        if first_run:
-            self.loop = asyncio.get_running_loop()
+        self.loop = asyncio.get_running_loop()
 
     async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
@@ -253,7 +252,9 @@ class Communicator:
 
     def login(self, token):
         if QMLLIVE_DEBUG and self.client.is_closed():
+            current_proxy = self.client.http.proxy
             self.client = MyClient(guild_subscriptions=False)
+            self.client.http.proxy = current_proxy
         self.token = token
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()

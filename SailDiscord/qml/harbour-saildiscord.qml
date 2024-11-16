@@ -223,8 +223,9 @@ ApplicationWindow {
     Python {
         id: python
         property bool initialized: false
+        property var _refreshFirstPage: function() {}
 
-        function init(loggedInHandler, serverHandler, folderHandler) {
+        function init(loggedInHandler, serverHandler, folderHandler, refreshHandler) {
             setHandler('logged_in', loggedInHandler) // function(username)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
@@ -232,6 +233,7 @@ ApplicationWindow {
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 folderHandler(data)
             }) // function(folderObject)
+            _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
@@ -287,5 +289,10 @@ ApplicationWindow {
         }
 
         function getReference(channel, message, callback) { call('communicator.comm.get_reference', [channel, message], callback)}
+
+        function refresh() {
+            disconnectClient()
+            _refreshFirstPage()
+        }
     }
 }
