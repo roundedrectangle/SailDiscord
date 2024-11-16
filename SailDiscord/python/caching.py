@@ -1,5 +1,6 @@
 """Cache operations"""
 
+import logging
 import shutil
 import sys
 from enum import Enum, auto
@@ -7,7 +8,7 @@ from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from threading import Thread
 from pyotherside import send as qsend
-from typing import Union
+from typing import Union, Optional
 
 from exceptions import *
 
@@ -23,7 +24,7 @@ AnyTimedelta = Union[TimedeltaResult, int]
 CachePeriodMapping = [
     None, # Never
     timedelta(), # On app restart
-    timedelta(hours=1),
+    timedelta(seconds=35),#timedelta(hours=1),
     timedelta(1),
     timedelta(weeks=1),
     timedelta(30),
@@ -52,9 +53,16 @@ def verify_pillow(path: AnyPath):
         return e
     return None
 
-def download_pillow(url):
+def download_pillow(url, proxies: Optional[dict]):
     """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
-    r = requests.get(url, stream=True)
+    logging.info(f"Downloading {url} with proxies {proxies}")
+    try: r = requests.get(url, stream=True, proxies=proxies)
+    except requests.ConnectionError as e:
+        qsend("cacheConnectionError", str(e))
+        return
+    except requests.RequestException as e:
+        qsend("cacheError", str(type(e)), str(e))
+        return
     if r.status_code != 200: return
     im = Image.open(r.raw)
     return im
@@ -84,7 +92,22 @@ class Cacher:
     def update_period(self, value: AnyTimedelta):
         self._update_period = convert_to_timedelta(value)
 
-    def __init__(self, cache: AnyPath, update_period: AnyTimedelta):
+    @property
+    def proxy(self):
+        return self._proxy
+
+    @proxy.setter
+    def proxy(self, value: Optional[str]):
+        self._proxy = value
+        if value == None:
+            self.proxies = {}
+        else:
+            self.proxies = {
+                "http": value,
+                "https": value,
+            }
+
+    def __init__(self, cache: AnyPath, update_period: AnyTimedelta, proxy: Optional[str] = None):
         self._update_period = None
 
         self.cache = Path(cache)
@@ -92,6 +115,8 @@ class Cacher:
         self.clear_temporary()
         self.recreate_temporary()
         self.update_period = update_period
+        self.proxies = {}
+        self.proxy = proxy
 
         self.session_cached = {}
         for im in ImageType:
@@ -130,7 +155,7 @@ class Cacher:
 
     def save_temporary(self, url: str, filename: AnyPath):
         dest = self.temp / filename
-        r = requests.get(url, stream=True)
+        r = requests.get(url, stream=True, proxies=self.proxies)
         if r.status_code == 200:
             with open(dest, 'wb') as f:
                 for chunk in r:
@@ -148,7 +173,7 @@ class Cacher:
         if self.has_cached_session(id, type) or not self.update_required(id, type):
             return # Only cache once in a session or update_period
         self.set_cached_session(id, type, False)
-        im = download_pillow(url)
+        im = download_pillow(url, self.proxies)
         if im == None: return
         path = self.get_cached_path(id, type)
         path.parent.mkdir(exist_ok=True, parents=True)

@@ -260,13 +260,13 @@ class Communicator:
         self.loginth.start()
 
     def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, server_folders: bool):
-        self.server_folders = server_folders
-        if self.cacher != None:
+        if self.cacher:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
-            return
+        else:
+            self.cacher = Cacher(cache, cache_period)
+        self.server_folders = server_folders
         self.set_proxy(proxy)
-        self.cacher = Cacher(cache, cache_period)
         self.downloads = Path(downloads)
 
     def set_cache_period(self, cache_period):
@@ -284,6 +284,8 @@ class Communicator:
         p = parse.ParseResult('http', netloc, path, *p[3:])
 
         self.client.http.proxy = p.geturl()
+        if self.cacher:
+            self.cacher.proxy = p.geturl()
 
     def ensure_constants(self):
         while None in (self.cacher, self.downloads, self.server_folders): pass
