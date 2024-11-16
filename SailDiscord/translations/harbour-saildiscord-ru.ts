@@ -65,27 +65,27 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
         <source>%1 online</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 онлайн</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 участников</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="66"/>
         <source>This server is a community server</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот сервер является сервером сообщества</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="73"/>
         <source>This server is a partnered server</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот сервер является партнёрским сервером</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="80"/>
         <source>This server is a verified server</source>
-        <translation type="unfinished"></translation>
+        <translation>Этот сервер является проверенным сервером</translation>
     </message>
 </context>
 <context>
@@ -135,22 +135,22 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="84"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="238"/>
         <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="239"/>
         <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="248"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ошибка Python: %1</translation>
     </message>
 </context>
 <context>
@@ -162,8 +162,8 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="76"/>
-        <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <source>Refresh servers</source>
+        <translation>Обновить сервера</translation>
     </message>
 </context>
 <context>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="134"/>
         <source>Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Ответ</translation>
     </message>
 </context>
 <context>
@@ -649,7 +649,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы вышли из системы</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="199"/>
@@ -659,7 +659,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="200"/>
         <source>Cleared cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Кэш очищен</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="206"/>
@@ -676,7 +676,7 @@
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
-        <translation type="unfinished">Настройки сброшены</translation>
+        <translation>Настройки сброшены</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="255"/>
@@ -736,17 +736,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Experimental</source>
-        <translation type="unfinished"></translation>
+        <translation>Эксперементально</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>Order servers as in real Discord and show folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Упорядочить сервера как в настояшем Discord и показывать папки</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
-        <source>Requires refresh</source>
-        <translation type="unfinished"></translation>
+        <source>Requires servers refresh</source>
+        <translation>Требуется обновление серверов</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="320"/>
@@ -817,7 +817,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="89"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачан файл %1</translation>
     </message>
 </context>
 <context>

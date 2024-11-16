@@ -73,7 +73,7 @@ Page {
                 onClicked: pageStack.push("SettingsPage.qml")
             }
             MenuItem {
-                text: qsTr("Refresh")
+                text: qsTr("Refresh servers")
                 onClicked: python.refresh()
             }
         }

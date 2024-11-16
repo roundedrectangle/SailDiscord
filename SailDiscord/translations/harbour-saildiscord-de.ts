@@ -131,7 +131,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh</source>
+        <source>Refresh servers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -634,7 +634,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Requires refresh</source>
+        <source>Requires servers refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

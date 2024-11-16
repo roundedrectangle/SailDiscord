@@ -162,7 +162,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="76"/>
-        <source>Refresh</source>
+        <source>Refresh servers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -747,7 +747,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
-        <source>Requires refresh</source>
+        <source>Requires servers refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
