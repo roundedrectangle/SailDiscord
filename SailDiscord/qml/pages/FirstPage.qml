@@ -194,11 +194,13 @@ Page {
 
         Tab {
             title: qsTr("Me")
+
             Component {
                 TabItem {
                     id: tabItem
                     flickable: morePage.flickable
                     topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
+                    property string _username: username
 
                     AboutUserPage {
                         parent: null
@@ -206,11 +208,10 @@ Page {
                         flickable.parent: tabItem
                         id: morePage
                         isClient: true
-                        name: username
-                        _pageHeaderItem.title: ""
-
+                        name: _username
                         icon: ""
-                        Component.onCompleted: console.log(flickable.contentY, flickable.originY, flickable.contentY - flickable.originY)
+
+                        _pageHeaderItem.title: ""
                         PullDownMenu {
                             parent: morePage.flickable
                             MenuItem {

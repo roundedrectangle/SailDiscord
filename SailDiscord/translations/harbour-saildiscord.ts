@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="68"/>
+        <location filename="../qml/pages/FirstPage.qml" line="218"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -138,17 +138,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="238"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="240"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="239"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="241"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="248"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="250"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -156,13 +156,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="72"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
+        <source>DMs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="196"/>
+        <source>Me</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="222"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="76"/>
+        <location filename="../qml/pages/FirstPage.qml" line="88"/>
         <source>Refresh servers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="78"/>
+        <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -659,11 +674,6 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="200"/>
         <source>Cleared cache</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="206"/>
-        <source>Reset tutorial</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
