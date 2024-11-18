@@ -179,7 +179,7 @@ The code is based on:
 Core functionality:
 
 - [discord.py-self library](https://github.com/dolfies/discord.py-self)
-- [Opal](https://github.com/Pretty-SFOS/opal) ([Opal.About](https://github.com/Pretty-SFOS/opal-about), [Opal.LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), and the snippets)
+- [Opal](https://github.com/Pretty-SFOS/opal) ([About](https://github.com/Pretty-SFOS/opal-about), [LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), [Tabs](https://github.com/Pretty-SFOS/opal-tabs) and the snippets)
 
 Developers:
 
@@ -188,3 +188,4 @@ Developers:
 Contributors (translations):
 
 - [@legacychimera247](https://github.com/legacychimera247) - Italian
+- [@eson57](https://github.com/eson57) - Swedish

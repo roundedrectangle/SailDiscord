@@ -342,6 +342,160 @@
         <source>Your contributions to translations or code would be most welcome.</source>
         <translation>Ihre Mitarbeit bei Übersetzungen oder der Programmierung wäre eine große Hilfe.</translation>
     </message>
+    <message>
+        <source>Author</source>
+        <translation>Autor</translation>
+    </message>
+    <message numerus="yes">
+        <source>Author(s)</source>
+        <translation>
+            <numerusform>Autor·in</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Maintainer</source>
+        <translation>Maintainer·in</translation>
+    </message>
+    <message numerus="yes">
+        <source>Maintainer(s)</source>
+        <translation>
+            <numerusform>Maintainer·in</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Programming</source>
+        <translation>Programmierung</translation>
+    </message>
+    <message>
+        <source>Icon Design</source>
+        <translation>Symbol-Design</translation>
+    </message>
+    <message>
+        <source>Third-party libraries</source>
+        <translation>Externe Bibliotheken</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Daten</translation>
+    </message>
+    <message>
+        <source>Data License</source>
+        <translation>Daten-Lizenz</translation>
+    </message>
+    <message numerus="yes">
+        <source>Data License(s)</source>
+        <translation>
+            <numerusform>Daten-Lizenz</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Terms of Use</source>
+        <translation>Nutzungsbedingungen</translation>
+    </message>
+    <message>
+        <source>Swedish</source>
+        <translation>Schwedisch</translation>
+    </message>
+    <message>
+        <source>Polish</source>
+        <translation>Polnisch</translation>
+    </message>
+    <message>
+        <source>German</source>
+        <translation>Deutsch</translation>
+    </message>
+    <message>
+        <source>French</source>
+        <translation>Französisch</translation>
+    </message>
+    <message>
+        <source>Chinese</source>
+        <translation>Chinesisch</translation>
+    </message>
+    <message>
+        <source>English</source>
+        <translation>Englisch</translation>
+    </message>
+    <message>
+        <source>Italian</source>
+        <translation>Italienisch</translation>
+    </message>
+    <message>
+        <source>Finnish</source>
+        <translation>Finnisch</translation>
+    </message>
+    <message>
+        <source>Norwegian</source>
+        <translation>Norwegisch</translation>
+    </message>
+    <message>
+        <source>Norwegian Bokmål</source>
+        <translation>Norwegisch (Bokmål)</translation>
+    </message>
+    <message>
+        <source>Norwegian Nynorsk</source>
+        <translation>Norwegisch (Nynorsk)</translation>
+    </message>
+    <message>
+        <source>Latvian</source>
+        <translation>Lettisch</translation>
+    </message>
+    <message>
+        <source>Estonian</source>
+        <translation>Estnisch</translation>
+    </message>
+    <message>
+        <source>Czech</source>
+        <translation>Tschechisch</translation>
+    </message>
+    <message>
+        <source>Greek</source>
+        <translation>Griechisch</translation>
+    </message>
+    <message>
+        <source>Spanish</source>
+        <translation>Spanisch</translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation>Ungarisch</translation>
+    </message>
+    <message>
+        <source>Indonesian</source>
+        <translation>Indonesisch</translation>
+    </message>
+    <message>
+        <source>Russian</source>
+        <translation>Russisch</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation>Niederländisch</translation>
+    </message>
+    <message>
+        <source>Dutch (Belgium)</source>
+        <translation>Niederländisch (Belgien)</translation>
+    </message>
+    <message>
+        <source>Slovak</source>
+        <translation>Slowakisch</translation>
+    </message>
+    <message>
+        <source>Turkish</source>
+        <translation>Türkisch</translation>
+    </message>
+    <message>
+        <source>Ukrainian</source>
+        <translation>Ukrainisch</translation>
+    </message>
+    <message>
+        <source>Romanian</source>
+        <translation>Rumänisch</translation>
+    </message>
+    <message>
+        <source>Serbian</source>
+        <translation>Serbisch</translation>
+    </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
