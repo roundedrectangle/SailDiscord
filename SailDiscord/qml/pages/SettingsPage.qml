@@ -202,10 +202,10 @@ Page {
                             }
 
                             ButtonLayout {
-                                Button {
+                                /*Button {
                                     text: qsTr("Reset tutorial")
                                     onClicked: appConfiguration.usernameTutorialCompleted = false
-                                }
+                                }*/
                                 Button {
                                     text: qsTr("Reset all settings")
                                     onClicked: Remorse.popupAction(settingsPage, qsTranslate("SettingsPage", "Settings reset", "Past tense"), function() {

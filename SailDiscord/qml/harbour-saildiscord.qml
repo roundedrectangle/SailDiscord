@@ -174,12 +174,14 @@ ApplicationWindow {
         path: "/apps/harbour-saildiscord"
 
         property string token: ""
-        property bool usernameTutorialCompleted: false
+        //property bool usernameTutorialCompleted: false
         property bool legacyMode: false
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
                 appSettings.sentBehaviour = "r"
+            if (value("usernameTutorialCompleted", null) !== null)
+                setValue("usernameTutorialCompleted", undefined)
         }
 
         ConfigurationGroup {
