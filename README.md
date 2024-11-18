@@ -32,6 +32,7 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 
 ## Known issues
 
+- Hourly cache updating is actually 35 seconds cache updating. A fix is coming in the next update
 - App lags in a text channel sometimes. Very similar to the issue below except this one lags besides being slow
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
 - When using server folders, they might not load sometimes
@@ -178,7 +179,7 @@ The code is based on:
 Core functionality:
 
 - [discord.py-self library](https://github.com/dolfies/discord.py-self)
-- [Opal](https://github.com/Pretty-SFOS/opal) ([Opal.About](https://github.com/Pretty-SFOS/opal-about))
+- [Opal](https://github.com/Pretty-SFOS/opal) ([Opal.About](https://github.com/Pretty-SFOS/opal-about), [Opal.LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), and the snippets)
 
 Developers:
 
