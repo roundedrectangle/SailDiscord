@@ -22,7 +22,7 @@ AnyTimedelta = Union[TimedeltaResult, int]
 CachePeriodMapping = [
     None, # Never
     timedelta(), # On app restart
-    timedelta(seconds=35),#timedelta(hours=1),
+    timedelta(hours=1),
     timedelta(1),
     timedelta(weeks=1),
     timedelta(30),
