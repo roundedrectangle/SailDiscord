@@ -227,14 +227,15 @@ ApplicationWindow {
         property bool initialized: false
         property var _refreshFirstPage: function() {}
 
-        function init(loggedInHandler, serverHandler, folderHandler, refreshHandler) {
+        function init(loggedInHandler, serverHandler, dmHandler, refreshHandler) {
             setHandler('logged_in', loggedInHandler) // function(username)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
                 var data = {folder: true, _id: _id, name: name, color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
-                folderHandler(data)
+                serverHandler(data)
             }) // function(folderObject)
+            setHandler('dm', function(_id, name, icon, channelId) { dmHandler({_id: _id, _name: name, _icon: icon, dmChannel: channelId}) })
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })

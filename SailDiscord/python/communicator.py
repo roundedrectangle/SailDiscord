@@ -72,6 +72,7 @@ class MyClient(discord.Client):
         else:
             for g in self.guilds:
                 qsend('server', *gen_server(g, comm.cacher))
+        send_dms(self.users, comm.cacher)
 
         # Setup control variables
         self.current_server = None

@@ -11,7 +11,6 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool loading: true
-    property bool loggingIn: false
     property string username: ""
 
     property alias serversModel: serversModel
@@ -19,18 +18,14 @@ Page {
         //credit: Fernschreiber
         id: openLoginDialogTimer
         interval: 0
-        onTriggered: {
-            pageStack.push(Qt.resolvedUrl("LoginDialog.qml"))
-        }
+        onTriggered: pageStack.push(Qt.resolvedUrl("LoginDialog.qml"))
     }
 
     function updatePage() {
-        if (appConfiguration.token == "" && !loggingIn) {
-            loggingIn = true
+        if (appConfiguration.token == "") {
             loading = false
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
-            loggingIn = false
             loading = true
             python.login(appConfiguration.token)
         }
@@ -48,7 +43,7 @@ Page {
         python.init(function(u) {
             loading = false
             username = u
-        }, serversModel.append, serversModel.append, function() {
+        }, serversModel.append, dmModel.append, function() {
             serversModel.clear()
             username = ""
             updatePage()
@@ -59,6 +54,8 @@ Page {
     TabView {
         anchors.fill: parent
         tabBarPosition: Qt.AlignBottom
+        currentIndex: 1
+
         Tab {
             title: qsTr("DMs")
             Component {
@@ -80,10 +77,11 @@ Page {
             Component {
                 TabItem {
                     flickable: firstPageContainer
+                    property bool _loading: loading
                     SilicaListView {
                         id: firstPageContainer
                         anchors.fill: parent
-                        BusyLabel { running: loading }
+                        BusyLabel { running: _loading }
                         PullDownMenu {
                             MenuItem {
                                 text: qsTr("Refresh servers")
@@ -231,11 +229,13 @@ Page {
     ListModel {
         id: serversModel
 
-        function find(pattern) {
+        /*function find(pattern) {
             for (var i = 0; i<count; i++) if (pattern(get(i))) return get(i)
             return null
         }
 
-        function findById(_id) { return find(function (item) { return item.id === _id }) }
+        function findById(_id) { return find(function (item) { return item.id === _id }) }*/
     }
+
+    ListModel { id: dmModel; onCountChanged: console.log(count, JSON.stringify(get(0))) }
 }

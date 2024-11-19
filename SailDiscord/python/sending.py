@@ -1,5 +1,6 @@
 import sys
-from typing import Any
+import logging
+from typing import Any, List
 from pyotherside import send as qsend
 
 from caching import Cacher, ImageType
@@ -25,7 +26,7 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]], cacher
         elif isinstance(g, discord.GuildFolder):
             qsend('serverfolder', str(g.id), g.name or '', hex_color(g.color), [gen_server(i, cacher) for i in g.guilds])
 
-# Channels
+# Server Channels
 
 def send_channel(c, myself_id):
     if c.type == discord.ChannelType.category:
@@ -44,6 +45,23 @@ def send_channels(guild: discord.Guild, user_id):
     for category in guild.categories:
         for c in category.channels:
             send_channel(c, user_id)
+
+# DMs
+
+def send_dm_channel(user: discord.User, cacher: Cacher):
+    c = user.dm_channel
+    icon = '' if user.display_avatar == None else \
+            str(cacher.get_cached_path(user.id, ImageType.USER, default=user.display_avatar))
+    if icon != '':
+        cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.USER)
+    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id))
+
+def send_dms(users_list: List[discord.User], cacher: Cacher):
+    for user in users_list:
+        if isinstance(user, discord.ClientUser):
+            continue
+        if user.dm_channel:
+            send_dm_channel(user, cacher)
 
 # Messages
 
