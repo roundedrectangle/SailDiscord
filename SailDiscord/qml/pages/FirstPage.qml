@@ -58,6 +58,7 @@ Page {
 
     TabView {
         anchors.fill: parent
+        tabBarPosition: Qt.AlignBottom
         Tab {
             title: qsTr("DMs")
             Component {
@@ -92,10 +93,8 @@ Page {
 
                         VerticalScrollDecorator {}
 
-                        /*header: PageHeader {
-                            title: username
-
-                            MouseArea {
+                        header: PageHeader { title: username }
+                            /*MouseArea {
                                 anchors.fill: parent
                                 onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: "" })
                             }
@@ -199,7 +198,7 @@ Page {
                 TabItem {
                     id: tabItem
                     flickable: morePage.flickable
-                    topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
+                    //topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
                     property string _username: username
 
                     AboutUserPage {
@@ -211,7 +210,7 @@ Page {
                         name: _username
                         icon: ""
 
-                        _pageHeaderItem.title: ""
+                        //_pageHeaderItem.title: ""
                         PullDownMenu {
                             parent: morePage.flickable
                             MenuItem {
