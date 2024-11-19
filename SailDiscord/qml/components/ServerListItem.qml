@@ -7,6 +7,7 @@ ListItem {
     property string serverid
     property string title
     property string icon
+    property bool defaultActions: true
 
     property bool _iconAvailable: (icon != "None" && icon != "") || appSettings.emptySpace
 
@@ -34,15 +35,14 @@ ListItem {
         }
     }
 
-    onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: serverid, name: title, icon: image })
-    menu: Component {
-        ContextMenu {
-            MenuItem {
-                text: qsTranslate("AboutServer", "About", "Server")
-                onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
-                                          { serverid: serverid, name: title, icon: image }
-                                          )
-            }
+    onClicked: if (defaultActions) pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: serverid, name: title, icon: image })
+    menu: Component { ContextMenu {
+        visible: defaultActions
+        MenuItem {
+            text: qsTranslate("AboutServer", "About", "Server")
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
+                                      { serverid: serverid, name: title, icon: image }
+                                      )
         }
-    }
+    } }
 }

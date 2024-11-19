@@ -235,7 +235,7 @@ ApplicationWindow {
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
-            setHandler('dm', function(_id, name, icon, channelId) { dmHandler({_id: _id, _name: name, _icon: icon, dmChannel: channelId}) })
+            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: name, image: icon, dmChannel: channelId, textSendPermissions: perm}) })
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })

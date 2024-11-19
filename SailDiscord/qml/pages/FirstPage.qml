@@ -13,7 +13,6 @@ Page {
     property bool loading: true
     property string username: ""
 
-    property alias serversModel: serversModel
     Timer {
         //credit: Fernschreiber
         id: openLoginDialogTimer
@@ -45,6 +44,7 @@ Page {
             username = u
         }, serversModel.append, dmModel.append, function() {
             serversModel.clear()
+            dmModel.clear()
             username = ""
             updatePage()
         })
@@ -60,12 +60,51 @@ Page {
             title: qsTr("DMs")
             Component {
                 TabItem {
-                    flickable: testContainer
-                    SilicaFlickable {
-                        id: testContainer
+                    flickable: dmsContainer
+                    property bool _loading: loading
+                    SilicaListView {
+                        id: dmsContainer
                         anchors.fill: parent
-                        Label {
-                            text: "Coming soon (or never)"
+                        BusyLabel { running: _loading }
+                        PullDownMenu {
+                            MenuItem {
+                                text: qsTr("Refresh")
+                                onClicked: python.refresh()
+                            }
+                        }
+
+                        header: PageHeader { title: username }
+
+                        model: dmModel
+                        delegate: ServerListItem {
+                            serverid: '-1'
+                            title: name
+                            icon: image
+                            defaultActions: false
+
+                            onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions })
+                            menu: Component { ContextMenu {
+                                MenuItem {text: qsTranslate("AboutUser", "About", "User")
+                                    visible: _id != '-1'
+                                    onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
+                                }
+                            } }
+                        }
+
+                        section {
+                            property: "_id"
+                            delegate: Loader {
+                                width: parent.width
+                                sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
+                                Component {
+                                    id: separatorComponent
+                                    Separator {
+                                        color: Theme.primaryColor
+                                        width: parent.width
+                                        horizontalAlignment: Qt.AlignHCenter
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -76,15 +115,15 @@ Page {
             title: qsTr("Servers")
             Component {
                 TabItem {
-                    flickable: firstPageContainer
+                    flickable: serversContainer
                     property bool _loading: loading
                     SilicaListView {
-                        id: firstPageContainer
+                        id: serversContainer
                         anchors.fill: parent
                         BusyLabel { running: _loading }
                         PullDownMenu {
                             MenuItem {
-                                text: qsTr("Refresh servers")
+                                text: qsTr("Refresh")
                                 onClicked: python.refresh()
                             }
                         }
@@ -237,5 +276,5 @@ Page {
         function findById(_id) { return find(function (item) { return item.id === _id }) }*/
     }
 
-    ListModel { id: dmModel; onCountChanged: console.log(count, JSON.stringify(get(0))) }
+    ListModel { id: dmModel }
 }

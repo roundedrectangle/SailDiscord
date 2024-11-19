@@ -51,7 +51,7 @@ Page {
 
             PageHeader {
                 id: header
-                title: "#"+name
+                title: (guildid == '-2' ? '@' : "#")+name
             }
 
             Item {

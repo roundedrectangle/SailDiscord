@@ -125,12 +125,12 @@ class MyClient(discord.Client):
             return self.run_asyncio_threadsafe(self.current_channel.send(text))
     
     def ensure_current_channel(self, channel=None, server=None):
-        if (self.current_server == None) or (self.current_channel == None):
+        if self.current_channel == None:
             return
         cch = self.current_channel.id if isinstance(channel, int) else self.current_channel
         ccs = self.current_server.id if isinstance(server, int) else self.current_server
         ch = (cch == channel) if channel != None else True
-        se = (ccs == server) if server != None else True
+        se = (ccs == server) if (server != None and self.current_server != None) else True
         return ch and se
 
     async def send_user_info(self, user_id):
@@ -236,8 +236,8 @@ class Communicator:
             self.client.unset_current_channel()
         else:
             # try:
-                guild = self.client.get_guild(int(guild_id))
-                channel = guild.get_channel(int(channel_id))
+                guild = self.client.get_guild(int(guild_id)) if guild_id != '-2' else None
+                channel = guild.get_channel(int(channel_id)) if guild_id != '-2' else self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
                 self.client.set_current_channel(guild, channel)
             # except Exception as e:
             #     qsend(f"ERROR: couldn't set current_server: {e}. Falling back to None")

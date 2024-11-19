@@ -54,7 +54,7 @@ def send_dm_channel(user: discord.User, cacher: Cacher):
             str(cacher.get_cached_path(user.id, ImageType.USER, default=user.display_avatar))
     if icon != '':
         cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.USER)
-    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id))
+    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), user.dm_channel.permissions_for(user.dm_channel.me).view_channel)
 
 def send_dms(users_list: List[discord.User], cacher: Cacher):
     for user in users_list:
@@ -73,7 +73,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
     if icon != '':
         cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
     
-    return (str(message.guild.id), str(message.channel.id),
+    return (str(message.guild.id) if message.guild else '-2', str(message.channel.id),
             str(message.id), qml_date(message.created_at),
             bool(message.edited_at),
 
@@ -85,35 +85,6 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
             
             is_history, convert_attachments(message.attachments, cacher)
         )
-
-def generate_message(message: discord.Message, cacher: Cacher, myself_id, channel_ensurer, is_history=False):
-    t = message.type
-    base = generate_base_message(message, cacher, myself_id, is_history)
-
-    ref = {'type': 0, # No reference
-        'channel': '-1', 'message': '-1'}
-    if message.reference:
-        ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
-        if channel_ensurer(message.reference.channel_id, message.reference.guild_id):
-            ref['type'] = 2 # Reply
-            ref['channel'] = '-1'
-        # message.flags.is_crossposted (.crossposted?) - followed channels feature, not forwarded messages
-        # imagine not making a forward option for 9 years...
-        elif not message.is_system(): # FIXME once discord.py-self implements https://discord.com/developers/docs/change-log#message-forwarding-rollout
-            ref['type'] = 3 # Forward
-        else: ref['type'] = 1 # Unknown
-
-    event, args = '', ()
-    if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, ref)
-    elif t == discord.MessageType.new_member:
-        event, args = 'newmember', base
-    else: event, args = 'unkownmessage', (*base, message.content, ref, message.type.name)
-
-    return (event, args)
-
-def generate_message2(message: discord.Message, is_history=False):
-    pass#generate_message(message, comm.cacher, comm.client.user.id, comm.client.ensure_current_channel, is_history)
 
 # About
 
