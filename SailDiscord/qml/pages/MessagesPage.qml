@@ -12,6 +12,9 @@ Page {
     property string name
     property bool isDemo: false
     property bool sendPermissions: true
+    property bool isDM: false
+    property string userid: ''
+    property string usericon: ''
 
     Timer {
         id: activeFocusTimer
@@ -28,6 +31,7 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
+        contentHeight: height
 
         BusyLabel {
             running: msgModel.count === 0 && waitForMessagesTimer.running
@@ -46,12 +50,13 @@ Page {
         }
 
         Column {
+            id: column
             width: parent.width
-            height: parent.height
+            height: parent.height - (isDM ? Theme.paddingLarge : 0)
 
             PageHeader {
                 id: header
-                title: (guildid == '-2' ? '@' : "#")+name
+                title: (isDM ? '@' : "#")+name
             }
 
             Item {
@@ -172,6 +177,14 @@ Page {
 
                     onClicked: sendMessage()
                 }
+            }
+        }
+
+        PushUpMenu {
+            visible: isDM
+            MenuItem {
+                text: qsTranslate("AboutUser", "About", "User")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: name, icon: usericon })
             }
         }
     }

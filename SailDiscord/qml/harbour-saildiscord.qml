@@ -11,7 +11,7 @@ import "modules/js/showdown.min.js" as ShowDown
 
 ApplicationWindow {
     id: mainWindow
-    initialPage: Component { FirstPage { } } // TODO: bring back Component without removing Python from mainWindow
+    initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 

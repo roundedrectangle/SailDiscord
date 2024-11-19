@@ -82,7 +82,7 @@ Page {
                             icon: image
                             defaultActions: false
 
-                            onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions })
+                            onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
                             menu: Component { ContextMenu {
                                 MenuItem {text: qsTranslate("AboutUser", "About", "User")
                                     visible: _id != '-1'

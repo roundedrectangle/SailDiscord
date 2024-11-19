@@ -30,7 +30,7 @@ AboutPageBase {
     _pageHeaderItem.title: qsTranslate("AboutUser", "About", "User")
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
-    appVersion: _status != "" // makes it visible
+    appVersion: _status != "" ? 'a' : '' // makes it visible
     licenses: License {spdxId: "WTFPL"} // suppress No license errors
 
     BusyLabel {

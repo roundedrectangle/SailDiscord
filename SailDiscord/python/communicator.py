@@ -138,7 +138,7 @@ class MyClient(discord.Client):
         if user_id == -1:
             send_myself(self, comm.cacher)
             return
-        elif self.ensure_current_channel():
+        elif self.ensure_current_channel() and self.current_server != None:
             user = await self.current_server.fetch_member_profile(user_id)
         else: user = await self.fetch_user_profile(user_id)
 
