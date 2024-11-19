@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="218"/>
+        <location filename="../qml/pages/FirstPage.qml" line="217"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -156,27 +156,27 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="62"/>
+        <location filename="../qml/pages/FirstPage.qml" line="63"/>
         <source>DMs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="196"/>
+        <location filename="../qml/pages/FirstPage.qml" line="195"/>
         <source>Me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="222"/>
+        <location filename="../qml/pages/FirstPage.qml" line="221"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="88"/>
+        <location filename="../qml/pages/FirstPage.qml" line="89"/>
         <source>Refresh servers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="78"/>
+        <location filename="../qml/pages/FirstPage.qml" line="79"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>

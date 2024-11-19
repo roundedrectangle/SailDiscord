@@ -15,6 +15,7 @@ import logging
 
 from exceptions import *
 from utils import *
+from sending import *
 from caching import Cacher, ImageType, CachePeriodMapping
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
@@ -25,59 +26,9 @@ import discord, requests, aiohttp.connector
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-def gen_server(g: discord.Guild):
-    icon = '' if g.icon == None else \
-            str(comm.cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
-    if icon != '':
-        comm.cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
-    return (str(g.id), g.name, icon)
-
-def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]]):
-    for g in guilds:
-        if isinstance(g, discord.Guild):
-            qsend('server', *gen_server(g))
-        elif isinstance(g, discord.GuildFolder):
-            qsend('serverfolder', str(g.id), g.name or '', hex_color(g.color), [gen_server(i) for i in g.guilds])
-
-def send_channel(c, user_id):
-    if c.type == discord.ChannelType.category:
-        return
-    #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
-    text_sending_allowed = c.type == discord.ChannelType.text and permissions_for(c, user_id).send_messages
-    qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''), str(c.id), str(c.name), permissions_for(c, user_id).view_channel, str(getattr(getattr(c, 'type'), 'name')), text_sending_allowed)
-
-def send_channels(guild: discord.Guild, user_id):
-    for c in guild.channels:
-        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
-            send_channel(c, user_id)
-    for category in guild.categories:
-        for c in category.channels:
-            send_channel(c, user_id)
-
-def generate_base_message(message: Union[discord.Message, Any], is_history=False):
-    """Returns a sequence of the base author-dependent message callback arguments to pass at the start"""
-    icon = '' if message.author.display_avatar == None else \
-            str(comm.cacher.get_cached_path(message.author.id, ImageType.USER, default=message.author.display_avatar))
-    
-    if icon != '':
-        comm.cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
-    
-    return (str(message.guild.id), str(message.channel.id),
-            str(message.id), qml_date(message.created_at),
-            bool(message.edited_at),
-
-            {"id": str(message.author.id), "sent": message.author.id == comm.client.user.id,
-            "name": str(getattr(message.author, 'nick', None) or message.author.name),
-            "nick_avail": bool(getattr(message.author, 'nick', None)), # hasattr doesn't handle None values
-            "pfp": icon, "bot": message.author.bot, "system": message.author.system,
-            "color": hex_color(message.author.color)},
-            
-            is_history, convert_attachments(message.attachments, comm.cacher)
-        )
-
 def generate_message(message: discord.Message, is_history=False):
     t = message.type
-    base = generate_base_message(message, is_history)
+    base = generate_base_message(message, comm.cacher, comm.client.user.id, is_history)
 
     ref = {'type': 0, # No reference
         'channel': '-1', 'message': '-1'}
@@ -106,38 +57,6 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
     event, args = generate_message(message, is_history)
     qsend(event, *args)
 
-def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
-    status, is_on_mobile = 0, False # default
-    if isinstance(user, discord.MemberProfile):
-        if StatusMapping.has_value(user.status):
-            status = StatusMapping(user.status).index
-        is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, user.name, user.bot, user.system, hex_color(user.color))
-
-def send_myself(client: discord.Client):
-    user = client.user
-    status = 0 # default
-    if StatusMapping.has_value(client.status):
-        status = StatusMapping(client.status).index
-
-    icon = '' if user.display_avatar == None else \
-            str(comm.cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
-
-    # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), icon)
-
-    if icon != '':
-        comm.cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
-
-def send_guild_info(g: discord.Guild):
-    qsend(f'serverinfo{g.id}',
-        str(-1 if g.member_count is None else g.member_count),
-        str(-1 if g.online_count is None else g.online_count),
-        {feature.lower(): feature in g.features for feature in
-            ('VERIFIED','PARTNERED','COMMUNITY','DISCOVERABLE','FEATURABLE')
-        },
-    )
-
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.TextChannel] = None
@@ -149,10 +68,10 @@ class MyClient(discord.Client):
         qsend('logged_in', str(self.user.name))
         comm.ensure_constants()
         if comm.server_folders:
-            send_servers(self.sorted_guilds_and_folders)
+            send_servers(self.sorted_guilds_and_folders, comm.cacher)
         else:
             for g in self.guilds:
-                qsend('server', *gen_server(g))
+                qsend('server', *gen_server(g, comm.cacher))
 
         # Setup control variables
         self.current_server = None
@@ -216,7 +135,7 @@ class MyClient(discord.Client):
     async def send_user_info(self, user_id):
         user_id = int(user_id)
         if user_id == -1:
-            send_myself(self)
+            send_myself(self, comm.cacher)
             return
         elif self.ensure_current_channel():
             user = await self.current_server.fetch_member_profile(user_id)
