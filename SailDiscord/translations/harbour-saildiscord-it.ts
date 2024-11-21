@@ -36,7 +36,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="46"/>
         <source>Swedish</source>
-        <translation type="unfinished">Svedese</translation>
+        <translation>Svedese</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="63"/>
@@ -65,27 +65,27 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
         <source>%1 online</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 in linea</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 membri</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="66"/>
         <source>This server is a community server</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo è un server della community</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="73"/>
         <source>This server is a partnered server</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo è un server partner</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="80"/>
         <source>This server is a verified server</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo è un server verificato</translation>
     </message>
 </context>
 <context>
@@ -106,17 +106,17 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="54"/>
         <source>This user is a system account</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo utente è un account di sistema</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="61"/>
         <source>This user is a bot</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo utente è un bot</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="67"/>
         <source>Username</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome utente</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="72"/>
@@ -137,22 +137,22 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="84"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="241"/>
         <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Connessione fallita: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="242"/>
         <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Accesso fallito: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="251"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore python: %1</translation>
     </message>
 </context>
 <context>
@@ -160,18 +160,18 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="60"/>
         <source>DMs</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="69"/>
         <location filename="../qml/pages/FirstPage.qml" line="122"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="202"/>
         <source>Me</source>
-        <translation type="unfinished"></translation>
+        <translation>Utente</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="227"/>
@@ -181,7 +181,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="113"/>
         <source>Servers</source>
-        <translation type="unfinished"></translation>
+        <translation>Server</translation>
     </message>
 </context>
 <context>
@@ -243,7 +243,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="125"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificati</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="156"/>
@@ -256,12 +256,12 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="114"/>
         <source>Copy</source>
-        <translation type="unfinished">Copia</translation>
+        <translation>CopiaCopia</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="134"/>
         <source>Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Rispondi</translation>
     </message>
 </context>
 <context>
@@ -454,7 +454,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="15"/>
         <source>Share link</source>
-        <translation type="unfinished"></translation>
+        <translation>Condividi collegamento</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="17"/>
@@ -469,7 +469,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="44"/>
         <source>Copy text to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia testo negli appunti</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="50"/>
@@ -479,7 +479,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Condividi</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
@@ -533,12 +533,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="54"/>
         <source>Replies</source>
-        <translation type="unfinished"></translation>
+        <translation>Risposte</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="59"/>
         <source>The only supported reply types at the moment are replied and forwarded messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Al momento solo le risposte ed i messaggi inoltrati sono supportati come tipo di risposta</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="115"/>
@@ -639,7 +639,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Aspetto</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="157"/>
@@ -654,7 +654,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="165"/>
         <source>High-contrast mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità ad alto contrasto</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="184"/>
@@ -669,7 +669,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Disconnesso</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="199"/>
@@ -679,7 +679,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="200"/>
         <source>Cleared cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Svuota cache</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="210"/>
@@ -691,7 +691,7 @@
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
-        <translation type="unfinished">Ripristinando le impostazioni</translation>
+        <translation>Sto ripristinando le impostazioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="255"/>
@@ -751,17 +751,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Experimental</source>
-        <translation type="unfinished"></translation>
+        <translation>Sperimentale</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>Order servers as in real Discord and show folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordina server come nel discord reale e mostra cartelle</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="301"/>
         <source>Requires servers refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Necessita di un refresh dei server</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="320"/>
@@ -819,12 +819,12 @@
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="21"/>
         <source>%1 joined the server</source>
-        <translation type="unfinished">%1 è entrato nel server</translation>
+        <translation>%1 si è unito al server</translation>
     </message>
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="24"/>
         <source>Unknown message type: %1</source>
-        <translation type="unfinished">Messaggio sconosciuto: %1</translation>
+        <translation>Tipo di messaggio sconosciuto: %1</translation>
     </message>
 </context>
 <context>
@@ -832,7 +832,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="89"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>File scaricato: %1</translation>
     </message>
 </context>
 <context>
