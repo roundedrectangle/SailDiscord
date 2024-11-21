@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="254"/>
+        <location filename="../qml/pages/FirstPage.qml" line="224"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -94,7 +94,7 @@
         <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
-        <location filename="../qml/pages/FirstPage.qml" line="87"/>
+        <location filename="../qml/pages/FirstPage.qml" line="84"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
         <source>About</source>
         <comment>User</comment>
@@ -158,28 +158,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="60"/>
+        <location filename="../qml/pages/FirstPage.qml" line="57"/>
         <source>DMs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="71"/>
-        <location filename="../qml/pages/FirstPage.qml" line="126"/>
+        <location filename="../qml/pages/FirstPage.qml" line="68"/>
+        <location filename="../qml/pages/FirstPage.qml" line="123"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="232"/>
+        <location filename="../qml/pages/FirstPage.qml" line="203"/>
         <source>Me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="258"/>
+        <location filename="../qml/pages/FirstPage.qml" line="228"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="115"/>
+        <location filename="../qml/pages/FirstPage.qml" line="112"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
