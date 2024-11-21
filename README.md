@@ -72,7 +72,7 @@ After obtaining you token, in Sailcord top menu, when logging in, choose Login w
 	<img src="pictures/About.png" alt="Server list" width="200"/>
 </p>
 
-*Screenshots are for version 0.5.0*
+*Screenshots are for version 0.6.0*
 
 ## Translating
 
