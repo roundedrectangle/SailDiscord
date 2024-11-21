@@ -81,7 +81,7 @@
     <message>
         <location filename="../Opal/About/AboutPageBase.qml" line="817"/>
         <source>Translations</source>
-        <translation>Översättning</translation>
+        <translation>Översättningar</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/LicensePage.qml" line="82"/>
@@ -287,12 +287,12 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="39"/>
         <source>Norwegian Bokmål</source>
-        <translation type="unfinished"></translation>
+        <translation>Norska Bokmål</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="40"/>
         <source>Norwegian Nynorsk</source>
-        <translation type="unfinished"></translation>
+        <translation>Norska Nynorska</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="41"/>
@@ -342,7 +342,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="50"/>
         <source>Dutch (Belgium)</source>
-        <translation type="unfinished"></translation>
+        <translation>Holländska (Belgien)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="51"/>
@@ -362,12 +362,12 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="54"/>
         <source>Romanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumänska</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="55"/>
         <source>Serbian</source>
-        <translation type="unfinished"></translation>
+        <translation>Serbiska</translation>
     </message>
 </context>
 </TS>

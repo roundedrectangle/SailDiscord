@@ -180,29 +180,29 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="12"/>
         <source>Author</source>
-        <translation type="unfinished"></translation>
+        <translation>Autor</translation>
     </message>
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="13"/>
         <source>Author(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Autor</numerusform>
+            <numerusform>Autori</numerusform>
+            <numerusform>Autorov</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="14"/>
         <source>Maintainer</source>
-        <translation type="unfinished"></translation>
+        <translation>Správce</translation>
     </message>
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="15"/>
         <source>Maintainer(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Správca</numerusform>
+            <numerusform>Správcovia</numerusform>
+            <numerusform>Správcov</numerusform>
         </translation>
     </message>
     <message>
@@ -218,31 +218,31 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="18"/>
         <source>Third-party libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>Knižnice tretích strán</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="19"/>
         <source>Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Dáta</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="20"/>
         <source>Data License</source>
-        <translation type="unfinished"></translation>
+        <translation>Dátová licencia</translation>
     </message>
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="21"/>
         <source>Data License(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Dátová licencia</numerusform>
+            <numerusform>Dátové licencie</numerusform>
+            <numerusform>Dátových licencií</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="22"/>
         <source>Terms of Use</source>
-        <translation type="unfinished"></translation>
+        <translation>Podmienky použitia</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="30"/>
@@ -292,17 +292,17 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="39"/>
         <source>Norwegian Bokmål</source>
-        <translation type="unfinished"></translation>
+        <translation>Nórčina Bokmål</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="40"/>
         <source>Norwegian Nynorsk</source>
-        <translation type="unfinished"></translation>
+        <translation>Nórčina (Nynorsk)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="41"/>
         <source>Latvian</source>
-        <translation type="unfinished"></translation>
+        <translation>Litvinština</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="42"/>
@@ -347,7 +347,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="50"/>
         <source>Dutch (Belgium)</source>
-        <translation type="unfinished"></translation>
+        <translation>Holandčina (Belgicko)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="51"/>
@@ -367,12 +367,12 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="54"/>
         <source>Romanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumunčina</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="55"/>
         <source>Serbian</source>
-        <translation type="unfinished"></translation>
+        <translation>Srbština</translation>
     </message>
 </context>
 </TS>

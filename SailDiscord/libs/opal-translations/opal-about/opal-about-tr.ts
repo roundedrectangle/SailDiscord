@@ -143,7 +143,7 @@
     <message>
         <location filename="../Opal/About/private/LicenseListPart.qml" line="184"/>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;&apos;e bakın</translation>
     </message>
     <message>
         <location filename="../Opal/About/ChangelogNews.qml" line="214"/>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../Opal/About/ChangelogNews.qml" line="215"/>
         <source>Changes since version %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 sürümünden bu yana değişiklikler</translation>
     </message>
 </context>
 <context>
