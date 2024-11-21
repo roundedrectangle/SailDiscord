@@ -28,14 +28,11 @@ Page {
             loading = true
             python.login(appConfiguration.token)
         }
-
-        //if (!appConfiguration.usernameTutorialCompleted) completeTutorialTimer.start()
     }
 
     Connections {
         target: appConfiguration
         onTokenChanged: updatePage()
-        //onUsernameTutorialCompletedChanged: updatePage()
     }
 
     Component.onCompleted: {
@@ -131,32 +128,6 @@ Page {
                         VerticalScrollDecorator {}
 
                         header: PageHeader { title: username }
-                            /*MouseArea {
-                                anchors.fill: parent
-                                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: "" })
-                            }
-                            TapInteractionHint {
-                                id: tapHint
-                                anchors.centerIn: parent
-                                taps: 1
-                                running: !appConfiguration.usernameTutorialCompleted
-                            }
-                        }
-
-                        InteractionHintLabel {
-                            id: hintText
-                            anchors.bottom: parent.bottom
-                            text: qsTr("Tap your username to access information")
-                            Behavior on opacity { FadeAnimation {} }
-                            visible: opacity > 0
-                            opacity: appConfiguration.usernameTutorialCompleted ? 0 : 1
-                        }
-
-                        Timer {
-                            id: completeTutorialTimer
-                            interval: 4000
-                            onTriggered: appConfiguration.usernameTutorialCompleted = true
-                        }*/
 
                         model: serversModel
 
@@ -247,7 +218,6 @@ Page {
                         name: _username
                         icon: ""
 
-                        //_pageHeaderItem.title: ""
                         PullDownMenu {
                             parent: morePage.flickable
                             MenuItem {
@@ -265,16 +235,6 @@ Page {
         }
     }
 
-    ListModel {
-        id: serversModel
-
-        /*function find(pattern) {
-            for (var i = 0; i<count; i++) if (pattern(get(i))) return get(i)
-            return null
-        }
-
-        function findById(_id) { return find(function (item) { return item.id === _id }) }*/
-    }
-
+    ListModel { id: serversModel }
     ListModel { id: dmModel }
 }

@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="217"/>
+        <location filename="../qml/pages/FirstPage.qml" line="254"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -52,7 +52,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="41"/>
+        <location filename="../qml/components/ServerListItem.qml" line="42"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
         <source>About</source>
@@ -94,6 +94,8 @@
         <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
+        <location filename="../qml/pages/FirstPage.qml" line="87"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="186"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -138,17 +140,17 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="240"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="241"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="241"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="242"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="250"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="251"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -156,27 +158,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="63"/>
+        <location filename="../qml/pages/FirstPage.qml" line="60"/>
         <source>DMs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="195"/>
+        <location filename="../qml/pages/FirstPage.qml" line="71"/>
+        <location filename="../qml/pages/FirstPage.qml" line="126"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="232"/>
         <source>Me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="221"/>
+        <location filename="../qml/pages/FirstPage.qml" line="258"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="89"/>
-        <source>Refresh servers</source>
-        <translation>Обновить сервера</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="79"/>
+        <location filename="../qml/pages/FirstPage.qml" line="115"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -264,17 +267,17 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="38"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="42"/>
         <source>No messages</source>
         <translation>Нет сообщений</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="39"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="43"/>
         <source>Say hi ;)</source>
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="154"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="159"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

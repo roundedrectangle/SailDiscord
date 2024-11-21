@@ -131,10 +131,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Refresh servers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -144,6 +140,10 @@
     </message>
     <message>
         <source>Me</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
