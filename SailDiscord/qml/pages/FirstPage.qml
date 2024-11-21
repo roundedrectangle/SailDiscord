@@ -48,21 +48,22 @@ Page {
         updatePage()
     }
 
+    BusyLabel { running: loading }
+
     TabView {
         anchors.fill: parent
         tabBarPosition: Qt.AlignBottom
         currentIndex: 1
+        interactive: !loading
 
         Tab {
             title: qsTr("DMs")
             Component {
                 TabItem {
                     flickable: dmsContainer
-                    property bool _loading: loading
                     SilicaListView {
                         id: dmsContainer
                         anchors.fill: parent
-                        BusyLabel { running: _loading }
                         PullDownMenu {
                             MenuItem {
                                 text: qsTr("Refresh")
@@ -113,11 +114,9 @@ Page {
             Component {
                 TabItem {
                     flickable: serversContainer
-                    property bool _loading: loading
                     SilicaListView {
                         id: serversContainer
                         anchors.fill: parent
-                        BusyLabel { running: _loading }
                         PullDownMenu {
                             MenuItem {
                                 text: qsTr("Refresh")
