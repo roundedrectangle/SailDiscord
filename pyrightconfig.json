@@ -1,0 +1,44 @@
+{
+    "include": [
+        "python"
+    ],
+    
+    "exclude": [
+        "*"
+    ],
+    
+    "ignore": [
+        
+    ],
+    
+    "defineConstant": {
+        //"DEBUG": true
+    },
+    
+    "reportMissingImports": false,
+    "reportImplicitRelativeImport": false,
+    "reportUnusedImport": "hint",
+    "reportMissingModuleSource": false,
+    "reportPrivateImportUsage": false,
+    
+    "reportUnknownVariableType": false,
+    "reportUnknownParameterType": false,
+    "reportUnknownArgumentType": false,
+    "reportUnknownMemberType": false,
+    "reportUnknownLambdaType": false,
+    
+    "reportMissingTypeStubs": false,
+    "reportMissingTypeArgument": false,
+    "reportMissingParameterType": false,
+    "reportAny": false,
+    "reportArgumentType": false,
+
+    "reportOptionalCall": "warning",
+    "reportOptionalMemberAccess": false,
+    "reportUnannotatedClassAttribute": false,
+    "reportUnusedCallResult": false,
+    
+    
+    "pythonVersion": "3.8",
+    
+    }

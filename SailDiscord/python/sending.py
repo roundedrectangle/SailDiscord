@@ -19,7 +19,7 @@ def gen_server(g: discord.Guild, cacher: Cacher):
         cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
     return (str(g.id), g.name, icon)
 
-def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder]], cacher: Cacher):
+def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], cacher: Cacher):
     for g in guilds:
         if isinstance(g, discord.Guild):
             qsend('server', *gen_server(g, cacher))
@@ -49,7 +49,6 @@ def send_channels(guild: discord.Guild, user_id):
 # DMs
 
 def send_dm_channel(user: discord.User, cacher: Cacher):
-    c = user.dm_channel
     icon = '' if user.display_avatar == None else \
             str(cacher.get_cached_path(user.id, ImageType.USER, default=user.display_avatar))
     if icon != '':

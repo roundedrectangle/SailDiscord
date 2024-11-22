@@ -2,11 +2,12 @@ import sys
 from datetime import datetime, timezone
 from caching import Cacher
 from pyotherside import send as qsend
-from typing import Callable, List, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
+from typing import Any, Callable, List, Tuple, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 from contextlib import suppress
 from enum import Enum, auto
 from pathlib import Path
+import asyncio
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -21,7 +22,7 @@ def exception_decorator(*exceptions: Exception):
         def f(*args, **kwargs):
             try:
                 return func(*args, **kwargs)
-            except exceptions as e:
+            except exceptions as e: # pyright: ignore[reportGeneralTypeIssues]
                 qsend(f"An error occured while running function '{func.__name__}': {type(e).__name__}: {e}")
 
         return f
@@ -42,7 +43,7 @@ def qml_date(date: datetime):
     return date.replace(tzinfo=timezone.utc).timestamp()*1000
 
 class classproperty(property):
-    def __get__(self, owner_self, owner_cls):
+    def __get__(self, owner_self, owner_cls=None):
         return self.fget(owner_cls)
 
 class ListEnum(Enum):
@@ -89,14 +90,14 @@ def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
     # TODO: caching, more types
     res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": a.content_type, "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
     if len(res) > 0:
-        res[0]['maxheight'] = max((a.height or -1) if a.content_type.startswith('image') else -1 for a in attachments)
-        res[0]['maxwidth'] = max((a.width or -1) if a.content_type.startswith('image') else -1 for a in attachments)
+        res[0]['maxheight'] = max((a.height or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
+        res[0]['maxwidth'] = max((a.width or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
     return res
 
 def hex_color(color: discord.Color):
     return '' if color in (None, discord.Color.default()) else str(color)
 
-def dict_folder(folder: discord.GuildFolder) -> dict:
+def dict_folder(folder: Union[discord.GuildFolder, Any]) -> Optional[dict]:
     if not isinstance(folder, discord.GuildFolder): return
     return {
         '_id': folder.id,

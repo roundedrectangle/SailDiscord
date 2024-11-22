@@ -86,7 +86,7 @@ class Cacher:
         return self._update_period
 
     @update_period.setter
-    def update_period(self, value: AnyTimedelta):
+    def update_period(self, value: AnyTimedelta): # pyright: ignore[reportPropertyTypeMismatch]
         self._update_period = convert_to_timedelta(value)
 
     @property
@@ -107,12 +107,13 @@ class Cacher:
     def __init__(self, cache: AnyPath, update_period: AnyTimedelta, proxy: Optional[str] = None):
         self._update_period = None
 
-        self.cache = Path(cache)
-        self.temp = Path(cache) / 'temporary' # FIXME: use StandardPaths.Temporary without private-tmp instead
+        self.cache: Path = Path(cache)
+        self.temp: Path = Path(cache) / 'temporary' # FIXME: use StandardPaths.Temporary without private-tmp instead
         self.clear_temporary()
         self.recreate_temporary()
         self.update_period = update_period
         self.proxies = {}
+        self._proxy: Optional[str] = None
         self.proxy = proxy
 
         self.session_cached = {}

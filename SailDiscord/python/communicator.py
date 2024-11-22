@@ -60,7 +60,7 @@ def send_message(message: Union[discord.Message, Any], is_history=False):
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.TextChannel] = None
-    loop = None
+    loop: asyncio.AbstractEventLoop
     current_channel_deletion_pending = False
     pending_close_task: Optional[asyncio.Task] = None
 
@@ -84,7 +84,7 @@ class MyClient(discord.Client):
             await message.ack()
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
-        ch = self.get_channel(self.current_channel.id)
+        ch: Union[discord.TextChannel, discord.DMChannel] = self.get_channel(self.current_channel.id) # pyright: ignore[reportAssignmentType]
         _before = before
         if isinstance(before, int):
             _before = ch.get_partial_message(before)
@@ -93,7 +93,7 @@ class MyClient(discord.Client):
 
         async for m in gen:
             if self.current_channel == None: # this doesn't work!
-                cancel_gen(gen)
+                await cancel_gen(gen)
                 break
             send_message(m, True)
 
@@ -161,7 +161,7 @@ class Communicator:
     cacher: Optional[Cacher] = None
     token: str = ''
     loginth: Thread
-    client: MyClient = None
+    client: MyClient
     server_folders: bool = False
 
     def __init__(self):
@@ -278,7 +278,7 @@ class Communicator:
         if channel_id == '-1':
             ch = self.client.current_channel
         else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
-        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
+        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True) # pyright: ignore[reportAttributeAccessIssue]
         event, args = generate_message(m)
         return (event, *args)
 
