@@ -70,3 +70,5 @@ SailDiscord/opal-docs
 venv
 env
 ENV
+
+.vscode

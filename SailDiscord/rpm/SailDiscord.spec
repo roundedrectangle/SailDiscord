@@ -10,10 +10,10 @@ License:    LICENSE
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   qtmozembed-qt5
+Requires:   qtmozembed-qt5 #?
 Requires:   sailfish-components-webview-qt5
-Requires:   sailfish-components-webview-qt5-pickers
-Requires:   sailfish-components-webview-qt5-popups
+Requires:   sailfish-components-webview-qt5-pickers #?
+Requires:   sailfish-components-webview-qt5-popups #?
 Requires:   pyotherside-qml-plugin-python3-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
@@ -67,6 +67,7 @@ Short description of my Sailfish OS Application
 #python3 -m pip install --upgrade pip
 #python3 -m pip cache purge
 python3 -m pip install "discord.py-self>=2.0" "requests" "Pillow" --target=%_builddir/deps
+rm -rf %_builddir/deps/bin
 #rm -rf %_builddir/deps/google/_upb
 %endif
 
