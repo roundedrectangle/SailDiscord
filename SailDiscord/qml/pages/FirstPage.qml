@@ -22,6 +22,11 @@ Page {
 
     function updatePage() {
         if (appConfiguration.token == "") {
+            // For log out
+            serversModel.clear()
+            dmModel.clear()
+            username = ""
+
             loading = false
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
