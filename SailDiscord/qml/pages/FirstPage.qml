@@ -255,6 +255,11 @@ Page {
         }
     }
 
+    TouchBlocker {
+        anchors.fill: parent
+        visible: loading
+    }
+
     ListModel { id: serversModel }
     ListModel { id: dmModel }
 }
