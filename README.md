@@ -32,10 +32,9 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 
 ## Known issues
 
-- Hourly cache updating is actually 35 seconds cache updating. A fix is coming in the next update
 - App lags in a text channel sometimes. Very similar to the issue below except this one lags besides being slow
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
-- When using server folders, they might not load sometimes
+- When using server folders, they might not load sometimes. A workaround is to swipe to a different tab, then swipe back.
 
 ## Troubleshooting
 
