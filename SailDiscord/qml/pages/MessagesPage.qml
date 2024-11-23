@@ -29,6 +29,8 @@ Page {
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
 
+    function loadAboutDM() { pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: name, icon: usericon }) }
+
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: height
@@ -52,6 +54,9 @@ Page {
         PageHeader {
             id: header
             title: (isDM ? '@' : "#")+name
+            interactive: isDM
+            titleColor: highlighted ? palette.primaryColor : palette.highlightColor
+            Component.onCompleted: _nahighlighted ? palette.primaryColor : palette.highlightColorvigateForwardMouseArea.clicked.connect(loadAboutDM)
         }
 
         SilicaListView {
@@ -178,7 +183,7 @@ Page {
             visible: isDM
             MenuItem {
                 text: qsTranslate("AboutUser", "About", "User")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: name, icon: usericon })
+                onClicked: loadAboutDM()
             }
         }
     }

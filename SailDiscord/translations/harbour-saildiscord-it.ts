@@ -95,7 +95,7 @@
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <location filename="../qml/pages/FirstPage.qml" line="99"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="180"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="189"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Info</translation>
@@ -267,17 +267,17 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="42"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="44"/>
         <source>No messages</source>
         <translation>Nessun messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="43"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="45"/>
         <source>Say hi ;)</source>
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="154"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="163"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>
