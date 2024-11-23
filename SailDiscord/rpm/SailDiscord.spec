@@ -1,19 +1,21 @@
-%define package_library "yes"
+%define package_library "no"
 # See README
 
 Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.6.0
+Version:    5.99.0
 Release:    1
 License:    LICENSE
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   qtmozembed-qt5 #?
+#1:?
+Requires:   qtmozembed-qt5
 Requires:   sailfish-components-webview-qt5
-Requires:   sailfish-components-webview-qt5-pickers #?
-Requires:   sailfish-components-webview-qt5-popups #?
+#2:?
+Requires:   sailfish-components-webview-qt5-pickers
+Requires:   sailfish-components-webview-qt5-popups
 Requires:   pyotherside-qml-plugin-python3-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)

@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="223"/>
+        <location filename="../qml/pages/FirstPage.qml" line="244"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -94,8 +94,8 @@
         <location filename="../qml/components/MessageItem.qml" line="151"/>
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
-        <location filename="../qml/pages/FirstPage.qml" line="85"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="186"/>
+        <location filename="../qml/pages/FirstPage.qml" line="99"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="180"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
@@ -158,28 +158,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="60"/>
+        <location filename="../qml/pages/FirstPage.qml" line="65"/>
         <source>DMs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="69"/>
-        <location filename="../qml/pages/FirstPage.qml" line="122"/>
+        <location filename="../qml/pages/FirstPage.qml" line="75"/>
+        <location filename="../qml/pages/FirstPage.qml" line="137"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="202"/>
+        <location filename="../qml/pages/FirstPage.qml" line="223"/>
         <source>Me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="227"/>
+        <location filename="../qml/pages/FirstPage.qml" line="248"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="113"/>
+        <location filename="../qml/pages/FirstPage.qml" line="128"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
@@ -277,7 +277,7 @@
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="159"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="154"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>

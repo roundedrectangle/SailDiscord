@@ -66,45 +66,55 @@ Page {
             Component {
                 TabItem {
                     flickable: dmsContainer
-                    SilicaListView {
+                    SilicaFlickable {
                         id: dmsContainer
                         anchors.fill: parent
+
                         PullDownMenu {
                             MenuItem {
                                 text: qsTr("Refresh")
                                 onClicked: python.refresh()
                             }
                         }
+                        PageHeader { id: header; title: username }
 
-                        header: PageHeader { title: username }
+                        SilicaListView {
+                            width: parent.width
+                            anchors {
+                                top: header.bottom
+                                bottom: parent.bottom
+                            }
+                            clip: true
+                            model: dmModel
+                            VerticalScrollDecorator {}
 
-                        model: dmModel
-                        delegate: ServerListItem {
-                            serverid: '-1'
-                            title: name
-                            icon: image
-                            defaultActions: false
+                            delegate: ServerListItem {
+                                serverid: '-1'
+                                title: name
+                                icon: image
+                                defaultActions: false
 
-                            onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
-                            menu: Component { ContextMenu {
-                                MenuItem {text: qsTranslate("AboutUser", "About", "User")
-                                    visible: _id != '-1'
-                                    onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
-                                }
-                            } }
-                        }
+                                onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
+                                menu: Component { ContextMenu {
+                                    MenuItem {text: qsTranslate("AboutUser", "About", "User")
+                                        visible: _id != '-1'
+                                        onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
+                                    }
+                                } }
+                            }
 
-                        section {
-                            property: "_id"
-                            delegate: Loader {
-                                width: parent.width
-                                sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
-                                Component {
-                                    id: separatorComponent
-                                    Separator {
-                                        color: Theme.primaryColor
-                                        width: parent.width
-                                        horizontalAlignment: Qt.AlignHCenter
+                            section {
+                                property: "_id"
+                                delegate: Loader {
+                                    width: parent.width
+                                    sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
+                                    Component {
+                                        id: separatorComponent
+                                        Separator {
+                                            color: Theme.primaryColor
+                                            width: parent.width
+                                            horizontalAlignment: Qt.AlignHCenter
+                                        }
                                     }
                                 }
                             }
@@ -119,7 +129,7 @@ Page {
             Component {
                 TabItem {
                     flickable: serversContainer
-                    SilicaListView {
+                    SilicaFlickable {
                         id: serversContainer
                         anchors.fill: parent
                         PullDownMenu {
@@ -128,72 +138,78 @@ Page {
                                 onClicked: python.refresh()
                             }
                         }
+                        PageHeader { id: header; title: username }
 
-                        VerticalScrollDecorator {}
-
-                        header: PageHeader { title: username }
-
-                        model: serversModel
-
-                        delegate: Loader {
-                            // TODO: fix folders sometimes not working
-                            sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                        SilicaListView {
                             width: parent.width
-                            property var _color: folder ? color : undefined
-                            property var _servers: folder ? servers : undefined
-                            Component {
-                                id: serverItemComponent
-                                ServerListItem {
-                                    serverid: _id
-                                    title: name
-                                    icon: image
-                                }
+                            anchors {
+                                top: header.bottom
+                                bottom: parent.bottom
                             }
+                            clip: true
+                            model: serversModel
+                            VerticalScrollDecorator {}
 
-                            Component {
-                                id: serverFolderComponent
-                                Column {
-                                    width: parent.width
-                                    SectionHeader {
-                                        id: folderHeader
-                                        visible: name
-                                        color: _color == "" ? palette.highlightColor : _color
-                                        text: name
+                            delegate: Loader {
+                                // TODO: fix folders sometimes not working
+                                sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                                width: parent.width
+                                property var _color: folder ? color : undefined
+                                property var _servers: folder ? servers : undefined
+                                Component {
+                                    id: serverItemComponent
+                                    ServerListItem {
+                                        serverid: _id
+                                        title: name
+                                        icon: image
                                     }
-                                    Row {
+                                }
+
+                                Component {
+                                    id: serverFolderComponent
+                                    Column {
                                         width: parent.width
-                                        Item {
-                                            width: Theme.paddingLarge
-                                            height: parent.height
-                                            Rectangle {
-                                                width: Theme.paddingSmall
-                                                color: folderHeader.color
+                                        SectionHeader {
+                                            id: folderHeader
+                                            visible: name
+                                            color: _color == "" ? palette.highlightColor : _color
+                                            text: name
+                                        }
+                                        Row {
+                                            width: parent.width
+                                            Item {
+                                                width: Theme.paddingLarge
                                                 height: parent.height
-                                                anchors.horizontalCenter: parent.horizontalCenter
+                                                Rectangle {
+                                                    width: Theme.paddingSmall
+                                                    color: folderHeader.color
+                                                    height: parent.height
+                                                    anchors.horizontalCenter: parent.horizontalCenter
+                                                }
+                                            }
+
+                                            ColumnView {
+                                                model: _servers
+                                                delegate: serverItemComponent
+                                                itemHeight: Theme.itemSizeLarge
                                             }
                                         }
-
-                                        ColumnView {
-                                            model: _servers
-                                            delegate: serverItemComponent
-                                            itemHeight: Theme.itemSizeLarge
-                                        }
                                     }
                                 }
                             }
-                        }
 
-                        section {
-                            property: "_id"
-                            delegate: Loader {
-                                width: parent.width
-                                sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
-                                Component {
-                                    id: separatorComponent
-                                    Separator {
-                                        color: Theme.primaryColor
-                                        width: parent.width
-                                        horizontalAlignment: Qt.AlignHCenter
+                            section {
+                                property: "_id"
+                                delegate: Loader {
+                                    width: parent.width
+                                    sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
+                                    Component {
+                                        id: separatorComponent
+                                        Separator {
+                                            color: Theme.primaryColor
+                                            width: parent.width
+                                            horizontalAlignment: Qt.AlignHCenter
+                                        }
                                     }
                                 }
                             }

@@ -49,134 +49,128 @@ Page {
             }
         }
 
-        Column {
-            id: column
+        PageHeader {
+            id: header
+            title: (isDM ? '@' : "#")+name
+        }
+
+        SilicaListView {
+            id: messagesList
+            anchors {
+                top: header.bottom
+                bottom: sendBox.top
+            }
             width: parent.width
-            height: parent.height - (isDM ? Theme.paddingLarge : 0)
+            model: msgModel
+            clip: true
+            verticalLayoutDirection: ListView.BottomToTop
 
-            PageHeader {
-                id: header
-                title: (isDM ? '@' : "#")+name
+            VerticalScrollDecorator {}
+
+            function getVisibleIndexRange() { // this one actually works!
+                var center_x = messagesList.x + messagesList.width / 2
+                return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
+                        indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
             }
 
-            Item {
-                width: parent.width
-                height: parent.height - header.height - (sendField.visible ? sendField.height : 0)
+            function checkForUpdate() {
+                var rng = getVisibleIndexRange()
+                for (var i=rng[1]; i<=rng[0]; i++) {
+                    if (i>0 && i%27 == 0) {
+                        if (!msgModel.get(i)._wasUpdated) {
+                            msgModel.get(i)._wasUpdated = true
+                            python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
+                        }
+                    }
+                }
+            }
 
-                SilicaListView {
-                    id: messagesList
+            onContentYChanged: checkForUpdate()
+
+            delegate: Loader {
+                width: parent.width
+                sourceComponent:
+                    switch (type) {
+                    case '': return defaultItem
+                    case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : systemItem
+                    default: return systemItem
+                    }
+
+                Rectangle {
                     anchors.fill: parent
-                    model: msgModel
-                    clip: true
-                    verticalLayoutDirection: ListView.BottomToTop
-
-                    VerticalScrollDecorator {}
-
-                    function getVisibleIndexRange() { // this one actually works!
-                        var center_x = messagesList.x + messagesList.width / 2
-                        return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
-                                indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
+                    visible: appSettings.highContrastMessages && parent.status == Loader.Ready
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0) }
+                        GradientStop { position: 1.0; color: Theme.rgba(Theme.secondaryColor, 0.1) }
                     }
+                }
 
-                    function checkForUpdate() {
-                        var rng = getVisibleIndexRange()
-                        for (var i=rng[1]; i<=rng[0]; i++) {
-                            if (i>0 && i%27 == 0) {
-                                if (!msgModel.get(i)._wasUpdated) {
-                                    msgModel.get(i)._wasUpdated = true
-                                    python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
-                                }
-                            }
+                Component {
+                    id: defaultItem
+                    MessageItem {
+                        authorid: userid
+                        contents: _contents
+                        author: _author
+                        pfp: _pfp
+                        sent: _sent
+                        date: _date
+                        sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
+                        masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
+                        masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
+                        attachments: _attachments
+                        reference: _ref
+                        flags: _flags
+
+                        function updateMasterWidth() {
+                            msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
+
+                        Component.onCompleted: {
+                            updateMasterWidth()
+                        }
+                        onMasterWidthChanged: updateMasterWidth()
+                        onInnerWidthChanged: updateMasterWidth()
                     }
+                }
 
-                    onContentYChanged: checkForUpdate()
-
-                    delegate: Loader {
-                        width: parent.width
-                        sourceComponent:
-                            switch (type) {
-                            case '': return defaultItem
-                            case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : systemItem
-                            default: return systemItem
-                            }
-
-                        Rectangle {
-                            anchors.fill: parent
-                            visible: appSettings.highContrastMessages && parent.status == Loader.Ready
-                            gradient: Gradient {
-                                GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0) }
-                                GradientStop { position: 1.0; color: Theme.rgba(Theme.secondaryColor, 0.1) }
-                            }
-                        }
-
-                        Component {
-                            id: defaultItem
-                            MessageItem {
-                                authorid: userid
-                                contents: _contents
-                                author: _author
-                                pfp: _pfp
-                                sent: _sent
-                                date: _date
-                                sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
-                                masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
-                                masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
-                                attachments: _attachments
-                                reference: _ref
-                                flags: _flags
-
-                                function updateMasterWidth() {
-                                    msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
-                                }
-
-                                Component.onCompleted: {
-                                    updateMasterWidth()
-                                }
-                                onMasterWidthChanged: updateMasterWidth()
-                                onInnerWidthChanged: updateMasterWidth()
-                            }
-                        }
-
-                        Component {
-                            id: systemItem
-                            SystemMessageItem { _model: model; label.horizontalAlignment: Text.AlignHCenter }
-                        }
-                    }
-
+                Component {
+                    id: systemItem
+                    SystemMessageItem { _model: model; label.horizontalAlignment: Text.AlignHCenter }
                 }
             }
+        }
 
-            Row {
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                visible: sendPermissions
+        Row {
+            id: sendBox
+            width: parent.width
+            anchors.horizontalCenter: parent.horizontalCenter
+            visible: sendPermissions
+            anchors.bottom: parent.bottom
 
-                TextArea {
-                    id: sendField
-                    width: parent.width - sendButton.width
+            TextArea {
+                id: sendField
+                width: parent.width - sendButton.width
 
-                    placeholderText: qsTr("Type something")
-                    hideLabelOnEmptyField: false
-                    labelVisible: false
-                    anchors.verticalCenter: parent.verticalCenter
-                    backgroundStyle: TextEditor.UnderlineBackground
-                    horizontalAlignment: TextEdit.AlignLeft
+                placeholderText: qsTr("Type something")
+                hideLabelOnEmptyField: false
+                labelVisible: false
+                anchors.verticalCenter: parent.verticalCenter
+                backgroundStyle: TextEditor.UnderlineBackground
+                horizontalAlignment: TextEdit.AlignLeft
 
-                    EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
-                    EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
-                }
+                EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
+                EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+            }
 
-                IconButton {
-                    id: sendButton
-                    width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
-                    height: width
-                    enabled: sendField.text.length !== 0
-                    anchors.bottom: parent.bottom
-                    icon.source: "image://theme/icon-m-send"
+            IconButton {
+                id: sendButton
+                width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                height: width
+                enabled: sendField.text.length !== 0
+                anchors.bottom: parent.bottom
+                icon.source: "image://theme/icon-m-send"
 
-                    onClicked: sendMessage()
-                }
+                onClicked: sendMessage()
             }
         }
 
