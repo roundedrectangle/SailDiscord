@@ -621,14 +621,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Experimental</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Order servers as in real Discord and show folders</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Logged out</source>
         <translation type="unfinished"></translation>
     </message>
@@ -642,7 +634,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Requires servers refresh</source>
+        <source>Experimental</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

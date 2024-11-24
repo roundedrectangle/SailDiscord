@@ -2,7 +2,7 @@
 
 # if __name__ == "__main__":
 #     pass
-import sys, time
+import sys
 from pyotherside import send as qsend
 from threading import Thread
 import asyncio, shutil
@@ -16,7 +16,7 @@ import logging
 from exceptions import *
 from utils import *
 from sending import *
-from caching import Cacher, ImageType, CachePeriodMapping
+from caching import Cacher
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -67,15 +67,10 @@ class MyClient(discord.Client):
     async def on_ready(self):
         qsend('logged_in', str(self.user.name))
         comm.ensure_constants()
-        if comm.server_folders:
-            send_servers(self.sorted_guilds_and_folders, comm.cacher)
-        else:
-            for g in self.guilds:
-                qsend('server', *gen_server(g, comm.cacher))
+        send_servers(self.sorted_guilds_and_folders, comm.cacher)
         send_dms(self.users, comm.cacher)
 
         # Setup control variables
-        self.current_server = None
         self.loop = asyncio.get_running_loop()
 
     async def on_message(self, message: discord.Message):
@@ -162,7 +157,6 @@ class Communicator:
     token: str = ''
     loginth: Thread
     client: MyClient
-    server_folders: bool = False
 
     def __init__(self):
         self.loginth = Thread()
@@ -179,13 +173,12 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, server_folders: bool):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
         if self.cacher:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
         else:
             self.cacher = Cacher(cache, cache_period)
-        self.server_folders = server_folders
         self.set_proxy(proxy)
         self.downloads = Path(downloads)
 
@@ -208,7 +201,7 @@ class Communicator:
             self.cacher.proxy = p.geturl()
 
     def ensure_constants(self):
-        while None in (self.cacher, self.downloads, self.server_folders): pass
+        while None in (self.cacher, self.downloads): pass
 
     def clear_cache(self):
         shutil.rmtree(self.cacher.cache, ignore_errors=True)

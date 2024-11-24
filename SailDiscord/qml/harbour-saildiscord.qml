@@ -91,12 +91,6 @@ ApplicationWindow {
         }
 
         function shareFile(url, name, mime) {
-            /*if (local) {
-                shareApi.mimeType = mime
-                shareApi.resources = [url]
-                shareApi.trigger()
-                return
-            }*/
             python.call('communicator.comm.save_temp', [url, name], function(path) {
                 shareApi.mimeType = mime
                 shareApi.resources = [path]
@@ -190,6 +184,8 @@ ApplicationWindow {
                 appSettings.sentBehaviour = "r"
             if (value("usernameTutorialCompleted", null) !== null)
                 setValue("usernameTutorialCompleted", undefined)
+            if (appSettings.value("folders", null) !== null)
+                appSettings.setValue("folders", undefined)
         }
 
         ConfigurationGroup {
@@ -219,7 +215,6 @@ ApplicationWindow {
             property string proxyType: "g"
             property string customProxy: ""
             property bool infoInNotifications: false
-            property bool folders: true
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
@@ -307,6 +302,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), appSettings.folders]) }
+        function reloadConstants() { call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()]) }
     }
 }

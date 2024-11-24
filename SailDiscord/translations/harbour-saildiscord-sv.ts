@@ -140,17 +140,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="247"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="244"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="248"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="245"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="257"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="254"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -688,7 +688,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation type="unfinished">Återställ inställningar</translation>
@@ -799,17 +799,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
-        <source>Order servers as in real Discord and show folders</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
-        <source>Requires servers refresh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>

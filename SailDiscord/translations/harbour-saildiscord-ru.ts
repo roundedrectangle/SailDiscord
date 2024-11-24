@@ -140,17 +140,17 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="247"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="244"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="248"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="245"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="257"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="254"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -686,7 +686,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
@@ -752,17 +752,7 @@
         <translation>Эксперементально</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
-        <source>Order servers as in real Discord and show folders</source>
-        <translation>Упорядочить сервера как в настояшем Discord и показывать папки</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
-        <source>Requires servers refresh</source>
-        <translation>Требуется обновление серверов</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>
