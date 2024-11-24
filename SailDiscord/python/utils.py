@@ -8,6 +8,7 @@ from contextlib import suppress
 from enum import Enum, auto
 from pathlib import Path
 import asyncio
+import urllib.parse
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -108,3 +109,7 @@ def dict_folder(folder: Union[discord.GuildFolder, Any]) -> Optional[dict]:
         'name': folder.name,
         'color': hex_color(folder.color),
     }
+
+def isurl(obj: str):
+    """Returns True if an object is an internet URL"""
+    return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')

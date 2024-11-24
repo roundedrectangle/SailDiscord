@@ -93,7 +93,8 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, user.name, user.bot, user.system, hex_color(user.color))
+    qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
+    user.name, user.bot, user.system, hex_color(user.color))
 
 def send_myself(client: discord.Client, cacher: Cacher):
     user = client.user
@@ -105,13 +106,14 @@ def send_myself(client: discord.Client, cacher: Cacher):
             str(cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
 
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), icon)
+    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), icon)#user.display_avatar, icon)
 
     if icon != '':
         cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
 
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',
+        #g.icon,
         str(-1 if g.member_count is None else g.member_count),
         str(-1 if g.online_count is None else g.online_count),
         {feature.lower(): feature in g.features for feature in

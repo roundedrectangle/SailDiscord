@@ -40,6 +40,22 @@ AboutPageBase {
         onRunningChanged: _develInfoSection.parent.visible = !running
     }
 
+    MouseArea {
+        parent: _iconItem
+        anchors.fill: parent
+        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.attachmentsToListModel(page, [{
+            spoiler: false,
+            filename: name+"_"+userid+'.png',
+            _height: _iconItem.sourceSize.height,
+            maxheight: _iconItem.sourceSize.height,
+            maxwidth: _iconItem.sourceSize.width,
+            type: 2,
+            realtype: 'image/png',
+            url: icon,
+            alt: ""
+        }])})
+    }
+
     extraSections: [
         InfoSection {
             visible: isBot || isSystem

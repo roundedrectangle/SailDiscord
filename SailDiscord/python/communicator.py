@@ -264,15 +264,20 @@ class Communicator:
     def download_file(self, url, filename):
         dest = self.downloads / filename
         self.ensure_constants()
-        r = requests.get(url, stream=True)
-        if r.status_code == 200:
-            with open(dest, 'wb') as f:
-                for chunk in r:
-                    f.write(chunk)
+        if isurl(url):
+            r = requests.get(url, stream=True)
+            if r.status_code == 200:
+                with open(dest, 'wb') as f:
+                    for chunk in r:
+                        f.write(chunk)
+        else:
+            shutil.copy(url, dest)
 
     def save_temp(self, url, name):
         """Returns saved temp file path"""
-        return str(self.cacher.save_temporary(url, name))
+        if isurl(url):
+            return str(self.cacher.save_temporary(url, name))
+        else: return url
 
     def get_reference(self, channel_id, message_id):
         if channel_id == '-1':

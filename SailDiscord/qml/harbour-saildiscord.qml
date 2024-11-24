@@ -91,6 +91,12 @@ ApplicationWindow {
         }
 
         function shareFile(url, name, mime) {
+            /*if (local) {
+                shareApi.mimeType = mime
+                shareApi.resources = [url]
+                shareApi.trigger()
+                return
+            }*/
             python.call('communicator.comm.save_temp', [url, name], function(path) {
                 shareApi.mimeType = mime
                 shareApi.resources = [path]

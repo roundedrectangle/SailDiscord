@@ -26,6 +26,7 @@
     "reportMissingParameterType": false,
     "reportAny": false,
     "reportArgumentType": false,
+    "reportExplicitAny": false,
 
     "reportOptionalCall": "warning",
     "reportOptionalMemberAccess": false,
