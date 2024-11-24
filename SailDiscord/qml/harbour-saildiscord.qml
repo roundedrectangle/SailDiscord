@@ -162,7 +162,9 @@ ApplicationWindow {
             // heads up: QQMLListModel can convert:
             // arrays to QQMLListModel instances
             // undefined to empty objects aka {} when other elements are objects
-            return {_id: _id, name: name, image: icon, folder: false /*default*/ }
+            return {_id: _id, name: name, image: icon,
+                folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
+            }
         }
 
         function attachmentsToListModel(_parent, attachments) {
@@ -237,7 +239,7 @@ ApplicationWindow {
             setHandler('logged_in', loggedInHandler) // function(username)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {folder: true, _id: _id, name: name, color: color, servers: []}
+                var data = {image: '', folder: true, _id: _id, name: name, color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)

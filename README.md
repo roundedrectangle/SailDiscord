@@ -34,7 +34,6 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 
 - App lags in a text channel sometimes. Very similar to the issue below except this one lags besides being slow
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
-- When using server folders, they might not load sometimes. A workaround is to swipe to a different tab, then swipe back.
 
 ## Troubleshooting
 
