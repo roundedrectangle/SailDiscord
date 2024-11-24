@@ -56,7 +56,7 @@ Page {
             title: (isDM ? '@' : "#")+name
             interactive: isDM
             titleColor: highlighted ? palette.primaryColor : palette.highlightColor
-            Component.onCompleted: _nahighlighted ? palette.primaryColor : palette.highlightColorvigateForwardMouseArea.clicked.connect(loadAboutDM)
+            Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
         }
 
         SilicaListView {

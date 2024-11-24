@@ -31,7 +31,7 @@ Flickable {
                 AnimatedImage {
                     scale: image.scale
                     fillMode: image.fillMode
-                    source: page.path
+                    source: image.source
                     // does not support metadata transformations like rotation
                 }
             }

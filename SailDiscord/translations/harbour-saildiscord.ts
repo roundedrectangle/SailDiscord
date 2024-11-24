@@ -95,7 +95,7 @@
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <location filename="../qml/pages/FirstPage.qml" line="99"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="189"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="185"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -187,12 +187,12 @@
 <context>
     <name>GeneralAttachmentView</name>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="41"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="47"/>
         <source>SPOILER</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="65"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="72"/>
         <source>Attachment unsupported: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -277,7 +277,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="163"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="159"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>

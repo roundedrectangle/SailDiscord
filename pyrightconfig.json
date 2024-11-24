@@ -1,19 +1,13 @@
 {
-    "include": [
-        "python"
-    ],
-    
-    "exclude": [
-        "*"
-    ],
-    
-    "ignore": [
-        
-    ],
+    "include": ["python"],
+    "exclude": ["*"],
+    "ignore": [],
     
     "defineConstant": {
         //"DEBUG": true
     },
+
+    "pythonVersion": "3.8",
     
     "reportMissingImports": false,
     "reportImplicitRelativeImport": false,
@@ -37,8 +31,4 @@
     "reportOptionalMemberAccess": false,
     "reportUnannotatedClassAttribute": false,
     "reportUnusedCallResult": false,
-    
-    
-    "pythonVersion": "3.8",
-    
-    }
+}

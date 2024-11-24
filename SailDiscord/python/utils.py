@@ -72,11 +72,15 @@ def permissions_for(channel, user_id) -> Optional[discord.Permissions]:
 class AttachmentMapping(Enum):
     UNKNOWN = auto()
     IMAGE = auto()
+    ANIMATED_IMAGE = auto()
 
     @classmethod
     def from_attachment(cls, attachment: discord.Attachment):
-        t = (attachment.content_type or '').split('/')[0] # e.g.: image/png to image
+        parts = (attachment.content_type or '').split('/') # e.g.: image/png for image
+        t = parts[0]
         if t == 'image':
+            if parts[1] == 'gif':
+                return cls.ANIMATED_IMAGE
             return cls.IMAGE
         else: return cls.UNKNOWN
 

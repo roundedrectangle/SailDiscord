@@ -16,25 +16,33 @@ Item {
         sourceComponent:
             switch (model.type) {
             case 1: return unknownPreview
-            case 2: return fullscreen ? imageFullscreenPreview : imagePreview
+            case 2: case 3: return fullscreen ? imageFullscreenPreview : imagePreview
             }
     }
 
     Component {
         id: imagePreview
         Item {
-            Image {
+            Loader {
                 id: img
-                source: model.url
                 anchors.fill: parent
-                fillMode: Image.PreserveAspectFit
-                visible: !model.spoiler || fullscreen
+                sourceComponent: model.type == 3 ? animImg : normalImg
+                onItemChanged: {
+                    item.source = model.url
+                    item.anchors.fill = item.parent
+                    item.fillMode = Image.PreserveAspectFit
+                    item.visible = !blur.visible
+                }
+
+                Component { id: normalImg; Image {} }
+                Component { id: animImg; AnimatedImage {} }
             }
 
             FastBlur {
-                visible: !img.visible
+                id: blur
+                visible: model.spoiler && !fullscreen
                 anchors.fill: img
-                source: img
+                source: img.item
                 radius: 100
 
                 Label {
@@ -51,6 +59,7 @@ Item {
         id: imageFullscreenPreview
         ZoomableImage {
             source: model.url
+            isAnimated: model.type == 3
             onToggleControls: root.toggleControls()
         }
     }

@@ -48,7 +48,7 @@ ListItem {
         Row {
             id: row
             width: parent.width - Theme.paddingLarge
-            height: !_firstSameAuthor ? textContainer.height : childrenRect.height
+            height: !_firstSameAuthor ? textContainer.height : implicitHeight//childrenRect.height
             // align right if sent and set to reversed/right aligned
             anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
             // reverse if sent and set to reversed
