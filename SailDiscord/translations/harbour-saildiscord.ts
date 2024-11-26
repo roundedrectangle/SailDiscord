@@ -140,17 +140,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="244"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="245"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="245"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="246"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="254"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="255"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -686,7 +686,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation type="unfinished"></translation>
@@ -793,11 +793,21 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
+        <source>Display unformatted HTML text in messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
+        <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
         <source>Experimental</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>

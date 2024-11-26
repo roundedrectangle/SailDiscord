@@ -294,6 +294,12 @@ Page {
                             checked: appSettings.infoInNotifications
                             onCheckedChanged: appSettings.infoInNotifications = checked
                         }
+                        TextSwitch {
+                            text: qsTr("Display unformatted HTML text in messages")
+                            description: qsTr("Text will still be parsed through Showdown, but HTML tags will be displayed as-is")
+                            checked: appSettings.unformattedText
+                            onCheckedChanged: appSettings.unformattedText = checked
+                        }
 
                         SectionHeader { text: qsTr("Experimental"); visible: false }
                     }

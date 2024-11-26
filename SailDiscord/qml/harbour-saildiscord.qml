@@ -215,6 +215,7 @@ ApplicationWindow {
             property string proxyType: "g"
             property string customProxy: ""
             property bool infoInNotifications: false
+            property bool unformattedText: false
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }

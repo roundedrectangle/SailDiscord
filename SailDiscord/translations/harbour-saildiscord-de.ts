@@ -637,6 +637,14 @@
         <source>Experimental</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Display unformatted HTML text in messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SystemMessageItem</name>

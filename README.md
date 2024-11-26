@@ -178,6 +178,7 @@ Core functionality:
 
 - [discord.py-self library](https://github.com/dolfies/discord.py-self)
 - [Opal](https://github.com/Pretty-SFOS/opal) ([About](https://github.com/Pretty-SFOS/opal-about), [LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), [Tabs](https://github.com/Pretty-SFOS/opal-tabs) and the snippets)
+- [Showdown](https://github.com/showdownjs/showdown)
 
 Developers:
 
