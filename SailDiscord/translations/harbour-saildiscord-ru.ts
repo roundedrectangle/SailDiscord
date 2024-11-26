@@ -24,27 +24,27 @@
         <translation>Тестировщик</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="39"/>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Translations</source>
         <translation>Перевод</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="42"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>Italian</source>
         <translation>Итальянский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="46"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Swedish</source>
         <translation>Шведский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="63"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>Disclaimer</source>
         <translation>Дисклеймер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="64"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation>Discord это торговая марка Discord Inc. Sailcord никаким образом не связан с Discord Inc. Использование Sailcord нарушает условия использования Discord. Используйте на свой страх и риск</translation>
     </message>
@@ -135,22 +135,22 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="84"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="85"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="245"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="257"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="246"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="255"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="267"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -686,7 +686,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="324"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
@@ -762,7 +762,12 @@
         <translation>Эксперементально</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="306"/>
+        <source>Use Twemoji instead of default Emoji</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="325"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>
@@ -828,7 +833,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="89"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="90"/>
         <source>Downloaded file %1</source>
         <translation>Скачан файл %1</translation>
     </message>

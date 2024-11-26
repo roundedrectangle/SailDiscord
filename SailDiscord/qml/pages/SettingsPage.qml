@@ -301,7 +301,12 @@ Page {
                             onCheckedChanged: appSettings.unformattedText = checked
                         }
 
-                        SectionHeader { text: qsTr("Experimental"); visible: false }
+                        SectionHeader { text: qsTr("Experimental") }
+                        TextSwitch {
+                            text: qsTr("Use Twemoji instead of default Emoji")
+                            checked: appSettings.twemoji
+                            onCheckedChanged: appSettings.twemoji = checked
+                        }
                     }
                 }
             }

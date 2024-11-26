@@ -31,8 +31,21 @@ AboutPageBase {
             name: qsTr("Tester")
             entries: "247"
             homepage: "https://github.com/legacychimera247"
+        },
+        Attribution {
+            name: "Showdown"
+            entries: "Copyright (c) 2018,2021 ShowdownJS"
+            licenses:License { spdxId: "MIT" }
+            sources: "https://github.com/showdownjs/showdown"
+            homepage: "http://www.showdownjs.com/"
+        },
+        Attribution {
+            name: "Twemoji"
+            entries: ["Copyright (c) 2022–present Jason Sofonia & Justine De Caires", "Copyright (c) 2014–2021 Twitter"]
+            licenses:License { spdxId: "MIT" }
+            sources: "https://github.com/jdecked/twemoji"
+            homepage: "https://jdecked.github.io/twemoji/index.html"
         }
-
     ]
     contributionSections: [
         ContributionSection {

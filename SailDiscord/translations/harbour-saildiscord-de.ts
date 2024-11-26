@@ -645,6 +645,10 @@
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use Twemoji instead of default Emoji</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SystemMessageItem</name>

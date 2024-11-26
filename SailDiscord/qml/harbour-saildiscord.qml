@@ -8,6 +8,7 @@ import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
 import Nemo.DBus 2.0
 import "modules/js/showdown.min.js" as ShowDown
+import "modules/js/twemoji.min.js" as Twemoji
 
 ApplicationWindow {
     id: mainWindow
@@ -144,8 +145,9 @@ ApplicationWindow {
 
         function markdown(text, linkColor) {
             linkColor = linkColor ? linkColor : Theme.highlightColor
-            return "<style>a:link{color:" + linkColor + ";}</style>"
+            var res = "<style>a:link{color:" + linkColor + ";}</style>"
                     +showdown.makeHtml(text)
+            return appSettings.twemoji ? emojify(res) : res
         }
 
         function processServer(_id, name, icon) {
@@ -167,6 +169,15 @@ ApplicationWindow {
             var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', _parent)
             attachments.forEach(function(attachment, i) { listModel.append(attachment) })
             return listModel
+        }
+
+        function emojify(text) {
+            var res = Twemoji.twemoji.parse(text, {
+                                                base: Qt.resolvedUrl('../images/twemoji/'),
+
+                                            })
+            console.log(res)
+            return res
         }
     }
 
@@ -216,6 +227,7 @@ ApplicationWindow {
             property string customProxy: ""
             property bool infoInNotifications: false
             property bool unformattedText: false
+            property bool twemoji: true
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
