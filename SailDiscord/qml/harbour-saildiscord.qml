@@ -54,6 +54,7 @@ ApplicationWindow {
 
     property var showdown: new ShowDown.showdown.Converter({
             simplifiedAutoLink: true,
+            underline: true,
         })
 
     QtObject {
@@ -144,10 +145,10 @@ ApplicationWindow {
         }
 
         function markdown(text, linkColor) {
-            linkColor = linkColor ? linkColor : Theme.highlightColor
-            var res = "<style>a:link{color:" + linkColor + ";}</style>"
-                    +showdown.makeHtml('<span style="color:transparent">.</span>'+text)
-            return appSettings.twemoji ? emojify(res) : res
+            return emojify(
+                        "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
+                        +showdown.makeHtml('<span style="color:transparent">.</span>'+text)
+                        )
         }
 
         function processServer(_id, name, icon) {
@@ -172,12 +173,8 @@ ApplicationWindow {
         }
 
         function emojify(text) {
-            var res = Twemoji.twemoji.parse(text, {
-                                                base: Qt.resolvedUrl('../images/twemoji/'),
-                                                //attributes: function(){return null},
-                                            })
-            console.log(res)
-            return res
+            if (!appSettings.twemoji) return text
+            return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/') })
         }
     }
 
