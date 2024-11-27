@@ -174,7 +174,7 @@ ApplicationWindow {
         function emojify(text) {
             var res = Twemoji.twemoji.parse(text, {
                                                 base: Qt.resolvedUrl('../images/twemoji/'),
-
+                                                //attributes: function(){return null},
                                             })
             console.log(res)
             return res
