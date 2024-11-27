@@ -749,12 +749,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Display unformatted HTML text in messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать не отформатированный HTML текст в сообщениях</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
-        <translation type="unfinished"></translation>
+        <translation>Текст всё равно будет конвертирован через Showdown, но HTML-тэги будут показаны как есть</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="304"/>
@@ -764,7 +764,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="306"/>
         <source>Use Twemoji instead of default Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать Twemoji вместо стандартных эмодзи</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="325"/>
