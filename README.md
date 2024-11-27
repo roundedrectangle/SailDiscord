@@ -19,8 +19,14 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 - [X] Servers
 - [ ] Text channels
 	- [X] Text
-	- [ ] Other types (photos, gifs, etc.)
-- [ ] DMs
+	- [ ] Attachments
+    	- [X] Full support for downloading and sharing
+    	- [X] Photos and GIFs (non-embedded)
+    	- [ ] Other types (videos, proper preview for non-previewable files, etc.)
+    - [ ] Embeds
+        - [ ] GIFs from Giphy, Tensor, etc.
+        - [ ] General embeds/EmbedProxy support
+- [X] DMs
 - [X] Settings
 - [X] About page
 - [ ] Caching
@@ -36,10 +42,6 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 - App is very slow at loading almost everything. This is not fully fixable because app uses Python as the backend, which is slow
 
 ## Troubleshooting
-
-### Nothing loads on 0.4.1
-
-Update to 0.4.2. 0.4.2 might show you that you are using 0.4.1, but that is just a bug which you can safely ignore as long as everything works.
 
 ### Login page isn't loading!
 
@@ -179,6 +181,7 @@ Core functionality:
 - [discord.py-self library](https://github.com/dolfies/discord.py-self)
 - [Opal](https://github.com/Pretty-SFOS/opal) ([About](https://github.com/Pretty-SFOS/opal-about), [LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), [Tabs](https://github.com/Pretty-SFOS/opal-tabs) and the snippets)
 - [Showdown](https://github.com/showdownjs/showdown)
+- [Twemoji](https://github.com/jdecked/twemoji)
 
 Developers:
 
