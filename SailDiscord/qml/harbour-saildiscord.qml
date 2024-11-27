@@ -146,7 +146,7 @@ ApplicationWindow {
         function markdown(text, linkColor) {
             linkColor = linkColor ? linkColor : Theme.highlightColor
             var res = "<style>a:link{color:" + linkColor + ";}</style>"
-                    +showdown.makeHtml(text)
+                    +showdown.makeHtml('<span style="color:transparent">.</span>'+text)
             return appSettings.twemoji ? emojify(res) : res
         }
 
