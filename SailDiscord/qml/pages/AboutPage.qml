@@ -22,7 +22,7 @@ AboutPageBase {
     attributions: [
         Attribution {
             name: "discord.py-self"
-            entries: "2015-present Rapptz"
+            entries: ["dolfies", "2015-present Rapptz"]
             licenses:License { spdxId: "MIT" }
             sources: "https://github.com/dolfies/discord.py-self"
             homepage: "https://discordpy-self.rtfd.io/en/latest/"
@@ -34,14 +34,14 @@ AboutPageBase {
         },
         Attribution {
             name: "Showdown"
-            entries: "Copyright (c) 2018,2021 ShowdownJS"
+            entries: "2018,2021 ShowdownJS"
             licenses:License { spdxId: "MIT" }
             sources: "https://github.com/showdownjs/showdown"
             homepage: "http://www.showdownjs.com/"
         },
         Attribution {
             name: "Twemoji"
-            entries: ["Copyright (c) 2022–present Jason Sofonia & Justine De Caires", "Copyright (c) 2014–2021 Twitter"]
+            entries: ["2022–present Jason Sofonia & Justine De Caires", "2014–2021 Twitter"]
             licenses:License { spdxId: "MIT" }
             sources: "https://github.com/jdecked/twemoji"
             homepage: "https://jdecked.github.io/twemoji/index.html"
