@@ -76,63 +76,11 @@ After obtaining you token, in Sailcord top menu, when logging in, choose Login w
 
 ## Translating
 
-1. Fork the repo from GitHub UI. When creating the fork, select the "Copy the `main` branch only" checkmark. Only needed once
-2. If required, click on "Sync fork" on your fork.
-3. *(Optional)* You can create a new branch with your translation by selecting the `main` branch you forked -> "View all branches" -> "New branch" and typing whatever branch name you want. I recommend `patch-n` where `n` is 1 for the first branch, 2 for the second, etc. Then go to your branch on the GitHub.
-4. Go to folder `SailDiscord` -> `translations`.
-   -  If there is a file with your language code, click on it and select the edit icon
-   -  If not:
-      1. Click on `harbour-saildiscord.ts` file
-      2. Select copy icon (Copy raw file)
-      3. Go back, click Add file -> Create new file
-      4. Enter `harbour-saildiscord-xx.ts` replacing `xx` with your language code as the name. For example, `ru` for Russian
-      5. Paste the copied file in the new file's contents
-5. Make your changes. Note that:
-   - **Do not update Opal modules translations.** They include About page translations, and their context name is prefixed with `Opal.`. Do it [here](https://hosted.weblate.org/projects/opal) instead. An example:
-
-		 <context>
-			<name>Opal.About</name>
-			...
-		 </context>
-
-   - When translating a string, read its comments if available. They include things which describe the context of the string (where it is used).
-   - `%1`, `%2`, `%3`, etc. parts will be replaced with additional data
-   - Parts starting with `&` and ending with `;` mean that they'll be replaced with special characters. You can check the full list by googling "html entities list". The most common are:
-     | code     | rendered |
-	 |----------|----------|
-	 | `&lt;`   | >        |
-	 | `&gt;`   | <        |
-	 | `&amp`   | &        |
-	 | `&quot;` | "        |
-	 | `&apos;` | '        |
-   - To translate a string, modify the lines starting with `<translation`. Remove ` type="unfinished"` parts and insert your translation between `>` and `<` characters. As the source use the lines starting with `<source>`, which are above the actual translation. Example:
-
-		 Original:
-
-     		 <message>
-		       <location filename="../qml/pages/FirstPage.qml" line="62"/>
-		       <location filename="../qml/pages/LoginDialog.qml" line="20"/>
-		       <source>About</source>
-		       <comment>App</comment>
-		       <translation type="unfinished"></translation>
-		 </message>
-
-		 Modified:
-
-		 <message>
-		       <location filename="../qml/pages/FirstPage.qml" line="62"/>
-		       <location filename="../qml/pages/LoginDialog.qml" line="20"/>
-		       <source>About</source>
-		       <comment>App</comment>
-		       <translation>О программе</translation>
-		 </message>
-6. Click on Commit changes -> Commit changes. Leave the commit options default
-7. Go to the main page of your fork, select your branch if you created it
-8. Click on Contribute -> Open pull request -> Create pull request
+Read instructions [here](https://gist.github.com/roundedrectangle/c4ac530ca276e0d65c3593b8491473b6). Make sure not to skip them even if you know how to translate other apps, because there are some pitfalls. When reading instruction, replace `appname` with `saildiscord`, and when opening `translations` folder open `SailDiscord` -> `translations` folder.
 
 ## Donations
 
-Don't
+I don't accept any for now
 
 ## Build
 
@@ -142,7 +90,7 @@ Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec
 
 ### Faster build (not to package the library, **NOT RECOMMENDED IN PRODUCTION**)
 
-If you didn't replace, you'll get faster build but aditional steps needed for phone. This is needed only once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
+If you didn't replace, you'll get faster build but aditional steps needed for phone. This is only required once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
 	python3 -m pip install --user --upgrade "discord.py-self>=2.0" "requests" "Pillow"
 
