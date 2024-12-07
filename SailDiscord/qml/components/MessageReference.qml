@@ -68,15 +68,9 @@ ListItem {
                 Label {
                     width: parent.width
                     textFormat: Text.RichText
-                    text: _resolvedReference._contents
+                    text: _resolvedReference.formatted
                     wrapMode: Text.Wrap
                     color: highlighted ? Theme.highlightColor : Theme.secondaryColor
-
-                    Timer {
-                        running: true
-                        interval: 350
-                        onTriggered: parent.text = shared.markdown(_resolvedReference._contents, Theme.secondaryHighlightColor)
-                    }
                 }
             }
         }
@@ -112,8 +106,8 @@ ListItem {
         }
 
         MenuItem { text: qsTr("Copy")
-            onClicked: Clipboard.text = _resolvedReference._contents
-            visible: !!_resolvedReference && !!_resolvedReference._contents
+            onClicked: Clipboard.text = _resolvedReference.contents
+            visible: !!_resolvedReference && !!_resolvedReference.contents
         }
     }}
 
@@ -139,7 +133,8 @@ ListItem {
 
                         function updateSource() {
                             var args = {authorid: _resolvedReference.userid,
-                                contents: _resolvedReference._contents,
+                                contents: _resolvedReference.contents,
+                                formattedContents: _resolvedReference.formatted,
                                 author: _resolvedReference._author,
                                 pfp: _resolvedReference._pfp,
                                 sent: _resolvedReference._sent,

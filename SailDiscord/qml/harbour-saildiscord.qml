@@ -111,17 +111,15 @@ ApplicationWindow {
                     _flags: {
                         edit: edited, bot: userinfo.bot, nickAvailable: userinfo.nick_avail,
                         system: userinfo.system, color: userinfo.color
-                    },
+                    }, APIType: '', contents: '', formatted: '', _ref: {}
                 }
 
                 if (type === "" || type === "unknown") {
                     data.contents = arguments[8]
-                    data.formatted = markdown(data.contents
-                                                      + (data._flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
-                                                      )
-                    data._ref = arguments[9]
+                    data.formatted = markdown(arguments[9], data._flags.edit)
+                    data._ref = arguments[10]
                 }
-                if (type === "unknown") data.APIType = arguments[10]
+                if (type === "unknown") data.APIType = arguments[11]
                 finalCallback(history, data)
             }
         }
@@ -147,10 +145,13 @@ ApplicationWindow {
             python.reset("uknownmessage")
         }
 
-        function markdown(text, linkColor) {
+        function markdown(text, linkColor, edited) {
             return emojify(
                         "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
-                        +showdown.makeHtml((appSettings.twemoji ? '<span style="color:transparent">.</span>' : '')+text)
+                        +showdown.makeHtml((appSettings.twemoji ? '<span style="color:transparent">.</span>' : '')
+                                           +text
+                                           +(edited ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                           )
                         )
         }
 
@@ -177,7 +178,7 @@ ApplicationWindow {
 
         function emojify(text) {
             if (!appSettings.twemoji) return text
-            return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/') })
+            return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
         }
     }
 
@@ -315,6 +316,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()]) }
+        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium]) }
     }
 }

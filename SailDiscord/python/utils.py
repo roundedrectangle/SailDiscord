@@ -9,6 +9,7 @@ from enum import Enum, auto
 from pathlib import Path
 import asyncio
 import urllib.parse
+import re
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -113,3 +114,18 @@ def dict_folder(folder: Union[discord.GuildFolder, Any]) -> Optional[dict]:
 def isurl(obj: str):
     """Returns True if an object is an internet URL"""
     return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
+
+async def emojify(message: discord.Message, size: Optional[int]=None):
+    #return re.sub(r'<:((?:\w|\d|_)+):(\d+)>', lambda m: f'<img class="emoji" alt="{m[1]}" src="{client.run_asyncio_threadsafe(message.guild.fetch_emoji(int(m[2])), True)}">', message.content)
+
+    if not message.guild:
+        return message.content
+
+    res = message.content
+    pattern = re.compile(r'<:((?:\w|\d|_)+):(\d+)>')
+    remove_size = False#re.sub(pattern, '', res).strip() == ''
+    search = re.search(pattern, res)
+    while search:
+        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +'class="emoji" draggable="false" alt="{search[1]}" src="'+ (await message.guild.fetch_emoji(int(search[2]))).url +'">' + res[search.end():]
+        search = re.search(pattern, res)
+    return res

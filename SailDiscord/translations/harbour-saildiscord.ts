@@ -92,7 +92,7 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="144"/>
-        <location filename="../qml/components/MessageReference.qml" line="109"/>
+        <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <location filename="../qml/pages/FirstPage.qml" line="99"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
@@ -140,17 +140,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="257"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="259"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="267"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="268"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -249,12 +249,12 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="114"/>
+        <location filename="../qml/components/MessageReference.qml" line="108"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="134"/>
+        <location filename="../qml/components/MessageReference.qml" line="128"/>
         <source>Reply</source>
         <translation type="unfinished"></translation>
     </message>
@@ -833,7 +833,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="120"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>

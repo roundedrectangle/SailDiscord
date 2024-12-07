@@ -26,7 +26,7 @@ import discord, requests, aiohttp.connector
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
 QMLLIVE_DEBUG = True
 
-def generate_message(message: discord.Message, is_history=False):
+async def generate_message(message: discord.Message, is_history=False):
     t = message.type
     base = generate_base_message(message, comm.cacher, comm.client.user.id, is_history)
 
@@ -45,16 +45,16 @@ def generate_message(message: discord.Message, is_history=False):
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, ref)
+        event, args = 'message', (*base, message.content, await emojify(message, comm.emoji_size), ref)
     elif t == discord.MessageType.new_member:
         event, args = 'newmember', base
-    else: event, args = 'unkownmessage', (*base, message.content, ref, message.type.name)
+    else: event, args = 'unkownmessage', (*base, message.content, await emojify(message, comm.emoji_size), ref, message.type.name)
 
     return (event, args)
 
-def send_message(message: Union[discord.Message, Any], is_history=False):
+async def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    event, args = generate_message(message, is_history)
+    event, args = await generate_message(message, is_history)
     qsend(event, *args)
 
 class MyClient(discord.Client):
@@ -75,7 +75,7 @@ class MyClient(discord.Client):
 
     async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
-            send_message(message)
+            await send_message(message)
             await message.ack()
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
@@ -90,7 +90,7 @@ class MyClient(discord.Client):
             if self.current_channel == None: # this doesn't work!
                 await cancel_gen(gen)
                 break
-            send_message(m, True)
+            await send_message(m, True)
 
     def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None):
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
@@ -157,6 +157,7 @@ class Communicator:
     token: str = ''
     loginth: Thread
     client: MyClient
+    emoji_size: Optional[int] = None
 
     def __init__(self):
         self.loginth = Thread()
@@ -173,7 +174,7 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int):
         if self.cacher:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
@@ -181,6 +182,7 @@ class Communicator:
             self.cacher = Cacher(cache, cache_period)
         self.set_proxy(proxy)
         self.downloads = Path(downloads)
+        self.emoji_size = emoji_size
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
@@ -277,7 +279,7 @@ class Communicator:
             ch = self.client.current_channel
         else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
         m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True) # pyright: ignore[reportAttributeAccessIssue]
-        event, args = generate_message(m)
+        event, args = self.client.run_asyncio_threadsafe(generate_message(m), True) # pyright: ignore[reportGeneralTypeIssues]
         return (event, *args)
 
     @attributeerror_safe
