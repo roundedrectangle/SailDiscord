@@ -41,7 +41,6 @@ DISTFILES += \
     qml/pages/LoginDialog.qml \
     qml/pages/MessagesPage.qml \
     qml/pages/SettingsPage.qml \
-    qml/pages/communicator.py \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \
     rpm/SailDiscord.spec \

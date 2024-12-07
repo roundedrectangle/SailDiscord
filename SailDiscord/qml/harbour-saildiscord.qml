@@ -87,13 +87,13 @@ ApplicationWindow {
         }
 
         function download(url, name) {
-            python.call('communicator.comm.download_file', [url, name], function(r) {
+            python.call('main.comm.download_file', [url, name], function(r) {
                 showInfo(qsTr("Downloaded file %1").arg(name))
             })
         }
 
         function shareFile(url, name, mime) {
-            python.call('communicator.comm.save_temp', [url, name], function(path) {
+            python.call('main.comm.save_temp', [url, name], function(path) {
                 shareApi.mimeType = mime
                 shareApi.resources = [path]
                 shareApi.trigger()
@@ -235,7 +235,7 @@ ApplicationWindow {
 
     Connections {
         target: globalProxy
-        onUrlChanged: python.call('communicator.comm.set_proxy', [python.getProxy()])
+        onUrlChanged: python.call('main.comm.set_proxy', [python.getProxy()])
     }
 
     Python {
@@ -258,7 +258,7 @@ ApplicationWindow {
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
 
             addImportPath(Qt.resolvedUrl("../python"))
-            importModule('communicator', function() {
+            importModule('main', function() {
                 reloadConstants()
                 initialized = true
             })
@@ -267,11 +267,11 @@ ApplicationWindow {
         onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
         onReceived: console.log("got message from python: " + data)
 
-        function login(token) { call('communicator.comm.login', [token]) }
+        function login(token) { call('main.comm.login', [token]) }
 
         function request(func, handlerName, args, handler) {
             setHandler(handlerName, handler)
-            call('communicator.comm.'+func, args)
+            call('main.comm.'+func, args)
         }
         function reset(handler) {
             // we unset handler so app won't crash on operating destroyed items
@@ -279,25 +279,25 @@ ApplicationWindow {
             python.setHandler(handler, function() {})
         }
 
-        function requestChannels(guildid){ call('communicator.comm.get_channels', [guildid], function () {}) }
-        function setCurrentChannel(guildid, channelid) { call('communicator.comm.set_channel', [guildid, channelid])}
+        function requestChannels(guildid){ call('main.comm.get_channels', [guildid], function () {}) }
+        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid])}
         function resetCurrentChannel() { setCurrentChannel("", "") }
 
-        function clearCache() { call('communicator.comm.clear_cache', []) }
+        function clearCache() { call('main.comm.clear_cache', []) }
         function setCachePeriod(period) {
             if (!initialized) return;
-            call('communicator.comm.set_cache_period', [period])
+            call('main.comm.set_cache_period', [period])
         }
 
-        function sendMessage(text) { call('communicator.comm.send_message', [text]) }
-        function requestOlderHistory(messageId) { call('communicator.comm.get_history_messages', [messageId])}
+        function sendMessage(text) { call('main.comm.send_message', [text]) }
+        function requestOlderHistory(messageId) { call('main.comm.get_history_messages', [messageId])}
 
         function disconnectClient() {
             if (!initialized || appConfiguration.token.length <= 0) return;
-            call_sync('communicator.comm.disconnect')
+            call_sync('main.comm.disconnect')
         }
 
-        function requestUserInfo(userId) { call('communicator.comm.request_user_info', [userId])}
+        function requestUserInfo(userId) { call('main.comm.request_user_info', [userId])}
 
         function getProxy() {
             switch (appSettings.proxyType) {
@@ -307,7 +307,7 @@ ApplicationWindow {
             }
         }
 
-        function getReference(channel, message, callback) { call('communicator.comm.get_reference', [channel, message], callback)}
+        function getReference(channel, message, callback) { call('main.comm.get_reference', [channel, message], callback)}
 
         function refresh() {
             disconnectClient()
@@ -315,6 +315,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('communicator.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()]) }
+        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy()]) }
     }
 }
