@@ -115,7 +115,10 @@ ApplicationWindow {
                 }
 
                 if (type === "" || type === "unknown") {
-                    data._contents = arguments[8]
+                    data.contents = arguments[8]
+                    data.formatted = markdown(data.contents
+                                                      + (data._flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                                      )
                     data._ref = arguments[9]
                 }
                 if (type === "unknown") data.APIType = arguments[10]
@@ -147,7 +150,7 @@ ApplicationWindow {
         function markdown(text, linkColor) {
             return emojify(
                         "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
-                        +showdown.makeHtml('<span style="color:transparent">.</span>'+text)
+                        +showdown.makeHtml((appSettings.twemoji ? '<span style="color:transparent">.</span>' : '')+text)
                         )
         }
 

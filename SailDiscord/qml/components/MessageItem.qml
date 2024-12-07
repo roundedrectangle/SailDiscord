@@ -6,6 +6,7 @@ import '../modules/Opal/LinkHandler'
 // TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
     property string contents
+    property string formattedContents
     property string author
     property string pfp
     property bool sent // If the message is sent by the user connected to the client
@@ -112,19 +113,11 @@ ListItem {
                     // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
                     wrapMode: Text.Wrap
                     textFormat: appSettings.unformattedText ? Text.PlainText : Text.RichText
-                    text: contents
+                    text: formattedContents
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
-
-                    Timer {
-                        running: true
-                        interval: 350
-                        onTriggered: parent.text = shared.markdown(contents
-                                                            + (flags.edit ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
-                                                            )
-                    }
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }

@@ -91,11 +91,11 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="151"/>
+        <location filename="../qml/components/MessageItem.qml" line="144"/>
         <location filename="../qml/components/MessageReference.qml" line="109"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
         <location filename="../qml/pages/FirstPage.qml" line="99"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="185"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="186"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Info</translation>
@@ -135,7 +135,7 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="85"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="86"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
@@ -241,12 +241,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="125"/>
-        <source>(edited)</source>
-        <translation>Modificati</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="156"/>
+        <location filename="../qml/components/MessageItem.qml" line="149"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
@@ -277,7 +272,7 @@
         <translation>Dì ciao ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="159"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="160"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>
@@ -835,9 +830,14 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="90"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="91"/>
         <source>Downloaded file %1</source>
         <translation>File scaricato: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="120"/>
+        <source>(edited)</source>
+        <translation type="unfinished">Modificati</translation>
     </message>
 </context>
 <context>

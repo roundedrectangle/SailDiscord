@@ -114,7 +114,8 @@ Page {
                     id: defaultItem
                     MessageItem {
                         authorid: userid
-                        contents: _contents
+                        contents: model.contents
+                        formattedContents: model.formatted
                         author: _author
                         pfp: _pfp
                         sent: _sent
