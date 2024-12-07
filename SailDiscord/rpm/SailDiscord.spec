@@ -1,10 +1,10 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.6.2
+Version:    0.6.3
 Release:    1
 License:    LICENSE
 URL:        http://example.org/

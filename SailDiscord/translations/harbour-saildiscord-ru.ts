@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="46"/>
         <source>Send friend request</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить запрос в друзья</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="91"/>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="104"/>
         <source>Global nickname</source>
-        <translation type="unfinished"></translation>
+        <translation>Глобальное имя</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
@@ -162,7 +162,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="260"/>
         <source>Captcha required but not implemented: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Проверка на робота нужна но недоступна: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="269"/>
@@ -850,7 +850,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>(edited)</source>
-        <translation type="unfinished">(изменено)</translation>
+        <translation>(изменено)</translation>
     </message>
 </context>
 <context>

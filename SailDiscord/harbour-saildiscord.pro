@@ -57,7 +57,6 @@ CONFIG += sailfishapp_i18n
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += \
-    translations/harbour-saildiscord-de.ts \
     translations/harbour-saildiscord-it.ts \
     translations/harbour-saildiscord-ru.ts \
     translations/harbour-saildiscord-sv.ts
