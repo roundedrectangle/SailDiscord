@@ -257,6 +257,7 @@ ApplicationWindow {
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
+            setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented: %1").arg(e)) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -280,7 +281,7 @@ ApplicationWindow {
             python.setHandler(handler, function() {})
         }
 
-        function requestChannels(guildid){ call('main.comm.get_channels', [guildid], function () {}) }
+        function requestChannels(guildid){ call('main.comm.get_channels', [guildid]) }
         function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid])}
         function resetCurrentChannel() { setCurrentChannel("", "") }
 

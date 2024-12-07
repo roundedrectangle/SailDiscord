@@ -15,11 +15,13 @@ AboutPageBase {
     property string icon
     property bool isClient: false
     property bool nicknameGiven: false
+    property bool pulleyMenuVisible: !isClient
 
     property date memberSince
     property string _status
     property bool isBot: false
     property bool isSystem: false
+    property bool isFriend: false
     property string username: ""
 
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
@@ -32,6 +34,25 @@ AboutPageBase {
     _develInfoSection.visible: false
     appVersion: _status != "" ? 'a' : '' // makes it visible
     licenses: License {spdxId: "WTFPL"} // suppress No license errors
+
+    Loader {
+        sourceComponent: pulleyMenuVisible ? pullMenuComponent : null
+        Component {
+            id: pullMenuComponent
+            PullDownMenu {
+                parent: page.flickable
+                MenuItem {
+                    visible: !isFriend
+                    text: qsTr("Send friend request")
+                    onClicked: python.call('main.comm.send_friend_request', [userid])
+                }
+                /*MenuItem {
+                    visible: !isClient
+                    text: qsTr("Message")
+                }*/
+            }
+        }
+    }
 
     BusyLabel {
         id: busyIndicator
@@ -77,6 +98,13 @@ AboutPageBase {
                     onClicked: Notices.show(qsTr("This user is a bot"), Notice.Short, Notice.Bottom)
                     visible: isBot
                 }
+                IconButton {
+                    icon.color: Theme.secondaryHighlightColor
+                    icon.highlightColor: Theme.secondaryColor
+                    icon.source: "image://theme/icon-m-game-controller"
+                    onClicked: Notices.show(qsTr("This user is a bot"), Notice.Short, Notice.Bottom)
+                    visible: isBot
+                }
             }
         },
         InfoSection {
@@ -111,7 +139,8 @@ AboutPageBase {
                 username = nicknameGiven ? arguments[4] : ''
                 isBot = arguments[5]
                 isSystem = arguments[6]
-                if (arguments[7]) _develInfoSection.parent.children[2].children[0].color = arguments[7]
+                isFriend = arguments[7]
+                if (arguments[8]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
             }
         })
         python.requestUserInfo(userid) // for client, it will be -1

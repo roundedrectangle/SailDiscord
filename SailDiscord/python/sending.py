@@ -53,7 +53,8 @@ def send_dm_channel(user: discord.User, cacher: Cacher):
             str(cacher.get_cached_path(user.id, ImageType.USER, default=user.display_avatar))
     if icon != '':
         cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.USER)
-    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), user.dm_channel.permissions_for(user.dm_channel.me).view_channel)
+    perms = user.dm_channel.permissions_for(user.dm_channel.me)
+    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages)
 
 def send_dms(users_list: List[discord.User], cacher: Cacher):
     for user in users_list:
@@ -94,7 +95,7 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
     qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
-    user.name, user.bot, user.system, hex_color(user.color))
+    user.display_name, user.bot, user.system, user.is_friend(), hex_color(user.color))
 
 def send_myself(client: discord.Client, cacher: Cacher):
     user = client.user

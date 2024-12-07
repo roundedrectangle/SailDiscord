@@ -97,6 +97,14 @@
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Send friend request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ChannelsPage</name>
@@ -121,6 +129,10 @@
     </message>
     <message>
         <source>Python error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Captcha required but not implemented: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

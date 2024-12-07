@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="244"/>
+        <location filename="../qml/pages/FirstPage.qml" line="245"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="144"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="30"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
         <location filename="../qml/pages/FirstPage.qml" line="99"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
         <source>About</source>
@@ -104,22 +104,33 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="70"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="46"/>
+        <source>Send friend request</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
+        <source>Message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutUserPage.qml" line="91"/>
         <source>This user is a system account</source>
         <translation>Это системный аккаунт</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="98"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
         <source>This user is a bot</source>
         <translation>Это бот</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="83"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="111"/>
         <source>Username</source>
         <translation>Имя пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="88"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="116"/>
         <source>Discord member since</source>
         <translation>Участник Discord с</translation>
     </message>
@@ -150,7 +161,12 @@
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="268"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="260"/>
+        <source>Captcha required but not implemented: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="269"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -174,7 +190,7 @@
         <translation>Я</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="248"/>
+        <location filename="../qml/pages/FirstPage.qml" line="249"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -841,32 +857,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="122"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="151"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="123"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="152"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="124"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="153"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="125"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="154"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="126"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="155"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="129"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="158"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>

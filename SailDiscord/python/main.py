@@ -92,7 +92,7 @@ class MyClient(discord.Client):
                 break
             await send_message(m, True)
 
-    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None):
+    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Union[asyncio.Future, Any]:
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
         future = asyncio.run_coroutine_threadsafe(courutine, self.loop)
         if result_required: return future.result(timeout)
@@ -289,6 +289,14 @@ class Communicator:
             logging.warning(f"Requested info for a server with non-integer ID: {server_id}")
             return
         send_guild_info(self.client.run_asyncio_threadsafe(self.client.fetch_guild(server_id), True))
+
+    def send_friend_request(self, user_id: int):
+        user = self.client.run_asyncio_threadsafe(self.client.fetch_user(user_id), True)
+        try:
+            if not user.is_friend(): # pyright: ignore[reportAttributeAccessIssue]
+                self.client.run_asyncio_threadsafe(user.send_friend_request(), True) # pyright: ignore[reportAttributeAccessIssue]
+        except discord.errors.CaptchaRequired as e:
+            qsend('captchaError', str(e))
 
 
 comm = Communicator()
