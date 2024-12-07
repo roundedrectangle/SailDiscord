@@ -52,6 +52,7 @@ HighlightImage {
     MouseArea {
         anchors.fill: parent
         onClicked: parent.clicked()
+        enabled: parent.visible
 
         hoverEnabled: true
         onPressed: if (highlightOnClick) parent.highlighted = true

@@ -45,10 +45,10 @@ async def generate_message(message: discord.Message, is_history=False):
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, await emojify(message, comm.emoji_size), ref)
+        event, args = 'message', (*base, message.content, await emojify(message, comm.cacher, comm.emoji_size), ref)
     elif t == discord.MessageType.new_member:
         event, args = 'newmember', base
-    else: event, args = 'unkownmessage', (*base, message.content, await emojify(message, comm.emoji_size), ref, message.type.name)
+    else: event, args = 'unkownmessage', (*base, message.content, await emojify(message, comm.cacher, comm.emoji_size), ref, message.type.name)
 
     return (event, args)
 

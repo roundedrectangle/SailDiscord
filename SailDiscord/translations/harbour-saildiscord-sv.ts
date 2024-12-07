@@ -192,7 +192,7 @@
         <translation>SPOILER</translation>
     </message>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="74"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="77"/>
         <source>Attachment unsupported: %1</source>
         <translation>Bilagan stöds ej: %1</translation>
     </message>

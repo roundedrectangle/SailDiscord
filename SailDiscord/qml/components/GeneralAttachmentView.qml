@@ -15,7 +15,7 @@ Item {
         anchors.fill: parent
         sourceComponent:
             switch (model.type) {
-            case 1: return unknownPreview
+            case 1: return fullscreen ? unknownFullscreenPreview : unknownPreview
             case 2: case 3: return fullscreen ? imageFullscreenPreview : imagePreview
             }
     }
@@ -65,13 +65,47 @@ Item {
     }
 
     Component {
-        id: unknownPreview
+        id: unknownFullscreenPreview
         Label {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
+            x: Theme.horizontalPageMargin
+            width: parent.width-2*x
+            wrapMode: Text.Wrap
             color: Theme.secondaryHighlightColor
             text: qsTr("Attachment unsupported: %1").arg('<font color="'+Theme.highlightColor+'">'+model.realtype+'</font>')
+        }
+    }
+
+    Component {
+        id: unknownPreview
+        Item {
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            height: parent.height
+            Rectangle {
+                anchors.fill: parent
+                color: Theme.colorScheme === Theme.LightOnDark ? Theme.secondaryColor : Theme.overlayBackgroundColor
+                opacity: 0.1
+                radius: parent.width / 50
+            }
+
+            Row {
+                anchors {
+                    margins: Theme.paddingLarge
+                    fill: parent
+                }
+                spacing: Theme.paddingLarge
+                Icon {
+                    anchors.verticalCenter: parent.verticalCenter
+                    source: Theme.iconForMimeType(model.realtype)
+                }
+                Label {
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: model.filename
+                }
+            }
         }
     }
 }

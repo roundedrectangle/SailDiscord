@@ -1,6 +1,6 @@
 import sys
 from datetime import datetime, timezone
-from caching import Cacher
+from caching import Cacher, ImageType
 from pyotherside import send as qsend
 from typing import Any, Callable, List, Tuple, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
@@ -94,7 +94,7 @@ def attachment_type(attachment: discord.Attachment):
 def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
     """Converts to QML-friendly attachment format, object (dict)"""
     # TODO: caching, more types
-    res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": a.content_type, "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
+    res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": None if a.content_type is None else a.content_type.split(';')[0], "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
     if len(res) > 0:
         res[0]['maxheight'] = max((a.height or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
         res[0]['maxwidth'] = max((a.width or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
@@ -115,7 +115,7 @@ def isurl(obj: str):
     """Returns True if an object is an internet URL"""
     return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
 
-async def emojify(message: discord.Message, size: Optional[int]=None):
+async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=None):
     #return re.sub(r'<:((?:\w|\d|_)+):(\d+)>', lambda m: f'<img class="emoji" alt="{m[1]}" src="{client.run_asyncio_threadsafe(message.guild.fetch_emoji(int(m[2])), True)}">', message.content)
 
     if not message.guild:
@@ -129,7 +129,9 @@ async def emojify(message: discord.Message, size: Optional[int]=None):
     while search:
         e = int(search[2])
         if e not in fetched_emojis:
-            fetched_emojis[e] = await message.guild.fetch_emoji(e)
-        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e].url}">' + res[search.end():]
+            fetched = (await message.guild.fetch_emoji(e)).url
+            fetched_emojis[e] = str(cacher.get_cached_path(f'{message.guild.id}_{e}', ImageType.EMOJI, fetched))
+            cacher.cache_image_bg(fetched, f'{message.guild.id}_{e}', ImageType.EMOJI)
+        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e]}">' + res[search.end():]
         search = re.search(pattern, res)
     return res

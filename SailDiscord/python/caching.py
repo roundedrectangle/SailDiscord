@@ -35,6 +35,7 @@ class ImageType(Enum):
     SERVER = auto()
     USER = auto()
     MYSELF = auto()
+    EMOJI = auto()
 
 def cached_path(cache: AnyPath, id, type: ImageType):
     return Path(cache) / type.name.lower() / f"{id}.png"
