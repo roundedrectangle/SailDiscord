@@ -123,9 +123,13 @@ async def emojify(message: discord.Message, size: Optional[int]=None):
 
     res = message.content
     pattern = re.compile(r'<:((?:\w|\d|_)+):(\d+)>')
-    remove_size = False#re.sub(pattern, '', res).strip() == ''
+    remove_size = re.sub(pattern, '', res).strip() == ''
+    fetched_emojis = {}
     search = re.search(pattern, res)
     while search:
-        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +'class="emoji" draggable="false" alt="{search[1]}" src="'+ (await message.guild.fetch_emoji(int(search[2]))).url +'">' + res[search.end():]
+        e = int(search[2])
+        if e not in fetched_emojis:
+            fetched_emojis[e] = await message.guild.fetch_emoji(e)
+        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e].url}">' + res[search.end():]
         search = re.search(pattern, res)
     return res
