@@ -54,7 +54,7 @@ def send_dm_channel(user: discord.User, cacher: Cacher):
     if icon != '':
         cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.USER)
     perms = user.dm_channel.permissions_for(user.dm_channel.me)
-    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages)
+    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages and not user.system)
 
 def send_dms(users_list: List[discord.User], cacher: Cacher):
     for user in users_list:

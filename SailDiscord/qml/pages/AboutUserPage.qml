@@ -98,13 +98,6 @@ AboutPageBase {
                     onClicked: Notices.show(qsTr("This user is a bot"), Notice.Short, Notice.Bottom)
                     visible: isBot
                 }
-                IconButton {
-                    icon.color: Theme.secondaryHighlightColor
-                    icon.highlightColor: Theme.secondaryColor
-                    icon.source: "image://theme/icon-m-game-controller"
-                    onClicked: Notices.show(qsTr("This user is a bot"), Notice.Short, Notice.Bottom)
-                    visible: isBot
-                }
             }
         },
         InfoSection {
