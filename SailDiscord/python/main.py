@@ -65,7 +65,7 @@ class MyClient(discord.Client):
     pending_close_task: Optional[asyncio.Task] = None
 
     async def on_ready(self):
-        qsend('logged_in', str(self.user.name))
+        qsend('logged_in', self.user.display_name)
         comm.ensure_constants()
         send_servers(self.sorted_guilds_and_folders, comm.cacher)
         send_dms(self.users, comm.cacher)

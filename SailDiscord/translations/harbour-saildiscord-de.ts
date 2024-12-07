@@ -102,7 +102,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Message</source>
+        <source>Global nickname</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

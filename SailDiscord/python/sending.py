@@ -78,8 +78,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
             bool(message.edited_at),
 
             {"id": str(message.author.id), "sent": message.author.id == myself_id,
-            "name": str(getattr(message.author, 'nick', None) or message.author.name),
-            "nick_avail": bool(getattr(message.author, 'nick', None)), # hasattr doesn't handle None values
+            "name": message.author.display_name,
             "pfp": icon, "bot": message.author.bot, "system": message.author.system,
             "color": hex_color(message.author.color)},
             
@@ -95,7 +94,7 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
     qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
-    user.display_name, user.bot, user.system, user.is_friend(), hex_color(user.color))
+    usernames(user), user.bot, user.system, user.is_friend(), hex_color(user.color))
 
 def send_myself(client: discord.Client, cacher: Cacher):
     user = client.user
@@ -107,7 +106,7 @@ def send_myself(client: discord.Client, cacher: Cacher):
             str(cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
 
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), icon)#user.display_avatar, icon)
+    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user), icon)#user.display_avatar, icon)
 
     if icon != '':
         cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)

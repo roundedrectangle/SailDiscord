@@ -136,7 +136,7 @@ ListItem {
 
     function openAboutUser() {
         pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"),
-                       { userid: authorid, name: author, icon: pfp, nicknameGiven: flags.nickAvailable }
+                       { userid: authorid, name: author, icon: pfp }
                        )
     }
 

@@ -109,7 +109,7 @@ ApplicationWindow {
                     _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
                     _flags: {
-                        edit: edited, bot: userinfo.bot, nickAvailable: userinfo.nick_avail,
+                        edit: edited, bot: userinfo.bot,
                         system: userinfo.system, color: userinfo.color
                     }, APIType: '', contents: '', formatted: '', _ref: {}
                 }

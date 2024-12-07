@@ -14,7 +14,6 @@ AboutPageBase {
     property string name
     property string icon
     property bool isClient: false
-    property bool nicknameGiven: false
     property bool pulleyMenuVisible: !isClient
 
     property date memberSince
@@ -22,6 +21,7 @@ AboutPageBase {
     property bool isBot: false
     property bool isSystem: false
     property bool isFriend: false
+    property string globalName: ""
     property string username: ""
 
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
@@ -108,8 +108,13 @@ AboutPageBase {
             }
         },
         InfoSection {
+            title: qsTr("Global nickname")
+            visible: text
+            text: globalName
+        },
+        InfoSection {
             title: qsTr("Username")
-            visible: username
+            visible: text
             text: username
         },
         InfoSection {
@@ -128,15 +133,18 @@ AboutPageBase {
             pageStack.pop(undefined, PageStackAction.Immediate)
             LinkHandler.openOrCopyUrl(link)
         })
-        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile) {
+        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)
             _status = constructStatus(status, onMobile)
             busyIndicator.running = false
+            // by default these are empty strings:
+            globalName = allNames.global
+            username = allNames.username
+
             if (isClient) {
-                page.icon = arguments[4]
+                page.icon = arguments[5]
             } else {
-                username = nicknameGiven ? arguments[4] : ''
                 isBot = arguments[5]
                 isSystem = arguments[6]
                 isFriend = arguments[7]

@@ -135,3 +135,11 @@ async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=
         res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e]}">' + res[search.end():]
         search = re.search(pattern, res)
     return res
+
+def usernames(user: Union[discord.User, discord.Member]):
+    additional = {'global': '', 'username': ''}
+    if getattr(user, 'nick', None):
+        if user.global_name:
+            additional['global'] = user.global_name
+    additional['username'] = user.name
+    return additional
