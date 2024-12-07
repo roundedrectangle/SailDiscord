@@ -68,7 +68,7 @@ Short description of my Sailfish OS Application
 %if %{package_library} == "yes"
 #python3 -m pip install --upgrade pip
 #python3 -m pip cache purge
-python3 -m pip install "discord.py-self>=2.0" "requests" "Pillow" --target=%_builddir/deps
+python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" "Pillow" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 #rm -rf %_builddir/deps/google/_upb
 %endif

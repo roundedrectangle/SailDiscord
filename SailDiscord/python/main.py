@@ -98,20 +98,17 @@ class MyClient(discord.Client):
         if result_required: return future.result(timeout)
         return future
 
-    def set_current_channel(self, guild, channel):
+    def set_current_channel(self, guild: discord.Guild, channel):
         self.current_server = guild
         self.current_channel = channel
-        # This will be used when discord.py-self 2.1 will be out.
-        #asyncio.run(guild.subscribe())
+        #self.run_asyncio_threadsafe(guild.subscribe(), True)
 
         self.run_asyncio_threadsafe(self.get_last_messages(), True)
         self.run_asyncio_threadsafe(self.current_channel.ack())
 
     def unset_current_channel(self):
-        # This will be used when discord.py-self 2.1 will be out.
-        #if self.current_server == None:
-        #    return
-        #asyncio.run(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
+        #if not self.current_server: return
+        #self.run_asyncio_threadsafe(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False), True)
         self.current_server = None
         self.current_channel = None
     
