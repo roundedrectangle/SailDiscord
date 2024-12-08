@@ -36,7 +36,7 @@
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Swedish</source>
-        <translation type="unfinished">Svenska</translation>
+        <translation>Svenska</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutPage.qml" line="76"/>
@@ -65,27 +65,27 @@
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
         <source>%1 online</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 online</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 medlemmar</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="82"/>
         <source>This server is a community server</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna server är en gemenskapsserver</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="89"/>
         <source>This server is a partnered server</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna server är en partnerknuten server</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutServerPage.qml" line="96"/>
         <source>This server is a verified server</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna server är en verifierad server</translation>
     </message>
 </context>
 <context>
@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="46"/>
         <source>Send friend request</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka en vänförfrågan</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="91"/>
@@ -121,7 +121,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="104"/>
         <source>Global nickname</source>
-        <translation type="unfinished"></translation>
+        <translation>Globalt smeknamn</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
@@ -147,27 +147,27 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="86"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte läsa in bilden %1. Rapportera detta till utvecklarna.</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="258"/>
         <source>Connection failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslutningsfel: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="259"/>
         <source>Login failure: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Inloggningsfel: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="260"/>
         <source>Captcha required but not implemented: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Captcha krävs, men inte implementerad: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="269"/>
         <source>Python error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Python-fel: %1</translation>
     </message>
 </context>
 <context>
@@ -175,18 +175,18 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="65"/>
         <source>DMs</source>
-        <translation type="unfinished"></translation>
+        <translation>DM</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="75"/>
         <location filename="../qml/pages/FirstPage.qml" line="137"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="223"/>
         <source>Me</source>
-        <translation type="unfinished"></translation>
+        <translation>Jag</translation>
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="248"/>
@@ -196,7 +196,7 @@
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="128"/>
         <source>Servers</source>
-        <translation type="unfinished"></translation>
+        <translation>Servrar</translation>
     </message>
 </context>
 <context>
@@ -266,12 +266,12 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="108"/>
         <source>Copy</source>
-        <translation type="unfinished">Kopiera</translation>
+        <translation>Kopiera</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="128"/>
         <source>Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Svara</translation>
     </message>
 </context>
 <context>
@@ -464,7 +464,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="15"/>
         <source>Share link</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela länk</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="17"/>
@@ -479,7 +479,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="44"/>
         <source>Copy text to clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera text till urklipp</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="50"/>
@@ -489,7 +489,7 @@
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="55"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>Dela</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
@@ -659,7 +659,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="165"/>
         <source>High-contrast mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Högkontrastläge</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="172"/>
@@ -679,7 +679,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>Logged out</source>
-        <translation type="unfinished"></translation>
+        <translation>Utloggad</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="199"/>
@@ -689,7 +689,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="200"/>
         <source>Cleared cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Rensade cachen</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="210"/>
@@ -701,7 +701,7 @@
         <location filename="../qml/pages/SettingsPage.qml" line="324"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
-        <translation type="unfinished">Återställ inställningar</translation>
+        <translation>Inställningar återställda</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="226"/>
@@ -806,22 +806,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Display unformatted HTML text in messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa oformaterad HTML-text i meddelanden</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
-        <translation type="unfinished"></translation>
+        <translation>Texten kommer fortfarande att tolkas via Showdown, men HTML-taggar kommer att visas som de är</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="304"/>
         <source>Experimental</source>
-        <translation type="unfinished"></translation>
+        <translation>Experimentellt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="306"/>
         <source>Use Twemoji instead of default Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd Twemoji istället för standardemoji</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="325"/>
@@ -847,12 +847,12 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="91"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Laddade ner filen %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(redigerat)</translation>
     </message>
 </context>
 <context>
