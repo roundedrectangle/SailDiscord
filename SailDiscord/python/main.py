@@ -62,10 +62,9 @@ async def send_message(message: Union[discord.Message, Any], is_history=False):
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.TextChannel] = None
-    loop: asyncio.AbstractEventLoop
     current_channel_deletion_pending = False
     pending_close_task: Optional[asyncio.Task] = None
-    captcha_event: asyncio.Event
+    captcha_event: asyncio.Event # pyright: ignore[reportUninitializedInstanceVariable]
 
     async def on_ready(self):
         qsend('logged_in', self.user.display_name)
@@ -74,7 +73,6 @@ class MyClient(discord.Client):
         send_dms(self.users, comm.cacher)
 
         # Setup control variables
-        self.loop = asyncio.get_running_loop()
         self.captcha_event = asyncio.Event(loop=self.loop)
 
     async def on_message(self, message: discord.Message):
@@ -157,26 +155,14 @@ class MyClient(discord.Client):
             raise exception
         await self.loop.run_in_executor(None, comm.ensure_constants)
         qsend('openHCaptcha', exception.sitekey)
-        # qobject function fails to access pageStack
-        # so we should try this:
-        # pyotherside.send() will open actual HCaptcha page
-        # and QObject will just wait until send() handler will finish and return us the result
-        # brilliant waste of time which could be solved by choosing C++ in the start!
-        logging.info("START")
-        #res = ''
-        # try:
-        #     res = comm.qml_shared.handleHCaptcha()
-        #     #res = await self.loop.run_in_executor(None, comm.qml_shared.handleHCaptcha)
-        # except Exception as e:
-        #     logging.info(f'MY HEAD IS FINE BUT {e} {type(e).__name__}')
-        # except:
-        #     logging.info("AHH MY HEAD\n")
-        # logging.info(res)
-        # return res
-
+        logging.info("Captcha opened...")
+        qsend("Captcha opened...")
+        t = datetime.now()
+        await self.captcha_event.wait()
+        #await asyncio.sleep(5)
+        qsend(str(datetime.now() - t))
+        qsend("Awaited")
         #await self.captcha_event.wait()
-        qsend("Event done...")
-        logging.info(comm.qml_shared.result)
         return comm.qml_shared.result
 
 class Communicator:
@@ -334,9 +320,11 @@ class Communicator:
             qsend('captchaError', str(e))
 
     def set_captcha_event(self):
-        qsend("Event set in progress")
+        # this method doesn't seem to be called while captcha_event.wait() is being awaited, so it is never awaited in the end
         self.client.captcha_event.set()
-        qsend("Event set")
+    
+    def test(self):
+        qsend("OK NOW WHAT")
 
 
 comm = Communicator()
