@@ -41,6 +41,7 @@ DISTFILES += \
     qml/pages/FullscreenAttachmentPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/MessagesPage.qml \
+    qml/pages/SecondPage.qml \
     qml/pages/SettingsPage.qml \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \

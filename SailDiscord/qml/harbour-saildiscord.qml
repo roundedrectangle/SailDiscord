@@ -12,7 +12,7 @@ import "modules/js/twemoji.min.js" as Twemoji
 
 ApplicationWindow {
     id: mainWindow
-    initialPage: Component { FirstPage { } }
+    initialPage: Component { SecondPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 

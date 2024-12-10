@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="244"/>
+        <location filename="../qml/pages/FirstPage.qml" line="241"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -55,6 +55,7 @@
         <location filename="../qml/components/ServerListItem.qml" line="42"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
+        <location filename="../qml/pages/SecondPage.qml" line="100"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>О сервере</translation>
@@ -94,7 +95,7 @@
         <location filename="../qml/components/MessageItem.qml" line="144"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
-        <location filename="../qml/pages/FirstPage.qml" line="99"/>
+        <location filename="../qml/pages/FirstPage.qml" line="96"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
         <source>About</source>
         <comment>User</comment>
@@ -186,28 +187,28 @@
 <context>
     <name>FirstPage</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="65"/>
+        <location filename="../qml/pages/FirstPage.qml" line="62"/>
         <source>DMs</source>
         <translation>ЛС</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="75"/>
-        <location filename="../qml/pages/FirstPage.qml" line="137"/>
+        <location filename="../qml/pages/FirstPage.qml" line="72"/>
+        <location filename="../qml/pages/FirstPage.qml" line="134"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="223"/>
+        <location filename="../qml/pages/FirstPage.qml" line="220"/>
         <source>Me</source>
         <translation>Я</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="248"/>
+        <location filename="../qml/pages/FirstPage.qml" line="245"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="128"/>
+        <location filename="../qml/pages/FirstPage.qml" line="125"/>
         <source>Servers</source>
         <translation>Серверы</translation>
     </message>
@@ -511,6 +512,14 @@
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
         <source>Open externally</source>
         <translation>Открыть снаружи</translation>
+    </message>
+</context>
+<context>
+    <name>SecondPage</name>
+    <message>
+        <location filename="../qml/pages/SecondPage.qml" line="60"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
     </message>
 </context>
 <context>

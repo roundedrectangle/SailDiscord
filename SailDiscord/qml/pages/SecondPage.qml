@@ -52,7 +52,114 @@ Page {
 
     BusyLabel { running: loading }
 
-    TabView {
+    SilicaFlickable {
+        anchors.fill: parent
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: python.refresh()
+            }
+        }
+
+        Column {
+            anchors.fill: parent
+            PageHeader { id: header; title: username }
+
+            Row {
+                width: parent.width
+                height: parent.height - header.height
+                SilicaListView {
+                    width: Theme.itemSizeExtraLarge
+                    height: parent.height
+                    model: serversModel
+                    VerticalScrollDecorator {}
+
+                    delegate: Loader {
+                        // TODO: fix folders sometimes not working
+                        sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                        width: parent.width
+                        height: width
+                        property var _color: folder ? color : undefined
+                        property var _servers: folder ? servers : undefined
+                        Component {
+                            id: serverItemComponent
+                            ListItem {
+                                anchors.fill: parent
+
+                                ListImage {
+                                    icon: image
+                                    height: parent.width - Theme.paddingSmall*4
+                                    errorString: name
+                                }
+
+                                onClicked: if (defaultActions) pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
+                                menu: Component { ContextMenu {
+                                    visible: defaultActions
+                                    MenuItem {
+                                        text: qsTranslate("AboutServer", "About", "Server")
+                                        onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
+                                                                  { serverid: _id, name: name, icon: image }
+                                                                  )
+                                    }
+                                } }
+                            }
+                        }
+
+                        Component {
+                            id: serverFolderComponent
+                            Column {
+                                width: parent.width
+                                SectionHeader {
+                                    id: folderHeader
+                                    visible: name
+                                    color: _color == "" ? palette.highlightColor : _color
+                                    text: name
+                                }
+                                Row {
+                                    width: parent.width
+                                    Item {
+                                        width: Theme.paddingLarge
+                                        height: parent.height
+                                        Rectangle {
+                                            width: Theme.paddingSmall
+                                            color: folderHeader.color
+                                            height: parent.height
+                                            anchors.horizontalCenter: parent.horizontalCenter
+                                        }
+                                    }
+
+                                    ColumnView {
+                                        model: _servers
+                                        delegate: serverItemComponent
+                                        itemHeight: Theme.itemSizeLarge
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    section {
+                        property: "_id"
+                        delegate: Loader {
+                            width: parent.width
+                            sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
+                            Component {
+                                id: separatorComponent
+                                Separator {
+                                    color: Theme.primaryColor
+                                    width: parent.width
+                                    horizontalAlignment: Qt.AlignHCenter
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*TabView {
         anchors.fill: parent
         tabBarPosition: Qt.AlignBottom
         currentIndex: 1
@@ -126,92 +233,7 @@ Page {
             Component {
                 TabItem {
                     flickable: serversContainer
-                    SilicaFlickable {
-                        id: serversContainer
-                        anchors.fill: parent
-                        PullDownMenu {
-                            MenuItem {
-                                text: qsTr("Refresh")
-                                onClicked: python.refresh()
-                            }
-                        }
-                        PageHeader { id: header; title: username }
 
-                        SilicaListView {
-                            width: parent.width
-                            anchors {
-                                top: header.bottom
-                                bottom: parent.bottom
-                            }
-                            clip: true
-                            model: serversModel
-                            VerticalScrollDecorator {}
-
-                            delegate: Loader {
-                                // TODO: fix folders sometimes not working
-                                sourceComponent: folder ? serverFolderComponent : serverItemComponent
-                                width: parent.width
-                                property var _color: folder ? color : undefined
-                                property var _servers: folder ? servers : undefined
-                                Component {
-                                    id: serverItemComponent
-                                    ServerListItem {
-                                        serverid: _id
-                                        title: name
-                                        icon: image
-                                    }
-                                }
-
-                                Component {
-                                    id: serverFolderComponent
-                                    Column {
-                                        width: parent.width
-                                        SectionHeader {
-                                            id: folderHeader
-                                            visible: name
-                                            color: _color == "" ? palette.highlightColor : _color
-                                            text: name
-                                        }
-                                        Row {
-                                            width: parent.width
-                                            Item {
-                                                width: Theme.paddingLarge
-                                                height: parent.height
-                                                Rectangle {
-                                                    width: Theme.paddingSmall
-                                                    color: folderHeader.color
-                                                    height: parent.height
-                                                    anchors.horizontalCenter: parent.horizontalCenter
-                                                }
-                                            }
-
-                                            ColumnView {
-                                                model: _servers
-                                                delegate: serverItemComponent
-                                                itemHeight: Theme.itemSizeLarge
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            section {
-                                property: "_id"
-                                delegate: Loader {
-                                    width: parent.width
-                                    sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
-                                    Component {
-                                        id: separatorComponent
-                                        Separator {
-                                            color: Theme.primaryColor
-                                            width: parent.width
-                                            horizontalAlignment: Qt.AlignHCenter
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -251,10 +273,10 @@ Page {
             }
         }
     }
-
+*/
     TouchBlocker {
         anchors.fill: parent
-        visible: loading
+        visible: false//loading
     }
 
     ListModel { id: serversModel }
