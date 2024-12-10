@@ -22,7 +22,7 @@ AboutPageBase {
     attributions: [
         Attribution {
             name: "discord.py-self"
-            entries: ["dolfies", "2015-present Rapptz"]
+            entries: ["2021-present Dolfies", "2015-present Rapptz"]
             licenses:License { spdxId: "MIT" }
             sources: "https://github.com/dolfies/discord.py-self"
             homepage: "https://discordpy-self.rtfd.io/en/latest/"

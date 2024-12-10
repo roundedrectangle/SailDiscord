@@ -135,6 +135,19 @@
     </message>
 </context>
 <context>
+    <name>CaptchaDialog</name>
+    <message>
+        <location filename="../qml/pages/CaptchaDialog.qml" line="29"/>
+        <source>Please wait</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/CaptchaDialog.qml" line="32"/>
+        <source>Are you a human?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ChannelsPage</name>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
@@ -150,22 +163,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="295"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="259"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="260"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
         <source>Captcha required but not implemented: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="269"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>

@@ -182,6 +182,42 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: askForCaptchaDialog
+        Page {
+            property string sitekey
+            Dialog {
+                //acceptDestination: Qt.resolvedUrl('CaptchaDialog.qml', { sitekey: sitekey })
+            }
+        }
+    }
+
+    QtObject {
+        id: pyShared
+        property bool failed: false
+        property string result: ''
+
+        function setHCaptcha(res) {
+            result = res
+            python.call('main.comm.set_captcha_event', [], function() { console.log("H") })
+            console.log("Calling...")
+        }
+
+        function handleHCaptcha() {
+            //while(true) {}
+            //console.log('loop exited!!')
+            //var timeStart = new Date().getTime()
+            //while (new Date().getTime() - timeStart < 2000) {}
+            return ''
+            /*while (!result && !failed);
+            if (failed) result = ''
+            var res = result
+            result = ''
+            failed = false
+            return res*/
+        }
+    }
+
     ConfigurationGroup {
         // An experimental configuration system replacing old C++ one
         id: appConfiguration
@@ -243,6 +279,7 @@ ApplicationWindow {
         id: python
         property bool initialized: false
         property var _refreshFirstPage: function() {}
+        property bool captchaEverOpened: false
 
         function init(loggedInHandler, serverHandler, dmHandler, refreshHandler) {
             setHandler('logged_in', loggedInHandler) // function(username)
@@ -258,6 +295,13 @@ ApplicationWindow {
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
             setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented: %1").arg(e)) })
+
+            setHandler('openHCaptcha', function (sitekey) {
+                //if (!pageStack.find(function(){ return true }).__captcha_dialog)
+                if (!captchaEverOpened)
+                    pageStack.push(Qt.resolvedUrl('pages/CaptchaDialog.qml'), { sitekey: sitekey })
+                captchaEverOpened = true
+            })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -317,6 +361,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium]) }
+        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, pyShared]) }
     }
 }
