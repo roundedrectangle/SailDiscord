@@ -150,16 +150,20 @@ class MyClient(discord.Client):
                 loaded_ids += (g.id for g in f.guilds)
         return folders + list(g for g in self.guilds if g.id not in loaded_ids)
     
-    # async def handle_captcha(self, exception: discord.CaptchaRequired) -> str:
-    #     if exception.service != 'hcaptcha':
-    #         raise exception
-    #     await self.loop.run_in_executor(None, comm.ensure_constants)
-    #     qsend('openHCaptcha', exception.sitekey)
-    #     #t = datetime.now()
-    #     await self.captcha_event.wait()
-    #     qsend(comm.qml_shared.result)
-    #     #qsend(str(datetime.now() - t))
-    #     return comm.qml_shared.result
+    async def handle_captcha(self, exception: discord.CaptchaRequired) -> str:
+        if exception.service != 'hcaptcha':
+            raise exception
+        await self.loop.run_in_executor(None, comm.ensure_constants)
+        qsend('openHCaptcha', exception.sitekey)
+        logging.info("Captcha opened...")
+        qsend("Captcha opened...")
+        t = datetime.now()
+        await self.captcha_event.wait()
+        #await asyncio.sleep(5)
+        qsend(str(datetime.now() - t))
+        qsend("Awaited")
+        #await self.captcha_event.wait()
+        return comm.qml_shared.result
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -318,6 +322,9 @@ class Communicator:
     def set_captcha_event(self):
         # this method doesn't seem to be called while captcha_event.wait() is being awaited, so it is never awaited in the end
         self.client.captcha_event.set()
+    
+    def test(self):
+        qsend("OK NOW WHAT")
 
 
 comm = Communicator()

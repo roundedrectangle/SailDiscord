@@ -164,22 +164,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="295"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="298"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
         <source>Captcha required but not implemented: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
