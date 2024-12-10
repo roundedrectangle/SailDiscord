@@ -12,6 +12,8 @@ Page {
     property string icon
     property string memberCount
 
+    property alias channelList: channelList
+
     SilicaListView {
         id: channelList
         model: chModel

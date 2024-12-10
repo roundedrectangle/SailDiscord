@@ -148,7 +148,6 @@ Page {
                             VerticalScrollDecorator {}
 
                             delegate: Loader {
-                                // TODO: fix folders sometimes not working
                                 sourceComponent: folder ? serverFolderComponent : serverItemComponent
                                 width: parent.width
                                 property var _color: folder ? color : undefined

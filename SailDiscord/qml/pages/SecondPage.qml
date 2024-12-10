@@ -76,24 +76,31 @@ Page {
                     VerticalScrollDecorator {}
 
                     delegate: Loader {
-                        // TODO: fix folders sometimes not working
-                        sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                        sourceComponent: folder ? null : serverItemComponent
                         width: parent.width
                         height: width
                         property var _color: folder ? color : undefined
                         property var _servers: folder ? servers : undefined
+                        onStatusChanged: if (status == Loader.Ready) item.anchors.fill = item.parent
+
                         Component {
                             id: serverItemComponent
                             ListItem {
                                 anchors.fill: parent
+                                contentHeight: height
 
                                 ListImage {
                                     icon: image
-                                    height: parent.width - Theme.paddingSmall*4
+                                    anchors {
+                                        fill: parent
+                                        margins: Theme.paddingLarge
+                                    }
                                     errorString: name
+                                    anchors.centerIn: parent
+                                    enabled: false
                                 }
 
-                                onClicked: if (defaultActions) pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
+                                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
                                 menu: Component { ContextMenu {
                                     visible: defaultActions
                                     MenuItem {
@@ -139,7 +146,7 @@ Page {
                         }
                     }
 
-                    section {
+                    /*section {
                         property: "_id"
                         delegate: Loader {
                             width: parent.width
@@ -153,7 +160,7 @@ Page {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }
@@ -274,10 +281,10 @@ Page {
         }
     }
 */
-    TouchBlocker {
+    /*TouchBlocker {
         anchors.fill: parent
         visible: false//loading
-    }
+    }*/
 
     ListModel { id: serversModel }
     ListModel { id: dmModel }

@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="241"/>
+        <location filename="../qml/pages/FirstPage.qml" line="240"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -55,7 +55,7 @@
         <location filename="../qml/components/ServerListItem.qml" line="42"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
         <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
-        <location filename="../qml/pages/SecondPage.qml" line="100"/>
+        <location filename="../qml/pages/SecondPage.qml" line="99"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Info sul server</translation>
@@ -185,12 +185,12 @@
         <translation>Ricarica</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="220"/>
+        <location filename="../qml/pages/FirstPage.qml" line="219"/>
         <source>Me</source>
         <translation>Utente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="245"/>
+        <location filename="../qml/pages/FirstPage.qml" line="244"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
     </message>
