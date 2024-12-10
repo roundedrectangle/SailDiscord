@@ -199,8 +199,7 @@ ApplicationWindow {
 
         function setHCaptcha(res) {
             result = res
-            python.call_sync('main.comm.set_captcha_event', [])
-            python.call_sync('main.comm.test', [])
+            python.call('main.comm.set_captcha_event', [], function() { console.log("H") })
             console.log("Calling...")
         }
 
