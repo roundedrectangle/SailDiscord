@@ -4,8 +4,6 @@
 #     pass
 import sys
 from pyotherside import send as qsend
-from pyotherside import QObject
-import pyotherside
 from threading import Thread
 import asyncio, shutil
 from pathlib import Path
@@ -65,7 +63,6 @@ class MyClient(discord.Client):
     loop: asyncio.AbstractEventLoop
     current_channel_deletion_pending = False
     pending_close_task: Optional[asyncio.Task] = None
-    captcha_event: asyncio.Event
 
     async def on_ready(self):
         qsend('logged_in', self.user.display_name)
@@ -75,7 +72,6 @@ class MyClient(discord.Client):
 
         # Setup control variables
         self.loop = asyncio.get_running_loop()
-        self.captcha_event = asyncio.Event(loop=self.loop)
 
     async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
@@ -151,33 +147,6 @@ class MyClient(discord.Client):
                 folders.append(f if f.id or len(f) != 1 else f.guilds[0])
                 loaded_ids += (g.id for g in f.guilds)
         return folders + list(g for g in self.guilds if g.id not in loaded_ids)
-    
-    async def handle_captcha(self, exception: discord.CaptchaRequired) -> str:
-        if exception.service != 'hcaptcha':
-            raise exception
-        await self.loop.run_in_executor(None, comm.ensure_constants)
-        qsend('openHCaptcha', exception.sitekey)
-        # qobject function fails to access pageStack
-        # so we should try this:
-        # pyotherside.send() will open actual HCaptcha page
-        # and QObject will just wait until send() handler will finish and return us the result
-        # brilliant waste of time which could be solved by choosing C++ in the start!
-        logging.info("START")
-        #res = ''
-        # try:
-        #     res = comm.qml_shared.handleHCaptcha()
-        #     #res = await self.loop.run_in_executor(None, comm.qml_shared.handleHCaptcha)
-        # except Exception as e:
-        #     logging.info(f'MY HEAD IS FINE BUT {e} {type(e).__name__}')
-        # except:
-        #     logging.info("AHH MY HEAD\n")
-        # logging.info(res)
-        # return res
-
-        #await self.captcha_event.wait()
-        qsend("Event done...")
-        logging.info(comm.qml_shared.result)
-        return comm.qml_shared.result
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -186,14 +155,12 @@ class Communicator:
     loginth: Thread
     client: MyClient
     emoji_size: Optional[int] = None
-    qml_shared: Optional[QObject] = None
 
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
         self.client = MyClient(guild_subscriptions=False)
         discord.utils.setup_logging()
-        #pyotherside.atexit(self.disconnect)
 
     def login(self, token):
         if QMLLIVE_DEBUG and self.client.is_closed():
@@ -204,16 +171,15 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, qml_shared: QObject):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int):
         if self.cacher:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
         else:
             self.cacher = Cacher(cache, cache_period)
         self.set_proxy(proxy)
-        self.emoji_size = emoji_size
-        self.qml_shared = qml_shared
         self.downloads = Path(downloads)
+        self.emoji_size = emoji_size
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
@@ -330,13 +296,7 @@ class Communicator:
             if not user.is_friend(): # pyright: ignore[reportAttributeAccessIssue]
                 self.client.run_asyncio_threadsafe(user.send_friend_request(), True) # pyright: ignore[reportAttributeAccessIssue]
         except discord.errors.CaptchaRequired as e:
-            logging.info(f'Captcha required... {str(e)} {e.json} {e.errors} {e.service} {e.sitekey} {e.rqdata} {e.rqtoken}')
             qsend('captchaError', str(e))
-
-    def set_captcha_event(self):
-        qsend("Event set in progress")
-        self.client.captcha_event.set()
-        qsend("Event set")
 
 
 comm = Communicator()
