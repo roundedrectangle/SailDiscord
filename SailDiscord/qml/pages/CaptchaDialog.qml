@@ -39,7 +39,7 @@ Dialog {
 
                 id: webview
                 width: parent.width
-                height: parent.height = header.height
+                height: parent.height - header.height
 
                  /*function getToken() {
                      // if the webpage is loaded and there's a token, return it (string).
@@ -59,14 +59,13 @@ Dialog {
                      )
                  }*/
 
-                 Component.onCompleted: {
-                     loadHtml('<html>
+                 Component.onCompleted: loadHtml('<html>
   <head>
     <title>hCaptcha</title>
     <script src="https://hcaptcha.com/1/api.js" async defer></script>
   </head>
   <body>
-    <div class="h-captcha" data-sitekey="%1"></div>
+    <div class="h-captcha" data-sitekey="%1" data-callback="captchaCallback"></div>
     <script>
       function captchaCallback(response) {
         alert(response)
@@ -74,21 +73,6 @@ Dialog {
     </script>
   </body>
 </html>'.arg(sitekey))
-                     console.log('<html>
-  <head>
-    <title>hCaptcha</title>
-    <script src="https://hcaptcha.com/1/api.js" async defer></script>
-  </head>
-  <body>
-    <div class="h-captcha" data-sitekey="%1"></div>
-    <script>
-      function captchaCallback(response) {
-        alert(response)
-      }
-    </script>
-  </body>
-</html>'.arg(sitekey))
-                     }
             }
         }
     }

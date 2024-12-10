@@ -163,22 +163,22 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="295"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="298"/>
         <source>Captcha required but not implemented: %1</source>
         <translation>Проверка на робота нужна но недоступна: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
