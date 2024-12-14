@@ -9,6 +9,9 @@ Page {
 
     property bool loading: true
     property string username: ""
+    property string avatar
+    property int status: 0
+    property bool onMobile: false
 
     Timer {
         //credit: Fernschreiber
@@ -23,6 +26,9 @@ Page {
             serversModel.clear()
             dmModel.clear()
             username = ""
+            avatar = ""
+            status = 0
+            onMobile = false
 
             loading = false
             openLoginDialogTimer.start()
@@ -38,9 +44,12 @@ Page {
     }
 
     Component.onCompleted: {
-        python.init(function(u) {
+        python.init(function(u, i, s, m) {
             loading = false
             username = u
+            avatar = i
+            status = s
+            onMobile = m
         }, serversModel.append, dmModel.append, function() {
             serversModel.clear()
             dmModel.clear()
@@ -62,9 +71,9 @@ Page {
             MenuItem {
                 text: qsTranslate("AboutServer", "About this server", "Server")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
-                    serverid: currentServer.serverid,
+                    serverid: currentServer._id,
                     name: currentServer.name,
-                    icon: currentServer.icon
+                    icon: currentServer.image
                 })
             }
             MenuItem {
@@ -73,210 +82,162 @@ Page {
             }
         }
 
-        /*Column {
+        Row {
             anchors.fill: parent
-            PageHeader { id: header; title: username }*/
+            visible: !loading
+            SilicaListView {
+                id: serverList
+                width: Theme.itemSizeLarge
+                height: parent.height
+                model: serversModel
+                VerticalScrollDecorator {}
 
-            Row {
-                anchors.fill: parent
-                //width: parent.width
-                //height: parent.height - header.height
-                SilicaListView {
-                    id: serverList
-                    width: Theme.itemSizeLarge
-                    height: parent.height
-                    model: serversModel
-                    VerticalScrollDecorator {}
-
-                    header: Column {
-                        Item { width:1;height: Theme.paddingLarge }
-                        // TODO: DMs
-                    }
-
-                    delegate: Loader {
-                        sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                header: Column {
+                    width: parent.width
+                    Item { width:1;height: Theme.paddingLarge }
+                    IconButton {
+                        id: iconButton
+                        icon.source: "image://theme/icon-l-message"
                         width: parent.width
-                        height: item.implicitHeight
-                        property var _color: folder ? color : undefined
-                        property var _servers: folder ? servers : undefined
-                        onStatusChanged: if (status == Loader.Ready) item.anchors.fill = item.parent
+                        height: width
+                        onClicked: channelIndex = -1
+                    }
+                }
 
-                        Component {
-                            id: serverItemComponent
-                            ListItem {
-                                //anchors.fill: parent
+                delegate: Loader {
+                    sourceComponent: folder ? serverFolderComponent : serverItemComponent
+                    width: parent.width
+                    height: item.implicitHeight
+                    property var _color: folder ? color : undefined
+                    property var _servers: folder ? servers : undefined
+                    onStatusChanged: if (status == Loader.Ready) item.anchors.fill = item.parent
+
+                    Component {
+                        id: serverItemComponent
+                        ListItem {
+                            width: parent.width
+                            contentHeight: serverImage.height
+
+                            Item {
+                                id: serverImage
                                 width: parent.width
-                                contentHeight: serverImage.height
+                                height: width
+                                ListImage {
+                                    icon: image
+                                    anchors {
+                                        fill: parent
+                                        margins: Theme.paddingSmall
+                                    }
+                                    errorString: name
+                                    anchors.centerIn: parent
+                                    enabled: false
+                                }
+                            }
 
-                                Item {
-                                    id: serverImage
-                                    width: parent.width
-                                    height: width
-                                    ListImage {
-                                        icon: image
-                                        anchors {
-                                            fill: parent
-                                            margins: Theme.paddingSmall
-                                        }
-                                        errorString: name
+                            onClicked: channelIndex = index
+                            menu: Component { ContextMenu {
+                                MenuItem {
+                                    Icon {
+                                        source: "image://theme/icon-m-question"
                                         anchors.centerIn: parent
-                                        enabled: false
                                     }
+                                    //text: qsTranslate("AboutServer", "About", "Server")
+                                    onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
+                                                              { serverid: _id, name: name, icon: image }
+                                                              )
                                 }
-
-                                //onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
-                                onClicked: channelIndex = index
-                                menu: Component { ContextMenu {
-                                    visible: defaultActions
-                                    MenuItem {
-                                        Icon {
-                                            source: "image://theme/icon-m-info"
-                                        }
-                                        //text: qsTranslate("AboutServer", "About", "Server")
-                                        onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
-                                                                  { serverid: _id, name: name, icon: image }
-                                                                  )
-                                    }
-                                } }
-                            }
+                            } }
                         }
+                    }
 
-                        Component {
-                            id: serverFolderComponent
-                            /*Column {
+                    Component {
+                        id: serverFolderComponent
+                            ColumnView {
                                 width: parent.width
-                                SectionHeader {
-                                    id: folderHeader
-                                    visible: name
+                                model: _servers
+                                delegate: serverItemComponent
+                                itemHeight: Theme.itemSizeLarge
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    z: -1
                                     color: _color == "" ? palette.highlightColor : _color
-                                    text: name
-                                }*/
-                                /*Row {
-                                    width: parent.width
-                                    Item {
-                                        width: Theme.paddingLarge
-                                        height: parent.height
-                                        Rectangle {
-                                            width: Theme.paddingSmall
-                                            color: folderHeader.color
-                                            height: parent.height
-                                            anchors.horizontalCenter: parent.horizontalCenter
-                                        }
-                                    }*/
-
-                                    ColumnView {
-                                        width: parent.width
-                                        model: _servers
-                                        delegate: serverItemComponent
-                                        itemHeight: Theme.itemSizeLarge
-                                        //Component.onCompleted: console.log(JSON.stringify(_servers.get(0)))
-
-                                        Rectangle {
-                                            anchors.fill: parent
-                                            z: -1
-                                            color: _color == "" ? palette.highlightColor : _color
-                                            radius: parent.width / 2
-                                            opacity: 0.2
-                                        }
-                                    }
-                                //}
-                            //}
-                        }
-                    }
-
-                    /*section {
-                        property: "_id"
-                        delegate: Loader {
-                            width: parent.width
-                            sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
-                            Component {
-                                id: separatorComponent
-                                Separator {
-                                    color: Theme.primaryColor
-                                    width: parent.width
-                                    horizontalAlignment: Qt.AlignHCenter
+                                    radius: parent.width / 2
+                                    opacity: 0.2
                                 }
                             }
-                        }
-                    }*/
+                    }
                 }
+            }
 
-                Item {
+            Item {
+                width: parent.width - serverList.width
+                height: parent.height
+
+                Loader {
                     id: channelRoot
-                    width: parent.width - serverList.width
-                    height: parent.height
-                    ChannelsPage {
-                        channelList.parent: channelRoot
-                        channelList.onPullDownMenuChanged: channelList.pullDownMenu.visible = false
-                        name: currentServer.name
-                        icon: currentServer.image
-                        serverid: currentServer._id
-
+                    width: parent.width
+                    anchors {
+                        top: parent.top
+                        bottom: me.top
                     }
-                }
-            }
-        //}
-    }
 
-    /*TabView {
-        anchors.fill: parent
-        tabBarPosition: Qt.AlignBottom
-        currentIndex: 1
-        interactive: !loading
-
-        Tab {
-            title: qsTr("DMs")
-            Component {
-                TabItem {
-                    flickable: dmsContainer
-                    SilicaFlickable {
-                        id: dmsContainer
-                        anchors.fill: parent
-
-                        PullDownMenu {
-                            MenuItem {
-                                text: qsTr("Refresh")
-                                onClicked: python.refresh()
-                            }
+                    sourceComponent: currentServer ? channelComponent : dmsComponent
+                    Component {
+                        id: channelComponent
+                        ChannelsPage {
+                            channelList.parent: channelRoot
+                            channelList.onPullDownMenuChanged: channelList.pullDownMenu.visible = false
+                            name: currentServer.name
+                            icon: currentServer.image
+                            serverid: currentServer._id
                         }
-                        PageHeader { id: header; title: username }
+                    }
+                    Component {
+                        id: dmsComponent
+                        Item {
+                            id: dmsContainer
+                            anchors.fill: parent
 
-                        SilicaListView {
-                            width: parent.width
-                            anchors {
-                                top: header.bottom
-                                bottom: parent.bottom
-                            }
-                            clip: true
-                            model: dmModel
-                            VerticalScrollDecorator {}
+                            PageHeader { id: header; title: username }
 
-                            delegate: ServerListItem {
-                                serverid: '-1'
-                                title: name
-                                icon: image
-                                defaultActions: false
+                            SilicaListView {
+                                width: parent.width
+                                anchors {
+                                    top: header.bottom
+                                    bottom: parent.bottom
+                                }
+                                clip: true
+                                model: dmModel
+                                VerticalScrollDecorator {}
 
-                                onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
-                                menu: Component { ContextMenu {
-                                    MenuItem {text: qsTranslate("AboutUser", "About", "User")
-                                        visible: _id != '-1'
-                                        onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
-                                    }
-                                } }
-                            }
+                                delegate: ServerListItem {
+                                    serverid: '-1'
+                                    title: name
+                                    icon: image
+                                    defaultActions: false
 
-                            section {
-                                property: "_id"
-                                delegate: Loader {
-                                    width: parent.width
-                                    sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
-                                    Component {
-                                        id: separatorComponent
-                                        Separator {
-                                            color: Theme.primaryColor
-                                            width: parent.width
-                                            horizontalAlignment: Qt.AlignHCenter
+                                    onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
+                                    menu: Component { ContextMenu {
+                                        MenuItem {text: qsTranslate("AboutUser", "About", "User")
+                                            visible: _id != '-1'
+                                            onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
+                                        }
+                                    } }
+                                }
+
+                                section {
+                                    property: "_id"
+                                    delegate: Loader {
+                                        width: parent.width
+                                        sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
+                                        Component {
+                                            id: separatorComponent
+                                            Separator {
+                                                color: Theme.primaryColor
+                                                width: parent.width
+                                                horizontalAlignment: Qt.AlignHCenter
+                                            }
                                         }
                                     }
                                 }
@@ -284,47 +245,38 @@ Page {
                         }
                     }
                 }
-            }
-        }
 
-        Tab {
-            title: qsTr("Servers")
-            Component {
-                TabItem {
-                    flickable: serversContainer
+                BackgroundItem {
+                    id: me
+                    width: parent.width
+                    anchors.bottom: parent.bottom
+                    height: meContent.height
+                    Row {
+                        id: meContent
+                        width: parent.width - Theme.paddingLarge*2
+                        height: implicitHeight + Theme.paddingSmall*2
+                        anchors.centerIn: parent
+                        spacing: Theme.paddingLarge
 
-                }
-            }
-        }
+                        ListImage {
+                            id: meAvatar
+                            anchors.verticalCenter: parent.verticalCenter
+                            enabled: false
+                            icon: avatar
+                        }
 
-        Tab {
-            title: qsTr("Me")
-
-            Component {
-                TabItem {
-                    id: tabItem
-                    flickable: morePage.flickable
-                    //topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
-                    property string _username: username
-
-                    AboutUserPage {
-                        parent: null
-                        anchors.fill: parent
-                        flickable.parent: tabItem
-                        id: morePage
-                        isClient: true
-                        name: _username
-                        icon: ""
-
-                        PullDownMenu {
-                            parent: morePage.flickable
-                            MenuItem {
-                                text: qsTranslate("AboutApp", "About", "App")
-                                onClicked: pageStack.push("AboutPage.qml")
+                        Column {
+                            width: parent.width - meAvatar.width - parent.spacing*1
+                            anchors.verticalCenter: parent.verticalCenter
+                            Label {
+                                truncationMode: TruncationMode.Fade
+                                text: username
+                                color: Theme.highlightColor
                             }
-                            MenuItem {
-                                text: qsTr("Settings")
-                                onClicked: pageStack.push("SettingsPage.qml")
+                            Label {
+                                truncationMode: TruncationMode.Fade
+                                text: shared.constructStatus(status, onMobile)
+                                color: Theme.secondaryHighlightColor
                             }
                         }
                     }
@@ -332,7 +284,6 @@ Page {
             }
         }
     }
-*/
     /*TouchBlocker {
         anchors.fill: parent
         visible: false//loading

@@ -129,15 +129,15 @@ AboutPageBase {
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)
-            _status = constructStatus(status, onMobile)
+            _status = shared.constructStatus(status, onMobile)
             busyIndicator.running = false
             // by default these are empty strings:
             globalName = allNames.global
             username = allNames.username
 
-            if (isClient) {
+            if (!isClient) /*{
                 page.icon = arguments[5]
-            } else {
+            } else*/ {
                 isBot = arguments[5]
                 isSystem = arguments[6]
                 isFriend = arguments[7]
@@ -145,18 +145,5 @@ AboutPageBase {
             }
         })
         python.requestUserInfo(userid) // for client, it will be -1
-    }
-
-    function constructStatus(statusIndex, onMobile) {
-        var result = ["",
-                      qsTranslate("status", "Online"),
-                      qsTranslate("status", "Offline"),
-                      qsTranslate("status", "Do Not Disturb"),
-                      qsTranslate("status", "Invisible"),
-                      qsTranslate("status", "Idle")
-                ][statusIndex]
-        if (onMobile && result !== "")
-            result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
-        return result
     }
 }

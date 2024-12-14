@@ -9,6 +9,7 @@ Page {
 
     property bool loading: true
     property string username: ""
+    property string avatar
 
     Timer {
         //credit: Fernschreiber
@@ -23,6 +24,7 @@ Page {
             serversModel.clear()
             dmModel.clear()
             username = ""
+            avatar = ""
 
             loading = false
             openLoginDialogTimer.start()
@@ -38,9 +40,10 @@ Page {
     }
 
     Component.onCompleted: {
-        python.init(function(u) {
+        python.init(function(u, i, s, m) {
             loading = false
             username = u
+            avatar = i
         }, serversModel.append, dmModel.append, function() {
             serversModel.clear()
             dmModel.clear()
@@ -224,6 +227,7 @@ Page {
                     flickable: morePage.flickable
                     //topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
                     property string _username: username
+                    property string _avatar: avatar
 
                     AboutUserPage {
                         parent: null
@@ -232,7 +236,7 @@ Page {
                         id: morePage
                         isClient: true
                         name: _username
-                        icon: ""
+                        icon: avatar
 
                         PullDownMenu {
                             parent: morePage.flickable

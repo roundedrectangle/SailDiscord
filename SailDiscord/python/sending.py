@@ -96,20 +96,14 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
     usernames(user), user.bot, user.system, user.is_friend(), hex_color(user.color))
 
-def send_myself(client: discord.Client, cacher: Cacher):
+def send_myself(client: discord.Client):
     user = client.user
     status = 0 # default
     if StatusMapping.has_value(client.status):
         status = StatusMapping(client.status).index
 
-    icon = '' if user.display_avatar == None else \
-            str(cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
-
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user), icon)#user.display_avatar, icon)
-
-    if icon != '':
-        cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
+    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
 
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',

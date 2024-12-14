@@ -180,6 +180,19 @@ ApplicationWindow {
             if (!appSettings.twemoji) return text
             return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
         }
+
+        function constructStatus(statusIndex, onMobile) {
+            var result = ["",
+                          qsTranslate("status", "Online"),
+                          qsTranslate("status", "Offline"),
+                          qsTranslate("status", "Do Not Disturb"),
+                          qsTranslate("status", "Invisible"),
+                          qsTranslate("status", "Idle")
+                    ][statusIndex]
+            if (onMobile && result !== "")
+                result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+            return result
+        }
     }
 
     ConfigurationGroup {
@@ -245,7 +258,7 @@ ApplicationWindow {
         property var _refreshFirstPage: function() {}
 
         function init(loggedInHandler, serverHandler, dmHandler, refreshHandler) {
-            setHandler('logged_in', loggedInHandler) // function(username)
+            setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
                 var data = {image: '', folder: true, _id: _id, name: name, color: color, servers: []}
