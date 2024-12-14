@@ -24,7 +24,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTranslate("AboutServer", "About", "Server")
+                text: qsTranslate("AboutServer", "About this server", "Server")
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                     serverid: serverid,
                     name: name,
@@ -93,15 +93,20 @@ Page {
 
     ListModel {
         id: chModel
+        property int lastServerId: -1
 
-        Component.onCompleted: {
+        function reloadModel() {
+            if (lastServerId >= 0) python.setHandler('channel'+lastServerId)
+            clear()
             python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed) {
                 if (!_haspermissions && !appSettings.ignorePrivate) return;
                 append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed})
             })
             python.requestChannels(serverid)
         }
+        Component.onCompleted: reloadModel()
     }
+    onServeridChanged: chModel.reloadModel()
 
     Component {
         id: comingSoonPage

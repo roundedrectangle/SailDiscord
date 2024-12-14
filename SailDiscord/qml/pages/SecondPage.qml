@@ -52,33 +52,51 @@ Page {
 
     BusyLabel { running: loading }
 
+    property int channelIndex: -1 // -1: DMs
+    property var currentServer: channelIndex >= 0 ? serversModel.get(channelIndex) : null
+
     SilicaFlickable {
         anchors.fill: parent
 
         PullDownMenu {
+            MenuItem {
+                text: qsTranslate("AboutServer", "About this server", "Server")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
+                    serverid: currentServer.serverid,
+                    name: currentServer.name,
+                    icon: currentServer.icon
+                })
+            }
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: python.refresh()
             }
         }
 
-        Column {
+        /*Column {
             anchors.fill: parent
-            PageHeader { id: header; title: username }
+            PageHeader { id: header; title: username }*/
 
             Row {
-                width: parent.width
-                height: parent.height - header.height
+                anchors.fill: parent
+                //width: parent.width
+                //height: parent.height - header.height
                 SilicaListView {
-                    width: Theme.itemSizeExtraLarge
+                    id: serverList
+                    width: Theme.itemSizeLarge
                     height: parent.height
                     model: serversModel
                     VerticalScrollDecorator {}
 
+                    header: Column {
+                        Item { width:1;height: Theme.paddingLarge }
+                        // TODO: DMs
+                    }
+
                     delegate: Loader {
-                        sourceComponent: folder ? null : serverItemComponent
+                        sourceComponent: folder ? serverFolderComponent : serverItemComponent
                         width: parent.width
-                        height: width
+                        height: item.implicitHeight
                         property var _color: folder ? color : undefined
                         property var _servers: folder ? servers : undefined
                         onStatusChanged: if (status == Loader.Ready) item.anchors.fill = item.parent
@@ -86,25 +104,35 @@ Page {
                         Component {
                             id: serverItemComponent
                             ListItem {
-                                anchors.fill: parent
-                                contentHeight: height
+                                //anchors.fill: parent
+                                width: parent.width
+                                contentHeight: serverImage.height
 
-                                ListImage {
-                                    icon: image
-                                    anchors {
-                                        fill: parent
-                                        margins: Theme.paddingLarge
+                                Item {
+                                    id: serverImage
+                                    width: parent.width
+                                    height: width
+                                    ListImage {
+                                        icon: image
+                                        anchors {
+                                            fill: parent
+                                            margins: Theme.paddingSmall
+                                        }
+                                        errorString: name
+                                        anchors.centerIn: parent
+                                        enabled: false
                                     }
-                                    errorString: name
-                                    anchors.centerIn: parent
-                                    enabled: false
                                 }
 
-                                onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
+                                //onClicked: pageStack.push(Qt.resolvedUrl("../pages/ChannelsPage.qml"), { serverid: _id, name: name, icon: image })
+                                onClicked: channelIndex = index
                                 menu: Component { ContextMenu {
                                     visible: defaultActions
                                     MenuItem {
-                                        text: qsTranslate("AboutServer", "About", "Server")
+                                        Icon {
+                                            source: "image://theme/icon-m-info"
+                                        }
+                                        //text: qsTranslate("AboutServer", "About", "Server")
                                         onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
                                                                   { serverid: _id, name: name, icon: image }
                                                                   )
@@ -115,15 +143,15 @@ Page {
 
                         Component {
                             id: serverFolderComponent
-                            Column {
+                            /*Column {
                                 width: parent.width
                                 SectionHeader {
                                     id: folderHeader
                                     visible: name
                                     color: _color == "" ? palette.highlightColor : _color
                                     text: name
-                                }
-                                Row {
+                                }*/
+                                /*Row {
                                     width: parent.width
                                     Item {
                                         width: Theme.paddingLarge
@@ -134,15 +162,25 @@ Page {
                                             height: parent.height
                                             anchors.horizontalCenter: parent.horizontalCenter
                                         }
-                                    }
+                                    }*/
 
                                     ColumnView {
+                                        width: parent.width
                                         model: _servers
                                         delegate: serverItemComponent
                                         itemHeight: Theme.itemSizeLarge
+                                        //Component.onCompleted: console.log(JSON.stringify(_servers.get(0)))
+
+                                        Rectangle {
+                                            anchors.fill: parent
+                                            z: -1
+                                            color: _color == "" ? palette.highlightColor : _color
+                                            radius: parent.width / 2
+                                            opacity: 0.2
+                                        }
                                     }
-                                }
-                            }
+                                //}
+                            //}
                         }
                     }
 
@@ -162,8 +200,22 @@ Page {
                         }
                     }*/
                 }
+
+                Item {
+                    id: channelRoot
+                    width: parent.width - serverList.width
+                    height: parent.height
+                    ChannelsPage {
+                        channelList.parent: channelRoot
+                        channelList.onPullDownMenuChanged: channelList.pullDownMenu.visible = false
+                        name: currentServer.name
+                        icon: currentServer.image
+                        serverid: currentServer._id
+
+                    }
+                }
             }
-        }
+        //}
     }
 
     /*TabView {
