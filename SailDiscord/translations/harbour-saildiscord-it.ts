@@ -4,7 +4,7 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="240"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="196"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
         <comment>App</comment>
@@ -54,11 +54,16 @@
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="42"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
-        <location filename="../qml/pages/ChannelsPage.qml" line="25"/>
-        <location filename="../qml/pages/SecondPage.qml" line="99"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Info sul server</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelsPage.qml" line="27"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="72"/>
+        <source>About this server</source>
+        <comment>Server</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -95,8 +100,9 @@
         <location filename="../qml/components/MessageItem.qml" line="144"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
-        <location filename="../qml/pages/FirstPage.qml" line="96"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="222"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Info</translation>
@@ -138,9 +144,38 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="112"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="119"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
+    </message>
+</context>
+<context>
+    <name>ClassicOverview</name>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
+        <source>DMs</source>
+        <translation type="unfinished">Messaggi</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="27"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="89"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Ricarica</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="80"/>
+        <source>Servers</source>
+        <translation type="unfinished">Server</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="174"/>
+        <source>Me</source>
+        <translation type="unfinished">Utente</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="200"/>
+        <source>Settings</source>
+        <translation type="unfinished">Impostazioni</translation>
     </message>
 </context>
 <context>
@@ -151,53 +186,24 @@
         <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="271"/>
         <source>Connection failure: %1</source>
         <translation>Connessione fallita: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="259"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="272"/>
         <source>Login failure: %1</source>
         <translation>Accesso fallito: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="260"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="273"/>
         <source>Captcha required but not implemented: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="269"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="282"/>
         <source>Python error: %1</source>
         <translation>Errore python: %1</translation>
-    </message>
-</context>
-<context>
-    <name>FirstPage</name>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="62"/>
-        <source>DMs</source>
-        <translation>Messaggi</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="72"/>
-        <location filename="../qml/pages/FirstPage.qml" line="134"/>
-        <source>Refresh</source>
-        <translation>Ricarica</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="219"/>
-        <source>Me</source>
-        <translation>Utente</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="244"/>
-        <source>Settings</source>
-        <translation>Impostazioni</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="125"/>
-        <source>Servers</source>
-        <translation>Server</translation>
     </message>
 </context>
 <context>
@@ -291,6 +297,14 @@
         <location filename="../qml/pages/MessagesPage.qml" line="160"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
+    </message>
+</context>
+<context>
+    <name>ModernOverview</name>
+    <message>
+        <location filename="../qml/pages/ModernOverview.qml" line="80"/>
+        <source>Refresh</source>
+        <translation type="unfinished">Ricarica</translation>
     </message>
 </context>
 <context>
@@ -501,14 +515,6 @@
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
         <source>Open externally</source>
         <translation>Apri esternamente</translation>
-    </message>
-</context>
-<context>
-    <name>SecondPage</name>
-    <message>
-        <location filename="../qml/pages/SecondPage.qml" line="60"/>
-        <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
     </message>
 </context>
 <context>
@@ -867,32 +873,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="152"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="186"/>
         <source>Online</source>
         <translation>In linea</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="153"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="187"/>
         <source>Offline</source>
         <translation>Non in linea</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="154"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="188"/>
         <source>Do Not Disturb</source>
         <translation>Non disturbare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="155"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="189"/>
         <source>Invisible</source>
         <translation>Invisibile</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="156"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="190"/>
         <source>Idle</source>
         <translation>Occupato</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="159"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="193"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefono)</translation>

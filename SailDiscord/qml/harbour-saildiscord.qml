@@ -12,7 +12,7 @@ import "modules/js/twemoji.min.js" as Twemoji
 
 ApplicationWindow {
     id: mainWindow
-    initialPage: Component { SecondPage { } }
+    initialPage: Component { FirstPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
@@ -242,6 +242,7 @@ ApplicationWindow {
             property bool infoInNotifications: false
             property bool unformattedText: false
             property bool twemoji: true
+            property bool modernUI: false
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }

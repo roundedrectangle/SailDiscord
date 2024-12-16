@@ -307,6 +307,12 @@ Page {
                             checked: appSettings.twemoji
                             onCheckedChanged: appSettings.twemoji = checked
                         }
+                        TextSwitch {
+                            text: qsTr("Enable Modern UI")
+                            description: qsTr("Tries to mimic the UI in real Discord")
+                            checked: appSettings.modernUI
+                            onCheckedChanged: appSettings.modernUI = checked
+                        }
                     }
                 }
             }
