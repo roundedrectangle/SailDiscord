@@ -60,7 +60,7 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="27"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="72"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="22"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -102,7 +102,7 @@
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="222"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="173"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -186,22 +186,22 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="271"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="272"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="272"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="273"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="273"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="274"/>
         <source>Captcha required but not implemented: %1</source>
         <translation>Проверка на робота нужна но недоступна: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="282"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="283"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -302,7 +302,7 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="80"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="30"/>
         <source>Refresh</source>
         <translation type="unfinished">Обновить</translation>
     </message>
@@ -711,7 +711,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="324"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="330"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
@@ -792,7 +792,17 @@
         <translation>Использовать Twemoji вместо стандартных эмодзи</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="325"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="311"/>
+        <source>Enable Modern UI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="312"/>
+        <source>Tries to mimic the UI in real Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="331"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>

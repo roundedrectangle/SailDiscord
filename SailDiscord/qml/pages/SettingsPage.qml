@@ -7,6 +7,7 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
+    property bool showAbout: false
 
     SilicaFlickable {
         id: settingsContainer
@@ -16,6 +17,14 @@ Page {
         contentHeight: column.height
 
         VerticalScrollDecorator {}
+
+        PullDownMenu {
+            visible: showAbout
+            MenuItem {
+                text: qsTranslate("AboutApp", "About Sailcord", "App")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+        }
 
         Column {
             id: column

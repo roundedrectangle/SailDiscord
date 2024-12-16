@@ -193,12 +193,12 @@ TabView {
                     PullDownMenu {
                         parent: morePage.flickable
                         MenuItem {
-                            text: qsTranslate("AboutApp", "About", "App")
-                            onClicked: pageStack.push("AboutPage.qml")
+                            text: qsTranslate("AboutApp", "About Sailcord", "App")
+                            onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
                         }
                         MenuItem {
                             text: qsTr("Settings")
-                            onClicked: pageStack.push("SettingsPage.qml")
+                            onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
                         }
                     }
                 }

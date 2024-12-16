@@ -13,11 +13,12 @@ Page {
     property string memberCount
 
     property alias channelList: channelList
+    property bool _fillParent: true
 
     SilicaListView {
         id: channelList
         model: chModel
-        anchors.fill: parent
+        anchors.fill: _fillParent ? parent : undefined
 
         header: PageHeader { title: name }
         VerticalScrollDecorator {}

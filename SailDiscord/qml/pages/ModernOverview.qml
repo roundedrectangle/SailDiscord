@@ -19,7 +19,12 @@ SilicaFlickable {
 
     PullDownMenu {
         MenuItem {
+            text: qsTr("Settings")
+            onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"), {showAbout: true})
+        }
+        MenuItem {
             text: qsTranslate("AboutServer", "About this server", "Server")
+            visible: currentServer
             onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                 serverid: currentServer._id,
                 name: currentServer.name,
@@ -135,12 +140,28 @@ SilicaFlickable {
                 sourceComponent: currentServer ? channelComponent : dmsComponent
                 Component {
                     id: channelComponent
-                    ChannelsPage {
-                        channelList.parent: channelRoot
-                        channelList.onPullDownMenuChanged: channelList.pullDownMenu.visible = false
-                        name: currentServer.name
-                        icon: currentServer.image
-                        serverid: currentServer._id
+                    Item {
+                        id: channelComponentItem
+                        anchors.fill: parent
+                        PageHeader {
+                            id: channelComponentHeader
+                            title: currentServer.name
+                        }
+                        ChannelsPage {
+                            channelList.parent: channelComponentItem
+                            _fillParent: false
+                            channelList.width: parent.width
+                            channelList.y: channelComponentHeader.y + channelComponentHeader.height
+                            channelList.height: channelComponentItem.height - channelComponentHeader.height
+
+                            channelList.onPullDownMenuChanged: channelList.pullDownMenu.visible = false
+                            channelList.header: null
+                            channelList.clip: true
+
+                            name: currentServer.name
+                            icon: currentServer.image
+                            serverid: currentServer._id
+                        }
                     }
                 }
                 Component {
@@ -201,6 +222,7 @@ SilicaFlickable {
                 width: parent.width
                 anchors.bottom: parent.bottom
                 height: meContent.height
+
                 Row {
                     id: meContent
                     width: parent.width - Theme.paddingLarge*2
@@ -216,7 +238,7 @@ SilicaFlickable {
                     }
 
                     Column {
-                        width: parent.width - meAvatar.width - parent.spacing*1
+                        width: parent.width - meAvatar.width - parent.spacing*2
                         anchors.verticalCenter: parent.verticalCenter
                         Label {
                             truncationMode: TruncationMode.Fade
@@ -229,7 +251,17 @@ SilicaFlickable {
                             color: Theme.secondaryHighlightColor
                         }
                     }
+
+                    /*Row {
+                        id: meControls
+                        anchors.verticalCenter: parent.verticalCenter
+                        IconButton {
+                            icon.source: "image://theme/icon-m-setting"
+                        }
+                    }*/
                 }
+
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: avatar })
             }
         }
     }
