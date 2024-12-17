@@ -47,7 +47,7 @@ Page {
                         SectionHeader { text: qsTr("Channels list") }
 
                         TextSwitch {
-                            text: qsTr("Ignore private setting for channels and channel categories")
+                            text: qsTr("Show private channels")
                             onCheckedChanged: appSettings.ignorePrivate = checked
                             Component.onCompleted: checked = appSettings.ignorePrivate
                         }

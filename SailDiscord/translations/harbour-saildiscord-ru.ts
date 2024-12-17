@@ -559,11 +559,6 @@
         <translation>Список каналов</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
-        <source>Ignore private setting for channels and channel categories</source>
-        <translation>Игнорировать настройку приватности для каналов и категорий каналов</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="55"/>
         <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Messages</source>
@@ -658,6 +653,11 @@
         <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Message field</source>
         <translation>Поле ввода сообщения</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
+        <source>Show private channels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="83"/>

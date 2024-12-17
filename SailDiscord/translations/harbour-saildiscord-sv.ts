@@ -561,11 +561,6 @@
         <translation>Kanallista</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
-        <source>Ignore private setting for channels and channel categories</source>
-        <translation>Ignorera privata inställningar för kanaler och kanalkategorier</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="55"/>
         <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Messages</source>
@@ -650,6 +645,11 @@
         <location filename="../qml/pages/SettingsPage.qml" line="136"/>
         <source>Align sent messages text to right</source>
         <translation>Justera skickade meddelandetexter åt höger</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
+        <source>Show private channels</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="147"/>
