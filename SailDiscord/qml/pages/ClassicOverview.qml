@@ -189,6 +189,7 @@ TabView {
                     isClient: true
                     name: _username
                     icon: avatar
+                    showSettings: false
 
                     PullDownMenu {
                         parent: morePage.flickable

@@ -20,8 +20,8 @@ SilicaFlickable {
 
     PullDownMenu {
         MenuItem {
-            text: qsTr("Settings")
-            onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"), {showAbout: true})
+            text: qsTranslate("AboutApp", "About Sailcord", "App")
+            onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
         }
         MenuItem {
             text: qsTranslate("AboutServer", "About this server", "Server")
@@ -252,7 +252,7 @@ SilicaFlickable {
                     }
 
                     Column {
-                        width: parent.width - meAvatar.width - parent.spacing*2
+                        width: parent.width - meAvatar.width - parent.spacing*1
                         anchors.verticalCenter: parent.verticalCenter
                         Label {
                             truncationMode: TruncationMode.Fade

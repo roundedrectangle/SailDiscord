@@ -7,7 +7,7 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
-    property bool showAbout: false
+    property alias sections: secGroup
 
     SilicaFlickable {
         id: settingsContainer
@@ -17,14 +17,6 @@ Page {
         contentHeight: column.height
 
         VerticalScrollDecorator {}
-
-        PullDownMenu {
-            visible: showAbout
-            MenuItem {
-                text: qsTranslate("AboutApp", "About Sailcord", "App")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-            }
-        }
 
         Column {
             id: column
@@ -36,6 +28,7 @@ Page {
             }
 
             ExpandingSectionGroup {
+                id: secGroup
                 ExpandingSection {
                     id: section
                     title: qsTr("Behaviour")
@@ -317,8 +310,8 @@ Page {
                             onCheckedChanged: appSettings.twemoji = checked
                         }
                         ComboBox {
-                            label: qsTr("Overview type")
-                            description: qsTr("Tries to mimic the UI in real Discord")
+                            label: qsTr("Overview mode")
+                            description: currentIndex == 1 ? qsTr("Tries to mimic the UI in real Discord") : qsTr("Classic UI with tabs")
                             currentIndex: appSettings.modernUI ? 1 : 0
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("Classic") }
