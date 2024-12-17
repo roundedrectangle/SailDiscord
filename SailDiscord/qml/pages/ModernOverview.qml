@@ -51,9 +51,23 @@ SilicaFlickable {
 
             header: Column {
                 width: parent.width
-                Item { width:1;height: Theme.paddingLarge }
+                /*BackgroundItem {
+                    width: parent.width
+                    contentHeight: width
+                    height: contentHeight
+                    highlighted: down || (serverIndex == -1 && folderIndex == -1)
+                    onClicked: {
+                        serverIndex = -1
+                        folderIndex = -1
+                    }
+
+                    Icon {
+                        id: dmsButton
+                        source: "image://theme/icon-l-message"
+                        anchors.centerIn: parent
+                    }
+                }*/
                 IconButton {
-                    id: iconButton
                     icon.source: "image://theme/icon-l-message"
                     width: parent.width
                     height: width
@@ -75,8 +89,13 @@ SilicaFlickable {
                 Component {
                     id: serverItemComponent
                     ListItem {
+                        id: serverItemInstance
                         width: parent.width
                         contentHeight: serverImage.height
+                        property bool selected: ((ListView.view && ListView.view.parent.folderIndex)
+                                                 ? (serverIndex == ListView.view.parent.folderIndex && folderIndex == index)
+                                                 : (serverIndex == index && folderIndex == -1))
+                        //highlighted: selected || down || menuOpen
 
                         Item {
                             id: serverImage
@@ -84,6 +103,7 @@ SilicaFlickable {
                             height: width
                             ListImage {
                                 icon: image
+                                extendedRadius: selected
                                 anchors {
                                     fill: parent
                                     margins: Theme.paddingSmall

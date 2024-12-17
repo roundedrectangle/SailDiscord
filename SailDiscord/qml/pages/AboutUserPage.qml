@@ -123,7 +123,7 @@ AboutPageBase {
                 id: settingsLoader
                 parent: settingsSection
                 width: parent.width
-                height: item ? item.sections.height : null
+                height: item ? item.sections.height : 0
                 active: showSettings
                 sourceComponent: Component {
                     SettingsPage {
