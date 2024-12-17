@@ -113,4 +113,5 @@ def send_guild_info(g: discord.Guild):
         {feature.lower(): feature in g.features for feature in
             ('VERIFIED','PARTNERED','COMMUNITY','DISCOVERABLE','FEATURABLE')
         },
+        g.description or '',
     )

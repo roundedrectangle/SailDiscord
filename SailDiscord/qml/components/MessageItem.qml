@@ -67,6 +67,7 @@ ListItem {
                 errorString: author
                 highlightOnClick: true
                 onClicked: openAboutUser()
+                enabled: visible
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;

@@ -59,7 +59,7 @@
     <name>AboutServer</name>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="42"/>
-        <location filename="../qml/pages/AboutServerPage.qml" line="29"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>О сервере</translation>
@@ -75,27 +75,27 @@
 <context>
     <name>AboutServerPage</name>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="22"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="20"/>
         <source>%1 online</source>
         <translation>%1 онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="23"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="21"/>
         <source>%1 members</source>
         <translation>%1 участников</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="82"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="85"/>
         <source>This server is a community server</source>
         <translation>Этот сервер является сервером сообщества</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="89"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="92"/>
         <source>This server is a partnered server</source>
         <translation>Этот сервер является партнёрским сервером</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutServerPage.qml" line="96"/>
+        <location filename="../qml/pages/AboutServerPage.qml" line="99"/>
         <source>This server is a verified server</source>
         <translation>Этот сервер является проверенным сервером</translation>
     </message>
@@ -103,7 +103,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="144"/>
+        <location filename="../qml/components/MessageItem.qml" line="145"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
@@ -192,27 +192,27 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="284"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="283"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="285"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="284"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="286"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="285"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="287"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="286"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="296"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -274,7 +274,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="149"/>
+        <location filename="../qml/components/MessageItem.qml" line="150"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
@@ -896,32 +896,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>
