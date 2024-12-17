@@ -57,11 +57,13 @@ def send_dm_channel(user: discord.User, cacher: Cacher):
     qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages and not user.system)
 
 def send_dms(users_list: List[discord.User], cacher: Cacher):
+    final = []
     for user in users_list:
-        if isinstance(user, discord.ClientUser):
-            continue
-        if user.dm_channel:
-            send_dm_channel(user, cacher)
+        if not isinstance(user, discord.ClientUser) and user.dm_channel:
+            final.append(user)
+    final.sort(key=lambda u: u.dm_channel.last_viewed_timestamp, reverse=True)
+    for user in final:
+        send_dm_channel(user, cacher)
 
 # Messages
 
