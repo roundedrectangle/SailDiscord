@@ -316,11 +316,16 @@ Page {
                             checked: appSettings.twemoji
                             onCheckedChanged: appSettings.twemoji = checked
                         }
-                        TextSwitch {
-                            text: qsTr("Enable Modern UI")
+                        ComboBox {
+                            label: qsTr("Overview type")
                             description: qsTr("Tries to mimic the UI in real Discord")
-                            checked: appSettings.modernUI
-                            onCheckedChanged: appSettings.modernUI = checked
+                            currentIndex: appSettings.modernUI ? 1 : 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("Classic") }
+                                MenuItem { text: qsTr("Modern") }
+                            }
+
+                           onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
                         }
                     }
                 }
