@@ -21,55 +21,20 @@ TabView {
                 SilicaFlickable {
                     id: dmsContainer
                     anchors.fill: parent
-
                     PullDownMenu {
                         MenuItem {
                             text: qsTr("Refresh")
                             onClicked: python.refresh()
                         }
                     }
-                    PageHeader { id: header; title: username }
 
-                    SilicaListView {
-                        width: parent.width
+                    PageHeader { id: header; title: username }
+                    DMsView {
                         anchors {
                             top: header.bottom
                             bottom: parent.bottom
                         }
-                        clip: true
                         model: dmModel
-                        VerticalScrollDecorator {}
-
-                        delegate: ServerListItem {
-                            serverid: '-1'
-                            title: name
-                            icon: image
-                            defaultActions: false
-
-                            onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
-                            menu: Component { ContextMenu {
-                                MenuItem {text: qsTranslate("AboutUser", "About", "User")
-                                    visible: _id != '-1'
-                                    onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
-                                }
-                            } }
-                        }
-
-                        section {
-                            property: "_id"
-                            delegate: Loader {
-                                width: parent.width
-                                sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
-                                Component {
-                                    id: separatorComponent
-                                    Separator {
-                                        color: Theme.primaryColor
-                                        width: parent.width
-                                        horizontalAlignment: Qt.AlignHCenter
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }

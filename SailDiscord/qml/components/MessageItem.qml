@@ -14,6 +14,7 @@ ListItem {
     property date date
     property var attachments
     property var reference
+    property string msgid: ''
 
     property string authorid // User-related
     property var flags
@@ -67,7 +68,7 @@ ListItem {
                 errorString: author
                 highlightOnClick: true
                 onClicked: openAboutUser()
-                enabled: visible
+                enabled: _firstSameAuthor
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
@@ -150,6 +151,12 @@ ListItem {
         MenuItem { text: qsTr("Copy")
             onClicked: Clipboard.text = contents
             visible: contents.length > 0
+        }
+
+        MenuItem {
+            text: qsTranslate("General", "Copy message ID")
+            visible: appSettings.developerMode && msgid
+            onClicked: Clipboard.text = msgid
         }
     }}
 

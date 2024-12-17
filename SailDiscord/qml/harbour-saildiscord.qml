@@ -243,6 +243,7 @@ ApplicationWindow {
             property string messageGrouping: "d"
             property string oneAuthorPadding: "a"
             property bool highContrastMessages: false
+            property bool twemoji: true
 
             // Session
             property int cachePeriod: 1
@@ -252,8 +253,8 @@ ApplicationWindow {
             property string customProxy: ""
             property bool infoInNotifications: false
             property bool unformattedText: false
-            property bool twemoji: true
             property bool modernUI: false
+            property bool developerMode: false
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }

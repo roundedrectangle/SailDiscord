@@ -36,6 +36,7 @@ DISTFILES += \
     qml/pages/AboutServerPage.qml \
     qml/pages/AboutUserPage.qml \
     qml/pages/ChannelsPage.qml \
+    qml/pages/DMsView.qml \
     qml/pages/FirstPage.qml \
     qml/pages/FullscreenAttachmentPage.qml \
     qml/pages/LoginDialog.qml \

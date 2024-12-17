@@ -49,32 +49,14 @@ SilicaFlickable {
             clip: true
             VerticalScrollDecorator {}
 
-            header: Column {
+            header: IconButton {
+                icon.source: "image://theme/icon-l-message"
                 width: parent.width
-                /*BackgroundItem {
-                    width: parent.width
-                    contentHeight: width
-                    height: contentHeight
-                    highlighted: down || (serverIndex == -1 && folderIndex == -1)
-                    onClicked: {
-                        serverIndex = -1
-                        folderIndex = -1
-                    }
-
-                    Icon {
-                        id: dmsButton
-                        source: "image://theme/icon-l-message"
-                        anchors.centerIn: parent
-                    }
-                }*/
-                IconButton {
-                    icon.source: "image://theme/icon-l-message"
-                    width: parent.width
-                    height: width
-                    onClicked: {
-                        serverIndex = -1
-                        folderIndex = -1
-                    }
+                height: width
+                highlighted: serverIndex == -1 || down
+                onClicked: {
+                    serverIndex = -1
+                    folderIndex = -1
                 }
             }
 
@@ -92,10 +74,6 @@ SilicaFlickable {
                         id: serverItemInstance
                         width: parent.width
                         contentHeight: serverImage.height
-                        property bool selected: ((ListView.view && ListView.view.parent.folderIndex)
-                                                 ? (serverIndex == ListView.view.parent.folderIndex && folderIndex == index)
-                                                 : (serverIndex == index && folderIndex == -1))
-                        //highlighted: selected || down || menuOpen
 
                         Item {
                             id: serverImage
@@ -103,7 +81,9 @@ SilicaFlickable {
                             height: width
                             ListImage {
                                 icon: image
-                                extendedRadius: selected
+                                extendedRadius: ((ListView.view && ListView.view.parent.folderIndex)
+                                                 ? (serverIndex == ListView.view.parent.folderIndex && folderIndex == index)
+                                                 : (serverIndex == index))
                                 anchors {
                                     fill: parent
                                     margins: Theme.paddingSmall
@@ -129,10 +109,17 @@ SilicaFlickable {
                                     source: "image://theme/icon-m-question"
                                     anchors.centerIn: parent
                                 }
-                                //text: qsTranslate("AboutServer", "About", "Server")
                                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
                                                           { serverid: _id, name: name, icon: image }
                                                           )
+                            }
+                            MenuItem {
+                                Icon {
+                                    source: "image://theme/icon-m-developer-mode"
+                                    anchors.centerIn: parent
+                                }
+                                visible: appSettings.developerMode
+                                onClicked: Clipboard.text = serverid
                             }
                         } }
                     }
@@ -179,7 +166,7 @@ SilicaFlickable {
                         anchors.fill: parent
                         PageHeader {
                             id: channelComponentHeader
-                            title: currentServer.name
+                            title: currentServer ? currentServer.name : ''
                         }
                         ChannelsPage {
                             channelList.parent: channelComponentItem
@@ -192,61 +179,17 @@ SilicaFlickable {
                             channelList.header: null
                             channelList.clip: true
 
-                            name: currentServer.name
-                            icon: currentServer.image
-                            serverid: currentServer._id
+                            name: currentServer ? currentServer.name : ''
+                            icon: currentServer ? currentServer.image : ''
+                            serverid: currentServer ? currentServer._id : ''
                         }
                     }
                 }
                 Component {
                     id: dmsComponent
-                    Item {
-                        id: dmsContainer
+                    DMsView {
                         anchors.fill: parent
-
-                        PageHeader { id: header; title: username }
-
-                        SilicaListView {
-                            width: parent.width
-                            anchors {
-                                top: header.bottom
-                                bottom: parent.bottom
-                            }
-                            clip: true
-                            model: dmModel
-                            VerticalScrollDecorator {}
-
-                            delegate: ServerListItem {
-                                serverid: '-1'
-                                title: name
-                                icon: image
-                                defaultActions: false
-
-                                onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
-                                menu: Component { ContextMenu {
-                                    MenuItem {text: qsTranslate("AboutUser", "About", "User")
-                                        visible: _id != '-1'
-                                        onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: _id, name: name, icon: image })
-                                    }
-                                } }
-                            }
-
-                            section {
-                                property: "_id"
-                                delegate: Loader {
-                                    width: parent.width
-                                    sourceComponent: section == dmModel.get(0)._id ? undefined : separatorComponent
-                                    Component {
-                                        id: separatorComponent
-                                        Separator {
-                                            color: Theme.primaryColor
-                                            width: parent.width
-                                            horizontalAlignment: Qt.AlignHCenter
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        model: dmModel
                     }
                 }
             }
@@ -285,14 +228,6 @@ SilicaFlickable {
                             color: Theme.secondaryHighlightColor
                         }
                     }
-
-                    /*Row {
-                        id: meControls
-                        anchors.verticalCenter: parent.verticalCenter
-                        IconButton {
-                            icon.source: "image://theme/icon-m-setting"
-                        }
-                    }*/
                 }
 
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { isClient: true, name: username, icon: avatar })

@@ -44,5 +44,10 @@ ListItem {
                                       { serverid: serverid, name: title, icon: image }
                                       )
         }
+        MenuItem {
+            text: qsTranslate("General", "Copy server ID")
+            visible: appSettings.developerMode
+            onClicked: Clipboard.text = serverid
+        }
     } }
 }

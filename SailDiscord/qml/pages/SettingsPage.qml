@@ -169,6 +169,12 @@ Page {
                             Component.onCompleted: checked = appSettings.highContrastMessages
                         }
 
+                        TextSwitch {
+                            text: qsTr("Use Twemoji instead of default Emoji")
+                            checked: appSettings.twemoji
+                            onCheckedChanged: appSettings.twemoji = checked
+                        }
+
                         ButtonLayout {
                             Button {
                                 text: qsTr("Preview")
@@ -304,14 +310,10 @@ Page {
                         }
 
                         SectionHeader { text: qsTr("Experimental") }
-                        TextSwitch {
-                            text: qsTr("Use Twemoji instead of default Emoji")
-                            checked: appSettings.twemoji
-                            onCheckedChanged: appSettings.twemoji = checked
-                        }
-                        ComboBox {
+                        IconComboBox {
                             label: qsTr("Overview mode")
                             description: currentIndex == 1 ? qsTr("Tries to mimic the UI in real Discord") : qsTr("Classic UI with tabs")
+                            icon.source: "image://theme/icon-m-ambience"
                             currentIndex: appSettings.modernUI ? 1 : 0
                             menu: ContextMenu {
                                 MenuItem { text: qsTr("Classic") }
@@ -320,6 +322,14 @@ Page {
 
                            onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
                         }
+                        IconTextSwitch {
+                            icon.source: "image://theme/icon-m-developer-mode"
+                            text: qsTr("Developer mode")
+                            description: qsTr("Enables certain features useful for developers such as copying IDs")
+                            checked: appSettings.developerMode
+                            onCheckedChanged: appSettings.developerMode = checked
+                        }
+
                     }
                 }
             }

@@ -126,6 +126,7 @@ Page {
                         attachments: _attachments
                         reference: _ref
                         flags: _flags
+                        msgid: messageId
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)

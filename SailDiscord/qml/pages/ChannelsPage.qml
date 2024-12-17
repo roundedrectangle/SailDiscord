@@ -89,25 +89,39 @@ Page {
                 default: pageStack.push(comingSoonPage, {channelType: icon});break
                 }
             }
+
+            menu: Component { ContextMenu {
+                    MenuItem {
+                        text: qsTranslate("General", "Copy channel ID")
+                        visible: appSettings.developerMode
+                        onClicked: Clipboard.text = channelid
+                    }
+                } }
         }
     }
 
     ListModel {
         id: chModel
-        property int lastServerId: -1
+        property string lastServerId: '-1'
 
         function reloadModel() {
-            if (lastServerId >= 0) python.setHandler('channel'+lastServerId)
+            if (lastServerId != '-1') python.setHandler('channel'+lastServerId, undefined)
             clear()
+            if (serverid == '') return
             python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed) {
                 if (!_haspermissions && !appSettings.ignorePrivate) return;
                 append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed})
             })
             python.requestChannels(serverid)
+            lastServerId = serverid
         }
         Component.onCompleted: reloadModel()
     }
     onServeridChanged: chModel.reloadModel()
+    Component.onDestruction: {
+        if (chModel.lastServerId != '-1') python.setHandler('channel'+chModel.lastServerId, undefined)
+        python.setHandler('channel'+serverid, undefined)
+    }
 
     Component {
         id: comingSoonPage
