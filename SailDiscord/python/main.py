@@ -96,6 +96,10 @@ class MyClient(discord.Client):
             await send_edited_message(before.id, after)
             await after.ack()
 
+    async def on_message_delete(self, message: discord.Message):
+        if self.ensure_current_channel(message.channel, message.guild):
+            qsend("messagedelete", message.id)
+
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
         ch: Union[discord.TextChannel, discord.DMChannel] = self.get_channel(self.current_channel.id) # pyright: ignore[reportAssignmentType]
         _before = before

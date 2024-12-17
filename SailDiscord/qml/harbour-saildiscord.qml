@@ -142,6 +142,7 @@ ApplicationWindow {
                     editCallback(before, data)
                 }).apply(null, args)
             })
+            python.setHandler("messagedelete", function(id) { editCallback(id) })
         }
 
         function cleanupMessageCallbacks() {
@@ -150,6 +151,7 @@ ApplicationWindow {
             python.reset("newmember")
             python.reset("uknownmessage")
             python.reset("messageedit")
+            python.reset("messagedelete")
         }
 
         function markdown(text, linkColor, edited) {

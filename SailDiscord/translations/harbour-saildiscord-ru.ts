@@ -66,7 +66,7 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="28"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="26"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="27"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -108,7 +108,7 @@
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="193"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="207"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -192,22 +192,22 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="280"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="282"/>
         <source>Connection failure: %1</source>
         <translation>Ошибка подключения: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="281"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="283"/>
         <source>Login failure: %1</source>
         <translation>Неудачный вход в систему: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="282"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="284"/>
         <source>Captcha required but not implemented: %1</source>
         <translation>Проверка на робота нужна но недоступна: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="293"/>
         <source>Python error: %1</source>
         <translation>Ошибка Python: %1</translation>
     </message>
@@ -308,12 +308,12 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="22"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="23"/>
         <source>Settings</source>
         <translation type="unfinished">Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="35"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="36"/>
         <source>Refresh</source>
         <translation type="unfinished">Обновить</translation>
     </message>
@@ -883,7 +883,7 @@
         <translation>Скачан файл %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="160"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="162"/>
         <source>(edited)</source>
         <translation>(изменено)</translation>
     </message>
@@ -891,32 +891,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="193"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="195"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="194"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="195"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>

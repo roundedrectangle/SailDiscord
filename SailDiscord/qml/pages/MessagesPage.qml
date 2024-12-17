@@ -273,7 +273,10 @@ Page {
             }, function(before, data) {
                 console.log(before, JSON.stringify(data))
                 var i = findIndexById(before)
-                if (i >= 0) set(i, data)
+                if (i >= 0) {
+                    if (data) set(i, data)
+                    else remove(i)
+                }
             })
         }
 
