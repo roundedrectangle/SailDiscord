@@ -71,11 +71,11 @@ Page {
                             bottomPadding: Theme.paddingMedium
                         }
 
-                        TextSwitch {
+                        /*TextSwitch {
                             text: qsTr("Use default type on unknown types")
                             checked: appSettings.defaultUnknownReferences
                             onCheckedChanged: appSettings.defaultUnknownReferences = checked
-                        }
+                        }*/
 
                         SectionHeader { text: qsTr("Message field") }
 

@@ -28,8 +28,8 @@ ListItem {
                 width: Theme.iconSizeMedium
                 height: width
                 source: switch (reference.type) {
-                        case 2: return "image://theme/icon-m-message-reply"
-                        case 3: return "image://theme/icon-m-message-forward"
+                        case 1: return "image://theme/icon-m-message-reply"
+                        case 2: return "image://theme/icon-m-message-forward"
                         default: return "image://theme/icon-m-question"
                         }
             }

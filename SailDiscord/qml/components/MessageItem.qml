@@ -43,7 +43,7 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            Component.onCompleted: if (reference.type == 1) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
 
         Row {
@@ -130,7 +130,7 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 3) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
     }
 

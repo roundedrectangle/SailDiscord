@@ -34,14 +34,13 @@ async def generate_message(message: discord.Message, is_history=False):
         'channel': '-1', 'message': '-1'}
     if message.reference:
         ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
-        if comm.client.ensure_current_channel(message.reference.channel_id, message.reference.guild_id):
-            ref['type'] = 2 # Reply
+        if message.reference.type == discord.MessageReferenceType.reply:
+            ref['type'] = 1
             ref['channel'] = '-1'
         # message.flags.is_crossposted (.crossposted?) - followed channels feature, not forwarded messages
         # imagine not making a forward option for 9 years...
-        elif not message.is_system(): # FIXME once discord.py-self implements https://discord.com/developers/docs/change-log#message-forwarding-rollout
-            ref['type'] = 3 # Forward
-        else: ref['type'] = 1 # Unknown
+        elif message.reference.type == discord.MessageReferenceType.forward:
+            ref['type'] = 2
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
