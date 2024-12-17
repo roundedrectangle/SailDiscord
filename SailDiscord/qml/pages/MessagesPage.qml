@@ -210,7 +210,7 @@ Page {
                                       _masterWidth: -1, _date: new Date(),
                                       _flags: {edit: false, bot: false, nickAvailable: false,
                                           system: false, color: undefined},
-                                      _sent: false, contents: "", formattedContents: "",
+                                      _sent: false, contents: "", formatted: "",
                                       _author: "unknown", _pfp: '',
                                       _ref: {}, _attachments: [],
                                   }, toAppend))
@@ -219,7 +219,7 @@ Page {
         function appendDemo(isyou, thecontents, additionalOptions) {
             additionalOptions = additionalOptions !== undefined ? additionalOptions : {}
             appendDemo2(combineObjects(
-                            {_sent: isyou, contents: thecontents, formattedContents: shared.markdown(thecontents, additionalOptions._flags ? additionalOptions._flags.edit : false), _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
+                            {_sent: isyou, contents: thecontents, formatted: shared.markdown(thecontents, additionalOptions._flags ? additionalOptions._flags.edit : false), _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
                             additionalOptions))
         }
 
@@ -253,9 +253,10 @@ Page {
             // TODO: attachments and replies
             //appendDemo(true, "Hey everyone, look at this pic!", {_attachments: [{}]})
 
-            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formattedContents: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
-            appendDemo2({contents: "I am a system guy", formattedContents: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
-            appendDemo2({contents: "I am a bot!", formattedContents: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
+            appendDemo(true, "Markdown: *Italic*, **bold**, ***both***, `code`")
+            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formatted: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
+            appendDemo2({contents: "I am a system guy", formatted: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
+            appendDemo2({contents: "I am a bot!", formatted: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
             appendDemo(true, "Edited message...", {_flags: {edit: true}})
             appendDemo(true, "First message!")
         }
