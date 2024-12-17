@@ -56,6 +56,11 @@ async def send_message(message: Union[discord.Message, Any], is_history=False):
     event, args = await generate_message(message, is_history)
     qsend(event, *args)
 
+async def send_edited_message(before_id: int, after: Union[discord.Message, Any]):
+    """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+    event, args = await generate_message(after)
+    qsend('messageedit', before_id, event, args)
+
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
     current_channel: Optional[discord.TextChannel] = None
@@ -85,6 +90,11 @@ class MyClient(discord.Client):
         if self.ensure_current_channel(message.channel, message.guild):
             await send_message(message)
             await message.ack()
+
+    async def on_message_edit(self, before: discord.Message, after: discord.Message):
+        if self.ensure_current_channel(before.channel, before.guild):
+            await send_edited_message(before.id, after)
+            await after.ack()
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
         ch: Union[discord.TextChannel, discord.DMChannel] = self.get_channel(self.current_channel.id) # pyright: ignore[reportAssignmentType]

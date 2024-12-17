@@ -116,7 +116,7 @@ ApplicationWindow {
 
                 if (type === "" || type === "unknown") {
                     data.contents = arguments[8]
-                    data.formatted = markdown(arguments[9], data._flags.edit)
+                    data.formatted = markdown(arguments[9], undefined, data._flags.edit)
                     data._ref = arguments[10]
                 }
                 if (type === "unknown") data.APIType = arguments[11]
@@ -132,17 +132,24 @@ ApplicationWindow {
             }
         }
 
-        function registerMessageCallbacks(guildid, channelid, finalCallback) {
-            python.setHandler("message", constructMessageCallback(convertCallbackType("message"), guildid, channelid, finalCallback))
-            python.setHandler("newmember", constructMessageCallback(convertCallbackType("newmember"), guildid, channelid, finalCallback))
-            python.setHandler("unkownmessage", constructMessageCallback(convertCallbackType("unkownmessage"), guildid, channelid, finalCallback))
+        function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback) {
+            // see convertCallbackType()
+            python.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
+            python.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
+            python.setHandler("unkownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
+            python.setHandler("messageedit", function(before, event, args) {
+                constructMessageCallback(convertCallbackType(event), guildid, channelid, function(history, data) {
+                    editCallback(before, data)
+                }).apply(null, args)
+            })
         }
 
         function cleanupMessageCallbacks() {
             // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
             python.reset("message")
-            python.reset("join")
+            python.reset("newmember")
             python.reset("uknownmessage")
+            python.reset("messageedit")
         }
 
         function markdown(text, linkColor, edited) {

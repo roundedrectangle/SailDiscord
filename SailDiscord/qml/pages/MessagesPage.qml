@@ -260,10 +260,20 @@ Page {
             appendDemo(true, "First message!")
         }
 
+        function findIndexById(id) {
+            for(var i=0; i < count; i++)
+                if (get(i).messageId == id) return i
+            return -1
+        }
+
         Component.onCompleted: {
             if (isDemo) generateDemo()
             else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
                 if (history) msgModel.append(data); else msgModel.insert(0, data)
+            }, function(before, data) {
+                console.log(before, JSON.stringify(data))
+                var i = findIndexById(before)
+                if (i >= 0) set(i, data)
             })
         }
 
