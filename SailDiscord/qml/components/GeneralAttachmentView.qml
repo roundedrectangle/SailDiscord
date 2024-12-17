@@ -98,11 +98,14 @@ Item {
                 }
                 spacing: Theme.paddingLarge
                 Icon {
+                    id: unknownPreviewIcon
                     anchors.verticalCenter: parent.verticalCenter
                     source: Theme.iconForMimeType(model.realtype)
                 }
                 Label {
                     anchors.verticalCenter: parent.verticalCenter
+                    width: parent.width - unknownPreviewIcon.width - parent.spacing*1
+                    truncationMode: TruncationMode.Fade
                     text: model.filename
                 }
             }
