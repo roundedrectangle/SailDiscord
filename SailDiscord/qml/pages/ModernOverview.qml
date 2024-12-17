@@ -14,8 +14,9 @@ SilicaFlickable {
     property int status
     property bool onMobile
 
-    property int channelIndex: -1 // -1: DMs
-    property var currentServer: channelIndex >= 0 ? serversModel.get(channelIndex) : null
+    property int serverIndex: -1 // -1: DMs
+    property int folderIndex: -1
+    property var currentServer: serverIndex >= 0 ? (folderIndex >= 0 ? serversModel.get(serverIndex).servers.get(folderIndex) : serversModel.get(serverIndex)) : null
 
     PullDownMenu {
         MenuItem {
@@ -24,7 +25,7 @@ SilicaFlickable {
         }
         MenuItem {
             text: qsTranslate("AboutServer", "About this server", "Server")
-            visible: currentServer
+            visible: !!currentServer
             onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
                 serverid: currentServer._id,
                 name: currentServer.name,
@@ -45,6 +46,7 @@ SilicaFlickable {
             width: Theme.itemSizeLarge
             height: parent.height
             model: serversModel
+            clip: true
             VerticalScrollDecorator {}
 
             header: Column {
@@ -55,7 +57,10 @@ SilicaFlickable {
                     icon.source: "image://theme/icon-l-message"
                     width: parent.width
                     height: width
-                    onClicked: channelIndex = -1
+                    onClicked: {
+                        serverIndex = -1
+                        folderIndex = -1
+                    }
                 }
             }
 
@@ -89,7 +94,15 @@ SilicaFlickable {
                             }
                         }
 
-                        onClicked: channelIndex = index
+                        onClicked: {
+                            if (ListView.view && ListView.view.parent.folderIndex) {
+                                serverIndex = ListView.view.parent.folderIndex
+                                folderIndex = index
+                            } else {
+                                serverIndex = index
+                                folderIndex = -1
+                            }
+                        }
                         menu: Component { ContextMenu {
                             MenuItem {
                                 Icon {
@@ -110,6 +123,7 @@ SilicaFlickable {
                         ColumnView {
                             width: parent.width
                             model: _servers
+                            property int folderIndex: index
                             delegate: serverItemComponent
                             itemHeight: Theme.itemSizeLarge
 

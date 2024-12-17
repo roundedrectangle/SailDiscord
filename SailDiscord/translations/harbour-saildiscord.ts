@@ -4,9 +4,15 @@
 <context>
     <name>AboutApp</name>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="196"/>
         <location filename="../qml/pages/LoginDialog.qml" line="20"/>
         <source>About</source>
+        <comment>App</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ClassicOverview.qml" line="196"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="24"/>
+        <source>About Sailcord</source>
         <comment>App</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -59,8 +65,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="27"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="22"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="28"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="26"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -102,7 +108,7 @@
         <location filename="../qml/pages/AboutUserPage.qml" line="32"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
         <location filename="../qml/pages/MessagesPage.qml" line="186"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="173"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="193"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -144,7 +150,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="119"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="120"/>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
     </message>
@@ -186,22 +192,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="272"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="280"/>
         <source>Connection failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="273"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="281"/>
         <source>Login failure: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="274"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="282"/>
         <source>Captcha required but not implemented: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="283"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
         <source>Python error: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -302,7 +308,12 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="30"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="22"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ModernOverview.qml" line="35"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -518,336 +529,335 @@
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="26"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="35"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="32"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="41"/>
         <source>Behaviour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="110"/>
         <source>Servers list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="113"/>
         <source>Keep empty space in servers without icons</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="38"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="47"/>
         <source>Channels list</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="41"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="50"/>
         <source>Ignore private setting for channels and channel categories</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="46"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="110"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="55"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="49"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="58"/>
         <source>Use default type on unknown types</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="54"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="63"/>
         <source>Replies</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="59"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="68"/>
         <source>The only supported reply types at the moment are replied and forwarded messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
         <source>Message field</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="74"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="83"/>
         <source>Send messages by enter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="80"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Focus input message area after send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="86"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="95"/>
         <source>Focus input message area on channel open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Sent messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>reversed (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="120"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
         <source>nothing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="130"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="139"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Extra padding</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="95"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>Appearance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>none</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="127"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="136"/>
         <source>Align sent messages text to right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="147"/>
         <source>Message grouping</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="141"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>author &amp; time (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="142"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
         <source>author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="166"/>
         <source>as pfp (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="158"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>small</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
         <source>no</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="165"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
         <source>High-contrast mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="181"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="193"/>
         <source>Session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="195"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="204"/>
         <source>Log out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="205"/>
         <source>Logged out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="208"/>
         <source>Clear cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="200"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="209"/>
         <source>Cleared cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
         <source>Reset all settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="211"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="330"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="220"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="339"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="227"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="236"/>
         <source>On app restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="228"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>Hourly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>Daily</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="230"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="239"/>
         <source>Weekly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="240"/>
         <source>Monthly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="241"/>
         <source>Half-yearly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="242"/>
         <source>Yearly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="254"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
         <source>Advanced</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="269"/>
         <source>Networking</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="265"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
         <source>Proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="285"/>
         <source>global proxy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="277"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="286"/>
         <source>disable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="278"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="287"/>
         <source>custom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="285"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="294"/>
         <source>HTTP proxy address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="286"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="295"/>
         <source>Specify port by semicolon, if required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="291"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>Debugging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="293"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="302"/>
         <source>Show info messages in notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="307"/>
         <source>Display unformatted HTML text in messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="308"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="304"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="313"/>
         <source>Experimental</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="306"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Use Twemoji instead of default Emoji</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="311"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Enable Modern UI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="312"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="321"/>
         <source>Tries to mimic the UI in real Discord</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="331"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="340"/>
         <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>
@@ -873,7 +883,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="160"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -881,32 +891,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="186"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="193"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="187"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="194"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="188"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="195"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="189"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="190"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="193"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>
