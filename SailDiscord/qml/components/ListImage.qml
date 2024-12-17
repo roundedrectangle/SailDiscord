@@ -31,7 +31,7 @@ HighlightImage {
                 width: roundedIcon.adapt ? roundedIcon.width : Math.min(roundedIcon.width, roundedIcon.height)
                 height: roundedIcon.adapt ? roundedIcon.height : width
                 radius: extendedRadius ? Math.min(width, height)/4 : Math.min(width, height)
-                Behavior on radius { NumberAnimation { duration: 100 } }
+                Behavior on radius { NumberAnimation { duration: 150 } }
             }
         }
     }

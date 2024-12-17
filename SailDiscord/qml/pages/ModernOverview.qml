@@ -43,20 +43,33 @@ SilicaFlickable {
         visible: !loading
         SilicaListView {
             id: serverList
-            width: Theme.itemSizeLarge
+            width: Theme.itemSizeLarge + Theme.paddingMedium
             height: parent.height
             model: serversModel
             clip: true
             VerticalScrollDecorator {}
 
-            header: IconButton {
-                icon.source: "image://theme/icon-l-message"
+            header: Row {
                 width: parent.width
-                height: width
-                highlighted: serverIndex == -1 || down
-                onClicked: {
-                    serverIndex = -1
-                    folderIndex = -1
+                Rectangle {
+                    id: indicatorRectangle
+                    width: Theme.paddingMedium
+                    color: Theme.highlightColor
+                    anchors.verticalCenter: parent.verticalCenter
+                    height: width*2
+                    radius: width/2
+                    opacity: serverIndex == -1 ? 1 : 0
+                    Behavior on opacity { FadeAnimator {} }
+                }
+                IconButton {
+                    icon.source: "image://theme/icon-l-message"
+                    width: parent.width
+                    height: width
+                    highlighted: serverIndex == -1 || down
+                    onClicked: {
+                        serverIndex = -1
+                        folderIndex = -1
+                    }
                 }
             }
 
@@ -74,23 +87,37 @@ SilicaFlickable {
                         id: serverItemInstance
                         width: parent.width
                         contentHeight: serverImage.height
-
-                        Item {
-                            id: serverImage
-                            width: parent.width
-                            height: width
-                            ListImage {
-                                icon: image
-                                extendedRadius: ((ListView.view && ListView.view.parent.folderIndex)
+                        property bool selected: ((ListView.view && ListView.view.parent.folderIndex)
                                                  ? (serverIndex == ListView.view.parent.folderIndex && folderIndex == index)
                                                  : (serverIndex == index))
-                                anchors {
-                                    fill: parent
-                                    margins: Theme.paddingSmall
+
+                        Row {
+                            width: parent.width
+                            Rectangle {
+                                id: indicatorRectangle
+                                width: Theme.paddingMedium
+                                color: Theme.highlightColor
+                                anchors.verticalCenter: parent.verticalCenter
+                                height: width*2
+                                radius: width/2
+                                opacity: selected ? 1 : 0
+                                Behavior on opacity { FadeAnimator {} }
+                            }
+                            Item {
+                                id: serverImage
+                                width: parent.width - indicatorRectangle.width
+                                height: width
+                                ListImage {
+                                    icon: image
+                                    extendedRadius: selected
+                                    anchors {
+                                        fill: parent
+                                        margins: Theme.paddingSmall
+                                    }
+                                    errorString: name
+                                    anchors.centerIn: parent
+                                    enabled: false
                                 }
-                                errorString: name
-                                anchors.centerIn: parent
-                                enabled: false
                             }
                         }
 
