@@ -69,15 +69,17 @@ ApplicationWindow {
           console.log(f)
         }
 
-        function showInfo(text) {
+        function showInfo(summary, text) {
             notifier.appIcon = "image://theme/icon-lock-information"
-            notifier.body = text
+            notifier.summary = summary || ''
+            notifier.body = text || ''
             notifier.publish()
         }
 
-        function showError(text) {
+        function showError(summary, text) {
             notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = text
+            notifier.summary = summary || ''
+            notifier.body = text || ''
             notifier.publish()
             console.log(text)
         }
@@ -279,9 +281,11 @@ ApplicationWindow {
             setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: name, image: icon, dmChannel: channelId, textSendPermissions: perm}) })
             _refreshFirstPage = refreshHandler
 
-            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
-            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
-            setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented: %1").arg(e)) })
+            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })
+            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure"), e) })
+            setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
+            setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
+
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -290,7 +294,7 @@ ApplicationWindow {
             })
         }
 
-        onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
+        onError: shared.showError(qsTranslate("Errors", "Python error"), traceback)
         onReceived: console.log("got message from python: " + data)
 
         function login(token) { call('main.comm.login', [token]) }

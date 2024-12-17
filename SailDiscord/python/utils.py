@@ -129,7 +129,12 @@ async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=
     while search:
         e = int(search[2])
         if e not in fetched_emojis:
-            fetched = (await message.guild.fetch_emoji(e)).url
+            try: fetched = (await message.guild.fetch_emoji(e)).url
+            except discord.errors.NotFound as err:
+                qsend("notfoundError", str(err))
+                res = res[:search.start()] + f'{search[1]}:{e}' +  res[search.end():]
+                search = re.search(pattern, res)
+                continue
             fetched_emojis[e] = str(cacher.get_cached_path(f'{message.guild.id}_{e}', ImageType.EMOJI, fetched))
             cacher.cache_image_bg(fetched, f'{message.guild.id}_{e}', ImageType.EMOJI)
         res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e]}">' + res[search.end():]
