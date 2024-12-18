@@ -107,7 +107,7 @@
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="247"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="248"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -216,7 +216,12 @@
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="297"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
+        <source>A message failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="298"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -343,12 +348,17 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="196"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="171"/>
+        <source>Message deleted</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="197"/>
         <source>Editing message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="220"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="221"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

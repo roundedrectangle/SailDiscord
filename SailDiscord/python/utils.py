@@ -10,6 +10,7 @@ from pathlib import Path
 import asyncio
 import urllib.parse
 import re
+import traceback as tb
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -149,3 +150,6 @@ def usernames(user: Union[discord.User, discord.Member]):
             additional['global'] = user.global_name
     additional['username'] = user.name
     return additional
+
+def format_exc(e: Exception):
+    return f'{type(e).__name__}: {e}\n' + ''.join(tb.format_exception(None,e,e.__traceback__))

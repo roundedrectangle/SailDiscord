@@ -53,8 +53,11 @@ async def generate_message(message: discord.Message, is_history=False):
 
 async def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    event, args = await generate_message(message, is_history)
-    qsend(event, *args)
+    try:
+        event, args = await generate_message(message, is_history)
+        qsend(event, *args)
+    except Exception as e:
+        qsend("messageError", format_exc(e))
 
 async def send_edited_message(before_id: int, after: Union[discord.Message, Any]):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""

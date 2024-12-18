@@ -285,6 +285,7 @@ ApplicationWindow {
             setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure"), e) })
             setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
+            setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
 
 
             addImportPath(Qt.resolvedUrl("../python"))
