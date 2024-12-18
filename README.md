@@ -118,7 +118,7 @@ SailJail will NOT work in this case
 The code is based on:
 
 - a lot:
-  - [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber) - most of the UI
+  - [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber) - some of the UI
 
 - a little:
   - [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator) - early packaging issues
@@ -131,6 +131,7 @@ Core functionality:
 - [Opal](https://github.com/Pretty-SFOS/opal) ([About](https://github.com/Pretty-SFOS/opal-about), [LinkHandler](https://github.com/Pretty-SFOS/opal-linkhandler), [Tabs](https://github.com/Pretty-SFOS/opal-tabs) and the snippets)
 - [Showdown](https://github.com/showdownjs/showdown)
 - [Twemoji](https://github.com/jdecked/twemoji)
+- [FancyContextMenu](https://github.com/roundedrectangle/sf-fancycontextmenu) based on [Quickddit](https://github.com/accumulator/Quickddit)
 
 Developers:
 

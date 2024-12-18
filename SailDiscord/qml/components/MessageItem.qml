@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 import '../modules/Opal/LinkHandler'
+import '../modules/FancyContextMenu'
 
 // TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
@@ -146,24 +147,28 @@ ListItem {
                        )
     }
 
-    menu: Component { ContextMenu {
-        MenuItem {
-            text: qsTr("Copy")
-            onClicked: Clipboard.text = contents
-            visible: contents.length > 0
+    menu: Component { FancyContextMenu {
+        listItem: root
+
+        FancyMenuRow {
+            FancyMenuIcon {
+                icon.source: "image://theme/icon-m-clipboard"
+                onClicked: Clipboard.text = contents
+                visible: contents.length > 0
+            }
+            FancyMenuIcon {
+                icon.source: "image://theme/icon-m-edit"
+                onClicked: editRequested()
+                visible: sent
+            }
+            FancyMenuIcon {
+                icon.source: "image://theme/icon-m-delete"
+                onClicked: deleteRequested()
+                visible: sent || managePermissions
+            }
         }
         MenuItem {
-            text: qsTr("Edit")
-            onClicked: editRequested()
-            visible: sent
-        }
-        MenuItem {
-            text: qsTr("Delete")
-            onClicked: deleteRequested()
-            visible: sent || managePermissions
-        }
-        MenuItem {
-            text: qsTranslate("AboutUser", "About", "User")
+            text: qsTranslate("AboutUser", "About this member", "User")
             visible: authorid != '-1'
             onClicked: openAboutUser()
         }

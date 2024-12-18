@@ -103,7 +103,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="166"/>
+        <location filename="../qml/components/MessageItem.qml" line="171"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
@@ -154,7 +154,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="134"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="135"/>
         <source>Channel unsupported</source>
         <translation>Kanalen stöds ej</translation>
     </message>
@@ -234,7 +234,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="95"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="96"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
         <translation type="unfinished"></translation>
@@ -245,7 +245,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="171"/>
+        <location filename="../qml/components/MessageItem.qml" line="176"/>
         <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -302,24 +302,6 @@
         <location filename="../qml/pages/LoginDialog.qml" line="94"/>
         <source>Token</source>
         <translation>Token</translation>
-    </message>
-</context>
-<context>
-    <name>MessageItem</name>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="151"/>
-        <source>Copy</source>
-        <translation>Kopiera</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="156"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/components/MessageItem.qml" line="161"/>
-        <source>Delete</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
