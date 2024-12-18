@@ -103,11 +103,11 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="145"/>
+        <location filename="../qml/components/MessageItem.qml" line="166"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
-        <location filename="../qml/pages/DMsView.qml" line="19"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="186"/>
+        <location filename="../qml/pages/DMsView.qml" line="20"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="247"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -154,7 +154,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="126"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="134"/>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
     </message>
@@ -229,13 +229,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="24"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="95"/>
+        <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="29"/>
+        <location filename="../qml/pages/DMsView.qml" line="30"/>
         <source>Copy user ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="171"/>
+        <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -296,8 +302,18 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="150"/>
+        <location filename="../qml/components/MessageItem.qml" line="151"/>
         <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="156"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="161"/>
+        <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -317,17 +333,22 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="44"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="68"/>
         <source>No messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="45"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="69"/>
         <source>Say hi ;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="160"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="196"/>
+        <source>Editing message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="220"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>

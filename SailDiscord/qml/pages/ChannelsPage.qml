@@ -85,7 +85,7 @@ Page {
                 if (!hasPermissions) return
                 switch (icon) {
                 case "text": case "news": case "name": pageStack.push(Qt.resolvedUrl("MessagesPage.qml"),
-                                {guildid: serverid, channelid: channelid, name: name, sendPermissions: textSendPermissions});break
+                                {guildid: serverid, channelid: channelid, name: name, sendPermissions: textSendPermissions, managePermissions: managePermissions});break
                 default: pageStack.push(comingSoonPage, {channelType: icon});break
                 }
             }
@@ -108,9 +108,9 @@ Page {
             if (lastServerId != '-1') python.setHandler('channel'+lastServerId, undefined)
             clear()
             if (serverid == '') return
-            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed) {
-                if (!_haspermissions && !appSettings.ignorePrivate) return;
-                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed})
+            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed, _managePermissions) {
+                if (!_haspermissions && !appSettings.ignorePrivate) return
+                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions})
             })
             python.requestChannels(serverid)
             lastServerId = serverid

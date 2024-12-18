@@ -319,6 +319,20 @@ class Communicator:
                 self.client.run_asyncio_threadsafe(user.send_friend_request(), True) # pyright: ignore[reportAttributeAccessIssue]
         except discord.errors.CaptchaRequired as e:
             qsend('captchaError', str(e))
+    
+    def edit_message(self, message_id: Union[str, int], new_content: str):
+        message_id = int(message_id) # If it raises, function just ends here
+        if not self.client.current_channel:
+            raise RuntimeError("Current channel was not set but edit requested")
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True) # pyright: ignore[reportAssignmentType]
+        self.client.run_asyncio_threadsafe(msg.edit(content=new_content), True)
+    
+    def delete_message(self, message_id: Union[str, int]):
+        message_id = int(message_id)
+        if not self.client.current_channel:
+            raise RuntimeError("Current channel was not set but delete requested")
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True) # pyright: ignore[reportAssignmentType]
+        self.client.run_asyncio_threadsafe(msg.delete(), True)
 
 
 comm = Communicator()

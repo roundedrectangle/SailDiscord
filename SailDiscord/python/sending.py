@@ -28,14 +28,16 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], c
 
 # Server Channels
 
-def send_channel(c, myself_id):
+def send_channel(c: discord.abc.GuildChannel, myself_id):
     if c.type == discord.ChannelType.category:
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
+    perms = permissions_for(c, myself_id)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
-            str(c.id), str(c.name), permissions_for(c, myself_id).view_channel,
+            str(c.id), str(c.name), perms.view_channel,
             str(getattr(getattr(c, 'type'), 'name')),
-            c.type == discord.ChannelType.text and permissions_for(c, myself_id).send_messages, # If sending text is allowed
+            c.type == discord.ChannelType.text and perms.send_messages, # If sending text is allowed
+            perms.manage_messages,
     )
 
 def send_channels(guild: discord.Guild, user_id):

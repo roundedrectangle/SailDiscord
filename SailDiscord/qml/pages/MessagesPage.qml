@@ -12,9 +12,14 @@ Page {
     property string name
     property bool isDemo: false
     property bool sendPermissions: true
+    property bool managePermissions: false
     property bool isDM: false
     property string userid: ''
     property string usericon: ''
+
+    property string previouslyEnteredText: ''
+    property bool editing: false
+    property string editingID: '-1'
 
     Timer {
         id: activeFocusTimer
@@ -25,7 +30,26 @@ Page {
     function sendMessage() {
         if (!isDemo) python.sendMessage(sendField.text)
         else msgModel.appendDemo(true, sendField.text)
-        sendField.text = ""
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        if (appSettings.focusAfterSend) activeFocusTimer.start()
+    }
+
+    function applyEdit() {
+        if (isDemo) return;
+        python.call2('edit_message', [editingID, sendField.text])
+        var i = msgModel.findIndexById(editingID)
+        if (i >= 0) {
+            i = msgModel.get(i)
+            i.contents = sendField.text
+            i.formatted = shared.markdown(sendField.text, true)
+            // We don't need to set _flags.edit since we don't use it here
+        }
+
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        editingID = '-1'
+        editing = false
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
 
@@ -127,16 +151,24 @@ Page {
                         reference: _ref
                         flags: _flags
                         msgid: messageId
+                        managePermissions: page.managePermissions
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
-
                         Component.onCompleted: {
                             updateMasterWidth()
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
+
+                        onEditRequested: {
+                            previouslyEnteredText = sendField.text
+                            sendField.text = model.contents
+                            editingID = messageId
+                            editing = true
+                        }
+                        onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; python.call2('delete_message', [messageId]) })
                     }
                 }
 
@@ -147,37 +179,66 @@ Page {
             }
         }
 
-        Row {
+        Column {
             id: sendBox
             width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
             visible: sendPermissions
             anchors.bottom: parent.bottom
+            spacing: Theme.paddingLarge
 
-            TextArea {
-                id: sendField
-                width: parent.width - sendButton.width
-
-                placeholderText: qsTr("Type something")
-                hideLabelOnEmptyField: false
-                labelVisible: false
-                anchors.verticalCenter: parent.verticalCenter
-                backgroundStyle: TextEditor.UnderlineBackground
-                horizontalAlignment: TextEdit.AlignLeft
-
-                EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
-                EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+            Item {
+                visible: editing
+                width: parent.width - Theme.horizontalPageMargin*2
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Math.max(children[0].height, children[1].height)
+                Label {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: qsTr("Editing message")
+                    font.bold: true
+                    color: Theme.highlightColor
+                }
+                IconButton {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: "image://theme/icon-m-clear"
+                    onClicked: {
+                        sendField.text = previouslyEnteredText
+                        if (previouslyEnteredText) activeFocusTimer.start()
+                        previouslyEnteredText = ''
+                        editingID = '-1'
+                        editing = false
+                    }
+                }
             }
 
-            IconButton {
-                id: sendButton
-                width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
-                height: width
-                enabled: sendField.text.length !== 0
-                anchors.bottom: parent.bottom
-                icon.source: "image://theme/icon-m-send"
+            Row {
+                width: parent.width
+                TextArea {
+                    id: sendField
+                    width: parent.width - sendButton.width
 
-                onClicked: sendMessage()
+                    placeholderText: qsTr("Type something")
+                    hideLabelOnEmptyField: false
+                    labelVisible: false
+                    anchors.verticalCenter: parent.verticalCenter
+                    backgroundStyle: TextEditor.UnderlineBackground
+                    horizontalAlignment: TextEdit.AlignLeft
+
+                    EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
+                    EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+                }
+
+                IconButton {
+                    id: sendButton
+                    width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                    height: width
+                    enabled: sendField.text.length !== 0
+                    anchors.bottom: parent.bottom
+                    icon.source: "image://theme/icon-m-" + (editing ? "accept" : "send")
+
+                    onClicked: if (editing) applyEdit(); else sendMessage()
+                }
             }
         }
 
@@ -273,7 +334,6 @@ Page {
             else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
                 if (history) msgModel.append(data); else msgModel.insert(0, data)
             }, function(before, data) {
-                console.log(before, JSON.stringify(data))
                 var i = findIndexById(before)
                 if (i >= 0) {
                     if (data) set(i, data)

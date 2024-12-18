@@ -15,6 +15,7 @@ ListItem {
     property var attachments
     property var reference
     property string msgid: ''
+    property bool managePermissions
 
     property string authorid // User-related
     property var flags
@@ -30,6 +31,9 @@ ListItem {
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
     property alias innerWidth: row.width
+
+    signal editRequested
+    signal deleteRequested
 
     id: root
     width: parent.width
@@ -143,16 +147,26 @@ ListItem {
     }
 
     menu: Component { ContextMenu {
-        MenuItem {text: qsTranslate("AboutUser", "About", "User")
-            visible: authorid != '-1'
-            onClicked: openAboutUser()
-        }
-
-        MenuItem { text: qsTr("Copy")
+        MenuItem {
+            text: qsTr("Copy")
             onClicked: Clipboard.text = contents
             visible: contents.length > 0
         }
-
+        MenuItem {
+            text: qsTr("Edit")
+            onClicked: editRequested()
+            visible: sent
+        }
+        MenuItem {
+            text: qsTr("Delete")
+            onClicked: deleteRequested()
+            visible: sent || managePermissions
+        }
+        MenuItem {
+            text: qsTranslate("AboutUser", "About", "User")
+            visible: authorid != '-1'
+            onClicked: openAboutUser()
+        }
         MenuItem {
             text: qsTranslate("General", "Copy message ID")
             visible: appSettings.developerMode && msgid

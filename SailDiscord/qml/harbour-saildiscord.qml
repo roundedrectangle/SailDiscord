@@ -337,7 +337,7 @@ ApplicationWindow {
             }
         }
 
-        function getReference(channel, message, callback) { call('main.comm.get_reference', [channel, message], callback)}
+        function getReference(channel, message, callback) { call2('get_reference', [channel, message], callback)}
 
         function refresh() {
             disconnectClient()
@@ -346,5 +346,7 @@ ApplicationWindow {
         }
 
         function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium]) }
+
+        function call2(name, args, callback) { call('main.comm.'+name, args, callback) }
     }
 }

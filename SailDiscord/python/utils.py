@@ -16,6 +16,7 @@ sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saild
 import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
+AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
