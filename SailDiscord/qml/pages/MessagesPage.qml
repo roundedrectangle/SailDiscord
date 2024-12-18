@@ -18,8 +18,9 @@ Page {
     property string usericon: ''
 
     property string previouslyEnteredText: ''
-    property bool editing: false
-    property string editingID: '-1'
+    property int currentFieldAction: 0 // 0: none, 1: editing, 2: replying
+    property string actionID: '-1' // editing or replying message ID
+    property string actionInfo: '' // replying contents
 
     Timer {
         id: activeFocusTimer
@@ -32,13 +33,14 @@ Page {
         else msgModel.appendDemo(true, sendField.text)
         sendField.text = previouslyEnteredText
         previouslyEnteredText = ''
+        currentFieldAction = 0
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
 
     function applyEdit() {
-        if (isDemo) return;
-        python.call2('edit_message', [editingID, sendField.text])
-        var i = msgModel.findIndexById(editingID)
+        if (isDemo) return
+        python.call2('edit_message', [actionID, sendField.text])
+        var i = msgModel.findIndexById(actionID)
         if (i >= 0) {
             i = msgModel.get(i)
             i.contents = sendField.text
@@ -48,8 +50,17 @@ Page {
 
         sendField.text = previouslyEnteredText
         previouslyEnteredText = ''
-        editingID = '-1'
-        editing = false
+        actionID = '-1'
+        currentFieldAction = 0
+        if (appSettings.focusAfterSend) activeFocusTimer.start()
+    }
+
+    function applyReply() {
+        if (!isDemo) python.call2('reply_to', [actionID, sendField.text])
+        else msgModel.appendDemo(true, sendField.text)
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        currentFieldAction = 0
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
 
@@ -152,6 +163,7 @@ Page {
                         flags: _flags
                         msgid: messageId
                         managePermissions: page.managePermissions
+                        showRequestableOptions: !isDemo
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
@@ -165,10 +177,15 @@ Page {
                         onEditRequested: {
                             previouslyEnteredText = sendField.text
                             sendField.text = model.contents
-                            editingID = messageId
-                            editing = true
+                            actionID = messageId
+                            currentFieldAction = 1
                         }
                         onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; python.call2('delete_message', [messageId]) })
+                        onReplyRequested: {
+                            actionID = messageId
+                            currentFieldAction = 2
+                            actionInfo = model.contents
+                        }
                     }
                 }
 
@@ -187,27 +204,38 @@ Page {
             spacing: Theme.paddingLarge
 
             Item {
-                visible: editing
+                visible: currentFieldAction > 0
                 width: parent.width - Theme.horizontalPageMargin*2
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: Math.max(children[0].height, children[1].height)
-                Label {
+                Icon {
+                    id: replyActionIcon
+                    visible: currentFieldAction == 2
                     anchors.left: parent.left
+                    source: "image://theme/icon-m-message-forward"
+                }
+                Label {
+                    anchors.left: replyActionIcon.visible ? replyActionIcon.right : parent.left
+                    anchors.leftMargin: replyActionIcon.visible ? Theme.paddingLarge : 0
                     anchors.verticalCenter: parent.verticalCenter
-                    text: qsTr("Editing message")
+                    text: currentFieldAction == 1 ? qsTr("Editing message") : actionInfo
                     font.bold: true
                     color: Theme.highlightColor
+                    width: parent.width - (undoActionButton.width + Theme.paddingLarge) - (replyActionIcon.visible ? (replyActionIcon.width + Theme.paddingLarge) : 0)
+                    truncationMode: TruncationMode.Fade
                 }
                 IconButton {
+                    id: undoActionButton
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     icon.source: "image://theme/icon-m-clear"
                     onClicked: {
-                        sendField.text = previouslyEnteredText
+                        if (currentFieldAction == 1) sendField.text = previouslyEnteredText
                         if (previouslyEnteredText) activeFocusTimer.start()
                         previouslyEnteredText = ''
-                        editingID = '-1'
-                        editing = false
+                        actionID = '-1'
+                        actionInfo = ''
+                        currentFieldAction = 0
                     }
                 }
             }
@@ -235,9 +263,13 @@ Page {
                     height: width
                     enabled: sendField.text.length !== 0
                     anchors.bottom: parent.bottom
-                    icon.source: "image://theme/icon-m-" + (editing ? "accept" : "send")
+                    icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
 
-                    onClicked: if (editing) applyEdit(); else sendMessage()
+                    onClicked: switch (currentFieldAction) {
+                               case 0: sendMessage();break
+                               case 1: applyEdit();break
+                               case 2: applyReply()
+                               }
                 }
             }
         }

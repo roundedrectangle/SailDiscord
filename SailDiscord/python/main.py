@@ -117,7 +117,7 @@ class MyClient(discord.Client):
                 break
             await send_message(m, True)
 
-    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Union[asyncio.Future, Any]:
+    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Any:
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
         future = asyncio.run_coroutine_threadsafe(courutine, self.loop)
         if result_required: return future.result(timeout)
@@ -172,6 +172,12 @@ class MyClient(discord.Client):
                 folders.append(f if f.id or len(f) != 1 else f.guilds[0])
                 loaded_ids += (g.id for g in f.guilds)
         return folders + list(g for g in self.guilds if g.id not in loaded_ids)
+    
+    async def get_message(self, message_id) -> discord.Message:
+        message_id = int(message_id)
+        if not self.current_channel:
+            raise RuntimeError("Current channel was not set but delete requested")
+        return await self.current_channel.fetch_message(message_id)
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -318,24 +324,22 @@ class Communicator:
     def send_friend_request(self, user_id: int):
         user = self.client.run_asyncio_threadsafe(self.client.fetch_user(user_id), True)
         try:
-            if not user.is_friend(): # pyright: ignore[reportAttributeAccessIssue]
-                self.client.run_asyncio_threadsafe(user.send_friend_request(), True) # pyright: ignore[reportAttributeAccessIssue]
+            if not user.is_friend():
+                self.client.run_asyncio_threadsafe(user.send_friend_request(), True)
         except discord.errors.CaptchaRequired as e:
             qsend('captchaError', str(e))
     
     def edit_message(self, message_id: Union[str, int], new_content: str):
-        message_id = int(message_id) # If it raises, function just ends here
-        if not self.client.current_channel:
-            raise RuntimeError("Current channel was not set but edit requested")
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True) # pyright: ignore[reportAssignmentType]
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
         self.client.run_asyncio_threadsafe(msg.edit(content=new_content), True)
     
     def delete_message(self, message_id: Union[str, int]):
-        message_id = int(message_id)
-        if not self.client.current_channel:
-            raise RuntimeError("Current channel was not set but delete requested")
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.current_channel.fetch_message(message_id), True) # pyright: ignore[reportAssignmentType]
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
         self.client.run_asyncio_threadsafe(msg.delete(), True)
+
+    def reply_to(self, message_id: Union[str, int], content: str):
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
+        self.client.run_asyncio_threadsafe(msg.reply(content), True)
 
 
 comm = Communicator()

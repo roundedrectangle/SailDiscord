@@ -33,8 +33,10 @@ ListItem {
 
     property alias innerWidth: row.width
 
+    property bool showRequestableOptions: true
     signal editRequested
     signal deleteRequested
+    signal replyRequested
 
     id: root
     width: parent.width
@@ -159,12 +161,17 @@ ListItem {
             FancyMenuIcon {
                 icon.source: "image://theme/icon-m-edit"
                 onClicked: editRequested()
-                visible: sent
+                visible: sent && showRequestableOptions
             }
             FancyMenuIcon {
                 icon.source: "image://theme/icon-m-delete"
                 onClicked: deleteRequested()
-                visible: sent || managePermissions
+                visible: (sent || managePermissions) && showRequestableOptions
+            }
+            FancyMenuIcon {
+                icon.source: "image://theme/icon-m-message-reply"
+                onClicked: replyRequested()
+                visible: showRequestableOptions
             }
         }
         MenuItem {

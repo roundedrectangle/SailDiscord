@@ -103,14 +103,19 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="171"/>
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="248"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="279"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="178"/>
+        <source>About this member</source>
+        <comment>User</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -245,7 +250,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="176"/>
+        <location filename="../qml/components/MessageItem.qml" line="183"/>
         <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -320,27 +325,27 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="68"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="79"/>
         <source>No messages</source>
         <translation>Inga meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="69"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="80"/>
         <source>Say hi ;)</source>
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="171"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="182"/>
         <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="197"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="220"/>
         <source>Editing message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="221"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="248"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>
