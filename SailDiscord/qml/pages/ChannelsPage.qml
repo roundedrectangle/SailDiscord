@@ -91,6 +91,7 @@ Page {
             }
 
             menu: Component { ContextMenu {
+                    hasContent: appSettings.developerMode
                     MenuItem {
                         text: qsTranslate("General", "Copy channel ID")
                         visible: appSettings.developerMode

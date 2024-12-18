@@ -133,7 +133,7 @@ SilicaFlickable {
                         menu: Component { ContextMenu {
                             MenuItem {
                                 Icon {
-                                    source: "image://theme/icon-m-question"
+                                    source: "image://theme/icon-m-about"
                                     anchors.centerIn: parent
                                 }
                                 onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutServerPage.qml"),
