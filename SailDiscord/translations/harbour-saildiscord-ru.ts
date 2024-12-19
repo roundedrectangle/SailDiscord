@@ -14,7 +14,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="23"/>
         <source>About Sailcord</source>
         <comment>App</comment>
-        <translation type="unfinished"></translation>
+        <translation>О Sailcord</translation>
     </message>
 </context>
 <context>
@@ -69,7 +69,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="27"/>
         <source>About this server</source>
         <comment>Server</comment>
-        <translation type="unfinished"></translation>
+        <translation>О сервере</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
         <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>About this member</source>
         <comment>User</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="120"/>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -161,7 +161,7 @@
     <message>
         <location filename="../qml/modules/Opal/SupportMe/AskForSupport.qml" line="11"/>
         <source>Please take a moment to consider if you can contribute to this project in one way or another.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пожалуйста, подумайте, можете ли вы участвовать в проекте каким-либо образом.</translation>
     </message>
 </context>
 <context>
@@ -177,28 +177,28 @@
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
         <source>DMs</source>
-        <translation type="unfinished">ЛС</translation>
+        <translation>ЛС</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
         <source>Servers</source>
-        <translation type="unfinished">Серверы</translation>
+        <translation>Серверы</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
         <source>Me</source>
-        <translation type="unfinished">Я</translation>
+        <translation>Я</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
         <source>Settings</source>
-        <translation type="unfinished">Настройки</translation>
+        <translation>Настройки</translation>
     </message>
 </context>
 <context>
@@ -206,12 +206,12 @@
     <message>
         <location filename="../qml/modules/Opal/SupportMe/DetailsDrawer.qml" line="53"/>
         <source>show less</source>
-        <translation type="unfinished"></translation>
+        <translation>показать меньше</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/SupportMe/DetailsDrawer.qml" line="53"/>
         <source>show more</source>
-        <translation type="unfinished"></translation>
+        <translation>показать больше</translation>
     </message>
 </context>
 <context>
@@ -244,7 +244,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="291"/>
         <source>A message failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="301"/>
@@ -257,23 +257,23 @@
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="48"/>
         <source>Copy server ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать ID сервера</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="96"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать ID канала</translation>
     </message>
     <message>
         <location filename="../qml/pages/DMsView.qml" line="30"/>
         <source>Copy user ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="184"/>
         <source>Copy message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать ID сообщения</translation>
     </message>
 </context>
 <context>
@@ -358,12 +358,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="183"/>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Сообщение удалено</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="221"/>
         <source>Editing message</source>
-        <translation type="unfinished"></translation>
+        <translation>Редактирование сообщения</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="249"/>
@@ -376,7 +376,7 @@
     <message>
         <location filename="../qml/pages/ModernOverview.qml" line="36"/>
         <source>Refresh</source>
-        <translation type="unfinished">Обновить</translation>
+        <translation>Обновить</translation>
     </message>
 </context>
 <context>
@@ -384,32 +384,32 @@
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="8"/>
         <source>View translating guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Посмотреть инструкцию по переводу</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="9"/>
         <source>Help with translating this app in as many languages as possible.</source>
-        <translation type="unfinished"></translation>
+        <translation>Помогите с переводом этого приложения на как можно больше языков.</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
         <source>Help testing beta versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Помочь в тестировании бета-версий</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="18"/>
         <source>Get new features earlier. Remember to report any bugs you find!</source>
-        <translation type="unfinished"></translation>
+        <translation>Получайте новые функции раньше. Не забудьте сообщать о любый ошибках, которые вы найдёте!</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="24"/>
         <source>Develop on Github</source>
-        <translation type="unfinished"></translation>
+        <translation>Разрабатывать на Github</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="25"/>
         <source>Support with maintenance and packaging, write code, or provide valuable bug reports.</source>
-        <translation type="unfinished"></translation>
+        <translation>Поддержка в разработке и упаковке, написании кодов, или важные замечания об ошибках.</translation>
     </message>
 </context>
 <context>
@@ -751,7 +751,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="43"/>
         <source>Show private channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать приватные каналы</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>
@@ -903,37 +903,37 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Overview mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим обзора</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Tries to mimic the UI in real Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Пытается повторить интерфейс реального Discord</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Classic UI with tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Классический интерфейс со вкладками</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Классический</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Modern</source>
-        <translation type="unfinished"></translation>
+        <translation>Современный</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="327"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Режим разработчика</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="328"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>Включает некоторые функции полезные для разработчика, такие как скопировать ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="348"/>
@@ -991,27 +991,27 @@
     <message>
         <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="9"/>
         <source>Hi there!</source>
-        <translation type="unfinished"></translation>
+        <translation>Привет!</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="10"/>
         <source>Thank you for using my little app! Maybe you can contribute back?</source>
-        <translation type="unfinished"></translation>
+        <translation>Спасибо что используешь мое маленькое приложение! Возможно ты можешь помочь?</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="11"/>
         <source>Thank you for your support!</source>
-        <translation type="unfinished"></translation>
+        <translation>Спасибо за твою поддержку!</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="55"/>
         <source>Remind me later</source>
-        <translation type="unfinished"></translation>
+        <translation>Напомни мне позже</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="57"/>
         <source>Don&apos;t ask me again</source>
-        <translation type="unfinished"></translation>
+        <translation>Больше не спрашивать</translation>
     </message>
 </context>
 <context>
