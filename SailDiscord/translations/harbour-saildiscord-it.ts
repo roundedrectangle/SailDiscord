@@ -217,37 +217,37 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="94"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="91"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="290"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="287"/>
         <source>Connection failure</source>
         <translation>Connessione fallita</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
         <source>Login failure</source>
         <translation>Accesso fallito</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="292"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="289"/>
         <source>Captcha required but not implemented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="293"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="290"/>
         <source>404 Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="294"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
         <source>A message failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="304"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="301"/>
         <source>Python error</source>
         <translation>Errore python</translation>
     </message>
@@ -383,7 +383,7 @@
     <name>MySupportDialog</name>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="8"/>
-        <source>Translate on Weblate</source>
+        <source>View translating guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -392,12 +392,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="16"/>
+        <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
+        <source>Help testing beta versions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MySupportDialog.qml" line="18"/>
+        <source>Get new features earlier. Remember to report any bugs you find!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MySupportDialog.qml" line="24"/>
         <source>Develop on Github</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
+        <location filename="../qml/pages/MySupportDialog.qml" line="25"/>
         <source>Support with maintenance and packaging, write code, or provide valuable bug reports.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1022,12 +1032,12 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="99"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="96"/>
         <source>Downloaded file %1</source>
         <translation>File scaricato: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="170"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="167"/>
         <source>(edited)</source>
         <translation type="unfinished">Modificati</translation>
     </message>
@@ -1035,32 +1045,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Online</source>
         <translation>In linea</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Offline</source>
         <translation>Non in linea</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Do Not Disturb</source>
         <translation>Non disturbare</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="205"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Invisible</source>
         <translation>Invisibile</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="206"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
         <source>Idle</source>
         <translation>Occupato</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="209"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="206"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefono)</translation>
