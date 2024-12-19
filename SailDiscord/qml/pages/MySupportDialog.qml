@@ -4,11 +4,19 @@ import "../modules/Opal/SupportMe"
 
 SupportDialog {
     SupportAction {
-        icon: SupportIcon.Weblate
-        title: qsTr("Translate on Weblate")
+        icon: SupportIcon.Git
+        title: qsTr("View translating guide")
         description: qsTr("Help with translating this app in as many " +
                             "languages as possible.")
-        link: "https://weblate.zaborostroitelnyuniversity.ru/projects/saildiscord"
+        //link: "https://weblate.zaborostroitelnyuniversity.ru/projects/saildiscord"
+        link: "https://gist.github.com/roundedrectangle/c4ac530ca276e0d65c3593b8491473b6"
+    }
+
+    SupportAction {
+        icon: Qt.resolvedUrl("../../images/%1.png".arg(Qt.application.name))
+        title: qsTr("Help testing beta versions")
+        description: qsTr("Get new features earlier. Remember to report any bugs you find!")
+        link: "https://github.com/roundedrectangle/SailDiscord/releases"
     }
 
     SupportAction {

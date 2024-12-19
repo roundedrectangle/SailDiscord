@@ -28,10 +28,9 @@ ApplicationWindow {
 
     ShareAction { id: shareApi }
 
-    /*AskForSupport {
-        interval: 1
+    AskForSupport {
         contents: Component { MySupportDialog {} }
-    }*/
+    }
 
     DBusInterface {
         id: globalProxy
