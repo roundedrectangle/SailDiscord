@@ -153,33 +153,34 @@ ListItem {
         listItem: root
 
         FancyMenuRow {
-            FancyMenuIcon {
+            FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-clipboard"
                 onClicked: Clipboard.text = contents
                 visible: contents.length > 0
             }
-            FancyMenuIcon {
+            FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-edit"
                 onClicked: editRequested()
                 visible: sent && showRequestableOptions
             }
-            FancyMenuIcon {
+            FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-delete"
                 onClicked: deleteRequested()
                 visible: (sent || managePermissions) && showRequestableOptions
             }
-            FancyMenuIcon {
+            FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-message-reply"
                 onClicked: replyRequested()
                 visible: showRequestableOptions
             }
         }
-        MenuItem {
+        FancyAloneMenuItem {
+            icon.source: "image://theme/icon-m-about"
             text: qsTranslate("AboutUser", "About this member", "User")
             visible: authorid != '-1'
             onClicked: openAboutUser()
         }
-        MenuItem {
+        FancyAloneMenuItem {
             text: qsTranslate("General", "Copy message ID")
             visible: appSettings.developerMode && msgid
             onClicked: Clipboard.text = msgid

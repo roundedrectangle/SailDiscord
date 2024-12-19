@@ -112,7 +112,7 @@
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="178"/>
+        <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -250,7 +250,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="183"/>
+        <location filename="../qml/components/MessageItem.qml" line="184"/>
         <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
