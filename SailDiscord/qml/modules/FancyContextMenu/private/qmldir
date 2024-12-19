@@ -1,0 +1,6 @@
+module Opal.FancyContextMenu.private
+# This file is part of Opal.FancyContextMenu.
+# SPDX-FileCopyrightText: 2023-2024 Mirian Margiani
+# SPDX-FileCopyrightText: 2024 roundedrectangle
+# SPDX-License-Identifier: GPL-3.0-or-later
+MyPrivateComponent 1.0 MyPrivateComponent.qml

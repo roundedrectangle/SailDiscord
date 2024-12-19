@@ -106,7 +106,7 @@
         <location filename="../qml/components/MessageReference.qml" line="103"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="279"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="280"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -335,17 +335,17 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="182"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="183"/>
         <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="220"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="221"/>
         <source>Editing message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="248"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="249"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
