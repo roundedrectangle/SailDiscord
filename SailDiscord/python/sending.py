@@ -28,14 +28,16 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], c
 
 # Server Channels
 
-def send_channel(c, myself_id):
+def send_channel(c: discord.abc.GuildChannel, myself_id):
     if c.type == discord.ChannelType.category:
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
+    perms = permissions_for(c, myself_id)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
-            str(c.id), str(c.name), permissions_for(c, myself_id).view_channel,
+            str(c.id), str(c.name), perms.view_channel,
             str(getattr(getattr(c, 'type'), 'name')),
-            c.type == discord.ChannelType.text and permissions_for(c, myself_id).send_messages, # If sending text is allowed
+            c.type == discord.ChannelType.text and perms.send_messages, # If sending text is allowed
+            perms.manage_messages,
     )
 
 def send_channels(guild: discord.Guild, user_id):
@@ -57,11 +59,13 @@ def send_dm_channel(user: discord.User, cacher: Cacher):
     qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages and not user.system)
 
 def send_dms(users_list: List[discord.User], cacher: Cacher):
+    final = []
     for user in users_list:
-        if isinstance(user, discord.ClientUser):
-            continue
-        if user.dm_channel:
-            send_dm_channel(user, cacher)
+        if not isinstance(user, discord.ClientUser) and user.dm_channel:
+            final.append(user)
+    final.sort(key=lambda u: u.dm_channel.last_viewed_timestamp, reverse=True)
+    for user in final:
+        send_dm_channel(user, cacher)
 
 # Messages
 
@@ -96,20 +100,14 @@ def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
     qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
     usernames(user), user.bot, user.system, user.is_friend(), hex_color(user.color))
 
-def send_myself(client: discord.Client, cacher: Cacher):
+def send_myself(client: discord.Client):
     user = client.user
     status = 0 # default
     if StatusMapping.has_value(client.status):
         status = StatusMapping(client.status).index
 
-    icon = '' if user.display_avatar == None else \
-            str(cacher.get_cached_path(user.id, ImageType.MYSELF, default=user.display_avatar))
-
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user), icon)#user.display_avatar, icon)
-
-    if icon != '':
-        cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.MYSELF)
+    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
 
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',
@@ -119,4 +117,5 @@ def send_guild_info(g: discord.Guild):
         {feature.lower(): feature in g.features for feature in
             ('VERIFIED','PARTNERED','COMMUNITY','DISCOVERABLE','FEATURABLE')
         },
+        g.description or '',
     )

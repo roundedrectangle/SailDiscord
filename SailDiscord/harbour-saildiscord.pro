@@ -32,14 +32,18 @@ DISTFILES += \
     qml/components/ZoomableImage.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \
+    qml/modules/FancyContextMenu/FancyAloneMenuItem.qml \
     qml/pages/AboutPage.qml \
     qml/pages/AboutServerPage.qml \
     qml/pages/AboutUserPage.qml \
     qml/pages/ChannelsPage.qml \
+    qml/pages/DMsView.qml \
     qml/pages/FirstPage.qml \
     qml/pages/FullscreenAttachmentPage.qml \
     qml/pages/LoginDialog.qml \
     qml/pages/MessagesPage.qml \
+    qml/pages/MySupportDialog.qml \
+    qml/pages/SecondPage.qml \
     qml/pages/SettingsPage.qml \
     rpm/SailDiscord.changes.in \
     rpm/SailDiscord.changes.run.in \

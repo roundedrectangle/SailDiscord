@@ -17,14 +17,17 @@ AboutPageBase {
     property string _onlineCount
     property var _features: ({community:false, partnered:false, verified:false})
 
+    property string compiledMemberInfo: (_onlineCount != '-1' ? ('<font color="'+Theme.highlightColor+'">'+qsTr("%1 online").arg(_onlineCount)+"</font> ") : "")+
+                                        (_memberCount != '-1' ? ('<font color="'+Theme.secondaryHighlightColor+'">'+qsTr("%1 members").arg(_memberCount)+"</font>") : "")
+                       /*description: ((_onlineCount != '-1' && _memberCount != '-1') ? '<font color="green">●</font> ' : "")+
+                       (_onlineCount != '-1' ? qsTr("%1 online").arg(_onlineCount) : "")+
+                       ((_onlineCount != '-1' && _memberCount != '-1') ? '  <font color="gray">●</font> ' : "")+
+                       (_memberCount != '-1' ? qsTr("%1 members").arg(_memberCount) : "")*/
+    appVersion: !!compiledMemberInfo ? 'a' : '' // makes it visible
+    onCompiledMemberInfoChanged: _develInfoSection.parent.children[2].children[1].text = compiledMemberInfo
+
     appName: name
     appIcon: icon == "None" ? "" : icon
-    description: (_onlineCount != '-1' ? ('<font color="'+Theme.highlightColor+'">'+qsTr("%1 online").arg(_onlineCount)+"</font> ") : "")+
-                 (_memberCount != '-1' ? ('<font color="'+Theme.secondaryHighlightColor+'">'+qsTr("%1 members").arg(_memberCount)+"</font>") : "")
-/*description: ((_onlineCount != '-1' && _memberCount != '-1') ? '<font color="green">●</font> ' : "")+
-(_onlineCount != '-1' ? qsTr("%1 online").arg(_onlineCount) : "")+
-((_onlineCount != '-1' && _memberCount != '-1') ? '  <font color="gray">●</font> ' : "")+
-(_memberCount != '-1' ? qsTr("%1 members").arg(_memberCount) : "")*/
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
@@ -111,10 +114,18 @@ AboutPageBase {
 
     Component.onCompleted: {
         _develInfoSection.parent.visible = !busyIndicator.running
+        _develInfoSection.parent.children[3].textFormat = Text.RichText // description
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
+        _develInfoSection.parent.children[3].linkActivated.connect(function(link) {
+            // Workaround for replacing default ExternalUrlPage with the latest LinkHandler
+            pageStack.completeAnimation()
+            pageStack.pop(undefined, PageStackAction.Immediate)
+            LinkHandler.openOrCopyUrl(link)
+        })
+
         _features = {community:false, partnered:false, verified:false}
         _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
-        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, onlineCount, features) {
+        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, onlineCount, features, desc) {
             if (_legacyMode) {
                 memberCount = 3
                 onlineCount = 1
@@ -123,6 +134,7 @@ AboutPageBase {
             _memberCount = memberCount
             _onlineCount = onlineCount
             _features = features
+            description = shared.markdown(desc, _develInfoSection.parent.children[3].linkColor)
             busyIndicator.running = false
         })
     }

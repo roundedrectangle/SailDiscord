@@ -7,6 +7,7 @@ import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
 import Nemo.DBus 2.0
+import "modules/Opal/SupportMe"
 import "modules/js/showdown.min.js" as ShowDown
 import "modules/js/twemoji.min.js" as Twemoji
 
@@ -26,6 +27,8 @@ ApplicationWindow {
     }
 
     ShareAction { id: shareApi }
+
+    AskForSupport { contents: Component { MySupportDialog {} } }
 
     DBusInterface {
         id: globalProxy
@@ -69,15 +72,17 @@ ApplicationWindow {
           console.log(f)
         }
 
-        function showInfo(text) {
+        function showInfo(summary, text) {
             notifier.appIcon = "image://theme/icon-lock-information"
-            notifier.body = text
+            notifier.summary = summary || ''
+            notifier.body = text || ''
             notifier.publish()
         }
 
-        function showError(text) {
+        function showError(summary, text) {
             notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.body = text
+            notifier.summary = summary || ''
+            notifier.body = text || ''
             notifier.publish()
             console.log(text)
         }
@@ -116,7 +121,7 @@ ApplicationWindow {
 
                 if (type === "" || type === "unknown") {
                     data.contents = arguments[8]
-                    data.formatted = markdown(arguments[9], data._flags.edit)
+                    data.formatted = markdown(arguments[9], undefined, data._flags.edit)
                     data._ref = arguments[10]
                 }
                 if (type === "unknown") data.APIType = arguments[11]
@@ -132,27 +137,35 @@ ApplicationWindow {
             }
         }
 
-        function registerMessageCallbacks(guildid, channelid, finalCallback) {
-            python.setHandler("message", constructMessageCallback(convertCallbackType("message"), guildid, channelid, finalCallback))
-            python.setHandler("newmember", constructMessageCallback(convertCallbackType("newmember"), guildid, channelid, finalCallback))
-            python.setHandler("unkownmessage", constructMessageCallback(convertCallbackType("unkownmessage"), guildid, channelid, finalCallback))
+        function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback) {
+            // see convertCallbackType()
+            python.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
+            python.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
+            python.setHandler("unkownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
+            python.setHandler("messageedit", function(before, event, args) {
+                constructMessageCallback(convertCallbackType(event), guildid, channelid, function(history, data) {
+                    editCallback(before, data)
+                }).apply(null, args)
+            })
+            python.setHandler("messagedelete", function(id) { editCallback(id) })
         }
 
         function cleanupMessageCallbacks() {
             // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
             python.reset("message")
-            python.reset("join")
+            python.reset("newmember")
             python.reset("uknownmessage")
+            python.reset("messageedit")
+            python.reset("messagedelete")
         }
 
         function markdown(text, linkColor, edited) {
-            return emojify(
-                        "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
-                        +showdown.makeHtml((appSettings.twemoji ? '<span style="color:transparent">.</span>' : '')
-                                           +text
+            var e = emojify(text)
+            return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
+                        +showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
+                                           +e
                                            +(edited ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
                                            )
-                        )
         }
 
         function processServer(_id, name, icon) {
@@ -180,6 +193,19 @@ ApplicationWindow {
             if (!appSettings.twemoji) return text
             return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
         }
+
+        function constructStatus(statusIndex, onMobile) {
+            var result = ["",
+                          qsTranslate("status", "Online"),
+                          qsTranslate("status", "Offline"),
+                          qsTranslate("status", "Do Not Disturb"),
+                          qsTranslate("status", "Invisible"),
+                          qsTranslate("status", "Idle")
+                    ][statusIndex]
+            if (onMobile && result !== "")
+                result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+            return result
+        }
     }
 
     ConfigurationGroup {
@@ -198,6 +224,8 @@ ApplicationWindow {
                 setValue("usernameTutorialCompleted", undefined)
             if (appSettings.value("folders", null) !== null)
                 appSettings.setValue("folders", undefined)
+            if (appSettings.value("defaultUnknownReferences", null) !== null)
+                appSettings.setValue("defaultUnknownReferences", undefined)
         }
 
         ConfigurationGroup {
@@ -207,7 +235,6 @@ ApplicationWindow {
             // Behavior
             property bool ignorePrivate: false
             property bool defaultUnknownMessages: false
-            property bool defaultUnknownReferences: false
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
@@ -219,6 +246,7 @@ ApplicationWindow {
             property string messageGrouping: "d"
             property string oneAuthorPadding: "a"
             property bool highContrastMessages: false
+            property bool twemoji: true
 
             // Session
             property int cachePeriod: 1
@@ -228,7 +256,8 @@ ApplicationWindow {
             property string customProxy: ""
             property bool infoInNotifications: false
             property bool unformattedText: false
-            property bool twemoji: true
+            property bool modernUI: false
+            property bool developerMode: false
 
             onCachePeriodChanged: python.setCachePeriod(cachePeriod)
         }
@@ -245,7 +274,7 @@ ApplicationWindow {
         property var _refreshFirstPage: function() {}
 
         function init(loggedInHandler, serverHandler, dmHandler, refreshHandler) {
-            setHandler('logged_in', loggedInHandler) // function(username)
+            setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
                 var data = {image: '', folder: true, _id: _id, name: name, color: color, servers: []}
@@ -255,9 +284,12 @@ ApplicationWindow {
             setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: name, image: icon, dmChannel: channelId, textSendPermissions: perm}) })
             _refreshFirstPage = refreshHandler
 
-            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure: %1").arg(e)) })
-            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure: %1").arg(e)) })
-            setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented: %1").arg(e)) })
+            setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })
+            setHandler('loginFailure', function(e){ shared.showError(qsTranslate("Errors", "Login failure"), e) })
+            setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
+            setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
+            setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
+
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -266,7 +298,7 @@ ApplicationWindow {
             })
         }
 
-        onError: shared.showError(qsTranslate("Errors", "Python error: %1").arg(traceback))
+        onError: shared.showError(qsTranslate("Errors", "Python error"), traceback)
         onReceived: console.log("got message from python: " + data)
 
         function login(token) { call('main.comm.login', [token]) }
@@ -309,7 +341,7 @@ ApplicationWindow {
             }
         }
 
-        function getReference(channel, message, callback) { call('main.comm.get_reference', [channel, message], callback)}
+        function getReference(channel, message, callback) { call2('get_reference', [channel, message], callback)}
 
         function refresh() {
             disconnectClient()
@@ -318,5 +350,7 @@ ApplicationWindow {
         }
 
         function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium]) }
+
+        function call2(name, args, callback) { call('main.comm.'+name, args, callback) }
     }
 }

@@ -7,6 +7,7 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
+    property alias sections: secGroup
 
     SilicaFlickable {
         id: settingsContainer
@@ -27,6 +28,7 @@ Page {
             }
 
             ExpandingSectionGroup {
+                id: secGroup
                 ExpandingSection {
                     id: section
                     title: qsTr("Behaviour")
@@ -38,7 +40,7 @@ Page {
                         SectionHeader { text: qsTr("Channels list") }
 
                         TextSwitch {
-                            text: qsTr("Ignore private setting for channels and channel categories")
+                            text: qsTr("Show private channels")
                             onCheckedChanged: appSettings.ignorePrivate = checked
                             Component.onCompleted: checked = appSettings.ignorePrivate
                         }
@@ -62,11 +64,11 @@ Page {
                             bottomPadding: Theme.paddingMedium
                         }
 
-                        TextSwitch {
+                        /*TextSwitch {
                             text: qsTr("Use default type on unknown types")
                             checked: appSettings.defaultUnknownReferences
                             onCheckedChanged: appSettings.defaultUnknownReferences = checked
-                        }
+                        }*/
 
                         SectionHeader { text: qsTr("Message field") }
 
@@ -165,6 +167,12 @@ Page {
                             text: qsTr("High-contrast mode")
                             onCheckedChanged: appSettings.highContrastMessages = checked
                             Component.onCompleted: checked = appSettings.highContrastMessages
+                        }
+
+                        TextSwitch {
+                            text: qsTr("Use Twemoji instead of default Emoji")
+                            checked: appSettings.twemoji
+                            onCheckedChanged: appSettings.twemoji = checked
                         }
 
                         ButtonLayout {
@@ -302,11 +310,26 @@ Page {
                         }
 
                         SectionHeader { text: qsTr("Experimental") }
-                        TextSwitch {
-                            text: qsTr("Use Twemoji instead of default Emoji")
-                            checked: appSettings.twemoji
-                            onCheckedChanged: appSettings.twemoji = checked
+                        IconComboBox {
+                            label: qsTr("Overview mode")
+                            description: currentIndex == 1 ? qsTr("Tries to mimic the UI in real Discord") : qsTr("Classic UI with tabs")
+                            icon.source: "image://theme/icon-m-ambience"
+                            currentIndex: appSettings.modernUI ? 1 : 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("Classic") }
+                                MenuItem { text: qsTr("Modern") }
+                            }
+
+                           onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
                         }
+                        IconTextSwitch {
+                            icon.source: "image://theme/icon-m-developer-mode"
+                            text: qsTr("Developer mode")
+                            description: qsTr("Enables certain features useful for developers such as copying IDs")
+                            checked: appSettings.developerMode
+                            onCheckedChanged: appSettings.developerMode = checked
+                        }
+
                     }
                 }
             }

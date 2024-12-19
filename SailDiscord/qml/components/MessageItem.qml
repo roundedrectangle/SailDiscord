@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 import '../modules/Opal/LinkHandler'
+import '../modules/FancyContextMenu'
 
 // TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
@@ -14,6 +15,8 @@ ListItem {
     property date date
     property var attachments
     property var reference
+    property string msgid: ''
+    property bool managePermissions
 
     property string authorid // User-related
     property var flags
@@ -30,6 +33,11 @@ ListItem {
 
     property alias innerWidth: row.width
 
+    property bool showRequestableOptions: true
+    signal editRequested
+    signal deleteRequested
+    signal replyRequested
+
     id: root
     width: parent.width
     contentHeight: column.height
@@ -43,7 +51,7 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 2 || (appSettings.defaultUnknownReferences && reference.type == 1)) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            Component.onCompleted: if (reference.type == 1) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
 
         Row {
@@ -67,6 +75,7 @@ ListItem {
                 errorString: author
                 highlightOnClick: true
                 onClicked: openAboutUser()
+                enabled: _firstSameAuthor
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
@@ -130,7 +139,7 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 3) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
         }
     }
 
@@ -140,15 +149,41 @@ ListItem {
                        )
     }
 
-    menu: Component { ContextMenu {
-        MenuItem {text: qsTranslate("AboutUser", "About", "User")
+    menu: Component { FancyContextMenu {
+        listItem: root
+
+        FancyMenuRow {
+            FancyIconMenuItem {
+                icon.source: "image://theme/icon-m-clipboard"
+                onClicked: Clipboard.text = contents
+                visible: contents.length > 0
+            }
+            FancyIconMenuItem {
+                icon.source: "image://theme/icon-m-edit"
+                onClicked: editRequested()
+                visible: sent && showRequestableOptions
+            }
+            FancyIconMenuItem {
+                icon.source: "image://theme/icon-m-delete"
+                onClicked: deleteRequested()
+                visible: (sent || managePermissions) && showRequestableOptions
+            }
+            FancyIconMenuItem {
+                icon.source: "image://theme/icon-m-message-reply"
+                onClicked: replyRequested()
+                visible: showRequestableOptions
+            }
+        }
+        FancyAloneMenuItem {
+            icon.source: "image://theme/icon-m-about"
+            text: qsTranslate("AboutUser", "About this member", "User")
             visible: authorid != '-1'
             onClicked: openAboutUser()
         }
-
-        MenuItem { text: qsTr("Copy")
-            onClicked: Clipboard.text = contents
-            visible: contents.length > 0
+        FancyAloneMenuItem {
+            text: qsTranslate("General", "Copy message ID")
+            visible: appSettings.developerMode && msgid
+            onClicked: Clipboard.text = msgid
         }
     }}
 

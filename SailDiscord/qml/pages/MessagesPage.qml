@@ -12,9 +12,15 @@ Page {
     property string name
     property bool isDemo: false
     property bool sendPermissions: true
+    property bool managePermissions: false
     property bool isDM: false
     property string userid: ''
     property string usericon: ''
+
+    property string previouslyEnteredText: ''
+    property int currentFieldAction: 0 // 0: none, 1: editing, 2: replying
+    property string actionID: '-1' // editing or replying message ID
+    property string actionInfo: '' // replying contents
 
     Timer {
         id: activeFocusTimer
@@ -25,7 +31,36 @@ Page {
     function sendMessage() {
         if (!isDemo) python.sendMessage(sendField.text)
         else msgModel.appendDemo(true, sendField.text)
-        sendField.text = ""
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        currentFieldAction = 0
+        if (appSettings.focusAfterSend) activeFocusTimer.start()
+    }
+
+    function applyEdit() {
+        if (isDemo) return
+        python.call2('edit_message', [actionID, sendField.text])
+        var i = msgModel.findIndexById(actionID)
+        if (i >= 0) {
+            i = msgModel.get(i)
+            i.contents = sendField.text
+            i.formatted = shared.markdown(sendField.text, true)
+            // We don't need to set _flags.edit since we don't use it here
+        }
+
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        actionID = '-1'
+        currentFieldAction = 0
+        if (appSettings.focusAfterSend) activeFocusTimer.start()
+    }
+
+    function applyReply() {
+        if (!isDemo) python.call2('reply_to', [actionID, sendField.text])
+        else msgModel.appendDemo(true, sendField.text)
+        sendField.text = previouslyEnteredText
+        previouslyEnteredText = ''
+        currentFieldAction = 0
         if (appSettings.focusAfterSend) activeFocusTimer.start()
     }
 
@@ -126,16 +161,31 @@ Page {
                         attachments: _attachments
                         reference: _ref
                         flags: _flags
+                        msgid: messageId
+                        managePermissions: page.managePermissions
+                        showRequestableOptions: !isDemo
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                         }
-
                         Component.onCompleted: {
                             updateMasterWidth()
                         }
                         onMasterWidthChanged: updateMasterWidth()
                         onInnerWidthChanged: updateMasterWidth()
+
+                        onEditRequested: {
+                            previouslyEnteredText = sendField.text
+                            sendField.text = model.contents
+                            actionID = messageId
+                            currentFieldAction = 1
+                        }
+                        onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; python.call2('delete_message', [messageId]) })
+                        onReplyRequested: {
+                            actionID = messageId
+                            currentFieldAction = 2
+                            actionInfo = model.contents
+                        }
                     }
                 }
 
@@ -146,37 +196,81 @@ Page {
             }
         }
 
-        Row {
+        Column {
             id: sendBox
             width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
             visible: sendPermissions
             anchors.bottom: parent.bottom
+            spacing: Theme.paddingLarge
 
-            TextArea {
-                id: sendField
-                width: parent.width - sendButton.width
-
-                placeholderText: qsTr("Type something")
-                hideLabelOnEmptyField: false
-                labelVisible: false
-                anchors.verticalCenter: parent.verticalCenter
-                backgroundStyle: TextEditor.UnderlineBackground
-                horizontalAlignment: TextEdit.AlignLeft
-
-                EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
-                EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+            Item {
+                visible: currentFieldAction > 0
+                width: parent.width - Theme.horizontalPageMargin*2
+                anchors.horizontalCenter: parent.horizontalCenter
+                height: Math.max(children[0].height, children[1].height)
+                Icon {
+                    id: replyActionIcon
+                    visible: currentFieldAction == 2
+                    anchors.left: parent.left
+                    source: "image://theme/icon-m-message-forward"
+                }
+                Label {
+                    anchors.left: replyActionIcon.visible ? replyActionIcon.right : parent.left
+                    anchors.leftMargin: replyActionIcon.visible ? Theme.paddingLarge : 0
+                    anchors.verticalCenter: parent.verticalCenter
+                    text: currentFieldAction == 1 ? qsTr("Editing message") : actionInfo
+                    font.bold: true
+                    color: Theme.highlightColor
+                    width: parent.width - (undoActionButton.width + Theme.paddingLarge) - (replyActionIcon.visible ? (replyActionIcon.width + Theme.paddingLarge) : 0)
+                    truncationMode: TruncationMode.Fade
+                }
+                IconButton {
+                    id: undoActionButton
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    icon.source: "image://theme/icon-m-clear"
+                    onClicked: {
+                        if (currentFieldAction == 1) sendField.text = previouslyEnteredText
+                        if (previouslyEnteredText) activeFocusTimer.start()
+                        previouslyEnteredText = ''
+                        actionID = '-1'
+                        actionInfo = ''
+                        currentFieldAction = 0
+                    }
+                }
             }
 
-            IconButton {
-                id: sendButton
-                width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
-                height: width
-                enabled: sendField.text.length !== 0
-                anchors.bottom: parent.bottom
-                icon.source: "image://theme/icon-m-send"
+            Row {
+                width: parent.width
+                TextArea {
+                    id: sendField
+                    width: parent.width - sendButton.width
 
-                onClicked: sendMessage()
+                    placeholderText: qsTr("Type something")
+                    hideLabelOnEmptyField: false
+                    labelVisible: false
+                    anchors.verticalCenter: parent.verticalCenter
+                    backgroundStyle: TextEditor.UnderlineBackground
+                    horizontalAlignment: TextEdit.AlignLeft
+
+                    EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
+                    EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+                }
+
+                IconButton {
+                    id: sendButton
+                    width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                    height: width
+                    enabled: sendField.text.length !== 0
+                    anchors.bottom: parent.bottom
+                    icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
+
+                    onClicked: switch (currentFieldAction) {
+                               case 0: sendMessage();break
+                               case 1: applyEdit();break
+                               case 2: applyReply()
+                               }
+                }
             }
         }
 
@@ -210,7 +304,7 @@ Page {
                                       _masterWidth: -1, _date: new Date(),
                                       _flags: {edit: false, bot: false, nickAvailable: false,
                                           system: false, color: undefined},
-                                      _sent: false, contents: "", formattedContents: "",
+                                      _sent: false, contents: "", formatted: "",
                                       _author: "unknown", _pfp: '',
                                       _ref: {}, _attachments: [],
                                   }, toAppend))
@@ -219,7 +313,7 @@ Page {
         function appendDemo(isyou, thecontents, additionalOptions) {
             additionalOptions = additionalOptions !== undefined ? additionalOptions : {}
             appendDemo2(combineObjects(
-                            {_sent: isyou, contents: thecontents, formattedContents: shared.markdown(thecontents, additionalOptions._flags ? additionalOptions._flags.edit : false), _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
+                            {_sent: isyou, contents: thecontents, formatted: shared.markdown(thecontents, additionalOptions._flags ? additionalOptions._flags.edit : false), _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
                             additionalOptions))
         }
 
@@ -253,17 +347,30 @@ Page {
             // TODO: attachments and replies
             //appendDemo(true, "Hey everyone, look at this pic!", {_attachments: [{}]})
 
-            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formattedContents: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
-            appendDemo2({contents: "I am a system guy", formattedContents: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
-            appendDemo2({contents: "I am a bot!", formattedContents: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
+            appendDemo(true, "Markdown: *Italic*, **bold**, ***both***, `code`")
+            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formatted: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
+            appendDemo2({contents: "I am a system guy", formatted: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
+            appendDemo2({contents: "I am a bot!", formatted: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
             appendDemo(true, "Edited message...", {_flags: {edit: true}})
             appendDemo(true, "First message!")
+        }
+
+        function findIndexById(id) {
+            for(var i=0; i < count; i++)
+                if (get(i).messageId == id) return i
+            return -1
         }
 
         Component.onCompleted: {
             if (isDemo) generateDemo()
             else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
                 if (history) msgModel.append(data); else msgModel.insert(0, data)
+            }, function(before, data) {
+                var i = findIndexById(before)
+                if (i >= 0) {
+                    if (data) set(i, data)
+                    else remove(i)
+                }
             })
         }
 

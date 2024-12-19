@@ -15,6 +15,7 @@ AboutPageBase {
     property string icon
     property bool isClient: false
     property bool pulleyMenuVisible: !isClient
+    property bool showSettings: isClient
 
     property date memberSince
     property string _status
@@ -33,7 +34,7 @@ AboutPageBase {
     _licenseInfoSection.visible: false
     _develInfoSection.visible: false
     appVersion: _status != "" ? 'a' : '' // makes it visible
-    licenses: License {spdxId: "WTFPL"} // suppress No license errors
+    //licenses: License {spdxId: "WTFPL"} // suppress No license errors
 
     Loader {
         sourceComponent: pulleyMenuVisible ? pullMenuComponent : null
@@ -113,7 +114,25 @@ AboutPageBase {
         InfoSection {
             title: qsTr("Discord member since")
             text: Format.formatDate(memberSince, Formatter.DateFull)
+        },
+        InfoSection {
+            id: settingsSection
+            title: qsTr("Settings")
+            visible: showSettings
+            Loader {
+                id: settingsLoader
+                parent: settingsSection
+                width: parent.width
+                height: item ? item.sections.height : 0
+                active: showSettings
+                sourceComponent: Component {
+                    SettingsPage {
+                        sections.parent: settingsLoader
+                    }
+                }
+            }
         }
+
     ]
 
     Component.onCompleted: {
@@ -129,15 +148,15 @@ AboutPageBase {
         python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)
-            _status = constructStatus(status, onMobile)
+            _status = shared.constructStatus(status, onMobile)
             busyIndicator.running = false
             // by default these are empty strings:
             globalName = allNames.global
             username = allNames.username
 
-            if (isClient) {
+            if (!isClient) /*{
                 page.icon = arguments[5]
-            } else {
+            } else*/ {
                 isBot = arguments[5]
                 isSystem = arguments[6]
                 isFriend = arguments[7]
@@ -145,18 +164,5 @@ AboutPageBase {
             }
         })
         python.requestUserInfo(userid) // for client, it will be -1
-    }
-
-    function constructStatus(statusIndex, onMobile) {
-        var result = ["",
-                      qsTranslate("status", "Online"),
-                      qsTranslate("status", "Offline"),
-                      qsTranslate("status", "Do Not Disturb"),
-                      qsTranslate("status", "Invisible"),
-                      qsTranslate("status", "Idle")
-                ][statusIndex]
-        if (onMobile && result !== "")
-            result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
-        return result
     }
 }

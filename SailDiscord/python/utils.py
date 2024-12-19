@@ -10,12 +10,14 @@ from pathlib import Path
 import asyncio
 import urllib.parse
 import re
+import traceback as tb
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
+AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
@@ -129,7 +131,12 @@ async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=
     while search:
         e = int(search[2])
         if e not in fetched_emojis:
-            fetched = (await message.guild.fetch_emoji(e)).url
+            try: fetched = (await message.guild.fetch_emoji(e)).url
+            except discord.errors.NotFound as err:
+                qsend("notfoundError", str(err))
+                res = res[:search.start()] + f'{search[1]}:{e}' +  res[search.end():]
+                search = re.search(pattern, res)
+                continue
             fetched_emojis[e] = str(cacher.get_cached_path(f'{message.guild.id}_{e}', ImageType.EMOJI, fetched))
             cacher.cache_image_bg(fetched, f'{message.guild.id}_{e}', ImageType.EMOJI)
         res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e]}">' + res[search.end():]
@@ -143,3 +150,6 @@ def usernames(user: Union[discord.User, discord.Member]):
             additional['global'] = user.global_name
     additional['username'] = user.name
     return additional
+
+def format_exc(e: Exception):
+    return f'{type(e).__name__}: {e}\n' + ''.join(tb.format_exception(None,e,e.__traceback__))

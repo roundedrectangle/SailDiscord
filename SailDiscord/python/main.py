@@ -34,14 +34,13 @@ async def generate_message(message: discord.Message, is_history=False):
         'channel': '-1', 'message': '-1'}
     if message.reference:
         ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
-        if comm.client.ensure_current_channel(message.reference.channel_id, message.reference.guild_id):
-            ref['type'] = 2 # Reply
+        if message.reference.type == discord.MessageReferenceType.reply:
+            ref['type'] = 1
             ref['channel'] = '-1'
         # message.flags.is_crossposted (.crossposted?) - followed channels feature, not forwarded messages
         # imagine not making a forward option for 9 years...
-        elif not message.is_system(): # FIXME once discord.py-self implements https://discord.com/developers/docs/change-log#message-forwarding-rollout
-            ref['type'] = 3 # Forward
-        else: ref['type'] = 1 # Unknown
+        elif message.reference.type == discord.MessageReferenceType.forward:
+            ref['type'] = 2
 
     event, args = '', ()
     if t in (discord.MessageType.default, discord.MessageType.reply):
@@ -54,8 +53,16 @@ async def generate_message(message: discord.Message, is_history=False):
 
 async def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
-    event, args = await generate_message(message, is_history)
-    qsend(event, *args)
+    try:
+        event, args = await generate_message(message, is_history)
+        qsend(event, *args)
+    except Exception as e:
+        qsend("messageError", format_exc(e))
+
+async def send_edited_message(before_id: int, after: Union[discord.Message, Any]):
+    """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
+    event, args = await generate_message(after)
+    qsend('messageedit', before_id, event, args)
 
 class MyClient(discord.Client):
     current_server: Optional[discord.Guild] = None
@@ -65,18 +72,36 @@ class MyClient(discord.Client):
     pending_close_task: Optional[asyncio.Task] = None
 
     async def on_ready(self):
-        qsend('logged_in', self.user.display_name)
         comm.ensure_constants()
+        # Setup control variables
+        self.loop = asyncio.get_running_loop()
+
+        icon = '' if self.user.display_avatar == None else \
+            str(comm.cacher.get_cached_path(self.user.id, ImageType.MYSELF, default=self.user.display_avatar))
+        qsend('logged_in', self.user.display_name, icon,
+            StatusMapping(self.status).index if StatusMapping.has_value(self.status) else 0,
+            self.is_on_mobile(),
+        )
+        
         send_servers(self.sorted_guilds_and_folders, comm.cacher)
         send_dms(self.users, comm.cacher)
 
-        # Setup control variables
-        self.loop = asyncio.get_running_loop()
+        if icon != '':
+            comm.cacher.cache_image_bg(str(self.user.display_avatar), self.user.id, ImageType.MYSELF)
 
     async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
             await send_message(message)
             await message.ack()
+
+    async def on_message_edit(self, before: discord.Message, after: discord.Message):
+        if self.ensure_current_channel(before.channel, before.guild):
+            await send_edited_message(before.id, after)
+            await after.ack()
+
+    async def on_message_delete(self, message: discord.Message):
+        if self.ensure_current_channel(message.channel, message.guild):
+            qsend("messagedelete", message.id)
 
     async def get_last_messages(self, before: Optional[Union[discord.abc.Snowflake, datetime, int]]=None, limit=30):
         ch: Union[discord.TextChannel, discord.DMChannel] = self.get_channel(self.current_channel.id) # pyright: ignore[reportAssignmentType]
@@ -92,7 +117,7 @@ class MyClient(discord.Client):
                 break
             await send_message(m, True)
 
-    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Union[asyncio.Future, Any]:
+    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Any:
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
         future = asyncio.run_coroutine_threadsafe(courutine, self.loop)
         if result_required: return future.result(timeout)
@@ -128,7 +153,7 @@ class MyClient(discord.Client):
     async def send_user_info(self, user_id):
         user_id = int(user_id)
         if user_id == -1:
-            send_myself(self, comm.cacher)
+            send_myself(self)
             return
         elif self.ensure_current_channel() and self.current_server != None:
             user = await self.current_server.fetch_member_profile(user_id)
@@ -147,6 +172,12 @@ class MyClient(discord.Client):
                 folders.append(f if f.id or len(f) != 1 else f.guilds[0])
                 loaded_ids += (g.id for g in f.guilds)
         return folders + list(g for g in self.guilds if g.id not in loaded_ids)
+    
+    async def get_message(self, message_id) -> discord.Message:
+        message_id = int(message_id)
+        if not self.current_channel:
+            raise RuntimeError("Current channel was not set but delete requested")
+        return await self.current_channel.fetch_message(message_id)
 
 class Communicator:
     downloads: Optional[Path] = None
@@ -276,7 +307,7 @@ class Communicator:
             ch = self.client.current_channel
         else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
         m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True) # pyright: ignore[reportAttributeAccessIssue]
-        event, args = self.client.run_asyncio_threadsafe(generate_message(m), True) # pyright: ignore[reportGeneralTypeIssues]
+        event, args = self.client.run_asyncio_threadsafe(generate_message(m), True)
         return (event, *args)
 
     @attributeerror_safe
@@ -293,10 +324,22 @@ class Communicator:
     def send_friend_request(self, user_id: int):
         user = self.client.run_asyncio_threadsafe(self.client.fetch_user(user_id), True)
         try:
-            if not user.is_friend(): # pyright: ignore[reportAttributeAccessIssue]
-                self.client.run_asyncio_threadsafe(user.send_friend_request(), True) # pyright: ignore[reportAttributeAccessIssue]
+            if not user.is_friend():
+                self.client.run_asyncio_threadsafe(user.send_friend_request(), True)
         except discord.errors.CaptchaRequired as e:
             qsend('captchaError', str(e))
+    
+    def edit_message(self, message_id: Union[str, int], new_content: str):
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
+        self.client.run_asyncio_threadsafe(msg.edit(content=new_content), True)
+    
+    def delete_message(self, message_id: Union[str, int]):
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
+        self.client.run_asyncio_threadsafe(msg.delete(), True)
+
+    def reply_to(self, message_id: Union[str, int], content: str):
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
+        self.client.run_asyncio_threadsafe(msg.reply(content), True)
 
 
 comm = Communicator()
