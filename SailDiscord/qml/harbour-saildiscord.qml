@@ -7,6 +7,7 @@ import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
 import Nemo.DBus 2.0
+import "modules/Opal/SupportMe"
 import "modules/js/showdown.min.js" as ShowDown
 import "modules/js/twemoji.min.js" as Twemoji
 
@@ -26,6 +27,11 @@ ApplicationWindow {
     }
 
     ShareAction { id: shareApi }
+
+    /*AskForSupport {
+        interval: 1
+        contents: Component { MySupportDialog {} }
+    }*/
 
     DBusInterface {
         id: globalProxy
