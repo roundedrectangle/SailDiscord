@@ -177,23 +177,23 @@
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
         <source>DMs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">DM</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uppdatera</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
         <source>Servers</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Servrar</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
         <source>Me</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jag</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
@@ -222,44 +222,38 @@
         <translation>Kunde inte läsa in bilden %1. Rapportera detta till utvecklarna.</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="258"/>
-        <source>Connection failure: %1</source>
-        <translation>Anslutningsfel: %1</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="287"/>
+        <source>Connection failure</source>
+        <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="259"/>
-        <source>Login failure: %1</source>
-        <translation>Inloggningsfel: %1</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
+        <source>Login failure</source>
+        <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="260"/>
-        <source>Captcha required but not implemented: %1</source>
-        <translation>Captcha krävs, men inte implementerad: %1</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="289"/>
+        <source>Captcha required but not implemented</source>
+        <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="269"/>
-        <source>Python error: %1</source>
-        <translation>Python-fel: %1</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="290"/>
+        <source>404 Not Found</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="65"/>
-        <source>DMs</source>
-        <translation>DM</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
+        <source>A message failed to load</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="75"/>
-        <location filename="../qml/pages/FirstPage.qml" line="137"/>
-        <source>Refresh</source>
-        <translation>Uppdatera</translation>
+        <location filename="../qml/harbour-saildiscord.qml" line="301"/>
+        <source>Python error</source>
+        <translation>Python-fel</translation>
     </message>
 </context>
 <context>
     <name>General</name>
-    <message>
-        <location filename="../qml/pages/FirstPage.qml" line="223"/>
-        <source>Me</source>
-        <translation>Jag</translation>
-    </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="96"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
@@ -267,9 +261,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/FirstPage.qml" line="128"/>
-        <source>Servers</source>
-        <translation>Servrar</translation>
+        <location filename="../qml/components/MessageItem.qml" line="184"/>
+        <source>Copy message ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ServerListItem.qml" line="48"/>
+        <source>Copy server ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DMsView.qml" line="30"/>
+        <source>Copy user ID</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -372,7 +376,7 @@
     <message>
         <location filename="../qml/pages/ModernOverview.qml" line="36"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera</translation>
     </message>
 </context>
 <context>
@@ -944,7 +948,42 @@
         <translation>Använd Twemoji istället för standardemoji</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="325"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
+        <source>Overview mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
+        <source>Tries to mimic the UI in real Discord</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
+        <source>Classic UI with tabs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <source>Classic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
+        <source>Modern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="327"/>
+        <source>Developer mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="328"/>
+        <source>Enables certain features useful for developers such as copying IDs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="348"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>

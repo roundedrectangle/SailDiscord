@@ -153,7 +153,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="120"/>
         <source>Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation>Impostazioni</translation>
     </message>
 </context>
 <context>
@@ -177,28 +177,28 @@
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
         <source>DMs</source>
-        <translation type="unfinished">Messaggi</translation>
+        <translation>Messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
         <source>Servers</source>
-        <translation type="unfinished">Server</translation>
+        <translation>Server</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
         <source>Me</source>
-        <translation type="unfinished">Utente</translation>
+        <translation>Utente</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
         <source>Settings</source>
-        <translation type="unfinished">Impostazioni</translation>
+        <translation >Impostazioni</translation>
     </message>
 </context>
 <context>
@@ -376,7 +376,7 @@
     <message>
         <location filename="../qml/pages/ModernOverview.qml" line="36"/>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
 </context>
 <context>
@@ -1039,7 +1039,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="167"/>
         <source>(edited)</source>
-        <translation type="unfinished">Modificati</translation>
+        <translation>(modificati)</translation>
     </message>
 </context>
 <context>
