@@ -28,7 +28,7 @@ ListItem {
                 width: Theme.iconSizeMedium
                 height: width
                 source: switch (reference.type) {
-                        case 1: return "image://theme/icon-m-message-reply"
+                        case 1: return "image://theme/icon-m-rotate-right"
                         case 2: return "image://theme/icon-m-message-forward"
                         default: return "image://theme/icon-m-question"
                         }
@@ -56,6 +56,36 @@ ListItem {
                         color: Theme.secondaryHighlightColor
                     }
                 }
+
+                Component {
+                    id: failedInfoItem
+                    Row {
+                        width: parent.width
+                        spacing: children[0].visible ? Theme.paddingMedium : 0
+                        Icon {
+                            source: "image://theme/icon-m-" + (reference.state == 1 ? "delete" : "warning")
+                            anchors.verticalCenter: parent.verticalCenter
+                            visible: reference.state != 3
+                        }
+
+                        Label {
+                            text: switch(reference.state) {
+                                  case 1: return qsTr("Original message was deleted")
+                                  case 3: return qsTr("Forwarded message")
+                                  default: return qsTr("Reference failed to load")
+                                  }
+
+                            fontSizeMode: Text.HorizontalFit
+                            minimumPixelSize: Theme.fontSizeExtraSmall
+                            truncationMode: TruncationMode.Fade
+
+                            color: Theme.secondaryHighlightColor
+                            font.italic: true
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width - parent.children[0].width - parent.spacing*1
+                        }
+                    }
+                }
             }
         }
 
@@ -77,29 +107,31 @@ ListItem {
     }
 
     Component.onCompleted: {
-        if (reference.type == 0) return
-        python.getReference(reference.channel, reference.message, function(data) {
-            if (!root || !data) return
-            _resolvedType = shared.convertCallbackType(data[0])
-
-            shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, data.slice(1))
-            _resolvedReference._attachments = shared.attachmentsToListModel(root, _resolvedReference._attachments)
-            contentLoader.sourceComponent = null // reload
-            switch (data[0]) {
-            case "message":
-                infoLoader.sourceComponent = defaultInfoItem
-                contentLoader.sourceComponent = defaultItem
-                break
-            case "unknownmessage":
-                contentLoader.sourceComponent = appSettings.defaultUnknownMessages ? defaultItem : systemItem
-                infoLoader.sourceComponent = appSettings.defaultUnknownMessages ? defaultInfoItem : undefined
-                break
-            default: infoLoader.sourceComponent = systemItem
-            }
-        })
+        if (reference.type == 0 || !root) return
+        if (reference.state == 0 || reference.state == 1) {
+            infoLoader.sourceComponent = failedInfoItem
+            return
+        }
+        _resolvedType = shared.convertCallbackType(reference.resolvedType)
+        shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, reference.resolved)
+        _resolvedReference._attachments = shared.attachmentsToListModel(root, _resolvedReference._attachments)
+        contentLoader.sourceComponent = null // reload
+        switch (_resolvedType) {
+        case "":
+            infoLoader.sourceComponent = reference.state == 3 ? failedInfoItem : defaultInfoItem
+            contentLoader.sourceComponent = defaultItem
+            break
+        case "unknown":
+            contentLoader.sourceComponent = appSettings.defaultUnknownMessages ? defaultItem : systemItem
+            infoLoader.sourceComponent = appSettings.defaultUnknownMessages ? (reference.state == 3 ? failedInfoItem : defaultInfoItem) : undefined
+            break
+        default: infoLoader.sourceComponent = systemItem
+        }
     }
 
     menu: Component { ContextMenu {
+        hasContent: children[0].visible && children[1].visible
+
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
             visible: !!_resolvedReference && _resolvedReference.userid != '-1' && !!_resolvedReference.userid
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference._author, icon: _resolvedReference._pfp, nicknameGiven: _resolvedReference._flags.nickAvailable })

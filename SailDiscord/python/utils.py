@@ -18,6 +18,7 @@ import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
 AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
+dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "pfp": '', "bot": False, "system": False, "color": ''}
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""

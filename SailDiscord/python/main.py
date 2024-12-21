@@ -27,29 +27,50 @@ import discord, requests, aiohttp.connector
 QMLLIVE_DEBUG = True
 
 async def generate_message(message: discord.Message, is_history=False):
-    t = message.type
     base = generate_base_message(message, comm.cacher, comm.client.user.id, is_history)
 
     ref = {'type': 0, # No reference
-        'channel': '-1', 'message': '-1'}
+        #'channel': '-1', 'message': '-1',
+        'state': 0, # 0: failed to load, 1: deleted, 2: loaded, 3: loaded from snapshot
+        'resolvedType': '', 'resolved': {}}
     if message.reference:
-        ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
-        if message.reference.type == discord.MessageReferenceType.reply:
-            ref['type'] = 1
-            ref['channel'] = '-1'
-        # message.flags.is_crossposted (.crossposted?) - followed channels feature, not forwarded messages
-        # imagine not making a forward option for 9 years...
-        elif message.reference.type == discord.MessageReferenceType.forward:
-            ref['type'] = 2
+        #ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
+        ref['type'] = 1 if message.reference.type == discord.MessageReferenceType.reply else \
+            2 if message.reference.type == discord.MessageReferenceType.forward else 0
 
-    event, args = '', ()
-    if t in (discord.MessageType.default, discord.MessageType.reply):
-        event, args = 'message', (*base, message.content, await emojify(message, comm.cacher, comm.emoji_size), ref)
-    elif t == discord.MessageType.new_member:
-        event, args = 'newmember', base
-    else: event, args = 'unkownmessage', (*base, message.content, await emojify(message, comm.cacher, comm.emoji_size), ref, message.type.name)
+        if message.reference.resolved is None:
+            # First check if there is a snapshot attached
+            if message.message_snapshots:
+                s = message.message_snapshots[-1]
+                if s.cached_message:
+                    ref['resolvedType'], ref['resolved'] = await generate_message(s.cached_message)
+                    ref['state'] = 2
+                else:
+                    # Construct everything manually
+                    
+                    ref['resolvedType'], extra = await generate_extra_message(s)
+                    ref['resolved'] = (
+                        '-1', '-1', '-1', qml_date(s.created_at), bool(message.edited_at), dummy_qml_user_info, False, convert_attachments(s.attachments, comm.cacher),
+                        *extra,
+                        )
+                    ref['state'] = 3
+            else:
+                # Try to resolve manually
+                try:
+                    m = await (await comm.client.fetch_channel(message.reference.channel_id)).fetch_message(message.reference.message_id) # pyright: ignore[reportAttributeAccessIssue]
+                    ref['resolvedType'], ref['resolved'] = await generate_message(m)
+                    ref['state'] = 2
+                except Exception as e:
+                    qsend("referenceError", format_exc(e))
+                    ref['state'] = 0
+        elif isinstance(message.reference.resolved, discord.DeletedReferencedMessage):
+            ref['state'] = 1
+        else:
+            ref['resolvedType'], ref['resolved'] = await generate_message(message.reference.resolved)
+            ref['state'] = 2
 
-    return (event, args)
+    event, args = await generate_extra_message(message, comm.cacher, comm.emoji_size, ref)
+    return event, base+args
 
 async def send_message(message: Union[discord.Message, Any], is_history=False):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
@@ -306,7 +327,7 @@ class Communicator:
         if channel_id == '-1':
             ch = self.client.current_channel
         else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
-        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True) # pyright: ignore[reportAttributeAccessIssue]
+        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
         event, args = self.client.run_asyncio_threadsafe(generate_message(m), True)
         return (event, *args)
 
