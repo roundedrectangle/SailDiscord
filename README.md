@@ -117,13 +117,10 @@ SailJail will NOT work in this case
 
 The code is based on:
 
-- a lot:
   - [SailfishOS telegram client Fernschreiber](https://github.com/Wunderfitz/harbour-fernschreiber) - some of the UI
-
-- a little:
   - [sailfish-rpn-calculator](https://github.com/lainwir3d/sailfish-rpn-calculator), and its [@poetaster's fork](https://github.com/poetaster/sailfish-rpn-calculator) - early packaging issues
   - https://github.com/Rapptz/discord.py/issues/9690#issuecomment-2417783032 - going offline/closing connection
-  - https://github.com/ichthyosaurus/harbour-file-browser - zoom pictures
+  - https://github.com/ichthyosaurus/harbour-file-browser - zooming pictures
 
 Core functionality:
 
