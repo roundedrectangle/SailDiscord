@@ -133,7 +133,7 @@ ApplicationWindow {
             switch(pyType) {
             case "message": return ''
             case "newmember": return 'join'
-            case "unkownmessage": return 'unknown'
+            case "unknownmessage": return 'unknown'
             }
         }
 
@@ -141,7 +141,7 @@ ApplicationWindow {
             // see convertCallbackType()
             python.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
             python.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
-            python.setHandler("unkownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
+            python.setHandler("unknownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
             python.setHandler("messageedit", function(before, event, args) {
                 constructMessageCallback(convertCallbackType(event), guildid, channelid, function(history, data) {
                     editCallback(before, data)

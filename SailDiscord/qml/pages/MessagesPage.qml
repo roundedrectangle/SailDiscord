@@ -98,7 +98,7 @@ Page {
             id: messagesList
             anchors {
                 top: header.bottom
-                bottom: sendBox.top
+                bottom: sendBox.visible ? sendBox.top : parent.bottom
             }
             width: parent.width
             model: msgModel
