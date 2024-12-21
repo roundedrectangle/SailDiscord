@@ -75,7 +75,7 @@ ListItem {
                 errorString: author
                 highlightOnClick: true
                 onClicked: openAboutUser()
-                enabled: _firstSameAuthor
+                enabled: _firstSameAuthor && showRequestableOptions
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
