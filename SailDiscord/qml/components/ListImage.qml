@@ -5,7 +5,7 @@ import QtGraphicalEffects 1.0
 HighlightImage {
     property string icon: ''
     property bool forceVisibility: false // force to be visible and full size even when no icon is available
-    property bool errorString
+    property string errorString
     property bool extendedRadius: false
 
     id: roundedIcon

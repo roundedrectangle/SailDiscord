@@ -226,6 +226,8 @@ ApplicationWindow {
                 appSettings.setValue("folders", undefined)
             if (appSettings.value("defaultUnknownReferences", null) !== null)
                 appSettings.setValue("defaultUnknownReferences", undefined)
+            if (appSettings.value("emptySpace", null) !== null)
+                appSettings.setValue("emptySpace", undefined)
         }
 
         ConfigurationGroup {
@@ -240,7 +242,7 @@ ApplicationWindow {
             property bool focudOnChatOpen: false
 
             // Look and feel
-            property bool emptySpace: true
+            //property bool emptySpace: false
             property string sentBehaviour: "r"
             property bool alignMessagesText: true
             property string messageGrouping: "d"

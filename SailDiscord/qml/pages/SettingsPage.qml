@@ -100,12 +100,16 @@ Page {
                         width: lookSection.width
                         spacing: Theme.paddingSmall
 
-                        SectionHeader { text: qsTr("Servers list") }
+                        SectionHeader {
+                            text: qsTr("Servers list")
+                            visible: false
+                        }
 
                         TextSwitch {
                             text: qsTr("Keep empty space in servers without icons")
-                            onCheckedChanged: appSettings.emptySpace = checked
-                            Component.onCompleted: checked = appSettings.emptySpace
+                            //onCheckedChanged: appSettings.emptySpace = checked
+                            //Component.onCompleted: checked = appSettings.emptySpace
+                            visible: false
                         }
 
 

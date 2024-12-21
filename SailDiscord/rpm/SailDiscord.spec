@@ -1,4 +1,4 @@
-%define package_library "yes"
+%define package_library "no"
 # See README
 
 Name:       harbour-saildiscord
@@ -30,6 +30,7 @@ BuildRequires:  python3-devel
 BuildRequires: python3-pip
 BuildRequires: libjpeg-turbo
 BuildRequires: libjpeg-turbo-devel
+BuildRequires: git
 %endif
 
 %if %{package_library} == "no"

@@ -103,20 +103,36 @@ SilicaFlickable {
                                 opacity: selected ? 1 : 0
                                 Behavior on opacity { FadeAnimator {} }
                             }
-                            Item {
+                            Loader {
                                 id: serverImage
                                 width: parent.width - indicatorRectangle.width
                                 height: width
-                                ListImage {
-                                    icon: image
-                                    extendedRadius: selected
-                                    anchors {
-                                        fill: parent
-                                        margins: Theme.paddingSmall
+                                sourceComponent: (image != "None" && image != '') ? serverImageComponent : serverImagePlaceholderComponent
+                                Component {
+                                    id: serverImageComponent
+                                    ListImage {
+                                        icon: image
+                                        extendedRadius: selected
+                                        anchors {
+                                            fill: parent
+                                            margins: Theme.paddingSmall
+                                            centerIn: parent
+                                        }
+                                        errorString: name
+                                        enabled: false
                                     }
-                                    errorString: name
-                                    anchors.centerIn: parent
-                                    enabled: false
+                                }
+                                Component {
+                                    id: serverImagePlaceholderComponent
+                                    PlaceholderImage {
+                                        text: name
+                                        extendedRadius: selected
+                                        anchors {
+                                            fill: parent
+                                            margins: Theme.paddingSmall
+                                            centerIn: parent
+                                        }
+                                    }
                                 }
                             }
                         }

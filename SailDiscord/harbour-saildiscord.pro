@@ -26,6 +26,7 @@ DISTFILES += \
     qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
     qml/components/MessageReference.qml \
+    qml/components/PlaceholderImage.qml \
     qml/components/ServerListItem.qml \
     qml/components/SettingsComboBox.qml \
     qml/components/SystemMessageItem.qml \

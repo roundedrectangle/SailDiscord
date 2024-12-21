@@ -9,22 +9,38 @@ ListItem {
     property string icon
     property bool defaultActions: true
 
-    property bool _iconAvailable: (icon != "None" && icon != "") || appSettings.emptySpace
+    property bool _iconAvailable: (icon != "None" && icon != "")
 
     contentWidth: parent.width
-    contentHeight: _iconAvailable ? Theme.itemSizeLarge : Theme.itemSizeSmall
+    contentHeight: Theme.itemSizeLarge
 
     Row {
         width: parent.width - Theme.horizontalPageMargin*2
         anchors.centerIn: parent
-        spacing: _iconAvailable ? Theme.paddingLarge : 0
+        spacing: Theme.paddingLarge
 
-        ListImage {
+        Loader {
             id: profileIcon
-            icon: root.icon
-            height: root.contentHeight - Theme.paddingSmall*4
-            forceVisibility: appSettings.emptySpace
-            errorString: title
+            width: root.contentHeight - Theme.paddingSmall*4
+            height: width
+            sourceComponent: _iconAvailable ? serverImageComponent : serverImagePlaceholderComponent
+            Component {
+                id: serverImageComponent
+                ListImage {
+                    id: profileIcon
+                    icon: root.icon
+                    anchors.fill: parent
+                    forceVisibility: true
+                    errorString: title
+                }
+            }
+            Component {
+                id: serverImagePlaceholderComponent
+                PlaceholderImage {
+                    text: title
+                    anchors.fill: parent
+                }
+            }
         }
 
         Label {

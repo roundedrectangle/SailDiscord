@@ -58,7 +58,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="42"/>
+        <location filename="../qml/components/ServerListItem.qml" line="58"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
         <source>Settings</source>
-        <translation >Impostazioni</translation>
+        <translation>Impostazioni</translation>
     </message>
 </context>
 <context>
@@ -255,7 +255,7 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="48"/>
+        <location filename="../qml/components/ServerListItem.qml" line="64"/>
         <source>Copy server ID</source>
         <translation type="unfinished"></translation>
     </message>

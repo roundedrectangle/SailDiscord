@@ -58,7 +58,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="42"/>
+        <location filename="../qml/components/ServerListItem.qml" line="58"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
@@ -266,7 +266,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="48"/>
+        <location filename="../qml/components/ServerListItem.qml" line="64"/>
         <source>Copy server ID</source>
         <translation type="unfinished"></translation>
     </message>
