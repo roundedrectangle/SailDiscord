@@ -45,6 +45,7 @@ ListItem {
                         _model: _resolvedReference
                         label.color: Theme.secondaryColor
                         highlightColor: Theme.secondaryHighlightColor
+                        enabled: false
                     }
                 }
 
@@ -143,7 +144,7 @@ ListItem {
         }
     }}
 
-    onClicked: pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
+    onClicked: if (reference.state == 2 || reference.state == 3) pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
     on_ResolvedReferenceChanged: _resolvedUpdater()
     on_ResolvedTypeChanged: _resolvedUpdater()
     Component {
