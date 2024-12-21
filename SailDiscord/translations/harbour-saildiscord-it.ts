@@ -14,7 +14,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="23"/>
         <source>About Sailcord</source>
         <comment>App</comment>
-        <translation type="unfinished"></translation>
+        <translation>Info su Sailcord</translation>
     </message>
 </context>
 <context>
@@ -69,7 +69,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="27"/>
         <source>About this server</source>
         <comment>Server</comment>
-        <translation type="unfinished"></translation>
+        <translation>Info sul server</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
         <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>About this member</source>
         <comment>User</comment>
-        <translation type="unfinished"></translation>
+        <translation>Info utente</translation>
     </message>
 </context>
 <context>
@@ -123,7 +123,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="47"/>
         <source>Send friend request</source>
-        <translation type="unfinished"></translation>
+        <translation>Invia richiesta d&apos;amicizia</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="92"/>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
         <source>Global nickname</source>
-        <translation type="unfinished"></translation>
+        <translation>Soprannome globale</translation>
     </message>
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="110"/>
@@ -234,17 +234,17 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="289"/>
         <source>Captcha required but not implemented</source>
-        <translation type="unfinished"></translation>
+        <translation>Captcha richiesto ma non ancora implementato</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="290"/>
         <source>404 Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>404 Non Trovato</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="291"/>
         <source>A message failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Caricamento di un messaggio fallito</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="301"/>
@@ -257,23 +257,23 @@
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="64"/>
         <source>Copy server ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia ID server</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="96"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia ID canale</translation>
     </message>
     <message>
         <location filename="../qml/pages/DMsView.qml" line="30"/>
         <source>Copy user ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia ID utente</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="184"/>
         <source>Copy message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia ID messaggio</translation>
     </message>
 </context>
 <context>
@@ -358,12 +358,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="183"/>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio eliminato</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="221"/>
         <source>Editing message</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio modificato</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="249"/>
@@ -384,7 +384,7 @@
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="8"/>
         <source>View translating guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Vedi guida per le traduzioni</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="9"/>
@@ -394,12 +394,12 @@
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
         <source>Help testing beta versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aiuta a testare versioni beta</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="18"/>
         <source>Get new features earlier. Remember to report any bugs you find!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ottieni funzioni in anteprima. Ricordati di segnalare ogni bug incontrato!</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="24"/>
@@ -753,7 +753,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="43"/>
         <source>Show private channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra canali privati</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="76"/>
@@ -885,12 +885,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="306"/>
         <source>Display unformatted HTML text in messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra testo HTML non formattato in messaggi</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="307"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
-        <translation type="unfinished"></translation>
+        <translation>Il testo sarà comunque mostrato attraverso Showdown, ma i tag HTML saranno mostrati come sono</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="312"/>
@@ -900,42 +900,42 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="173"/>
         <source>Use Twemoji instead of default Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa le Twemoji al posto delle Emodi predefinite</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Overview mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità panoramica</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Tries to mimic the UI in real Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Simile all&apos;interfaccia originale di Discord</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Classic UI with tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfaccia classica  a schede</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Classica</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Modern</source>
-        <translation type="unfinished"></translation>
+        <translation>Moderna</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="327"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità sviluppatore</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="328"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>Abilita certe funzioni utili per sviluppatori quali la copia degli ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="348"/>
