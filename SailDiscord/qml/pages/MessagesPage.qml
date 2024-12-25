@@ -387,7 +387,7 @@ Page {
         }
 
         python.setCurrentChannel(guildid, channelid)
-        if (appSettings.focudOnChatOpen) activeFocusTimer.start()
+        if (appSettings.focudOnChatOpen && sendPermissions) activeFocusTimer.start()
     }
 
     Component.onDestruction: {
