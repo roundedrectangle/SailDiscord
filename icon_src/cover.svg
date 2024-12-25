@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="86px"
+   height="86px"
+   viewBox="0 0 86 86"
+   enable-background="new 0 0 86 86"
+   xml:space="preserve"
+   id="svg6"
+   sodipodi:docname="cover.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:export-filename="../SailDiscord/images/cover_grayscale.png"
+   inkscape:export-xdpi="288"
+   inkscape:export-ydpi="288"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs6"><filter
+     style="color-interpolation-filters:sRGB;"
+     inkscape:label="Greyscale"
+     id="filter64"
+     x="0"
+     y="0"
+     width="1"
+     height="1"><feColorMatrix
+       values="0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0 0 0 1 0 "
+       id="feColorMatrix64" /></filter><filter
+     style="color-interpolation-filters:sRGB;"
+     inkscape:label="Greyscale"
+     id="filter65"
+     x="0"
+     y="0"
+     width="1"
+     height="1"><feColorMatrix
+       values="0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0 0 0 1 0 "
+       id="feColorMatrix65" /></filter><filter
+     style="color-interpolation-filters:sRGB;"
+     inkscape:label="Greyscale"
+     id="filter66"
+     x="0"
+     y="0"
+     width="1"
+     height="1"><feColorMatrix
+       values="0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0.21 0.72 0.07 0 0 0 0 0 1 0 "
+       id="feColorMatrix66" /></filter></defs><sodipodi:namedview
+   id="namedview6"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="6.8604651"
+   inkscape:cx="47.081356"
+   inkscape:cy="43"
+   inkscape:window-width="1368"
+   inkscape:window-height="843"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<g
+   id="Layer_2"
+   display="none">
+</g>
+<g
+   id="Layer_1">
+	<linearGradient
+   id="SVGID_1_"
+   gradientUnits="userSpaceOnUse"
+   x1="12.8062"
+   y1="12.8066"
+   x2="85.2829"
+   y2="85.2833">
+		<stop
+   offset="0.0049"
+   style="stop-color:#6e19c1;stop-opacity:1;"
+   id="stop1" />
+		<stop
+   offset="1"
+   style="stop-color:#461d6d;stop-opacity:1;"
+   id="stop2" />
+	</linearGradient>
+	<path
+   fill="url(#SVGID_1_)"
+   d="M85.699,43c0-23.582-19.117-42.7-42.7-42.7C19.417,0.3,0.3,19.418,0.3,43   c0,23.583,19.117,42.7,42.7,42.7c0.636,0,41.277,0,41.277,0c0.786,0,1.423-0.637,1.423-1.423C85.7,84.277,85.699,43.636,85.699,43z   "
+   id="path2"
+   style="filter:url(#filter66)" />
+	<g
+   id="g3"
+   style="filter:url(#filter65)">
+		<path
+   opacity="0.9"
+   fill="#97FFF8"
+   d="M43,11.3c18.06,0,32.7,13.317,32.7,29.743v29.743V80.7c-6.02,0-10.9-4.285-10.9-9.759H43    c-18.06,0-32.7-13.471-32.7-29.898C10.3,24.617,24.94,11.3,43,11.3z"
+   id="path3"
+   style="fill:#b274ed;fill-opacity:1" />
+	</g>
+	
+<path
+   sodipodi:type="star"
+   style="fill:#320b57;fill-opacity:1;filter:url(#filter64)"
+   id="path8"
+   inkscape:flatsided="false"
+   sodipodi:sides="3"
+   sodipodi:cx="28.569492"
+   sodipodi:cy="31.630508"
+   sodipodi:r1="24.018581"
+   sodipodi:r2="12.00929"
+   sodipodi:arg1="0"
+   sodipodi:arg2="1.0471976"
+   inkscape:rounded="0"
+   inkscape:randomized="0"
+   d="M 52.588074,31.630508 34.574137,42.030859 16.560202,52.43121 l 1e-6,-20.800702 -1e-6,-20.800701 18.013936,10.400352 z"
+   inkscape:transform-center-x="-5.0789278"
+   transform="matrix(0.8458331,0,0,0.8458331,18.149645,14.788243)" /></g>
+</svg>
