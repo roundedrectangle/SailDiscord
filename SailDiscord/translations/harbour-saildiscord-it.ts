@@ -103,10 +103,10 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="135"/>
+        <location filename="../qml/components/MessageReference.qml" line="136"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="280"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="281"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Info</translation>
@@ -333,27 +333,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="75"/>
+        <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Reference failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="73"/>
+        <location filename="../qml/components/MessageReference.qml" line="74"/>
         <source>Original message was deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="74"/>
+        <location filename="../qml/components/MessageReference.qml" line="75"/>
         <source>Forwarded message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="140"/>
+        <location filename="../qml/components/MessageReference.qml" line="141"/>
         <source>Copy</source>
         <translation>CopiaCopia</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="160"/>
+        <location filename="../qml/components/MessageReference.qml" line="161"/>
         <source>Reply</source>
         <translation>Rispondi</translation>
     </message>
