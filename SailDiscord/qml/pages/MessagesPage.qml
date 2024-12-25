@@ -259,7 +259,8 @@ Page {
 
                 IconButton {
                     id: sendButton
-                    width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                    visible: !appSettings.sendByEnter
+                    width: visible ? (Theme.iconSizeMedium + 2 * Theme.paddingSmall) : 0
                     height: width
                     enabled: sendField.text.length !== 0
                     anchors.bottom: parent.bottom
