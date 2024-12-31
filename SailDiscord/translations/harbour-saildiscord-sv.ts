@@ -267,7 +267,7 @@
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="215"/>
-        <source>Copy message URL</source>
+        <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

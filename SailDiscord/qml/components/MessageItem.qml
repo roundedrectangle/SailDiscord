@@ -212,7 +212,7 @@ ListItem {
             onClicked: Clipboard.text = msgid
         }
         MenuItem {
-            text: qsTranslate("General", "Copy message URL")
+            text: qsTranslate("General", "Copy message link")
             visible: !!jumpUrl
             onClicked: Clipboard.text = jumpUrl
         }
