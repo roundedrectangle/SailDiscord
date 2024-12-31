@@ -7,6 +7,7 @@ HighlightImage {
     property bool forceVisibility: false // force to be visible and full size even when no icon is available
     property string errorString
     property bool extendedRadius: false
+    property bool disableAnimations: false
 
     id: roundedIcon
     source: (icon != "None" && icon != '') ? icon : ''
@@ -31,7 +32,10 @@ HighlightImage {
                 width: roundedIcon.adapt ? roundedIcon.width : Math.min(roundedIcon.width, roundedIcon.height)
                 height: roundedIcon.adapt ? roundedIcon.height : width
                 radius: extendedRadius ? Math.min(width, height)/4 : Math.min(width, height)
-                Behavior on radius { NumberAnimation { duration: 150 } }
+                Behavior on radius {
+                    NumberAnimation { duration: 150 }
+                    enabled: !disableAnimations
+                }
             }
         }
     }

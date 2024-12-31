@@ -76,6 +76,7 @@ ListItem {
                 highlightOnClick: true
                 onClicked: openAboutUser()
                 enabled: _firstSameAuthor && showRequestableOptions && authorid != '-1'
+                disableAnimations: true
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;
