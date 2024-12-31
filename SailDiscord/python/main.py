@@ -177,7 +177,8 @@ class MyClient(discord.Client):
             send_myself(self)
             return
         elif self.ensure_current_channel() and self.current_server != None:
-            user = await self.current_server.fetch_member_profile(user_id)
+            try: user = await self.current_server.fetch_member_profile(user_id)
+            except: user = await self.fetch_user_profile(user_id)
         else: user = await self.fetch_user_profile(user_id)
 
         send_user(user)
