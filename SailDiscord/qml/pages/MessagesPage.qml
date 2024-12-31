@@ -162,6 +162,7 @@ Page {
                         reference: _ref
                         flags: _flags
                         msgid: messageId
+                        jumpUrl: model.jumpUrl
                         sendPermissions: page.sendPermissions
                         managePermissions: page.managePermissions
                         showRequestableOptions: !isDemo

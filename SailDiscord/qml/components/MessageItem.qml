@@ -18,6 +18,7 @@ ListItem {
     property string msgid: ''
     property bool sendPermissions: false
     property bool managePermissions: false
+    property string jumpUrl
 
     property string authorid // User-related
     property var flags
@@ -205,10 +206,15 @@ ListItem {
             visible: authorid != '-1'
             onClicked: openAboutUser()
         }
-        FancyAloneMenuItem {
+        MenuItem {
             text: qsTranslate("General", "Copy message ID")
             visible: appSettings.developerMode && msgid
             onClicked: Clipboard.text = msgid
+        }
+        MenuItem {
+            text: qsTranslate("General", "Copy message URL")
+            visible: !!jumpUrl
+            onClicked: Clipboard.text = jumpUrl
         }
     }}
 

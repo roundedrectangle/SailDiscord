@@ -95,7 +95,8 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
             "pfp": icon, "bot": message.author.bot, "system": message.author.system,
             "color": hex_color(message.author.color)},
             
-            is_history, convert_attachments(message.attachments, cacher)
+            is_history, convert_attachments(message.attachments, cacher),
+            message.jump_url,
         )
 
 # About
