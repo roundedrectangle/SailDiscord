@@ -103,16 +103,16 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="136"/>
+        <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="281"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="289"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="179"/>
+        <location filename="../qml/components/MessageItem.qml" line="183"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -261,7 +261,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="184"/>
+        <location filename="../qml/components/MessageItem.qml" line="188"/>
         <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
@@ -333,27 +333,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="76"/>
+        <location filename="../qml/components/MessageReference.qml" line="78"/>
         <source>Reference failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="74"/>
+        <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Original message was deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="75"/>
+        <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Forwarded message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="141"/>
+        <location filename="../qml/components/MessageReference.qml" line="143"/>
         <source>Copy</source>
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="161"/>
+        <location filename="../qml/components/MessageReference.qml" line="163"/>
         <source>Reply</source>
         <translation>Svara</translation>
     </message>
@@ -371,17 +371,17 @@
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="183"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="191"/>
         <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="221"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="229"/>
         <source>Editing message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="249"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="257"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>

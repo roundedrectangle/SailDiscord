@@ -116,7 +116,7 @@ ApplicationWindow {
                     _flags: {
                         edit: edited, bot: userinfo.bot,
                         system: userinfo.system, color: userinfo.color
-                    }, APIType: '', contents: '', formatted: '', _ref: {}
+                    }, APIType: '', contents: '', formatted: '', _ref: {}, highlightStarted: false,
                 }
 
                 if (type === "" || type === "unknown") {

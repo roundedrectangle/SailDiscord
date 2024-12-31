@@ -164,6 +164,18 @@ Page {
                         msgid: messageId
                         managePermissions: page.managePermissions
                         showRequestableOptions: !isDemo
+                        highlightStarted: model.highlightStarted
+                        onHighlightStartedChanged: model.highlightStarted = highlightStarted
+                        jumpToReference: function(id) {
+                            var i = msgModel.findIndexById(id)
+                            if (i >= 0) {
+                                messagesList.positionViewAtIndex(i, ListView.Contain)
+                                msgModel.setProperty(i, 'highlightStarted', true)
+                                msgModel.setProperty(i, 'highlightStarted', false)
+                                return true
+                            }
+                            return false
+                        }
 
                         function updateMasterWidth() {
                             msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)

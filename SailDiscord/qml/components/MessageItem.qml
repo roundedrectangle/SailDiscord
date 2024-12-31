@@ -37,6 +37,20 @@ ListItem {
     signal editRequested
     signal deleteRequested
     signal replyRequested
+    property var jumpToReference: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
+
+    property bool highlightStarted: false
+    onHighlightStartedChanged: if (highlightStarted) {
+        bgColorBehaviour.enabled = false
+        highlighted = true
+        bgColorBehaviour.enabled = true
+        highlighted = false
+    }
+
+    Behavior on _backgroundColor {
+        id: bgColorBehaviour
+        ColorAnimation { duration: 1000 }
+    }
 
     id: root
     width: parent.width
@@ -52,6 +66,7 @@ ListItem {
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
             Component.onCompleted: if (reference.type == 1) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
         }
 
         Row {
@@ -141,6 +156,7 @@ ListItem {
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
             Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
+            onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
         }
     }
 

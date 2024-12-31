@@ -9,6 +9,8 @@ ListItem {
     property var _resolvedType
     property var _resolvedUpdater: function() {}
 
+    property var jump: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
+
     id: root
     width: parent.width
     contentHeight: column.height
@@ -144,7 +146,7 @@ ListItem {
         }
     }}
 
-    onClicked: if (reference.state == 2 || reference.state == 3) pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
+    onClicked: if ((reference.state == 2 || reference.state == 3) && !jump(_resolvedReference.messageId)) pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
     on_ResolvedReferenceChanged: _resolvedUpdater()
     on_ResolvedTypeChanged: _resolvedUpdater()
     Component {
