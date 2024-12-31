@@ -210,8 +210,13 @@ SilicaFlickable {
                         PageHeader {
                             id: channelComponentHeader
                             title: currentServer ? currentServer.name : ''
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: channelComponentPage.openAbout()
+                            }
                         }
                         ChannelsPage {
+                            id: channelComponentPage
                             channelList.parent: channelComponentItem
                             _fillParent: false
                             channelList.width: parent.width

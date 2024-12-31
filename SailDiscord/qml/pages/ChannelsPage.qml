@@ -15,22 +15,32 @@ Page {
     property alias channelList: channelList
     property bool _fillParent: true
 
+    function openAbout() {
+        pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
+            serverid: serverid,
+            name: name,
+            icon: icon
+        })
+    }
+
     SilicaListView {
         id: channelList
         model: chModel
         anchors.fill: _fillParent ? parent : undefined
 
-        header: PageHeader { title: name }
+        header: PageHeader {
+            title: name
+            MouseArea {
+                anchors.fill: parent
+                onClicked: openAbout()
+            }
+        }
         VerticalScrollDecorator {}
 
         PullDownMenu {
             MenuItem {
                 text: qsTranslate("AboutServer", "About this server", "Server")
-                onClicked: pageStack.push(Qt.resolvedUrl("AboutServerPage.qml"), {
-                    serverid: serverid,
-                    name: name,
-                    icon: icon
-                })
+                onClicked: openAbout()
             }
         }
 
