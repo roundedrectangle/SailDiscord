@@ -217,6 +217,7 @@ ApplicationWindow {
         property string token: ""
         //property bool usernameTutorialCompleted: false
         property bool legacyMode: false
+        property string modernLastServerId: "-1"
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")

@@ -69,6 +69,7 @@ SilicaFlickable {
                     onClicked: {
                         serverIndex = -1
                         folderIndex = -1
+                        appConfiguration.modernLastServerId = "-1"
                     }
                 }
             }
@@ -137,7 +138,7 @@ SilicaFlickable {
                             }
                         }
 
-                        onClicked: {
+                        function open() {
                             if (ListView.view && ListView.view.parent.folderIndex) {
                                 serverIndex = ListView.view.parent.folderIndex
                                 folderIndex = index
@@ -146,6 +147,8 @@ SilicaFlickable {
                                 folderIndex = -1
                             }
                         }
+
+                        onClicked: open()
                         menu: Component { ContextMenu {
                             MenuItem {
                                 Icon {
@@ -165,6 +168,8 @@ SilicaFlickable {
                                 onClicked: Clipboard.text = serverid
                             }
                         } }
+
+                        Component.onCompleted: if (_id == appConfiguration.modernLastServerId) open()
                     }
                 }
 
@@ -230,6 +235,8 @@ SilicaFlickable {
                             name: currentServer ? currentServer.name : ''
                             icon: currentServer ? currentServer.image : ''
                             serverid: currentServer ? currentServer._id : ''
+                            onServeridChanged: appConfiguration.modernLastServerId = serverid
+                            Component.onCompleted: serveridChanged()
                         }
                     }
                 }
