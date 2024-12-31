@@ -106,13 +106,13 @@
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="289"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="294"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="183"/>
+        <location filename="../qml/components/MessageItem.qml" line="203"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -271,7 +271,7 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="188"/>
+        <location filename="../qml/components/MessageItem.qml" line="208"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
@@ -371,17 +371,17 @@
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="191"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="196"/>
         <source>Message deleted</source>
         <translation>Сообщение удалено</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="229"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="234"/>
         <source>Editing message</source>
         <translation>Редактирование сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="257"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="262"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

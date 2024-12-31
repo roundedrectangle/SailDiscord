@@ -41,16 +41,23 @@ ListItem {
     property var jumpToReference: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
 
     property bool highlightStarted: false
+    property bool _highlighting: false
+    highlighted: down || menuOpen || _highlighting
     onHighlightStartedChanged: if (highlightStarted) {
         bgColorBehaviour.enabled = false
-        highlighted = true
+        _highlighting = true
         bgColorBehaviour.enabled = true
-        highlighted = false
+        _highlighting = false
     }
 
     Behavior on _backgroundColor {
         id: bgColorBehaviour
-        ColorAnimation { duration: 1000 }
+        enabled: false
+        ColorAnimation {
+            duration: 1000
+            onRunningChanged: if (!running)
+                bgColorBehaviour.enabled = false
+        }
     }
 
     id: root
