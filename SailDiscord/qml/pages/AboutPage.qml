@@ -42,7 +42,7 @@ AboutPageBase {
         Attribution {
             name: "Twemoji"
             entries: ["2022–present Jason Sofonia & Justine De Caires", "2014–2021 Twitter"]
-            licenses:License { spdxId: "MIT" }
+            licenses: [License { spdxId: "MIT" }, License { spdxId: "CC-BY-4.0" }]
             sources: "https://github.com/jdecked/twemoji"
             homepage: "https://jdecked.github.io/twemoji/index.html"
         }
