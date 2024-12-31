@@ -913,7 +913,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="316"/>
         <source>Experimental</source>
-        <translation>Эксперементально</translation>
+        <translation>Экспериментально</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="177"/>
