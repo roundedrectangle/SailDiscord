@@ -165,4 +165,6 @@ AboutPageBase {
         })
         python.requestUserInfo(userid) // for client, it will be -1
     }
+
+    Component.onDestruction: python.setHandler("user"+(isClient?"":userid), function() {})
 }
