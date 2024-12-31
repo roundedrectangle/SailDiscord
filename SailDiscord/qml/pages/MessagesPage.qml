@@ -162,6 +162,7 @@ Page {
                         reference: _ref
                         flags: _flags
                         msgid: messageId
+                        sendPermissions: page.sendPermissions
                         managePermissions: page.managePermissions
                         showRequestableOptions: !isDemo
                         highlightStarted: model.highlightStarted

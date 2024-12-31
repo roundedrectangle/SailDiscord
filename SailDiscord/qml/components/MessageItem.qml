@@ -16,7 +16,8 @@ ListItem {
     property var attachments
     property var reference
     property string msgid: ''
-    property bool managePermissions
+    property bool sendPermissions: false
+    property bool managePermissions: false
 
     property string authorid // User-related
     property var flags
@@ -188,7 +189,7 @@ ListItem {
             FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-message-reply"
                 onClicked: replyRequested()
-                visible: showRequestableOptions
+                visible: sendPermissions && showRequestableOptions
             }
         }
         FancyAloneMenuItem {
