@@ -14,7 +14,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="23"/>
         <source>About Sailcord</source>
         <comment>App</comment>
-        <translation type="unfinished"></translation>
+        <translation>Om Sailcord</translation>
     </message>
 </context>
 <context>
@@ -69,7 +69,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="27"/>
         <source>About this server</source>
         <comment>Server</comment>
-        <translation type="unfinished"></translation>
+        <translation>Om denna server</translation>
     </message>
 </context>
 <context>
@@ -115,7 +115,7 @@
         <location filename="../qml/components/MessageItem.qml" line="205"/>
         <source>About this member</source>
         <comment>User</comment>
-        <translation type="unfinished"></translation>
+        <translation>Om denna medlem</translation>
     </message>
 </context>
 <context>
@@ -153,7 +153,7 @@
     <message>
         <location filename="../qml/pages/AboutUserPage.qml" line="120"/>
         <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
@@ -177,28 +177,28 @@
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
         <source>DMs</source>
-        <translation type="unfinished">DM</translation>
+        <translation>DM</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
         <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Refresh</source>
-        <translation type="unfinished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
         <source>Servers</source>
-        <translation type="unfinished">Servrar</translation>
+        <translation>Servrar</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
         <source>Me</source>
-        <translation type="unfinished">Jag</translation>
+        <translation>Jag</translation>
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
         <source>Settings</source>
-        <translation type="unfinished">Inställningar</translation>
+        <translation>Inställningar</translation>
     </message>
 </context>
 <context>
@@ -239,12 +239,12 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="294"/>
         <source>404 Not Found</source>
-        <translation type="unfinished"></translation>
+        <translation>404 Hittas inte</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="295"/>
         <source>A message failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="305"/>
@@ -258,27 +258,27 @@
         <location filename="../qml/pages/ChannelsPage.qml" line="106"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera kanal-ID</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="210"/>
         <source>Copy message ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera meddelande-ID</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="215"/>
         <source>Copy message link</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera meddelandelänk</translation>
     </message>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="64"/>
         <source>Copy server ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera server-ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/DMsView.qml" line="30"/>
         <source>Copy user ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera användar-ID</translation>
     </message>
 </context>
 <context>
@@ -340,17 +340,17 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="78"/>
         <source>Reference failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Hänvisningen kunde inte läsas in</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Original message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Ursprungligt meddelande har raderats</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Forwarded message</source>
-        <translation type="unfinished"></translation>
+        <translation>Vidarebefordrat meddelande</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="143"/>
@@ -378,12 +378,12 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="197"/>
         <source>Message deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Meddelande borttaget</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="235"/>
         <source>Editing message</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigerar meddelande</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="263"/>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="8"/>
         <source>View translating guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Se översättningsguide</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="9"/>
@@ -414,12 +414,12 @@
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
         <source>Help testing beta versions</source>
-        <translation type="unfinished"></translation>
+        <translation>Hjälp till med beta-testning</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="18"/>
         <source>Get new features earlier. Remember to report any bugs you find!</source>
-        <translation type="unfinished"></translation>
+        <translation>Få nya funktioner tidigare. Kom ihåg att rapportera alla fel du hittar!</translation>
     </message>
     <message>
         <location filename="../qml/pages/MySupportDialog.qml" line="24"/>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="43"/>
         <source>Show private channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa privata kanaler</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="144"/>
@@ -970,37 +970,37 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="318"/>
         <source>Overview mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Översiktsläge</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Tries to mimic the UI in real Discord</source>
-        <translation type="unfinished"></translation>
+        <translation>Försöker efterlikna användargränssnittet i riktiga Discord</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Classic UI with tabs</source>
-        <translation type="unfinished"></translation>
+        <translation>Klassiskt gränssnitt med flikar</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="323"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Klassiskt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="324"/>
         <source>Modern</source>
-        <translation type="unfinished"></translation>
+        <translation>Modernt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="331"/>
         <source>Developer mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Utvecklarläge</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="332"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiverar funktioner användbara för utvecklare, t.ex. ID-kopiering</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="352"/>
