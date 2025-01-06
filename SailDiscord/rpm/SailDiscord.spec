@@ -10,22 +10,23 @@ License:    LICENSE
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
-Requires:   sailfish-components-webview-qt5
+#Requires:   sailfish-components-webview-qt5
 Requires:   pyotherside-qml-plugin-python3-qt5
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
-BuildRequires:  pkgconfig(qt5embedwidget)
+#BuildRequires:  pkgconfig(qt5embedwidget)
 
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires: python3-pip
-BuildRequires: libjpeg-turbo
-BuildRequires: libjpeg-turbo-devel
+#BuildRequires: libjpeg-turbo
+#BuildRequires: libjpeg-turbo-devel
 BuildRequires: git
+Requires: python3dist(pillow)
 %endif
 
 %if %{package_library} == "no"
@@ -43,7 +44,7 @@ Requires: python3-pip
 
 
 %description
-Short description of my Sailfish OS Application
+Discord client for your pocket
 
 
 %prep
@@ -64,7 +65,7 @@ Short description of my Sailfish OS Application
 %if %{package_library} == "yes"
 #python3 -m pip install --upgrade pip
 #python3 -m pip cache purge
-python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" "Pillow" --target=%_builddir/deps
+python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 #rm -rf %_builddir/deps/google/_upb
 %endif
