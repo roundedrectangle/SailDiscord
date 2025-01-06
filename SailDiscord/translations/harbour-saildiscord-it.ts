@@ -157,14 +157,6 @@
     </message>
 </context>
 <context>
-    <name>AskForSupport</name>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/AskForSupport.qml" line="11"/>
-        <source>Please take a moment to consider if you can contribute to this project in one way or another.</source>
-        <translation>Per favore, considera di contribuire al progetto in un modo o l&apos;altro.</translation>
-    </message>
-</context>
-<context>
     <name>ChannelsPage</name>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="145"/>
@@ -199,19 +191,6 @@
         <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
         <source>Settings</source>
         <translation>Impostazioni</translation>
-    </message>
-</context>
-<context>
-    <name>DetailsDrawer</name>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/DetailsDrawer.qml" line="53"/>
-        <source>show less</source>
-        <translation>mostra meno</translation>
-    </message>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/DetailsDrawer.qml" line="53"/>
-        <source>show more</source>
-        <translation>mostra di più</translation>
     </message>
 </context>
 <context>
@@ -608,13 +587,11 @@
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="17"/>
-        <location filename="../qml/modules/Opal/SupportMe/private/LinkHandler/private/ExternalUrlPage.qml" line="36"/>
         <source>Copied to clipboard: %1</source>
         <translation>Copiato negli appunti %1</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="24"/>
-        <location filename="../qml/modules/Opal/SupportMe/private/LinkHandler/private/ExternalUrlPage.qml" line="15"/>
         <source>External Link</source>
         <translation>Collegamento esterno</translation>
     </message>
@@ -625,7 +602,6 @@
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="50"/>
-        <location filename="../qml/modules/Opal/SupportMe/private/LinkHandler/private/ExternalUrlPage.qml" line="41"/>
         <source>Copy to clipboard</source>
         <translation>Copia negli appunti</translation>
     </message>
@@ -636,13 +612,11 @@
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
-        <location filename="../qml/modules/Opal/SupportMe/private/LinkHandler/private/ExternalUrlPage.qml" line="32"/>
         <source>Open in browser</source>
         <translation>Apri nel browser</translation>
     </message>
     <message>
         <location filename="../qml/modules/Opal/LinkHandler/private/ExternalUrlPage.qml" line="60"/>
-        <location filename="../qml/modules/Opal/SupportMe/private/LinkHandler/private/ExternalUrlPage.qml" line="32"/>
         <source>Open externally</source>
         <translation>Apri esternamente</translation>
     </message>
@@ -1006,34 +980,6 @@
         <location filename="../qml/pages/SettingsPage.qml" line="245"/>
         <source>Yearly</source>
         <translation>Annualmente</translation>
-    </message>
-</context>
-<context>
-    <name>SupportDialog</name>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="9"/>
-        <source>Hi there!</source>
-        <translation>Salve!</translation>
-    </message>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="10"/>
-        <source>Thank you for using my little app! Maybe you can contribute back?</source>
-        <translation>Grazie per aver usato la mia applicazione! Forse potresti contribuire?</translation>
-    </message>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="11"/>
-        <source>Thank you for your support!</source>
-        <translation>Grazie per il tuo supporto!</translation>
-    </message>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="55"/>
-        <source>Remind me later</source>
-        <translation>Ricordamelo dopo</translation>
-    </message>
-    <message>
-        <location filename="../qml/modules/Opal/SupportMe/SupportDialog.qml" line="57"/>
-        <source>Don&apos;t ask me again</source>
-        <translation>Non chiedermelo di nuovo</translation>
     </message>
 </context>
 <context>
