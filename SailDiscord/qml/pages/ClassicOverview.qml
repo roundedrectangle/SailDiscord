@@ -4,14 +4,15 @@ import "../components"
 import "../modules/Opal/Tabs"
 
 TabView {
+    id: root
     anchors.fill: parent
     tabBarPosition: Qt.AlignBottom
     currentIndex: 1
-    interactive: !loading
 
     property string username
     property var dmModel
     property var serversModel
+    property bool loading
 
     Tab {
         title: qsTr("DMs")
@@ -22,6 +23,7 @@ TabView {
                     id: dmsContainer
                     anchors.fill: parent
                     PullDownMenu {
+                        visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
                             onClicked: python.refresh()
@@ -50,6 +52,7 @@ TabView {
                     id: serversContainer
                     anchors.fill: parent
                     PullDownMenu {
+                        visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
                             onClicked: python.refresh()
@@ -155,6 +158,8 @@ TabView {
                     name: _username
                     icon: avatar
                     showSettings: false
+                    loading: root.loading
+                    _busyIndicator.visible: false
 
                     PullDownMenu {
                         parent: morePage.flickable

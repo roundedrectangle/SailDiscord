@@ -13,6 +13,7 @@ SilicaFlickable {
     property var serversModel
     property int status
     property bool onMobile
+    property bool loading
 
     property int serverIndex: -1 // -1: DMs
     property int folderIndex: -1
@@ -33,8 +34,14 @@ SilicaFlickable {
             })
         }
         MenuItem {
+            text: qsTr("Settings")
+            onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            visible: loading
+        }
+        MenuItem {
             text: qsTr("Refresh")
             onClicked: python.refresh()
+            visible: !loading
         }
     }
 

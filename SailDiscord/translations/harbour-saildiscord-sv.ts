@@ -10,8 +10,8 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="162"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="23"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="167"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="24"/>
         <source>About Sailcord</source>
         <comment>App</comment>
         <translation>Om Sailcord</translation>
@@ -66,7 +66,7 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="42"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="27"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="28"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation>Om denna server</translation>
@@ -104,7 +104,7 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="20"/>
         <location filename="../qml/pages/MessagesPage.qml" line="295"/>
         <source>About</source>
@@ -121,37 +121,37 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="50"/>
         <source>Send friend request</source>
         <translation>Skicka en vänförfrågan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="95"/>
         <source>This user is a system account</source>
         <translation>Denna användare är ett systemkonto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="102"/>
         <source>This user is a bot</source>
         <translation>Detta är en användarbot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
         <source>Global nickname</source>
         <translation>Globalt smeknamn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="110"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="113"/>
         <source>Username</source>
         <translation>Användarnamn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="115"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="118"/>
         <source>Discord member since</source>
         <translation>Discord-medlem sedan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="120"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="123"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
@@ -167,28 +167,28 @@
 <context>
     <name>ClassicOverview</name>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="18"/>
         <source>DMs</source>
         <translation>DM</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
-        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="28"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="57"/>
         <source>Refresh</source>
         <translation>Uppdatera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="47"/>
         <source>Servers</source>
         <translation>Servrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="142"/>
         <source>Me</source>
         <translation>Jag</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="171"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
@@ -196,37 +196,37 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="91"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="88"/>
         <source>Error loading image %1. Please report this to developers</source>
         <translation>Kunde inte läsa in bilden %1. Rapportera detta till utvecklarna.</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="292"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="289"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="293"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="290"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="294"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="295"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="292"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="305"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="302"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
@@ -373,42 +373,14 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="36"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="37"/>
+        <source>Settings</source>
+        <translation type="unfinished">Inställningar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ModernOverview.qml" line="42"/>
         <source>Refresh</source>
         <translation>Uppdatera</translation>
-    </message>
-</context>
-<context>
-    <name>MySupportDialog</name>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="8"/>
-        <source>View translating guide</source>
-        <translation>Se översättningsguide</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="9"/>
-        <source>Help with translating this app in as many languages as possible.</source>
-        <translation>Hjälp till med att översätta denna app på så många språk som möjligt.</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="17"/>
-        <source>Help testing beta versions</source>
-        <translation>Hjälp till med beta-testning</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="18"/>
-        <source>Get new features earlier. Remember to report any bugs you find!</source>
-        <translation>Få nya funktioner tidigare. Kom ihåg att rapportera alla fel du hittar!</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="24"/>
-        <source>Develop on Github</source>
-        <translation>Utveckla på Github</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MySupportDialog.qml" line="25"/>
-        <source>Support with maintenance and packaging, write code, or provide valuable bug reports.</source>
-        <translation>Stöd underhåll och paketering, skriv kod eller lämna värdefulla felrapporter.</translation>
     </message>
 </context>
 <context>
@@ -998,12 +970,12 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="96"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="93"/>
         <source>Downloaded file %1</source>
         <translation>Laddade ner filen %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="168"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="165"/>
         <source>(edited)</source>
         <translation>(redigerat)</translation>
     </message>
@@ -1011,32 +983,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Idle</source>
         <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="207"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>

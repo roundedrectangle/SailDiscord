@@ -71,6 +71,7 @@ Page {
                 username: root.username
                 dmModel: root.dmModel
                 serversModel: root.serversModel
+                loading: root.loading
             }
         }
 
@@ -83,14 +84,15 @@ Page {
                 onMobile: root.onMobile
                 dmModel: root.dmModel
                 serversModel: root.serversModel
+                loading: root.loading
             }
         }
     }
 
-    TouchBlocker {
+    /*TouchBlocker {
         anchors.fill: parent
         visible: loading
-    }
+    }*/
 
     ListModel { id: serversModel }
     ListModel { id: dmModel }
