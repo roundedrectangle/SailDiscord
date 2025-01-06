@@ -112,7 +112,7 @@
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="205"/>
+        <location filename="../qml/components/MessageItem.qml" line="210"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Info utente</translation>
@@ -250,12 +250,12 @@
         <translation>Copia ID utente</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="210"/>
+        <location filename="../qml/components/MessageItem.qml" line="215"/>
         <source>Copy message ID</source>
         <translation>Copia ID messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="215"/>
+        <location filename="../qml/components/MessageItem.qml" line="220"/>
         <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>

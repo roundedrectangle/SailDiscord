@@ -69,6 +69,8 @@ ListItem {
         id: column
         width: parent.width
 
+        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
+
         Loader {
             id: referenceLoader
             width: parent.width
@@ -152,6 +154,7 @@ ListItem {
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
+                    visible: contents.length > 0 && !flags.edit
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
@@ -167,6 +170,8 @@ ListItem {
             Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
             onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
         }
+
+        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
     }
 
     function openAboutUser() {
