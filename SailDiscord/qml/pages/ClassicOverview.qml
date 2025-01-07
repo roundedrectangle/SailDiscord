@@ -30,7 +30,11 @@ TabView {
                         }
                     }
 
-                    PageHeader { id: header; title: username }
+                    PageHeader {
+                        id: header
+                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                        title: username
+                    }
                     DMsView {
                         anchors {
                             top: header.bottom
@@ -58,7 +62,11 @@ TabView {
                             onClicked: python.refresh()
                         }
                     }
-                    PageHeader { id: header; title: username }
+                    PageHeader {
+                        id: header
+                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                        title: username
+                    }
 
                     SilicaListView {
                         width: parent.width

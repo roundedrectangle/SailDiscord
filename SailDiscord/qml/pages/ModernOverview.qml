@@ -222,10 +222,9 @@ SilicaFlickable {
                         PageHeader {
                             id: channelComponentHeader
                             title: currentServer ? currentServer.name : ''
-                            MouseArea {
-                                anchors.fill: parent
-                                onClicked: channelComponentPage.openAbout()
-                            }
+                            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                            titleColor: highlighted ? palette.primaryColor : palette.highlightColor
+                            Component.onCompleted: _navigateForwardMouseArea.clicked.connect(openAbout)
                         }
                         ChannelsPage {
                             id: channelComponentPage

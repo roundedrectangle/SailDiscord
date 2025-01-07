@@ -46,7 +46,7 @@ Page {
     Component.onCompleted: {
         python.init(function(u, i, s, m) {
             loading = false
-            username = u
+            username = shared.emojify(u)
             avatar = i
             status = s
             onMobile = m

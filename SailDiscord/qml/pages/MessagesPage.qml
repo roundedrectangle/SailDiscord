@@ -89,6 +89,7 @@ Page {
         PageHeader {
             id: header
             title: (isDM ? '@' : "#")+name
+            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             interactive: isDM
             titleColor: highlighted ? palette.primaryColor : palette.highlightColor
             Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)

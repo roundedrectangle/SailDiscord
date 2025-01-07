@@ -136,6 +136,7 @@ ListItem {
                         text: author
                         color: flags.color ? flags.color : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
+                        textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                         MouseArea {
                             anchors.fill: parent
                             onClicked: openAboutUser()
@@ -161,9 +162,8 @@ ListItem {
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-                    onLinkActivated: if (link == "sailcord://showEditDate") {
-                                         if (flags.edit) Notices.show(qsTr("Edited at %1").arg(date.toLocaleString()), Notice.Short, Notice.Center)
-                                     } else LinkHandler.openOrCopyUrl(link)
+                    onLinkActivated: if (link == "sailcord://showEditDate" && flags.edit) Notices.show(qsTranslate("MessageItem", "Edited %1", "Date and time of a message edit. Showed when clicked on edited text").arg(date.toLocaleString()), Notice.Short, Notice.Center)
+                                     else LinkHandler.openOrCopyUrl(link)
                     visible: contents.length > 0 || flags.edit
                 }
 

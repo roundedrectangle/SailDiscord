@@ -30,10 +30,9 @@ Page {
 
         header: PageHeader {
             title: name
-            MouseArea {
-                anchors.fill: parent
-                onClicked: openAbout()
-            }
+            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+            titleColor: highlighted ? palette.primaryColor : palette.highlightColor
+            Component.onCompleted: _navigateForwardMouseArea.clicked.connect(openAbout)
         }
         VerticalScrollDecorator {}
 
@@ -92,6 +91,7 @@ Page {
                     width: parent.width - channelIcon.width - parent.spacing*1
                     truncationMode: TruncationMode.Fade
                     anchors.verticalCenter: parent.verticalCenter
+                    textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                 }
             }
 
@@ -125,7 +125,7 @@ Page {
             if (serverid == '') return
             python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed, _managePermissions) {
                 if (!_haspermissions && !appSettings.ignorePrivate) return
-                append({'categoryid': _categoryid, categoryname: _categoryname, channelid: _id, name: _name, icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions})
+                append({categoryid: _categoryid, categoryname: _categoryname, channelid: _id, name: shared.emojify(_name), icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions})
             })
             python.requestChannels(serverid)
             lastServerId = serverid

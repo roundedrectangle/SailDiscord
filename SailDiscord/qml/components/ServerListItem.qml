@@ -48,6 +48,7 @@ ListItem {
             width: parent.width - profileIcon.width - parent.spacing*1
             truncationMode: TruncationMode.Fade
             text: title
+            textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
         }
     }
 

@@ -107,7 +107,7 @@ ApplicationWindow {
                 if (guildid != undefined && channelid != undefined)
                     if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {
-                    type: type, messageId: _id, _author: userinfo.name, _pfp: userinfo.pfp,
+                    type: type, messageId: _id, _author: emojify(userinfo.name), _pfp: userinfo.pfp,
                     _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
                     _flags: {
@@ -175,7 +175,7 @@ ApplicationWindow {
             // heads up: QQMLListModel can convert:
             // arrays to QQMLListModel instances
             // undefined to empty objects aka {} when other elements are objects
-            return {_id: _id, name: name, image: icon,
+            return {_id: _id, name: shared.emojify(name), image: icon, unformattedName: name,
                 folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
             }
         }
@@ -279,11 +279,11 @@ ApplicationWindow {
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {image: '', folder: true, _id: _id, name: name, color: color, servers: []}
+                var data = {image: '', folder: true, _id: _id, name: shared.emojify(name), unformattedName: name, color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
-            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: name, image: icon, dmChannel: channelId, textSendPermissions: perm}) })
+            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm}) })
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })
@@ -291,7 +291,6 @@ ApplicationWindow {
             setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
             setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
-
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
