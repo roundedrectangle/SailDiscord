@@ -62,7 +62,7 @@ AboutPageBase {
         id: busyIndicator
         parent: flickable
         running: true
-        onRunningChanged: _develInfoSection.parent.visible = !running
+        onRunningChanged: _develInfoSection.parent.visible = !running && _loaded
     }
 
     MouseArea {
@@ -141,15 +141,14 @@ AboutPageBase {
     function load() {
         if (_loaded || loading) return
         _loaded = true
-        _develInfoSection.parent.visible = _loaded
+        _develInfoSection.parent.visible = !busyIndicator.running && _loaded
         python.requestUserInfo(userid) // for client, it will be -1
     }
 
     Component.onCompleted: {
-        _develInfoSection.parent.visible = !busyIndicator.running
+        _develInfoSection.parent.visible = !busyIndicator.running && _loaded
         _develInfoSection.parent.children[3].textFormat = Text.RichText // description
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
-        _develInfoSection.parent.visible = _loaded
         _develInfoSection.parent.children[3].linkActivated.connect(function(link) {
             // Workaround for replacing default ExternalUrlPage with the latest LinkHandler
             pageStack.completeAnimation()

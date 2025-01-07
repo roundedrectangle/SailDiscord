@@ -136,12 +136,20 @@ ListItem {
                         text: author
                         color: flags.color ? flags.color : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: openAboutUser()
+                        }
                     }
 
                     Label {
                         id: timeLbl
                         text: Format.formatDate(date, Formatter.TimepointRelative)
                         color: Theme.secondaryHighlightColor
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: Notices.show(date.toLocaleString(), Notice.Short, Notice.Center)
+                        }
                     }
                 }
 
@@ -154,7 +162,12 @@ ListItem {
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
                     onLinkActivated: LinkHandler.openOrCopyUrl(link)
-                    visible: contents.length > 0 && !flags.edit
+                    visible: contents.length > 0 || flags.edit
+                    MouseArea {
+                        anchors.fill: parent
+                        enabled: false//flags.edit
+                        onClicked: Notices.show(qsTr("Edited %1").arg(date.toLocaleString()), Notice.Short, Notice.Center)
+                    }
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }

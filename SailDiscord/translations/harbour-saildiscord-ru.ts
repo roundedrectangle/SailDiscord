@@ -112,7 +112,7 @@
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="210"/>
+        <location filename="../qml/components/MessageItem.qml" line="223"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="145"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="149"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -198,37 +198,37 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="88"/>
         <source>Error loading image %1. Please report this to developers</source>
-        <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
-        <source>Connection failure</source>
-        <translation>Ошибка подключения</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="289"/>
-        <source>Login failure</source>
-        <translation>Неудачный вход в систему</translation>
+        <source>Connection failure</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="290"/>
-        <source>Captcha required but not implemented</source>
-        <translation>Проверка на робота нужна но недоступна</translation>
+        <source>Login failure</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="291"/>
-        <source>404 Not Found</source>
-        <translation>404 Не Найдено</translation>
+        <source>Captcha required but not implemented</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="292"/>
-        <source>A message failed to load</source>
-        <translation>Не удалось загрузить сообщение</translation>
+        <source>404 Not Found</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="302"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="293"/>
+        <source>A message failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="303"/>
         <source>Python error</source>
-        <translation>Ошибка Python</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -239,7 +239,7 @@
         <translation>Скопировать ID сервера</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="106"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="110"/>
         <location filename="../qml/pages/DMsView.qml" line="25"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
@@ -250,12 +250,12 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="215"/>
+        <location filename="../qml/components/MessageItem.qml" line="228"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="220"/>
+        <location filename="../qml/components/MessageItem.qml" line="233"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
@@ -970,46 +970,46 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="93"/>
         <source>Downloaded file %1</source>
-        <translation>Скачан файл %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="165"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="166"/>
         <source>(edited)</source>
-        <translation>(изменено)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
-        <source>Online</source>
-        <translation>Онлайн</translation>
-    </message>
-    <message>
         <location filename="../qml/harbour-saildiscord.qml" line="198"/>
-        <source>Offline</source>
-        <translation>Оффлайн</translation>
+        <source>Online</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="199"/>
-        <source>Do Not Disturb</source>
-        <translation>Не беспокоить</translation>
+        <source>Offline</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="200"/>
-        <source>Invisible</source>
-        <translation>Невидимый</translation>
+        <source>Do Not Disturb</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="201"/>
-        <source>Idle</source>
-        <translation>Занят</translation>
+        <source>Invisible</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <source>Idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="205"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation>(телефон)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

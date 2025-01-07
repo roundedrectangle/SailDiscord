@@ -88,7 +88,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
     
     return (str(message.guild.id) if message.guild else '-2', str(message.channel.id),
             str(message.id), qml_date(message.created_at),
-            bool(message.edited_at),
+            bool(message.edited_at), qml_date(message.edited_at) if message.edited_at else None,
 
             {"id": str(message.author.id), "sent": message.author.id == myself_id,
             "name": message.author.display_name,

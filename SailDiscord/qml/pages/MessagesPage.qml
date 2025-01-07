@@ -45,7 +45,7 @@ Page {
             i = msgModel.get(i)
             i.contents = sendField.text
             i.formatted = shared.markdown(sendField.text, true)
-            // We don't need to set _flags.edit since we don't use it here
+            i._flags.edit = true
         }
 
         sendField.text = previouslyEnteredText

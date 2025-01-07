@@ -103,7 +103,7 @@ ApplicationWindow {
         }
 
         function constructMessageCallback(type, guildid, channelid, finalCallback) {
-            return function(_serverid, _channelid, _id, _date, edited, userinfo, history, attachments, jumpUrl) {
+            return function(_serverid, _channelid, _id, _date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
                 if (guildid != undefined && channelid != undefined)
                     if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {
@@ -111,18 +111,19 @@ ApplicationWindow {
                     _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
                     _flags: {
-                        edit: edited, bot: userinfo.bot,
+                        edit: edited, bot: userinfo.bot, editedAt: editedAt,
                         system: userinfo.system, color: userinfo.color
                     }, APIType: '', contents: '', formatted: '', _ref: {}, highlightStarted: false,
                     jumpUrl: jumpUrl,
                 }
 
+                var extraStart = 10
                 if (type === "" || type === "unknown") {
-                    data.contents = arguments[9]
-                    data.formatted = markdown(arguments[10], undefined, data._flags.edit)
-                    data._ref = arguments[11]
+                    data.contents = arguments[extraStart]
+                    data.formatted = markdown(arguments[extraStart+1], undefined, data._flags.edit)
+                    data._ref = arguments[extraStart+2]
                 }
-                if (type === "unknown") data.APIType = arguments[12]
+                if (type === "unknown") data.APIType = arguments[extraStart+3]
                 finalCallback(history, data)
             }
         }
@@ -162,7 +163,7 @@ ApplicationWindow {
             return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
                         +showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
                                            +e
-                                           +(edited ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                           +(edited ? (" <span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'>" + qsTr("(edited)") + "</span>") : "")
                                            )
         }
 
