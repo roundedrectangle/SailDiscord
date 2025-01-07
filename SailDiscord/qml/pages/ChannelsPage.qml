@@ -51,12 +51,16 @@ Page {
 
         delegate: ListItem {
             width: parent.width
+            contentHeight: row.height
             Row {
+                id: row
                 width: parent.width - Theme.horizontalPageMargin*2
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingLarge
+                height: Theme.itemSizeSmall
 
                 Icon { id: channelIcon
+                    anchors.verticalCenter: parent.verticalCenter
                     source: {
                         switch (icon) {
                             case "voice":
