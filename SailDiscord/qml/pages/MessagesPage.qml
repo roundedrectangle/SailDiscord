@@ -21,6 +21,7 @@ Page {
     property int currentFieldAction: 0 // 0: none, 1: editing, 2: replying
     property string actionID: '-1' // editing or replying message ID
     property string actionInfo: '' // replying contents
+    property bool _loaded: false
 
     Timer {
         id: activeFocusTimer
@@ -45,7 +46,7 @@ Page {
             i = msgModel.get(i)
             i.contents = sendField.text
             i.formatted = shared.markdown(sendField.text, true)
-            // We don't need to set _flags.edit since we don't use it here
+            i._flags.edit = true
         }
 
         sendField.text = previouslyEnteredText
@@ -71,24 +72,27 @@ Page {
         contentHeight: height
 
         BusyLabel {
-            running: msgModel.count === 0 && waitForMessagesTimer.running
+            running: msgModel.count === 0 && waitForMessagesTimer.wait
         }
 
         ViewPlaceholder {
-            enabled: msgModel.count === 0 && !waitForMessagesTimer.running
+            enabled: msgModel.count === 0 && !waitForMessagesTimer.wait
             text: qsTr("No messages")
-            hintText: qsTr("Say hi ;)")
+            hintText: sendPermissions ? qsTr("Say hi ;)") : qsTr("Wait for someone to post something")
 
             Timer {
                 id: waitForMessagesTimer
                 interval: 2500
-                running: true
+                running: started
+                property bool started: false
+                property bool wait: !started || running
             }
         }
 
         PageHeader {
             id: header
             title: (isDM ? '@' : "#")+name
+            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             interactive: isDM
             titleColor: highlighted ? palette.primaryColor : palette.highlightColor
             Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
@@ -376,20 +380,28 @@ Page {
             return -1
         }
 
-        Component.onCompleted: {
-            if (isDemo) generateDemo()
-            else shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
-                if (history) msgModel.append(data); else msgModel.insert(0, data)
-            }, function(before, data) {
-                var i = findIndexById(before)
-                if (i >= 0) {
-                    if (data) set(i, data)
-                    else remove(i)
-                }
-            })
-        }
+        Component.onCompleted: if (isDemo) generateDemo()
 
         onCountChanged: messagesList.forceLayout()
+    }
+
+    function load() {
+        if (status != PageStatus.Active || _loaded || isDemo) return
+        _loaded = true
+        waitForMessagesTimer.started = true
+
+        shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
+            if (history) msgModel.append(data); else msgModel.insert(0, data)
+        }, function(before, data) {
+            var i = msgModel.findIndexById(before)
+            if (i >= 0) {
+                if (data) msgModel.set(i, data)
+                else msgModel.remove(i)
+            }
+        })
+
+        python.setCurrentChannel(guildid, channelid)
+        if (appSettings.focudOnChatOpen && sendPermissions) activeFocusTimer.start()
     }
 
     Component.onCompleted: {
@@ -400,9 +412,10 @@ Page {
             return
         }
 
-        python.setCurrentChannel(guildid, channelid)
-        if (appSettings.focudOnChatOpen && sendPermissions) activeFocusTimer.start()
+        load()
     }
+
+    onStatusChanged: load()
 
     Component.onDestruction: {
         if (isDemo) return

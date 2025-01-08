@@ -103,26 +103,27 @@ ApplicationWindow {
         }
 
         function constructMessageCallback(type, guildid, channelid, finalCallback) {
-            return function(_serverid, _channelid, _id, _date, edited, userinfo, history, attachments, jumpUrl) {
+            return function(_serverid, _channelid, _id, _date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
                 if (guildid != undefined && channelid != undefined)
                     if ((_serverid != guildid) || (_channelid != channelid)) return
                 var data = {
-                    type: type, messageId: _id, _author: userinfo.name, _pfp: userinfo.pfp,
+                    type: type, messageId: _id, _author: emojify(userinfo.name), _pfp: userinfo.pfp,
                     _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
                     _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
                     _flags: {
-                        edit: edited, bot: userinfo.bot,
+                        edit: edited, bot: userinfo.bot, editedAt: editedAt,
                         system: userinfo.system, color: userinfo.color
                     }, APIType: '', contents: '', formatted: '', _ref: {}, highlightStarted: false,
                     jumpUrl: jumpUrl,
                 }
 
+                var extraStart = 10
                 if (type === "" || type === "unknown") {
-                    data.contents = arguments[9]
-                    data.formatted = markdown(arguments[10], undefined, data._flags.edit)
-                    data._ref = arguments[11]
+                    data.contents = arguments[extraStart]
+                    data.formatted = markdown(arguments[extraStart+1], undefined, data._flags.edit)
+                    data._ref = arguments[extraStart+2]
                 }
-                if (type === "unknown") data.APIType = arguments[12]
+                if (type === "unknown") data.APIType = arguments[extraStart+3]
                 finalCallback(history, data)
             }
         }
@@ -162,7 +163,7 @@ ApplicationWindow {
             return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
                         +showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
                                            +e
-                                           +(edited ? ("<span style='font-size: " + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'> " + qsTr("(edited)") + "</span>") : "")
+                                           +(edited ? (" <a href='sailcord://showEditDate' style='text-decoration:none;font-size:" + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'>" + qsTr("(edited)") + "</a>") : "")
                                            )
         }
 
@@ -174,7 +175,7 @@ ApplicationWindow {
             // heads up: QQMLListModel can convert:
             // arrays to QQMLListModel instances
             // undefined to empty objects aka {} when other elements are objects
-            return {_id: _id, name: name, image: icon,
+            return {_id: _id, name: shared.emojify(name), image: icon,
                 folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
             }
         }
@@ -204,6 +205,22 @@ ApplicationWindow {
                 result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
             return result
         }
+
+        function loadLastChannels() {
+            try { return JSON.parse(appConfiguration.serverLastChannels) }
+            catch(e) { appConfiguration.serverLastChannels = "{}"; return {} }
+        }
+
+        function getLastChannel(serverid) {
+            var loaded = loadLastChannels()
+            return serverid in loaded ? loaded[serverid] : '-1'
+        }
+
+        function setLastChannel(serverid, channelid) {
+            var loaded = loadLastChannels()
+            loaded[serverid] = channelid
+            appConfiguration.serverLastChannels = JSON.stringify(loaded)
+        }
     }
 
     ConfigurationGroup {
@@ -215,6 +232,7 @@ ApplicationWindow {
         //property bool usernameTutorialCompleted: false
         property bool legacyMode: false
         property string modernLastServerId: "-1"
+        property string serverLastChannels: "{}"
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
@@ -278,11 +296,11 @@ ApplicationWindow {
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {image: '', folder: true, _id: _id, name: name, color: color, servers: []}
+                var data = {image: '', folder: true, _id: _id, name: shared.emojify(name), color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
-            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: name, image: icon, dmChannel: channelId, textSendPermissions: perm}) })
+            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm}) })
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })
@@ -290,7 +308,7 @@ ApplicationWindow {
             setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
             setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
-
+            setHandler('referenceError', function(e){ shared.showError(qsTranslate("Errors", "A reference failed to load"), e) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -315,7 +333,7 @@ ApplicationWindow {
         }
 
         function requestChannels(guildid){ call('main.comm.get_channels', [guildid]) }
-        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid])}
+        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid]) }
         function resetCurrentChannel() { setCurrentChannel("", "") }
 
         function clearCache() { call('main.comm.clear_cache', []) }

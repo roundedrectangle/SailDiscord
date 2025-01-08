@@ -10,8 +10,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="162"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="23"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="178"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="24"/>
         <source>About Sailcord</source>
         <comment>App</comment>
         <translation type="unfinished"></translation>
@@ -58,15 +58,15 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="58"/>
+        <location filename="../qml/components/ServerListItem.qml" line="59"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="42"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="27"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="58"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="28"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation type="unfinished"></translation>
@@ -104,15 +104,15 @@
     <name>AboutUser</name>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
-        <location filename="../qml/pages/AboutUserPage.qml" line="33"/>
-        <location filename="../qml/pages/DMsView.qml" line="20"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="295"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
+        <location filename="../qml/pages/DMsView.qml" line="41"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="299"/>
         <source>About</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="205"/>
+        <location filename="../qml/components/MessageItem.qml" line="220"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation type="unfinished"></translation>
@@ -121,37 +121,37 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="47"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="50"/>
         <source>Send friend request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="92"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="95"/>
         <source>This user is a system account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="99"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="102"/>
         <source>This user is a bot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="105"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
         <source>Global nickname</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="110"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="113"/>
         <source>Username</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="115"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="118"/>
         <source>Discord member since</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="120"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="123"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="145"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="165"/>
         <source>Channel unsupported</source>
         <translation type="unfinished"></translation>
     </message>
@@ -167,28 +167,28 @@
 <context>
     <name>ClassicOverview</name>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="17"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="20"/>
         <source>DMs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="26"/>
-        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="30"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="64"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="45"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Servers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="139"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="153"/>
         <source>Me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="166"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="182"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -201,32 +201,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="288"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="306"/>
         <source>Connection failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="289"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="307"/>
         <source>Login failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="290"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="308"/>
         <source>Captcha required but not implemented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="291"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
         <source>404 Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="292"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>A message failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="302"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <source>A reference failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="320"/>
         <source>Python error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -234,28 +239,28 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="64"/>
+        <location filename="../qml/components/ServerListItem.qml" line="65"/>
         <source>Copy server ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="106"/>
-        <location filename="../qml/pages/DMsView.qml" line="25"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="120"/>
+        <location filename="../qml/pages/DMsView.qml" line="46"/>
         <source>Copy channel ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="30"/>
+        <location filename="../qml/pages/DMsView.qml" line="51"/>
         <source>Copy user ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="210"/>
+        <location filename="../qml/components/MessageItem.qml" line="225"/>
         <source>Copy message ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="215"/>
+        <location filename="../qml/components/MessageItem.qml" line="230"/>
         <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>
@@ -315,6 +320,15 @@
     </message>
 </context>
 <context>
+    <name>MessageItem</name>
+    <message>
+        <location filename="../qml/components/MessageItem.qml" line="165"/>
+        <source>Edited %1</source>
+        <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MessageReference</name>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="78"/>
@@ -345,27 +359,32 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="79"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="80"/>
         <source>No messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="80"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="81"/>
         <source>Say hi ;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="197"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="81"/>
+        <source>Wait for someone to post something</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="201"/>
         <source>Message deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="235"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="239"/>
         <source>Editing message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="263"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="267"/>
         <source>Type something</source>
         <translation type="unfinished"></translation>
     </message>
@@ -373,7 +392,12 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="36"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="37"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ModernOverview.qml" line="42"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -968,7 +992,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="165"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="166"/>
         <source>(edited)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -976,32 +1000,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="197"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="198"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="205"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>

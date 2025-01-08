@@ -116,6 +116,7 @@ AboutPageBase {
         _develInfoSection.parent.visible = !busyIndicator.running
         _develInfoSection.parent.children[3].textFormat = Text.RichText // description
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
+        _develInfoSection.parent.children[2].children[0].textFormat = appSettings.twemoji ? Text.RichText : Text.PlainText // appName
         _develInfoSection.parent.children[3].linkActivated.connect(function(link) {
             // Workaround for replacing default ExternalUrlPage with the latest LinkHandler
             pageStack.completeAnimation()

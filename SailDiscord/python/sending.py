@@ -36,7 +36,7 @@ def send_channel(c: discord.abc.GuildChannel, myself_id):
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
             str(c.id), str(c.name), perms.view_channel,
             str(getattr(getattr(c, 'type'), 'name')),
-            c.type == discord.ChannelType.text and perms.send_messages, # If sending text is allowed
+            isinstance(c, discord.TextChannel) and perms.send_messages, # If sending text is allowed
             perms.manage_messages,
     )
 
@@ -88,7 +88,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
     
     return (str(message.guild.id) if message.guild else '-2', str(message.channel.id),
             str(message.id), qml_date(message.created_at),
-            bool(message.edited_at),
+            bool(message.edited_at), qml_date(message.edited_at) if message.edited_at else None,
 
             {"id": str(message.author.id), "sent": message.author.id == myself_id,
             "name": message.author.display_name,

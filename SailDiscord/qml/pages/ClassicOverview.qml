@@ -4,14 +4,17 @@ import "../components"
 import "../modules/Opal/Tabs"
 
 TabView {
+    id: root
     anchors.fill: parent
     tabBarPosition: Qt.AlignBottom
     currentIndex: 1
-    interactive: !loading
 
     property string username
     property var dmModel
     property var serversModel
+    property bool loading
+
+    Component.onCompleted: if (!!pageStack.nextPage()) pageStack.popAttached()
 
     Tab {
         title: qsTr("DMs")
@@ -22,19 +25,25 @@ TabView {
                     id: dmsContainer
                     anchors.fill: parent
                     PullDownMenu {
+                        visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
                             onClicked: python.refresh()
                         }
                     }
 
-                    PageHeader { id: header; title: username }
+                    PageHeader {
+                        id: header
+                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                        title: username
+                    }
                     DMsView {
                         anchors {
                             top: header.bottom
                             bottom: parent.bottom
                         }
                         model: dmModel
+                        openLastSave: false
                     }
                 }
             }
@@ -50,12 +59,17 @@ TabView {
                     id: serversContainer
                     anchors.fill: parent
                     PullDownMenu {
+                        visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
                             onClicked: python.refresh()
                         }
                     }
-                    PageHeader { id: header; title: username }
+                    PageHeader {
+                        id: header
+                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                        title: username
+                    }
 
                     SilicaListView {
                         width: parent.width
@@ -155,6 +169,8 @@ TabView {
                     name: _username
                     icon: avatar
                     showSettings: false
+                    loading: root.loading
+                    _busyIndicator.visible: false
 
                     PullDownMenu {
                         parent: morePage.flickable

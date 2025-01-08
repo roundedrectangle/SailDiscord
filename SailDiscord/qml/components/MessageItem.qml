@@ -69,6 +69,8 @@ ListItem {
         id: column
         width: parent.width
 
+        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
+
         Loader {
             id: referenceLoader
             width: parent.width
@@ -134,12 +136,21 @@ ListItem {
                         text: author
                         color: flags.color ? flags.color : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
+                        textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: openAboutUser()
+                        }
                     }
 
                     Label {
                         id: timeLbl
                         text: Format.formatDate(date, Formatter.TimepointRelative)
                         color: Theme.secondaryHighlightColor
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: Notices.show(date.toLocaleString(), Notice.Short, Notice.Center)
+                        }
                     }
                 }
 
@@ -151,7 +162,9 @@ ListItem {
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
                     horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-                    onLinkActivated: LinkHandler.openOrCopyUrl(link)
+                    onLinkActivated: if (link == "sailcord://showEditDate" && flags.edit) Notices.show(qsTranslate("MessageItem", "Edited %1", "Date and time of a message edit. Showed when clicked on edited text").arg(date.toLocaleString()), Notice.Short, Notice.Center)
+                                     else LinkHandler.openOrCopyUrl(link)
+                    visible: contents.length > 0 || flags.edit
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
@@ -167,6 +180,8 @@ ListItem {
             Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
             onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
         }
+
+        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
     }
 
     function openAboutUser() {

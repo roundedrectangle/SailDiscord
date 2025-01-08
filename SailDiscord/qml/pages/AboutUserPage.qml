@@ -16,7 +16,10 @@ AboutPageBase {
     property bool isClient: false
     property bool pulleyMenuVisible: !isClient
     property bool showSettings: isClient
+    property bool loading: false
+    property alias _busyIndicator: busyIndicator
 
+    property bool _loaded: false
     property date memberSince
     property string _status
     property bool isBot: false
@@ -59,7 +62,7 @@ AboutPageBase {
         id: busyIndicator
         parent: flickable
         running: true
-        onRunningChanged: _develInfoSection.parent.visible = !running
+        onRunningChanged: _develInfoSection.parent.visible = !running && _loaded
     }
 
     MouseArea {
@@ -135,10 +138,18 @@ AboutPageBase {
 
     ]
 
+    function load() {
+        if (_loaded || loading) return
+        _loaded = true
+        _develInfoSection.parent.visible = !busyIndicator.running && _loaded
+        python.requestUserInfo(userid) // for client, it will be -1
+    }
+
     Component.onCompleted: {
-        _develInfoSection.parent.visible = !busyIndicator.running
+        _develInfoSection.parent.visible = !busyIndicator.running && _loaded
         _develInfoSection.parent.children[3].textFormat = Text.RichText // description
         _develInfoSection.parent.children[2].children[0].wrapMode = Text.Wrap // appName
+        _develInfoSection.parent.children[2].children[0].textFormat = appSettings.twemoji ? Text.RichText : Text.PlainText // appName
         _develInfoSection.parent.children[3].linkActivated.connect(function(link) {
             // Workaround for replacing default ExternalUrlPage with the latest LinkHandler
             pageStack.completeAnimation()
@@ -163,8 +174,9 @@ AboutPageBase {
                 if (arguments[8]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
             }
         })
-        python.requestUserInfo(userid) // for client, it will be -1
+        load()
     }
+    onLoadingChanged: load()
 
     Component.onDestruction: python.setHandler("user"+(isClient?"":userid), function() {})
 }
