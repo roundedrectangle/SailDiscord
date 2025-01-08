@@ -228,7 +228,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>A reference failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="320"/>
@@ -325,7 +325,7 @@
         <location filename="../qml/components/MessageItem.qml" line="165"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Redigerad %1</translation>
     </message>
 </context>
 <context>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="81"/>
         <source>Wait for someone to post something</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänta på att någon skall posta något</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="201"/>
