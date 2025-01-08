@@ -78,7 +78,7 @@ Page {
         ViewPlaceholder {
             enabled: msgModel.count === 0 && !waitForMessagesTimer.wait
             text: qsTr("No messages")
-            hintText: qsTr("Say hi ;)")
+            hintText: sendPermissions ? qsTr("Say hi ;)") : qsTr("Wait for someone to post something")
 
             Timer {
                 id: waitForMessagesTimer

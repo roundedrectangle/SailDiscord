@@ -10,7 +10,7 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="175"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="178"/>
         <location filename="../qml/pages/ModernOverview.qml" line="24"/>
         <source>About Sailcord</source>
         <comment>App</comment>
@@ -65,7 +65,7 @@
         <translation>О сервере</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="57"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="58"/>
         <location filename="../qml/pages/ModernOverview.qml" line="28"/>
         <source>About this server</source>
         <comment>Server</comment>
@@ -105,7 +105,7 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
-        <location filename="../qml/pages/DMsView.qml" line="40"/>
+        <location filename="../qml/pages/DMsView.qml" line="41"/>
         <location filename="../qml/pages/MessagesPage.qml" line="299"/>
         <source>About</source>
         <comment>User</comment>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="164"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="165"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -167,28 +167,28 @@
 <context>
     <name>ClassicOverview</name>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="18"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="20"/>
         <source>DMs</source>
         <translation>ЛС</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="28"/>
-        <location filename="../qml/pages/ClassicOverview.qml" line="61"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="30"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="64"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="51"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
         <source>Servers</source>
         <translation>Серверы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="150"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="153"/>
         <source>Me</source>
         <translation>Я</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="179"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="182"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -244,13 +244,13 @@
         <translation>Скопировать ID сервера</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="119"/>
-        <location filename="../qml/pages/DMsView.qml" line="45"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="120"/>
+        <location filename="../qml/pages/DMsView.qml" line="46"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="50"/>
+        <location filename="../qml/pages/DMsView.qml" line="51"/>
         <source>Copy user ID</source>
         <translation>Скопировать ID пользователя</translation>
     </message>
@@ -367,6 +367,11 @@
         <location filename="../qml/pages/MessagesPage.qml" line="81"/>
         <source>Say hi ;)</source>
         <translation>Скажи привет ;)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="81"/>
+        <source>Wait for someone to post something</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="201"/>
