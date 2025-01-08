@@ -69,11 +69,11 @@ def send_dms(users_list: List[discord.User], cacher: Cacher):
 
 # Messages
 
-async def generate_extra_message(message: Union[discord.Message, discord.MessageSnapshot], cacher: Optional[Cacher]=None, emoji_size: Optional[Any]=None, ref={}):
+async def generate_extra_message(message: Union[discord.Message, discord.MessageSnapshot], cacher: Optional[Cacher]=None, client: Optional[discord.Client]=None, emoji_size: Optional[Any]=None, ref={}):
     t = message.type
     if t == discord.MessageType.new_member:
         return 'newmember', ()
-    content = await emojify(message, cacher, emoji_size) if isinstance(message, discord.Message) else message.content
+    content = await emojify(message, cacher, client, emoji_size) if isinstance(message, discord.Message) else message.content
     if t in (discord.MessageType.default, discord.MessageType.reply):
         return 'message', (message.content, content, ref or {})
     else: return 'unknownmessage', (message.content, content, ref or {}, message.type.name)
