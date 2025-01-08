@@ -175,7 +175,7 @@ ApplicationWindow {
             // heads up: QQMLListModel can convert:
             // arrays to QQMLListModel instances
             // undefined to empty objects aka {} when other elements are objects
-            return {_id: _id, name: shared.emojify(name), image: icon, unformattedName: name,
+            return {_id: _id, name: shared.emojify(name), image: icon,
                 folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
             }
         }
@@ -205,6 +205,22 @@ ApplicationWindow {
                 result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
             return result
         }
+
+        function loadLastChannels() {
+            try { return JSON.parse(appConfiguration.serverLastChannels) }
+            catch(e) { appConfiguration.serverLastChannels = "{}"; return {} }
+        }
+
+        function getLastChannel(serverid) {
+            var loaded = loadLastChannels()
+            return serverid in loaded ? loaded[serverid] : '-1'
+        }
+
+        function setLastChannel(serverid, channelid) {
+            var loaded = loadLastChannels()
+            loaded[serverid] = channelid
+            appConfiguration.serverLastChannels = JSON.stringify(loaded)
+        }
     }
 
     ConfigurationGroup {
@@ -216,6 +232,7 @@ ApplicationWindow {
         //property bool usernameTutorialCompleted: false
         property bool legacyMode: false
         property string modernLastServerId: "-1"
+        property string serverLastChannels: "{}"
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
@@ -279,7 +296,7 @@ ApplicationWindow {
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {image: '', folder: true, _id: _id, name: shared.emojify(name), unformattedName: name, color: color, servers: []}
+                var data = {image: '', folder: true, _id: _id, name: shared.emojify(name), color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
@@ -291,6 +308,7 @@ ApplicationWindow {
             setHandler('captchaError', function(e){ shared.showError(qsTranslate("Errors", "Captcha required but not implemented"), e) })
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
             setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
+            setHandler('referenceError', function(e){ shared.showError(qsTranslate("Errors", "A reference failed to load"), e) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -315,7 +333,7 @@ ApplicationWindow {
         }
 
         function requestChannels(guildid){ call('main.comm.get_channels', [guildid]) }
-        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid])}
+        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid]) }
         function resetCurrentChannel() { setCurrentChannel("", "") }
 
         function clearCache() { call('main.comm.clear_cache', []) }

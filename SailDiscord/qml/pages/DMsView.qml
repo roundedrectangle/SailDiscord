@@ -7,6 +7,15 @@ SilicaListView {
     width: parent ? parent.width : Screen.width
     clip: true
     VerticalScrollDecorator {}
+    property bool openLastSave: true
+
+    Timer {
+        id: closePageTimer
+        interval: 0
+        onTriggered: if (openLastSave && !!pageStack.nextPage() && pageStack.nextPage().serverid != '-1') pageStack.popAttached()
+    }
+
+    Component.onCompleted: closePageTimer.start()
 
     delegate: ServerListItem {
         serverid: '-1'
@@ -14,7 +23,19 @@ SilicaListView {
         icon: image
         defaultActions: false
 
-        onClicked: pageStack.push(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image })
+        Timer {
+            id: showTimer
+            interval: 5
+            onTriggered: show()
+        }
+
+        function show() { (openLastSave ? pageStack.pushAttached : pageStack.push)(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image }) }
+        Component.onCompleted: if (shared.getLastChannel('-1') == _id && openLastSave) showTimer.start()
+        onClicked: {
+            show()
+            if (openLastSave) pageStack.navigateForward()
+            shared.setLastChannel('-1', _id)
+        }
         menu: Component { ContextMenu {
             MenuItem {
                 text: qsTranslate("AboutUser", "About", "User")
@@ -49,4 +70,6 @@ SilicaListView {
             }
         }
     }
+
+    Component.onDestruction: if (!!pageStack.nextPage()) pageStack.popAttached()
 }

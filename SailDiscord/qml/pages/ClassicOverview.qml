@@ -14,6 +14,8 @@ TabView {
     property var serversModel
     property bool loading
 
+    Component.onCompleted: if (!!pageStack.nextPage()) pageStack.popAttached()
+
     Tab {
         title: qsTr("DMs")
         Component {
@@ -41,6 +43,7 @@ TabView {
                             bottom: parent.bottom
                         }
                         model: dmModel
+                        openLastSave: false
                     }
                 }
             }
