@@ -37,8 +37,8 @@ class ImageType(Enum):
     MYSELF = auto()
     EMOJI = auto()
 
-def cached_path(cache: AnyPath, id, type: ImageType):
-    return Path(cache) / type.name.lower() / f"{id}.png"
+def cached_path(cache: AnyPath, id, type: ImageType, format='png'):
+    return Path(cache) / type.name.lower() / f"{id}.{format}"
 
 def verify_pillow(path: AnyPath):
     try:
@@ -121,13 +121,13 @@ class Cacher:
         for im in ImageType:
             self.session_cached[im.name.lower()] = {}
 
-    def get_cached_path(self, id, type: ImageType, default=None):
+    def get_cached_path(self, id, type: ImageType, default=None, format: str='png'):
         """If default is not None and any of these:
         - path does not exist
         - path contains broken image
         - update_period set to None (Never)
         then default is returned"""
-        path = cached_path(self.cache, id, type)
+        path = cached_path(self.cache, id, type, format)
         if default != None:
             if not self.verify_image(id, type) or self.update_period == None:
                 return default
@@ -167,20 +167,20 @@ class Cacher:
     def recreate_temporary(self):
         self.temp.mkdir(parents=True, exist_ok=True)
 
-    def cache_image(self, url, id, type: ImageType):
+    def cache_image(self, url, id, type: ImageType, format: str='png'):
         if self.update_period == None: return # Never set in settings
         if self.has_cached_session(id, type) or not self.update_required(id, type):
             return # Only cache once in a session or update_period
         self.set_cached_session(id, type, False)
         im = download_pillow(url, self.proxies)
         if im == None: return
-        path = self.get_cached_path(id, type)
+        path = self.get_cached_path(id, type, format=format)
         path.parent.mkdir(exist_ok=True, parents=True)
         im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
         self.set_cached_session(id, type)
 
-    def cache_image_bg(self, url, id, type: ImageType):
-        Thread(target=self.cache_image, args=(url, id, type)).start()
+    def cache_image_bg(self, url, id, type: ImageType, format: str='png'):
+        Thread(target=self.cache_image, args=(url, id, type, format)).start()
 
     def set_cached_session(self, id, type: ImageType, finished=True):
         self.session_cached[type.name.lower()][str(id)] = finished

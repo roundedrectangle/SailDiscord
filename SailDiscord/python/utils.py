@@ -118,32 +118,18 @@ def isurl(obj: str):
     """Returns True if an object is an internet URL"""
     return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
 
-async def emojify(message: discord.Message, cacher: Cacher, client: discord.Client, size: Optional[int]=None):
-    #return re.sub(r'<:((?:\w|\d|_)+):(\d+)>', lambda m: f'<img class="emoji" alt="{m[1]}" src="{client.run_asyncio_threadsafe(message.guild.fetch_emoji(int(m[2])), True)}">', message.content)
-
-    if not message.guild:
-        return message.content
-
+async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=None):
     res = message.content
-    pattern = re.compile(r'<:((?:\w|\d|_)+):(\d+)>')
-    remove_size = re.sub(pattern, '', res).strip() == ''
-    fetched_emojis = {}
-    search = re.search(pattern, res)
+    pattern = discord.PartialEmoji._CUSTOM_EMOJI_RE
+    remove_size = pattern.sub('', res).strip() == '' # checks if the message only contains emojis and/or blank characters
+    search = pattern.search(res)
     while search:
-        e = int(search[2])
-        if e not in fetched_emojis:
-            try: fetched = (await message.guild.fetch_emoji(e)).url
-            except discord.errors.NotFound:
-                try: fetched = client.get_emoji(e).url
-                except discord.errors.NotFound as err:
-                    qsend("notfoundError", str(err))
-                    res = res[:search.start()] + f'{search[1]}:{e}' +  res[search.end():]
-                    search = re.search(pattern, res)
-                    continue
-            fetched_emojis[e] = str(cacher.get_cached_path(f'{message.guild.id}_{e}', ImageType.EMOJI, fetched))
-            cacher.cache_image_bg(fetched, f'{message.guild.id}_{e}', ImageType.EMOJI)
-        res = res[:search.start()] + f'<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt="{search[1]}" src="{fetched_emojis[e]}">' + res[search.end():]
-        search = re.search(pattern, res)
+        e = discord.PartialEmoji.from_str(search[0])
+        fmt = 'gif' if e.animated else 'png'
+        path = str(cacher.get_cached_path(e.id, ImageType.EMOJI, e.url, fmt))
+        cacher.cache_image_bg(e.url, e.id, ImageType.EMOJI, fmt)
+        res = res[:search.start()] + '<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt=":{e.name}:" src="{path}">' + res[search.end():]
+        search = pattern.search(res)
     return res
 
 def usernames(user: Union[discord.User, discord.Member]):

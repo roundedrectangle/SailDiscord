@@ -69,7 +69,7 @@ async def generate_message(message: discord.Message, is_history=False):
             ref['resolvedType'], ref['resolved'] = await generate_message(message.reference.resolved)
             ref['state'] = 2
 
-    event, args = await generate_extra_message(message, comm.cacher, comm.client, comm.emoji_size, ref)
+    event, args = await generate_extra_message(message, comm.cacher, comm.emoji_size, ref)
     return event, base+args
 
 async def send_message(message: Union[discord.Message, Any], is_history=False):
