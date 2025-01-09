@@ -142,3 +142,9 @@ def usernames(user: Union[discord.User, discord.Member]):
 
 def format_exc(e: Exception):
     return f'{type(e).__name__}: {e}\n' + ''.join(tb.format_exception(None,e,e.__traceback__))
+
+def group_name(group: discord.GroupChannel):
+    if group.name:
+        return (group.name,)*2
+    recipients = [x.display_name for x in group.recipients if x.id != group.me.id]
+    return ', '.join([f'@{x}' for x in recipients]), ', '.join(recipients)

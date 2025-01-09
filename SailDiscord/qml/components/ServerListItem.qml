@@ -6,6 +6,7 @@ ListItem {
     id: root
     property string serverid
     property string title
+    property string placeholderBase
     property string icon
     property bool defaultActions: true
 
@@ -37,7 +38,7 @@ ListItem {
             Component {
                 id: serverImagePlaceholderComponent
                 PlaceholderImage {
-                    text: title
+                    text: placeholderBase || title
                     anchors.fill: parent
                 }
             }

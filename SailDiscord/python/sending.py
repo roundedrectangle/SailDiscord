@@ -49,22 +49,25 @@ def send_channels(guild: discord.Guild, user_id):
             send_channel(c, user_id)
 
 # DMs
+# Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions
 
-def send_dm_channel(user: discord.User, cacher: Cacher):
-    icon = '' if user.display_avatar == None else \
-            str(cacher.get_cached_path(user.id, ImageType.USER, default=user.display_avatar))
-    if icon != '':
-        cacher.cache_image_bg(str(user.display_avatar), user.id, ImageType.USER)
-    perms = user.dm_channel.permissions_for(user.dm_channel.me)
-    qsend('dm', str(user.id), user.display_name, icon, str(user.dm_channel.id), perms.send_messages and not user.system)
+def send_dm_channel(channel: Union[discord.DMChannel, discord.GroupChannel, Any], cacher: Cacher):
+    base = (str(channel.id),)
 
-def send_dms(users_list: List[discord.User], cacher: Cacher):
-    final = []
-    for user in users_list:
-        if not isinstance(user, discord.ClientUser) and user.dm_channel:
-            final.append(user)
-    final.sort(key=lambda u: u.dm_channel.last_viewed_timestamp, reverse=True)
-    for user in final:
+    if isinstance(channel, discord.DMChannel):
+        user = channel.recipient
+        icon = cacher.easy(user.display_avatar, user.id, ImageType.USER)
+        qsend('dm', *base, user.display_name, icon, not user.system, str(user.id))
+
+    elif isinstance(channel, discord.GroupChannel):
+        icon = cacher.easy(channel.icon, channel.id, ImageType.GROUP)
+        name, icon_base = group_name(channel)
+        qsend('group', *base, name, icon, icon_base)
+    else:
+        qsend('unknownPrivateChannel', type(channel).__name__)
+
+def send_dms(channel_list: List[Union[discord.DMChannel, discord.GroupChannel, Any]], cacher: Cacher):
+    for user in sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
         send_dm_channel(user, cacher)
 
 # Messages

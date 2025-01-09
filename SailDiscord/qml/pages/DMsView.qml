@@ -20,6 +20,7 @@ SilicaListView {
     delegate: ServerListItem {
         serverid: '-1'
         title: name
+        placeholderBase: iconBase
         icon: image
         defaultActions: false
 
@@ -29,7 +30,7 @@ SilicaListView {
             onTriggered: show()
         }
 
-        function show() { (openLastSave ? pageStack.pushAttached : pageStack.push)(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: true, userid: _id, usericon: image }) }
+        function show() { (openLastSave ? pageStack.pushAttached : pageStack.push)(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: _id != '-1', isGroup: _id == '-1', userid: _id, usericon: image }) }
         Component.onCompleted: if (shared.getLastChannel('-1') == _id && openLastSave) showTimer.start()
         onClicked: {
             show()
@@ -56,7 +57,7 @@ SilicaListView {
     }
 
     section {
-        property: "_id"
+        property: "dmChannel"
         delegate: Loader {
             width: parent.width
             sourceComponent: section == listView.model.get(0)._id ? undefined : separatorComponent

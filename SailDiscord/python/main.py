@@ -105,7 +105,7 @@ class MyClient(discord.Client):
         )
         
         send_servers(self.sorted_guilds_and_folders, comm.cacher)
-        send_dms(self.users, comm.cacher)
+        send_dms(self.private_channels, comm.cacher)
 
         if icon != '':
             comm.cacher.cache_image_bg(str(self.user.display_avatar), self.user.id, ImageType.MYSELF)

@@ -14,6 +14,7 @@ Page {
     property bool sendPermissions: true
     property bool managePermissions: false
     property bool isDM: false
+    property bool isGroup: false
     property string userid: ''
     property string usericon: ''
 
@@ -91,7 +92,7 @@ Page {
 
         PageHeader {
             id: header
-            title: (isDM ? '@' : "#")+name
+            title: (isGroup ? '' : (isDM ? '@' : "#"))+name
             _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             interactive: isDM
             titleColor: highlighted ? palette.primaryColor : palette.highlightColor

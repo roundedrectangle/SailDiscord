@@ -300,7 +300,8 @@ ApplicationWindow {
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
-            setHandler('dm', function(_id, name, icon, channelId, perm) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm}) })
+            setHandler('dm', function(channelId, name, icon, perm, _id) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: ''}) })
+            setHandler('group', function(channelId, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed")}) })
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })
@@ -309,6 +310,7 @@ ApplicationWindow {
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
             setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
             setHandler('referenceError', function(e){ shared.showError(qsTranslate("Errors", "A reference failed to load"), e) })
+            setHandler('unknownPrivateChannel', function(e){ shared.showError(qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers").arg(e)) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {

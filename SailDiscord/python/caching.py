@@ -36,6 +36,7 @@ class ImageType(Enum):
     USER = auto()
     MYSELF = auto()
     EMOJI = auto()
+    GROUP = auto()
 
 def cached_path(cache: AnyPath, id, type: ImageType, format='png'):
     return Path(cache) / type.name.lower() / f"{id}.{format}"
@@ -202,3 +203,10 @@ class Cacher:
             return self.session_cached[type.name.lower()][str(id)] == finished
         else:
             return True
+    
+    def easy(self, url, id, type: ImageType, format: str='png'):
+        icon = '' if url is None else \
+            str(self.get_cached_path(id, type, url, format))
+        if icon != '':
+            self.cache_image_bg(str(url), id, type, format)
+        return icon
