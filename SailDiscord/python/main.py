@@ -147,7 +147,7 @@ class MyClient(discord.Client):
     def set_current_channel(self, guild: discord.Guild, channel):
         self.current_server = guild
         self.current_channel = channel
-        #self.run_asyncio_threadsafe(guild.subscribe(), True)
+        #self.run_asyncio_threadsafe(guild.subscribe(typing=True, member_updates=True), True)
 
         self.run_asyncio_threadsafe(self.get_last_messages(), True)
         self.run_asyncio_threadsafe(self.current_channel.ack())
@@ -212,7 +212,7 @@ class Communicator:
     def __init__(self):
         self.loginth = Thread()
         self.loginth.start()
-        self.client = MyClient(guild_subscriptions=False)
+        self.client = MyClient()
         discord.utils.setup_logging()
 
     def login(self, token):
