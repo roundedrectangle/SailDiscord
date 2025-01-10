@@ -34,10 +34,9 @@ def send_channel(c: discord.abc.GuildChannel, myself_id):
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
     perms = permissions_for(c, myself_id)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
-            str(c.id), str(c.name), perms.view_channel,
-            str(getattr(getattr(c, 'type'), 'name')),
+            str(c.id), c.name, perms.view_channel, str(c.type.name),
             isinstance(c, discord.TextChannel) and perms.send_messages, # If sending text is allowed
-            perms.manage_messages,
+            perms.manage_messages, getattr(c, 'topic', '') or '',
     )
 
 def send_channels(guild: discord.Guild, user_id):

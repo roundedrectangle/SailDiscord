@@ -17,6 +17,7 @@ Page {
     property bool isGroup: false
     property string userid: ''
     property string usericon: ''
+    property string topic
 
     property string previouslyEnteredText: ''
     property int currentFieldAction: 0 // 0: none, 1: editing, 2: replying
@@ -99,10 +100,29 @@ Page {
             Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
         }
 
+        Label {
+            id: topicLabel
+            property bool extraContent: implicitWidth <= header.extraContent.width || visible
+            Component.onCompleted:
+                if (extraContent) {
+                    parent = header.extraContent
+                    anchors.verticalCenter = parent.verticalCenter
+                } else {
+                    anchors.top = header.bottom
+                    height += Theme.paddingMedium
+                }
+            text: topic
+            visible: !!text
+            width: extraContent ? parent.width : parent.width - Theme.horizontalPageMargin*2
+            anchors.horizontalCenter: parent.horizontalCenter
+            truncationMode: TruncationMode.Fade
+            color: Theme.secondaryHighlightColor
+        }
+
         SilicaListView {
             id: messagesList
             anchors {
-                top: header.bottom
+                top: topicLabel.extraContent ? header.bottom : topicLabel.bottom
                 bottom: sendBox.visible ? sendBox.top : parent.bottom
             }
             width: parent.width

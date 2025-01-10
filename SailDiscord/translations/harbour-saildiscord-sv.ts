@@ -106,7 +106,7 @@
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="42"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="300"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="307"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
@@ -364,32 +364,32 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="81"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="82"/>
         <source>No messages</source>
         <translation>Inga meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="82"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="83"/>
         <source>Say hi ;)</source>
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="82"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="83"/>
         <source>Wait for someone to post something</source>
         <translation>Vänta på att någon skall posta något</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="202"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="209"/>
         <source>Message deleted</source>
         <translation>Meddelande borttaget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="240"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="247"/>
         <source>Editing message</source>
         <translation>Redigerar meddelande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="268"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="275"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>

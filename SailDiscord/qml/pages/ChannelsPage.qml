@@ -28,7 +28,7 @@ Page {
         if (!m.hasPermissions) return
         switch (m.icon) {
         case "text": case "news": case "name": pageStack.pushAttached(Qt.resolvedUrl("MessagesPage.qml"),
-                        {guildid: serverid, channelid: m.channelid, name: m.name, sendPermissions: m.textSendPermissions, managePermissions: m.managePermissions});break
+                        {guildid: serverid, channelid: m.channelid, name: m.name, sendPermissions: m.textSendPermissions, managePermissions: m.managePermissions, topic: m.topic});break
         default: pageStack.pushAttached(comingSoonPage, {channelType: m.icon});break
         }
         if (!background) {
@@ -137,9 +137,9 @@ Page {
             if (serverid == '') return
             lastServerId = serverid
             var last = shared.getLastChannel(serverid)
-            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed, _managePermissions) {
+            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed, _managePermissions, topic) {
                 if (!_haspermissions && !appSettings.ignorePrivate) return
-                var m = {categoryid: _categoryid, categoryname: _categoryname, channelid: _id, name: shared.emojify(_name), icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions}
+                var m = {categoryid: _categoryid, categoryname: _categoryname, channelid: _id, name: shared.emojify(_name), icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions, topic: topic}
                 append(m)
                 if (last == _id) openChannel(m, true)
             })
