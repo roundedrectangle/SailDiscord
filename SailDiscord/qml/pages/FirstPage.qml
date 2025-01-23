@@ -34,7 +34,7 @@ Page {
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
             loading = true
-            python.login(appConfiguration.token)
+            py.login(appConfiguration.token)
         }
     }
 
@@ -44,7 +44,7 @@ Page {
     }
 
     Component.onCompleted: {
-        python.init(function(u, i, s, m) {
+        py.init(function(u, i, s, m) {
             loading = false
             username = shared.emojify(u)
             avatar = i

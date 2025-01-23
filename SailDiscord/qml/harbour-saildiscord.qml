@@ -16,7 +16,7 @@ ApplicationWindow {
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 
-    Component.onDestruction: python.disconnectClient()
+    Component.onDestruction: py.disconnectClient()
 
     Notification { // Notifies about app status
         id: notifier
@@ -89,13 +89,13 @@ ApplicationWindow {
         }
 
         function download(url, name) {
-            python.call('main.comm.download_file', [url, name], function(r) {
+            py.call('main.comm.download_file', [url, name], function(r) {
                 showInfo(qsTr("Downloaded file %1").arg(name))
             })
         }
 
         function shareFile(url, name, mime) {
-            python.call('main.comm.save_temp', [url, name], function(path) {
+            py.call('main.comm.save_temp', [url, name], function(path) {
                 shareApi.mimeType = mime
                 shareApi.resources = [path]
                 shareApi.trigger()
@@ -138,24 +138,24 @@ ApplicationWindow {
 
         function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback) {
             // see convertCallbackType()
-            python.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
-            python.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
-            python.setHandler("unknownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
-            python.setHandler("messageedit", function(before, event, args) {
+            py.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
+            py.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
+            py.setHandler("unknownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
+            py.setHandler("messageedit", function(before, event, args) {
                 constructMessageCallback(convertCallbackType(event), guildid, channelid, function(history, data) {
                     editCallback(before, data)
                 }).apply(null, args)
             })
-            python.setHandler("messagedelete", function(id) { editCallback(id) })
+            py.setHandler("messagedelete", function(id) { editCallback(id) })
         }
 
         function cleanupMessageCallbacks() {
             // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
-            python.reset("message")
-            python.reset("newmember")
-            python.reset("uknownmessage")
-            python.reset("messageedit")
-            python.reset("messagedelete")
+            py.reset("message")
+            py.reset("newmember")
+            py.reset("uknownmessage")
+            py.reset("messageedit")
+            py.reset("messagedelete")
         }
 
         function markdown(text, linkColor, edited) {
@@ -278,17 +278,17 @@ ApplicationWindow {
             property bool modernUI: false
             property bool developerMode: false
 
-            onCachePeriodChanged: python.setCachePeriod(cachePeriod)
+            onCachePeriodChanged: py.setCachePeriod(cachePeriod)
         }
     }
 
     Connections {
         target: globalProxy
-        onUrlChanged: python.call('main.comm.set_proxy', [python.getProxy()])
+        onUrlChanged: py.call('main.comm.set_proxy', [py.getProxy()])
     }
 
     Python {
-        id: python
+        id: py
         property bool initialized: false
         property var _refreshFirstPage: function() {}
 
@@ -310,6 +310,7 @@ ApplicationWindow {
             setHandler('notfoundError', function(e){ shared.showError(qsTranslate("Errors", "404 Not Found"), e) })
             setHandler('messageError', function(e){ shared.showError(qsTranslate("Errors", "A message failed to load"), e) })
             setHandler('referenceError', function(e){ shared.showError(qsTranslate("Errors", "A reference failed to load"), e) })
+            setHandler('channelError', function(e){ shared.showError(qsTranslate("Errors", "Channel failed to load"), e) })
             setHandler('unknownPrivateChannel', function(e){ shared.showError(qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers").arg(e)) })
 
             addImportPath(Qt.resolvedUrl("../python"))
@@ -331,7 +332,7 @@ ApplicationWindow {
         function reset(handler) {
             // we unset handler so app won't crash on operating destroyed items
             // undefined is not used for messages not to be logged
-            python.setHandler(handler, function() {})
+            py.setHandler(handler, function() {})
         }
 
         function requestChannels(guildid){ call('main.comm.get_channels', [guildid]) }

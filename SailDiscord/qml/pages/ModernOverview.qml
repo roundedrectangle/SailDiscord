@@ -40,7 +40,7 @@ SilicaFlickable {
         }
         MenuItem {
             text: qsTr("Refresh")
-            onClicked: python.refresh()
+            onClicked: py.refresh()
             visible: !loading
         }
     }

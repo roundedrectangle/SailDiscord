@@ -48,7 +48,7 @@ AboutPageBase {
                 MenuItem {
                     visible: !isFriend
                     text: qsTr("Send friend request")
-                    onClicked: python.call('main.comm.send_friend_request', [userid])
+                    onClicked: py.call('main.comm.send_friend_request', [userid])
                 }
                 /*MenuItem {
                     visible: !isClient
@@ -142,7 +142,7 @@ AboutPageBase {
         if (_loaded || loading) return
         _loaded = true
         _develInfoSection.parent.visible = !busyIndicator.running && _loaded
-        python.requestUserInfo(userid) // for client, it will be -1
+        py.requestUserInfo(userid) // for client, it will be -1
     }
 
     Component.onCompleted: {
@@ -156,7 +156,7 @@ AboutPageBase {
             pageStack.pop(undefined, PageStackAction.Immediate)
             LinkHandler.openOrCopyUrl(link)
         })
-        python.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
+        py.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(_date)
             _status = shared.constructStatus(status, onMobile)
@@ -178,5 +178,5 @@ AboutPageBase {
     }
     onLoadingChanged: load()
 
-    Component.onDestruction: python.setHandler("user"+(isClient?"":userid), function() {})
+    Component.onDestruction: py.setHandler("user"+(isClient?"":userid), function() {})
 }

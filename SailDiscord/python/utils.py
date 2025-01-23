@@ -1,5 +1,5 @@
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from caching import Cacher, ImageType
 from pyotherside import send as qsend
 from typing import Any, Callable, List, Tuple, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
@@ -9,7 +9,6 @@ from enum import Enum, auto
 from pathlib import Path
 import asyncio
 import urllib.parse
-import re
 import traceback as tb
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
@@ -94,7 +93,7 @@ def attachment_type(attachment: discord.Attachment):
     if t.startswith('image'):
         return AttachmentMapping.IMAGE
 
-def convert_attachments(attachments: List[discord.Attachment], cacher: Cacher):
+def convert_attachments(attachments: List[discord.Attachment]):
     """Converts to QML-friendly attachment format, object (dict)"""
     # TODO: caching, more types
     res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": None if a.content_type is None else a.content_type.split(';')[0], "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
@@ -148,3 +147,9 @@ def group_name(group: discord.GroupChannel):
         return (group.name,)*2
     recipients = [x.display_name for x in group.recipients if x.id != group.me.id]
     return ', '.join([f'@{x}' for x in recipients]), ', '.join(recipients)
+
+async def is_channel_unread(channel: Union[discord.TextChannel, discord.DMChannel, discord.GroupChannel], return_none = False) -> Union[bool, None]:
+    try:
+        return (await channel.fetch_message(channel.last_message_id)).created_at - (await channel.fetch_message(channel.acked_message_id)).created_at > timedelta()
+    except:
+        return None if return_none else False

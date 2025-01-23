@@ -105,10 +105,26 @@ Page {
 
                 Label {
                     text: name
-                    width: parent.width - channelIcon.width - parent.spacing*1
+                    width: parent.width - channelIcon.width - channelUnreadCount.width - parent.spacing*2
                     truncationMode: TruncationMode.Fade
                     anchors.verticalCenter: parent.verticalCenter
                     textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                    highlighted: unread
+                }
+
+                Rectangle {
+                    id: channelUnreadCount
+                    visible: mentions > 0
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: children[0].width + Theme.paddingSmall*2
+                    height: children[0].height + Theme.paddingSmall*2
+                    radius: height/2
+                    color: Theme.highlightColor
+                    Label {
+                        text: mentions > 100000 ? '100k+' : mentions
+                        color: Theme.primaryColor
+                        anchors.centerIn: parent
+                    }
                 }
             }
 
@@ -129,28 +145,56 @@ Page {
         id: chModel
         property string lastServerId: '-1'
 
+        function findIndexById(id) {
+            for(var i=0; i < count; i++)
+                if (get(i).channelid == id) return i
+            return -1
+        }
+
         function reloadModel() {
             if (lastServerId == serverid) return
-            if (lastServerId != '-1') python.setHandler('channel'+lastServerId, undefined)
+            if (lastServerId != '-1') {
+                py.setHandler('channel'+lastServerId, undefined)
+                py.setHandler('channelUpdate'+lastServerId, undefined)
+                py.call2('unset_server', [lastServerId])
+            }
             clear()
             if (!!pageStack.nextPage()) pageStack.popAttached()
             if (serverid == '') return
             lastServerId = serverid
             var last = shared.getLastChannel(serverid)
-            python.setHandler('channel'+serverid, function (_categoryid, _categoryname, _id, _name, _haspermissions, _icon, _textSendingAllowed, _managePermissions, topic) {
-                if (!_haspermissions && !appSettings.ignorePrivate) return
-                var m = {categoryid: _categoryid, categoryname: _categoryname, channelid: _id, name: shared.emojify(_name), icon: _icon, hasPermissions: _haspermissions, textSendPermissions: _textSendingAllowed, managePermissions: _managePermissions, topic: topic}
+            py.setHandler('channel'+serverid, function (categoryid, categoryname, channelid, name, haspermissions, icon, textSendPermissions, managePermissions, topic, unread, mentions) {
+                if (!haspermissions && !appSettings.ignorePrivate) return
+                var m = {
+                    categoryid: categoryid, categoryname: categoryname, channelid: channelid, name: shared.emojify(name),
+                    icon: icon, hasPermissions: haspermissions, textSendPermissions: textSendPermissions,
+                    managePermissions: managePermissions, topic: topic, unread: unread, mentions: mentions,
+                }
                 append(m)
-                if (last == _id) openChannel(m, true)
+                if (last == channelid) openChannel(m, true)
             })
-            python.requestChannels(serverid)
+            py.setHandler('channelUpdate'+serverid, function (channelid, unread, mentions) {
+                console.log("Hi")
+                var i = findIndexById(channelid)
+                if (i >= 0) {
+                    setProperty(i, 'unread', unread)
+                    setProperty(i, 'mentions', mentions)
+                }
+            })
+            py.requestChannels(serverid)
         }
         Component.onCompleted: reloadModel()
     }
     onServeridChanged: chModel.reloadModel()
     Component.onDestruction: {
-        if (chModel.lastServerId != '-1') python.setHandler('channel'+chModel.lastServerId, undefined)
-        python.setHandler('channel'+serverid, undefined)
+        if (chModel.lastServerId != '-1') {
+            py.setHandler('channel'+chModel.lastServerId, undefined)
+            py.setHandler('channelUpdate'+chModel.lastServerId, undefined)
+            py.call2('unset_server', [chModel.lastServerId])
+        }
+        py.setHandler('channel'+serverid, undefined)
+        py.setHandler('channelUpdate'+serverid, undefined)
+        py.call2('unset_server', [serverid])
         if (!!pageStack.nextPage() && pageStack.nextPage().serverid != '-1') pageStack.popAttached()
     }
 

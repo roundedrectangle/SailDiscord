@@ -106,7 +106,7 @@
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="42"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="307"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="320"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Info</translation>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="165"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="209"/>
         <source>Channel unsupported</source>
         <translation>Canale non supportato</translation>
     </message>
@@ -232,11 +232,16 @@
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <source>Channel failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="322"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="323"/>
         <source>Python error</source>
         <translation>Errore python</translation>
     </message>
@@ -249,7 +254,7 @@
         <translation>Copia ID server</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="120"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="136"/>
         <location filename="../qml/pages/DMsView.qml" line="47"/>
         <source>Copy channel ID</source>
         <translation>Copia ID canale</translation>
@@ -379,17 +384,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="209"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="222"/>
         <source>Message deleted</source>
         <translation>Messaggio eliminato</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="247"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="260"/>
         <source>Editing message</source>
         <translation>Messaggio modificato</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="275"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="288"/>
         <source>Type something</source>
         <translation>Scrivi qualcosa</translation>
     </message>

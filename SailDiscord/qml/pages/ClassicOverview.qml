@@ -28,7 +28,7 @@ TabView {
                         visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
-                            onClicked: python.refresh()
+                            onClicked: py.refresh()
                         }
                     }
 
@@ -62,7 +62,7 @@ TabView {
                         visible: !root.loading
                         MenuItem {
                             text: qsTr("Refresh")
-                            onClicked: python.refresh()
+                            onClicked: py.refresh()
                         }
                     }
                     PageHeader {

@@ -32,7 +32,7 @@ Page {
     }
 
     function sendMessage() {
-        if (!isDemo) python.sendMessage(sendField.text)
+        if (!isDemo) py.sendMessage(sendField.text)
         else msgModel.appendDemo(true, sendField.text)
         sendField.text = previouslyEnteredText
         previouslyEnteredText = ''
@@ -42,7 +42,7 @@ Page {
 
     function applyEdit() {
         if (isDemo) return
-        python.call2('edit_message', [actionID, sendField.text])
+        py.call2('edit_message', [actionID, sendField.text])
         var i = msgModel.findIndexById(actionID)
         if (i >= 0) {
             i = msgModel.get(i)
@@ -59,7 +59,7 @@ Page {
     }
 
     function applyReply() {
-        if (!isDemo) python.call2('reply_to', [actionID, sendField.text])
+        if (!isDemo) py.call2('reply_to', [actionID, sendField.text])
         else msgModel.appendDemo(true, sendField.text)
         sendField.text = previouslyEnteredText
         previouslyEnteredText = ''
@@ -113,7 +113,7 @@ Page {
                 }
             text: topic
             visible: !!text
-            width: extraContent ? parent.width : parent.width - Theme.horizontalPageMargin*2
+            width: extraContent ? parent.width : (parent.width - Theme.horizontalPageMargin*2)
             anchors.horizontalCenter: parent.horizontalCenter
             truncationMode: TruncationMode.Fade
             color: Theme.secondaryHighlightColor
@@ -144,7 +144,7 @@ Page {
                     if (i>0 && i%27 == 0) {
                         if (!msgModel.get(i)._wasUpdated) {
                             msgModel.get(i)._wasUpdated = true
-                            python.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
+                            py.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
                         }
                     }
                 }
@@ -219,7 +219,7 @@ Page {
                             actionID = messageId
                             currentFieldAction = 1
                         }
-                        onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; python.call2('delete_message', [messageId]) })
+                        onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; py.call2('delete_message', [messageId]) })
                         onReplyRequested: {
                             actionID = messageId
                             currentFieldAction = 2
@@ -421,7 +421,7 @@ Page {
             }
         })
 
-        python.setCurrentChannel(guildid, channelid)
+        py.setCurrentChannel(guildid, channelid)
         if (appSettings.focudOnChatOpen && sendPermissions) activeFocusTimer.start()
     }
 
@@ -441,6 +441,6 @@ Page {
     Component.onDestruction: {
         if (isDemo) return
         shared.cleanupMessageCallbacks()
-        python.resetCurrentChannel()
+        py.resetCurrentChannel()
     }
 }

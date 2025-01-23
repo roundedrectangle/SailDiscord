@@ -126,7 +126,7 @@ AboutPageBase {
 
         _features = {community:false, partnered:false, verified:false}
         _legacyMode = appConfiguration.legacyMode && serverid == "1261605062162251848" // Only activate once in a session
-        python.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, onlineCount, features, desc) {
+        py.request('request_server_info', 'serverinfo'+serverid, [serverid], function(memberCount, onlineCount, features, desc) {
             if (_legacyMode) {
                 memberCount = 3
                 onlineCount = 1

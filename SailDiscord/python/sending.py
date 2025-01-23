@@ -2,6 +2,7 @@ import sys
 import logging
 from typing import Any, List
 from pyotherside import send as qsend
+from threading import Thread
 
 from caching import Cacher, ImageType
 from utils import *
@@ -28,24 +29,43 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], c
 
 # Server Channels
 
-def send_channel(c: discord.abc.GuildChannel, myself_id):
+async def send_channel(c: discord.abc.GuildChannel, myself_id):
     if c.type == discord.ChannelType.category:
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
     perms = permissions_for(c, myself_id)
+    read_args = (bool(c.mention_count) #or await is_channel_unread(c)
+    ,c.mention_count) if isinstance(c, discord.TextChannel) else (False, 0)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
             str(c.id), c.name, perms.view_channel, str(c.type.name),
             isinstance(c, discord.TextChannel) and perms.send_messages, # If sending text is allowed
             perms.manage_messages, getattr(c, 'topic', '') or '',
+            *read_args,
     )
 
-def send_channels(guild: discord.Guild, user_id):
+async def send_channel_states(channels: List[Union[discord.TextChannel, Any]]):
+    for c in channels:
+        qsend("ok it at least runs")
+        if not isinstance(c, discord.TextChannel):
+            return
+        qsend("test1")
+        if await is_channel_unread(c):
+            qsend("pass")
+            qsend(f'channelUpdate{c.guild.id}', str(c.id), True, c.mention_count)
+        else:
+            qsend("fail")
+
+def send_channels(guild: discord.Guild, user_id, async_runner):
     for c in guild.channels:
-        if c.category == None and not (getattr(c, 'type') == discord.ChannelType.category or isinstance(c, discord.CategoryChannel)):
-            send_channel(c, user_id)
+        if c.category == None and not c.type == discord.ChannelType.category:
+            async_runner(send_channel(c, user_id))
+            qsend("Hi")
     for category in guild.categories:
         for c in category.channels:
-            send_channel(c, user_id)
+            async_runner(send_channel(c, user_id))
+            qsend("Hi2")
+    # Thread(target=async_runner, args=(send_channel_states(guild.channels),))
+    async_runner(send_channel_states(guild.channels))
 
 # DMs
 # Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions
@@ -97,7 +117,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
             "pfp": icon, "bot": message.author.bot, "system": message.author.system,
             "color": hex_color(message.author.color)},
             
-            is_history, convert_attachments(message.attachments, cacher),
+            is_history, convert_attachments(message.attachments),
             message.jump_url,
         )
 

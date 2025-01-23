@@ -50,7 +50,7 @@ async def generate_message(message: discord.Message, is_history=False):
                     
                     ref['resolvedType'], extra = await generate_extra_message(s)
                     ref['resolved'] = (
-                        '-1', '-1', '-1', qml_date(s.created_at), bool(message.edited_at), dummy_qml_user_info, False, convert_attachments(s.attachments, comm.cacher),
+                        '-1', '-1', '-1', qml_date(s.created_at), bool(message.edited_at), dummy_qml_user_info, False, convert_attachments(s.attachments),
                         *extra,
                         )
                     ref['state'] = 3
@@ -114,6 +114,8 @@ class MyClient(discord.Client):
         if self.ensure_current_channel(message.channel, message.guild):
             await send_message(message)
             await message.ack()
+        if self.current_server == message.guild and message.author != self.user:
+            qsend(f'channelUpdate{message.guild.id}', str(message.channel.id), True, message.channel.mention_count) # pyright:ignore[reportAttributeAccessIssue]
 
     async def on_message_edit(self, before: discord.Message, after: discord.Message):
         if self.ensure_current_channel(before.channel, before.guild):
@@ -138,29 +140,31 @@ class MyClient(discord.Client):
                 break
             await send_message(m, True)
 
-    def run_asyncio_threadsafe(self, courutine, result_required=False, timeout:Optional[float]=None) -> Any:
+    def run_asyncio_threadsafe(self, courutine, result_required=True, timeout:Optional[float]=None) -> Any:
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""
         future = asyncio.run_coroutine_threadsafe(courutine, self.loop)
         if result_required: return future.result(timeout)
         return future
 
     def set_current_channel(self, guild: discord.Guild, channel):
-        self.current_server = guild
+        if guild:
+            self.current_server = guild
         self.current_channel = channel
-        #self.run_asyncio_threadsafe(guild.subscribe(typing=True, member_updates=True), True)
+        #self.run_asyncio_threadsafe(guild.subscribe(typing=True, member_updates=True))
 
-        self.run_asyncio_threadsafe(self.get_last_messages(), True)
-        self.run_asyncio_threadsafe(self.current_channel.ack())
+        self.run_asyncio_threadsafe(self.get_last_messages())
+        self.run_asyncio_threadsafe(self.current_channel.ack(), False)
+        qsend(f'channelUpdate{guild.id}', self.current_channel.id, False, self.current_channel.mention_count)
 
     def unset_current_channel(self):
         #if not self.current_server: return
-        #self.run_asyncio_threadsafe(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False), True)
-        self.current_server = None
+        #self.run_asyncio_threadsafe(self.current_server.subscribe(typing=False, activities=False, threads=False, member_updates=False))
+        #self.current_server = None
         self.current_channel = None
     
     def send_message(self, text):
         if self.ensure_current_channel():
-            return self.run_asyncio_threadsafe(self.current_channel.send(text))
+            return self.run_asyncio_threadsafe(self.current_channel.send(text), False)
     
     def ensure_current_channel(self, channel=None, server=None):
         if self.current_channel == None:
@@ -274,26 +278,32 @@ class Communicator:
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
         if g != None:
-            send_channels(g, self.client.user.id)
+            send_channels(g, self.client.user.id, self.client.run_asyncio_threadsafe)
+            try: self.client.current_server = self.client.get_guild(int(guild_id))
+            except: pass
+    
+    def unset_server(self, guild_id):
+        if not self.client.current_channel and self.client.current_server and self.client.current_server.id == guild_id:
+            self.client.current_server = None
 
     def set_channel(self, guild_id, channel_id):
         if guild_id in GeneralNone:
             self.client.unset_current_channel()
         else:
-            # try:
-                guild = self.client.get_guild(int(guild_id)) if guild_id != '-2' else None
-                channel = guild.get_channel(int(channel_id)) if guild_id != '-2' else self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
+            try:
+                guild = self.client.current_server or (self.client.get_guild(int(guild_id)) if guild_id != '-2' else None)
+                channel = guild.get_channel(int(channel_id)) if guild_id != '-2' else self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)))
                 self.client.set_current_channel(guild, channel)
-            # except Exception as e:
-            #     qsend(f"ERROR: couldn't set current_server: {e}. Falling back to None")
-            #     self.client.unset_current_channel()
+            except Exception as e:
+                self.client.unset_current_channel()
+                qsend("channelError", format_exc(e))
     
     def send_message(self, message_text):
         self.client.send_message(message_text)
 
     @exception_decorator(AttributeError, discord.NotFound)
     def get_history_messages(self, before_id):
-        self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)))
+        self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)), False)
 
     @exception_decorator(CancelledError)
     def disconnect(self):
@@ -304,7 +314,7 @@ class Communicator:
     
     @attributeerror_safe
     def request_user_info(self, user_id:int=None):
-        self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1), True)
+        self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1))
 
     def download_file(self, url, filename):
         dest = self.downloads / filename
@@ -327,9 +337,9 @@ class Communicator:
     def get_reference(self, channel_id, message_id):
         if channel_id == '-1':
             ch = self.client.current_channel
-        else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)), True)
-        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)), True)
-        event, args = self.client.run_asyncio_threadsafe(generate_message(m), True)
+        else: ch = self.client.run_asyncio_threadsafe(self.client.fetch_channel(int(channel_id)))
+        m = self.client.run_asyncio_threadsafe(ch.fetch_message(int(message_id)))
+        event, args = self.client.run_asyncio_threadsafe(generate_message(m))
         return (event, *args)
 
     @attributeerror_safe
@@ -341,27 +351,27 @@ class Communicator:
         except ValueError:
             logging.warning(f"Requested info for a server with non-integer ID: {server_id}")
             return
-        send_guild_info(self.client.run_asyncio_threadsafe(self.client.fetch_guild(server_id), True))
+        send_guild_info(self.client.run_asyncio_threadsafe(self.client.fetch_guild(server_id)))
 
     def send_friend_request(self, user_id: int):
-        user = self.client.run_asyncio_threadsafe(self.client.fetch_user(user_id), True)
+        user = self.client.run_asyncio_threadsafe(self.client.fetch_user(user_id))
         try:
             if not user.is_friend():
-                self.client.run_asyncio_threadsafe(user.send_friend_request(), True)
+                self.client.run_asyncio_threadsafe(user.send_friend_request())
         except discord.errors.CaptchaRequired as e:
             qsend('captchaError', str(e))
     
     def edit_message(self, message_id: Union[str, int], new_content: str):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
-        self.client.run_asyncio_threadsafe(msg.edit(content=new_content), True)
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        self.client.run_asyncio_threadsafe(msg.edit(content=new_content))
     
     def delete_message(self, message_id: Union[str, int]):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
-        self.client.run_asyncio_threadsafe(msg.delete(), True)
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        self.client.run_asyncio_threadsafe(msg.delete())
 
     def reply_to(self, message_id: Union[str, int], content: str):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id), True)
-        self.client.run_asyncio_threadsafe(msg.reply(content), True)
+        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        self.client.run_asyncio_threadsafe(msg.reply(content))
 
 
 comm = Communicator()

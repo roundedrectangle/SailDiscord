@@ -209,7 +209,7 @@ Page {
                                 }
                                 Button {
                                     text: qsTr("Clear cache")
-                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Cleared cache"), function(){ python.clearCache() })
+                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Cleared cache"), function(){ py.clearCache() })
                                 }
                             }
 
