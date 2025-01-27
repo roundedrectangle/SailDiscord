@@ -45,27 +45,21 @@ async def send_channel(c: discord.abc.GuildChannel, myself_id):
 
 async def send_channel_states(channels: List[Union[discord.TextChannel, Any]]):
     for c in channels:
-        qsend("ok it at least runs")
         if not isinstance(c, discord.TextChannel):
             return
-        qsend("test1")
         if await is_channel_unread(c):
-            qsend("pass")
             qsend(f'channelUpdate{c.guild.id}', str(c.id), True, c.mention_count)
-        else:
-            qsend("fail")
 
-def send_channels(guild: discord.Guild, user_id, async_runner):
+def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = False):
     for c in guild.channels:
         if c.category == None and not c.type == discord.ChannelType.category:
             async_runner(send_channel(c, user_id))
-            qsend("Hi")
     for category in guild.categories:
         for c in category.channels:
             async_runner(send_channel(c, user_id))
-            qsend("Hi2")
-    # Thread(target=async_runner, args=(send_channel_states(guild.channels),))
-    async_runner(send_channel_states(guild.channels))
+    if send_unread:
+        # Thread(target=async_runner, args=(send_channel_states(guild.channels),))
+        async_runner(send_channel_states(guild.channels))
 
 # DMs
 # Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions

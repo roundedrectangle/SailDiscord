@@ -276,6 +276,7 @@ ApplicationWindow {
             property bool infoInNotifications: false
             property bool unformattedText: false
             property bool modernUI: false
+            property bool unreadState: false
             property bool developerMode: false
 
             onCachePeriodChanged: py.setCachePeriod(cachePeriod)
@@ -371,7 +372,7 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium]) }
+        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState]) }
 
         function call2(name, args, callback) { call('main.comm.'+name, args, callback) }
     }

@@ -201,47 +201,47 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="307"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="308"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="308"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="323"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="324"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -815,7 +815,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="223"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="351"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="358"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
@@ -922,16 +922,26 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="331"/>
+        <source>Show indicators of read states</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="332"/>
+        <source>This includes pings count, unread state. Makes the app slower, thus not recommended. Refresh the app to apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="338"/>
         <source>Developer mode</source>
         <translation>Режим разработчика</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="332"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="339"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
         <translation>Включает некоторые функции полезные для разработчика, такие как скопировать ID</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="352"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>
@@ -1007,7 +1017,7 @@
         <translation>(изменено)</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="304"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="305"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>

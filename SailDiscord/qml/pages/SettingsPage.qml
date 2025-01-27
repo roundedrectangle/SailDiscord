@@ -327,6 +327,13 @@ Page {
                            onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
                         }
                         IconTextSwitch {
+                            icon.source: "image://theme/icon-m-browser-notifications"
+                            text: qsTr("Show indicators of read states")
+                            description: qsTr("This includes pings count, unread state. Makes the app slower, and is very buggy, thus not recommended. Refresh the app to apply")
+                            checked: appSettings.unreadState
+                            onCheckedChanged: appSettings.unreadState = checked
+                        }
+                        IconTextSwitch {
                             icon.source: "image://theme/icon-m-developer-mode"
                             text: qsTr("Developer mode")
                             description: qsTr("Enables certain features useful for developers such as copying IDs")

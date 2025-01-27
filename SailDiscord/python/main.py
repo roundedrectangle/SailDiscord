@@ -114,7 +114,8 @@ class MyClient(discord.Client):
         if self.ensure_current_channel(message.channel, message.guild):
             await send_message(message)
             await message.ack()
-        if self.current_server == message.guild and message.author != self.user:
+        comm.ensure_constants()
+        if comm.send_unread and self.current_server == message.guild and message.author != self.user:
             qsend(f'channelUpdate{message.guild.id}', str(message.channel.id), True, message.channel.mention_count) # pyright:ignore[reportAttributeAccessIssue]
 
     async def on_message_edit(self, before: discord.Message, after: discord.Message):
@@ -154,7 +155,9 @@ class MyClient(discord.Client):
 
         self.run_asyncio_threadsafe(self.get_last_messages())
         self.run_asyncio_threadsafe(self.current_channel.ack(), False)
-        qsend(f'channelUpdate{guild.id}', self.current_channel.id, False, self.current_channel.mention_count)
+        comm.ensure_constants()
+        if comm.send_unread:
+            qsend(f'channelUpdate{guild.id}', self.current_channel.id, False, self.current_channel.mention_count)
 
     def unset_current_channel(self):
         #if not self.current_server: return
@@ -212,6 +215,7 @@ class Communicator:
     loginth: Thread
     client: MyClient
     emoji_size: Optional[int] = None
+    send_unread: Optional[bool] = None
 
     def __init__(self):
         self.loginth = Thread()
@@ -228,7 +232,9 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, send_unread: bool):
+        self.emoji_size = emoji_size
+        self.send_unread = send_unread
         if self.cacher:
             self.set_cache_period(cache_period)
             self.cacher.recreate_temporary()
@@ -236,7 +242,6 @@ class Communicator:
             self.cacher = Cacher(cache, cache_period)
         self.set_proxy(proxy)
         self.downloads = Path(downloads)
-        self.emoji_size = emoji_size
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""
@@ -278,7 +283,8 @@ class Communicator:
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
         if g != None:
-            send_channels(g, self.client.user.id, self.client.run_asyncio_threadsafe)
+            comm.ensure_constants()
+            send_channels(g, self.client.user.id, self.client.run_asyncio_threadsafe, comm.send_unread)
             try: self.client.current_server = self.client.get_guild(int(guild_id))
             except: pass
     
