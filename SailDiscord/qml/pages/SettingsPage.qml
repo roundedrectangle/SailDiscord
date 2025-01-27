@@ -285,7 +285,7 @@ Page {
                                                          : qsTr("Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk")
                             MouseArea {
                                 anchors.fill: parent
-                                onClicked: emotionalDamageEnabled = !emotionalDamageEnabled
+                                onClicked: parent.emotionalDamageEnabled = !parent.emotionalDamageEnabled
                             }
                         }
 
