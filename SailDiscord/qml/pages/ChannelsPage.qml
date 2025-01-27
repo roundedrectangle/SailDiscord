@@ -176,7 +176,6 @@ Page {
                 if (last == channelid) openChannel(m, true)
             })
             py.setHandler('channelUpdate'+serverid, function (channelid, unread, mentions) {
-                console.log("Hi")
                 var i = findIndexById(channelid)
                 if (i >= 0) {
                     setProperty(i, 'unread', unread)

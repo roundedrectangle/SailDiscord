@@ -109,6 +109,7 @@ Page {
                     anchors.verticalCenter = parent.verticalCenter
                 } else {
                     anchors.top = header.bottom
+                    messagesList.anchors.top = bottom
                     height += Theme.paddingMedium
                 }
             text: topic
