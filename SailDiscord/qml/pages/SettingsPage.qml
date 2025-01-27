@@ -37,14 +37,6 @@ Page {
                         width: section.width
                         spacing: Theme.paddingSmall
 
-                        SectionHeader { text: qsTr("Channels list") }
-
-                        TextSwitch {
-                            text: qsTr("Show private channels")
-                            onCheckedChanged: appSettings.ignorePrivate = checked
-                            Component.onCompleted: checked = appSettings.ignorePrivate
-                        }
-
                         SectionHeader { text: qsTr("Messages") }
 
                         TextSwitch {
@@ -101,8 +93,7 @@ Page {
                         spacing: Theme.paddingSmall
 
                         SectionHeader {
-                            text: qsTr("Servers list")
-                            visible: false
+                            text: qsTr("Overview")
                         }
 
                         TextSwitch {
@@ -112,6 +103,18 @@ Page {
                             visible: false
                         }
 
+                        IconComboBox {
+                            label: qsTr("Mode")
+                            description: currentIndex == 1 ? qsTr("Tries to mimic the UI in real Discord") : qsTr("Classic UI with tabs")
+                            icon.source: "image://theme/icon-m-ambience"
+                            currentIndex: appSettings.modernUI ? 1 : 0
+                            menu: ContextMenu {
+                                MenuItem { text: qsTr("Classic") }
+                                MenuItem { text: qsTr("Modern") }
+                            }
+
+                           onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
+                        }
 
                         SectionHeader { text: qsTr("Messages") }
 
@@ -263,6 +266,41 @@ Page {
                 }
 
                 ExpandingSection {
+                    id: spyingSection
+                    title: qsTr("Spying")
+
+                    content.sourceComponent: Column {
+                        width: spyingSection.width
+
+                        Label {
+                            width: parent.width - 2*x
+                            x: Theme.horizontalPageMargin
+                            wrapMode: Text.Wrap
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: Theme.secondaryHighlightColor
+                            bottomPadding: Theme.paddingMedium
+
+                            property bool emotionalDamageEnabled
+                            text: emotionalDamageEnabled ? "Warning: changing any of these options can lead to emotional damage and is not recommended. Use at your own risk"
+                                                         : qsTr("Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk")
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: emotionalDamageEnabled = !emotionalDamageEnabled
+                            }
+                        }
+
+                        SectionHeader { text: qsTr("Channels list") }
+
+                        IconTextSwitch {
+                            text: qsTr("Show private channels")
+                            icon.source: "image://theme/icon-m-device-lock"
+                            onCheckedChanged: appSettings.ignorePrivate = checked
+                            Component.onCompleted: checked = appSettings.ignorePrivate
+                        }
+                    }
+                }
+
+                ExpandingSection {
                     id: advancedSection
                     title: qsTr("Advanced")
                     content.sourceComponent: Column {
@@ -314,18 +352,6 @@ Page {
                         }
 
                         SectionHeader { text: qsTr("Experimental") }
-                        IconComboBox {
-                            label: qsTr("Overview mode")
-                            description: currentIndex == 1 ? qsTr("Tries to mimic the UI in real Discord") : qsTr("Classic UI with tabs")
-                            icon.source: "image://theme/icon-m-ambience"
-                            currentIndex: appSettings.modernUI ? 1 : 0
-                            menu: ContextMenu {
-                                MenuItem { text: qsTr("Classic") }
-                                MenuItem { text: qsTr("Modern") }
-                            }
-
-                           onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
-                        }
                         IconTextSwitch {
                             icon.source: "image://theme/icon-m-browser-notifications"
                             text: qsTr("Show indicators of read states")
