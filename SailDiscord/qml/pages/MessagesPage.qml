@@ -111,10 +111,12 @@ Page {
                     anchors.top = header.bottom
                     messagesList.anchors.top = bottom
                     height += Theme.paddingMedium
+                    width -= Theme.horizontalPageMargin*2
                 }
             text: topic
             visible: !!text
-            width: extraContent ? parent.width : (parent.width - Theme.horizontalPageMargin*2)
+            textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             truncationMode: TruncationMode.Fade
             color: Theme.secondaryHighlightColor

@@ -62,7 +62,10 @@ Page {
 
         section {
             property: "categoryname"
-            delegate: SectionHeader { text: section }
+            delegate: SectionHeader {
+                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                text: section
+            }
         }
 
         delegate: ListItem {
@@ -168,9 +171,9 @@ Page {
             py.setHandler('channel'+serverid, function (categoryid, categoryname, channelid, name, haspermissions, icon, textSendPermissions, managePermissions, topic, unread, mentions) {
                 if (!haspermissions && !appSettings.ignorePrivate) return
                 var m = {
-                    categoryid: categoryid, categoryname: categoryname, channelid: channelid, name: shared.emojify(name),
+                    categoryid: categoryid, categoryname: shared.emojify(categoryname), channelid: channelid, name: shared.emojify(name),
                     icon: icon, hasPermissions: haspermissions, textSendPermissions: textSendPermissions,
-                    managePermissions: managePermissions, topic: topic, unread: unread, mentions: mentions,
+                    managePermissions: managePermissions, topic: shared.emojify(topic), unread: unread, mentions: mentions,
                 }
                 append(m)
                 if (last == channelid) openChannel(m, true)
