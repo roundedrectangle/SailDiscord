@@ -292,7 +292,8 @@ Page {
                         SectionHeader { text: qsTr("Channels list") }
 
                         IconTextSwitch {
-                            text: qsTr("Show private channels")
+                            text: qsTr("Show channels without permissions")
+                            description: qsTr("They will be displayed, but it still won't be possible to open them")
                             icon.source: "image://theme/icon-m-device-lock"
                             onCheckedChanged: appSettings.ignorePrivate = checked
                             Component.onCompleted: checked = appSettings.ignorePrivate

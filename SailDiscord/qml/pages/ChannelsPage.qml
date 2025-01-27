@@ -101,6 +101,7 @@ Page {
                                 break
                         }
                     }
+                    opacity: hasPermissions ? 1 : Theme.opacityLow
                 }
 
                 Label {
@@ -110,6 +111,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                     highlighted: unread
+                    opacity: hasPermissions ? 1 : Theme.opacityLow
                 }
 
                 Rectangle {
