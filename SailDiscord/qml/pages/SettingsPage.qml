@@ -361,6 +361,12 @@ Page {
                             onCheckedChanged: appSettings.unreadState = checked
                         }
                         IconTextSwitch {
+                            text: qsTr("Friend requests")
+                            description: qsTr("Does not work because of captcha for most people")
+                            checked: appSettings.friendRequests
+                            onCheckedChanged: appSettings.friendRequests = checked
+                        }
+                        IconTextSwitch {
                             icon.source: "image://theme/icon-m-developer-mode"
                             text: qsTr("Developer mode")
                             description: qsTr("Enables certain features useful for developers such as copying IDs")

@@ -44,9 +44,10 @@ AboutPageBase {
         Component {
             id: pullMenuComponent
             PullDownMenu {
+                visible: !isFriend && appSettings.friendRequests
                 parent: page.flickable
                 MenuItem {
-                    visible: !isFriend
+                    visible: !isFriend && appSettings.friendRequests
                     text: qsTr("Send friend request")
                     onClicked: py.call('main.comm.send_friend_request', [userid])
                 }

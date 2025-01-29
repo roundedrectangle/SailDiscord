@@ -277,6 +277,7 @@ ApplicationWindow {
             property bool infoInNotifications: false
             property bool unformattedText: false
             property bool unreadState: true
+            property bool friendRequests: false
             property bool developerMode: false
 
             onCachePeriodChanged: py.setCachePeriod(cachePeriod)
