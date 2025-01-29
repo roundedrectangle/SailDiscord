@@ -148,7 +148,7 @@ def group_name(group: discord.GroupChannel):
     recipients = [x.display_name for x in group.recipients if x.id != group.me.id]
     return ', '.join([f'@{x}' for x in recipients]), ', '.join(recipients)
 
-async def is_channel_unread(channel: Union[discord.TextChannel, discord.DMChannel, discord.GroupChannel], return_none = False) -> Union[bool, None]:
+async def is_channel_unread(channel: Union[discord.TextChannel, discord.DMChannel, discord.GroupChannel], return_none = True) -> Union[bool, None]:
     try:
         return (await channel.fetch_message(channel.last_message_id)).created_at - (await channel.fetch_message(channel.acked_message_id)).created_at > timedelta()
     except:

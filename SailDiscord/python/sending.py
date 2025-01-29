@@ -34,7 +34,7 @@ async def send_channel(c: discord.abc.GuildChannel, myself_id):
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
     perms = permissions_for(c, myself_id)
-    read_args = (bool(c.mention_count) #or await is_channel_unread(c)
+    read_args = (bool(c.mention_count) #or await is_channel_unread(c, False)
     ,c.mention_count) if isinstance(c, discord.TextChannel) else (False, 0)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
             str(c.id), c.name, perms.view_channel, str(c.type.name),
@@ -43,14 +43,15 @@ async def send_channel(c: discord.abc.GuildChannel, myself_id):
             *read_args,
     )
 
-async def send_channel_states(channels: List[Union[discord.TextChannel, Any]]):
+async def send_channel_states(channels: List[Union[discord.TextChannel, Any]], my_id = None, stop_checker = lambda: False,):
     for c in channels:
-        if not isinstance(c, discord.TextChannel):
-            return
+        if stop_checker(): break
+        if not isinstance(c, discord.TextChannel) or c.mention_count or not permissions_for(c, my_id).view_channel:
+            continue
         if await is_channel_unread(c):
             qsend(f'channelUpdate{c.guild.id}', str(c.id), True, c.mention_count)
 
-def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = False):
+def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = False, current_server = None):
     for c in guild.channels:
         if c.category == None and not c.type == discord.ChannelType.category:
             async_runner(send_channel(c, user_id))
@@ -58,8 +59,7 @@ def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = Fal
         for c in category.channels:
             async_runner(send_channel(c, user_id))
     if send_unread:
-        # Thread(target=async_runner, args=(send_channel_states(guild.channels),))
-        async_runner(send_channel_states(guild.channels))
+        Thread(target=async_runner, args=(send_channel_states(guild.channels, user_id, lambda: (current_server() != guild) if callable(current_server) else False),)).start()
 
 # DMs
 # Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions

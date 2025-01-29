@@ -284,9 +284,9 @@ class Communicator:
         g = self.client.get_guild(int(guild_id))
         if g != None:
             comm.ensure_constants()
-            send_channels(g, self.client.user.id, self.client.run_asyncio_threadsafe, comm.send_unread)
             try: self.client.current_server = self.client.get_guild(int(guild_id))
             except: pass
+            send_channels(g, self.client.user.id, self.client.run_asyncio_threadsafe, comm.send_unread, lambda: self.client.current_server)
     
     def unset_server(self, guild_id):
         if not self.client.current_channel and self.client.current_server and self.client.current_server.id == guild_id:

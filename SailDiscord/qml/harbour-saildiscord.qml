@@ -262,6 +262,7 @@ ApplicationWindow {
             //property bool emptySpace: false
             property string sentBehaviour: "r"
             property bool alignMessagesText: true
+            property bool modernUI: false
             property string messageGrouping: "d"
             property string oneAuthorPadding: "a"
             property bool highContrastMessages: false
@@ -275,7 +276,6 @@ ApplicationWindow {
             property string customProxy: ""
             property bool infoInNotifications: false
             property bool unformattedText: false
-            property bool modernUI: false
             property bool unreadState: false
             property bool developerMode: false
 
