@@ -276,7 +276,7 @@ ApplicationWindow {
             property string customProxy: ""
             property bool infoInNotifications: false
             property bool unformattedText: false
-            property bool unreadState: false
+            property bool unreadState: true
             property bool developerMode: false
 
             onCachePeriodChanged: py.setCachePeriod(cachePeriod)

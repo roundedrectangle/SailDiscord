@@ -356,7 +356,7 @@ Page {
                         IconTextSwitch {
                             icon.source: "image://theme/icon-m-browser-notifications"
                             text: qsTr("Show indicators of read states")
-                            description: qsTr("This includes pings count, unread state. Makes the app slower, and is very buggy, thus not recommended. Refresh the app to apply")
+                            description: qsTr("Includes pings count, unread state. Can be buggy. Refresh the app to apply")
                             checked: appSettings.unreadState
                             onCheckedChanged: appSettings.unreadState = checked
                         }
