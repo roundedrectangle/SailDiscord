@@ -105,15 +105,16 @@ Page {
                         }
                     }
                     opacity: hasPermissions ? 1 : Theme.opacityLow
+                    highlighted: unread || parent.parent.highlighted
                 }
 
                 Label {
-                    text: name
-                    width: parent.width - channelIcon.width - channelUnreadCount.width - parent.spacing*2
+                    text: "unread unread unread unread unread unread unread unread unread unread "//name
+                    width: parent.width - channelIcon.width - channelUnreadCount.width - parent.spacing*(channelUnreadCount.visible ? 2 : 1)
                     truncationMode: TruncationMode.Fade
                     anchors.verticalCenter: parent.verticalCenter
                     textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
-                    highlighted: unread
+                    highlighted: unread || parent.parent.highlighted
                     opacity: hasPermissions ? 1 : Theme.opacityLow
                 }
 
@@ -121,7 +122,7 @@ Page {
                     id: channelUnreadCount
                     visible: mentions > 0
                     anchors.verticalCenter: parent.verticalCenter
-                    width: children[0].width + Theme.paddingSmall*2
+                    width: visible ? children[0].width + Theme.paddingSmall*2 : 0
                     height: children[0].height + Theme.paddingSmall*2
                     radius: height/2
                     color: Theme.highlightColor

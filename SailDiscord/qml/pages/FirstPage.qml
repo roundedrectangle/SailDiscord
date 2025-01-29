@@ -50,7 +50,14 @@ Page {
             avatar = i
             status = s
             onMobile = m
-        }, serversModel.append, dmModel.append, function() {
+        }, serversModel.append, dmModel.append, function(channelId, unread, mentions) {
+            var i = dmModel.findIndexById(channelId)
+            if (i >= 0) {
+                dmModel.setProperty(i, 'unread', unread)
+                dmModel.setProperty(i, 'mentions', mentions)
+            }
+        },
+        function() {
             serversModel.clear()
             dmModel.clear()
             username = ""
@@ -89,11 +96,14 @@ Page {
         }
     }
 
-    /*TouchBlocker {
-        anchors.fill: parent
-        visible: loading
-    }*/
-
     ListModel { id: serversModel }
-    ListModel { id: dmModel }
+    ListModel {
+        id: dmModel
+
+        function findIndexById(id) {
+            for(var i=0; i < count; i++)
+                if (get(i).dmChannel == id) return i
+            return -1
+        }
+    }
 }

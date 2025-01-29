@@ -293,7 +293,7 @@ ApplicationWindow {
         property bool initialized: false
         property var _refreshFirstPage: function() {}
 
-        function init(loggedInHandler, serverHandler, dmHandler, refreshHandler) {
+        function init(loggedInHandler, serverHandler, dmHandler, dmUpdateHandler, refreshHandler) {
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() { serverHandler(shared.processServer.apply(null, arguments)) }) // function(serverObject)
             setHandler('serverfolder', function(_id, name, color, servers) {
@@ -301,8 +301,9 @@ ApplicationWindow {
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serverHandler(data)
             }) // function(folderObject)
-            setHandler('dm', function(channelId, name, icon, perm, _id) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: ''}) })
-            setHandler('group', function(channelId, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed")}) })
+            setHandler('dm', function(channelId, unread, mentions, name, icon, perm, _id) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: '', unread: unread, mentions: mentions}) })
+            setHandler('group', function(channelId, unread, mentions, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed"), unread: unread, mentions: mentions}) })
+            setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 
             setHandler('connectionError', function(e){ shared.showError(qsTranslate("Errors", "Connection failure"), e) })

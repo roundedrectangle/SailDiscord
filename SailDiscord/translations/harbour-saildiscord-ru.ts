@@ -105,7 +105,7 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
-        <location filename="../qml/pages/DMsView.qml" line="42"/>
+        <location filename="../qml/pages/DMsView.qml" line="43"/>
         <location filename="../qml/pages/MessagesPage.qml" line="323"/>
         <source>About</source>
         <comment>User</comment>
@@ -201,47 +201,47 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="308"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="324"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="325"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -255,12 +255,12 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="141"/>
-        <location filename="../qml/pages/DMsView.qml" line="47"/>
+        <location filename="../qml/pages/DMsView.qml" line="48"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="52"/>
+        <location filename="../qml/pages/DMsView.qml" line="53"/>
         <source>Copy user ID</source>
         <translation>Скопировать ID пользователя</translation>
     </message>

@@ -23,6 +23,8 @@ SilicaListView {
         placeholderBase: iconBase
         icon: image
         defaultActions: false
+        textHighlighted: unread
+        mentionCount: mentions
 
         Timer {
             id: showTimer

@@ -27,6 +27,19 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], c
         elif isinstance(g, discord.GuildFolder):
             qsend('serverfolder', str(g.id), g.name or '', hex_color(g.color), [gen_server(i, cacher) for i in g.guilds])
 
+# Channels (shared)
+
+async def send_channel_states(channels: List[Union[discord.TextChannel, discord.DMChannel, Any]], my_id = None, stop_checker = lambda: False):
+    for c in channels:
+        if stop_checker(): break
+        if not isinstance(c, (discord.TextChannel, discord.DMChannel, discord.GroupChannel)) or c.mention_count or not (permissions_for(c, my_id).view_channel if my_id is not None else True):
+            continue
+        if await is_channel_unread(c):
+            if isinstance(c, discord.TextChannel):
+                qsend(f'channelUpdate{c.guild.id}', str(c.id), True, c.mention_count)
+            else:
+                qsend(f'dmUpdate', str(c.id), True, c.mention_count)
+
 # Server Channels
 
 async def send_channel(c: discord.abc.GuildChannel, myself_id):
@@ -34,22 +47,14 @@ async def send_channel(c: discord.abc.GuildChannel, myself_id):
         return
     #category_position = getattr(c.category, 'position', -1)+1 # Position is used instead of ID
     perms = permissions_for(c, myself_id)
-    read_args = (bool(c.mention_count) #or await is_channel_unread(c, False)
-    ,c.mention_count) if isinstance(c, discord.TextChannel) else (False, 0)
+    read_args = (bool(c.mention_count), #or await is_channel_unread(c, False)
+    c.mention_count) if isinstance(c, discord.TextChannel) else (False, 0)
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
             str(c.id), c.name, perms.view_channel, str(c.type.name),
             isinstance(c, discord.TextChannel) and perms.send_messages, # If sending text is allowed
             perms.manage_messages, getattr(c, 'topic', '') or '',
             *read_args,
     )
-
-async def send_channel_states(channels: List[Union[discord.TextChannel, Any]], my_id = None, stop_checker = lambda: False,):
-    for c in channels:
-        if stop_checker(): break
-        if not isinstance(c, discord.TextChannel) or c.mention_count or not permissions_for(c, my_id).view_channel:
-            continue
-        if await is_channel_unread(c):
-            qsend(f'channelUpdate{c.guild.id}', str(c.id), True, c.mention_count)
 
 def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = False, current_server = None):
     for c in guild.channels:
@@ -65,13 +70,14 @@ def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = Fal
 # Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions
 
 def send_dm_channel(channel: Union[discord.DMChannel, discord.GroupChannel, Any], cacher: Cacher):
-    base = (str(channel.id),)
+    base = (str(channel.id),
+        *((bool(channel.mention_count), channel.mention_count) if isinstance(channel, (discord.DMChannel, discord.GroupChannel)) else (False, 0)),
+    )
 
     if isinstance(channel, discord.DMChannel):
         user = channel.recipient
         icon = cacher.easy(user.display_avatar, user.id, ImageType.USER)
         qsend('dm', *base, user.display_name, icon, not user.system, str(user.id))
-
     elif isinstance(channel, discord.GroupChannel):
         icon = cacher.easy(channel.icon, channel.id, ImageType.GROUP)
         name, icon_base = group_name(channel)
@@ -79,9 +85,12 @@ def send_dm_channel(channel: Union[discord.DMChannel, discord.GroupChannel, Any]
     else:
         qsend('unknownPrivateChannel', type(channel).__name__)
 
-def send_dms(channel_list: List[Union[discord.DMChannel, discord.GroupChannel, Any]], cacher: Cacher):
-    for user in sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
-        send_dm_channel(user, cacher)
+def send_dms(channel_list: List[Union[discord.DMChannel, discord.GroupChannel, Any]], cacher: Cacher, async_runner, send_unread = False):
+    for channel in channel_list:#sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
+        send_dm_channel(channel, cacher)
+    # This might not be needed (except for muted maybe)
+    if send_unread:
+        Thread(target=async_runner, args=(send_channel_states(channel_list),)).start()
 
 # Messages
 

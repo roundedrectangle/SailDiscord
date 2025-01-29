@@ -105,7 +105,7 @@ class MyClient(discord.Client):
         )
         
         send_servers(self.sorted_guilds_and_folders, comm.cacher)
-        send_dms(self.private_channels, comm.cacher)
+        send_dms(self.private_channels, comm.cacher, self.run_asyncio_threadsafe, comm.send_unread)
 
         if icon != '':
             comm.cacher.cache_image_bg(str(self.user.display_avatar), self.user.id, ImageType.MYSELF)
@@ -115,8 +115,11 @@ class MyClient(discord.Client):
             await send_message(message)
             await message.ack()
         comm.ensure_constants()
-        if comm.send_unread and self.current_server == message.guild and message.author != self.user:
-            qsend(f'channelUpdate{message.guild.id}', str(message.channel.id), True, message.channel.mention_count) # pyright:ignore[reportAttributeAccessIssue]
+        if comm.send_unread and message.author != self.user and message.channel != self.current_channel:
+            if message.guild and self.current_server == message.guild:
+                qsend(f'channelUpdate{message.guild.id}', str(message.channel.id), True, message.channel.mention_count) # pyright:ignore[reportAttributeAccessIssue]
+            elif isinstance(message.channel, (discord.GroupChannel, discord.DMChannel)):
+                qsend('dmUpdate', str(message.channel.id), True, getattr(message.channel, 'mention_count', 0))
 
     async def on_message_edit(self, before: discord.Message, after: discord.Message):
         if self.ensure_current_channel(before.channel, before.guild):
@@ -147,7 +150,7 @@ class MyClient(discord.Client):
         if result_required: return future.result(timeout)
         return future
 
-    def set_current_channel(self, guild: discord.Guild, channel):
+    def set_current_channel(self, guild: Optional[discord.Guild], channel):
         if guild:
             self.current_server = guild
         self.current_channel = channel
@@ -157,7 +160,10 @@ class MyClient(discord.Client):
         self.run_asyncio_threadsafe(self.current_channel.ack(), False)
         comm.ensure_constants()
         if comm.send_unread:
-            qsend(f'channelUpdate{guild.id}', self.current_channel.id, False, self.current_channel.mention_count)
+            if guild:
+                qsend(f'channelUpdate{guild.id}', self.current_channel.id, False, 0)
+            else:
+                qsend('dmUpdate', self.current_channel.id, False, 0)
 
     def unset_current_channel(self):
         #if not self.current_server: return

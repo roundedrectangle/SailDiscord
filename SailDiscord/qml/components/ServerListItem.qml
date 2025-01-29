@@ -9,6 +9,8 @@ ListItem {
     property string placeholderBase
     property string icon
     property bool defaultActions: true
+    property bool textHighlighted
+    property int mentionCount
 
     property bool _iconAvailable: (icon != "None" && icon != "")
 
@@ -46,10 +48,26 @@ ListItem {
 
         Label {
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - profileIcon.width - parent.spacing*1
+            width: parent.width - profileIcon.width - channelUnreadCount.width - parent.spacing*(channelUnreadCount.visible ? 2 : 1)
             truncationMode: TruncationMode.Fade
             text: title
             textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+            highlighted: textHighlighted || root.highlighted
+        }
+
+        Rectangle {
+            id: channelUnreadCount
+            visible: mentionCount > 0
+            anchors.verticalCenter: parent.verticalCenter
+            width: visible ? children[0].width + Theme.paddingSmall*2 : 0
+            height: children[0].height + Theme.paddingSmall*2
+            radius: height/2
+            color: Theme.highlightColor
+            Label {
+                text: mentionCount > 100000 ? '100k+' : mentionCount
+                color: Theme.primaryColor
+                anchors.centerIn: parent
+            }
         }
     }
 
