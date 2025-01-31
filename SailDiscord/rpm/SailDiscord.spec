@@ -64,7 +64,8 @@ Discord client for your pocket
 #python3 -m pip cache purge
 python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
-strip -s %_builddir/deps/charset_normalizer/*.so %_builddir/deps/google/_upb/*.so
+strip -s %_builddir/deps/charset_normalizer/*.so || echo
+strip -s %_builddir/deps/google/_upb/*.so || echo
 %endif
 
 # << build post
