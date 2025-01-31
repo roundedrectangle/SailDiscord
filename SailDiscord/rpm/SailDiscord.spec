@@ -1,4 +1,4 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-saildiscord
@@ -17,7 +17,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
-BuildRequires:  pkgconfig(qt5embedwidget)
+#BuildRequires:  pkgconfig(qt5embedwidget)
 
 %if %{package_library} == "yes"
 BuildRequires:  python3-base
@@ -36,12 +36,9 @@ Requires: python3-devel
 Requires: python3-pip
 %endif
 
-# >> macros
 %define __provides_exclude_from ^%{_datadir}/.*$
 %global _missing_build_ids_terminate_build 0
 %define __requires_exclude ^libXau|libbrotlicommo|libfreetype|libjpeg|liblzma|libsharpyuv|libwebp|python3dist(attrs)|python3dist(idna)|python3dist(pyopenssl).*$
-# << macros
-
 
 %description
 Discord client for your pocket
@@ -67,7 +64,7 @@ Discord client for your pocket
 #python3 -m pip cache purge
 python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
-#rm -rf %_builddir/deps/google/_upb
+strip -s %_builddir/deps/charset_normalizer/*.so %_builddir/deps/google/_upb/*.so
 %endif
 
 # << build post

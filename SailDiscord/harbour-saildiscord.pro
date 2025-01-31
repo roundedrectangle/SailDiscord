@@ -14,7 +14,7 @@ TARGET = harbour-saildiscord
 
 CONFIG += sailfishapp
 
-PKGCONFIG += qt5embedwidget
+#PKGCONFIG += qt5embedwidget
 
 SOURCES += \
     src/harbour-saildiscord.cpp
