@@ -229,7 +229,6 @@ ApplicationWindow {
         path: "/apps/harbour-saildiscord"
 
         property string token: ""
-        //property bool usernameTutorialCompleted: false
         property bool legacyMode: false
         property string modernLastServerId: "-1"
         property string serverLastChannels: "{}"

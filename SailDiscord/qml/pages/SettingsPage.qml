@@ -211,22 +211,26 @@ Page {
                                     onClicked: Remorse.popupAction(settingsPage, qsTr("Logged out"), function(){ appConfiguration.token = "" })
                                 }
                                 Button {
-                                    text: qsTr("Clear cache")
-                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Cleared cache"), function(){ py.clearCache() })
-                                }
-                            }
-
-                            ButtonLayout {
-                                /*Button {
-                                    text: qsTr("Reset tutorial")
-                                    onClicked: appConfiguration.usernameTutorialCompleted = false
-                                }*/
-                                Button {
                                     text: qsTr("Reset all settings")
                                     onClicked: Remorse.popupAction(settingsPage, qsTranslate("SettingsPage", "Settings reset", "Past tense"), function() {
                                         appSettings.clear()
                                         pageStack.push(settingsResetPage)
                                     })
+                                }
+                            }
+                            ButtonLayout {
+                                Button {
+                                    text: qsTr("Clear cache")
+                                    onClicked: Remorse.popupAction(settingsPage, qsTr("Cleared cache"), function(){ py.clearCache() })
+                                }
+                            }
+                            ButtonLayout {
+                                Button {
+                                    text: qsTr("Reset last server and channels")
+                                    onClicked: {
+                                        appConfiguration.modernLastServerId = '-1'
+                                        appConfiguration.serverLastChannels = '{}'
+                                    }
                                 }
                             }
                         }
