@@ -101,7 +101,7 @@ Page {
         id: topicPanel
         anchors.fill: parent
         dock: isPortrait ? Dock.Top : Dock.Right
-        backgroundSize: isPortrait ? topicDrawerLabel.height : (width / 2)
+        backgroundSize: isPortrait ? Math.min(topicDrawerLabel.height, height/2) : (width / 2)
 
         background: SilicaFlickable {
             contentHeight: topicDrawerLabel.height
@@ -147,51 +147,30 @@ Page {
                 interactive: isDM
                 titleColor: highlighted ? palette.primaryColor : palette.highlightColor
                 Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
-            }
 
-            Label {
-                id: topicLabel
-                property bool extraContent: implicitWidth <= header.extraContent.width || visible
-                Component.onCompleted:
-                    if (extraContent) {
-                        parent = header.extraContent
-                        anchors.verticalCenter = parent.verticalCenter
-                        openTopicMouseArea.visible = false
-                        width = parent.width
-                    } else {
-                        anchors.top = header.bottom
-                        messagesList.anchors.top = bottom
-                        height += Theme.paddingMedium
-                        width = parent.width - Theme.horizontalPageMargin*2
-                        anchors.verticalCenter = parent.verticalCenter
+                Label {
+                    parent: header.extraContent
+                    text: topic
+                    visible: !!text
+                    anchors.centerIn: parent
+                    textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                    width: parent.width
+                    truncationMode: TruncationMode.Fade
+                    color: Theme.secondaryHighlightColor
+
+                    MouseArea {
+                        id: openTopicMouseArea
+                        anchors.fill: parent
+                        enabled: parent.visible && parent.implicitWidth > header.extraContent.width
+                        onClicked: if (enabled) topicPanel.show()
                     }
-                text: topic
-                visible: !!text
-                anchors.verticalCenter: parent.verticalCenter
-                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                truncationMode: TruncationMode.Fade
-                color: Theme.secondaryHighlightColor
-
-                MouseArea {
-                    id: openTopicMouseArea
-                    anchors.fill: parent
-                    enabled: parent.visible
-                    onClicked: if (enabled) topicPanel.show()
-                }
-
-                Connections {
-                    target: topicLabel.parent
-                    onWidthChanged: topicLabel.width = topicLabel.parent.width - (topicLabel.extraContent ? 0 : Theme.horizontalPageMargin*2)
-                    onHorizontalCenterChanged: topicLabel.anchors.horizontalCenter = topicLabel.parent.horizontalCenter
                 }
             }
 
             SilicaListView {
                 id: messagesList
                 anchors {
-                    top: topicLabel.extraContent ? header.bottom : topicLabel.bottom
+                    top: header.bottom
                     bottom: sendBox.visible ? sendBox.top : parent.bottom
                 }
                 width: parent.width
