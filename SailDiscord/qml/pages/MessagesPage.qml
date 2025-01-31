@@ -69,259 +69,332 @@ Page {
 
     function loadAboutDM() { pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: name, icon: usericon }) }
 
-    SilicaFlickable {
-        anchors.fill: parent
-        contentHeight: height
+    /*DockedPanel {
+        id: topicPanel
+        width: isPortrait ? parent.width : Math.min(Screen.width, Screen.height)
+        height: isPortrait ? topicDrawerLabel.height + Theme.paddingLarge : parent.height
+        dock: isPortrait ? Dock.Top : Dock.Right
 
-        BusyLabel {
-            running: msgModel.count === 0 && waitForMessagesTimer.wait
-        }
-
-        ViewPlaceholder {
-            enabled: msgModel.count === 0 && !waitForMessagesTimer.wait
-            text: qsTr("No messages")
-            hintText: sendPermissions ? qsTr("Say hi ;)") : qsTr("Wait for someone to post something")
-
-            Timer {
-                id: waitForMessagesTimer
-                interval: 2500
-                running: started
-                property bool started: false
-                property bool wait: !started || running
-            }
-        }
-
-        PageHeader {
-            id: header
-            title: (isGroup ? '' : (isDM ? '@' : "#"))+name
-            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
-            interactive: isDM
-            titleColor: highlighted ? palette.primaryColor : palette.highlightColor
-            Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
+        function toggle() {
+            if (open) hide()
+            else show()
         }
 
         Label {
-            id: topicLabel
-            property bool extraContent: implicitWidth <= header.extraContent.width || visible
-            Component.onCompleted:
-                if (extraContent) {
-                    parent = header.extraContent
-                    anchors.verticalCenter = parent.verticalCenter
-                } else {
-                    anchors.top = header.bottom
-                    messagesList.anchors.top = bottom
-                    height += Theme.paddingMedium
-                    width -= Theme.horizontalPageMargin*2
-                }
+            id: topicDrawerLabel
             text: topic
-            visible: !!text
+            x: isPortraint ? Theme.horizontalPageMargin : Theme.paddingLarge
+            width: parent.width - 2*x
+            height: implicitHeight + 2*Theme.paddingLarge
             textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
-            width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            truncationMode: TruncationMode.Fade
-            color: Theme.secondaryHighlightColor
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.Wrap
         }
 
-        SilicaListView {
-            id: messagesList
-            anchors {
-                top: topicLabel.extraContent ? header.bottom : topicLabel.bottom
-                bottom: sendBox.visible ? sendBox.top : parent.bottom
+        MouseArea  {
+            anchors.fill: parent
+            onClicked: parent.hide()
+        }
+    }*/
+
+    Drawer {
+        id: topicPanel
+        anchors.fill: parent
+        dock: isPortrait ? Dock.Top : Dock.Right
+        backgroundSize: isPortrait ? topicDrawerLabel.height : (width / 2)
+
+        background: SilicaFlickable {
+            contentHeight: topicDrawerLabel.height
+            anchors.fill: parent
+            Label {
+                id: topicDrawerLabel
+                text: topic
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                height: implicitHeight + 2*Theme.paddingLarge
+                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                verticalAlignment: Text.AlignVCenter
+                wrapMode: Text.Wrap
             }
-            width: parent.width
-            model: msgModel
-            clip: true
-            verticalLayoutDirection: ListView.BottomToTop
+        }
 
-            VerticalScrollDecorator {}
+        SilicaFlickable {
+            anchors.fill: parent
+            contentHeight: height
 
-            function getVisibleIndexRange() { // this one actually works!
-                var center_x = messagesList.x + messagesList.width / 2
-                return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
-                        indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
+            BusyLabel {
+                running: msgModel.count === 0 && waitForMessagesTimer.wait
             }
 
-            function checkForUpdate() {
-                var rng = getVisibleIndexRange()
-                for (var i=rng[1]; i<=rng[0]; i++) {
-                    if (i>0 && i%27 == 0) {
-                        if (!msgModel.get(i)._wasUpdated) {
-                            msgModel.get(i)._wasUpdated = true
-                            py.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
-                        }
-                    }
+            ViewPlaceholder {
+                enabled: msgModel.count === 0 && !waitForMessagesTimer.wait
+                text: qsTr("No messages")
+                hintText: sendPermissions ? qsTr("Say hi ;)") : qsTr("Wait for someone to post something")
+
+                Timer {
+                    id: waitForMessagesTimer
+                    interval: 2500
+                    running: started
+                    property bool started: false
+                    property bool wait: !started || running
                 }
             }
 
-            onContentYChanged: checkForUpdate()
+            PageHeader {
+                id: header
+                title: (isGroup ? '' : (isDM ? '@' : "#"))+name
+                _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
+                interactive: isDM
+                titleColor: highlighted ? palette.primaryColor : palette.highlightColor
+                Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
+            }
 
-            delegate: Loader {
+            Label {
+                id: topicLabel
+                property bool extraContent: implicitWidth <= header.extraContent.width || visible
+                Component.onCompleted:
+                    if (extraContent) {
+                        parent = header.extraContent
+                        anchors.verticalCenter = parent.verticalCenter
+                        openTopicMouseArea.visible = false
+                        width = parent.width
+                    } else {
+                        anchors.top = header.bottom
+                        messagesList.anchors.top = bottom
+                        height += Theme.paddingMedium
+                        width = parent.width - Theme.horizontalPageMargin*2
+                        anchors.verticalCenter = parent.verticalCenter
+                    }
+                text: topic
+                visible: !!text
+                anchors.verticalCenter: parent.verticalCenter
+                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                 width: parent.width
-                sourceComponent:
-                    switch (type) {
-                    case '': return defaultItem
-                    case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : systemItem
-                    default: return systemItem
-                    }
-
-                Rectangle {
-                    anchors.fill: parent
-                    visible: appSettings.highContrastMessages && parent.status == Loader.Ready
-                    gradient: Gradient {
-                        GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0) }
-                        GradientStop { position: 1.0; color: Theme.rgba(Theme.secondaryColor, 0.1) }
-                    }
-                }
-
-                Component {
-                    id: defaultItem
-                    MessageItem {
-                        authorid: userid
-                        contents: model.contents
-                        formattedContents: model.formatted
-                        author: _author
-                        pfp: _pfp
-                        sent: _sent
-                        date: _date
-                        sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
-                        masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
-                        masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
-                        attachments: _attachments
-                        reference: _ref
-                        flags: _flags
-                        msgid: messageId
-                        jumpUrl: model.jumpUrl
-                        sendPermissions: page.sendPermissions
-                        managePermissions: page.managePermissions
-                        showRequestableOptions: !isDemo
-                        highlightStarted: model.highlightStarted
-                        onHighlightStartedChanged: model.highlightStarted = highlightStarted
-                        jumpToReference: function(id) {
-                            var i = msgModel.findIndexById(id)
-                            if (i >= 0) {
-                                messagesList.positionViewAtIndex(i, ListView.Contain)
-                                msgModel.setProperty(i, 'highlightStarted', true)
-                                msgModel.setProperty(i, 'highlightStarted', false)
-                                return true
-                            }
-                            return false
-                        }
-
-                        function updateMasterWidth() {
-                            msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
-                        }
-                        Component.onCompleted: {
-                            updateMasterWidth()
-                        }
-                        onMasterWidthChanged: updateMasterWidth()
-                        onInnerWidthChanged: updateMasterWidth()
-
-                        onEditRequested: {
-                            previouslyEnteredText = sendField.text
-                            sendField.text = model.contents
-                            actionID = messageId
-                            currentFieldAction = 1
-                        }
-                        onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; py.call2('delete_message', [messageId]) })
-                        onReplyRequested: {
-                            actionID = messageId
-                            currentFieldAction = 2
-                            actionInfo = model.contents
-                        }
-                    }
-                }
-
-                Component {
-                    id: systemItem
-                    SystemMessageItem { _model: model; label.horizontalAlignment: Text.AlignHCenter }
-                }
-            }
-        }
-
-        Column {
-            id: sendBox
-            width: parent.width
-            visible: sendPermissions
-            anchors.bottom: parent.bottom
-            spacing: Theme.paddingLarge
-
-            Item {
-                visible: currentFieldAction > 0
-                width: parent.width - Theme.horizontalPageMargin*2
                 anchors.horizontalCenter: parent.horizontalCenter
-                height: Math.max(children[0].height, children[1].height)
-                Icon {
-                    id: replyActionIcon
-                    visible: currentFieldAction == 2
-                    anchors.left: parent.left
-                    source: "image://theme/icon-m-message-forward"
+                truncationMode: TruncationMode.Fade
+                color: Theme.secondaryHighlightColor
+
+                MouseArea {
+                    id: openTopicMouseArea
+                    anchors.fill: parent
+                    enabled: parent.visible
+                    onClicked: if (enabled) topicPanel.show()
                 }
-                Label {
-                    anchors.left: replyActionIcon.visible ? replyActionIcon.right : parent.left
-                    anchors.leftMargin: replyActionIcon.visible ? Theme.paddingLarge : 0
-                    anchors.verticalCenter: parent.verticalCenter
-                    text: currentFieldAction == 1 ? qsTr("Editing message") : actionInfo
-                    font.bold: true
-                    color: Theme.highlightColor
-                    width: parent.width - (undoActionButton.width + Theme.paddingLarge) - (replyActionIcon.visible ? (replyActionIcon.width + Theme.paddingLarge) : 0)
-                    truncationMode: TruncationMode.Fade
+
+                Connections {
+                    target: topicLabel.parent
+                    onWidthChanged: topicLabel.width = topicLabel.parent.width - (topicLabel.extraContent ? 0 : Theme.horizontalPageMargin*2)
+                    onHorizontalCenterChanged: topicLabel.anchors.horizontalCenter = topicLabel.parent.horizontalCenter
                 }
-                IconButton {
-                    id: undoActionButton
-                    anchors.right: parent.right
-                    anchors.verticalCenter: parent.verticalCenter
-                    icon.source: "image://theme/icon-m-clear"
-                    onClicked: {
-                        if (currentFieldAction == 1) sendField.text = previouslyEnteredText
-                        if (previouslyEnteredText) activeFocusTimer.start()
-                        previouslyEnteredText = ''
-                        actionID = '-1'
-                        actionInfo = ''
-                        currentFieldAction = 0
+            }
+
+            SilicaListView {
+                id: messagesList
+                anchors {
+                    top: topicLabel.extraContent ? header.bottom : topicLabel.bottom
+                    bottom: sendBox.visible ? sendBox.top : parent.bottom
+                }
+                width: parent.width
+                model: msgModel
+                clip: true
+                verticalLayoutDirection: ListView.BottomToTop
+
+                VerticalScrollDecorator {}
+
+                function getVisibleIndexRange() { // this one actually works!
+                    var center_x = messagesList.x + messagesList.width / 2
+                    return [indexAt( center_x, messagesList.y + messagesList.contentY + 10),
+                            indexAt( center_x, messagesList.y + messagesList.contentY + messagesList.height - 10)]
+                }
+
+                function checkForUpdate() {
+                    var rng = getVisibleIndexRange()
+                    for (var i=rng[1]; i<=rng[0]; i++) {
+                        if (i>0 && i%27 == 0) {
+                            if (!msgModel.get(i)._wasUpdated) {
+                                msgModel.get(i)._wasUpdated = true
+                                py.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
+                            }
+                        }
+                    }
+                }
+
+                onContentYChanged: checkForUpdate()
+
+                delegate: Loader {
+                    width: parent.width
+                    sourceComponent:
+                        switch (type) {
+                        case '': return defaultItem
+                        case 'unknown': return appSettings.defaultUnknownMessages ? defaultItem : systemItem
+                        default: return systemItem
+                        }
+
+                    Rectangle {
+                        anchors.fill: parent
+                        visible: appSettings.highContrastMessages && parent.status == Loader.Ready
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: Theme.rgba(Theme.highlightBackgroundColor, 0) }
+                            GradientStop { position: 1.0; color: Theme.rgba(Theme.secondaryColor, 0.1) }
+                        }
+                    }
+
+                    Component {
+                        id: defaultItem
+                        MessageItem {
+                            authorid: userid
+                            contents: model.contents
+                            formattedContents: model.formatted
+                            author: _author
+                            pfp: _pfp
+                            sent: _sent
+                            date: _date
+                            sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
+                            masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
+                            masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
+                            attachments: _attachments
+                            reference: _ref
+                            flags: _flags
+                            msgid: messageId
+                            jumpUrl: model.jumpUrl
+                            sendPermissions: page.sendPermissions
+                            managePermissions: page.managePermissions
+                            showRequestableOptions: !isDemo
+                            highlightStarted: model.highlightStarted
+                            onHighlightStartedChanged: model.highlightStarted = highlightStarted
+                            jumpToReference: function(id) {
+                                var i = msgModel.findIndexById(id)
+                                if (i >= 0) {
+                                    messagesList.positionViewAtIndex(i, ListView.Contain)
+                                    msgModel.setProperty(i, 'highlightStarted', true)
+                                    msgModel.setProperty(i, 'highlightStarted', false)
+                                    return true
+                                }
+                                return false
+                            }
+
+                            function updateMasterWidth() {
+                                msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
+                            }
+                            Component.onCompleted: {
+                                updateMasterWidth()
+                            }
+                            onMasterWidthChanged: updateMasterWidth()
+                            onInnerWidthChanged: updateMasterWidth()
+
+                            onEditRequested: {
+                                previouslyEnteredText = sendField.text
+                                sendField.text = model.contents
+                                actionID = messageId
+                                currentFieldAction = 1
+                            }
+                            onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; py.call2('delete_message', [messageId]) })
+                            onReplyRequested: {
+                                actionID = messageId
+                                currentFieldAction = 2
+                                actionInfo = model.contents
+                            }
+                        }
+                    }
+
+                    Component {
+                        id: systemItem
+                        SystemMessageItem { _model: model; label.horizontalAlignment: Text.AlignHCenter }
                     }
                 }
             }
 
-            Row {
+            Column {
+                id: sendBox
                 width: parent.width
-                TextArea {
-                    id: sendField
-                    width: parent.width - sendButton.width
+                visible: sendPermissions
+                anchors.bottom: parent.bottom
+                spacing: Theme.paddingLarge
 
-                    placeholderText: qsTr("Type something")
-                    hideLabelOnEmptyField: false
-                    labelVisible: false
-                    anchors.verticalCenter: parent.verticalCenter
-                    backgroundStyle: TextEditor.UnderlineBackground
-                    horizontalAlignment: TextEdit.AlignLeft
-
-                    EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
-                    EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+                Item {
+                    visible: currentFieldAction > 0
+                    width: parent.width - Theme.horizontalPageMargin*2
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    height: Math.max(children[0].height, children[1].height)
+                    Icon {
+                        id: replyActionIcon
+                        visible: currentFieldAction == 2
+                        anchors.left: parent.left
+                        source: "image://theme/icon-m-message-forward"
+                    }
+                    Label {
+                        anchors.left: replyActionIcon.visible ? replyActionIcon.right : parent.left
+                        anchors.leftMargin: replyActionIcon.visible ? Theme.paddingLarge : 0
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: currentFieldAction == 1 ? qsTr("Editing message") : actionInfo
+                        font.bold: true
+                        color: Theme.highlightColor
+                        width: parent.width - (undoActionButton.width + Theme.paddingLarge) - (replyActionIcon.visible ? (replyActionIcon.width + Theme.paddingLarge) : 0)
+                        truncationMode: TruncationMode.Fade
+                    }
+                    IconButton {
+                        id: undoActionButton
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        icon.source: "image://theme/icon-m-clear"
+                        onClicked: {
+                            if (currentFieldAction == 1) sendField.text = previouslyEnteredText
+                            if (previouslyEnteredText) activeFocusTimer.start()
+                            previouslyEnteredText = ''
+                            actionID = '-1'
+                            actionInfo = ''
+                            currentFieldAction = 0
+                        }
+                    }
                 }
 
-                IconButton {
-                    id: sendButton
-                    visible: !appSettings.sendByEnter
-                    width: visible ? (Theme.iconSizeMedium + 2 * Theme.paddingSmall) : 0
-                    height: width
-                    enabled: sendField.text.length !== 0
-                    anchors.bottom: parent.bottom
-                    icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
+                Row {
+                    width: parent.width
+                    TextArea {
+                        id: sendField
+                        width: parent.width - sendButton.width
 
-                    onClicked: switch (currentFieldAction) {
-                               case 0: sendMessage();break
-                               case 1: applyEdit();break
-                               case 2: applyReply()
-                               }
+                        placeholderText: qsTr("Type something")
+                        hideLabelOnEmptyField: false
+                        labelVisible: false
+                        anchors.verticalCenter: parent.verticalCenter
+                        backgroundStyle: TextEditor.UnderlineBackground
+                        horizontalAlignment: TextEdit.AlignLeft
+
+                        EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
+                        EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+                    }
+
+                    IconButton {
+                        id: sendButton
+                        visible: !appSettings.sendByEnter
+                        width: visible ? (Theme.iconSizeMedium + 2 * Theme.paddingSmall) : 0
+                        height: width
+                        enabled: sendField.text.length !== 0
+                        anchors.bottom: parent.bottom
+                        icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
+
+                        onClicked: switch (currentFieldAction) {
+                                   case 0: sendMessage();break
+                                   case 1: applyEdit();break
+                                   case 2: applyReply()
+                                   }
+                    }
                 }
             }
-        }
 
-        PushUpMenu {
-            visible: isDM
-            MenuItem {
-                text: qsTranslate("AboutUser", "About", "User")
-                onClicked: loadAboutDM()
+            PushUpMenu {
+                visible: isDM
+                MenuItem {
+                    text: qsTranslate("AboutUser", "About", "User")
+                    onClicked: loadAboutDM()
+                }
+            }
+
+            MouseArea {
+                enabled: topicPanel.open
+                anchors.fill: parent
+                onClicked: topicPanel.hide()
             }
         }
     }

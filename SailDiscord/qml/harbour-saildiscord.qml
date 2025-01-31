@@ -315,6 +315,8 @@ ApplicationWindow {
             setHandler('referenceError', function(e){ shared.showError(qsTranslate("Errors", "A reference failed to load"), e) })
             setHandler('channelError', function(e){ shared.showError(qsTranslate("Errors", "Channel failed to load"), e) })
             setHandler('unknownPrivateChannel', function(e){ shared.showError(qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers").arg(e)) })
+            setHandler('cacheConnectionError', function(e){ shared.showError(qsTranslate("Errors", "Unable to receive cache: connection failed"), e) })
+            setHandler('cacheError', function(name, e){ shared.showError(qsTranslate("Errors", "Unknown caching error"), name+": "+e) })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {

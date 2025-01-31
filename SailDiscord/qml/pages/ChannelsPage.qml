@@ -109,7 +109,7 @@ Page {
                 }
 
                 Label {
-                    text: "unread unread unread unread unread unread unread unread unread unread "//name
+                    text: name
                     width: parent.width - channelIcon.width - channelUnreadCount.width - parent.spacing*(channelUnreadCount.visible ? 2 : 1)
                     truncationMode: TruncationMode.Fade
                     anchors.verticalCenter: parent.verticalCenter

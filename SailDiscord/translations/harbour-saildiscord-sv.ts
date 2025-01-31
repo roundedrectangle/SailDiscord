@@ -58,7 +58,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="60"/>
+        <location filename="../qml/components/ServerListItem.qml" line="78"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
@@ -105,8 +105,8 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
-        <location filename="../qml/pages/DMsView.qml" line="43"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="323"/>
+        <location filename="../qml/pages/DMsView.qml" line="44"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="389"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
@@ -121,37 +121,37 @@
 <context>
     <name>AboutUserPage</name>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="50"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="51"/>
         <source>Send friend request</source>
         <translation>Skicka en vänförfrågan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="95"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="96"/>
         <source>This user is a system account</source>
         <translation>Denna användare är ett systemkonto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="102"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="103"/>
         <source>This user is a bot</source>
         <translation>Detta är en användarbot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="108"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="109"/>
         <source>Global nickname</source>
         <translation>Globalt smeknamn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="113"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="114"/>
         <source>Username</source>
         <translation>Användarnamn</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="118"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="119"/>
         <source>Discord member since</source>
         <translation>Discord-medlem sedan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutUserPage.qml" line="123"/>
+        <location filename="../qml/pages/AboutUserPage.qml" line="124"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="213"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="214"/>
         <source>Channel unsupported</source>
         <translation>Kanalen stöds ej</translation>
     </message>
@@ -201,47 +201,47 @@
         <translation>Kunde inte läsa in bilden %1. Rapportera detta till utvecklarna.</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="309"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
         <source>A reference failed to load</source>
         <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="325"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="326"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
@@ -249,8 +249,8 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="141"/>
-        <location filename="../qml/pages/DMsView.qml" line="48"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="142"/>
+        <location filename="../qml/pages/DMsView.qml" line="49"/>
         <source>Copy channel ID</source>
         <translation>Kopiera kanal-ID</translation>
     </message>
@@ -265,12 +265,12 @@
         <translation>Kopiera meddelandelänk</translation>
     </message>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="66"/>
+        <location filename="../qml/components/ServerListItem.qml" line="84"/>
         <source>Copy server ID</source>
         <translation>Kopiera server-ID</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="53"/>
+        <location filename="../qml/pages/DMsView.qml" line="54"/>
         <source>Copy user ID</source>
         <translation>Kopiera användar-ID</translation>
     </message>
@@ -369,32 +369,32 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="82"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="131"/>
         <source>No messages</source>
         <translation>Inga meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="83"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
         <source>Say hi ;)</source>
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="83"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
         <source>Wait for someone to post something</source>
         <translation>Vänta på att någon skall posta något</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="225"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="291"/>
         <source>Message deleted</source>
         <translation>Meddelande borttaget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="263"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="329"/>
         <source>Editing message</source>
         <translation>Redigerar meddelande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="291"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="357"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>
@@ -817,7 +817,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="226"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="385"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="391"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Inställningar återställda</translation>
@@ -958,11 +958,6 @@
         <translation>Experimentellt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
-        <source>This includes pings count, unread state. Makes the app slower, and is very buggy, thus not recommended. Refresh the app to apply</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="180"/>
         <source>Use Twemoji instead of default Emoji</source>
         <translation>Använd Twemoji istället för standardemoji</translation>
@@ -993,17 +988,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
+        <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="364"/>
+        <source>Friend requests</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="365"/>
+        <source>Does not work because of captcha for most people</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="371"/>
         <source>Developer mode</source>
         <translation>Utvecklarläge</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="366"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="372"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
         <translation>Aktiverar funktioner användbara för utvecklare, t.ex. ID-kopiering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="386"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="392"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>
@@ -1034,7 +1044,7 @@
         <translation>(redigerat)</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="305"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="306"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>
