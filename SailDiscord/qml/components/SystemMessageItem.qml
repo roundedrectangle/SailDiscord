@@ -26,4 +26,11 @@ ListItem {
         }
         function _genText(escaped, highlighted) { return escaped.arg(Theme.highlightText(highlighted, highlighted, highlightColor)) }
     }
+
+    onClicked: switch (_model.type) {
+                   case 'join':
+                   case 'newmember':
+                       pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _model.userid, name: _model._author, icon: _model._pfp })
+                       break
+               }
 }
