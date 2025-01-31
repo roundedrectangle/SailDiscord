@@ -4,7 +4,7 @@ Previously SailDiscord
 
 An unofficial SailfishOS Discord client
 
-Very very WIP
+Basic functionality is already there. More features are coming through updates
 
 **By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
 
@@ -14,27 +14,24 @@ Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Beside
 
 ## TODO
 
-- [X] Login using Discord
-- [X] Connect Python
+- [X] Login
 - [X] Servers
 - [ ] Text channels
 	- [X] Text
 	- [ ] Attachments
     	- [X] Full support for downloading and sharing
     	- [X] Photos and GIFs (non-embedded)
-    	- [ ] Other types (videos, proper preview for non-previewable files, etc.)
+    	- [X] Unknown files
+    	- [ ] Preview for other types (videos, etc.)
     - [ ] Embeds
         - [ ] GIFs from Giphy, Tensor, etc.
         - [ ] General embeds/EmbedProxy support
 - [X] DMs
-- [X] Settings
-- [X] About page
 - [ ] Caching
 	- [X] Avatars
 - [X] References (forwarded, replies)
-- [X] Markdown
-- [ ] Automate translating, maybe with something like weblate
-- [ ] More features?
+- [X] Markdown and emojis
+- [ ] Automate translating with weblate or anything similar
 
 ## Known issues
 
@@ -66,22 +63,17 @@ After obtaining you token, in Sailcord top menu, when logging in, choose Login w
 ## Screenshots
 
 <p float="left">
-	<img src="pictures/FirstPage.png" alt="Server list" width="200"/>
-	<img src="pictures/Channels.png" alt="Server list" width="200"/>
-	<img src="pictures/Messages.png" alt="Server list" width="200"/>
-	<img src="pictures/Settings.png" alt="Server list" width="200"/>
-	<img src="pictures/About.png" alt="Server list" width="200"/>
+	<img src="pictures/FirstPage.png" alt="Server list (classic)" width="200"/>
+	<img src="pictures/SecondPage.png" alt="Modern overview" width="200"/>
+	<img src="pictures/Messages.png" alt="A channel" width="200"/>
+	<img src="pictures/About.png" alt="Me (modern)" width="200"/>
 </p>
 
-*Screenshots are for version 0.6.0*
+*Screenshots are for version 0.8.0*
 
 ## Translating
 
-Read instructions [here](https://gist.github.com/roundedrectangle/c4ac530ca276e0d65c3593b8491473b6). Make sure not to skip them even if you know how to translate other apps, because there are some pitfalls. When reading instruction, replace `appname` with `saildiscord`, and when opening `translations` folder open `SailDiscord` -> `translations` folder.
-
-## Donations
-
-I don't accept any for now
+~Read instructions [here](https://gist.github.com/roundedrectangle/c4ac530ca276e0d65c3593b8491473b6). Make sure not to skip them even if you know how to translate other apps, because there are some pitfalls. When reading instruction, replace `appname` with `saildiscord`, and when opening `translations` folder open `SailDiscord` -> `translations` folder.~ translate as usual or read that guide ignoring opal stuff
 
 ## Build
 
@@ -89,7 +81,7 @@ I don't accept any for now
 
 Get Sailfish IDE, open the project, open Other Files -> rpm -> `SailDiscord.spec`, then replace `no` in the first line with `yes` if you want to make a production package. Now just run or build.
 
-### Faster build (not to package the library, **NOT RECOMMENDED IN PRODUCTION**)
+### Faster build (disable library packaging, **NOT RECOMMENDED IN PRODUCTION**)
 
 If you didn't replace, you'll get faster build but aditional steps needed for phone. This is only required once. Once the installation is completed, open Terminal from the developer options on your phone and type this command:
 
@@ -111,7 +103,7 @@ SailJail will NOT work in this case
 
 ### Code Design
 
-- When sharing IDs between Python and QML, we convert them to strings. QML can mess up large integers so we use strings. We never really operate IDs in QML except for sending them back to Python in exchange for other data.
+- When sharing discord snowflake IDs between Python and QML, they should be converted to strings. QML can mess up with large integers so strings are used. IDs are never really operated in QML except for sending them back to Python in exchange for other data.
 
 ## Credits
 
@@ -138,3 +130,4 @@ Contributors (translations):
 
 - [@legacychimera247](https://github.com/legacychimera247) - Italian
 - [@eson57](https://github.com/eson57) - Swedish
+- Check [contributors tab](https://github.com/roundedrectangle/SailDiscord/graphs/contributors) for up to date information
