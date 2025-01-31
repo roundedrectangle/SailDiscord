@@ -105,8 +105,8 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
-        <location filename="../qml/pages/DMsView.qml" line="44"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="389"/>
+        <location filename="../qml/pages/DMsView.qml" line="47"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="368"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
@@ -241,7 +241,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="326"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
+        <source>Unable to receive cache: connection failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
+        <source>Unknown caching error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="328"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -255,12 +265,12 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="142"/>
-        <location filename="../qml/pages/DMsView.qml" line="49"/>
+        <location filename="../qml/pages/DMsView.qml" line="52"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DMsView.qml" line="54"/>
+        <location filename="../qml/pages/DMsView.qml" line="57"/>
         <source>Copy user ID</source>
         <translation>Скопировать ID пользователя</translation>
     </message>
@@ -384,17 +394,17 @@
         <translation>Подождите, когда кто-то выложит что-то</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="291"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="270"/>
         <source>Message deleted</source>
         <translation>Сообщение удалено</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="329"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="308"/>
         <source>Editing message</source>
         <translation>Редактирование сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="357"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="336"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
