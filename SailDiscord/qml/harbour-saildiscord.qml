@@ -55,6 +55,7 @@ ApplicationWindow {
     property var showdown: new ShowDown.showdown.Converter({
             simplifiedAutoLink: true,
             underline: true,
+            backslashEscapesHTMLTags: true,
         })
 
     QtObject {

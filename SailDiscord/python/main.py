@@ -1,7 +1,4 @@
-# This Python file uses the following encoding: utf-8
-
-# if __name__ == "__main__":
-#     pass
+from __future__ import annotations
 import sys
 from pyotherside import send as qsend
 from threading import Thread

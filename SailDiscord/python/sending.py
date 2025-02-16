@@ -1,4 +1,4 @@
-import sys
+import sys, re
 import logging
 from typing import Any, List
 from pyotherside import send as qsend
@@ -98,7 +98,9 @@ async def generate_extra_message(message: Union[discord.Message, discord.Message
     t = message.type
     if t == discord.MessageType.new_member:
         return 'newmember', ()
-    content = await emojify(message, cacher, emoji_size) if isinstance(message, discord.Message) else message.content
+    re.sub(r'<(?!)', r'\<', message.content)
+    content = message.content.replace('<', '\\<')
+    content = emojify(content, cacher, emoji_size, CUSTOM_EMOJI_RE_ESCAPED, 1) if isinstance(message, discord.Message) else content
     if t in (discord.MessageType.default, discord.MessageType.reply):
         return 'message', (message.content, content, ref or {})
     else: return 'unknownmessage', (message.content, content, ref or {}, message.type.name)

@@ -1,4 +1,5 @@
-import sys
+from __future__ import annotations
+import sys, re
 from datetime import datetime, timezone, timedelta
 from caching import Cacher, ImageType
 from pyotherside import send as qsend
@@ -18,6 +19,7 @@ import discord
 GeneralNone = ('', None) # usage: x in GenralNone
 AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
 dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "pfp": '', "bot": False, "system": False, "color": ''}
+CUSTOM_EMOJI_RE_ESCAPED = re.compile(f'\\\\?({discord.PartialEmoji._CUSTOM_EMOJI_RE.pattern})')
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
@@ -117,13 +119,12 @@ def isurl(obj: str):
     """Returns True if an object is an internet URL"""
     return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
 
-async def emojify(message: discord.Message, cacher: Cacher, size: Optional[int]=None):
-    res = message.content
-    pattern = discord.PartialEmoji._CUSTOM_EMOJI_RE
+def emojify(message: discord.Message | str, cacher: Cacher, size: Optional[int]=None, pattern=discord.PartialEmoji._CUSTOM_EMOJI_RE, pattern_match_index=0):
+    res = message if isinstance(message, str) else message.content
     remove_size = pattern.sub('', res).strip() == '' # checks if the message only contains emojis and/or blank characters
     search = pattern.search(res)
     while search:
-        e = discord.PartialEmoji.from_str(search[0])
+        e = discord.PartialEmoji.from_str(search[pattern_match_index])
         fmt = 'gif' if e.animated else 'png'
         path = str(cacher.get_cached_path(e.id, ImageType.EMOJI, e.url, fmt))
         cacher.cache_image_bg(e.url, e.id, ImageType.EMOJI, fmt)
