@@ -3,7 +3,7 @@ import sys, re
 from datetime import datetime, timezone, timedelta
 from caching import Cacher, ImageType
 from pyotherside import send as qsend
-from typing import Any, Callable, List, Tuple, Union, Optional # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
+from typing import Any, Callable, List, Union # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
 import functools
 from contextlib import suppress
 from enum import Enum, auto
@@ -19,7 +19,7 @@ import discord
 GeneralNone = ('', None) # usage: x in GenralNone
 AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
 dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "pfp": '', "bot": False, "system": False, "color": ''}
-CUSTOM_EMOJI_RE_ESCAPED = re.compile(f'\\\\?({discord.PartialEmoji._CUSTOM_EMOJI_RE.pattern})')
+CUSTOM_EMOJI_RE_ESCAPED = re.compile(f'\\\\?({discord.PartialEmoji._CUSTOM_EMOJI_RE.pattern})') # pyright: ignore[reportPrivateUsage]
 
 def exception_decorator(*exceptions: Exception):
     """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
@@ -50,7 +50,7 @@ def qml_date(date: datetime):
 
 class classproperty(property):
     def __get__(self, owner_self, owner_cls=None):
-        return self.fget(owner_cls)
+        return self.fget(owner_cls) # pyright:ignore[reportOptionalCall]
 
 class ListEnum(Enum):
     @property
@@ -71,7 +71,7 @@ class StatusMapping(ListEnum):
     INVISIBLE = discord.Status.invisible
     IDLE = discord.Status.idle
 
-def permissions_for(channel, user_id) -> Optional[discord.Permissions]:
+def permissions_for(channel, user_id) -> discord.Permissions | None:
     member = channel.guild.get_member(user_id)
     return None if member == None else channel.permissions_for(member)
 
@@ -107,7 +107,7 @@ def convert_attachments(attachments: List[discord.Attachment]):
 def hex_color(color: discord.Color):
     return '' if color in (None, discord.Color.default()) else str(color)
 
-def dict_folder(folder: Union[discord.GuildFolder, Any]) -> Optional[dict]:
+def dict_folder(folder: discord.GuildFolder | Any) -> dict | None:
     if not isinstance(folder, discord.GuildFolder): return
     return {
         '_id': folder.id,
@@ -119,7 +119,7 @@ def isurl(obj: str):
     """Returns True if an object is an internet URL"""
     return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
 
-def emojify(message: discord.Message | str, cacher: Cacher, size: Optional[int]=None, pattern=discord.PartialEmoji._CUSTOM_EMOJI_RE, pattern_match_index=0):
+def emojify(message: discord.Message | str, cacher: Cacher, size: int | None=None, pattern=discord.PartialEmoji._CUSTOM_EMOJI_RE, pattern_match_index=0): # pyright:ignore[reportPrivateUsage]
     res = message if isinstance(message, str) else message.content
     remove_size = pattern.sub('', res).strip() == '' # checks if the message only contains emojis and/or blank characters
     search = pattern.search(res)
@@ -132,7 +132,7 @@ def emojify(message: discord.Message | str, cacher: Cacher, size: Optional[int]=
         search = pattern.search(res)
     return res
 
-def usernames(user: Union[discord.User, discord.Member]):
+def usernames(user: discord.User | discord.Member):
     additional = {'global': '', 'username': ''}
     if getattr(user, 'nick', None):
         if user.global_name:
@@ -149,7 +149,7 @@ def group_name(group: discord.GroupChannel):
     recipients = [x.display_name for x in group.recipients if x.id != group.me.id]
     return ', '.join([f'@{x}' for x in recipients]), ', '.join(recipients)
 
-async def is_channel_unread(channel: Union[discord.TextChannel, discord.DMChannel, discord.GroupChannel], return_none = True) -> Union[bool, None]:
+async def is_channel_unread(channel: discord.TextChannel | discord.DMChannel | discord.GroupChannel, return_none = True) -> bool | None:
     try:
         return (await channel.fetch_message(channel.last_message_id)).created_at - (await channel.fetch_message(channel.acked_message_id)).created_at > timedelta()
     except:

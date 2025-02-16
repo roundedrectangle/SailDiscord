@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys, re
 import logging
 from typing import Any, List
@@ -20,7 +21,7 @@ def gen_server(g: discord.Guild, cacher: Cacher):
         cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
     return (str(g.id), g.name, icon)
 
-def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], cacher: Cacher):
+def send_servers(guilds: List[discord.Guild | discord.GuildFolder | Any], cacher: Cacher):
     for g in guilds:
         if isinstance(g, discord.Guild):
             qsend('server', *gen_server(g, cacher))
@@ -29,7 +30,7 @@ def send_servers(guilds: List[Union[discord.Guild, discord.GuildFolder, Any]], c
 
 # Channels (shared)
 
-async def send_channel_states(channels: List[Union[discord.TextChannel, discord.DMChannel, Any]], my_id = None, stop_checker = lambda: False):
+async def send_channel_states(channels: List[discord.TextChannel | discord.DMChannel | Any], my_id = None, stop_checker = lambda: False):
     for c in channels:
         if stop_checker(): break
         if not isinstance(c, (discord.TextChannel, discord.DMChannel, discord.GroupChannel)) or c.mention_count or not (permissions_for(c, my_id).view_channel if my_id is not None else True):
@@ -69,7 +70,7 @@ def send_channels(guild: discord.Guild, user_id, async_runner, send_unread = Fal
 # DMs
 # Keep in mind that DMs or groups don't have permissions and calling permissions_for returns dummy permissions
 
-def send_dm_channel(channel: Union[discord.DMChannel, discord.GroupChannel, Any], cacher: Cacher):
+def send_dm_channel(channel: discord.DMChannel | discord.GroupChannel | Any, cacher: Cacher):
     base = (str(channel.id),
         *((bool(channel.mention_count), channel.mention_count) if isinstance(channel, (discord.DMChannel, discord.GroupChannel)) else (False, 0)),
     )
@@ -85,7 +86,7 @@ def send_dm_channel(channel: Union[discord.DMChannel, discord.GroupChannel, Any]
     else:
         qsend('unknownPrivateChannel', type(channel).__name__)
 
-def send_dms(channel_list: List[Union[discord.DMChannel, discord.GroupChannel, Any]], cacher: Cacher, async_runner, send_unread = False):
+def send_dms(channel_list: List[discord.DMChannel | discord.GroupChannel | Any], cacher: Cacher, async_runner, send_unread = False):
     for channel in channel_list:#sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
         send_dm_channel(channel, cacher)
     # This might not be needed (except for muted maybe)
@@ -94,7 +95,7 @@ def send_dms(channel_list: List[Union[discord.DMChannel, discord.GroupChannel, A
 
 # Messages
 
-async def generate_extra_message(message: Union[discord.Message, discord.MessageSnapshot], cacher: Optional[Cacher]=None, emoji_size: Optional[Any]=None, ref={}):
+async def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
     t = message.type
     if t == discord.MessageType.new_member:
         return 'newmember', ()
@@ -105,7 +106,7 @@ async def generate_extra_message(message: Union[discord.Message, discord.Message
         return 'message', (message.content, content, ref or {})
     else: return 'unknownmessage', (message.content, content, ref or {}, message.type.name)
 
-def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, myself_id, is_history=False):
+def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself_id, is_history=False):
     """Returns a sequence of the base author-dependent message callback arguments to pass at the start"""
     icon = '' if message.author.display_avatar == None else \
             str(cacher.get_cached_path(message.author.id, ImageType.USER, default=message.author.display_avatar))
@@ -128,7 +129,7 @@ def generate_base_message(message: Union[discord.Message, Any], cacher: Cacher, 
 
 # About
 
-def send_user(user: Union[discord.MemberProfile, discord.UserProfile]):
+def send_user(user: discord.MemberProfile | discord.UserProfile):
     status, is_on_mobile = 0, False # default
     if isinstance(user, discord.MemberProfile):
         if StatusMapping.has_value(user.status):

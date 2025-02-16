@@ -1,3 +1,4 @@
+from __future__ import annotations
 """Cache operations"""
 
 import sys, shutil
@@ -16,7 +17,7 @@ import requests
 from PIL import Image
 
 AnyPath = Union[Path, str]
-TimedeltaResult = Union[timedelta, None]
+TimedeltaResult = Optional[timedelta]
 AnyTimedelta = Union[TimedeltaResult, int]
 
 CachePeriodMapping = [
@@ -53,7 +54,7 @@ def verify_pillow(path: AnyPath):
         return e
     return None
 
-def download_pillow(url, proxies: Optional[dict]):
+def download_pillow(url, proxies: dict | None):
     """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
     try: r = requests.get(url, stream=True, proxies=proxies)
     except requests.ConnectionError as e:
@@ -96,7 +97,7 @@ class Cacher:
         return self._proxy
 
     @proxy.setter
-    def proxy(self, value: Optional[str]):
+    def proxy(self, value: str | None):
         self._proxy = value
         if value == None:
             self.proxies = {}
@@ -106,7 +107,7 @@ class Cacher:
                 "https": value,
             }
 
-    def __init__(self, cache: AnyPath, update_period: AnyTimedelta, proxy: Optional[str] = None):
+    def __init__(self, cache: AnyPath, update_period: AnyTimedelta, proxy: str | None = None):
         self._update_period = None
 
         self.cache: Path = Path(cache)
@@ -115,7 +116,7 @@ class Cacher:
         self.recreate_temporary()
         self.update_period = update_period
         self.proxies = {}
-        self._proxy: Optional[str] = None
+        self._proxy: str | None = None
         self.proxy = proxy
 
         self.session_cached = {}

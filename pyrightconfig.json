@@ -32,4 +32,6 @@
     "reportOptionalMemberAccess": false,
     "reportUnannotatedClassAttribute": false,
     "reportUnusedCallResult": false,
+    "reportCallInDefaultInitializer": false,
+    "reportImplicitOverride": false,
 }
