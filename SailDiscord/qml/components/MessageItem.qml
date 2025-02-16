@@ -231,6 +231,11 @@ ListItem {
             visible: !!jumpUrl
             onClicked: Clipboard.text = jumpUrl
         }
+        MenuItem {
+            text: qsTranslate("General", "Copy formatted contents")
+            visible: appSettings.developerMode
+            onClicked: Clipboard.text = formattedContents
+        }
     }}
 
     Component {
