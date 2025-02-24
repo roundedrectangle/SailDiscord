@@ -45,7 +45,7 @@ async def generate_message(message: discord.Message, is_history=False):
                 else:
                     # Construct everything manually
                     
-                    ref['resolvedType'], extra = await generate_extra_message(s)
+                    ref['resolvedType'], extra = generate_extra_message(s)
                     ref['resolved'] = (
                         '-1', '-1', '-1', qml_date(s.created_at), bool(message.edited_at), dummy_qml_user_info, False, convert_attachments(s.attachments),
                         *extra,
@@ -66,7 +66,7 @@ async def generate_message(message: discord.Message, is_history=False):
             ref['resolvedType'], ref['resolved'] = await generate_message(message.reference.resolved)
             ref['state'] = 2
 
-    event, args = await generate_extra_message(message, comm.cacher, comm.emoji_size, ref)
+    event, args = generate_extra_message(message, comm.cacher, comm.emoji_size, ref)
     return event, base+args
 
 async def send_message(message: discord.Message | Any, is_history=False):

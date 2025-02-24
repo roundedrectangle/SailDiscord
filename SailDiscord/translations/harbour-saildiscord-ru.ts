@@ -201,57 +201,57 @@
         <translation>Произошла ошибка при загрузке изображения %1. Пожалйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
         <source>Channel failed to load</source>
         <translation>Не удалось загрузить канал</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="320"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="329"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="328"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -1057,12 +1057,12 @@
         <translation>Скачан файл %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="168"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="167"/>
         <source>(edited)</source>
         <translation>(изменено)</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="307"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="306"/>
         <source>Unnamed</source>
         <translation>Безымянная</translation>
     </message>
@@ -1070,32 +1070,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="207"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="206"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>

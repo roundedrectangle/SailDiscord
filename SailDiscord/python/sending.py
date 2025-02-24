@@ -95,7 +95,7 @@ def send_dms(channel_list: List[discord.DMChannel | discord.GroupChannel | Any],
 
 # Messages
 
-async def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
+def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
     t = message.type
     if t == discord.MessageType.new_member:
         return 'newmember', ()

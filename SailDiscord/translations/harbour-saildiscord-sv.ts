@@ -201,57 +201,57 @@
         <translation>Kunde inte läsa in bilden %1. Rapportera detta till utvecklarna.</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
         <source>A reference failed to load</source>
         <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
         <source>Unable to receive cache: connection failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="320"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
         <source>Unknown caching error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="329"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="328"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
@@ -1059,12 +1059,12 @@
         <translation>Laddade ner filen %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="168"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="167"/>
         <source>(edited)</source>
         <translation>(redigerat)</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="307"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="306"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1072,32 +1072,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="204"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
         <source>Idle</source>
         <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="207"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="206"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>
