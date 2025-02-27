@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import sys
 from pyotherside import send as qsend
 from threading import Thread
