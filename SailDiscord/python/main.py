@@ -220,6 +220,7 @@ class Communicator:
     client: MyClient
     emoji_size: int | None = None
     send_unread: bool | None = None
+    active: bool = True
 
     def __init__(self):
         self.loginth = Thread()
@@ -236,7 +237,8 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, send_unread: bool):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, send_unread: bool, active: bool):
+        self.set_active(active)
         self.emoji_size = emoji_size
         self.send_unread = send_unread
         if self.cacher:
@@ -264,6 +266,9 @@ class Communicator:
         self.client.http.proxy = p.geturl()
         if self.cacher:
             self.cacher.proxy = p.geturl()
+
+    def set_active(self, active):
+        self.active = active
 
     def ensure_constants(self):
         while None in (self.cacher, self.downloads): pass

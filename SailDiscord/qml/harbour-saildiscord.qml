@@ -17,6 +17,12 @@ ApplicationWindow {
 
     Component.onDestruction: py.disconnectClient()
 
+    Shared {
+        id: shared
+
+        onActiveChanged: py.runUpdate('active', active)
+    }
+
     Notification { // Notifies about app status
         id: notifier
         replacesId: 0
@@ -38,6 +44,7 @@ ApplicationWindow {
 
         property string url
         Component.onCompleted: updateProxy()
+        onUrlChanged: py.call2('set_proxy', py.getProxy())
 
         function updateProxy() {
             // Sets the `url` to the global proxy URL, if enabled. Only manual proxy is supported, only the first address is used and excludes are not supported: FIXME
@@ -50,8 +57,6 @@ ApplicationWindow {
             }, function(e){url=''})
         }
     }
-
-    Shared { id: shared }
 
     ConfigurationGroup {
         id: appConfiguration
@@ -106,13 +111,8 @@ ApplicationWindow {
             property bool friendRequests: false
             property bool developerMode: false
 
-            onCachePeriodChanged: py.setCachePeriod(cachePeriod)
+            onCachePeriodChanged: py.runUpdate('cache_period', cachePeriod)
         }
-    }
-
-    Connections {
-        target: globalProxy
-        onUrlChanged: py.call2('set_proxy', py.getProxy())
     }
 
     Python {
@@ -159,9 +159,9 @@ ApplicationWindow {
         function setCurrentChannel(guildid, channelid) { call2('set_channel', [guildid, channelid]) }
         function resetCurrentChannel() { setCurrentChannel("", "") }
 
-        function setCachePeriod(period) {
+        function runUpdate(name, value) {
             if (!initialized) return
-            call2('set_cache_period', period)
+            call2('set_'+name, value)
         }
 
         function disconnectClient() {
@@ -185,6 +185,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState]) }
+        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState, shared.active]) }
     }
 }

@@ -196,62 +196,62 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
+        <location filename="../qml/components/Shared.qml" line="183"/>
         <source>Connection failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
+        <location filename="../qml/components/Shared.qml" line="186"/>
         <source>Login failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
+        <location filename="../qml/components/Shared.qml" line="189"/>
         <source>Captcha required but not implemented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
+        <location filename="../qml/components/Shared.qml" line="192"/>
         <source>404 Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="151"/>
+        <location filename="../qml/components/Shared.qml" line="195"/>
         <source>A message failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
+        <location filename="../qml/components/Shared.qml" line="198"/>
         <source>A reference failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
+        <location filename="../qml/components/Shared.qml" line="201"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="160"/>
+        <location filename="../qml/components/Shared.qml" line="204"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
+        <location filename="../qml/components/Shared.qml" line="207"/>
         <source>Unable to receive cache: connection failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="166"/>
+        <location filename="../qml/components/Shared.qml" line="210"/>
         <source>Unknown caching error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="170"/>
+        <location filename="../qml/components/Shared.qml" line="214"/>
         <source>Unknown error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="192"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="146"/>
         <source>Python error</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1070,7 +1070,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="132"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="133"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>

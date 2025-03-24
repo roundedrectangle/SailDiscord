@@ -4,6 +4,7 @@ import "../modules/js/showdown.min.js" as ShowDown
 import "../modules/js/twemoji.min.js" as Twemoji
 
 QtObject {
+    property bool active: Qt.application.state === Qt.ApplicationActive
     property var showdown: new ShowDown.showdown.Converter({
             simplifiedAutoLink: true,
             underline: true,
