@@ -34,7 +34,7 @@ HighlightImage {
                 radius: extendedRadius ? Math.min(width, height)/4 : Math.min(width, height)
                 Behavior on radius {
                     NumberAnimation { duration: 150 }
-                    enabled: !disableAnimations
+                    enabled: !disableAnimations && shared.active
                 }
             }
         }

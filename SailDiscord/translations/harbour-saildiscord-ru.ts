@@ -106,13 +106,13 @@
         <location filename="../qml/components/MessageReference.qml" line="138"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="368"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="356"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="220"/>
+        <location filename="../qml/components/MessageItem.qml" line="212"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="214"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="138"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -196,67 +196,67 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="183"/>
+        <location filename="../qml/components/Shared.qml" line="185"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="186"/>
+        <location filename="../qml/components/Shared.qml" line="188"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="189"/>
+        <location filename="../qml/components/Shared.qml" line="191"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="192"/>
+        <location filename="../qml/components/Shared.qml" line="194"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="195"/>
+        <location filename="../qml/components/Shared.qml" line="197"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="198"/>
+        <location filename="../qml/components/Shared.qml" line="200"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="201"/>
+        <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Channel failed to load</source>
         <translation>Не удалось загрузить канал</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="204"/>
+        <location filename="../qml/components/Shared.qml" line="206"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="207"/>
+        <location filename="../qml/components/Shared.qml" line="209"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="210"/>
+        <location filename="../qml/components/Shared.qml" line="212"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="214"/>
+        <location filename="../qml/components/Shared.qml" line="216"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="146"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="52"/>
+        <location filename="../qml/components/Shared.qml" line="53"/>
         <source>Error loading image %1</source>
         <translation>Произошла ошибка при загрузке изображения %1</translation>
     </message>
@@ -269,7 +269,7 @@
         <translation>Скопировать ID сервера</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="142"/>
+        <location filename="../qml/components/ChannelItem.qml" line="75"/>
         <location filename="../qml/pages/DMsView.qml" line="49"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
@@ -280,17 +280,17 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="225"/>
+        <location filename="../qml/components/MessageItem.qml" line="217"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="230"/>
+        <location filename="../qml/components/MessageItem.qml" line="222"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="235"/>
+        <location filename="../qml/components/MessageItem.qml" line="227"/>
         <source>Copy formatted contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="165"/>
+        <location filename="../qml/components/MessageItem.qml" line="157"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
@@ -404,17 +404,17 @@
         <translation>Подождите, когда кто-то выложит что-то</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="270"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="258"/>
         <source>Message deleted</source>
         <translation>Сообщение удалено</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="308"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="296"/>
         <source>Editing message</source>
         <translation>Редактирование сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="336"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="324"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>
@@ -1044,12 +1044,12 @@
 <context>
     <name>Shared</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="27"/>
+        <location filename="../qml/components/Shared.qml" line="28"/>
         <source>(edited)</source>
         <translation>(изменено)</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="57"/>
+        <location filename="../qml/components/Shared.qml" line="58"/>
         <source>Downloaded file %1</source>
         <translation>Скачан файл %1</translation>
     </message>
@@ -1070,7 +1070,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="133"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="131"/>
         <source>Unnamed</source>
         <translation>Безымянная</translation>
     </message>
@@ -1078,32 +1078,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="148"/>
+        <location filename="../qml/components/Shared.qml" line="149"/>
         <source>Online</source>
         <translation>Онлайн</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="149"/>
+        <location filename="../qml/components/Shared.qml" line="150"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="150"/>
+        <location filename="../qml/components/Shared.qml" line="151"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="151"/>
+        <location filename="../qml/components/Shared.qml" line="152"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="152"/>
+        <location filename="../qml/components/Shared.qml" line="153"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="155"/>
+        <location filename="../qml/components/Shared.qml" line="156"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>

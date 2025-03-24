@@ -47,8 +47,8 @@ Page {
         if (i >= 0) {
             i = msgModel.get(i)
             i.contents = sendField.text
-            i.formatted = shared.markdown(sendField.text, true)
-            i._flags.edit = true
+            i.formattedContents = shared.markdown(sendField.text, true)
+            i.flags.edit = true
         }
 
         sendField.text = previouslyEnteredText
@@ -221,24 +221,14 @@ Page {
                     Component {
                         id: defaultItem
                         MessageItem {
-                            authorid: userid
-                            contents: model.contents
-                            formattedContents: model.formatted
-                            author: _author
-                            pfp: _pfp
-                            sent: _sent
-                            date: _date
-                            sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1)._author == _author)
-                            masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
-                            masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1)._date
-                            attachments: _attachments
-                            reference: _ref
-                            flags: _flags
-                            msgid: messageId
-                            jumpUrl: model.jumpUrl
                             sendPermissions: page.sendPermissions
                             managePermissions: page.managePermissions
                             showRequestableOptions: !isDemo
+
+                            sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1).author == author)
+                            masterWidth: sameAuthorAsBefore ? msgModel.get(index+1)._masterWidth : -1
+                            masterDate: index == msgModel.count-1 ? new Date(1) : msgModel.get(index+1).date
+
                             highlightStarted: model.highlightStarted
                             onHighlightStartedChanged: model.highlightStarted = highlightStarted
                             jumpToReference: function(id) {
@@ -255,9 +245,7 @@ Page {
                             function updateMasterWidth() {
                                 msgModel.setProperty(index, "_masterWidth", masterWidth == -1 ? innerWidth : masterWidth)
                             }
-                            Component.onCompleted: {
-                                updateMasterWidth()
-                            }
+                            Component.onCompleted: updateMasterWidth()
                             onMasterWidthChanged: updateMasterWidth()
                             onInnerWidthChanged: updateMasterWidth()
 
@@ -383,32 +371,23 @@ Page {
 
         property int updateCounter: 0
 
-        function combineObjects(obj1, obj2) {
-            var res = obj1
-            for (var attrname in obj2) {
-                if (res[attrname] !== undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
-                    res[attrname] = combineObjects(res[attrname], obj2[attrname])
-                else res[attrname] = obj2[attrname]
-            }
-            return res
-        }
-
         function appendDemo2(toAppend) {
-            insert(0, combineObjects({type: '', messageId: '-1', userid: '-1',
+            insert(0, shared.combineObjects({type: '', messageId: '-1', userid: '-1',
                                       _from_history: true, _wasUpdated: false,
-                                      _masterWidth: -1, _date: new Date(),
-                                      _flags: {edit: false, bot: false, nickAvailable: false,
+                                      _masterWidth: -1, date: new Date(),
+                                      flags: {edit: false, bot: false, nickAvailable: false,
                                           system: false, color: undefined},
-                                      _sent: false, contents: "", formatted: "",
-                                      _author: "unknown", _pfp: '',
-                                      _ref: {}, _attachments: [],
+                                      sent: false, contents: "", formattedContents: "",
+                                      author: "unknown", avatar: '',
+                                      reference: {}, attachments: [],
+                                      jumpUrl: '', highlightStarted: false,
                                   }, toAppend))
         }
 
         function appendDemo(isyou, thecontents, additionalOptions) {
             additionalOptions = additionalOptions !== undefined ? additionalOptions : {}
-            appendDemo2(combineObjects(
-                            {_sent: isyou, contents: thecontents, formatted: shared.markdown(thecontents, undefined, additionalOptions._flags ? additionalOptions._flags.edit : false), _author: isyou ? "you" : "notyou", _pfp: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
+            appendDemo2(shared.combineObjects(
+                            {sent: isyou, contents: thecontents, formattedContents: shared.markdown(thecontents, undefined, additionalOptions.flags ? additionalOptions.flags.edit : false), author: isyou ? "you" : "notyou", avatar: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
                             additionalOptions))
         }
 
@@ -440,13 +419,13 @@ Page {
 
 
             // TODO: attachments and replies
-            //appendDemo(true, "Hey everyone, look at this pic!", {_attachments: [{}]})
+            //appendDemo(true, "Hey everyone, look at this pic!", {attachments: [{}]})
 
             appendDemo(true, "# Markdown showcase:\n*Italic*, **bold**, ***both***, `code`, normal")
-            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formatted: "I am a normal guy, just have a colored nickname", _author: "normal_guy", _pfp: "https://cdn.discordapp.com/embed/avatars/4.png", _flags: {color:"green"}})
-            appendDemo2({contents: "I am a system guy", formatted: "I am a system guy", _pfp: "https://cdn.discordapp.com/embed/avatars/3.png", _flags: {system:true}})
-            appendDemo2({contents: "I am a bot!", formatted: "I am a bot!", _author: "a_bot", _pfp: "https://cdn.discordapp.com/embed/avatars/2.png", _flags: {bot:true}})
-            appendDemo(true, "Edited message...", {_flags: {edit: true}})
+            appendDemo2({contents: "I am a normal guy, just have a colored nickname", formattedContents: "I am a normal guy, just have a colored nickname", author: "normal_guy", avatar: "https://cdn.discordapp.com/embed/avatars/4.png", flags: {color:"green"}})
+            appendDemo2({contents: "I am a system guy", formattedContents: "I am a system guy", avatar: "https://cdn.discordapp.com/embed/avatars/3.png", flags: {system:true}})
+            appendDemo2({contents: "I am a bot!", formattedContents: "I am a bot!", author: "a_bot", avatar: "https://cdn.discordapp.com/embed/avatars/2.png", flags: {bot:true}})
+            appendDemo(true, "Edited message...", {flags: {edit: true}})
             appendDemo(true, "First message!")
         }
 

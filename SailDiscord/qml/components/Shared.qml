@@ -68,25 +68,25 @@ QtObject {
     }
 
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
-        return function(_serverid, _channelid, _id, _date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
+        return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
             if (guildid != undefined && channelid != undefined)
                 if ((_serverid != guildid) || (_channelid != channelid)) return
             var data = {
-                type: type, messageId: _id, _author: emojify(userinfo.name), _pfp: userinfo.pfp,
-                _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
-                _flags: {
+                type: type, messageId: _id, author: emojify(userinfo.name), avatar: userinfo.pfp,
+                sent: userinfo.sent, _masterWidth: -1, date: new Date(date), _from_history: history,
+                _wasUpdated: false, userid: userinfo.id, attachments: attachments,
+                flags: {
                     edit: edited, bot: userinfo.bot, editedAt: editedAt,
                     system: userinfo.system, color: userinfo.color
-                }, APIType: '', contents: '', formatted: '', _ref: {}, highlightStarted: false,
+                }, APIType: '', contents: '', formattedContents: '', reference: {}, highlightStarted: false,
                 jumpUrl: jumpUrl,
             }
 
             var extraStart = 10
             if (type === "" || type === "unknown") {
                 data.contents = arguments[extraStart]
-                data.formatted = markdown(arguments[extraStart+1], undefined, data._flags.edit)
-                data._ref = arguments[extraStart+2]
+                data.formattedContents = markdown(arguments[extraStart+1], undefined, data.flags.edit)
+                data.reference = arguments[extraStart+2]
             }
             if (type === "unknown") data.APIType = arguments[extraStart+3]
             finalCallback(history, data)
@@ -179,6 +179,7 @@ QtObject {
     }
 
     function pythonErrorHandler(name, info, other) {
+        var text
         switch(name){
         case 'connection':
             text = qsTranslate("Errors", "Connection failure")
@@ -225,5 +226,15 @@ QtObject {
         default:
             showError(text, info)
         }
+    }
+
+    function combineObjects(obj1, obj2) {
+        var res = obj1
+        for (var attrname in obj2) {
+            if (res[attrname] !== undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
+                res[attrname] = combineObjects(res[attrname], obj2[attrname])
+            else res[attrname] = obj2[attrname]
+        }
+        return res
     }
 }

@@ -19,7 +19,6 @@ ApplicationWindow {
 
     Shared {
         id: shared
-
         onActiveChanged: py.runUpdate('active', active)
     }
 
@@ -150,10 +149,10 @@ ApplicationWindow {
             setHandler(handlerName, handler)
             call2(func, args)
         }
-        function reset(handler) {
+        function reset(handler, empty) {
             // we unset handler so app won't crash on operating destroyed items
             // undefined is not used for messages not to be logged
-            py.setHandler(handler, function() {})
+            py.setHandler(handler, empty ? undefined : function() {})
         }
 
         function setCurrentChannel(guildid, channelid) { call2('set_channel', [guildid, channelid]) }

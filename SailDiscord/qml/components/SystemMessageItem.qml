@@ -18,7 +18,7 @@ ListItem {
         text: switch(_model.type) {
             case 'join':
             case 'newmember': // FIXME: message reference and main messages unified code
-                return _genText(qsTr("%1 joined the server"), _model._author)
+                return _genText(qsTr("%1 joined the server"), _model.author)
             case 'unknown':
             case 'unknownmessage':
                 return _genText(qsTr("Unknown message type: %1"), _model.APIType)
@@ -30,7 +30,7 @@ ListItem {
     onClicked: switch (_model.type) {
                    case 'join':
                    case 'newmember':
-                       pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _model.userid, name: _model._author, icon: _model._pfp })
+                       pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _model.userid, name: _model.author, icon: _model.avatar })
                        break
                }
 }

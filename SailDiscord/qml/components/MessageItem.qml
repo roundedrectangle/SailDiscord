@@ -6,22 +6,14 @@ import '../modules/FancyContextMenu'
 
 // TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
-    property string contents
-    property string formattedContents
-    property string author
-    property string pfp
-    property bool sent // If the message is sent by the user connected to the client
-    property bool sameAuthorAsBefore
-    property date date
-    property var attachments
-    property var reference
-    property string msgid: ''
-    property bool sendPermissions: false
-    property bool managePermissions: false
-    property string jumpUrl
+    // Properties which are taken from the model:
+    // author, messageId, avatar, contents, formattedContents, attachments, jumpUrl, reference, date,
+    // sent // If the message is sent by the user connected to the client
+    // userid, flags // User-related
 
-    property string authorid // User-related
-    property var flags
+    property bool sameAuthorAsBefore
+    property bool sendPermissions
+    property bool managePermissions
 
     property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
     property date masterDate // Date of previous element
@@ -29,7 +21,7 @@ ListItem {
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
         case "n": return true
         case "a": return !sameAuthorAsBefore || referenceLoader.item != undefined
-        case "d": return (!(sameAuthorAsBefore && (date - msgModel.get(index+1)._date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
+        case "d": return (!(sameAuthorAsBefore && (date - msgModel.get(index+1).date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
     }
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
@@ -41,8 +33,8 @@ ListItem {
     signal replyRequested
     property var jumpToReference: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
 
-    property bool highlightStarted: false
-    property bool _highlighting: false
+    property bool highlightStarted
+    property bool _highlighting
     highlighted: down || menuOpen || _highlighting
     onHighlightStartedChanged: if (highlightStarted) {
         bgColorBehaviour.enabled = false
@@ -95,13 +87,13 @@ ListItem {
 
             ListImage {
                 id: profileIcon
-                icon: _firstSameAuthor ? pfp : ""
+                icon: _firstSameAuthor ? avatar : ""
                 visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
                 opacity: _firstSameAuthor ? 1 : 0
                 errorString: author
                 highlightOnClick: true
                 onClicked: openAboutUser()
-                enabled: _firstSameAuthor && showRequestableOptions && authorid != '-1'
+                enabled: _firstSameAuthor && showRequestableOptions && userid != '-1'
                 disableAnimations: true
             }
 
@@ -171,7 +163,7 @@ ListItem {
             }
         }
 
-        AttachmentsPreview { model: root.attachments }
+        AttachmentsPreview { model: attachments }
 
         Loader {
             width: parent.width
@@ -186,7 +178,7 @@ ListItem {
 
     function openAboutUser() {
         pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"),
-                       { userid: authorid, name: author, icon: pfp }
+                       { userid: userid, name: author, icon: avatar }
                        )
     }
 
@@ -218,13 +210,13 @@ ListItem {
         FancyAloneMenuItem {
             icon.source: "image://theme/icon-m-about"
             text: qsTranslate("AboutUser", "About this member", "User")
-            visible: authorid != '-1'
+            visible: userid != '-1'
             onClicked: openAboutUser()
         }
         MenuItem {
             text: qsTranslate("General", "Copy message ID")
-            visible: appSettings.developerMode && msgid
-            onClicked: Clipboard.text = msgid
+            visible: appSettings.developerMode && messageId
+            onClicked: Clipboard.text = messageId
         }
         MenuItem {
             text: qsTranslate("General", "Copy message link")

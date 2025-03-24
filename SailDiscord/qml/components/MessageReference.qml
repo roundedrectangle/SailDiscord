@@ -54,7 +54,7 @@ ListItem {
                 Component {
                     id: defaultInfoItem
                     Label {
-                        text: _resolvedReference._author
+                        text: _resolvedReference.author
                         truncationMode: TruncationMode.Fade
                         color: Theme.secondaryHighlightColor
                     }
@@ -101,7 +101,7 @@ ListItem {
                 Label {
                     width: parent.width
                     textFormat: Text.RichText
-                    text: _resolvedReference.formatted
+                    text: _resolvedReference.formattedContents
                     wrapMode: Text.Wrap
                     color: highlighted ? Theme.highlightColor : Theme.secondaryColor
                 }
@@ -117,7 +117,7 @@ ListItem {
         }
         _resolvedType = shared.convertCallbackType(reference.resolvedType)
         shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, reference.resolved)
-        _resolvedReference._attachments = shared.attachmentsToListModel(root, _resolvedReference._attachments)
+        _resolvedReference.attachments = shared.attachmentsToListModel(root, _resolvedReference.attachments)
         contentLoader.sourceComponent = null // reload
         switch (_resolvedType) {
         case "":
@@ -137,7 +137,7 @@ ListItem {
 
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
             visible: !!_resolvedReference && _resolvedReference.userid != '-1' && !!_resolvedReference.userid
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference._author, icon: _resolvedReference._pfp, nicknameGiven: _resolvedReference._flags.nickAvailable })
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference.author, icon: _resolvedReference.avatar, nicknameGiven: _resolvedReference.flags.nickAvailable })
         }
 
         MenuItem { text: qsTr("Copy")
@@ -167,19 +167,19 @@ ListItem {
                         width: parent.width
 
                         function updateSource() {
-                            var args = {authorid: _resolvedReference.userid,
+                            var args = {userid: _resolvedReference.userid,
                                 contents: _resolvedReference.contents,
-                                formattedContents: _resolvedReference.formatted,
-                                author: _resolvedReference._author,
+                                formattedContents: _resolvedReference.formattedContents,
+                                author: _resolvedReference.author,
                                 pfp: _resolvedReference._pfp,
-                                sent: _resolvedReference._sent,
-                                date: _resolvedReference._date,
+                                sent: _resolvedReference.sent,
+                                date: _resolvedReference.date,
                                 sameAuthorAsBefore: false,
                                 masterWidth: -1,
                                 masterDate: new Date(1),
-                                attachments: _resolvedReference._attachments,
-                                reference: _resolvedReference._ref,
-                                flags: _resolvedReference._flags}
+                                attachments: _resolvedReference.attachments,
+                                reference: _resolvedReference.reference,
+                                flags: _resolvedReference.flags}
                             switch (_resolvedType) {
                             case '': setSource("MessageItem.qml", args);break
                             case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", args);else sourceComponent = systemItem;break

@@ -157,9 +157,9 @@ AboutPageBase {
             pageStack.pop(undefined, PageStackAction.Immediate)
             LinkHandler.openOrCopyUrl(link)
         })
-        py.setHandler("user"+(isClient?"":userid), function(bio, _date, status, onMobile, allNames) {
+        py.setHandler("user"+(isClient?"":userid), function(bio, date, status, onMobile, allNames) {
             description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
-            memberSince = new Date(_date)
+            memberSince = new Date(date)
             _status = shared.constructStatus(status, onMobile)
             busyIndicator.running = false
             // by default these are empty strings:
