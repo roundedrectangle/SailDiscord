@@ -69,7 +69,7 @@ ListItem {
         id: column
         width: parent.width
 
-        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
+        Item { height: !!attachments && attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
 
         Loader {
             id: referenceLoader

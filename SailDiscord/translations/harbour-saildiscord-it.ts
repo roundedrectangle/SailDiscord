@@ -196,64 +196,64 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="89"/>
-        <source>Error loading image %1. Please report this to developers</source>
-        <translation>Errore nel caricare l&apos;immagine %1. Per favore riportalo agli sviluppatori</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="310"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="136"/>
         <source>Connection failure</source>
         <translation>Connessione fallita</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="311"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="137"/>
         <source>Login failure</source>
         <translation>Accesso fallito</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="312"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="138"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha richiesto ma non ancora implementato</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="313"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
         <source>404 Not Found</source>
         <translation>404 Non Trovato</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="314"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
         <source>A message failed to load</source>
         <translation>Caricamento di un messaggio fallito</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="315"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
         <source>A reference failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="316"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="317"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="318"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
         <source>Unable to receive cache: connection failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="319"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Unknown caching error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="328"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
         <source>Python error</source>
         <translation>Errore python</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="52"/>
+        <source>Error loading image %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1039,6 +1039,19 @@
     </message>
 </context>
 <context>
+    <name>Shared</name>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="27"/>
+        <source>(edited)</source>
+        <translation type="unfinished">(modificati)</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="57"/>
+        <source>Downloaded file %1</source>
+        <translation type="unfinished">File scaricato: %1</translation>
+    </message>
+</context>
+<context>
     <name>SystemMessageItem</name>
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="21"/>
@@ -1054,17 +1067,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="94"/>
-        <source>Downloaded file %1</source>
-        <translation>File scaricato: %1</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="167"/>
-        <source>(edited)</source>
-        <translation>(modificati)</translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="306"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="132"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1072,32 +1075,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="199"/>
+        <location filename="../qml/components/Shared.qml" line="148"/>
         <source>Online</source>
         <translation>In linea</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="200"/>
+        <location filename="../qml/components/Shared.qml" line="149"/>
         <source>Offline</source>
         <translation>Non in linea</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="201"/>
+        <location filename="../qml/components/Shared.qml" line="150"/>
         <source>Do Not Disturb</source>
         <translation>Non disturbare</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="202"/>
+        <location filename="../qml/components/Shared.qml" line="151"/>
         <source>Invisible</source>
         <translation>Invisibile</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="203"/>
+        <location filename="../qml/components/Shared.qml" line="152"/>
         <source>Idle</source>
         <translation>Occupato</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="206"/>
+        <location filename="../qml/components/Shared.qml" line="155"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefono)</translation>

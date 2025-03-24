@@ -143,7 +143,7 @@ AboutPageBase {
         if (_loaded || loading) return
         _loaded = true
         _develInfoSection.parent.visible = !busyIndicator.running && _loaded
-        py.requestUserInfo(userid) // for client, it will be -1
+        py.call2('request_user_info', userid) // for client, it will be -1
     }
 
     Component.onCompleted: {

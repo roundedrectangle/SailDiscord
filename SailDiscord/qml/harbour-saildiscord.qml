@@ -1,14 +1,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
+import 'components'
 import io.thp.pyotherside 1.5
 import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
 import Sailfish.Share 1.0
 import Nemo.DBus 2.0
-import "modules/js/showdown.min.js" as ShowDown
-import "modules/js/twemoji.min.js" as Twemoji
 
 ApplicationWindow {
     id: mainWindow
@@ -52,199 +51,26 @@ ApplicationWindow {
         }
     }
 
-    property var showdown: new ShowDown.showdown.Converter({
-            simplifiedAutoLink: true,
-            underline: true,
-            backslashEscapesHTMLTags: true,
-        })
-
-    QtObject {
-        id: shared
-
-        function log() {
-          var f = ""
-          for (var i = 0; i < arguments.length; i++) {
-            f += arguments[i]
-            if (i != arguments.length-1) f += "|||"
-          }
-          console.log(f)
-        }
-
-        function showInfo(summary, text) {
-            notifier.appIcon = "image://theme/icon-lock-information"
-            notifier.summary = summary || ''
-            notifier.body = text || ''
-            notifier.publish()
-        }
-
-        function showError(summary, text) {
-            notifier.appIcon = "image://theme/icon-lock-warning"
-            notifier.summary = summary || ''
-            notifier.body = text || ''
-            notifier.publish()
-            console.log(text)
-        }
-
-        function imageLoadError(name) {
-            showError(qsTranslate("Errors", "Error loading image %1. Please report this to developers").arg(name))
-        }
-
-        function download(url, name) {
-            py.call('main.comm.download_file', [url, name], function(r) {
-                showInfo(qsTr("Downloaded file %1").arg(name))
-            })
-        }
-
-        function shareFile(url, name, mime) {
-            py.call('main.comm.save_temp', [url, name], function(path) {
-                shareApi.mimeType = mime
-                shareApi.resources = [path]
-                shareApi.trigger()
-            })
-        }
-
-        function constructMessageCallback(type, guildid, channelid, finalCallback) {
-            return function(_serverid, _channelid, _id, _date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
-                if (guildid != undefined && channelid != undefined)
-                    if ((_serverid != guildid) || (_channelid != channelid)) return
-                var data = {
-                    type: type, messageId: _id, _author: emojify(userinfo.name), _pfp: userinfo.pfp,
-                    _sent: userinfo.sent, _masterWidth: -1, _date: new Date(_date), _from_history: history,
-                    _wasUpdated: false, userid: userinfo.id, _attachments: attachments,
-                    _flags: {
-                        edit: edited, bot: userinfo.bot, editedAt: editedAt,
-                        system: userinfo.system, color: userinfo.color
-                    }, APIType: '', contents: '', formatted: '', _ref: {}, highlightStarted: false,
-                    jumpUrl: jumpUrl,
-                }
-
-                var extraStart = 10
-                if (type === "" || type === "unknown") {
-                    data.contents = arguments[extraStart]
-                    data.formatted = markdown(arguments[extraStart+1], undefined, data._flags.edit)
-                    data._ref = arguments[extraStart+2]
-                }
-                if (type === "unknown") data.APIType = arguments[extraStart+3]
-                finalCallback(history, data)
-            }
-        }
-
-        function convertCallbackType(pyType) {
-            switch(pyType) {
-            case "message": return ''
-            case "newmember": return 'join'
-            case "unknownmessage": return 'unknown'
-            }
-        }
-
-        function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback) {
-            // see convertCallbackType()
-            py.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
-            py.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
-            py.setHandler("unknownmessage", constructMessageCallback('unknown', guildid, channelid, finalCallback))
-            py.setHandler("messageedit", function(before, event, args) {
-                constructMessageCallback(convertCallbackType(event), guildid, channelid, function(history, data) {
-                    editCallback(before, data)
-                }).apply(null, args)
-            })
-            py.setHandler("messagedelete", function(id) { editCallback(id) })
-        }
-
-        function cleanupMessageCallbacks() {
-            // we unset handler so app won't crash on appending items to destroyed list because resetCurrentChannel is not instant
-            py.reset("message")
-            py.reset("newmember")
-            py.reset("uknownmessage")
-            py.reset("messageedit")
-            py.reset("messagedelete")
-        }
-
-        function markdown(text, linkColor, edited) {
-            var e = emojify(text)
-            return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
-                        +showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
-                                           +e
-                                           +(edited ? (" <a href='sailcord://showEditDate' style='text-decoration:none;font-size:" + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'>" + qsTr("(edited)") + "</a>") : "")
-                                           )
-        }
-
-        function processServer(_id, name, icon) {
-            if (appConfiguration.legacyMode && _id == "1261605062162251848") {
-                name = "RoundedRectangle's server"
-                icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
-            }
-            // heads up: QQMLListModel can convert:
-            // arrays to QQMLListModel instances
-            // undefined to empty objects aka {} when other elements are objects
-            return {_id: _id, name: shared.emojify(name), image: icon,
-                folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
-            }
-        }
-
-        function attachmentsToListModel(_parent, attachments) {
-            // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
-            // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
-            var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', _parent)
-            attachments.forEach(function(attachment, i) { listModel.append(attachment) })
-            return listModel
-        }
-
-        function emojify(text) {
-            if (!appSettings.twemoji) return text
-            return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
-        }
-
-        function constructStatus(statusIndex, onMobile) {
-            var result = ["",
-                          qsTranslate("status", "Online"),
-                          qsTranslate("status", "Offline"),
-                          qsTranslate("status", "Do Not Disturb"),
-                          qsTranslate("status", "Invisible"),
-                          qsTranslate("status", "Idle")
-                    ][statusIndex]
-            if (onMobile && result !== "")
-                result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
-            return result
-        }
-
-        function loadLastChannels() {
-            try { return JSON.parse(appConfiguration.serverLastChannels) }
-            catch(e) { appConfiguration.serverLastChannels = "{}"; return {} }
-        }
-
-        function getLastChannel(serverid) {
-            var loaded = loadLastChannels()
-            return serverid in loaded ? loaded[serverid] : '-1'
-        }
-
-        function setLastChannel(serverid, channelid) {
-            var loaded = loadLastChannels()
-            loaded[serverid] = channelid
-            appConfiguration.serverLastChannels = JSON.stringify(loaded)
-        }
-    }
+    Shared { id: shared }
 
     ConfigurationGroup {
-        // An experimental configuration system replacing old C++ one
         id: appConfiguration
         path: "/apps/harbour-saildiscord"
 
-        property string token: ""
+        property string token: ''
         property bool legacyMode: false
-        property string modernLastServerId: "-1"
-        property string serverLastChannels: "{}"
+        property string modernLastServerId: '-1'
+        property string serverLastChannels: '{}'
+
+        function removeValue(value, root) { shared.removeConfigurationValue(root ? appConfiguration : appSettings, value) }
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
                 appSettings.sentBehaviour = "r"
-            if (value("usernameTutorialCompleted", null) !== null)
-                setValue("usernameTutorialCompleted", undefined)
-            if (appSettings.value("folders", null) !== null)
-                appSettings.setValue("folders", undefined)
-            if (appSettings.value("defaultUnknownReferences", null) !== null)
-                appSettings.setValue("defaultUnknownReferences", undefined)
-            if (appSettings.value("emptySpace", null) !== null)
-                appSettings.setValue("emptySpace", undefined)
+            removeValue('usernameTutorialCompleted', true)
+            removeValue('folders')
+            removeValue('defaultUnknownReferences')
+            removeValue('emptySpace')
         }
 
         ConfigurationGroup {
@@ -286,7 +112,7 @@ ApplicationWindow {
 
     Connections {
         target: globalProxy
-        onUrlChanged: py.call('main.comm.set_proxy', [py.getProxy()])
+        onUrlChanged: py.call2('set_proxy', [py.getProxy()])
     }
 
     Python {
@@ -328,11 +154,10 @@ ApplicationWindow {
         onError: shared.showError(qsTranslate("Errors", "Python error"), traceback)
         onReceived: console.log("got message from python: " + data)
 
-        function login(token) { call('main.comm.login', [token]) }
-
+        function call2(name, args, callback) { call('main.comm.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
         function request(func, handlerName, args, handler) {
             setHandler(handlerName, handler)
-            call('main.comm.'+func, args)
+            call2(func, args)
         }
         function reset(handler) {
             // we unset handler so app won't crash on operating destroyed items
@@ -340,25 +165,18 @@ ApplicationWindow {
             py.setHandler(handler, function() {})
         }
 
-        function requestChannels(guildid){ call('main.comm.get_channels', [guildid]) }
-        function setCurrentChannel(guildid, channelid) { call('main.comm.set_channel', [guildid, channelid]) }
+        function setCurrentChannel(guildid, channelid) { call2('set_channel', [guildid, channelid]) }
         function resetCurrentChannel() { setCurrentChannel("", "") }
 
-        function clearCache() { call('main.comm.clear_cache', []) }
         function setCachePeriod(period) {
-            if (!initialized) return;
-            call('main.comm.set_cache_period', [period])
+            if (!initialized) return
+            call2('set_cache_period', period)
         }
-
-        function sendMessage(text) { call('main.comm.send_message', [text]) }
-        function requestOlderHistory(messageId) { call('main.comm.get_history_messages', [messageId])}
 
         function disconnectClient() {
-            if (!initialized || appConfiguration.token.length <= 0) return;
+            if (!initialized || appConfiguration.token.length <= 0) return
             call_sync('main.comm.disconnect')
         }
-
-        function requestUserInfo(userId) { call('main.comm.request_user_info', [userId])}
 
         function getProxy() {
             switch (appSettings.proxyType) {
@@ -376,8 +194,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call('main.comm.set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState]) }
-
-        function call2(name, args, callback) { call('main.comm.'+name, args, callback) }
+        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState]) }
     }
 }

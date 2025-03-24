@@ -29,6 +29,7 @@ DISTFILES += \
     qml/components/PlaceholderImage.qml \
     qml/components/ServerListItem.qml \
     qml/components/SettingsComboBox.qml \
+    qml/components/Shared.qml \
     qml/components/SystemMessageItem.qml \
     qml/components/ZoomableImage.qml \
     qml/cover/CoverPage.qml \

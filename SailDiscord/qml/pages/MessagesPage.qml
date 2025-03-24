@@ -32,7 +32,7 @@ Page {
     }
 
     function sendMessage() {
-        if (!isDemo) py.sendMessage(sendField.text)
+        if (!isDemo) py.call2('send_message', sendField.text)
         else msgModel.appendDemo(true, sendField.text)
         sendField.text = previouslyEnteredText
         previouslyEnteredText = ''
@@ -192,7 +192,7 @@ Page {
                         if (i>0 && i%27 == 0) {
                             if (!msgModel.get(i)._wasUpdated) {
                                 msgModel.get(i)._wasUpdated = true
-                                py.requestOlderHistory(msgModel.get(msgModel.count-1).messageId)
+                                py.call2('get_history_messages', msgModel.get(msgModel.count-1).messageId)
                             }
                         }
                     }
@@ -267,7 +267,7 @@ Page {
                                 actionID = messageId
                                 currentFieldAction = 1
                             }
-                            onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; py.call2('delete_message', [messageId]) })
+                            onDeleteRequested: remorseAction(qsTr("Message deleted"), function() { opacity = 0; py.call2('delete_message', messageId) })
                             onReplyRequested: {
                                 actionID = messageId
                                 currentFieldAction = 2

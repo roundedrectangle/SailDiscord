@@ -162,7 +162,7 @@ Page {
             if (lastServerId != '-1') {
                 py.setHandler('channel'+lastServerId, undefined)
                 py.setHandler('channelUpdate'+lastServerId, undefined)
-                py.call2('unset_server', [lastServerId])
+                py.call2('unset_server', lastServerId)
             }
             clear()
             if (!!pageStack.nextPage()) pageStack.popAttached()
@@ -186,7 +186,7 @@ Page {
                     setProperty(i, 'mentions', mentions)
                 }
             })
-            py.requestChannels(serverid)
+            py.call2('get_channels', serverid)
         }
         Component.onCompleted: reloadModel()
     }
@@ -195,11 +195,11 @@ Page {
         if (chModel.lastServerId != '-1') {
             py.setHandler('channel'+chModel.lastServerId, undefined)
             py.setHandler('channelUpdate'+chModel.lastServerId, undefined)
-            py.call2('unset_server', [chModel.lastServerId])
+            py.call2('unset_server', chModel.lastServerId)
         }
         py.setHandler('channel'+serverid, undefined)
         py.setHandler('channelUpdate'+serverid, undefined)
-        py.call2('unset_server', [serverid])
+        py.call2('unset_server', serverid)
         if (!!pageStack.nextPage() && pageStack.nextPage().serverid != '-1') pageStack.popAttached()
     }
 

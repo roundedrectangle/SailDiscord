@@ -34,7 +34,7 @@ Page {
             openLoginDialogTimer.start()
         } else { // logged in, connect with python
             loading = true
-            py.login(appConfiguration.token)
+            py.call2('login', appConfiguration.token)
         }
     }
 
