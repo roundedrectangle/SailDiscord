@@ -196,64 +196,69 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="136"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="137"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="138"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="151"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
         <source>A reference failed to load</source>
         <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="160"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
         <source>Unable to receive cache: connection failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="166"/>
         <source>Unknown caching error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="170"/>
+        <source>Unknown error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="192"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="52"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte läsa in bilden %1.</translation>
     </message>
 </context>
 <context>
@@ -1043,12 +1048,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="27"/>
         <source>(edited)</source>
-        <translation type="unfinished">(redigerat)</translation>
+        <translation>(redigerat)</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="57"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished">Laddade ner filen %1</translation>
+        <translation>Laddade ner filen %1</translation>
     </message>
 </context>
 <context>

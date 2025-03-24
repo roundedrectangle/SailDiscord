@@ -196,64 +196,69 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="136"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="137"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="138"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="151"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Channel failed to load</source>
         <translation>Не удалось загрузить канал</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="160"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="166"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="170"/>
+        <source>Unknown error: %1</source>
+        <translation>Неизвестная ошибка: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="192"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="52"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при загрузке изображения %1</translation>
     </message>
 </context>
 <context>
@@ -1041,12 +1046,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="27"/>
         <source>(edited)</source>
-        <translation type="unfinished">(изменено)</translation>
+        <translation>(изменено)</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="57"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished">Скачан файл %1</translation>
+        <translation>Скачан файл %1</translation>
     </message>
 </context>
 <context>
