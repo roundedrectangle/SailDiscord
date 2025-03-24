@@ -46,7 +46,6 @@ ListItem {
             width: parent.width - channelIcon.width - channelUnreadCount.width - parent.spacing*(channelUnreadCount.visible ? 2 : 1)
             truncationMode: TruncationMode.Fade
             anchors.verticalCenter: parent.verticalCenter
-            textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             highlighted: unread || parent.parent.highlighted
             opacity: hasPermissions ? 1 : Theme.opacityLow
         }

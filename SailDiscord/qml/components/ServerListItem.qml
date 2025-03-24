@@ -51,7 +51,6 @@ ListItem {
             width: parent.width - profileIcon.width - channelUnreadCount.width - parent.spacing*(channelUnreadCount.visible ? 2 : 1)
             truncationMode: TruncationMode.Fade
             text: title
-            textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             highlighted: textHighlighted || root.highlighted
         }
 

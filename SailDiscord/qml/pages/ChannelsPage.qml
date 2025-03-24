@@ -44,7 +44,6 @@ Page {
 
         header: PageHeader {
             title: name
-            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             titleColor: Theme.highlightColor
             MouseArea {
                 anchors.fill: parent
@@ -62,10 +61,7 @@ Page {
 
         section {
             property: "categoryname"
-            delegate: SectionHeader {
-                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
-                text: section
-            }
+            delegate: SectionHeader { text: section }
         }
 
         delegate: ChannelItem {}

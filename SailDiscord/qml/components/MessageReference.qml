@@ -29,7 +29,8 @@ ListItem {
                 id: icon
                 width: Theme.iconSizeMedium
                 height: width
-                source: switch (reference.type) {
+                source: switch (reference ? reference.type : -1) {
+                        case -1: return ''
                         case 1: return "image://theme/icon-m-rotate-right"
                         case 2: return "image://theme/icon-m-message-forward"
                         default: return "image://theme/icon-m-question"
@@ -110,7 +111,7 @@ ListItem {
     }
 
     Component.onCompleted: {
-        if (reference.type == 0 || !root) return
+        if (!root || !reference || reference.type == 0) return
         if (reference.state == 0 || reference.state == 1) {
             infoLoader.sourceComponent = failedInfoItem
             return

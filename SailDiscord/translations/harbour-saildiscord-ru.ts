@@ -10,7 +10,7 @@
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="178"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="176"/>
         <location filename="../qml/pages/ModernOverview.qml" line="24"/>
         <source>About Sailcord</source>
         <comment>App</comment>
@@ -58,14 +58,14 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="78"/>
+        <location filename="../qml/components/ServerListItem.qml" line="77"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>О сервере</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="58"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="57"/>
         <location filename="../qml/pages/ModernOverview.qml" line="28"/>
         <source>About this server</source>
         <comment>Server</comment>
@@ -103,16 +103,16 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="138"/>
+        <location filename="../qml/components/MessageReference.qml" line="139"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="356"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="352"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="212"/>
+        <location filename="../qml/components/MessageItem.qml" line="211"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="138"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="134"/>
         <source>Channel unsupported</source>
         <translation>Канал не поддерживается</translation>
     </message>
@@ -173,22 +173,22 @@
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="30"/>
-        <location filename="../qml/pages/ClassicOverview.qml" line="64"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="63"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="53"/>
         <source>Servers</source>
         <translation>Серверы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="153"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="151"/>
         <source>Me</source>
         <translation>Я</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="182"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="180"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -264,12 +264,12 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="84"/>
+        <location filename="../qml/components/ServerListItem.qml" line="83"/>
         <source>Copy server ID</source>
         <translation>Скопировать ID сервера</translation>
     </message>
     <message>
-        <location filename="../qml/components/ChannelItem.qml" line="75"/>
+        <location filename="../qml/components/ChannelItem.qml" line="74"/>
         <location filename="../qml/pages/DMsView.qml" line="49"/>
         <source>Copy channel ID</source>
         <translation>Скопировать ID канала</translation>
@@ -280,17 +280,17 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="217"/>
+        <location filename="../qml/components/MessageItem.qml" line="216"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="222"/>
+        <location filename="../qml/components/MessageItem.qml" line="221"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="227"/>
+        <location filename="../qml/components/MessageItem.qml" line="226"/>
         <source>Copy formatted contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="157"/>
+        <location filename="../qml/components/MessageItem.qml" line="156"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
@@ -361,27 +361,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="78"/>
+        <location filename="../qml/components/MessageReference.qml" line="79"/>
         <source>Reference failed to load</source>
         <translation>Не удалось загрузить ответ</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="76"/>
+        <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Original message was deleted</source>
         <translation>Исходное сообщение было удалено</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="77"/>
+        <location filename="../qml/components/MessageReference.qml" line="78"/>
         <source>Forwarded message</source>
         <translation>Пересланное сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="143"/>
+        <location filename="../qml/components/MessageReference.qml" line="144"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="163"/>
+        <location filename="../qml/components/MessageReference.qml" line="164"/>
         <source>Reply</source>
         <translation>Ответ</translation>
     </message>
@@ -389,32 +389,32 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="131"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="129"/>
         <source>No messages</source>
         <translation>Нет сообщений</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Say hi ;)</source>
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Wait for someone to post something</source>
         <translation>Подождите, когда кто-то выложит что-то</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="258"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="254"/>
         <source>Message deleted</source>
         <translation>Сообщение удалено</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="296"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="292"/>
         <source>Editing message</source>
         <translation>Редактирование сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="324"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="320"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

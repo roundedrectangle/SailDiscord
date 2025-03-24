@@ -10,7 +10,7 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="178"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="176"/>
         <location filename="../qml/pages/ModernOverview.qml" line="24"/>
         <source>About Sailcord</source>
         <comment>App</comment>
@@ -58,14 +58,14 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="78"/>
+        <location filename="../qml/components/ServerListItem.qml" line="77"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="58"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="57"/>
         <location filename="../qml/pages/ModernOverview.qml" line="28"/>
         <source>About this server</source>
         <comment>Server</comment>
@@ -103,16 +103,16 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="138"/>
+        <location filename="../qml/components/MessageReference.qml" line="139"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="356"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="352"/>
         <source>About</source>
         <comment>User</comment>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="212"/>
+        <location filename="../qml/components/MessageItem.qml" line="211"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Om denna medlem</translation>
@@ -159,7 +159,7 @@
 <context>
     <name>ChannelsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelsPage.qml" line="138"/>
+        <location filename="../qml/pages/ChannelsPage.qml" line="134"/>
         <source>Channel unsupported</source>
         <translation>Kanalen stöds ej</translation>
     </message>
@@ -173,22 +173,22 @@
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="30"/>
-        <location filename="../qml/pages/ClassicOverview.qml" line="64"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="63"/>
         <source>Refresh</source>
         <translation>Uppdatera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="54"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="53"/>
         <source>Servers</source>
         <translation>Servrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="153"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="151"/>
         <source>Me</source>
         <translation>Jag</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ClassicOverview.qml" line="182"/>
+        <location filename="../qml/pages/ClassicOverview.qml" line="180"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
@@ -264,28 +264,28 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/components/ChannelItem.qml" line="75"/>
+        <location filename="../qml/components/ChannelItem.qml" line="74"/>
         <location filename="../qml/pages/DMsView.qml" line="49"/>
         <source>Copy channel ID</source>
         <translation>Kopiera kanal-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="217"/>
+        <location filename="../qml/components/MessageItem.qml" line="216"/>
         <source>Copy message ID</source>
         <translation>Kopiera meddelande-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="222"/>
+        <location filename="../qml/components/MessageItem.qml" line="221"/>
         <source>Copy message link</source>
         <translation>Kopiera meddelandelänk</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="227"/>
+        <location filename="../qml/components/MessageItem.qml" line="226"/>
         <source>Copy formatted contents</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="84"/>
+        <location filename="../qml/components/ServerListItem.qml" line="83"/>
         <source>Copy server ID</source>
         <translation>Kopiera server-ID</translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="157"/>
+        <location filename="../qml/components/MessageItem.qml" line="156"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Redigerad %1</translation>
@@ -361,27 +361,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="78"/>
+        <location filename="../qml/components/MessageReference.qml" line="79"/>
         <source>Reference failed to load</source>
         <translation>Hänvisningen kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="76"/>
+        <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Original message was deleted</source>
         <translation>Ursprungligt meddelande har raderats</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="77"/>
+        <location filename="../qml/components/MessageReference.qml" line="78"/>
         <source>Forwarded message</source>
         <translation>Vidarebefordrat meddelande</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="143"/>
+        <location filename="../qml/components/MessageReference.qml" line="144"/>
         <source>Copy</source>
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="163"/>
+        <location filename="../qml/components/MessageReference.qml" line="164"/>
         <source>Reply</source>
         <translation>Svara</translation>
     </message>
@@ -389,32 +389,32 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="131"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="129"/>
         <source>No messages</source>
         <translation>Inga meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Say hi ;)</source>
         <translation>Säg Hej ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="132"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Wait for someone to post something</source>
         <translation>Vänta på att någon skall posta något</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="258"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="254"/>
         <source>Message deleted</source>
         <translation>Meddelande borttaget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="296"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="292"/>
         <source>Editing message</source>
         <translation>Redigerar meddelande</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="324"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="320"/>
         <source>Type something</source>
         <translation>Skriv något</translation>
     </message>

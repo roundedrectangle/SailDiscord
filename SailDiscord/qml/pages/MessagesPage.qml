@@ -86,7 +86,6 @@ Page {
             x: isPortraint ? Theme.horizontalPageMargin : Theme.paddingLarge
             width: parent.width - 2*x
             height: implicitHeight + 2*Theme.paddingLarge
-            textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
             verticalAlignment: Text.AlignVCenter
             wrapMode: Text.Wrap
         }
@@ -112,7 +111,6 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2*x
                 height: implicitHeight + 2*Theme.paddingLarge
-                textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
             }
@@ -143,7 +141,6 @@ Page {
             PageHeader {
                 id: header
                 title: (isGroup ? '' : (isDM ? '@' : "#"))+name
-                _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                 interactive: isDM
                 titleColor: highlighted ? palette.primaryColor : palette.highlightColor
                 Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
@@ -153,7 +150,6 @@ Page {
                     text: topic
                     visible: !!text
                     anchors.centerIn: parent
-                    textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                     width: parent.width
                     truncationMode: TruncationMode.Fade
                     color: Theme.secondaryHighlightColor

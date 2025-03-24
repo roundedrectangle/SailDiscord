@@ -34,7 +34,6 @@ TabView {
 
                     PageHeader {
                         id: header
-                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                         title: username
                     }
                     DMsView {
@@ -67,7 +66,6 @@ TabView {
                     }
                     PageHeader {
                         id: header
-                        _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                         title: username
                     }
 

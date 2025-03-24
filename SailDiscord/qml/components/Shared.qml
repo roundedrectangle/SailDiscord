@@ -22,10 +22,10 @@ QtObject {
 
     function markdown(text, linkColor, edited) {
         var e = emojify(text)
-        return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"
-                    +showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
+        return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"+
+                    showdown.makeHtml(((appSettings.twemoji && /^<img/.test(e)) ? '<span style="color:transparent">.</span>': '')
                                        +e
-                                       +(edited ? (" <a href='sailcord://showEditDate' style='text-decoration:none;font-size:" + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'>" + qsTr("(edited)") + "</a>") : "")
+                                       +(edited ? ("<a href='sailcord://showEditDate' style='text-decoration:none;font-size:" + Theme.fontSizeExtraSmall + "px;color:"+ Theme.secondaryColor +";'>" + qsTr("(edited)") + "</a>") : "")
                                        )
     }
 

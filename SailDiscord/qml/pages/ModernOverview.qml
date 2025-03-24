@@ -223,7 +223,6 @@ SilicaFlickable {
                             id: channelComponentHeader
                             title: currentServer ? currentServer.name : ''
                             titleColor: Theme.highlightColor
-                            _titleItem.textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: openAbout()

@@ -128,7 +128,6 @@ ListItem {
                         text: author
                         color: flags.color ? flags.color : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
-                        textFormat: appSettings.twemoji ? Text.RichText : Text.PlainText
                         MouseArea {
                             anchors.fill: parent
                             onClicked: openAboutUser()
