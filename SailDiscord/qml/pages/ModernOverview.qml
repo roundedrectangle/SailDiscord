@@ -54,6 +54,7 @@ SilicaFlickable {
             height: parent.height
             model: serversModel
             clip: true
+            quickScroll: appSettings.modernUIServersQuickScroll
             VerticalScrollDecorator {}
 
             header: Row {
@@ -176,6 +177,7 @@ SilicaFlickable {
                             }
                         } }
 
+                        // TODO: move this outside the delegate
                         Component.onCompleted: if (_id == appConfiguration.modernLastServerId) open()
                     }
                 }

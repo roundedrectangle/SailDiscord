@@ -82,13 +82,13 @@ ApplicationWindow {
             path: "settings"
 
             // Behavior
-            property bool ignorePrivate: false
             property bool defaultUnknownMessages: false
             property bool sendByEnter: false
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
+            property bool modernUIServersQuickScroll: true
 
-            // Look and feel
+            // Appearance (Look and feel)
             //property bool emptySpace: false
             property string sentBehaviour: 'r'
             property bool alignMessagesText: true
@@ -100,6 +100,9 @@ ApplicationWindow {
 
             // Session
             property int cachePeriod: 1
+
+            // Spying
+            property bool ignorePrivate: false
 
             // Advanced
             property string proxyType: 'g'

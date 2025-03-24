@@ -81,6 +81,15 @@ Page {
                             checked: appSettings.focudOnChatOpen
                             onCheckedChanged: appSettings.focudOnChatOpen = checked
                         }
+
+                        SectionHeader { text: qsTr("Modern UI") }
+
+                        TextSwitch {
+                            enabled: appSettings.modernUI
+                            text: qsTr("Servers quick scroll")
+                            checked: appSettings.modernUIServersQuickScroll
+                            onCheckedChanged: appSettings.modernUIServersQuickScroll = checked
+                        }
                     }
                 }
 
