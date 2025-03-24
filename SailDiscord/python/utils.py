@@ -154,3 +154,6 @@ async def is_channel_unread(channel: discord.TextChannel | discord.DMChannel | d
         return (await channel.fetch_message(channel.last_message_id)).created_at - (await channel.fetch_message(channel.acked_message_id)).created_at > timedelta()
     except:
         return None if return_none else False
+
+def show_error(name, info = '', other = None):
+    qsend('error', name, str(info), other)

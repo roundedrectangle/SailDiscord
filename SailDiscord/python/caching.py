@@ -58,10 +58,10 @@ def download_pillow(url, proxies: dict | None):
     """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
     try: r = requests.get(url, stream=True, proxies=proxies)
     except requests.ConnectionError as e:
-        qsend("cacheConnectionError", str(e))
+        qsend('error', 'cacheConnection', str(e))
         return
     except requests.RequestException as e:
-        qsend("cacheError", str(type(e)), str(e))
+        qsend('error', 'cache', str(type(e)), str(e))
         return
     if r.status_code != 200: return
     im = Image.open(r.raw)

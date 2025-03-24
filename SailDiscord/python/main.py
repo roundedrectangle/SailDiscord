@@ -59,7 +59,7 @@ async def generate_message(message: discord.Message, is_history=False):
                     ref['resolvedType'], ref['resolved'] = await generate_message(m)
                     ref['state'] = 2
                 except Exception as e:
-                    qsend("referenceError", format_exc(e))
+                    show_error('reference', format_exc(e))
                     ref['state'] = 0
         elif isinstance(message.reference.resolved, discord.DeletedReferencedMessage):
             ref['state'] = 1
@@ -76,7 +76,7 @@ async def send_message(message: discord.Message | Any, is_history=False):
         event, args = await generate_message(message, is_history)
         qsend(event, *args)
     except Exception as e:
-        qsend("messageError", format_exc(e))
+        show_error('message', format_exc(e))
 
 async def send_edited_message(before_id: int, after: discord.Message | Any):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
@@ -126,7 +126,7 @@ class MyClient(discord.Client):
 
     async def on_message_delete(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
-            qsend("messagedelete", message.id)
+            qsend('messagedelete', message.id)
 
     async def get_last_messages(self, before: discord.abc.Snowflake | datetime | int | None = None, limit=30):
         ch: discord.TextChannel | discord.DMChannel = self.get_channel(self.current_channel.id) # pyright: ignore[reportAssignmentType]
@@ -275,9 +275,9 @@ class Communicator:
         try:
             await self.client.start(self.token)
         except aiohttp.connector.ClientConnectorError as e:
-            qsend("connectionError", str(e))
+            show_error('connection', e)
         except discord.errors.LoginFailure as e:
-            qsend("loginFailure", str(e))
+            show_error('login', e)
         # Once the app is being closed, pyotherside.send/qsend no longer works since ApplicationWindow is partitialy destructed.
         # We have to use something like the logging module instead
         if self.client.pending_close_task:
@@ -306,7 +306,7 @@ class Communicator:
                 self.client.set_current_channel(guild, channel)
             except Exception as e:
                 self.client.unset_current_channel()
-                qsend("channelError", format_exc(e))
+                qsend('channel', format_exc(e))
     
     def send_message(self, message_text):
         self.client.send_message(message_text)
@@ -369,7 +369,7 @@ class Communicator:
             if not user.is_friend():
                 self.client.run_asyncio_threadsafe(user.send_friend_request())
         except discord.errors.CaptchaRequired as e:
-            qsend('captchaError', str(e))
+            show_error('captcha', e)
     
     def edit_message(self, message_id: str | int, new_content: str):
         msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))

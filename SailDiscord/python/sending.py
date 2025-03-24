@@ -84,7 +84,7 @@ def send_dm_channel(channel: discord.DMChannel | discord.GroupChannel | Any, cac
         name, icon_base = group_name(channel)
         qsend('group', *base, name, icon, icon_base)
     else:
-        qsend('unknownPrivateChannel', type(channel).__name__)
+        show_error('unknownPrivateChannel', type(channel).__name__)
 
 def send_dms(channel_list: List[discord.DMChannel | discord.GroupChannel | Any], cacher: Cacher, async_runner, send_unread = False):
     for channel in channel_list:#sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
@@ -135,7 +135,7 @@ def send_user(user: discord.MemberProfile | discord.UserProfile):
         if StatusMapping.has_value(user.status):
             status = StatusMapping(user.status).index
         is_on_mobile = user.is_on_mobile()
-    qsend(f"user{user.id}", user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
+    qsend(f'user{user.id}', user.bio or '', qml_date(user.created_at), status, is_on_mobile, #str(user.display_avatar), 
     usernames(user), user.bot, user.system, user.is_friend(), hex_color(user.color))
 
 def send_myself(client: discord.Client):
@@ -145,7 +145,7 @@ def send_myself(client: discord.Client):
         status = StatusMapping(client.status).index
 
     # We are not bots or system users. Or are we?
-    qsend("user", user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
+    qsend('user', user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
 
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',
