@@ -86,11 +86,11 @@ ApplicationWindow {
 
             // Look and feel
             //property bool emptySpace: false
-            property string sentBehaviour: "r"
+            property string sentBehaviour: 'r'
             property bool alignMessagesText: true
             property bool modernUI: false
-            property string messageGrouping: "d"
-            property string oneAuthorPadding: "a"
+            property string messageGrouping: 'd'
+            property string oneAuthorPadding: 'a'
             property bool highContrastMessages: false
             property bool twemoji: true
 
@@ -98,8 +98,8 @@ ApplicationWindow {
             property int cachePeriod: 1
 
             // Advanced
-            property string proxyType: "g"
-            property string customProxy: ""
+            property string proxyType: 'g'
+            property string customProxy: ''
             property bool infoInNotifications: false
             property bool unformattedText: false
             property bool unreadState: true
@@ -112,7 +112,7 @@ ApplicationWindow {
 
     Connections {
         target: globalProxy
-        onUrlChanged: py.call2('set_proxy', [py.getProxy()])
+        onUrlChanged: py.call2('set_proxy', py.getProxy())
     }
 
     Python {
@@ -133,54 +133,7 @@ ApplicationWindow {
             setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 
-            setHandler('error', function(name, info, other) {
-                switch(name){
-                case 'connection':
-                    text = qsTranslate("Errors", "Connection failure")
-                    break
-                case 'login':
-                    text = qsTranslate("Errors", "Login failure")
-                    break
-                case 'captcha':
-                    text = qsTranslate("Errors", "Captcha required but not implemented")
-                    break
-                case '404':
-                    text = qsTranslate("Errors", "404 Not Found")
-                    break
-                case 'message':
-                    text = qsTranslate("Errors", "A message failed to load")
-                    break
-                case 'reference':
-                    text = qsTranslate("Errors", "A reference failed to load")
-                    break
-                case 'channel':
-                    text = qsTranslate("Errors", "Channel failed to load")
-                    break
-                case 'unknownPrivateChannel':
-                    text = qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers")
-                    break
-                case 'cacheConnection':
-                    text = qsTranslate("Errors", "Unable to receive cache: connection failed")
-                    break
-                case 'cache':
-                    text = qsTranslate("Errors", "Unknown caching error")
-                    break
-                default:
-                    // generally should not happen unless I forget to put an error
-                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
-                    return
-                }
-                switch(name) {
-                case 'unknownPrivateChannel':
-                    shared.showError(text.arg(info))
-                    break
-                case 'cache':
-                    shared.showError(text, info+': '+other)
-                    break
-                default:
-                    shared.showError(text, info)
-                }
-            })
+            setHandler('error', shared.pythonErrorHandler)
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {
@@ -218,9 +171,9 @@ ApplicationWindow {
 
         function getProxy() {
             switch (appSettings.proxyType) {
-            case "g": return globalProxy.url
-            case "n": return ''
-            case "c": return appSettings.customProxy
+            case 'g': return globalProxy.url
+            case 'n': return ''
+            case 'c': return appSettings.customProxy
             }
         }
 
