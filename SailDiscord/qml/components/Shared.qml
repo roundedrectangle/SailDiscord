@@ -11,6 +11,7 @@ QtObject {
             backslashEscapesHTMLTags: true,
         })
 
+    // Shared
     function log() {
       var f = ""
       for (var i = 0; i < arguments.length; i++) {
@@ -20,6 +21,30 @@ QtObject {
       console.log(f)
     }
 
+    function arrayToListModel(_parent, arr) {
+        // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
+        // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
+        var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', _parent)
+        arr.forEach(function(el, i) { listModel.append(el) })
+        return listModel
+    }
+
+    function combineObjects(obj1, obj2) {
+        var res = obj1
+        for (var attrname in obj2) {
+            if (res[attrname] !== undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
+                res[attrname] = combineObjects(res[attrname], obj2[attrname])
+            else res[attrname] = obj2[attrname]
+        }
+        return res
+    }
+
+    function removeConfigurationValue(conf, value) {
+        if (conf.value(value, null) !== null)
+            conf.setValue(value, undefined)
+    }
+
+    // Text formatting
     function markdown(text, linkColor, edited) {
         var e = emojify(text)
         return "<style>a:link{color:" + (linkColor ? linkColor : Theme.highlightColor) + ";}</style>"+
@@ -34,6 +59,7 @@ QtObject {
         return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
     }
 
+    // Notifications/errors
     function showInfo(summary, text) {
         notifier.appIcon = "image://theme/icon-lock-information"
         notifier.summary = summary || ''
@@ -53,6 +79,7 @@ QtObject {
         showError(qsTranslate("Errors", "Error loading image %1").arg(name))
     }
 
+    // Files
     function download(url, name) {
         py.call('main.comm.download_file', [url, name], function(r) {
             showInfo(qsTr("Downloaded file %1").arg(name))
@@ -67,6 +94,7 @@ QtObject {
         })
     }
 
+    // Messages
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
         return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
             if (guildid != undefined && channelid != undefined)
@@ -123,6 +151,7 @@ QtObject {
         py.reset("messagedelete")
     }
 
+    // Servers, channels
     function processServer(_id, name, icon) {
         if (appConfiguration.legacyMode && _id == "1261605062162251848") {
             name = "RoundedRectangle's server"
@@ -134,27 +163,6 @@ QtObject {
         return {_id: _id, name: shared.emojify(name), image: icon,
             folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
         }
-    }
-
-    function attachmentsToListModel(_parent, attachments) {
-        // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
-        // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
-        var listModel = Qt.createQmlObject('import QtQuick 2.0;ListModel{}', _parent)
-        attachments.forEach(function(attachment, i) { listModel.append(attachment) })
-        return listModel
-    }
-
-    function constructStatus(statusIndex, onMobile) {
-        var result = ["",
-                      qsTranslate("status", "Online"),
-                      qsTranslate("status", "Offline"),
-                      qsTranslate("status", "Do Not Disturb"),
-                      qsTranslate("status", "Invisible"),
-                      qsTranslate("status", "Idle")
-                ][statusIndex]
-        if (onMobile && result !== "")
-            result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
-        return result
     }
 
     function loadLastChannels() {
@@ -173,68 +181,17 @@ QtObject {
         appConfiguration.serverLastChannels = JSON.stringify(loaded)
     }
 
-    function removeConfigurationValue(conf, value) {
-        if (conf.value(value, null) !== null)
-            conf.setValue(value, undefined)
-    }
-
-    function pythonErrorHandler(name, info, other) {
-        var text
-        switch(name){
-        case 'connection':
-            text = qsTranslate("Errors", "Connection failure")
-            break
-        case 'login':
-            text = qsTranslate("Errors", "Login failure")
-            break
-        case 'captcha':
-            text = qsTranslate("Errors", "Captcha required but not implemented")
-            break
-        case '404':
-            text = qsTranslate("Errors", "404 Not Found")
-            break
-        case 'message':
-            text = qsTranslate("Errors", "A message failed to load")
-            break
-        case 'reference':
-            text = qsTranslate("Errors", "A reference failed to load")
-            break
-        case 'channel':
-            text = qsTranslate("Errors", "Channel failed to load")
-            break
-        case 'unknownPrivateChannel':
-            text = qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers")
-            break
-        case 'cacheConnection':
-            text = qsTranslate("Errors", "Unable to receive cache: connection failed")
-            break
-        case 'cache':
-            text = qsTranslate("Errors", "Unknown caching error")
-            break
-        default:
-            // generally should not happen unless I forget to put an error
-            showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
-            return
-        }
-        switch(name) {
-        case 'unknownPrivateChannel':
-            showError(text.arg(info))
-            break
-        case 'cache':
-            showError(text, info+': '+other)
-            break
-        default:
-            showError(text, info)
-        }
-    }
-
-    function combineObjects(obj1, obj2) {
-        var res = obj1
-        for (var attrname in obj2) {
-            if (res[attrname] !== undefined && (typeof obj2[attrname] === 'object') && (typeof res[attrname] === 'object'))
-                res[attrname] = combineObjects(res[attrname], obj2[attrname])
-            else res[attrname] = obj2[attrname]
-        }
-        return res
+    // User info
+    function constructStatus(statusIndex, onMobile) {
+        var result = ["",
+                      qsTranslate("status", "Online"),
+                      qsTranslate("status", "Offline"),
+                      qsTranslate("status", "Do Not Disturb"),
+                      qsTranslate("status", "Invisible"),
+                      qsTranslate("status", "Idle")
+                ][statusIndex]
+        if (onMobile && result !== "")
+            result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
+        return result
     }
 }

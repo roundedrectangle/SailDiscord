@@ -118,7 +118,7 @@ ListItem {
         }
         _resolvedType = shared.convertCallbackType(reference.resolvedType)
         shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, reference.resolved)
-        _resolvedReference.attachments = shared.attachmentsToListModel(root, _resolvedReference.attachments)
+        _resolvedReference.attachments = shared.arrayToListModel(root, _resolvedReference.attachments)
         contentLoader.sourceComponent = null // reload
         switch (_resolvedType) {
         case "":

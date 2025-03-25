@@ -135,7 +135,55 @@ ApplicationWindow {
             setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 
-            setHandler('error', shared.pythonErrorHandler)
+            setHandler('error', function(name, info, other) {
+                var text
+                switch(name){
+                case 'connection':
+                    text = qsTranslate("Errors", "Connection failure")
+                    break
+                case 'login':
+                    text = qsTranslate("Errors", "Login failure")
+                    break
+                case 'captcha':
+                    text = qsTranslate("Errors", "Captcha required but not implemented")
+                    break
+                case '404':
+                    text = qsTranslate("Errors", "404 Not Found")
+                    break
+                case 'message':
+                    text = qsTranslate("Errors", "A message failed to load")
+                    break
+                case 'reference':
+                    text = qsTranslate("Errors", "A reference failed to load")
+                    break
+                case 'channel':
+                    text = qsTranslate("Errors", "Channel failed to load")
+                    break
+                case 'unknownPrivateChannel':
+                    text = qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers")
+                    break
+                case 'cacheConnection':
+                    text = qsTranslate("Errors", "Unable to receive cache: connection failed")
+                    break
+                case 'cache':
+                    text = qsTranslate("Errors", "Unknown caching error")
+                    break
+                default:
+                    // generally should not happen unless I forget to put an error
+                    showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
+                    return
+                }
+                switch(name) {
+                case 'unknownPrivateChannel':
+                    showError(text.arg(info))
+                    break
+                case 'cache':
+                    showError(text, info+': '+other)
+                    break
+                default:
+                    showError(text, info)
+                }
+            })
 
             addImportPath(Qt.resolvedUrl("../python"))
             importModule('main', function() {

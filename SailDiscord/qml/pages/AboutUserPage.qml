@@ -69,7 +69,7 @@ AboutPageBase {
     MouseArea {
         parent: _iconItem
         anchors.fill: parent
-        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.attachmentsToListModel(page, [{
+        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
             spoiler: false,
             filename: name+"_"+userid+'.png',
             _height: _iconItem.sourceSize.height,
