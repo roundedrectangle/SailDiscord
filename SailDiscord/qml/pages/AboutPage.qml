@@ -18,6 +18,11 @@ AboutPageBase {
     description: qsTr("A SailfishOS Discord client")
     autoAddOpalAttributions: true
 
+    _iconItem.width: Math.min(2 * Theme.itemSizeHuge, Math.min(page.width, page.height) / 2)
+    _iconItem.height: _iconItem.width
+    _iconItem.sourceSize.width: _iconItem.width
+    _iconItem.sourceSize.height: _iconItem.height
+
     authors: "roundedrectangle"
     attributions: [
         Attribution {
