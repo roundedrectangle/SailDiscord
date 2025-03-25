@@ -15,8 +15,8 @@ ListItem {
     property bool sendPermissions
     property bool managePermissions
 
-    property real masterWidth // Width of the previous element with pfp. Used with sameAuthorAsBefore
-    property date masterDate // Date of previous element
+    property real masterWidth: -1 // Width of the previous element with pfp. Used with sameAuthorAsBefore
+    property date masterDate: new Date(1) // Date of previous element
 
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
         case "n": return true

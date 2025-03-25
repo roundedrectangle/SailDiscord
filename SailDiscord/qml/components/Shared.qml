@@ -95,6 +95,18 @@ QtObject {
     }
 
     // Messages
+    property var stubMessage: {
+        type: '', messageId: '-1', userid: '-1',
+        _from_history: true, _wasUpdated: false,
+        _masterWidth: -1, date: new Date(),
+        flags: {edit: false, bot: false, editedAt: undefined,
+            system: false, color: undefined},
+        sent: false, contents: "", formattedContents: "",
+        author: "unknown", avatar: '',
+        reference: {}, attachments: [],
+        jumpUrl: '', highlightStarted: false,
+        APIType: '',
+    }
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
         return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
             if (guildid != undefined && channelid != undefined)
@@ -106,7 +118,8 @@ QtObject {
                 flags: {
                     edit: edited, bot: userinfo.bot, editedAt: editedAt,
                     system: userinfo.system, color: userinfo.color
-                }, APIType: '', contents: '', formattedContents: '', reference: {}, highlightStarted: false,
+                },
+                APIType: '', contents: '', formattedContents: '', reference: {}, highlightStarted: false,
                 jumpUrl: jumpUrl,
             }
 

@@ -368,16 +368,7 @@ Page {
         property int updateCounter: 0
 
         function appendDemo2(toAppend) {
-            insert(0, shared.combineObjects({type: '', messageId: '-1', userid: '-1',
-                                      _from_history: true, _wasUpdated: false,
-                                      _masterWidth: -1, date: new Date(),
-                                      flags: {edit: false, bot: false, nickAvailable: false,
-                                          system: false, color: undefined},
-                                      sent: false, contents: "", formattedContents: "",
-                                      author: "unknown", avatar: '',
-                                      reference: {}, attachments: [],
-                                      jumpUrl: '', highlightStarted: false,
-                                  }, toAppend))
+            insert(0, shared.combineObjects(shared.stubMessage, toAppend))
         }
 
         function appendDemo(isyou, thecontents, additionalOptions) {

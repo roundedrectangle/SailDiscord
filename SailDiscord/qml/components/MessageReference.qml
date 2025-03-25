@@ -168,22 +168,10 @@ ListItem {
                         width: parent.width
 
                         function updateSource() {
-                            var args = {userid: _resolvedReference.userid,
-                                contents: _resolvedReference.contents,
-                                formattedContents: _resolvedReference.formattedContents,
-                                author: _resolvedReference.author,
-                                pfp: _resolvedReference._pfp,
-                                sent: _resolvedReference.sent,
-                                date: _resolvedReference.date,
-                                sameAuthorAsBefore: false,
-                                masterWidth: -1,
-                                masterDate: new Date(1),
-                                attachments: _resolvedReference.attachments,
-                                reference: _resolvedReference.reference,
-                                flags: _resolvedReference.flags}
+                            // var args = shared.combineObjects(_resolvedReference, {sameAuthorAsBefore: false, masterWidth: -1, masterDate: new Date(1)})
                             switch (_resolvedType) {
-                            case '': setSource("MessageItem.qml", args);break
-                            case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", args);else sourceComponent = systemItem;break
+                            case '': setSource("MessageItem.qml", _resolvedReference);break
+                            case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", _resolvedReference);else sourceComponent = systemItem;break
                             default: sourceComponent = systemItem
                             }
                         }
