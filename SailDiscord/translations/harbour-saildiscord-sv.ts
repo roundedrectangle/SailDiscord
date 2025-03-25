@@ -25,32 +25,32 @@
         <translation>En Discord-klient för Sailfish OS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="34"/>
+        <location filename="../qml/pages/AboutPage.qml" line="31"/>
         <source>Tester</source>
         <translation>Testare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../qml/pages/AboutPage.qml" line="52"/>
         <source>Translations</source>
         <translation>Översättningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="58"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>Italian</source>
         <translation>Italienska</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="62"/>
+        <location filename="../qml/pages/AboutPage.qml" line="59"/>
         <source>Swedish</source>
         <translation>Svenska</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="79"/>
+        <location filename="../qml/pages/AboutPage.qml" line="76"/>
         <source>Disclaimer</source>
         <translation>Friskrivning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="80"/>
+        <location filename="../qml/pages/AboutPage.qml" line="77"/>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation>Discord är ett varumärke som tillhör Discord Inc. Sailcord är inte på något sätt associerat med Discord Inc. Att använda Sailcord bryter mot Discords användarvillkor. Använd på egen risk.</translation>
     </message>
@@ -196,100 +196,69 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
+        <location filename="../qml/components/Shared.qml" line="185"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
+        <location filename="../qml/components/Shared.qml" line="188"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
+        <location filename="../qml/components/Shared.qml" line="191"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
+        <location filename="../qml/components/Shared.qml" line="194"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
+        <location filename="../qml/components/Shared.qml" line="197"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
+        <location filename="../qml/components/Shared.qml" line="200"/>
         <source>A reference failed to load</source>
         <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
+        <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Channel failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
+        <location filename="../qml/components/Shared.qml" line="206"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="149"/>
+        <location filename="../qml/components/Shared.qml" line="209"/>
         <source>Unable to receive cache: connection failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="150"/>
+        <location filename="../qml/components/Shared.qml" line="212"/>
         <source>Unknown caching error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
-        <source>Unable to load config &apos;%1&apos;: invalid JSON data. Resetting to default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
-        <source>Unable to load config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="155"/>
-        <source>Unable to save config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
-        <source>Unable to save config &apos;%1&apos;: file not found</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
-        <source>Unable to create directory for config &apos;%1&apos;: insufficient permissions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="164"/>
+        <location filename="../qml/components/Shared.qml" line="216"/>
         <source>Unknown error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="179"/>
-        <source>This usually means that configuration directory could not be created</source>
-        <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="79"/>
+        <location filename="../qml/components/Shared.qml" line="53"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte läsa in bilden %1.</translation>
     </message>
 </context>
 <context>
@@ -686,18 +655,18 @@
         <translation>Beteende</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
         <source>Keep empty space in servers without icons</source>
         <translation>Bevara tomt utrymme i servrar utan ikoner</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="296"/>
         <source>Channels list</source>
         <translation>Kanallista</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="40"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
         <source>Messages</source>
         <translation>Meddelanden</translation>
     </message>
@@ -737,349 +706,339 @@
         <translation>Fokusera inmatningsfältet vid kanalöppning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
         <source>Sent messages</source>
         <translation>Skickade meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="134"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation>Ställer in för vilka meddelanden extra utfyllnad skall gälla</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>reversed (default)</source>
         <translation>Omvänt (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
         <source>nothing</source>
         <translation>inget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="139"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation>Ställ in &quot;Skickade meddelanden&quot; på &quot;omvänt&quot; eller &quot;justera åt höger&quot; för att aktivera.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>Extra padding</source>
         <translation>Extra utfyllnad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Appearance</source>
         <translation>Utseende</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
         <source>none</source>
         <translation>inget</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="145"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="136"/>
         <source>Align sent messages text to right</source>
         <translation>Justera skickade meddelandetexter åt höger</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="105"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
         <source>Overview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
         <source>Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="147"/>
         <source>Message grouping</source>
         <translation>Meddelandegruppering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>author &amp; time (default)</source>
         <translation>författare och tid (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
         <source>author</source>
         <translation>författare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="170"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation>Ange extra utfyllnad för nya meddelanden från samma författare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="166"/>
         <source>as pfp (default)</source>
         <translation>Som PFP (standard)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
         <source>small</source>
         <translation>liten</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="177"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
         <source>no</source>
         <translation>nej</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
         <source>High-contrast mode</source>
         <translation>Högkontrastläge</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="187"/>
         <source>Preview</source>
         <translation>Förhandsvisning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="208"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
         <source>Session</source>
         <translation>Session</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
         <source>Log out</source>
         <translation>Logga ut</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="220"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="211"/>
         <source>Logged out</source>
         <translation>Utloggad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
         <source>Clear cache</source>
         <translation>Rensa cachen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
         <source>Cleared cache</source>
         <translation>Rensade cachen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
         <source>Reset all settings</source>
         <translation>Återställ alla inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="85"/>
-        <source>Modern UI</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
-        <source>Servers quick scroll</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="395"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Inställningar återställda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="238"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
         <source>Reset last server and channels</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="254"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
         <source>Never</source>
         <translation>Aldrig</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="246"/>
         <source>On app restart</source>
         <translation>Vid appomstart</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="247"/>
         <source>Hourly</source>
         <translation>Varje timma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="257"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
         <source>Daily</source>
         <translation>Varje dag</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="258"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
         <source>Weekly</source>
         <translation>Varje vecka</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
         <source>Monthly</source>
         <translation>Varje månad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="251"/>
         <source>Half-yearly</source>
         <translation>Varje halvår</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="252"/>
         <source>Yearly</source>
         <translation>Varje år</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Ändrar hur ofta cachen uppdateras. Omstart av appen kan krävas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="283"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
         <source>Spying</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="289"/>
         <source>Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="308"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Show channels without permissions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="309"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>They will be displayed, but it still won&apos;t be possible to open them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="310"/>
         <source>Advanced</source>
         <translation>Avancerat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="324"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
         <source>Networking</source>
         <translation>Nätverk</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="329"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation>Inloggningssidan använder alltid den globala proxyn oavsett dessa inställningar. Bilagor, avatarer och andra statiska element kanske inte använder proxy alls. Starta om appen för att tillämpa.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="337"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="328"/>
         <source>Proxy</source>
         <translation>Proxy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="340"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="331"/>
         <source>global proxy</source>
         <translation>global proxy</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="341"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="332"/>
         <source>disable</source>
         <translation>inaktivera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="342"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="333"/>
         <source>custom</source>
         <translation>anpassat</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="349"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="340"/>
         <source>HTTP proxy address</source>
         <translation>HTTP proxyadress</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="350"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="341"/>
         <source>Specify port by semicolon, if required</source>
         <translation>Specificera portnummer med semikolon, vid behov.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="355"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="346"/>
         <source>Debugging</source>
         <translation>Felsökning</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="357"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="348"/>
         <source>Show info messages in notifications</source>
         <translation>Visa infomeddelanden i aviseringar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="362"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="353"/>
         <source>Display unformatted HTML text in messages</source>
         <translation>Visa oformaterad HTML-text i meddelanden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="363"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="354"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
         <translation>Texten kommer fortfarande att tolkas via Showdown, men HTML-taggar kommer att visas som de är</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="368"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Experimental</source>
         <translation>Experimentellt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="189"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
         <source>Use Twemoji instead of default Emoji</source>
         <translation>Använd Twemoji istället för standardemoji</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
         <source>Tries to mimic the UI in real Discord</source>
         <translation>Försöker efterlikna användargränssnittet i riktiga Discord</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
         <source>Classic UI with tabs</source>
         <translation>Klassiskt gränssnitt med flikar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="121"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="112"/>
         <source>Classic</source>
         <translation>Klassiskt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="113"/>
         <source>Modern</source>
         <translation>Modernt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="371"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="362"/>
         <source>Show indicators of read states</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="372"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="363"/>
         <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="377"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="368"/>
         <source>Friend requests</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="369"/>
         <source>Does not work because of captcha for most people</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="384"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="375"/>
         <source>Developer mode</source>
         <translation>Utvecklarläge</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="385"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="376"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
         <translation>Aktiverar funktioner användbara för utvecklare, t.ex. ID-kopiering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="396"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>
@@ -1087,14 +1046,14 @@
 <context>
     <name>Shared</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="53"/>
+        <location filename="../qml/components/Shared.qml" line="28"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(redigerat)</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="85"/>
+        <location filename="../qml/components/Shared.qml" line="58"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Laddade ner filen %1</translation>
     </message>
 </context>
 <context>
@@ -1113,7 +1072,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="134"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="131"/>
         <source>Unnamed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1121,35 +1080,35 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="200"/>
+        <location filename="../qml/components/Shared.qml" line="149"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="201"/>
+        <location filename="../qml/components/Shared.qml" line="150"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="202"/>
+        <location filename="../qml/components/Shared.qml" line="151"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="203"/>
+        <location filename="../qml/components/Shared.qml" line="152"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="204"/>
+        <location filename="../qml/components/Shared.qml" line="153"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Overksam</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="207"/>
+        <location filename="../qml/components/Shared.qml" line="156"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Telefon)</translation>
     </message>
 </context>
 </TS>

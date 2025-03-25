@@ -95,7 +95,7 @@ QtObject {
     }
 
     // Messages
-    property var stubMessage: ({
+    property var stubMessage: {
         type: '', messageId: '-1', userid: '-1',
         _from_history: true, _wasUpdated: false,
         _masterWidth: -1, date: new Date(),
@@ -106,7 +106,7 @@ QtObject {
         reference: {}, attachments: [],
         jumpUrl: '', highlightStarted: false,
         APIType: '',
-    })
+    }
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
         return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
             if (guildid != undefined && channelid != undefined)

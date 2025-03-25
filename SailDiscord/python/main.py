@@ -14,7 +14,6 @@ import logging
 from exceptions import *
 from utils import *
 from sending import *
-from accountmanager import AccountManager
 from caching import Cacher
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
@@ -222,8 +221,6 @@ class Communicator:
     emoji_size: int | None = None
     send_unread: bool | None = None
     active: bool = True
-    config: Path | None = None
-    account_manager: AccountManager | None = None
 
     def __init__(self):
         self.loginth = Thread()
@@ -240,7 +237,7 @@ class Communicator:
         self.loginth = Thread(target=asyncio.run, args=(self._login(),))
         self.loginth.start()
 
-    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, send_unread: bool, active: bool, data: str):
+    def set_constants(self, cache: str, cache_period, downloads: str, proxy: str, emoji_size: int, send_unread: bool, active: bool):
         self.set_active(active)
         self.emoji_size = emoji_size
         self.send_unread = send_unread
@@ -251,8 +248,6 @@ class Communicator:
             self.cacher = Cacher(cache, cache_period)
         self.set_proxy(proxy)
         self.downloads = Path(downloads)
-        self.config = Path(data)
-        self.account_manager = AccountManager(self.config)
 
     def set_cache_period(self, cache_period):
         """Run when cacher is initialized but cache period was changed"""

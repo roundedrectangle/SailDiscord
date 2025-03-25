@@ -135,54 +135,53 @@ ApplicationWindow {
             setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 
-            var errorStrings = {
-                'connection': qsTranslate("Errors", "Connection failure"),
-                'login': qsTranslate("Errors", "Login failure"),
-                'captcha': qsTranslate("Errors", "Captcha required but not implemented"),
-                '404': qsTranslate("Errors", "404 Not Found"),
-                'message': qsTranslate("Errors", "A message failed to load"),
-                'reference': qsTranslate("Errors", "A reference failed to load"),
-                'channel': qsTranslate("Errors", "Channel failed to load"),
-
-                // Caching
-                'unknownPrivateChannel': qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers"),
-                'cacheConnection': qsTranslate("Errors", "Unable to receive cache: connection failed"),
-                'cache': qsTranslate("Errors", "Unknown caching error"),
-
-                // Config
-                'configLoadJSON': qsTranslate("Errors", "Unable to load config '%1': invalid JSON data. Resetting to default"),
-                'configLoadPermissions': qsTranslate("Errors", "Unable to load config '%1': insufficient permissions"),
-                'configSavePermissions': qsTranslate("Errors", "Unable to save config '%1': insufficient permissions"),
-                'configSaveNotFound': qsTranslate("Errors", "Unable to save config '%1': file not found"),
-                'configDirPermissions': qsTranslate("Errors", "Unable to create directory for config '%1': insufficient permissions"),
-            }
-
             setHandler('error', function(name, info, other) {
-                if (name in errorStrings) var text = errorStrings[name]
-                else {
-                    // generally should not happen unless I forget to put an error
-                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
-                    return
-                }
-
-                switch(name) {
+                var text
+                switch(name){
+                case 'connection':
+                    text = qsTranslate("Errors", "Connection failure")
+                    break
+                case 'login':
+                    text = qsTranslate("Errors", "Login failure")
+                    break
+                case 'captcha':
+                    text = qsTranslate("Errors", "Captcha required but not implemented")
+                    break
+                case '404':
+                    text = qsTranslate("Errors", "404 Not Found")
+                    break
+                case 'message':
+                    text = qsTranslate("Errors", "A message failed to load")
+                    break
+                case 'reference':
+                    text = qsTranslate("Errors", "A reference failed to load")
+                    break
+                case 'channel':
+                    text = qsTranslate("Errors", "Channel failed to load")
+                    break
                 case 'unknownPrivateChannel':
-                case 'configLoadJSON':
-                case 'configLoadPermissions':
-                case 'configSavePermissions':
-                    shared.showError(text.arg(info))
+                    text = qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers")
+                    break
+                case 'cacheConnection':
+                    text = qsTranslate("Errors", "Unable to receive cache: connection failed")
                     break
                 case 'cache':
-                    shared.showError(text, info+': '+other)
-                    break
-                case 'configSaveNotFound':
-                    shared.showError(text.arg(info), qsTranslate("Errors", "This usually means that configuration directory could not be created", "Description for 'Unable to save config %1: file not found'"))
-                    break
-                case 'configDirPermissions':
-                    shared.showError(text.arg(info), other)
+                    text = qsTranslate("Errors", "Unknown caching error")
                     break
                 default:
-                    shared.showError(text, info)
+                    // generally should not happen unless I forget to put an error
+                    showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
+                    return
+                }
+                switch(name) {
+                case 'unknownPrivateChannel':
+                    showError(text.arg(info))
+                    break
+                case 'cache':
+                    showError(text, info+': '+other)
+                    break
+                default:
+                    showError(text, info)
                 }
             })
 
@@ -236,6 +235,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState, shared.active, StandardPaths.data]) }
+        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState, shared.active]) }
     }
 }
