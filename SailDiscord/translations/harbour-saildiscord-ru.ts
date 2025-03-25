@@ -292,7 +292,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="226"/>
         <source>Copy formatted contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Скопировать форматированное содержание</translation>
     </message>
 </context>
 <context>
