@@ -15,8 +15,8 @@ SilicaFlickable {
     property bool onMobile
     property bool loading
 
-    property int serverIndex: -1 // -1: DMs
-    property int folderIndex: -1
+    property int serverIndex: -1 // -1: DMs; folder index when selected server is in a folder
+    property int folderIndex: -1 // index inside a folder
     property var currentServer: serverIndex >= 0 ? (folderIndex >= 0 ? serversModel.get(serverIndex).servers.get(folderIndex) : serversModel.get(serverIndex)) : null
 
     PullDownMenu {
@@ -96,9 +96,9 @@ SilicaFlickable {
                         id: serverItemInstance
                         width: parent.width
                         contentHeight: serverImage.height
-                        property bool selected: ((ListView.view && ListView.view.parent.folderIndex)
+                        property bool selected: (ListView.view && ListView.view.parent.folderIndex)
                                                  ? (serverIndex == ListView.view.parent.folderIndex && folderIndex == index)
-                                                 : (serverIndex == index))
+                                                 : (serverIndex == index)
 
                         Row {
                             width: parent.width
