@@ -4,7 +4,7 @@
 Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.8.1
+Version:    0.8.2
 Release:    1
 License:    LICENSE
 URL:        http://example.org/
@@ -41,7 +41,7 @@ Requires: python3-pip
 %define __requires_exclude ^libXau|libbrotlicommo|libfreetype|libjpeg|liblzma|libsharpyuv|libwebp|python3dist(attrs)|python3dist(idna)|python3dist(pyopenssl).*$
 
 %description
-Discord client for your pocket
+Discord in your pocket
 
 
 %prep
