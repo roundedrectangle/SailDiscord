@@ -25,32 +25,32 @@
         <translation>Клиент Discord для SailfishOS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="31"/>
+        <location filename="../qml/pages/AboutPage.qml" line="34"/>
         <source>Tester</source>
         <translation>Тестировщик</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="52"/>
+        <location filename="../qml/pages/AboutPage.qml" line="55"/>
         <source>Translations</source>
         <translation>Перевод</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="55"/>
+        <location filename="../qml/pages/AboutPage.qml" line="58"/>
         <source>Italian</source>
         <translation>Итальянский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/pages/AboutPage.qml" line="62"/>
         <source>Swedish</source>
         <translation>Шведский</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="76"/>
+        <location filename="../qml/pages/AboutPage.qml" line="79"/>
         <source>Disclaimer</source>
         <translation>Дисклеймер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="77"/>
+        <location filename="../qml/pages/AboutPage.qml" line="80"/>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation>Discord это торговая марка Discord Inc. Sailcord никаким образом не связан с Discord Inc. Использование Sailcord нарушает условия использования Discord. Используйте на свой страх и риск</translation>
     </message>
@@ -196,69 +196,100 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="185"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="139"/>
         <source>Connection failure</source>
         <translation>Ошибка подключения</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="188"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
         <source>Login failure</source>
         <translation>Неудачный вход в систему</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="191"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
         <source>Captcha required but not implemented</source>
         <translation>Проверка на робота нужна но недоступна</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="194"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
         <source>404 Not Found</source>
         <translation>404 Не Найдено</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="197"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
         <source>A message failed to load</source>
         <translation>Не удалось загрузить сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="200"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
         <source>A reference failed to load</source>
         <translation>Не удалось загрузить цитату</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="203"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Channel failed to load</source>
         <translation>Не удалось загрузить канал</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="206"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="209"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="149"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="212"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="150"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="216"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
+        <source>Unable to load config &apos;%1&apos;: invalid JSON data. Resetting to default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
+        <source>Unable to load config &apos;%1&apos;: insufficient permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="155"/>
+        <source>Unable to save config &apos;%1&apos;: insufficient permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
+        <source>Unable to save config &apos;%1&apos;: file not found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
+        <source>Unable to create directory for config &apos;%1&apos;: insufficient permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="164"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="179"/>
+        <source>This usually means that configuration directory could not be created</source>
+        <comment>Description for &apos;Unable to save config %1: file not found&apos;</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="196"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="53"/>
+        <location filename="../qml/components/Shared.qml" line="79"/>
         <source>Error loading image %1</source>
-        <translation>Произошла ошибка при загрузке изображения %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -653,18 +684,18 @@
         <translation>Поведение</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="109"/>
         <source>Keep empty space in servers without icons</source>
         <translation>Оставить пустое место в серверах без иконок</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="296"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="305"/>
         <source>Channels list</source>
         <translation>Список каналов</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="40"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
         <source>Messages</source>
         <translation>Сообщения</translation>
     </message>
@@ -679,67 +710,67 @@
         <translation>Только сообщения с ответами и пересланные сообщения поддерживаются как типы ответов в настоящий момент.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="124"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
         <source>Sent messages</source>
         <translation>Отправленные сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="128"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="137"/>
         <source>reversed (default)</source>
         <translation>развёрнутые (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="129"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="138"/>
         <source>nothing</source>
         <translation>ничего</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="139"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Set Sent messages to reversed or align right to enable.</source>
         <translation>Установите Отправленные сообщения как развёрнутые или выравнять вправо, чтобы вклюсить.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
         <source>Extra padding</source>
         <translation>Дополнительные отступы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="125"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="134"/>
         <source>Sets for which messages extra padding should apply</source>
         <translation>Устанавливает, для каких сообщений нужны дополнительные отступы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="136"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="145"/>
         <source>Align sent messages text to right</source>
         <translation>Выравнить текст отправленных сообщений справа</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="147"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="156"/>
         <source>Message grouping</source>
         <translation>Групировка сообщений</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
         <source>author &amp; time (default)</source>
         <translation>автор и время (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
         <source>author</source>
         <translation>автор</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="152"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
         <source>none</source>
         <translation>никак</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="167"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
         <source>small</source>
         <translation>маленький</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="161"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="170"/>
         <source>Set extra padding for new messages from the same author</source>
         <translation>Дополнительные отступы для новых сообщений от одного автора</translation>
     </message>
@@ -749,7 +780,7 @@
         <translation>Использовать стандартный тип на неизвестных типах</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="187"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="196"/>
         <source>Preview</source>
         <translation>Предпросмотр</translation>
     </message>
@@ -774,269 +805,279 @@
         <translation>Фокусировать поле ввода сообщения при открытии канала</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Appearance</source>
         <translation>Внешний вид</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>Overview</source>
         <translation>Обзор</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Mode</source>
         <translation>Режим</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="166"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
         <source>as pfp (default)</source>
         <translation>как аватар (стандарт)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="177"/>
         <source>no</source>
         <translation>нет</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="183"/>
         <source>High-contrast mode</source>
         <translation>Режим высокой контрастности</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="199"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="208"/>
         <source>Session</source>
         <translation>Сессия</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="210"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
         <source>Log out</source>
         <translation>Выйти</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="211"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="220"/>
         <source>Logged out</source>
         <translation>Вы вышли из системы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="232"/>
         <source>Clear cache</source>
         <translation>Очистить кэш</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>Cleared cache</source>
         <translation>Кэш очищен</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="214"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="223"/>
         <source>Reset all settings</source>
         <translation>Сбросить все настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="215"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="395"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="85"/>
+        <source>Modern UI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="89"/>
+        <source>Servers quick scroll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>Reset last server and channels</source>
         <translation>Сбросить последние серверы и каналы</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="274"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="283"/>
         <source>Spying</source>
         <translation>Слежка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="289"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk</source>
         <translation>Предупреждение: изменение этих настроек может привести к бану и не рекомендуется. Используйте на свой страх и риск</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="308"/>
         <source>Show channels without permissions</source>
         <translation>Показывать каналы без разрешений</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="309"/>
         <source>They will be displayed, but it still won&apos;t be possible to open them</source>
         <translation>Они будут показаны, но их всё равно нельзя будет открыть.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="310"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="319"/>
         <source>Advanced</source>
         <translation>Дополнительно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="315"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="324"/>
         <source>Networking</source>
         <translation>Сеть</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="320"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="329"/>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
         <translation>Страница входа всегда использует глобальный прокси-сервер, независимо от этих настроек. Приложения, аватары и другие статические элементы могут не использовать прокси-сервер вообще. Перезапустите приложение для применения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="328"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="337"/>
         <source>Proxy</source>
         <translation>Прокси-сервер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="331"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="340"/>
         <source>global proxy</source>
         <translation>глобальный прокси-сервер</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="332"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="341"/>
         <source>disable</source>
         <translation>отключить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="333"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="342"/>
         <source>custom</source>
         <translation>свой</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="340"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="349"/>
         <source>HTTP proxy address</source>
         <translation>Адрес HTTP-прокси</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="341"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="350"/>
         <source>Specify port by semicolon, if required</source>
         <translation>Указывайте порт через двоеточие, если потребуется</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="346"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="355"/>
         <source>Debugging</source>
         <translation>Отладка</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="348"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="357"/>
         <source>Show info messages in notifications</source>
         <translation>Показывать информационные сообщения в уведомлениях</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="353"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="362"/>
         <source>Display unformatted HTML text in messages</source>
         <translation>Показывать не отформатированный HTML текст в сообщениях</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="354"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="363"/>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
         <translation>Текст всё равно будет конвертирован через Showdown, но HTML-тэги будут показаны как есть</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="368"/>
         <source>Experimental</source>
         <translation>Экспериментально</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="189"/>
         <source>Use Twemoji instead of default Emoji</source>
         <translation>Использовать Twemoji вместо стандартных эмодзи</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Tries to mimic the UI in real Discord</source>
         <translation>Пытается повторить интерфейс реального Discord</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="117"/>
         <source>Classic UI with tabs</source>
         <translation>Классический интерфейс со вкладками</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="112"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="121"/>
         <source>Classic</source>
         <translation>Классический</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="113"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="122"/>
         <source>Modern</source>
         <translation>Современный</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="362"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="371"/>
         <source>Show indicators of read states</source>
         <translation>Показывать индикаторы состояния прочтения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="363"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="372"/>
         <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
         <translation>Включает количество упоминаний, информацию о прочтении. Может быть нестабильным. Произведите обновление, чтобы применить</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="368"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="377"/>
         <source>Friend requests</source>
         <translation>Запросы на дружбу</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="369"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Does not work because of captcha for most people</source>
         <translation>Не работает из-за капчи для многих людей</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="375"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="384"/>
         <source>Developer mode</source>
         <translation>Режим разработчика</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="376"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="385"/>
         <source>Enables certain features useful for developers such as copying IDs</source>
         <translation>Включает некоторые функции полезные для разработчика, такие как скопировать ID</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="396"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="245"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="254"/>
         <source>Never</source>
         <translation>Никогда</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="246"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
         <source>On app restart</source>
         <translation>При перезагрузке приложения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="273"/>
         <source>Changes how often the cache is updated. App restart might be required</source>
         <translation>Изменяет, как часто происходит обновление кэша. Может потребоваться перезагрузка приложения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="247"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
         <source>Hourly</source>
         <translation>Каждый час</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="257"/>
         <source>Daily</source>
         <translation>Ежедневно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="258"/>
         <source>Weekly</source>
         <translation>Еженедельно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
         <source>Monthly</source>
         <translation>Ежемесячно</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="251"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
         <source>Half-yearly</source>
         <translation>Каждые полгода</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="252"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
         <source>Yearly</source>
         <translation>Ежегодно</translation>
     </message>
@@ -1044,14 +1085,14 @@
 <context>
     <name>Shared</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="28"/>
+        <location filename="../qml/components/Shared.qml" line="53"/>
         <source>(edited)</source>
-        <translation>(изменено)</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="58"/>
+        <location filename="../qml/components/Shared.qml" line="85"/>
         <source>Downloaded file %1</source>
-        <translation>Скачан файл %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1070,7 +1111,7 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="131"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="134"/>
         <source>Unnamed</source>
         <translation>Безымянная</translation>
     </message>
@@ -1078,35 +1119,35 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="149"/>
+        <location filename="../qml/components/Shared.qml" line="200"/>
         <source>Online</source>
-        <translation>Онлайн</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="150"/>
+        <location filename="../qml/components/Shared.qml" line="201"/>
         <source>Offline</source>
-        <translation>Оффлайн</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="151"/>
+        <location filename="../qml/components/Shared.qml" line="202"/>
         <source>Do Not Disturb</source>
-        <translation>Не беспокоить</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="152"/>
+        <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Invisible</source>
-        <translation>Невидимый</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="153"/>
+        <location filename="../qml/components/Shared.qml" line="204"/>
         <source>Idle</source>
-        <translation>Занят</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="156"/>
+        <location filename="../qml/components/Shared.qml" line="207"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation>(телефон)</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
