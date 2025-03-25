@@ -242,62 +242,62 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="30"/>
         <source>Belarusian</source>
-        <translation type="unfinished"></translation>
+        <translation>valgevene keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="43"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>leedu keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="46"/>
         <source>Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>portugali keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="47"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>portugali keel (Brasiilia)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="53"/>
         <source>Swedish</source>
-        <translation>rootsi</translation>
+        <translation>rootsi keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="45"/>
         <source>Polish</source>
-        <translation>poola</translation>
+        <translation>poola keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="38"/>
         <source>German</source>
-        <translation>saksa</translation>
+        <translation>saksa keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="37"/>
         <source>French</source>
-        <translation>prantsuse</translation>
+        <translation>prantsuse keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="31"/>
         <source>Chinese</source>
-        <translation>hiina</translation>
+        <translation>hiina keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="34"/>
         <source>English</source>
-        <translation>inglise</translation>
+        <translation>inglise keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="42"/>
         <source>Italian</source>
-        <translation>itaalia</translation>
+        <translation>itaalia keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="36"/>
         <source>Finnish</source>
-        <translation>soome</translation>
+        <translation>soome keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="44"/>
@@ -307,77 +307,77 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="54"/>
         <source>Tamil</source>
-        <translation type="unfinished"></translation>
+        <translation>tamili keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="59"/>
         <source>Norwegian Nynorsk</source>
-        <translation>uusnorra</translation>
+        <translation>uusnorra keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="60"/>
         <source>Latvian</source>
-        <translation>läti</translation>
+        <translation>läti keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="35"/>
         <source>Estonian</source>
-        <translation>eesti</translation>
+        <translation>eesti keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="32"/>
         <source>Czech</source>
-        <translation>tšehhi</translation>
+        <translation>tšehhi keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="39"/>
         <source>Greek</source>
-        <translation>kreeka</translation>
+        <translation>kreeka keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="52"/>
         <source>Spanish</source>
-        <translation>hispaania</translation>
+        <translation>hispaania keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="40"/>
         <source>Hungarian</source>
-        <translation>ungari</translation>
+        <translation>ungari keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="41"/>
         <source>Indonesian</source>
-        <translation>indoneesia</translation>
+        <translation>indoneesia keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="49"/>
         <source>Russian</source>
-        <translation>vene</translation>
+        <translation>vene keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="33"/>
         <source>Dutch</source>
-        <translation>hollandi</translation>
+        <translation>hollandi keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="61"/>
         <source>Dutch (Belgium)</source>
-        <translation>hollandi (Belgia)</translation>
+        <translation>hollandi keel (Belgia)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="51"/>
         <source>Slovak</source>
-        <translation>slovaki</translation>
+        <translation>slovaki keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="55"/>
         <source>Turkish</source>
-        <translation>türgi</translation>
+        <translation>türgi keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="56"/>
         <source>Ukrainian</source>
-        <translation>ukraina</translation>
+        <translation>ukraina keel</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="48"/>

@@ -247,22 +247,22 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="30"/>
         <source>Belarusian</source>
-        <translation type="unfinished"></translation>
+        <translation>Белорусский</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="43"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Литовский</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="46"/>
         <source>Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Португальский</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="47"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Бразильский португальский</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="53"/>
@@ -307,12 +307,12 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="44"/>
         <source>Norwegian Bokmål</source>
-        <translation type="unfinished">Норвежский букмол</translation>
+        <translation>Норвежский букмол</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="54"/>
         <source>Tamil</source>
-        <translation type="unfinished"></translation>
+        <translation>Тамильский</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="59"/>

@@ -212,7 +212,7 @@ ApplicationWindow {
             }
         }
 
-        function getReference(channel, message, callback) { call2('get_reference', [channel, message], callback)}
+        function getReference(channel, message, callback) { call2('get_reference', [channel, message], callback) }
 
         function refresh() {
             disconnectClient()

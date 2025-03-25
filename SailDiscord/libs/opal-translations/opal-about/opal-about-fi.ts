@@ -81,7 +81,7 @@
     <message>
         <location filename="../Opal/About/InfoSection.qml" line="78"/>
         <source>show details</source>
-        <translation>näytä tiedot</translation>
+        <translation>näytä lisätietoja</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ContributorsPage.qml" line="38"/>
@@ -91,7 +91,7 @@
     <message>
         <location filename="../Opal/About/private/ContributorsPage.qml" line="80"/>
         <source>Acknowledgements</source>
-        <translation>Kiitokset</translation>
+        <translation>Tunnustukset</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ContributorsAttributionRepeater.qml" line="21"/>
@@ -140,12 +140,12 @@
     <message>
         <location filename="../Opal/About/private/ExternalUrlPage.qml" line="76"/>
         <source>Copy to clipboard</source>
-        <translation>Kopioi leiikepöydälle</translation>
+        <translation>Kopioi leikepöydälle</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/LicenseListPart.qml" line="184"/>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation>Viittaa kiitos &lt;a href=&quot;”%1”&quot;&gt;%1&lt;/a&gt;</translation>
+        <translation>Katso lisätietoja &lt;a href=&quot;”%1”&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../Opal/About/ChangelogNews.qml" line="214"/>
@@ -168,7 +168,7 @@
     <message>
         <location filename="../Opal/About/private/DonationsGroup.qml" line="53"/>
         <source>You can support this project by contributing, or by donating using any of these services.</source>
-        <translation>Voit tukea tätä projektia joko osallistumalla koodin kehittämiseen, tai tekemällä lahjoituksen johonkin seuraavista palveluista.</translation>
+        <translation>Voit tukea tätä projektia joko osallistumalla koodin kehittämiseen tai tekemällä lahjoituksen johonkin seuraavista palveluista.</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/DonationsGroup.qml" line="65"/>
@@ -224,14 +224,14 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="20"/>
         <source>Data License</source>
-        <translation>Data lisenssi</translation>
+        <translation>Datalisenssi</translation>
     </message>
     <message numerus="yes">
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="21"/>
         <source>Data License(s)</source>
         <translation>
-            <numerusform>Data lisenssi</numerusform>
-            <numerusform>Data lisenssit</numerusform>
+            <numerusform>Datalisenssi</numerusform>
+            <numerusform>Datalisenssit</numerusform>
         </translation>
     </message>
     <message>
@@ -242,22 +242,22 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="30"/>
         <source>Belarusian</source>
-        <translation type="unfinished"></translation>
+        <translation>Valkovenäjä</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="43"/>
         <source>Lithuanian</source>
-        <translation type="unfinished"></translation>
+        <translation>Liettua</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="46"/>
         <source>Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Portugali</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="47"/>
         <source>Brazilian Portuguese</source>
-        <translation type="unfinished"></translation>
+        <translation>Brasilianportugali</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="53"/>
@@ -302,22 +302,22 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="44"/>
         <source>Norwegian Bokmål</source>
-        <translation>Norjan kirjakieli</translation>
+        <translation>Norja (kirjanorja)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="54"/>
         <source>Tamil</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamili</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="59"/>
         <source>Norwegian Nynorsk</source>
-        <translation>Uusi norjan kieli</translation>
+        <translation>Norja (uusnorja)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="60"/>
         <source>Latvian</source>
-        <translation>Latvian kieli</translation>
+        <translation>Latvia</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="35"/>
@@ -362,7 +362,7 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="61"/>
         <source>Dutch (Belgium)</source>
-        <translation>Belgian kieli</translation>
+        <translation>Hollanti (Belgia)</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="51"/>
@@ -382,12 +382,12 @@
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="48"/>
         <source>Romanian</source>
-        <translation>Romanian kieli</translation>
+        <translation>Romania</translation>
     </message>
     <message>
         <location filename="../Opal/About/private/ExtraTranslations.qml" line="50"/>
         <source>Serbian</source>
-        <translation>Serbian kieli</translation>
+        <translation>Serbia</translation>
     </message>
 </context>
 </TS>
