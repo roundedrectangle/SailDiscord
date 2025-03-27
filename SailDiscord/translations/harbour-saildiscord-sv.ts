@@ -228,27 +228,27 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Channel failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanalen kunde inte läsas in</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänd privat kanal: %1. Rapportera gärna detta till utvecklarna</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="149"/>
         <source>Unable to receive cache: connection failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte hämta cachen: Anslutning misslyckades</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="150"/>
         <source>Unknown caching error</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänt cachelagringsfel</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Okänt fel: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="180"/>
@@ -277,7 +277,7 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="226"/>
         <source>Copy formatted contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera formaterat innehåll</translation>
     </message>
     <message>
         <location filename="../qml/components/ServerListItem.qml" line="83"/>
@@ -748,12 +748,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>Översikt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Läge</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="156"/>
@@ -833,12 +833,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="85"/>
         <source>Modern UI</source>
-        <translation type="unfinished"></translation>
+        <translation>Modernt UI</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Servers quick scroll</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabb serverskroll</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
@@ -850,7 +850,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>Reset last server and channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ senaste server och kanaler</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="254"/>
@@ -900,22 +900,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="283"/>
         <source>Spying</source>
-        <translation type="unfinished"></translation>
+        <translation>Spioneri</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Varning! Om du ändrar något av dessa alternativ kan det leda till avstängning och rekommenderas inte. Använd detta på egen risk.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="308"/>
         <source>Show channels without permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa kanaler utan behörigheter</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="309"/>
         <source>They will be displayed, but it still won&apos;t be possible to open them</source>
-        <translation type="unfinished"></translation>
+        <translation>De kommer att visas, men det kommer fortfarande inte att vara möjligt att öppna dem.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
@@ -1015,22 +1015,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="371"/>
         <source>Show indicators of read states</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa indikatorer för lästtillstånd</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="372"/>
         <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Inkluderar antal pingar, oläst tillstånd. Kan vara buggigt. Uppdatera appen för att tillämpa</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="377"/>
         <source>Friend requests</source>
-        <translation type="unfinished"></translation>
+        <translation>Vänförfrågningar</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Does not work because of captcha for most people</source>
-        <translation type="unfinished"></translation>
+        <translation>Fungerar inte för de flesta, på grund av captcha.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="384"/>
@@ -1066,7 +1066,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="134"/>
         <source>Unnamed</source>
-        <translation type="unfinished"></translation>
+        <translation>Namnlös</translation>
     </message>
 </context>
 </TS>
