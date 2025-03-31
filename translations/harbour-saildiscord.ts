@@ -255,6 +255,11 @@
         <source>Python error</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="79"/>
+        <source>Error loading image %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>General</name>
@@ -1047,6 +1052,19 @@
     </message>
 </context>
 <context>
+    <name>Shared</name>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="53"/>
+        <source>(edited)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="85"/>
+        <source>Downloaded file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SystemMessageItem</name>
     <message>
         <location filename="../qml/components/SystemMessageItem.qml" line="21"/>
@@ -1064,6 +1082,40 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="134"/>
         <source>Unnamed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>status</name>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="200"/>
+        <source>Online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="201"/>
+        <source>Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="202"/>
+        <source>Do Not Disturb</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="203"/>
+        <source>Invisible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="204"/>
+        <source>Idle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="207"/>
+        <source>(Phone)</source>
+        <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
