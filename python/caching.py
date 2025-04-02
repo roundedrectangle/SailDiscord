@@ -38,6 +38,7 @@ class ImageType(Enum):
     MYSELF = auto()
     EMOJI = auto()
     GROUP = auto()
+    DECORATION = auto()
 
 def cached_path(cache: AnyPath, id, type: ImageType, format='png'):
     return Path(cache) / type.name.lower() / f"{id}.{format}"

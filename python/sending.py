@@ -108,20 +108,22 @@ def generate_extra_message(message: discord.Message | discord.MessageSnapshot, c
 
 def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself_id, is_history=False):
     """Returns a sequence of the base author-dependent message callback arguments to pass at the start"""
-    icon = '' if message.author.display_avatar == None else \
-            str(cacher.get_cached_path(message.author.id, ImageType.USER, default=message.author.display_avatar))
-    
-    if icon != '':
-        cacher.cache_image_bg(str(message.author.display_avatar), message.author.id, ImageType.USER)
-    
+
     return (str(message.guild.id) if message.guild else '-2', str(message.channel.id),
             str(message.id), qml_date(message.created_at),
             bool(message.edited_at), qml_date(message.edited_at) if message.edited_at else None,
 
-            {"id": str(message.author.id), "sent": message.author.id == myself_id,
-            "name": message.author.display_name,
-            "pfp": icon, "bot": message.author.bot, "system": message.author.system,
-            "color": hex_color(message.author.color)},
+            {
+                'bot': message.author.bot, 'system': message.author.system,
+                'sent': message.author.id == myself_id,
+
+                'id': str(message.author.id),
+                'name': message.author.display_name,
+                'color': hex_color(message.author.color),
+
+                'avatar': cacher.easy(message.author.display_avatar, message.author.id, ImageType.USER),
+                'decoration': cacher.easy(message.author.avatar_decoration, message.author.avatar_decoration_sku_id, ImageType.DECORATION),
+            },
             
             is_history, convert_attachments(message.attachments),
             message.jump_url,

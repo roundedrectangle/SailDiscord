@@ -112,7 +112,7 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="211"/>
+        <location filename="../qml/components/MessageItem.qml" line="236"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Om denna medlem</translation>
@@ -270,17 +270,17 @@
         <translation>Kopiera kanal-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="216"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message ID</source>
         <translation>Kopiera meddelande-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="221"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy message link</source>
         <translation>Kopiera meddelandelänk</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="226"/>
+        <location filename="../qml/components/MessageItem.qml" line="251"/>
         <source>Copy formatted contents</source>
         <translation>Kopiera formaterat innehåll</translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="156"/>
+        <location filename="../qml/components/MessageItem.qml" line="181"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Redigerad %1</translation>
@@ -781,11 +781,6 @@
         <translation>Ange extra utfyllnad för nya meddelanden från samma författare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
-        <source>as pfp (default)</source>
-        <translation>Som PFP (standard)</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="176"/>
         <source>small</source>
         <translation>liten</translation>
@@ -844,6 +839,11 @@
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Servers quick scroll</source>
         <translation>Snabb serverskroll</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
+        <source>as avatar (default)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>

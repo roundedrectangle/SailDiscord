@@ -18,7 +18,7 @@ import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
 AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
-dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "pfp": '', "bot": False, "system": False, "color": ''}
+dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "avatar": '', "bot": False, "system": False, "color": ''}
 CUSTOM_EMOJI_RE_ESCAPED = re.compile(f'\\\\?({discord.PartialEmoji._CUSTOM_EMOJI_RE.pattern})') # pyright: ignore[reportPrivateUsage]
 
 def exception_decorator(*exceptions: Exception):

@@ -8,10 +8,11 @@ HighlightImage {
     property string errorString
     property bool extendedRadius: false
     property bool disableAnimations: false
+    property real defaultSize: Theme.iconSizeLarge
 
     id: roundedIcon
     source: (icon != "None" && icon != '') ? icon : ''
-    height: Theme.iconSizeLarge
+    height: defaultSize
     width: visible ? height : 0
     visible: source != "" || forceVisibility
 
@@ -21,6 +22,7 @@ HighlightImage {
     signal clicked
     property bool highlightOnClick
     highlighted: false
+    asynchronous: true
 
     layer.enabled: rounded
     layer.effect: OpacityMask {

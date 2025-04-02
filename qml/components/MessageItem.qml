@@ -15,7 +15,7 @@ ListItem {
     property bool sendPermissions
     property bool managePermissions
 
-    property real masterWidth: -1 // Width of the previous element with pfp. Used with sameAuthorAsBefore
+    property real masterWidth: -1 // Width of the previous element with avatar. Used with sameAuthorAsBefore
     property date masterDate: new Date(1) // Date of previous element
 
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
@@ -85,16 +85,40 @@ ListItem {
                 visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
             }
 
-            ListImage {
+            Item {
                 id: profileIcon
-                icon: _firstSameAuthor ? avatar : ""
-                visible: _firstSameAuthor || (appSettings.oneAuthorPadding === "p")
-                opacity: _firstSameAuthor ? 1 : 0
-                errorString: author
-                highlightOnClick: true
-                onClicked: openAboutUser()
-                enabled: _firstSameAuthor && showRequestableOptions && userid != '-1'
-                disableAnimations: true
+                width: _firstSameAuthor || appSettings.oneAuthorPadding === 'p' ? Theme.iconSizeLarge : 0
+                height: width
+                Loader {
+                    id: profileIconLoader
+                    anchors.fill: parent
+                    active: _firstSameAuthor && !!avatar
+                    sourceComponent: Component {
+                        ListImage {
+                            icon: avatar
+                            errorString: author
+                            highlightOnClick: true
+                            onClicked: openAboutUser()
+                            enabled: _firstSameAuthor && showRequestableOptions && userid != '-1'
+                            disableAnimations: true
+                        }
+                    }
+                }
+                Loader {
+                    anchors.fill: parent
+                    active: profileIconLoader.active && !!decoration
+                    sourceComponent: Component {
+                        Image {
+                            anchors.fill: parent
+                            sourceSize {
+                                width: width
+                                height: height
+                            }
+                            source: decoration
+                            onStatusChanged: if (status == Image.Error) shared.imageLoadError('decoration#'+author)
+                        }
+                    }
+                }
             }
 
             Item { id: iconPadding; height: 1; width: visible ? Theme.paddingLarge : 0;

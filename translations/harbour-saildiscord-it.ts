@@ -112,7 +112,7 @@
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="211"/>
+        <location filename="../qml/components/MessageItem.qml" line="236"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Info utente</translation>
@@ -280,17 +280,17 @@
         <translation>Copia ID utente</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="216"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message ID</source>
         <translation>Copia ID messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="221"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="226"/>
+        <location filename="../qml/components/MessageItem.qml" line="251"/>
         <source>Copy formatted contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="156"/>
+        <location filename="../qml/components/MessageItem.qml" line="181"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation type="unfinished"></translation>
@@ -791,11 +791,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
-        <source>as pfp (default)</source>
-        <translation>come immagine di profilo (predefinito)</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="177"/>
         <source>no</source>
         <translation>no</translation>
@@ -843,6 +838,11 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Servers quick scroll</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
+        <source>as avatar (default)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

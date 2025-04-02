@@ -105,14 +105,14 @@ QtObject {
         author: "unknown", avatar: '',
         reference: {}, attachments: [],
         jumpUrl: '', highlightStarted: false,
-        APIType: '',
+        APIType: '', decoration: '',
     })
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
         return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl) {
             if (guildid != undefined && channelid != undefined)
                 if ((_serverid != guildid) || (_channelid != channelid)) return
             var data = {
-                type: type, messageId: _id, author: emojify(userinfo.name), avatar: userinfo.pfp,
+                type: type, messageId: _id, author: emojify(userinfo.name), avatar: userinfo.avatar,
                 sent: userinfo.sent, _masterWidth: -1, date: new Date(date), _from_history: history,
                 _wasUpdated: false, userid: userinfo.id, attachments: attachments,
                 flags: {
@@ -120,7 +120,7 @@ QtObject {
                     system: userinfo.system, color: userinfo.color
                 },
                 APIType: '', contents: '', formattedContents: '', reference: {}, highlightStarted: false,
-                jumpUrl: jumpUrl,
+                jumpUrl: jumpUrl, decoration: userinfo.decoration,
             }
 
             var extraStart = 10

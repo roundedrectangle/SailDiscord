@@ -172,7 +172,7 @@ Page {
                             property var values: ["p", "s", "n"]
                             currentIndex: values.indexOf(appSettings.oneAuthorPadding) == -1 ? 0 : values.indexOf(appSettings.oneAuthorPadding)
                             menu: ContextMenu {
-                                MenuItem { text: qsTr("as pfp (default)") }
+                                MenuItem { text: qsTr("as avatar (default)") }
                                 MenuItem { text: qsTr("small") }
                                 MenuItem { text: qsTr("no") }
                             }
