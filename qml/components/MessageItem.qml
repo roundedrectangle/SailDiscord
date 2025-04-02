@@ -236,15 +236,16 @@ ListItem {
             visible: userid != '-1'
             onClicked: openAboutUser()
         }
+        FancyAloneMenuItem {
+            icon.source: "image://theme/icon-m-link"
+            text: qsTranslate("General", "Copy message link")
+            visible: !!jumpUrl
+            onClicked: Clipboard.text = jumpUrl
+        }
         MenuItem {
             text: qsTranslate("General", "Copy message ID")
             visible: appSettings.developerMode && messageId
             onClicked: Clipboard.text = messageId
-        }
-        MenuItem {
-            text: qsTranslate("General", "Copy message link")
-            visible: !!jumpUrl
-            onClicked: Clipboard.text = jumpUrl
         }
         MenuItem {
             text: qsTranslate("General", "Copy formatted contents")
