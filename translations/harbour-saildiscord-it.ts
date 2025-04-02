@@ -112,7 +112,7 @@
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="236"/>
+        <location filename="../qml/components/MessageItem.qml" line="235"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Info utente</translation>
@@ -258,7 +258,7 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="79"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore nel caricare l&apos;immagine %1</translation>
     </message>
 </context>
 <context>
@@ -280,12 +280,12 @@
         <translation>Copia ID utente</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="241"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy message ID</source>
         <translation>Copia ID messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="246"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="181"/>
+        <location filename="../qml/components/MessageItem.qml" line="180"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation type="unfinished"></translation>
@@ -381,7 +381,7 @@
         <translation>CopiaCopia</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="164"/>
+        <location filename="../qml/components/MessageReference.qml" line="165"/>
         <source>Reply</source>
         <translation>Rispondi</translation>
     </message>
@@ -1058,12 +1058,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="53"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(modificati)</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="85"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>File scaricato: %1</translation>
     </message>
 </context>
 <context>
@@ -1092,33 +1092,33 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="200"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>In linea</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="201"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Non in linea</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="202"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Non disturbare</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Invisibile</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="204"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Occupato</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="207"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Telefono)</translation>
     </message>
 </context>
 </TS>

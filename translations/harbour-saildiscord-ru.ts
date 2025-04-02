@@ -112,7 +112,7 @@
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="236"/>
+        <location filename="../qml/components/MessageItem.qml" line="235"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -258,7 +258,7 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="79"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при загрузке изображения %1</translation>
     </message>
 </context>
 <context>
@@ -280,12 +280,12 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="241"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="246"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="181"/>
+        <location filename="../qml/components/MessageItem.qml" line="180"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
@@ -381,7 +381,7 @@
         <translation>Скопировать</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="164"/>
+        <location filename="../qml/components/MessageReference.qml" line="165"/>
         <source>Reply</source>
         <translation>Ответ</translation>
     </message>
@@ -831,17 +831,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="85"/>
         <source>Modern UI</source>
-        <translation type="unfinished"></translation>
+        <translation>Современный интерфейс</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Servers quick scroll</source>
-        <translation type="unfinished"></translation>
+        <translation>Быстрая прокрутка в серверах</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="175"/>
         <source>as avatar (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>как аватар (стандарт)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
@@ -1056,12 +1056,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="53"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(изменено)</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="85"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачан файл %1</translation>
     </message>
 </context>
 <context>
@@ -1090,33 +1090,33 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="200"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Онлайн</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="201"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Оффлайн</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="202"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Не беспокоить</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Невидимый</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="204"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Занят</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="207"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(телефон)</translation>
     </message>
 </context>
 </TS>

@@ -112,7 +112,7 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="236"/>
+        <location filename="../qml/components/MessageItem.qml" line="235"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Om denna medlem</translation>
@@ -270,12 +270,12 @@
         <translation>Kopiera kanal-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="241"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy message ID</source>
         <translation>Kopiera meddelande-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="246"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message link</source>
         <translation>Kopiera meddelandelänk</translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="181"/>
+        <location filename="../qml/components/MessageItem.qml" line="180"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Redigerad %1</translation>
@@ -381,7 +381,7 @@
         <translation>Kopiera</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="164"/>
+        <location filename="../qml/components/MessageReference.qml" line="165"/>
         <source>Reply</source>
         <translation>Svara</translation>
     </message>
