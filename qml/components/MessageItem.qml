@@ -68,8 +68,8 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 1) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
-            onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
+            Component.onCompleted: if (reference.type == 1)
+                                       setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: reference, jump: jumpToReference})
         }
 
         Row {
@@ -192,8 +192,8 @@ ListItem {
             width: parent.width
             height: item == undefined ? 0 : item.implicitHeight
             asynchronous: true
-            Component.onCompleted: if (reference.type == 2) setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: root.reference})
-            onStatusChanged: if (status == Loader.Ready) item.jump = jumpToReference
+            Component.onCompleted: if (reference.type == 2)
+                                       setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: reference, jump: jumpToReference})
         }
 
         Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
@@ -252,9 +252,4 @@ ListItem {
             onClicked: Clipboard.text = formattedContents
         }
     }}
-
-    Component {
-        id: referenceComponent
-        MessageReference { reference: root.reference }
-    }
 }

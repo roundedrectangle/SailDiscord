@@ -147,7 +147,8 @@ ListItem {
         }
     }}
 
-    onClicked: if ((reference.state == 2 || reference.state == 3) && !jump(_resolvedReference.messageId)) pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
+    onClicked: if ((reference.state == 2 || reference.state == 3) && !jump(_resolvedReference.messageId))
+                   pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
     on_ResolvedReferenceChanged: _resolvedUpdater()
     on_ResolvedTypeChanged: _resolvedUpdater()
     Component {
