@@ -26,7 +26,6 @@ BuildRequires: python3-pip
 #BuildRequires: libjpeg-turbo
 #BuildRequires: libjpeg-turbo-devel
 BuildRequires: git
-Requires: python3dist(pillow)
 %endif
 
 %if %{package_library} == "no"

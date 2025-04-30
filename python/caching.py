@@ -15,7 +15,6 @@ from exceptions import *
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import requests
-from PIL import Image
 from yarl import URL # a dependency in discord.py-self, so why not use it?
 
 AnyPath = Union[Path, str]
@@ -72,19 +71,6 @@ def cached_path(cache: AnyPath, id, type: ImageType, format: str | None = None):
 # BUT it seems like avatar decorations can be .apng (Animated PNG, sometimes extension is .png)
 # upd on APNG: seems like anything can be it and it's just png in original quality, besides (and if!) being animated
 
-def verify_pillow(path: AnyPath):
-    # TODO: remove this and rely on errors from qt (implement Cacher.recache or something)
-    try:
-        im = Image.open(path)
-        im.verify()
-        im.close()
-        im = Image.open(path) 
-        im.transpose(Image.FLIP_LEFT_RIGHT)
-        im.close()
-    except Exception as e:
-        return e
-    return None
-
 def download(url, proxies: dict | None):
     """Returns requests.Response object or None if URL is invalid"""
     try:
@@ -95,12 +81,6 @@ def download(url, proxies: dict | None):
         qsend('error', 'cacheConnection', str(e))
     except requests.RequestException as e:
         qsend('error', 'cache', str(type(e)), str(e))
-
-def download_pillow(url, proxies: dict | None):
-    """Create a Pillow object from downloaded URL. Returns None if URL is not valid."""
-    data = download(url, proxies)
-    if data:
-        return Image.open(data.raw)
 
 def update_required(path: Path, minimum_time: timedelta):
     """Returns if the file at `path` was modified more or `minimum_time` ago"""
@@ -188,9 +168,11 @@ class Cacher:
     def get_cached_path(self, id, type: ImageType, default=None, format: str|None=None):
         """If default is not None and any of these:
         - path does not exist
-        - path contains broken image
         - update_period set to None (Never)
-        then default is returned"""
+
+        then default is returned
+        
+        Earlier it was also checked if path contains broken image, now not."""
         if default != None:
             if not self.verify_image(id, type) or self.update_period == None:
                 return default
@@ -204,16 +186,11 @@ class Cacher:
             return False
         return update_required(path, self.update_period)
 
-    def broken_image(self, id, type: ImageType):
-        """Checks if an image is broken or image is not cached. Returns None if not or an error if yes."""
-        path = self.get_cached_path(id, type)
-        if not path.exists():
-            return DoesNotExistError
-        return verify_pillow(path)
-
-    def verify_image(self, id, type: ImageType):
-        """Returns if an image is not broken and is cached"""
-        return self.broken_image(id, type) == None
+    def verify_image(self, id, type: ImageType) -> bool:
+        """Returns if an image is cached.
+        
+        Erlier this also checked if the image is not broken."""
+        return self.get_cached_path(id, type).exists()
     
     def download_save(self, url, dest):
         return download_save(url, dest, self.proxies)
