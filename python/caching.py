@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 """Cache operations"""
 
 import sys, os, shutil
@@ -20,6 +21,7 @@ from yarl import URL # a dependency in discord.py-self, so why not use it?
 AnyPath = Union[Path, str]
 TimedeltaResult = Optional[timedelta]
 AnyTimedelta = Union[TimedeltaResult, int]
+VALID_ANIMATED_FORMATS = frozenset({'gif'}) # discord.asset.VALID_ASSET_FORMATS - discord.asset.VALID_STATIC_FORMATS
 
 CachePeriodMapping = [
     None, # Never
@@ -77,7 +79,7 @@ def verify_pillow(path: AnyPath):
 def download(url, proxies: dict | None):
     """Returns requests.Response object or None if URL is invalid"""
     try:
-        r = requests.get(url, stream=True, proxies=proxies)
+        r = requests.get(str(url), stream=True, proxies=proxies)
         if r.status_code != 200: return
         return r
     except requests.ConnectionError as e:
@@ -115,6 +117,15 @@ def download_save(url, destination: AnyPath, proxies: dict | None):
                 f.write(chunk)
         return True
     return False
+
+def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, animated=False, url=None):
+    return {
+        'source': str(path),
+        'originalSource': str(url),
+        'animated': bool(animated),
+        'type': asset_type.value if isinstance(asset_type, ImageType) else asset_type,
+        'id': str(asset_id),
+    }
 
 class Cacher:
     @property
@@ -200,9 +211,9 @@ class Cacher:
     def recreate_temporary(self):
         self.temp.mkdir(parents=True, exist_ok=True)
 
-    def cache_image(self, url, id, type: ImageType, format: str|None=None):
+    def cache_image(self, url, id, type: ImageType, format: str|None=None, force=False):
         if self.update_period == None: return # Never set in settings
-        if self.has_cached_session(id, type) or not self.update_required(id, type):
+        if not force and (self.has_cached_session(id, type) or not self.update_required(id, type)):
             return # Only cache once in a session or update_period
         self.set_cached_session(id, type, False)
         path = self.get_cached_path(id, type, format=format or get_extension_from_url(url))
@@ -210,8 +221,8 @@ class Cacher:
         if self.download_save(url, path):
             self.set_cached_session(id, type)
 
-    def cache_image_bg(self, url, id, type: ImageType, format: str|None=None):
-        Thread(target=self.cache_image, args=(url, id, type, format)).start()
+    def cache_image_bg(self, url, id, type: ImageType, format: str|None=None, force=False):
+        Thread(target=self.cache_image, args=(url, id, type, format, force)).start()
 
     def set_cached_session(self, id, type: ImageType, finished=True):
         self.session_cached[type.name.lower()][str(id)] = finished
@@ -234,9 +245,11 @@ class Cacher:
         else:
             return True
     
-    def easy(self, url, id, type: ImageType, format: str|None=None):
+    def easy(self, url, id, type: ImageType, format: str|None=None, as_qml_data=True):
         icon = '' if url is None else \
             str(self.get_cached_path(id, type, url, format))
         if icon != '':
             self.cache_image_bg(str(url), id, type, format)
+        if as_qml_data:
+            return construct_qml_data(icon, type, id, get_extension_from_url(icon) in VALID_ANIMATED_FORMATS, url if icon != url else None)
         return icon

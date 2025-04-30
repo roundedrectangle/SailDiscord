@@ -95,18 +95,13 @@ class MyClient(discord.Client):
         # Setup control variables
         self.loop = asyncio.get_running_loop()
 
-        icon = '' if self.user.display_avatar == None else \
-            str(comm.cacher.get_cached_path(self.user.id, ImageType.MYSELF, default=self.user.display_avatar))
-        qsend('logged_in', self.user.display_name, icon,
+        qsend('logged_in', self.user.display_name, comm.cacher.easy(self.user.display_avatar, self.user.id, ImageType.MYSELF),
             StatusMapping(self.status).index if StatusMapping.has_value(self.status) else 0,
             self.is_on_mobile(),
         )
         
         send_servers(self.sorted_guilds_and_folders, comm.cacher)
         send_dms(self.private_channels, comm.cacher, self.run_asyncio_threadsafe, comm.send_unread)
-
-        if icon != '':
-            comm.cacher.cache_image_bg(str(self.user.display_avatar), self.user.id, ImageType.MYSELF)
 
     async def on_message(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
@@ -387,6 +382,9 @@ class Communicator:
     def reply_to(self, message_id: str | int, content: str):
         msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
         self.client.run_asyncio_threadsafe(msg.reply(content))
+    
+    def recache(self, asset_type, asset_id, url):
+        self.cacher.cache_image_bg(url, asset_id, ImageType(asset_type), force=True)
 
 
 comm = Communicator()

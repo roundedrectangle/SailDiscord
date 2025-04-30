@@ -15,11 +15,7 @@ import discord
 # Servers
 
 def gen_server(g: discord.Guild, cacher: Cacher):
-    icon = '' if g.icon == None else \
-            str(cacher.get_cached_path(g.id, ImageType.SERVER, default=g.icon))
-    if icon != '':
-        cacher.cache_image_bg(str(g.icon), g.id, ImageType.SERVER)
-    return (str(g.id), g.name, icon)
+    return (str(g.id), g.name, cacher.easy(g.icon, g.id, ImageType.SERVER))
 
 def send_servers(guilds: List[discord.Guild | discord.GuildFolder | Any], cacher: Cacher):
     for g in guilds:

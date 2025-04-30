@@ -1,9 +1,9 @@
 from __future__ import annotations
 import sys, re
 from datetime import datetime, timezone, timedelta
-from caching import Cacher, ImageType
+from caching import ImageType
 from pyotherside import send as qsend
-from typing import Any, Callable, List, Union # TODO: use collections.abc.Callable, pipe (|) (needs newer python)
+from typing import Union, TYPE_CHECKING
 import functools
 from contextlib import suppress
 from enum import Enum, auto
@@ -11,6 +11,10 @@ from pathlib import Path
 import asyncio
 import urllib.parse
 import traceback as tb
+
+if TYPE_CHECKING:
+    from typing import Callable, Any
+    from caching import Cacher
 
 script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
@@ -95,7 +99,7 @@ def attachment_type(attachment: discord.Attachment):
     if t.startswith('image'):
         return AttachmentMapping.IMAGE
 
-def convert_attachments(attachments: List[discord.Attachment]):
+def convert_attachments(attachments: list[discord.Attachment]):
     """Converts to QML-friendly attachment format, object (dict)"""
     # TODO: caching, more types
     res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": None if a.content_type is None else a.content_type.split(';')[0], "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
@@ -126,8 +130,7 @@ def emojify(message: discord.Message | str, cacher: Cacher, size: int | None=Non
     while search:
         e = discord.PartialEmoji.from_str(search[pattern_match_index])
         #fmt = 'gif' if e.animated else 'png' # taken from discord.PartialEmoji.url
-        path = str(cacher.get_cached_path(e.id, ImageType.EMOJI, e.url))
-        cacher.cache_image_bg(e.url, e.id, ImageType.EMOJI)
+        path = cacher.easy(e.url, e.id, ImageType.EMOJI, as_qml_data=False)
         res = res[:search.start()] + '<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt=":{e.name}:" src="{path}">' + res[search.end():]
         search = pattern.search(res)
     return res
