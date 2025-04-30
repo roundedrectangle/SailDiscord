@@ -11,7 +11,7 @@ AboutPageBase {
 
     property string serverid
     property string name
-    property string icon
+    property var icon
 
     property string _memberCount
     property string _onlineCount
@@ -27,7 +27,7 @@ AboutPageBase {
     onCompiledMemberInfoChanged: _develInfoSection.parent.children[2].children[1].text = compiledMemberInfo
 
     appName: name
-    appIcon: icon == "None" ? "" : icon
+    appIcon: icon.available ? icon.source : ''
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false

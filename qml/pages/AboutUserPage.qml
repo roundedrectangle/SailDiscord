@@ -12,7 +12,7 @@ AboutPageBase {
 
     property string userid: "-1"
     property string name
-    property string icon
+    property var icon
     property bool isClient: false
     property bool pulleyMenuVisible: !isClient
     property bool showSettings: isClient
@@ -31,7 +31,7 @@ AboutPageBase {
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
 
     appName: name
-    appIcon: icon == "None" ? "" : icon
+    appIcon: icon.available ? icon.source : ''
 
     _pageHeaderItem.title: qsTranslate("AboutUser", "About", "User")
     _licenseInfoSection.visible: false

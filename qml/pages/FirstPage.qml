@@ -8,7 +8,7 @@ Page {
 
     property bool loading: true
     property string username: ""
-    property string avatar
+    property var avatar
     property int status: 0
     property bool onMobile: false
 

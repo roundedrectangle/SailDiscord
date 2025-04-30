@@ -7,12 +7,10 @@ ListItem {
     property string serverid
     property string title
     property string placeholderBase
-    property string icon
+    property var icon
     property bool defaultActions: true
     property bool textHighlighted
     property int mentionCount
-
-    property bool _iconAvailable: (icon != "None" && icon != "")
 
     contentWidth: parent.width
     contentHeight: Theme.itemSizeLarge
@@ -26,12 +24,12 @@ ListItem {
             id: profileIcon
             width: root.contentHeight - Theme.paddingSmall*4
             height: width
-            sourceComponent: _iconAvailable ? serverImageComponent : serverImagePlaceholderComponent
+            sourceComponent: icon.available ? serverImageComponent : serverImagePlaceholderComponent
             Component {
                 id: serverImageComponent
                 ListImage {
                     id: profileIcon
-                    icon: root.icon
+                    info: root.icon
                     anchors.fill: parent
                     forceVisibility: true
                     errorString: title

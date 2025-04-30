@@ -9,7 +9,7 @@ Page {
 
     property string serverid
     property string name
-    property string icon
+    property var icon
     property string memberCount
 
     property alias channelList: channelList

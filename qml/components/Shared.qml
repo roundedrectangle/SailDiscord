@@ -76,7 +76,7 @@ QtObject {
     }
 
     function imageLoadError(name) {
-        showError(qsTranslate("Errors", "Error loading image %1").arg(name))
+        if (name) showError(qsTranslate("Errors", "Error loading image %1").arg(name))
     }
 
     // Files

@@ -8,7 +8,7 @@ SilicaFlickable {
     anchors.fill: parent
 
     property string username
-    property string avatar
+    property var avatar
     property var dmModel
     property var serversModel
     property int status
@@ -116,11 +116,11 @@ SilicaFlickable {
                                 id: serverImage
                                 width: parent.width - indicatorRectangle.width
                                 height: width
-                                sourceComponent: (image != "None" && image != '') ? serverImageComponent : serverImagePlaceholderComponent
+                                sourceComponent: image.available ? serverImageComponent : serverImagePlaceholderComponent
                                 Component {
                                     id: serverImageComponent
                                     ListImage {
-                                        icon: image
+                                        info: image
                                         extendedRadius: selected
                                         anchors {
                                             fill: parent
@@ -276,7 +276,7 @@ SilicaFlickable {
                         id: meAvatar
                         anchors.verticalCenter: parent.verticalCenter
                         enabled: false
-                        icon: avatar
+                        info: avatar
                     }
 
                     Column {

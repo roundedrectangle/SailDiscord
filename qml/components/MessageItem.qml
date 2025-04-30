@@ -95,7 +95,7 @@ ListItem {
                     active: _firstSameAuthor && !!avatar
                     sourceComponent: Component {
                         ListImage {
-                            icon: avatar
+                            info: avatar
                             errorString: author
                             highlightOnClick: true
                             onClicked: openAboutUser()
