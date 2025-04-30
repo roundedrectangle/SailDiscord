@@ -125,9 +125,9 @@ def emojify(message: discord.Message | str, cacher: Cacher, size: int | None=Non
     search = pattern.search(res)
     while search:
         e = discord.PartialEmoji.from_str(search[pattern_match_index])
-        fmt = 'gif' if e.animated else 'png'
-        path = str(cacher.get_cached_path(e.id, ImageType.EMOJI, e.url, fmt))
-        cacher.cache_image_bg(e.url, e.id, ImageType.EMOJI, fmt)
+        #fmt = 'gif' if e.animated else 'png' # taken from discord.PartialEmoji.url
+        path = str(cacher.get_cached_path(e.id, ImageType.EMOJI, e.url))
+        cacher.cache_image_bg(e.url, e.id, ImageType.EMOJI)
         res = res[:search.start()] + '<img '+ ('' if size is None or remove_size else f'width="{size}" height="{size}" ') +f'class="emoji" draggable="false" alt=":{e.name}:" src="{path}">' + res[search.end():]
         search = pattern.search(res)
     return res

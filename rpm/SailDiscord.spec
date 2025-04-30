@@ -62,7 +62,7 @@ Discord in your pocket
 %if %{package_library} == "yes"
 #python3 -m pip install --upgrade pip
 #python3 -m pip cache purge
-python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" --target=%_builddir/deps
+python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self" "requests" "yarl" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 strip -s %_builddir/deps/charset_normalizer/*.so || echo
 strip -s %_builddir/deps/google/_upb/*.so || echo

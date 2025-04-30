@@ -1,7 +1,7 @@
 from __future__ import annotations
 """Cache operations"""
 
-import sys, shutil
+import sys, os, shutil
 from enum import Enum, auto
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -15,6 +15,7 @@ script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/
 sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import requests
 from PIL import Image
+from yarl import URL # a dependency in discord.py-self, so why not use it?
 
 AnyPath = Union[Path, str]
 TimedeltaResult = Optional[timedelta]
@@ -40,10 +41,28 @@ class ImageType(Enum):
     GROUP = auto()
     DECORATION = auto()
 
-def cached_path(cache: AnyPath, id, type: ImageType, format='png'):
-    return Path(cache) / type.name.lower() / f"{id}.{format}"
+def get_extension_from_url(url: str, default='png'):
+    res = os.path.splitext(URL(url).path)[1]
+    if res.startswith('.'): # removeprefix() was sadly introduced in python 3.9
+        res = res[1:]
+    return res or default
+
+def cached_path(cache: AnyPath, id, type: ImageType, format: str | None = None):
+    path = Path(cache) / type.name.lower()
+    if format is None:# and isinstance(cache, Path):
+        for f in sorted(path.glob(f'{id}.*'), key=lambda p: Path.stat(p).st_mtime):
+            if not f.is_dir():
+                return f
+        format = 'png'
+    return path / f"{id}.{format}"
+
+# discord supports static formats: jpeg, jpg, webp, png (taken from discord.asset)
+# and one non-static format: gif (also taken from there)
+# BUT it seems like avatar decorations can be .apng (Animated PNG, sometimes extension is .png)
+# upd on APNG: seems like anything can be it and it's just png in original quality, besides (and if!) being animated
 
 def verify_pillow(path: AnyPath):
+    # TODO: remove this and rely on errors from qt (implement Cacher.recache or something)
     try:
         im = Image.open(path)
         im.verify()
@@ -55,25 +74,29 @@ def verify_pillow(path: AnyPath):
         return e
     return None
 
-def download_pillow(url, proxies: dict | None):
-    """Generate a Pillow object from downloaded URL. Returns None if URL is not valid."""
-    try: r = requests.get(url, stream=True, proxies=proxies)
+def download(url, proxies: dict | None):
+    """Returns requests.Response object or None if URL is invalid"""
+    try:
+        r = requests.get(url, stream=True, proxies=proxies)
+        if r.status_code != 200: return
+        return r
     except requests.ConnectionError as e:
         qsend('error', 'cacheConnection', str(e))
-        return
     except requests.RequestException as e:
         qsend('error', 'cache', str(type(e)), str(e))
-        return
-    if r.status_code != 200: return
-    im = Image.open(r.raw)
-    return im
+
+def download_pillow(url, proxies: dict | None):
+    """Create a Pillow object from downloaded URL. Returns None if URL is not valid."""
+    data = download(url, proxies)
+    if data:
+        return Image.open(data.raw)
 
 def update_required(path: Path, minimum_time: timedelta):
     """Returns if the file at `path` was modified more or `minimum_time` ago"""
     mod = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
     now = datetime.now(timezone.utc)
-    dif = now-mod
-    return dif >= minimum_time
+    diff = now-mod
+    return diff >= minimum_time
 
 def convert_to_timedelta(data: AnyTimedelta) -> TimedeltaResult:
     try:
@@ -83,6 +106,15 @@ def convert_to_timedelta(data: AnyTimedelta) -> TimedeltaResult:
     except:
         qsend(f"An error occured when converting timedeltas.\ndata of type {type(data)}: {data}\nFalling back to None.")
         return None # failsafe
+
+def download_save(url, destination: AnyPath, proxies: dict | None):
+    r = download(url, proxies)
+    if r:
+        with open(destination, 'wb') as f:
+            for chunk in r: # r.__iter__() is same as r.iter_content(chunk_size=128)
+                f.write(chunk)
+        return True
+    return False
 
 class Cacher:
     @property
@@ -124,25 +156,24 @@ class Cacher:
         for im in ImageType:
             self.session_cached[im.name.lower()] = {}
 
-    def get_cached_path(self, id, type: ImageType, default=None, format: str='png'):
+    def get_cached_path(self, id, type: ImageType, default=None, format: str|None=None):
         """If default is not None and any of these:
         - path does not exist
         - path contains broken image
         - update_period set to None (Never)
         then default is returned"""
-        path = cached_path(self.cache, id, type, format)
         if default != None:
             if not self.verify_image(id, type) or self.update_period == None:
                 return default
-        return path
+        return cached_path(self.cache, id, type, format)
 
     def update_required(self, id, type: ImageType):
-        p = self.get_cached_path(id, type)
-        if not p.exists() or self.update_period == timedelta(0):
+        path = self.get_cached_path(id, type)
+        if not path.exists() or self.update_period == timedelta(0):
             return True
         if self.update_period == None:
             return False
-        return update_required(p, self.update_period)
+        return update_required(path, self.update_period)
 
     def broken_image(self, id, type: ImageType):
         """Checks if an image is broken or image is not cached. Returns None if not or an error if yes."""
@@ -154,14 +185,13 @@ class Cacher:
     def verify_image(self, id, type: ImageType):
         """Returns if an image is not broken and is cached"""
         return self.broken_image(id, type) == None
+    
+    def download_save(self, url, dest):
+        return download_save(url, dest, self.proxies)
 
     def save_temporary(self, url: str, filename: AnyPath):
         dest = self.temp / filename
-        r = requests.get(url, stream=True, proxies=self.proxies)
-        if r.status_code == 200:
-            with open(dest, 'wb') as f:
-                for chunk in r:
-                    f.write(chunk)
+        self.download_save(url, dest)
         return dest
 
     def clear_temporary(self):
@@ -170,19 +200,17 @@ class Cacher:
     def recreate_temporary(self):
         self.temp.mkdir(parents=True, exist_ok=True)
 
-    def cache_image(self, url, id, type: ImageType, format: str='png'):
+    def cache_image(self, url, id, type: ImageType, format: str|None=None):
         if self.update_period == None: return # Never set in settings
         if self.has_cached_session(id, type) or not self.update_required(id, type):
             return # Only cache once in a session or update_period
         self.set_cached_session(id, type, False)
-        im = download_pillow(url, self.proxies)
-        if im == None: return
-        path = self.get_cached_path(id, type, format=format)
+        path = self.get_cached_path(id, type, format=format or get_extension_from_url(url))
         path.parent.mkdir(exist_ok=True, parents=True)
-        im.save(path) # We use Pillow to convert JPEG, GIF and others to PNG
-        self.set_cached_session(id, type)
+        if self.download_save(url, path):
+            self.set_cached_session(id, type)
 
-    def cache_image_bg(self, url, id, type: ImageType, format: str='png'):
+    def cache_image_bg(self, url, id, type: ImageType, format: str|None=None):
         Thread(target=self.cache_image, args=(url, id, type, format)).start()
 
     def set_cached_session(self, id, type: ImageType, finished=True):
@@ -190,7 +218,7 @@ class Cacher:
         #qsend(f"SET {self.session_cached} {id} {str(id) in self.session_cached[type.name.lower()]}")
 
     def has_cached_session(self, id, type: ImageType, finished=None):
-        """Returns was ever the image cached in the current session.
+        """Returns if the image was cached in the current session.
         
         finished:
             - True for checking finished only
@@ -201,12 +229,12 @@ class Cacher:
         if str(id) not in self.session_cached[type.name.lower()]:
             return False
         
-        if finished in [False, True]:
+        if isinstance(finished, bool):
             return self.session_cached[type.name.lower()][str(id)] == finished
         else:
             return True
     
-    def easy(self, url, id, type: ImageType, format: str='png'):
+    def easy(self, url, id, type: ImageType, format: str|None=None):
         icon = '' if url is None else \
             str(self.get_cached_path(id, type, url, format))
         if icon != '':
