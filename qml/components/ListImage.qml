@@ -14,7 +14,7 @@ Asset {
     Component.onCompleted: if (icon) console.log(JSON.stringify(info),info = icon)
     onIconChanged: data = info
 
-    id: roundedIcon
+    id: asset
     height: defaultSize
     width: visible ? height : 0
     visible: source != "" || forceVisibility
@@ -29,12 +29,12 @@ Asset {
     layer.enabled: rounded
     layer.effect: OpacityMask {
         maskSource: Item {
-            width: roundedIcon.width
-            height: roundedIcon.height
+            width: asset.width
+            height: asset.height
             Rectangle {
                 anchors.centerIn: parent
-                width: roundedIcon.adapt ? roundedIcon.width : Math.min(roundedIcon.width, roundedIcon.height)
-                height: roundedIcon.adapt ? roundedIcon.height : width
+                width: asset.adapt ? asset.width : Math.min(asset.width, asset.height)
+                height: asset.adapt ? asset.height : width
                 radius: extendedRadius ? Math.min(width, height)/4 : Math.min(width, height)
                 Behavior on radius {
                     NumberAnimation { duration: 150 }
@@ -49,20 +49,20 @@ Asset {
     ProgressCircle {
         id: progressCircle
         anchors.fill: parent
-        visible: parent.item && parent.item.status == Image.Loading
+        visible: asset.item && asset.item.status == Image.Loading
 
         Timer {
             interval: 32
             repeat: true
             onTriggered: progressCircle.value = (progressCircle.value + 0.01) % 1.0
-            running: roundedIcon.item && roundedIcon.item.status == Image.Loading
+            running: asset.item && asset.item.status == Image.Loading
         }
     }
 
     MouseArea {
         anchors.fill: parent
         onClicked: parent.clicked()
-        enabled: roundedIcon.visible
+        enabled: asset.visible
 
         hoverEnabled: true
         //onPressed: if (highlightOnClick) parent.highlighted = true

@@ -35,6 +35,15 @@ CachePeriodMapping = [
 ]
 #CachePeriodMapping.__doc__ = """Maps QML cache period slider system to timedelta objects. On app restart is timedelta(0), Never is None."""
 
+STUB_QML_ASSET = {
+    'available': False,
+    'source': '',
+    'originalSource': '',
+    'animated': False,
+    'type': -1,
+    'id': -1,
+}
+
 class ImageType(Enum):
     SERVER = auto()
     USER = auto()
@@ -118,14 +127,23 @@ def download_save(url, destination: AnyPath, proxies: dict | None):
         return True
     return False
 
-def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, animated=False, url=None):
+def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None):
+    if animated is None:
+        animated = get_extension_from_url(path) in VALID_ANIMATED_FORMATS
+    if url == path:
+        url = None
     return {
-        'source': str(path),
-        'originalSource': str(url),
+        'available': True,
+        'source': str(path or ''),
+        'originalSource': str(url or ''),
         'animated': bool(animated),
         'type': asset_type.value if isinstance(asset_type, ImageType) else asset_type,
         'id': str(asset_id),
     }
+
+def notify_qml(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None):
+    asset_type = asset_type.value if isinstance(asset_type, ImageType) else asset_type
+    qsend(f'recache{asset_type}{asset_id}', construct_qml_data(path, asset_type, asset_id, url, animated))
 
 class Cacher:
     @property
@@ -220,6 +238,7 @@ class Cacher:
         path.parent.mkdir(exist_ok=True, parents=True)
         if self.download_save(url, path):
             self.set_cached_session(id, type)
+            notify_qml(url, type, id, url)
 
     def cache_image_bg(self, url, id, type: ImageType, format: str|None=None, force=False):
         Thread(target=self.cache_image, args=(url, id, type, format, force)).start()
@@ -251,5 +270,7 @@ class Cacher:
         if icon != '':
             self.cache_image_bg(str(url), id, type, format)
         if as_qml_data:
-            return construct_qml_data(icon, type, id, get_extension_from_url(icon) in VALID_ANIMATED_FORMATS, url if icon != url else None)
+            if icon == '':
+                return STUB_QML_ASSET
+            return construct_qml_data(icon, type, id, url)
         return icon
