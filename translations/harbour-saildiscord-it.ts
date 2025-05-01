@@ -842,7 +842,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="403"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Sto ripristinando le impostazioni</translation>
@@ -998,7 +998,7 @@
         <translation>Abilita certe funzioni utili per sviluppatori quali la copia degli ID</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
         <source>Please restart the app</source>
         <translation>Per favore riavvia l&apos;applicazione</translation>
     </message>

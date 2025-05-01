@@ -38,12 +38,12 @@ AboutPageBase {
         anchors.fill: parent
         onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
             spoiler: false,
-            filename: name+"_"+serverid+'.png',
+            filename: name+"_"+serverid+'.'+icon.extension,
             _height: _iconItem.sourceSize.height,
             maxheight: _iconItem.sourceSize.height,
             maxwidth: _iconItem.sourceSize.width,
-            type: 2,
-            realtype: 'image/png',
+            type: icon.animated ? 3 : 2,
+            realtype: 'image/'+icon.extension,
             url: icon.source,
             alt: ""
         }])})

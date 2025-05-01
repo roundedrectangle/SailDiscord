@@ -386,7 +386,6 @@ Page {
                             checked: appSettings.developerMode
                             onCheckedChanged: appSettings.developerMode = checked
                         }
-
                     }
                 }
             }

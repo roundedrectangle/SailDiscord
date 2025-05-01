@@ -41,6 +41,7 @@ STUB_QML_ASSET = {
     'animated': False,
     'type': -1,
     'id': -1,
+    'extension': 'png',
 }
 
 class ImageType(Enum):
@@ -107,11 +108,13 @@ def download_save(url, destination: AnyPath, proxies: dict | None):
         return True
     return False
 
-def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None):
+def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None, extension=None):
     if animated is None:
         animated = get_extension_from_url(path) in VALID_ANIMATED_FORMATS
     if url == path:
         url = None
+    if extension is None:
+        extension = get_extension_from_url(path)
     return {
         'available': True,
         'source': str(path or ''),
@@ -119,6 +122,7 @@ def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, url=None,
         'animated': bool(animated),
         'type': asset_type.value if isinstance(asset_type, ImageType) else asset_type,
         'id': str(asset_id),
+        'extension': extension,
     }
 
 def notify_qml(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None):

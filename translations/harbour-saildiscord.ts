@@ -840,7 +840,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="403"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation type="unfinished"></translation>
@@ -1041,7 +1041,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
         <source>Please restart the app</source>
         <translation type="unfinished"></translation>
     </message>

@@ -840,7 +840,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="403"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Настройки сброшены</translation>
@@ -996,7 +996,7 @@
         <translation>Включает некоторые функции полезные для разработчика, такие как скопировать ID</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
         <source>Please restart the app</source>
         <translation>Пожалуйста, перезапустите приложение</translation>
     </message>

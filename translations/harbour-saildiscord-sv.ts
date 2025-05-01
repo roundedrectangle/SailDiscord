@@ -842,7 +842,7 @@
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="403"/>
         <source>Settings reset</source>
         <comment>Past tense</comment>
         <translation>Inställningar återställda</translation>
@@ -1043,7 +1043,7 @@
         <translation>Aktiverar funktioner användbara för utvecklare, t.ex. ID-kopiering</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="405"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="404"/>
         <source>Please restart the app</source>
         <translation>Starta om appen</translation>
     </message>
