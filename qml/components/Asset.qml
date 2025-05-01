@@ -47,7 +47,6 @@ Loader {
                               if (!asset.cachedSourceFailed) {
                                   asset.cachedSourceFailed = true
                                   py.call2('recache', [imageType, assetId, originalSource])
-                                  //shared.imageLoadError(errorString)
                               } else {
                                   // TODO: display fallback image or something
                               }

@@ -135,7 +135,7 @@ ApplicationWindow {
                 servers.forEach(function(server, i) { shared.serverAdded(server[0], serversModel.count-1, i) })
             })
             setHandler('dm', function(channelId, unread, mentions, name, icon, perm, _id) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: '', unread: unread, mentions: mentions}) })
-            setHandler('group', function(channelId, unread, mentions, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed"), unread: unread, mentions: mentions}) })
+            setHandler('group', function(channelId, unread, mentions, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed", "group"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed"), unread: unread, mentions: mentions}) })
             setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 

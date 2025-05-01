@@ -110,7 +110,6 @@ ListItem {
                         Asset {
                             anchors.fill: parent
                             source: decoration
-                            onStatusChanged: if (status == Image.Error) shared.imageLoadError('decoration#'+author)
                         }
                     }
                 }

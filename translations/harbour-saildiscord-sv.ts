@@ -112,7 +112,7 @@
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="230"/>
+        <location filename="../qml/components/MessageItem.qml" line="229"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Om denna medlem</translation>
@@ -196,69 +196,64 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="140"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
         <source>Connection failure</source>
         <translation>Anslutningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="141"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
         <source>Login failure</source>
         <translation>Inloggningsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="142"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
         <source>Captcha required but not implemented</source>
         <translation>Captcha krävs, men inte implementerad</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="143"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="146"/>
         <source>404 Not Found</source>
         <translation>404 Hittas inte</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="144"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="147"/>
         <source>A message failed to load</source>
         <translation>Ett meddelande kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="145"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>A reference failed to load</source>
         <translation>En referens kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="146"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="149"/>
         <source>Channel failed to load</source>
         <translation>Kanalen kunde inte läsas in</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="149"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="152"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Okänd privat kanal: %1. Rapportera gärna detta till utvecklarna</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="150"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Kunde inte hämta cachen: Anslutning misslyckades</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="151"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
         <source>Unknown caching error</source>
         <translation>Okänt cachelagringsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="158"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="161"/>
         <source>Unknown error: %1</source>
         <translation>Okänt fel: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="181"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="184"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
-    </message>
-    <message>
-        <location filename="../qml/components/Shared.qml" line="82"/>
-        <source>Error loading image %1</source>
-        <translation>Kunde inte läsa in bilden %1</translation>
     </message>
 </context>
 <context>
@@ -270,17 +265,17 @@
         <translation>Kopiera kanal-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="241"/>
+        <location filename="../qml/components/MessageItem.qml" line="240"/>
         <source>Copy message ID</source>
         <translation>Kopiera meddelande-ID</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="236"/>
+        <location filename="../qml/components/MessageItem.qml" line="235"/>
         <source>Copy message link</source>
         <translation>Kopiera meddelandelänk</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="246"/>
+        <location filename="../qml/components/MessageItem.qml" line="245"/>
         <source>Copy formatted contents</source>
         <translation>Kopiera formaterat innehåll</translation>
     </message>
@@ -352,7 +347,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="175"/>
+        <location filename="../qml/components/MessageItem.qml" line="174"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Redigerad %1</translation>
@@ -1061,7 +1056,7 @@
         <translation>(redigerad)</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="88"/>
+        <location filename="../qml/components/Shared.qml" line="84"/>
         <source>Downloaded file %1</source>
         <translation>Laddade ner filen %1</translation>
     </message>
@@ -1082,40 +1077,46 @@
 <context>
     <name>harbour-saildiscord</name>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="135"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="138"/>
         <source>Unnamed</source>
+        <translation>Namnlös</translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="138"/>
+        <source>Unnamed</source>
+        <comment>group</comment>
         <translation>Namnlös</translation>
     </message>
 </context>
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="203"/>
+        <location filename="../qml/components/Shared.qml" line="199"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="204"/>
+        <location filename="../qml/components/Shared.qml" line="200"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="205"/>
+        <location filename="../qml/components/Shared.qml" line="201"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="206"/>
+        <location filename="../qml/components/Shared.qml" line="202"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="207"/>
+        <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Idle</source>
         <translation>Väntar</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="210"/>
+        <location filename="../qml/components/Shared.qml" line="206"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>

@@ -78,10 +78,6 @@ QtObject {
         console.log(text)
     }
 
-    function imageLoadError(name) {
-        if (name) showError(qsTranslate("Errors", "Error loading image %1").arg(name))
-    }
-
     // Files
     function download(url, name) {
         py.call('main.comm.download_file', [url, name], function(r) {
