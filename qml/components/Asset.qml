@@ -6,16 +6,16 @@ Loader {
     asynchronous: true
 
     //property string errorString
-    property var info: {stub: true}
+    property var info: ({})
 
-    property string cachedSource
-    property string originalSource
-    property bool animated
-    property int imageType
-    property string assetId
+    //property string cachedSource: info.source||''
+    //property string originalSource: info.originalSource||''
+    //property bool animated: !!info.animated
+    //property int imageType: info.type
+    //property string assetId: info.id
 
-    property bool cachedSourceFailed: !cachedSource || cachedSource == 'None' // auto-fail if source is empty
-    property string source: asset.cachedSourceFailed && asset.originalSource ? asset.originalSource : asset.cachedSource
+    property bool cachedSourceFailed: info.available && (!info.source || info.source === 'None') // auto-fail if source is empty
+    property string source: asset.cachedSourceFailed && info && info.originalSource ? info.originalSource : info.source
     property bool forceStatic
     property bool pauseAnimation
     property string lastHandler
@@ -23,30 +23,26 @@ Loader {
     readonly property var imageStatus: item ? item.status : Image.Loading
 
     function updateFromData() {
-        if (!!info && !info.stub && info.available) {
-            cachedSource = info.source||''
+        if (info && info.available) {
             cachedSourceFailed = false
-            originalSource = info.originalSource||''
-            animated = info.animated||false
-            imageType = info.type
-            assetId = info.id
-
             if (lastHandler) py.setHandler(lastHandler, undefined)
-            lastHandler = 'recache'+imageType+assetId
+            lastHandler = 'recache'+info.type+info.id
             py.setHandler(lastHandler, function(updated) { asset.info = updated })
         }
     }
 
     Component.onCompleted: updateFromData()
-    Component.onDestruction: py.setHandler(lastHandler, undefined)
+    Component.onDestruction: if (lastHandler) py.setHandler(lastHandler, undefined)
     onInfoChanged: updateFromData()
 
-    sourceComponent: animated && !forceStatic ? animatedComponent : staticComponent
+    sourceComponent: info && info.available ?
+                         (!forceStatic && info && info.animated ? animatedComponent : staticComponent)
+                       : null
 
     onImageStatusChanged: if (status == Image.Error) {
                               if (!asset.cachedSourceFailed) {
                                   asset.cachedSourceFailed = true
-                                  py.call2('recache', [imageType, assetId, originalSource])
+                                  py.call2('recache', [info.type, info.id, info.originalSource])
                               } else {
                                   // TODO: display fallback image or something
                               }

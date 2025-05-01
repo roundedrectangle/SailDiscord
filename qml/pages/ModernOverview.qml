@@ -143,7 +143,8 @@ SilicaFlickable {
                                         }
                                         errorString: name
                                         enabled: false
-                                        pauseAnimation: !selected
+                                        forceStatic: !selected
+                                        //pauseAnimation: !selected // uses too much memory like this
                                     }
                                 }
                                 Component {
