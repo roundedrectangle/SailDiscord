@@ -50,7 +50,7 @@ Page {
             avatar = i
             status = s
             onMobile = m
-        }, serversModel.append, dmModel.append, function(channelId, unread, mentions) {
+        }, serversModel, dmModel.append, function(channelId, unread, mentions) {
             var i = dmModel.findIndexById(channelId)
             if (i >= 0) {
                 dmModel.setProperty(i, 'unread', unread)
@@ -96,7 +96,19 @@ Page {
         }
     }
 
-    ListModel { id: serversModel }
+    ListModel {
+        id: serversModel
+        function findIndexById(id) {
+            for(var i=0; i < count; i++) {
+                if (get(i).folder) {
+                    var s = get(i).servers
+                    for (var j=0; j < s.length; j++)
+                        if (s[j] == id) return [i, j]
+                } else if (get(i)._id == id) return [i, -1]
+            }
+            return [-1, -1]
+        }
+    }
     ListModel {
         id: dmModel
 

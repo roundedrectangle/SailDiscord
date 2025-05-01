@@ -82,6 +82,20 @@ SilicaFlickable {
                 }
             }
 
+            Component.onCompleted: if (appConfiguration.modernLastServerId != '-1') {
+                                       var i = serversModel.findIndexById(appConfiguration.modernLastServerId)
+                                       serverIndex = i[0]
+                                       folderIndex = i[1]
+                                   }
+
+            Connections {
+                target: shared
+                onServerAdded: if (serverId == appConfiguration.modernLastServerId) {
+                                   serverIndex = mainIndex
+                                   folderIndex = subIndex
+                               }
+            }
+
             delegate: Loader {
                 sourceComponent: folder ? serverFolderComponent : serverItemComponent
                 width: parent.width
@@ -177,29 +191,26 @@ SilicaFlickable {
                                 onClicked: Clipboard.text = serverid
                             }
                         } }
-
-                        // TODO: move this outside the delegate
-                        Component.onCompleted: if (_id == appConfiguration.modernLastServerId) open()
                     }
                 }
 
                 Component {
                     id: serverFolderComponent
-                        ColumnView {
-                            width: parent.width
-                            model: _servers
-                            property int folderIndex: index
-                            delegate: serverItemComponent
-                            itemHeight: Theme.itemSizeLarge
+                    ColumnView {
+                        width: parent.width
+                        model: _servers
+                        property int folderIndex: index
+                        delegate: serverItemComponent
+                        itemHeight: Theme.itemSizeLarge
 
-                            Rectangle {
-                                anchors.fill: parent
-                                z: -1
-                                color: _color == "" ? palette.highlightColor : _color
-                                radius: parent.width / 2
-                                opacity: 0.2
-                            }
+                        Rectangle {
+                            anchors.fill: parent
+                            z: -1
+                            color: _color == "" ? palette.highlightColor : _color
+                            radius: parent.width / 2
+                            opacity: 0.2
                         }
+                    }
                 }
             }
         }

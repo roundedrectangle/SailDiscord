@@ -11,6 +11,9 @@ QtObject {
             backslashEscapesHTMLTags: true,
         })
 
+    // Signals
+    signal serverAdded(string serverId, int mainIndex, int subIndex)
+
     // Shared
     function log() {
       var f = ""
