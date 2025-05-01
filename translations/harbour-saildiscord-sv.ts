@@ -258,7 +258,7 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="82"/>
         <source>Error loading image %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte läsa in bilden %1</translation>
     </message>
 </context>
 <context>
@@ -843,7 +843,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="175"/>
         <source>as avatar (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>som avatar (standard)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
@@ -1058,12 +1058,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="56"/>
         <source>(edited)</source>
-        <translation type="unfinished"></translation>
+        <translation>(redigerad)</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="88"/>
         <source>Downloaded file %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Laddade ner filen %1</translation>
     </message>
 </context>
 <context>
@@ -1092,33 +1092,33 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="203"/>
         <source>Online</source>
-        <translation type="unfinished"></translation>
+        <translation>Online</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="204"/>
         <source>Offline</source>
-        <translation type="unfinished"></translation>
+        <translation>Offline</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="205"/>
         <source>Do Not Disturb</source>
-        <translation type="unfinished"></translation>
+        <translation>Stör ej</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="206"/>
         <source>Invisible</source>
-        <translation type="unfinished"></translation>
+        <translation>Osynlig</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="207"/>
         <source>Idle</source>
-        <translation type="unfinished"></translation>
+        <translation>Väntar</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="210"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Telefon)</translation>
     </message>
 </context>
 </TS>
