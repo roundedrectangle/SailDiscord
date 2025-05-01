@@ -168,7 +168,7 @@ QtObject {
     function processServer(_id, name, icon) {
         if (appConfiguration.legacyMode && _id == "1261605062162251848") {
             name = "RoundedRectangle's server"
-            icon = Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))
+            icon = {available: true, source: Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))}
         }
         // heads up: QQMLListModel can convert:
         // arrays to QQMLListModel instances

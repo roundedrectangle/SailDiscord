@@ -44,7 +44,7 @@ AboutPageBase {
             maxwidth: _iconItem.sourceSize.width,
             type: 2,
             realtype: 'image/png',
-            url: icon,
+            url: icon.source,
             alt: ""
         }])})
     }

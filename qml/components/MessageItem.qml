@@ -97,7 +97,6 @@ ListItem {
                         ListImage {
                             info: avatar
                             errorString: author
-                            highlightOnClick: true
                             onClicked: openAboutUser()
                             enabled: _firstSameAuthor && showRequestableOptions && userid != '-1'
                             disableAnimations: true
@@ -108,12 +107,8 @@ ListItem {
                     anchors.fill: parent
                     active: profileIconLoader.active && !!decoration
                     sourceComponent: Component {
-                        Image {
+                        Asset {
                             anchors.fill: parent
-                            sourceSize {
-                                width: width
-                                height: height
-                            }
                             source: decoration
                             onStatusChanged: if (status == Image.Error) shared.imageLoadError('decoration#'+author)
                         }

@@ -33,6 +33,7 @@ ListItem {
                     anchors.fill: parent
                     forceVisibility: true
                     errorString: title
+                    forceStatic: true
                 }
             }
             Component {

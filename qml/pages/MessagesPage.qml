@@ -16,7 +16,7 @@ Page {
     property bool isDM: false
     property bool isGroup: false
     property string userid: ''
-    property string usericon: ''
+    property var usericon
     property string topic
 
     property string previouslyEnteredText: ''

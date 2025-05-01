@@ -156,7 +156,7 @@ TabView {
                 flickable: morePage.flickable
                 //topMargin: -(parent._ctxTopMargin || _ctxTopMargin || 0) // a bug occuring when using with Opal.About: top margin goes away for some reason, and gets the header...
                 property string _username: username
-                property string _avatar: avatar
+                property var _avatar: avatar
 
                 AboutUserPage {
                     parent: null

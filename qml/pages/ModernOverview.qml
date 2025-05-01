@@ -129,6 +129,7 @@ SilicaFlickable {
                                         }
                                         errorString: name
                                         enabled: false
+                                        pauseAnimation: !selected
                                     }
                                 }
                                 Component {

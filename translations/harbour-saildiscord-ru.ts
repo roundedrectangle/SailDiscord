@@ -58,7 +58,7 @@
 <context>
     <name>AboutServer</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="77"/>
+        <location filename="../qml/components/ServerListItem.qml" line="76"/>
         <location filename="../qml/pages/AboutServerPage.qml" line="32"/>
         <source>About</source>
         <comment>Server</comment>
@@ -112,7 +112,7 @@
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="235"/>
+        <location filename="../qml/components/MessageItem.qml" line="230"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -264,7 +264,7 @@
 <context>
     <name>General</name>
     <message>
-        <location filename="../qml/components/ServerListItem.qml" line="83"/>
+        <location filename="../qml/components/ServerListItem.qml" line="82"/>
         <source>Copy server ID</source>
         <translation>Скопировать ID сервера</translation>
     </message>
@@ -280,17 +280,17 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="246"/>
+        <location filename="../qml/components/MessageItem.qml" line="241"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="241"/>
+        <location filename="../qml/components/MessageItem.qml" line="236"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="251"/>
+        <location filename="../qml/components/MessageItem.qml" line="246"/>
         <source>Copy formatted contents</source>
         <translation>Скопировать форматированное содержание</translation>
     </message>
@@ -352,7 +352,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="180"/>
+        <location filename="../qml/components/MessageItem.qml" line="175"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
