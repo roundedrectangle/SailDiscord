@@ -37,7 +37,7 @@ Requires: python3-pip
 
 %define __provides_exclude_from ^%{_datadir}/.*$
 %global _missing_build_ids_terminate_build 0
-%define __requires_exclude ^libXau|libbrotlicommo|libfreetype|libjpeg|liblzma|libsharpyuv|libwebp|python3dist(attrs)|python3dist(idna)|python3dist(pyopenssl).*$
+%define __requires_exclude ^libXau|libbrotlicommo|libfreetype|libjpeg|liblzma|libsharpyuv|libwebp|python3dist(attrs)|python3dist(idna)|python3dist(pyopenssl)|libffi.*$
 
 %description
 Discord in your pocket
