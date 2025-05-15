@@ -87,6 +87,7 @@ SilicaFlickable {
                                        var i = serversModel.findIndexById(appConfiguration.modernLastServerId)
                                        serverIndex = i[0]
                                        folderIndex = i[1]
+                                       serverList.positionViewAtIndex(serverIndex, ListView.Visible)
                                    }
 
             Connections {
@@ -94,6 +95,7 @@ SilicaFlickable {
                 onServerAdded: if (serverId == appConfiguration.modernLastServerId) {
                                    serverIndex = mainIndex
                                    folderIndex = subIndex
+                                   serverList.positionViewAtIndex(serverIndex, ListView.Visible)
                                }
             }
 
