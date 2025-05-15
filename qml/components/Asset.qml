@@ -15,7 +15,7 @@ Loader {
     //property string assetId: info.id
 
     property bool cachedSourceFailed: info.available && (!info.source || info.source === 'None') // auto-fail if source is empty
-    property string source: asset.cachedSourceFailed && info && info.originalSource ? info.originalSource : info.source
+    property string source: (asset.cachedSourceFailed && info && info.originalSource) ? info.originalSource : info.source
     property bool forceStatic
     property bool pauseAnimation
     property string lastHandler
@@ -53,7 +53,7 @@ Loader {
         Image {
             anchors.fill: parent
             asynchronous: true
-            source: !asset.source || asset.source == 'None' ? '' : asset.source
+            source: (!asset.source || asset.source == 'None') ? '' : asset.source
             sourceSize {
                 width: width
                 height: height
