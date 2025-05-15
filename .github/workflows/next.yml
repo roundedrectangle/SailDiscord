@@ -48,7 +48,9 @@ jobs:
     #    key: cache
 
     - name: Prepare
-      run: mkdir RPMS
+      run: |
+        sed -i 's/%define package_library "no"/%define package_library "yes"/g' rpm/SailDiscord.spec
+        mkdir RPMS
 
     - name: Build aarch64 on ${{ env.RELEASE }}
       uses: coderus/github-sfos-build@master
