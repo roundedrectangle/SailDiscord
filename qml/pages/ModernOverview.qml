@@ -20,6 +20,7 @@ SilicaFlickable {
     property var currentServer: serverIndex >= 0 ? (folderIndex >= 0 ? serversModel.get(serverIndex).servers.get(folderIndex) : serversModel.get(serverIndex)) : null
 
     PullDownMenu {
+        id: pulleyMenu
         MenuItem {
             text: qsTranslate("AboutApp", "About Sailcord", "App")
             onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
@@ -53,7 +54,7 @@ SilicaFlickable {
             width: Theme.itemSizeLarge + Theme.paddingMedium
             height: parent.height
             model: serversModel
-            clip: true
+            clip: pulleyMenu.active
             quickScroll: appSettings.modernUIServersQuickScroll
             VerticalScrollDecorator {}
 
