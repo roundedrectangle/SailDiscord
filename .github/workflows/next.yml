@@ -76,3 +76,11 @@ jobs:
       with:
         name: RPM-build-results_SFOS${{ env.RELEASE }}+
         path: RPMS/
+    
+    - uses: pyTooling/Actions/releaser@r0
+      with:
+        tag: nightly
+        rm: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        files: |
+          RPMS/*
