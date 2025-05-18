@@ -8,8 +8,6 @@ from threading import Thread
 from caching import Cacher, ImageType
 from utils import *
 
-script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
-sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
 import discord
 
 # Servers

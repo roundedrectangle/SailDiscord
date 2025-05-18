@@ -147,9 +147,11 @@ ApplicationWindow {
                 'message': qsTranslate("Errors", "A message failed to load"),
                 'reference': qsTranslate("Errors", "A reference failed to load"),
                 'channel': qsTranslate("Errors", "Channel failed to load"),
+                'userInfo': qsTranslate("Errors", "Could not get user information"),
+                'serverInfo': qsTranslate("Errors", "Could not get server information"),
+                'unknownPrivateChannel': qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers"),
 
                 // Caching
-                'unknownPrivateChannel': qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers"),
                 'cacheConnection': qsTranslate("Errors", "Unable to receive cache: connection failed"),
                 'cache': qsTranslate("Errors", "Unknown caching error"),
             }
@@ -174,7 +176,8 @@ ApplicationWindow {
                 }
             })
 
-            addImportPath(Qt.resolvedUrl("../python"))
+            addImportPath(Qt.resolvedUrl('../lib/deps'))
+            addImportPath(Qt.resolvedUrl('../python'))
             importModule('main', function() {
                 reloadConstants()
                 initialized = true

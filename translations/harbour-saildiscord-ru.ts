@@ -11,7 +11,7 @@
     </message>
     <message>
         <location filename="../qml/pages/ClassicOverview.qml" line="176"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="24"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="25"/>
         <source>About Sailcord</source>
         <comment>App</comment>
         <translation>О Sailcord</translation>
@@ -66,7 +66,7 @@
     </message>
     <message>
         <location filename="../qml/pages/ChannelsPage.qml" line="57"/>
-        <location filename="../qml/pages/ModernOverview.qml" line="28"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="29"/>
         <source>About this server</source>
         <comment>Server</comment>
         <translation>О сервере</translation>
@@ -231,27 +231,37 @@
         <translation>Не удалось загрузить канал</translation>
     </message>
     <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="150"/>
+        <source>Could not get user information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="151"/>
+        <source>Could not get server information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/harbour-saildiscord.qml" line="152"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="155"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="154"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="161"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="184"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="187"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -417,12 +427,12 @@
 <context>
     <name>ModernOverview</name>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="37"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="38"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ModernOverview.qml" line="42"/>
+        <location filename="../qml/pages/ModernOverview.qml" line="43"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>

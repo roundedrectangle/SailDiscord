@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import sys
 from pyotherside import send as qsend
 from threading import Thread
 import asyncio, shutil
@@ -8,7 +7,6 @@ from pathlib import Path
 from datetime import datetime
 from typing import Any
 from concurrent.futures._base import CancelledError
-from urllib import parse
 import logging
 
 from exceptions import *
@@ -16,9 +14,8 @@ from utils import *
 from sending import *
 from caching import Cacher
 
-script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
-sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
-import discord, requests, aiohttp.connector
+from pyotherside_utils import *
+import discord, aiohttp.connector
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -92,6 +89,7 @@ class MyClient(discord.Client):
 
     async def on_ready(self):
         comm.ensure_constants()
+        comm.set_user_agent()
         # Setup control variables
         self.loop = asyncio.get_running_loop()
 
@@ -210,6 +208,7 @@ class MyClient(discord.Client):
 class Communicator:
     downloads: Path | None = None
     cacher: Cacher | None = None
+    temp: TemporaryManager | None = None
     token: str = ''
     loginth: Thread
     client: MyClient
@@ -238,9 +237,13 @@ class Communicator:
         self.send_unread = send_unread
         if self.cacher:
             self.set_cache_period(cache_period)
-            self.cacher.recreate_temporary()
         else:
             self.cacher = Cacher(cache, cache_period)
+        if self.temp:
+            self.temp.recreate_temporary()
+        else:
+            self.temp = TemporaryManager(cache)
+        
         self.set_proxy(proxy)
         self.downloads = Path(downloads)
 
@@ -251,16 +254,26 @@ class Communicator:
     def set_proxy(self, proxy):
         if not proxy:
             self.client.http.proxy = None
+            if self.cacher:
+                self.cacher.proxy = None
+            if self.temp:
+                self.temp.proxy = None
             return
 
-        p = parse.urlparse(proxy, 'http') # https://stackoverflow.com/a/21659195
-        netloc = p.netloc or p.path
-        path = p.path if p.netloc else ''
-        p = parse.ParseResult('http', netloc, path, *p[3:])
-
-        self.client.http.proxy = p.geturl()
+        p = convert_proxy(proxy)
+        self.client.http.proxy = p
         if self.cacher:
-            self.cacher.proxy = p.geturl()
+            self.cacher.proxy = p
+        if self.temp:
+            self.temp.proxy = p
+    
+    def set_user_agent(self):
+        if not self.client.http.user_agent:
+            return
+        if self.cacher:
+            self.cacher.user_agent = self.client.http.user_agent
+        if self.temp:
+            self.temp.user_agent = self.client.http.user_agent
 
     def set_active(self, active):
         self.active = active
@@ -311,18 +324,18 @@ class Communicator:
     def send_message(self, message_text):
         self.client.send_message(message_text)
 
-    @exception_decorator(AttributeError, discord.NotFound)
+    @exception_safe(AttributeError, discord.NotFound)
     def get_history_messages(self, before_id):
         self.client.run_asyncio_threadsafe(self.client.get_last_messages(int(before_id)), False)
 
-    @exception_decorator(CancelledError)
+    @exception_safe(CancelledError)
     def disconnect(self):
-        self.cacher.clear_temporary()
+        self.temp.clear_temporary()
 
         self.client.begin_disconnect()
         self.loginth.join() # App gets terminated once this function ends, so we end it only once the thread finishes
     
-    @attributeerror_safe
+    @exception_safe({AttributeError: 'userInfo'})
     def request_user_info(self, user_id:int=None):
         self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1))
 
@@ -330,18 +343,14 @@ class Communicator:
         dest = self.downloads / filename
         self.ensure_constants()
         if isurl(url):
-            r = requests.get(url, stream=True)
-            if r.status_code == 200:
-                with open(dest, 'wb') as f:
-                    for chunk in r:
-                        f.write(chunk)
+            download_save(url, dest, self.cacher.proxies)
         else:
             shutil.copy(url, dest)
 
     def save_temp(self, url, name):
         """Returns saved temp file path"""
         if isurl(url):
-            return str(self.cacher.save_temporary(url, name))
+            return str(self.temp.save_temporary(url, name))
         else: return url
 
     def get_reference(self, channel_id, message_id):
@@ -352,7 +361,7 @@ class Communicator:
         event, args = self.client.run_asyncio_threadsafe(generate_message(m))
         return (event, *args)
 
-    @attributeerror_safe
+    @exception_safe({AttributeError: 'serverInfo'})
     def request_server_info(self, server_id:int=None):
         if not server_id:
             logging.warning(f"Requested info for a server with non-truthful ID: {server_id}")

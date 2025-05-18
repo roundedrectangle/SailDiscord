@@ -1,56 +1,23 @@
 from __future__ import annotations
-import sys, re
-from datetime import datetime, timezone, timedelta
+import re
+from datetime import timedelta
 from caching import ImageType
 from pyotherside import send as qsend
 from typing import Union, TYPE_CHECKING
-import functools
-from contextlib import suppress
 from enum import Enum, auto
-from pathlib import Path
-import asyncio
-import urllib.parse
 import traceback as tb
 
 if TYPE_CHECKING:
-    from typing import Callable, Any
+    from typing import Any
     from caching import Cacher
 
-script_path = Path(__file__).absolute().parent # /usr/share/harbour-saildiscord/python
-sys.path.append(str(script_path.parent / 'lib/deps')) # /usr/share/harbour-saildiscord/lib/deps
+from pyotherside_utils import *
 import discord
 
 GeneralNone = ('', None) # usage: x in GenralNone
 AnyChannel = Union[discord.abc.GuildChannel, discord.abc.PrivateChannel]
 dummy_qml_user_info = {"id": '-1', "sent": False, "name": '', "avatar": '', "bot": False, "system": False, "color": ''}
 CUSTOM_EMOJI_RE_ESCAPED = re.compile(f'\\\\?({discord.PartialEmoji._CUSTOM_EMOJI_RE.pattern})') # pyright: ignore[reportPrivateUsage]
-
-def exception_decorator(*exceptions: Exception):
-    """Generates a decorator for handling exceptions in `exceptions`. Calls `pyotherside.send` on error. Preserves __doc__, __name__ and other attributes."""
-    def decorator(func: Callable):
-        @functools.wraps(func)
-        def f(*args, **kwargs):
-            try:
-                return func(*args, **kwargs)
-            except exceptions as e: # pyright: ignore[reportGeneralTypeIssues]
-                qsend(f"An error occured while running function '{func.__name__}': {type(e).__name__}: {e}")
-
-        return f
-    return decorator
-
-
-attributeerror_safe = exception_decorator(AttributeError)
-
-async def cancel_gen(agen):
-    task = asyncio.create_task(agen.__anext__())
-    task.cancel()
-    with suppress(asyncio.CancelledError):
-        await task
-    await agen.aclose()
-
-def qml_date(date: datetime):
-    """Convert to UTC Unix timestamp using milliseconds"""
-    return date.replace(tzinfo=timezone.utc).timestamp()*1000
 
 class classproperty(property):
     def __get__(self, owner_self, owner_cls=None):
@@ -118,10 +85,6 @@ def dict_folder(folder: discord.GuildFolder | Any) -> dict | None:
         'name': folder.name,
         'color': hex_color(folder.color),
     }
-
-def isurl(obj: str):
-    """Returns True if an object is an internet URL"""
-    return urllib.parse.urlparse(obj).scheme != '' #not in ('file','')
 
 def emojify(message: discord.Message | str, cacher: Cacher, size: int | None=None, pattern=discord.PartialEmoji._CUSTOM_EMOJI_RE, pattern_match_index=0): # pyright:ignore[reportPrivateUsage]
     res = message if isinstance(message, str) else message.content
