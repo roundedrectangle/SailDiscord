@@ -100,7 +100,7 @@ class Cacher(CacherBase):
         self.set_cached_session(id, type, False)
         path = self.get_cached_path(id, type, format=format or get_extension_from_url(url))
         path.parent.mkdir(exist_ok=True, parents=True)
-        if self.download_save(url, path):
+        if self.download_save(url, path, False):
             self.set_cached_session(id, type)
             notify_qml(url, type, id, url)
 
