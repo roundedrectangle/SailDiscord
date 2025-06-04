@@ -83,15 +83,12 @@ async def send_edited_message(before_id: int, after: discord.Message | Any):
 class MyClient(discord.Client):
     current_server: discord.Guild | None = None
     current_channel: discord.TextChannel | None = None
-    loop: asyncio.AbstractEventLoop
     current_channel_deletion_pending = False
     pending_close_task: asyncio.Task | None = None
 
     async def on_ready(self):
         comm.ensure_constants()
         comm.set_user_agent()
-        # Setup control variables
-        self.loop = asyncio.get_running_loop()
 
         qsend('logged_in', self.user.display_name, comm.cacher.easy(self.user.display_avatar, self.user.id, ImageType.MYSELF),
             StatusMapping(self.status).index if StatusMapping.has_value(self.status) else 0,
@@ -294,8 +291,9 @@ class Communicator:
         # Once the app is being closed, pyotherside.send/qsend no longer works since ApplicationWindow is partitialy destructed.
         # We have to use something like the logging module instead
         if self.client.pending_close_task:
+            logging.info("Running close task")
             await self.client.pending_close_task
-            logging.info("Client was disconnected succsessfully")
+        logging.info("Client was disconnected succsessfully")
 
     def get_channels(self, guild_id):
         g = self.client.get_guild(int(guild_id))
