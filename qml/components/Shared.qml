@@ -85,13 +85,14 @@ QtObject {
         notifier.summary = summary || ''
         notifier.body = text || ''
         notifier.publish()
-        console.log(text)
+        console.log(summary, text)
     }
 
     // Files
     function download(url, name) {
         py.call('main.comm.download_file', [url, name], function(r) {
-            showInfo(qsTr("Downloaded file %1").arg(name))
+            if (r) showInfo(qsTr("Downloaded file %1").arg(name))
+            else showError(qsTranslate("Errors", "Unable to download file: %1. Check recent errors").arg(name))
         })
     }
 

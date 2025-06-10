@@ -246,22 +246,27 @@
         <translation>Okänd privat kanal: %1. Rapportera gärna detta till utvecklarna</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="155"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
+        <source>Ignoring Discord error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Kunde inte hämta cachen: Anslutning misslyckades</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Unknown caching error</source>
         <translation>Okänt cachelagringsfel</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="164"/>
         <source>Unknown error: %1</source>
         <translation>Okänt fel: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="187"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="190"/>
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
@@ -1101,32 +1106,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="209"/>
+        <location filename="../qml/components/Shared.qml" line="211"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="210"/>
+        <location filename="../qml/components/Shared.qml" line="212"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="211"/>
+        <location filename="../qml/components/Shared.qml" line="213"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="212"/>
+        <location filename="../qml/components/Shared.qml" line="214"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="213"/>
+        <location filename="../qml/components/Shared.qml" line="215"/>
         <source>Idle</source>
         <translation>Väntar</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="216"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>

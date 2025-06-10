@@ -246,22 +246,27 @@
         <translation>Неизвестный приватный канал: %1. Пожалуйста, сообщите об этом разработчикам</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="155"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="153"/>
+        <source>Ignoring Discord error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
         <source>Unable to receive cache: connection failed</source>
         <translation>Не удалось получить кэш: не удалось создать соединение</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="156"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Unknown caching error</source>
         <translation>Неизвестная ошибка кэширования</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="163"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="164"/>
         <source>Unknown error: %1</source>
         <translation>Неизвестная ошибка: %1</translation>
     </message>
     <message>
-        <location filename="../qml/harbour-saildiscord.qml" line="187"/>
+        <location filename="../qml/harbour-saildiscord.qml" line="190"/>
         <source>Python error</source>
         <translation>Ошибка Python</translation>
     </message>
@@ -1099,32 +1104,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="209"/>
+        <location filename="../qml/components/Shared.qml" line="211"/>
         <source>Online</source>
         <translation>В сети</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="210"/>
+        <location filename="../qml/components/Shared.qml" line="212"/>
         <source>Offline</source>
         <translation>Оффлайн</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="211"/>
+        <location filename="../qml/components/Shared.qml" line="213"/>
         <source>Do Not Disturb</source>
         <translation>Не беспокоить</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="212"/>
+        <location filename="../qml/components/Shared.qml" line="214"/>
         <source>Invisible</source>
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="213"/>
+        <location filename="../qml/components/Shared.qml" line="215"/>
         <source>Idle</source>
         <translation>Занят</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="216"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>
