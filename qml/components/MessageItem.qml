@@ -9,7 +9,9 @@ ListItem {
     // Properties which are taken from the model:
     // author, messageId, avatar, contents, formattedContents, attachments, jumpUrl, reference, date,
     // sent // If the message is sent by the user connected to the client
-    // userid, flags // User-related
+    // userid, flags, decoration // User-related
+
+    property var _model: model // 1. For cases like `model: model.x` 2. For references (and possibly something else in the future)
 
     property bool sameAuthorAsBefore
     property bool sendPermissions
@@ -21,7 +23,7 @@ ListItem {
     property bool _firstSameAuthor: switch(appSettings.messageGrouping) {
         case "n": return true
         case "a": return !sameAuthorAsBefore || referenceLoader.item != undefined
-        case "d": return (!(sameAuthorAsBefore && (date - msgModel.get(index+1).date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
+        case "d": return (!(sameAuthorAsBefore && (_model.date - msgModel.get(index+1).date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
     }
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
 
@@ -61,15 +63,18 @@ ListItem {
         id: column
         width: parent.width
 
-        Item { height: !!attachments && attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
+        Item { height: !!_model.attachments && _model.attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
 
         Loader {
             id: referenceLoader
             width: parent.width
-            height: item == undefined ? 0 : item.implicitHeight
+            height: item ? item.implicitHeight : 0
             asynchronous: true
-            Component.onCompleted: if (reference.type == 1)
-                                       setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: reference, jump: jumpToReference})
+            source: _model.reference.type == 1 ? Qt.resolvedUrl("MessageReference.qml") : ''
+            onLoaded: {
+                item.reference = _model.reference
+                item.jump = jumpToReference
+            }
         }
 
         Row {
@@ -77,9 +82,9 @@ ListItem {
             width: parent.width - Theme.paddingLarge
             height: !_firstSameAuthor ? textContainer.height : implicitHeight//childrenRect.height
             // align right if sent and set to reversed/right aligned
-            anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
+            anchors.right: (_model.sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
             // reverse if sent and set to reversed
-            layoutDirection: (sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
+            layoutDirection: (_model.sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
 
             Item { id: leftPadding; height: 1; width: Theme.horizontalPageMargin
                 visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
@@ -92,24 +97,24 @@ ListItem {
                 Loader {
                     id: profileIconLoader
                     anchors.fill: parent
-                    active: _firstSameAuthor && !!avatar
+                    active: _firstSameAuthor && !!_model.avatar
                     sourceComponent: Component {
                         ListImage {
-                            info: avatar
-                            errorString: author
+                            info: _model.avatar
+                            errorString: _model.author
                             onClicked: openAboutUser()
-                            enabled: _firstSameAuthor && showRequestableOptions && userid != '-1'
+                            enabled: _firstSameAuthor && showRequestableOptions && _model.userid != '-1'
                             disableAnimations: true
                         }
                     }
                 }
                 Loader {
                     anchors.fill: parent
-                    active: profileIconLoader.active && !!decoration
+                    active: profileIconLoader.active && !!_model.decoration
                     sourceComponent: Component {
                         Asset {
                             anchors.fill: parent
-                            info: decoration
+                            info: _model.decoration
                         }
                     }
                 }
@@ -130,21 +135,21 @@ ListItem {
                     visible: _firstSameAuthor
                     spacing: Theme.paddingSmall
                     width: Math.min(parent.width, implicitWidth)//iconRow.width + authorLbl.width + timeLbl.width)
-                    anchors.right: (sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
+                    anchors.right: (_model.sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
 
                     Row {
                         id: iconRow
                         spacing: Theme.paddingSmall
                         anchors.verticalCenter: parent.verticalCenter
-                        Icon { source: "image://theme/icon-s-secure"; visible: flags.system }
-                        Icon { source: "image://theme/icon-s-developer"; visible: flags.bot }
+                        Icon { source: "image://theme/icon-s-secure"; visible: _model.flags.system }
+                        Icon { source: "image://theme/icon-s-developer"; visible: _model.flags.bot }
                     }
 
                     Label {
                         id: authorLbl
                         width: Math.min(parent.parent.width - iconRow.width - timeLbl.width - parent.spacing*2, implicitWidth)
-                        text: author
-                        color: flags.color ? flags.color : Theme.secondaryColor
+                        text: _model.author
+                        color: _model.flags.color ? _model.flags.color : Theme.secondaryColor
                         truncationMode: TruncationMode.Fade
                         MouseArea {
                             anchors.fill: parent
@@ -154,11 +159,11 @@ ListItem {
 
                     Label {
                         id: timeLbl
-                        text: Format.formatDate(date, Formatter.TimepointRelative)
+                        text: Format.formatDate(_model.date, Formatter.TimepointRelative)
                         color: Theme.secondaryHighlightColor
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: Notices.show(date.toLocaleString(), Notice.Short, Notice.Center)
+                            onClicked: Notices.show(_model.date.toLocaleString(), Notice.Short, Notice.Center)
                         }
                     }
                 }
@@ -167,35 +172,38 @@ ListItem {
                     // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
                     wrapMode: Text.Wrap
                     textFormat: appSettings.unformattedText ? Text.PlainText : Text.RichText
-                    text: formattedContents
+                    text: _model.formattedContents
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
-                    horizontalAlignment: (sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
-                    onLinkActivated: if (link == "sailcord://showEditDate" && flags.edit) Notices.show(qsTranslate("MessageItem", "Edited %1", "Date and time of a message edit. Showed when clicked on edited text").arg(date.toLocaleString()), Notice.Short, Notice.Center)
+                    horizontalAlignment: (_model.sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? Text.AlignRight : undefined
+                    onLinkActivated: if (link == "sailcord://showEditDate" && _model.flags.edit) Notices.show(qsTranslate("MessageItem", "Edited %1", "Date and time of a message edit. Showed when clicked on edited text").arg(_model.date.toLocaleString()), Notice.Short, Notice.Center)
                                      else LinkHandler.openOrCopyUrl(link)
-                    visible: contents.length > 0 || flags.edit
+                    visible: _model.contents.length > 0 || _model.flags.edit
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }
             }
         }
 
-        AttachmentsPreview { model: attachments }
+        AttachmentsPreview { model: _model.attachments }
 
         Loader {
             width: parent.width
-            height: item == undefined ? 0 : item.implicitHeight
+            height: item ? item.implicitHeight : 0
             asynchronous: true
-            Component.onCompleted: if (reference.type == 2)
-                                       setSource(Qt.resolvedUrl("MessageReference.qml"), {reference: reference, jump: jumpToReference})
+            source: _model.reference.type == 2 ? Qt.resolvedUrl("MessageReference.qml") : ''
+            onLoaded: {
+                item.reference = _model.reference
+                item.jump = jumpToReference
+            }
         }
 
-        Item { height: attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
+        Item { height: _model.attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
     }
 
     function openAboutUser() {
         pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"),
-                       { userid: userid, name: author, icon: avatar }
+                       { userid: _model.userid, name: _model.author, icon: _model.avatar }
                        )
     }
 
@@ -205,18 +213,18 @@ ListItem {
         FancyMenuRow {
             FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-clipboard"
-                onClicked: Clipboard.text = contents
-                visible: contents.length > 0
+                onClicked: Clipboard.text = _model.contents
+                visible: _model.contents.length > 0
             }
             FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-edit"
                 onClicked: editRequested()
-                visible: sent && showRequestableOptions
+                visible: _model.sent && showRequestableOptions
             }
             FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-delete"
                 onClicked: deleteRequested()
-                visible: (sent || managePermissions) && showRequestableOptions
+                visible: (_model.sent || managePermissions) && showRequestableOptions
             }
             FancyIconMenuItem {
                 icon.source: "image://theme/icon-m-message-reply"
@@ -227,24 +235,24 @@ ListItem {
         FancyAloneMenuItem {
             icon.source: "image://theme/icon-m-about"
             text: qsTranslate("AboutUser", "About this member", "User")
-            visible: userid != '-1'
+            visible: _model.userid != '-1'
             onClicked: openAboutUser()
         }
         FancyAloneMenuItem {
             icon.source: "image://theme/icon-m-link"
             text: qsTranslate("General", "Copy message link")
-            visible: !!jumpUrl
-            onClicked: Clipboard.text = jumpUrl
+            visible: !!_model.jumpUrl
+            onClicked: Clipboard.text = _model.jumpUrl
         }
         MenuItem {
             text: qsTranslate("General", "Copy message ID")
-            visible: appSettings.developerMode && messageId
-            onClicked: Clipboard.text = messageId
+            visible: appSettings.developerMode && _model.messageId
+            onClicked: Clipboard.text = _model.messageId
         }
         MenuItem {
             text: qsTranslate("General", "Copy formatted contents")
             visible: appSettings.developerMode
-            onClicked: Clipboard.text = formattedContents
+            onClicked: Clipboard.text = _model.formattedContents
         }
     }}
 }
