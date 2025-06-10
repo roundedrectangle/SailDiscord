@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-SlideshowView {
+PagedView {
     width: parent.width
     height: {
         if (attachments.count > 0) {
