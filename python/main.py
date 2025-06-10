@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+import sys
+# These aren't available in release builds with packaged library,
+# but may be installed on the device when started without Sailjail and cause some issues:
+sys.modules['httpx'] = None
+sys.modules['requests'] = None
+
 from pyotherside import send as qsend
 from threading import Thread
 import asyncio, shutil
