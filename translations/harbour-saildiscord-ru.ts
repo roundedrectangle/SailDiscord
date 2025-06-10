@@ -103,7 +103,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="139"/>
+        <location filename="../qml/components/MessageReference.qml" line="140"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
         <location filename="../qml/pages/MessagesPage.qml" line="352"/>
@@ -112,7 +112,7 @@
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="229"/>
+        <location filename="../qml/components/MessageItem.qml" line="237"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -233,12 +233,12 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="150"/>
         <source>Could not get user information</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось получить информацию о пользователе</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="151"/>
         <source>Could not get server information</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось получить информацию о сервере</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="152"/>
@@ -285,17 +285,17 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="240"/>
+        <location filename="../qml/components/MessageItem.qml" line="248"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="235"/>
+        <location filename="../qml/components/MessageItem.qml" line="243"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="245"/>
+        <location filename="../qml/components/MessageItem.qml" line="253"/>
         <source>Copy formatted contents</source>
         <translation>Скопировать форматированное содержание</translation>
     </message>
@@ -357,7 +357,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="174"/>
+        <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
@@ -366,27 +366,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="79"/>
+        <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Reference failed to load</source>
         <translation>Не удалось загрузить ответ</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="77"/>
+        <location filename="../qml/components/MessageReference.qml" line="75"/>
         <source>Original message was deleted</source>
         <translation>Исходное сообщение было удалено</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="78"/>
+        <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Forwarded message</source>
         <translation>Пересланное сообщение</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="144"/>
+        <location filename="../qml/components/MessageReference.qml" line="145"/>
         <source>Copy</source>
         <translation>Скопировать</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="165"/>
+        <location filename="../qml/components/MessageReference.qml" line="162"/>
         <source>Reply</source>
         <translation>Ответ</translation>
     </message>

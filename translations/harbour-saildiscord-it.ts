@@ -103,7 +103,7 @@
 <context>
     <name>AboutUser</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="139"/>
+        <location filename="../qml/components/MessageReference.qml" line="140"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
         <location filename="../qml/pages/MessagesPage.qml" line="352"/>
@@ -112,7 +112,7 @@
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="229"/>
+        <location filename="../qml/components/MessageItem.qml" line="237"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation>Info utente</translation>
@@ -285,17 +285,17 @@
         <translation>Copia ID utente</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="240"/>
+        <location filename="../qml/components/MessageItem.qml" line="248"/>
         <source>Copy message ID</source>
         <translation>Copia ID messaggio</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="235"/>
+        <location filename="../qml/components/MessageItem.qml" line="243"/>
         <source>Copy message link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="245"/>
+        <location filename="../qml/components/MessageItem.qml" line="253"/>
         <source>Copy formatted contents</source>
         <translation type="unfinished"></translation>
     </message>
@@ -357,7 +357,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="174"/>
+        <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation type="unfinished"></translation>
@@ -366,27 +366,27 @@
 <context>
     <name>MessageReference</name>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="79"/>
+        <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Reference failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="77"/>
+        <location filename="../qml/components/MessageReference.qml" line="75"/>
         <source>Original message was deleted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="78"/>
+        <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Forwarded message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="144"/>
+        <location filename="../qml/components/MessageReference.qml" line="145"/>
         <source>Copy</source>
         <translation>CopiaCopia</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageReference.qml" line="165"/>
+        <location filename="../qml/components/MessageReference.qml" line="162"/>
         <source>Reply</source>
         <translation>Rispondi</translation>
     </message>
