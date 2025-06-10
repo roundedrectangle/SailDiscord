@@ -133,7 +133,7 @@ SilicaFlickable {
                                 id: serverImage
                                 width: parent.width - indicatorRectangle.width
                                 height: width
-                                sourceComponent: image.get(0) ? serverImageComponent : serverImagePlaceholderComponent
+                                sourceComponent: image.source ? serverImageComponent : serverImagePlaceholderComponent
                                 Component {
                                     id: serverImageComponent
                                     ListImage {

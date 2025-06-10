@@ -31,7 +31,7 @@ AboutPageBase {
     on_StatusChanged: _develInfoSection.parent.children[2].children[1].text = _status // this modifies the Version %1 text
 
     appName: name
-    appIcon: icon[0] || ''
+    appIcon: icon.source || ''
 
     _pageHeaderItem.title: qsTranslate("AboutUser", "About", "User")
     _licenseInfoSection.visible: false
@@ -71,13 +71,13 @@ AboutPageBase {
         anchors.fill: parent
         onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
             spoiler: false,
-            filename: name+"_"+userid+'.'+icon[3],
+            filename: name+"_"+userid+'.'+icon.extension,
             _height: _iconItem.sourceSize.height,
             maxheight: _iconItem.sourceSize.height,
             maxwidth: _iconItem.sourceSize.width,
-            type: icon[2] ? 3 : 2,
-            realtype: 'image/'+icon[3],
-            url: icon[0],
+            type: icon.animated ? 3 : 2,
+            realtype: 'image/'+icon.extension,
+            url: icon.source,
             alt: ""
         }])})
     }

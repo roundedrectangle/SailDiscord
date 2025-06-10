@@ -14,15 +14,12 @@ from pyotherside_utils import *
 
 VALID_ANIMATED_FORMATS = frozenset({'gif'}) # discord.asset.VALID_ASSET_FORMATS - discord.asset.VALID_STATIC_FORMATS
 
-STUB_QML_ASSET = (
-    False,
-    '',
-    '',
-    False,
-    -1,
-    -1,
-    'png',
-)
+STUB_QML_ASSET = {
+    'source': '',
+    'originalSource': '',
+    'animated': False,
+    'extension': 'png',
+}
 """Asset format (current):
 [
     0: source: str,
@@ -66,12 +63,12 @@ def construct_qml_data(path, url=None, animated=None, extension=None):
         url = None
     if extension is None:
         extension = get_extension_from_url(path)
-    return (
-        str(path or ''),
-        str(url or ''),
-        bool(animated),
-        extension,
-    )
+    return {
+        'source': str(path or ''),
+        'originalSource': str(url or ''),
+        'animated': bool(animated),
+        'extension': extension,
+    }
 
 class Cacher(CacherBase):
     def __init__(self, cache: Path | str, update_period: timedelta | int | None, proxy: str | None = None, user_agent: str | None = None):

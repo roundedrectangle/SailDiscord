@@ -27,7 +27,7 @@ AboutPageBase {
     onCompiledMemberInfoChanged: _develInfoSection.parent.children[2].children[1].text = compiledMemberInfo
 
     appName: name
-    appIcon: icon[0] || ''
+    appIcon: icon.source || ''
 
     _pageHeaderItem.title: qsTranslate("AboutServer", "About", "Server")
     _licenseInfoSection.visible: false
@@ -38,13 +38,13 @@ AboutPageBase {
         anchors.fill: parent
         onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
             spoiler: false,
-            filename: name+"_"+serverid+'.'+icon[3],
+            filename: name+"_"+serverid+'.'+icon.extension,
             _height: _iconItem.sourceSize.height,
             maxheight: _iconItem.sourceSize.height,
             maxwidth: _iconItem.sourceSize.width,
-            type: icon[2] ? 3 : 2,
-            realtype: 'image/'+icon[3],
-            url: icon[0],
+            type: icon.animated ? 3 : 2,
+            realtype: 'image/'+icon.extension,
+            url: icon.source,
             alt: ""
         }])})
     }

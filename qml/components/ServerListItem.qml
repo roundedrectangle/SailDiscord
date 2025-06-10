@@ -24,7 +24,7 @@ ListItem {
             id: profileIcon
             width: root.contentHeight - Theme.paddingSmall*4
             height: width
-            sourceComponent: (icon[0] || icon.get(0)) ? serverImageComponent : serverImagePlaceholderComponent
+            sourceComponent: icon.source ? serverImageComponent : serverImagePlaceholderComponent
             Component {
                 id: serverImageComponent
                 ListImage {

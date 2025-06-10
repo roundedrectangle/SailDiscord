@@ -33,14 +33,12 @@ QtObject {
     }
 
     function listModelToArray(model) {
-        // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
-        // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
+        // see Shared.arrayToListModel
+        // unused for now (didn't work as expected; strings got converted into QObjects, but normal JS objects were converted fine)
         if (Array.isArray(model) || !model) return model
         var arr = []
-        console.log(model.count, model.get(0), JSON.stringify(model.get(0)))
         for (var i=0; i<model.count; i++)
             arr.push(model.get(i))
-        console.log(JSON.stringify(arr))
         return arr
     }
 
