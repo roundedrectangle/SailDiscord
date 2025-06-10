@@ -111,7 +111,7 @@ def convert_attachments(attachments: list[discord.Attachment]):
         "_height": a.height,
         "type": AttachmentMapping.from_attachment(a).value,
         "realtype": (a.content_type or '').split(';')[0],
-        "url": a.url,
+        "url": a.proxy_url or a.url or '',
         "alt": a.description or '',
         "spoiler": a.is_spoiler(),
     } for a in attachments]
