@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>Ignoring Discord error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Игнорируетс ошибка Discord: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="156"/>
@@ -273,12 +273,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="95"/>
         <source>Unable to download file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось скачать файл %1. Проверьте недавние ошибки</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="102"/>
         <source>Unable to share file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось поделиться файлом %1. Проверьте недавние ошибки</translation>
     </message>
 </context>
 <context>
