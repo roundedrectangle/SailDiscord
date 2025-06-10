@@ -276,7 +276,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="104"/>
+        <location filename="../qml/components/Shared.qml" line="102"/>
         <source>Unable to share file %1. Check recent errors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1116,32 +1116,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="217"/>
+        <location filename="../qml/components/Shared.qml" line="215"/>
         <source>Online</source>
         <translation>In linea</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="218"/>
+        <location filename="../qml/components/Shared.qml" line="216"/>
         <source>Offline</source>
         <translation>Non in linea</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="219"/>
+        <location filename="../qml/components/Shared.qml" line="217"/>
         <source>Do Not Disturb</source>
         <translation>Non disturbare</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="220"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>Invisible</source>
         <translation>Invisibile</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="221"/>
+        <location filename="../qml/components/Shared.qml" line="219"/>
         <source>Idle</source>
         <translation>Occupato</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="224"/>
+        <location filename="../qml/components/Shared.qml" line="222"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefono)</translation>

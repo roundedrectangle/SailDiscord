@@ -1,11 +1,11 @@
-%define package_library "no"
+%define package_library "yes"
 # See README
 
 Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.8.5
-Release:    4
+Version:    0.8.6
+Release:    1
 License:    LICENSE
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
@@ -61,7 +61,7 @@ Discord in your pocket
 %if %{package_library} == "yes"
 #python3 -m pip install --upgrade pip
 #python3 -m pip cache purge
-python3 -m pip install --no-cache-dir --force-reinstall https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=%_builddir/deps
+python3 -m pip install --no-cache-dir --force-reinstall --upgrade https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=%_builddir/deps
 python3 -m pip install --upgrade "git+https://github.com/dolfies/discord.py-self@20ae80b398ec83fa272f0a96812140e14868c88f" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
 strip -s %_builddir/deps/charset_normalizer/*.so || echo
