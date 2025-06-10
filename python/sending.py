@@ -1,9 +1,9 @@
 from __future__ import annotations
-import sys, re
-import logging
+import re
 from typing import Any, List
 from pyotherside import send as qsend
 from threading import Thread
+from enum import Enum
 
 from caching import Cacher, ImageType
 from utils import *
@@ -88,6 +88,37 @@ def send_dms(channel_list: List[discord.DMChannel | discord.GroupChannel | Any],
         Thread(target=async_runner, args=(send_channel_states(channel_list),)).start()
 
 # Messages
+
+class AttachmentMapping(Enum):
+    UNKNOWN = 0
+    IMAGE = 1
+    ANIMATED_IMAGE = 2
+
+    @classmethod
+    def from_attachment(cls, attachment: discord.Attachment):
+        t, sybtype = (attachment.content_type or '').split(';')[0].split('/') # e.g.: image/png for image
+        if t == 'image':
+            return cls.ANIMATED_IMAGE if attachment.flags.animated else cls.IMAGE
+        else: return cls.UNKNOWN
+
+def convert_attachments(attachments: list[discord.Attachment]):
+    """Converts to QML-friendly attachment format, object (dict)"""
+    # TODO: caching, more types
+    res = [{
+        "maxheight": -2,
+        "maxwidth": -2,
+        "filename": a.filename,
+        "_height": a.height,
+        "type": AttachmentMapping.from_attachment(a).value,
+        "realtype": (a.content_type or '').split(';')[0],
+        "url": a.url,
+        "alt": a.description or '',
+        "spoiler": a.is_spoiler(),
+    } for a in attachments]
+    if len(res) > 0:
+        res[0]['maxheight'] = max((a.height or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
+        res[0]['maxwidth'] = max((a.width or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
+    return res
 
 def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
     t = message.type

@@ -46,35 +46,6 @@ def permissions_for(channel, user_id) -> discord.Permissions | None:
     member = channel.guild.get_member(user_id)
     return None if member == None else channel.permissions_for(member)
 
-class AttachmentMapping(Enum):
-    UNKNOWN = auto()
-    IMAGE = auto()
-    ANIMATED_IMAGE = auto()
-
-    @classmethod
-    def from_attachment(cls, attachment: discord.Attachment):
-        parts = (attachment.content_type or '').split('/') # e.g.: image/png for image
-        t = parts[0]
-        if t == 'image':
-            if parts[1] == 'gif':
-                return cls.ANIMATED_IMAGE
-            return cls.IMAGE
-        else: return cls.UNKNOWN
-
-def attachment_type(attachment: discord.Attachment):
-    t = attachment.content_type or ''
-    if t.startswith('image'):
-        return AttachmentMapping.IMAGE
-
-def convert_attachments(attachments: list[discord.Attachment]):
-    """Converts to QML-friendly attachment format, object (dict)"""
-    # TODO: caching, more types
-    res = [{"maxheight": -2, "maxwidth": -2, "filename": a.filename, "_height": a.height, "type": AttachmentMapping.from_attachment(a).value, "realtype": None if a.content_type is None else a.content_type.split(';')[0], "url": a.url, "alt": a.description or '', "spoiler": a.is_spoiler()} for a in attachments]
-    if len(res) > 0:
-        res[0]['maxheight'] = max((a.height or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
-        res[0]['maxwidth'] = max((a.width or -1) if (a.content_type or '').startswith('image') else -1 for a in attachments)
-    return res
-
 def hex_color(color: discord.Color):
     return '' if color in (None, discord.Color.default()) else str(color)
 
