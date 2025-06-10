@@ -349,8 +349,8 @@ class Communicator:
         self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1))
 
     def download_file(self, url, filename):
-        dest = self.downloads / filename
         self.ensure_constants()
+        dest = autoincrement_file_path(self.downloads / filename)
         if isurl(url):
             download_save(url, dest, self.cacher.proxies)
         else:
