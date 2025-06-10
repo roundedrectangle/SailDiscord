@@ -98,6 +98,11 @@ QtObject {
 
     function shareFile(url, name, mime) {
         py.call('main.comm.save_temp', [url, name], function(path) {
+            if (!path) {
+                showError(qsTranslate("Errors", "Unable to share file: %1. Check recent errors").arg(name))
+                return
+            }
+
             shareApi.mimeType = mime
             shareApi.resources = [path]
             shareApi.trigger()

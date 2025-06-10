@@ -361,7 +361,7 @@ class Communicator:
         """Returns saved temp file path"""
         if isurl(url):
             return str(self.temp.save_temporary(url, name))
-        else: return url
+        return url
 
     def get_reference(self, channel_id, message_id):
         if channel_id == '-1':
