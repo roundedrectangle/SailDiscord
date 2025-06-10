@@ -276,7 +276,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="102"/>
+        <location filename="../qml/components/Shared.qml" line="104"/>
         <source>Unable to share file %1. Check recent errors</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1114,32 +1114,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="215"/>
+        <location filename="../qml/components/Shared.qml" line="217"/>
         <source>Online</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="216"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>Offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="217"/>
+        <location filename="../qml/components/Shared.qml" line="219"/>
         <source>Do Not Disturb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="218"/>
+        <location filename="../qml/components/Shared.qml" line="220"/>
         <source>Invisible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="219"/>
+        <location filename="../qml/components/Shared.qml" line="221"/>
         <source>Idle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="222"/>
+        <location filename="../qml/components/Shared.qml" line="224"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation type="unfinished"></translation>

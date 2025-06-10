@@ -361,7 +361,11 @@ class Communicator:
         """Returns saved temp file path"""
         if isurl(url):
             return str(self.temp.save_temporary(url, name))
-        return url
+        else:
+            # weird but this workaround is needed for android apps (and possibly sailjail)
+            dest = self.temp.temp / name
+            shutil.copy(url, dest)
+            return str(dest)
 
     def get_reference(self, channel_id, message_id):
         if channel_id == '-1':
