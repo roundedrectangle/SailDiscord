@@ -96,7 +96,7 @@ class AttachmentMapping(Enum):
 
     @classmethod
     def from_attachment(cls, attachment: discord.Attachment):
-        t, sybtype = (attachment.content_type or '').split(';')[0].split('/') # e.g.: image/png for image
+        t, subtype, *_ = (attachment.content_type or '').split(';')[0].split('/') # e.g.: image/png for image
         if t == 'image':
             return cls.ANIMATED_IMAGE if attachment.flags.animated else cls.IMAGE
         else: return cls.UNKNOWN
