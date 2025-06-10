@@ -5,7 +5,7 @@ Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
 Version:    0.8.5
-Release:    2
+Release:    3
 License:    LICENSE
 URL:        http://example.org/
 Source0:    %{name}-%{version}.tar.bz2
