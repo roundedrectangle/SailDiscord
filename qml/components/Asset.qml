@@ -10,7 +10,7 @@ Loader {
     property bool pauseAnimation
 
     readonly property bool valid: !!(info && info.source)
-    property bool cachedSourceFailed: (info && !valid) // if info is undefined (just loaded), don't automatically fail
+    property bool cachedSourceFailed: !!info && !valid // if info is undefined (just loaded), don't automatically fail
     property string source: ((asset.cachedSourceFailed && info && info.originalSource) ? info.originalSource : info.source) || ''
 
     readonly property var imageStatus: item ? item.status : Image.Loading
