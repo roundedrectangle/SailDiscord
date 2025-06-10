@@ -15,8 +15,8 @@ Item {
         anchors.fill: parent
         sourceComponent:
             switch (model.type) {
-            case 1: return fullscreen ? unknownFullscreenPreview : unknownPreview
-            case 2: case 3: return fullscreen ? imageFullscreenPreview : imagePreview
+            case 0: return fullscreen ? unknownFullscreenPreview : unknownPreview
+            case 1: case 2: return fullscreen ? imageFullscreenPreview : imagePreview
             }
     }
 
@@ -68,7 +68,6 @@ Item {
         id: unknownFullscreenPreview
         Label {
             horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
             anchors.verticalCenter: parent.verticalCenter
             x: Theme.horizontalPageMargin
             width: parent.width-2*x
