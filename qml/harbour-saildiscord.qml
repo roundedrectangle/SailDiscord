@@ -129,7 +129,7 @@ ApplicationWindow {
                 shared.serverAdded(arguments[0], serversModel.count-1, -1)
             })
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {image: {}, folder: true, _id: _id, name: shared.emojify(name), color: color, servers: []}
+                var data = {image: [], folder: true, _id: _id, name: shared.emojify(name), color: color, servers: []}
                 servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
                 serversModel.append(data)
                 servers.forEach(function(server, i) { shared.serverAdded(server[0], serversModel.count-1, i) })

@@ -14,15 +14,33 @@ from pyotherside_utils import *
 
 VALID_ANIMATED_FORMATS = frozenset({'gif'}) # discord.asset.VALID_ASSET_FORMATS - discord.asset.VALID_STATIC_FORMATS
 
-STUB_QML_ASSET = {
-    'available': False,
-    'source': '',
-    'originalSource': '',
-    'animated': False,
-    'type': -1,
-    'id': -1,
-    'extension': 'png',
-}
+STUB_QML_ASSET = (
+    False,
+    '',
+    '',
+    False,
+    -1,
+    -1,
+    'png',
+)
+"""Asset format (current):
+[
+    0: source: str,
+    1: originalSource: str,
+    2: animated: bool,
+    3: extension: str,
+]
+
+Original format:
+[
+    0: available: bool,
+    1: source: str,
+    2: originalSource: str,
+    3: animated: bool,
+    4: type: int(ImageType.value),
+    5: id: str(int),
+    6: extension: str,
+]"""
 
 class ImageType(Enum):
     SERVER = auto()
@@ -41,26 +59,19 @@ def cached_path(cache: Path | str, id, type: ImageType, format: str | None = Non
 # BUT it seems like avatar decorations can be .apng (Animated PNG, sometimes extension is .png)
 # upd on APNG: seems like anything can be it and it's just png in original quality, besides (and if!) being animated
 
-def construct_qml_data(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None, extension=None):
+def construct_qml_data(path, url=None, animated=None, extension=None):
     if animated is None:
         animated = get_extension_from_url(path) in VALID_ANIMATED_FORMATS
     if url == path:
         url = None
     if extension is None:
         extension = get_extension_from_url(path)
-    return {
-        'available': True,
-        'source': str(path or ''),
-        'originalSource': str(url or ''),
-        'animated': bool(animated),
-        'type': asset_type.value if isinstance(asset_type, ImageType) else asset_type,
-        'id': str(asset_id),
-        'extension': extension,
-    }
-
-def notify_qml(path, asset_type: ImageType | int, asset_id=-1, url=None, animated=None):
-    asset_type = asset_type.value if isinstance(asset_type, ImageType) else asset_type
-    qsend(f'recache{asset_type}{asset_id}', construct_qml_data(path, asset_type, asset_id, url, animated))
+    return (
+        str(path or ''),
+        str(url or ''),
+        bool(animated),
+        extension,
+    )
 
 class Cacher(CacherBase):
     def __init__(self, cache: Path | str, update_period: timedelta | int | None, proxy: str | None = None, user_agent: str | None = None):
@@ -102,7 +113,6 @@ class Cacher(CacherBase):
         path.parent.mkdir(exist_ok=True, parents=True)
         if self.download_save(url, path, False):
             self.set_cached_session(id, type)
-            notify_qml(url, type, id, url)
 
     def cache_image_bg(self, url, id, type: ImageType, format: str|None=None, force=False):
         Thread(target=self.cache_image, args=(url, id, type, format, force)).start()
@@ -136,5 +146,5 @@ class Cacher(CacherBase):
         if as_qml_data:
             if icon == '':
                 return STUB_QML_ASSET
-            return construct_qml_data(icon, type, id, url)
+            return construct_qml_data(icon, url)
         return icon

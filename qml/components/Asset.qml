@@ -5,44 +5,34 @@ Loader {
     id: asset
     asynchronous: true
 
-    property var info: ({})
+    property var info: [] // see caching.py/STUB_QML_ASSET
     property bool forceStatic
     property bool pauseAnimation
 
-    property bool cachedSourceFailed: info && info.available && (!info.source || info.source === 'None') // auto-fail if source is empty
-    property string source: (asset.cachedSourceFailed && info && info.originalSource) ? info.originalSource : info.source
-    property string lastHandler
+    property var _info: info ? (
+                                   Array.isArray(info)
+                                   ? info
+                                   : shared.listModelToArray(info)
+                               ) : null
+    readonly property bool valid: !!(_info && _info[0])
+    property bool cachedSourceFailed: (_info && !valid) // if info is undefined (just loaded), don't automatically fail
+    property string source: ((asset.cachedSourceFailed && _info && _info[1]) ? _info[1] : _info[0]) || ''
 
     readonly property var imageStatus: item ? item.status : Image.Loading
 
-    function updateFromData() {
-        if (info && info.available) {
-            cachedSourceFailed = false
-            if (lastHandler) py.setHandler(lastHandler, undefined)
-            lastHandler = 'recache'+info.type+info.id
-            py.setHandler(lastHandler, function(updated) { asset.info = updated; updateFromData() })
-        } else cachedSourceFailed = true
-    }
-
-    Component.onCompleted: updateFromData()
-    Component.onDestruction: if (lastHandler) py.setHandler(lastHandler, undefined)
-    onInfoChanged: updateFromData()
-
-    sourceComponent: info && info.available ?
-                         (!forceStatic && info && info.animated ? animatedComponent : staticComponent)
+    sourceComponent: _info && _info[0] ?
+                         (!forceStatic && _info && _info[2] ? animatedComponent : staticComponent)
                        : null
+    onImageStatusChanged: if (imageStatus == Image.Error) cachedSourceFailed = true
 
-    onImageStatusChanged: if (status == Image.Error && !asset.cachedSourceFailed) {
-                              asset.cachedSourceFailed = true
-                              py.call2('recache', [info.type, info.id, info.originalSource])
-                          }
+    on_InfoChanged: console.log(JSON.stringify(_info))
 
     Component {
         id: staticComponent
         Image {
             anchors.fill: parent
             asynchronous: true
-            source: (!asset.source || asset.source == 'None') ? '' : asset.source
+            source: asset.source
             sourceSize {
                 width: width
                 height: height
@@ -55,7 +45,7 @@ Loader {
             anchors.fill: parent
             asynchronous: true
             playing: !pauseAnimation && shared.active
-            source: !asset.source || asset.source == 'None' ? '' : asset.source
+            source: asset.source
             /*sourceSize {
                 width: width
                 height: height

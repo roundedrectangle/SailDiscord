@@ -98,6 +98,7 @@ Page {
 
     ListModel {
         id: serversModel
+        //dynamicRoles: true
         function findIndexById(id) {
             for(var i=0; i < count; i++) {
                 if (get(i).folder) {

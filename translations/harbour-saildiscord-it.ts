@@ -1061,12 +1061,12 @@
 <context>
     <name>Shared</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="56"/>
+        <location filename="../qml/components/Shared.qml" line="68"/>
         <source>(edited)</source>
         <translation>(modificati)</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="84"/>
+        <location filename="../qml/components/Shared.qml" line="96"/>
         <source>Downloaded file %1</source>
         <translation>File scaricato: %1</translation>
     </message>
@@ -1101,32 +1101,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="199"/>
+        <location filename="../qml/components/Shared.qml" line="211"/>
         <source>Online</source>
         <translation>In linea</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="200"/>
+        <location filename="../qml/components/Shared.qml" line="212"/>
         <source>Offline</source>
         <translation>Non in linea</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="201"/>
+        <location filename="../qml/components/Shared.qml" line="213"/>
         <source>Do Not Disturb</source>
         <translation>Non disturbare</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="202"/>
+        <location filename="../qml/components/Shared.qml" line="214"/>
         <source>Invisible</source>
         <translation>Invisibile</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="203"/>
+        <location filename="../qml/components/Shared.qml" line="215"/>
         <source>Idle</source>
         <translation>Occupato</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="206"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefono)</translation>

@@ -389,9 +389,6 @@ class Communicator:
     def reply_to(self, message_id: str | int, content: str):
         msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
         self.client.run_asyncio_threadsafe(msg.reply(content))
-    
-    def recache(self, asset_type, asset_id, url):
-        self.cacher.cache_image_bg(url, asset_id, ImageType(asset_type), force=True)
 
 
 comm = Communicator()

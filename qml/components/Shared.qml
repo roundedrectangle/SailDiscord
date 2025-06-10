@@ -32,6 +32,18 @@ QtObject {
         return listModel
     }
 
+    function listModelToArray(model) {
+        // Make attachments a ListModel: a (bug?) which exists in QML and I have to enable it manually where it is fixed
+        // Also see https://stackoverflow.com/questions/37069565/qml-listmodel-append-broken-for-object-containing-an-array
+        if (Array.isArray(model) || !model) return model
+        var arr = []
+        console.log(model.count, model.get(0), JSON.stringify(model.get(0)))
+        for (var i=0; i<model.count; i++)
+            arr.push(model.get(i))
+        console.log(JSON.stringify(arr))
+        return arr
+    }
+
     function combineObjects(obj1, obj2) {
         var res = obj1
         for (var attrname in obj2) {
@@ -167,13 +179,13 @@ QtObject {
     function processServer(_id, name, icon) {
         if (appConfiguration.legacyMode && _id == "1261605062162251848") {
             name = "RoundedRectangle's server"
-            icon = {available: true, source: Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))}
+            icon = {source: Qt.resolvedUrl("../images/%1.png".arg(Qt.application.name))} // todo
         }
         // heads up: QQMLListModel can convert:
         // arrays to QQMLListModel instances
         // undefined to empty objects aka {} when other elements are objects
         return {_id: _id, name: shared.emojify(name), image: icon,
-            folder: false, color: '', servers: [], // QML seems to need same element keys in all model entries
+            folder: false, color: '', servers: [], // QML needs same element keys in all model entries (if dynamicRoles is false; setting it to true impacts performance)
         }
     }
 

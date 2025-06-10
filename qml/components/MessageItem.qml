@@ -109,7 +109,7 @@ ListItem {
                     sourceComponent: Component {
                         Asset {
                             anchors.fill: parent
-                            source: decoration
+                            info: decoration
                         }
                     }
                 }
