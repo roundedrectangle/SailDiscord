@@ -270,6 +270,16 @@
         <source>Python error</source>
         <translation>Python-fel</translation>
     </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="95"/>
+        <source>Unable to download file %1. Check recent errors</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/Shared.qml" line="102"/>
+        <source>Unable to share file %1. Check recent errors</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>General</name>
@@ -313,7 +323,7 @@
         <translation>SPOILER</translation>
     </message>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="77"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="76"/>
         <source>Attachment unsupported: %1</source>
         <translation>Bilagan stöds ej: %1</translation>
     </message>
@@ -1106,32 +1116,32 @@
 <context>
     <name>status</name>
     <message>
-        <location filename="../qml/components/Shared.qml" line="211"/>
+        <location filename="../qml/components/Shared.qml" line="215"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="212"/>
+        <location filename="../qml/components/Shared.qml" line="216"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="213"/>
+        <location filename="../qml/components/Shared.qml" line="217"/>
         <source>Do Not Disturb</source>
         <translation>Stör ej</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="214"/>
+        <location filename="../qml/components/Shared.qml" line="218"/>
         <source>Invisible</source>
         <translation>Osynlig</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="215"/>
+        <location filename="../qml/components/Shared.qml" line="219"/>
         <source>Idle</source>
         <translation>Väntar</translation>
     </message>
     <message>
-        <location filename="../qml/components/Shared.qml" line="218"/>
+        <location filename="../qml/components/Shared.qml" line="222"/>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Telefon)</translation>

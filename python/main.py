@@ -355,7 +355,7 @@ class Communicator:
             download_save(url, dest, self.cacher.proxies)
         else:
             shutil.copy(url, dest)
-        return True
+        return dest.name
 
     def save_temp(self, url, name):
         """Returns saved temp file path"""

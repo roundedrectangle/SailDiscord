@@ -90,16 +90,16 @@ QtObject {
 
     // Files
     function download(url, name) {
-        py.call('main.comm.download_file', [url, name], function(r) {
-            if (r) showInfo(qsTr("Downloaded file %1").arg(name))
-            else showError(qsTranslate("Errors", "Unable to download file: %1. Check recent errors").arg(name))
+        py.call('main.comm.download_file', [url, name], function(newName) {
+            if (newName) showInfo(qsTr("Downloaded file %1").arg(newName))
+            else showError(qsTranslate("Errors", "Unable to download file %1. Check recent errors").arg(name))
         })
     }
 
     function shareFile(url, name, mime) {
         py.call('main.comm.save_temp', [url, name], function(path) {
             if (!path) {
-                showError(qsTranslate("Errors", "Unable to share file: %1. Check recent errors").arg(name))
+                showError(qsTranslate("Errors", "Unable to share file %1. Check recent errors").arg(name))
                 return
             }
 
