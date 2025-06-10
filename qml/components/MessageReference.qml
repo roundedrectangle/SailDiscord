@@ -3,17 +3,15 @@ import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 
 ListItem {
-    property var reference
-
-    property var _resolvedReference
-    property var _resolvedType
-    property var _resolvedUpdater: function() {}
-
-    property var jump: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
-
     id: root
     width: parent.width
     contentHeight: column.height
+
+    property var reference
+    property var jump: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
+
+    property var resolvedReference
+    property var resolvedType
 
     Column {
         id: column
@@ -45,7 +43,7 @@ ListItem {
                 Component {
                     id: systemItem
                     SystemMessageItem {
-                        _model: _resolvedReference
+                        _model: resolvedReference
                         label.color: Theme.secondaryColor
                         highlightColor: Theme.secondaryHighlightColor
                         enabled: false
@@ -55,7 +53,7 @@ ListItem {
                 Component {
                     id: defaultInfoItem
                     Label {
-                        text: _resolvedReference.author
+                        text: resolvedReference.author
                         truncationMode: TruncationMode.Fade
                         color: Theme.secondaryHighlightColor
                     }
@@ -102,7 +100,7 @@ ListItem {
                 Label {
                     width: parent.width
                     textFormat: Text.RichText
-                    text: _resolvedReference.formattedContents
+                    text: resolvedReference.formattedContents
                     wrapMode: Text.Wrap
                     color: highlighted ? Theme.highlightColor : Theme.secondaryColor
                 }
@@ -110,17 +108,17 @@ ListItem {
         }
     }
 
-    Component.onCompleted: {
+    function update() {
         if (!root || !reference || reference.type == 0) return
         if (reference.state == 0 || reference.state == 1) {
             infoLoader.sourceComponent = failedInfoItem
             return
         }
-        _resolvedType = shared.convertCallbackType(reference.resolvedType)
-        shared.constructMessageCallback(_resolvedType, undefined, undefined, function(__, data) {_resolvedReference = data}).apply(null, reference.resolved)
-        _resolvedReference.attachments = shared.arrayToListModel(root, _resolvedReference.attachments)
+        resolvedType = shared.convertCallbackType(reference.resolvedType)
+        shared.constructMessageCallback(resolvedType, undefined, undefined, function(__, data) {resolvedReference = data}).apply(null, reference.resolved)
+        resolvedReference.attachments = shared.arrayToListModel(root, resolvedReference.attachments)
         contentLoader.sourceComponent = null // reload
-        switch (_resolvedType) {
+        switch (resolvedType) {
         case "":
             infoLoader.sourceComponent = reference.state == 3 ? failedInfoItem : defaultInfoItem
             contentLoader.sourceComponent = defaultItem
@@ -133,29 +131,28 @@ ListItem {
         }
     }
 
+    Component.onCompleted: update()
+    onReferenceChanged: update()
+
     menu: Component { ContextMenu {
         hasContent: children[0].visible && children[1].visible
 
         MenuItem { text: qsTranslate("AboutUser", "About", "User")
-            visible: !!_resolvedReference && _resolvedReference.userid != '-1' && !!_resolvedReference.userid
-            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: _resolvedReference.userid, name: _resolvedReference.author, icon: _resolvedReference.avatar, nicknameGiven: _resolvedReference.flags.nickAvailable })
+            visible: !!resolvedReference && resolvedReference.userid != '-1' && !!resolvedReference.userid
+            onClicked: pageStack.push(Qt.resolvedUrl("../pages/AboutUserPage.qml"), { userid: resolvedReference.userid, name: resolvedReference.author, icon: resolvedReference.avatar, nicknameGiven: resolvedReference.flags.nickAvailable })
         }
 
         MenuItem { text: qsTr("Copy")
-            onClicked: Clipboard.text = _resolvedReference.contents
-            visible: !!_resolvedReference && !!_resolvedReference.contents
+            onClicked: Clipboard.text = resolvedReference.contents
+            visible: !!resolvedReference && !!resolvedReference.contents
         }
     }}
 
-    onClicked: if ((reference.state == 2 || reference.state == 3) && !jump(_resolvedReference.messageId))
-                   pageStack.push(referencePage, {setResolvedUpdater: function(updater){ _resolvedUpdater = updater }})
-    on_ResolvedReferenceChanged: _resolvedUpdater()
-    on_ResolvedTypeChanged: _resolvedUpdater()
+    onClicked: if ((reference.state == 2 || reference.state == 3) && !jump(resolvedReference.messageId))
+                   pageStack.push(referencePage)
     Component {
         id: referencePage
         Page {
-            property var setResolvedUpdater
-            Component.onCompleted: setResolvedUpdater(pageLoader.updateSource)
             SilicaFlickable {
                 anchors.fill: parent
                 contentHeight: pageColumn.height
@@ -169,10 +166,16 @@ ListItem {
                         width: parent.width
 
                         function updateSource() {
-                            // var args = shared.combineObjects(_resolvedReference, {sameAuthorAsBefore: false, masterWidth: -1, masterDate: new Date(1)})
-                            switch (_resolvedType) {
-                            case '': setSource("MessageItem.qml", _resolvedReference);break
-                            case 'unknown': if (appSettings.defaultUnknownMessages) setSource("MessageItem.qml", _resolvedReference);else sourceComponent = systemItem;break
+                            // var args = shared.combineObjects(resolvedReference, {sameAuthorAsBefore: false, masterWidth: -1, masterDate: new Date(1)})
+                            switch (resolvedType) {
+                            case '':
+                                setSource("MessageItem.qml", {_model: resolvedReference})
+                                break
+                            case 'unknown':
+                                if (appSettings.defaultUnknownMessages)
+                                    setSource("MessageItem.qml", {_model: resolvedReference})
+                                else sourceComponent = systemItem
+                                break
                             default: sourceComponent = systemItem
                             }
                         }
@@ -180,10 +183,16 @@ ListItem {
 
                         Component {
                             id: systemItem
-                            SystemMessageItem { _model: _resolvedReference; label.horizontalAlignment: Text.AlignHCenter }
+                            SystemMessageItem { _model: resolvedReference; label.horizontalAlignment: Text.AlignHCenter }
                         }
                     }
                 }
+            }
+
+            Connections {
+                target: root
+                onResolvedReferenceChanged: pageLoader.updateSource()
+                onResolvedTypeChanged: pageLoader.updateSource()
             }
         }
     }
