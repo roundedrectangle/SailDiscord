@@ -8,7 +8,7 @@ FullscreenContentPage {
     property var model
     property int index
 
-    SlideshowView {
+    PagedView {
         id: slideshow
         anchors.fill: parent
         model: parent.model
