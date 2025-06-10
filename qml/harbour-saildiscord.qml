@@ -140,20 +140,21 @@ ApplicationWindow {
             _refreshFirstPage = refreshHandler
 
             var errorStrings = {
-                'connection': qsTranslate("Errors", "Connection failure"),
-                'login': qsTranslate("Errors", "Login failure"),
-                'captcha': qsTranslate("Errors", "Captcha required but not implemented"),
+                connection: qsTranslate("Errors", "Connection failure"),
+                login: qsTranslate("Errors", "Login failure"),
+                captcha: qsTranslate("Errors", "Captcha required but not implemented"),
                 '404': qsTranslate("Errors", "404 Not Found"),
-                'message': qsTranslate("Errors", "A message failed to load"),
-                'reference': qsTranslate("Errors", "A reference failed to load"),
-                'channel': qsTranslate("Errors", "Channel failed to load"),
-                'userInfo': qsTranslate("Errors", "Could not get user information"),
-                'serverInfo': qsTranslate("Errors", "Could not get server information"),
-                'unknownPrivateChannel': qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers"),
+                message: qsTranslate("Errors", "A message failed to load"),
+                reference: qsTranslate("Errors", "A reference failed to load"),
+                channel: qsTranslate("Errors", "Channel failed to load"),
+                userInfo: qsTranslate("Errors", "Could not get user information"),
+                serverInfo: qsTranslate("Errors", "Could not get server information"),
+                unknownPrivateChannel: qsTranslate("Errors", "Unknown private channel: %1. Please report this to developers"),
+                discord: qsTranslate("Errors", "Ignoring Discord error: %1"),
 
                 // Caching
-                'cacheConnection': qsTranslate("Errors", "Unable to receive cache: connection failed"),
-                'cache': qsTranslate("Errors", "Unknown caching error"),
+                cacheConnection: qsTranslate("Errors", "Unable to receive cache: connection failed"),
+                cache: qsTranslate("Errors", "Unknown caching error"),
             }
 
             setHandler('error', function(name, info, other) {
@@ -171,6 +172,8 @@ ApplicationWindow {
                 case 'cache':
                     shared.showError(text, info+': '+other)
                     break
+                case 'discord':
+                    shared.showError(text.arg(info), other)
                 default:
                     shared.showError(text, info)
                 }

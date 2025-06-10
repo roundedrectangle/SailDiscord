@@ -8,6 +8,7 @@ from datetime import datetime
 from typing import Any
 from concurrent.futures._base import CancelledError
 import logging
+import traceback as tb
 
 from exceptions import *
 from utils import *
@@ -201,6 +202,10 @@ class MyClient(discord.Client):
         if not self.current_channel:
             raise RuntimeError("Current channel was not set but delete requested")
         return await self.current_channel.fetch_message(message_id)
+
+    async def on_error(self, event_method: str, /, *args: Any, **kwargs: Any) -> None:
+        await super().on_error(event_method, *args, **kwargs)
+        show_error("discord", event_method, tb.format_exc())
 
 class Communicator:
     downloads: Path | None = None
