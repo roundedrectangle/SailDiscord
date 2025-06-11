@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../components"
 import "../modules/Opal/Tabs"
+import "../js/shared.js" as Shared
 
 SilicaFlickable {
     anchors.fill: parent
@@ -91,7 +92,7 @@ SilicaFlickable {
                                    }
 
             Connections {
-                target: shared
+                target: Shared.o
                 onServerAdded: if (serverId == appConfiguration.modernLastServerId) {
                                    serverIndex = mainIndex
                                    folderIndex = subIndex
@@ -305,7 +306,7 @@ SilicaFlickable {
                         }
                         Label {
                             truncationMode: TruncationMode.Fade
-                            text: shared.constructStatus(status, onMobile)
+                            text: Shared.constructStatus(status, onMobile)
                             color: Theme.secondaryHighlightColor
                         }
                     }

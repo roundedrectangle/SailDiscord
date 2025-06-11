@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../components"
+import "../js/shared.js" as Shared
 
 Page {
     id: page
@@ -47,7 +48,7 @@ Page {
         if (i >= 0) {
             i = msgModel.get(i)
             i.contents = sendField.text
-            i.formattedContents = shared.markdown(sendField.text, true)
+            i.formattedContents = Shared.markdown(sendField.text, true)
             i.flags.edit = true
         }
 
@@ -368,13 +369,13 @@ Page {
         property int updateCounter: 0
 
         function appendDemo2(toAppend) {
-            insert(0, shared.combineObjects(shared.stubMessage, toAppend))
+            insert(0, Shared.combineObjects(Shared.stubMessage, toAppend))
         }
 
         function appendDemo(isyou, thecontents, additionalOptions) {
             additionalOptions = additionalOptions !== undefined ? additionalOptions : {}
-            appendDemo2(shared.combineObjects(
-                            {sent: isyou, contents: thecontents, formattedContents: shared.markdown(thecontents, undefined, additionalOptions.flags ? additionalOptions.flags.edit : false), author: isyou ? "you" : "notyou", avatar: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
+            appendDemo2(Shared.combineObjects(
+                            {sent: isyou, contents: thecontents, formattedContents: Shared.markdown(thecontents, undefined, additionalOptions.flags ? additionalOptions.flags.edit : false), author: isyou ? "you" : "notyou", avatar: "https://cdn.discordapp.com/embed/avatars/"+(isyou ? "0" : "1")+".png"},
                             additionalOptions))
         }
 
@@ -432,7 +433,7 @@ Page {
         _loaded = true
         waitForMessagesTimer.started = true
 
-        shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
+        Shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
             if (history) msgModel.append(data); else msgModel.insert(0, data)
         }, function(before, data) {
             var i = msgModel.findIndexById(before)
@@ -461,7 +462,7 @@ Page {
 
     Component.onDestruction: {
         if (isDemo) return
-        shared.cleanupMessageCallbacks()
+        Shared.cleanupMessageCallbacks()
         py.resetCurrentChannel()
     }
 }

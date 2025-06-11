@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
+import "../js/shared.js" as Shared
 
 ListItem {
     id: root
@@ -114,9 +115,9 @@ ListItem {
             infoLoader.sourceComponent = failedInfoItem
             return
         }
-        resolvedType = shared.convertCallbackType(reference.resolvedType)
-        shared.constructMessageCallback(resolvedType, undefined, undefined, function(__, data) {resolvedReference = data}).apply(null, reference.resolved)
-        resolvedReference.attachments = shared.arrayToListModel(root, resolvedReference.attachments)
+        resolvedType = Shared.convertCallbackType(reference.resolvedType)
+        Shared.constructMessageCallback(resolvedType, undefined, undefined, function(__, data) {resolvedReference = data}).apply(null, reference.resolved)
+        resolvedReference.attachments = Shared.arrayToListModel(root, resolvedReference.attachments)
         contentLoader.sourceComponent = null // reload
         switch (resolvedType) {
         case "":
@@ -166,7 +167,7 @@ ListItem {
                         width: parent.width
 
                         function updateSource() {
-                            // var args = shared.combineObjects(resolvedReference, {sameAuthorAsBefore: false, masterWidth: -1, masterDate: new Date(1)})
+                            // var args = Shared.combineObjects(resolvedReference, {sameAuthorAsBefore: false, masterWidth: -1, masterDate: new Date(1)})
                             switch (resolvedType) {
                             case '':
                                 setSource("MessageItem.qml", {_model: resolvedReference})

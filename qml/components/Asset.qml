@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/shared.js" as Shared
 
 Loader {
     id: asset
@@ -37,7 +38,7 @@ Loader {
         AnimatedImage {
             anchors.fill: parent
             asynchronous: true
-            playing: !pauseAnimation && shared.active
+            playing: !pauseAnimation && Shared.o.active
             source: asset.source
             /*sourceSize {
                 width: width

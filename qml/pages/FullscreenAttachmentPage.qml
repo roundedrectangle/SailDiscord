@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import '../components'
 import Sailfish.Share 1.0
+import '../components'
+import "../js/shared.js" as Shared
 
 FullscreenContentPage {
     allowedOrientations: Orientation.All
@@ -67,12 +68,12 @@ FullscreenContentPage {
 
                 IconButton {
                     icon.source: "image://theme/icon-m-downloads"
-                    onClicked: shared.download(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename)
+                    onClicked: Shared.download(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename)
                 }
 
                 IconButton {
                     icon.source: "image://theme/icon-m-share"
-                    onClicked: shared.shareFile(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename, model.get(slideshow.currentIndex).realtype)
+                    onClicked: Shared.shareFile(model.get(slideshow.currentIndex).url, model.get(slideshow.currentIndex).filename, model.get(slideshow.currentIndex).realtype)
                 }
             }
         }

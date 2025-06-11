@@ -4,6 +4,7 @@ import io.thp.pyotherside 1.5
 import "../components"
 import "../modules/Opal/About"
 import "../modules/Opal/Attributions"
+import "../js/shared.js" as Shared
 
 AboutPageBase {
     id: page
@@ -36,7 +37,7 @@ AboutPageBase {
     MouseArea {
         parent: _iconItem
         anchors.fill: parent
-        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
+        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: Shared.arrayToListModel(page, [{
             spoiler: false,
             filename: name+"_"+serverid+'.'+icon.extension,
             _height: _iconItem.sourceSize.height,
@@ -134,7 +135,7 @@ AboutPageBase {
             _memberCount = memberCount
             _onlineCount = onlineCount
             _features = features
-            description = shared.markdown(desc, _develInfoSection.parent.children[3].linkColor)
+            description = Shared.markdown(desc, _develInfoSection.parent.children[3].linkColor)
             busyIndicator.running = false
         })
     }

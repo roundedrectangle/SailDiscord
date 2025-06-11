@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
+import "../js/shared.js" as Shared
 
 SilicaListView {
     id: listView
@@ -33,11 +34,11 @@ SilicaListView {
         }
 
         function show() { (openLastSave ? pageStack.pushAttached : pageStack.push)(Qt.resolvedUrl("MessagesPage.qml"), { guildid: '-2', channelid: dmChannel, name: name, sendPermissions: textSendPermissions, isDM: _id != '-1', isGroup: _id == '-1', userid: _id, usericon: image }) }
-        Component.onCompleted: if (shared.getLastChannel('-1') == dmChannel && openLastSave) showTimer.start()
+        Component.onCompleted: if (Shared.getLastChannel('-1') == dmChannel && openLastSave) showTimer.start()
         onClicked: {
             show()
             if (openLastSave) pageStack.navigateForward()
-            shared.setLastChannel('-1', dmChannel)
+            Shared.setLastChannel('-1', dmChannel)
         }
         menu: Component { ContextMenu {
             MenuItem {

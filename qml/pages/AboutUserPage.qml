@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../modules/Opal/About"
 import "../modules/Opal/LinkHandler"
+import "../js/shared.js" as Shared
 
 // This code uses some hacky ways to modify Opal.About to make it work with a user. Opal.About was not designed for this
 
@@ -69,7 +70,7 @@ AboutPageBase {
     MouseArea {
         parent: _iconItem
         anchors.fill: parent
-        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: shared.arrayToListModel(page, [{
+        onClicked: pageStack.push("FullscreenAttachmentPage.qml", {model: Shared.arrayToListModel(page, [{
             spoiler: false,
             filename: name+"_"+userid+'.'+icon.extension,
             _height: _iconItem.sourceSize.height,
@@ -157,9 +158,9 @@ AboutPageBase {
             LinkHandler.openOrCopyUrl(link)
         })
         py.setHandler("user"+(isClient?"":userid), function(bio, date, status, onMobile, allNames) {
-            description = shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
+            description = Shared.markdown(bio, _develInfoSection.parent.children[3].linkColor)
             memberSince = new Date(date)
-            _status = shared.constructStatus(status, onMobile)
+            _status = Shared.constructStatus(status, onMobile)
             busyIndicator.running = false
             // by default these are empty strings:
             globalName = allNames.global

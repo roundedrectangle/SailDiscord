@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
+import "../js/shared.js" as Shared
 
 Asset {
     // A rounded image.
@@ -27,7 +28,7 @@ Asset {
             radius: Math.min(width, height) / (extendedRadius ? 4 : 1)
             Behavior on radius {
                 NumberAnimation { duration: 150 }
-                enabled: !disableAnimations && shared.active
+                enabled: !disableAnimations && Shared.o.active
             }
         }
     }

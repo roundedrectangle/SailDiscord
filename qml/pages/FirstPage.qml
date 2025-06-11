@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
+import "../js/shared.js" as Shared
 
 Page {
     id: root
@@ -46,7 +47,7 @@ Page {
     Component.onCompleted: {
         py.init(function(u, i, s, m) {
             loading = false
-            username = shared.emojify(u)
+            username = Shared.emojify(u)
             avatar = i
             status = s
             onMobile = m

@@ -1,13 +1,14 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "pages"
-import 'components'
 import io.thp.pyotherside 1.5
 import Nemo.Configuration 1.0
 import QtGraphicalEffects 1.0
 import Nemo.Notifications 1.0
-import Sailfish.Share 1.0
 import Nemo.DBus 2.0
+import "pages"
+import 'components'
+import "js/shared.js" as Shared
+import "modules/js/showdown.min.js" as ShowDown
 
 ApplicationWindow {
     id: mainWindow
@@ -17,9 +18,25 @@ ApplicationWindow {
 
     Component.onDestruction: py.disconnectClient()
 
-    Shared {
-        id: shared
-        onActiveChanged: py.runUpdate('active', active)
+    Connections {
+        target: Shared.o
+        onActiveChanged: py.runUpdate('active', Shared.o.active)
+    }
+
+    Component.onCompleted: {
+        Shared.notifier = notifier
+        Shared.py = py
+        Shared.appConfiguration = appConfiguration
+        Shared.appSettings = appSettings
+        var s = new ShowDown.showdown.Converter(
+                    {
+                        simplifiedAutoLink: true,
+                        underline: true,
+                        backslashEscapesHTMLTags: true,
+                    })
+        console.log(s.makeHtml) // function() { [code] }
+        Shared.showdown = s
+        console.log(Shared.showdown.makeHtml) // undefined for some reason ??
     }
 
     Notification { // Notifies about app status
@@ -28,8 +45,6 @@ ApplicationWindow {
         onReplacesIdChanged: if (replacesId !== 0) replacesId = 0
         isTransient: !appSettings.infoInNotifications
     }
-
-    ShareAction { id: shareApi }
 
     DBusInterface {
         id: globalProxy
@@ -66,7 +81,7 @@ ApplicationWindow {
         property string modernLastServerId: '-1'
         property string serverLastChannels: '{}'
 
-        function removeValue(value, root) { shared.removeConfigurationValue(root ? appConfiguration : appSettings, value) }
+        function removeValue(value, root) { Shared.removeConfigurationValue(root ? appConfiguration : appSettings, value) }
 
         Component.onCompleted: {
             if (appSettings.sentBehaviour != "r" && appSettings.sentBehaviour != "n")
@@ -125,17 +140,17 @@ ApplicationWindow {
         function init(loggedInHandler, serversModel, dmHandler, dmUpdateHandler, refreshHandler) {
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() {
-                serversModel.append(shared.processServer.apply(null, arguments))
-                shared.serverAdded(arguments[0], serversModel.count-1, -1)
+                serversModel.append(Shared.processServer.apply(null, arguments))
+                Shared.serverAdded(arguments[0], serversModel.count-1, -1)
             })
             setHandler('serverfolder', function(_id, name, color, servers) {
-                var data = {image: {}, folder: true, _id: _id, name: shared.emojify(name), color: color, servers: []}
-                servers.forEach(function(server, i) { data.servers.push(shared.processServer.apply(null, server)) })
+                var data = {image: {}, folder: true, _id: _id, name: Shared.emojify(name), color: color, servers: []}
+                servers.forEach(function(server, i) { data.servers.push(Shared.processServer.apply(null, server)) })
                 serversModel.append(data)
-                servers.forEach(function(server, i) { shared.serverAdded(server[0], serversModel.count-1, i) })
+                servers.forEach(function(server, i) { Shared.serverAdded(server[0], serversModel.count-1, i) })
             })
-            setHandler('dm', function(channelId, unread, mentions, name, icon, perm, _id) { dmHandler({_id: _id, name: shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: '', unread: unread, mentions: mentions}) })
-            setHandler('group', function(channelId, unread, mentions, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? shared.emojify(name) : qsTr("Unnamed", "group"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed"), unread: unread, mentions: mentions}) })
+            setHandler('dm', function(channelId, unread, mentions, name, icon, perm, _id) { dmHandler({_id: _id, name: Shared.emojify(name), image: icon, dmChannel: channelId, textSendPermissions: perm, iconBase: '', unread: unread, mentions: mentions}) })
+            setHandler('group', function(channelId, unread, mentions, name, icon, iconBase) { dmHandler({_id: '-1', name: name ? Shared.emojify(name) : qsTr("Unnamed", "group"), image: icon, dmChannel: channelId, textSendPermissions: true, iconBase: iconBase ? iconBase : qsTr("Unnamed"), unread: unread, mentions: mentions}) })
             setHandler('dmUpdate', dmUpdateHandler)
             _refreshFirstPage = refreshHandler
 
@@ -161,21 +176,21 @@ ApplicationWindow {
                 if (name in errorStrings) var text = errorStrings[name]
                 else {
                     // generally should not happen unless I forget to put an error
-                    shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
+                    Shared.showError(qsTranslate("Errors", "Unknown error: %1").arg(name), info + ": " + JSON.stringify(other))
                     return
                 }
 
                 switch(name) {
                 case 'unknownPrivateChannel':
-                    shared.showError(text.arg(info))
+                    Shared.showError(text.arg(info))
                     break
                 case 'cache':
-                    shared.showError(text, info+': '+other)
+                    Shared.showError(text, info+': '+other)
                     break
                 case 'discord':
-                    shared.showError(text.arg(info), other)
+                    Shared.showError(text.arg(info), other)
                 default:
-                    shared.showError(text, info)
+                    Shared.showError(text, info)
                 }
             })
 
@@ -187,7 +202,7 @@ ApplicationWindow {
             })
         }
 
-        onError: shared.showError(qsTranslate("Errors", "Python error"), traceback)
+        onError: Shared.showError(qsTranslate("Errors", "Python error"), traceback)
         onReceived: console.log("got message from python: " + data)
 
         function call2(name, args, callback) { call('main.comm.'+name, typeof args === 'undefined' ? [] : (Array.isArray(args) ? args : [args]), callback) }
@@ -230,6 +245,6 @@ ApplicationWindow {
             _refreshFirstPage()
         }
 
-        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState, shared.active]) }
+        function reloadConstants() { call2('set_constants', [StandardPaths.cache, appSettings.cachePeriod, StandardPaths.download, getProxy(), Theme.fontSizeMedium, appSettings.unreadState, Shared.o.active]) }
     }
 }

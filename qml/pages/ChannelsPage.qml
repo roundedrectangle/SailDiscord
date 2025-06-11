@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import io.thp.pyotherside 1.5
 import "../components"
+import "../js/shared.js" as Shared
 
 Page {
     id: page
@@ -32,7 +33,7 @@ Page {
         default: pageStack.pushAttached(comingSoonPage, {channelType: m.icon});break
         }
         if (!background) {
-            shared.setLastChannel(serverid, m.channelid)
+            Shared.setLastChannel(serverid, m.channelid)
             pageStack.navigateForward()
         }
     }
@@ -88,13 +89,13 @@ Page {
             if (!!pageStack.nextPage()) pageStack.popAttached()
             if (serverid == '') return
             lastServerId = serverid
-            var last = shared.getLastChannel(serverid)
+            var last = Shared.getLastChannel(serverid)
             py.setHandler('channel'+serverid, function (categoryid, categoryname, channelid, name, haspermissions, icon, textSendPermissions, managePermissions, topic, unread, mentions) {
                 if (!haspermissions && !appSettings.ignorePrivate) return
                 var m = {
-                    categoryid: categoryid, categoryname: shared.emojify(categoryname), channelid: channelid, name: shared.emojify(name),
+                    categoryid: categoryid, categoryname: Shared.emojify(categoryname), channelid: channelid, name: Shared.emojify(name),
                     icon: icon, hasPermissions: haspermissions, textSendPermissions: textSendPermissions,
-                    managePermissions: managePermissions, topic: shared.emojify(topic), unread: unread, mentions: mentions,
+                    managePermissions: managePermissions, topic: Shared.emojify(topic), unread: unread, mentions: mentions,
                 }
                 append(m)
                 if (last == channelid) openChannel(m, true)
