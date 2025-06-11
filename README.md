@@ -1,3 +1,10 @@
+# INFO ABOUT SHARED IN A SEPARATE JS LIBRARY FILE
+
+Current issues:
+
+1. QMLLive does not work (you can't access ApplicationWindow from JS library, so we have to set all constants when app is initialized; but with QMLLive a JS library is loaded twice sometimes)
+2. for some reason showdown does not work (every method becomes undefined for some reason...)
+
 # Sailcord
 
 Previously SailDiscord
