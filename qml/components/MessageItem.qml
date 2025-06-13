@@ -172,6 +172,7 @@ ListItem {
                     // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
                     wrapMode: Text.Wrap
                     textFormat: appSettings.unformattedText ? Text.PlainText : Text.RichText
+                    font.pixelSize: Theme.fontSizeSmall
                     text: _model.formattedContents
                     width: parent.width
                                       // if sent, sentBehaviour is set to reversed or right-aligned, and aligning text is enabled
