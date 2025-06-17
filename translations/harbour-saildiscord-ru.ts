@@ -69,7 +69,7 @@
         <location filename="../qml/pages/ModernOverview.qml" line="29"/>
         <source>About this server</source>
         <comment>Server</comment>
-        <translation>О сервере</translation>
+        <translation>Об этом сервере</translation>
     </message>
 </context>
 <context>
