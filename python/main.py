@@ -248,7 +248,7 @@ class Communicator:
         else:
             self.cacher = Cacher(cache, cache_period)
         if self.temp:
-            self.temp.recreate_temporary()
+            self.temp.create()
         else:
             self.temp = TemporaryManager(cache)
         
@@ -339,7 +339,7 @@ class Communicator:
 
     @exception_safe(CancelledError)
     def disconnect(self):
-        self.temp.clear_temporary()
+        self.temp.clear()
 
         self.client.begin_disconnect()
         self.loginth.join() # App gets terminated once this function ends, so we end it only once the thread finishes
@@ -360,7 +360,7 @@ class Communicator:
     def save_temp(self, url, name):
         """Returns saved temp file path"""
         if isurl(url):
-            return str(self.temp.save_temporary(url, name))
+            return str(self.temp.save(url, name))
         else:
             # weird but this workaround is needed for android apps (and possibly sailjail)
             dest = self.temp.temp / name
