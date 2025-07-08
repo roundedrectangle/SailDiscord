@@ -223,47 +223,47 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="148"/>
         <source>A reference failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare il riferimento</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="149"/>
         <source>Channel failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare il canale</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="150"/>
         <source>Could not get user information</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare le informazioni utente</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="151"/>
         <source>Could not get server information</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare le informazioni del server</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="152"/>
         <source>Unknown private channel: %1. Please report this to developers</source>
-        <translation type="unfinished"></translation>
+        <translation>Canale privato sconosciuto: %1. Per favore riportalo agli sviluppatori</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>Ignoring Discord error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignoro errore Discord: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="156"/>
         <source>Unable to receive cache: connection failed</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile ricevere la cache: connessione fallita</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="157"/>
         <source>Unknown caching error</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore cache sconosciuto</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="164"/>
         <source>Unknown error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Errore sconosciuto: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="190"/>
@@ -273,12 +273,12 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="95"/>
         <source>Unable to download file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile scaricare il file %1. Controllare gli errori recenti</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="102"/>
         <source>Unable to share file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile condividere il file %1. Controllare gli errori recenti</translation>
     </message>
 </context>
 <context>
@@ -307,12 +307,12 @@
     <message>
         <location filename="../qml/components/MessageItem.qml" line="243"/>
         <source>Copy message link</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia collegamento messaggio</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageItem.qml" line="253"/>
         <source>Copy formatted contents</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia contenuto formattato</translation>
     </message>
 </context>
 <context>
@@ -375,7 +375,7 @@
         <location filename="../qml/components/MessageItem.qml" line="179"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificato %1</translation>
     </message>
 </context>
 <context>
@@ -383,17 +383,17 @@
     <message>
         <location filename="../qml/components/MessageReference.qml" line="77"/>
         <source>Reference failed to load</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare il riferimento</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="75"/>
         <source>Original message was deleted</source>
-        <translation type="unfinished"></translation>
+        <translation>Il messaggio originale è stato eliminato</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="76"/>
         <source>Forwarded message</source>
-        <translation type="unfinished"></translation>
+        <translation>Messaggio inoltrato</translation>
     </message>
     <message>
         <location filename="../qml/components/MessageReference.qml" line="145"/>
@@ -421,7 +421,7 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="130"/>
         <source>Wait for someone to post something</source>
-        <translation type="unfinished"></translation>
+        <translation>Aspetta che qualcuno carichi qualcosa</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="254"/>
@@ -768,7 +768,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="43"/>
         <source>Use default type on unknown types</source>
-        <translation>Usa tipo predefiito su messaggi sconosciuti</translation>
+        <translation>Usa tipo predefinito su messaggi sconosciuti</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="196"/>
@@ -803,12 +803,12 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>Overview</source>
-        <translation type="unfinished"></translation>
+        <translation>Panoramica</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="116"/>
         <source>Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Modalità</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="177"/>
@@ -853,17 +853,17 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="85"/>
         <source>Modern UI</source>
-        <translation type="unfinished"></translation>
+        <translation>UI Moderna</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="89"/>
         <source>Servers quick scroll</source>
-        <translation type="unfinished"></translation>
+        <translation>Scorrimento veloce server</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="175"/>
         <source>as avatar (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>per avatar (predefinito)</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="224"/>
@@ -875,27 +875,27 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>Reset last server and channels</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripristina ultimo server e canale</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="283"/>
         <source>Spying</source>
-        <translation type="unfinished"></translation>
+        <translation>Canali nascosti</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk</source>
-        <translation type="unfinished"></translation>
+        <translation>Attenzione: Cambiare queste impostazioni potrebbe risultare in un ban e non è consigliato. Usale a tuo rischio</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="308"/>
         <source>Show channels without permissions</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra canali senza autorizzazione</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="309"/>
         <source>They will be displayed, but it still won&apos;t be possible to open them</source>
-        <translation type="unfinished"></translation>
+        <translation>Saranno mostrati ma non sarà comunque possibile accederci</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="319"/>
@@ -970,7 +970,7 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="189"/>
         <source>Use Twemoji instead of default Emoji</source>
-        <translation>Usa le Twemoji al posto delle Emodi predefinite</translation>
+        <translation>Usa le Twemoji al posto delle Emoji predefinite</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="117"/>
@@ -995,22 +995,22 @@
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="371"/>
         <source>Show indicators of read states</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra indicatori di stato lettura</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="372"/>
         <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Include conteggio menzioni, stato non letti. Potrebbe essere buggato. Riavvia l&apos;applicazione per applicare</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="377"/>
         <source>Friend requests</source>
-        <translation type="unfinished"></translation>
+        <translation>Richieste d&apos;amicizia</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="378"/>
         <source>Does not work because of captcha for most people</source>
-        <translation type="unfinished"></translation>
+        <translation>Potrebbe non funzionare a causa della richiesta di un captcha</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="384"/>
@@ -1104,13 +1104,13 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="138"/>
         <source>Unnamed</source>
-        <translation type="unfinished"></translation>
+        <translation>Senza nome</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="138"/>
         <source>Unnamed</source>
         <comment>group</comment>
-        <translation type="unfinished"></translation>
+        <translation>Senza nome</translation>
     </message>
 </context>
 <context>
