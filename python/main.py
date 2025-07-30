@@ -166,9 +166,9 @@ class MyClient(discord.Client):
         #self.current_server = None
         self.current_channel = None
     
-    def send_message(self, text):
+    def send_message(self, text, files: list[discord.File] = []):
         if self.ensure_current_channel():
-            return self.run_asyncio_threadsafe(self.current_channel.send(text), False)
+            return self.run_asyncio_threadsafe(self.current_channel.send(text, files=files), False)
     
     def ensure_current_channel(self, channel=None, server=None):
         if self.current_channel == None:
@@ -330,8 +330,10 @@ class Communicator:
                 self.client.unset_current_channel()
                 qsend('channel', format_exc(e))
     
-    def send_message(self, message_text):
-        self.client.send_message(message_text)
+    def send_message(self, message_text, files=[]):
+        self.client.send_message(message_text, [
+            discord.File(info['path'], spoiler=info['spoiler'], filename=info['name'], description=info['description'] or None, title=info['title'] or None)
+            for info in files])
 
     @exception_safe(AttributeError, discord.NotFound)
     def get_history_messages(self, before_id):

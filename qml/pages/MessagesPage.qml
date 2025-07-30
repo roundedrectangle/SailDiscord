@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import Nemo.Thumbnailer 1.0
 import io.thp.pyotherside 1.5
 import "../components"
 
@@ -23,6 +24,7 @@ Page {
     property int currentFieldAction: 0 // 0: none, 1: editing, 2: replying
     property string actionID: '-1' // editing or replying message ID
     property string actionInfo: '' // replying contents
+    property var attachments: []
     property bool _loaded: false
 
     Timer {
@@ -68,6 +70,19 @@ Page {
     }
 
     function loadAboutDM() { pageStack.push(Qt.resolvedUrl("AboutUserPage.qml"), { userid: userid, name: name, icon: usericon }) }
+
+    function addAttachment(properties) {
+        attachments.push({
+                             path: properties.filePath,
+                             name: properties.fileName,
+                             mime: properties.mimeType,
+                             type: 0,
+                             spoiler: false,
+                             description: '',
+                             title: ''
+                         })
+        attachmentsChanged()
+    }
 
     /*DockedPanel {
         id: topicPanel
@@ -311,11 +326,136 @@ Page {
                     }
                 }
 
+                FadeableFlickable {
+                    width: parent.width
+                    height: attachments.length > 0 ? attachmentsPreviewRow.height : 0
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
+                    contentHeight: attachmentOptionsRow.height
+                    contentWidth: Math.max(width, attachmentOptionsRow.width)
+
+                    Row {
+                        id: attachmentsPreviewRow
+                        Behavior on height { NumberAnimation { duration: 200 } }
+
+                        Repeater {
+                            model: attachments
+                            GridItem {
+                                width: Theme.itemSizeSmall
+                                contentWidth: attachmentPreviewLoader.width + Theme.paddingMedium*2
+                                contentHeight: attachmentPreviewLoader.height + Theme.paddingMedium*2
+
+                                function remove() {
+                                    remorseDelete(function() {
+                                        attachments.splice(index, 1)
+                                        attachmentsChanged()
+                                    })
+                                }
+
+                                Loader {
+                                    id: attachmentPreviewLoader
+                                    anchors.centerIn: parent
+                                    sourceComponent: switch(type) {
+                                                     case 0:
+                                                     case 1:
+                                                         return thumbnailComponent
+                                                     default:
+                                                         iconComponent
+                                                     }
+
+                                    Component {
+                                        id: thumbnailComponent
+                                        Thumbnail {
+                                            width: Theme.itemSizeMedium
+                                            height: Theme.itemSizeMedium
+                                            sourceSize {
+                                                width: width
+                                                height: height
+                                            }
+                                            fillMode: Thumbnail.PreserveAspectCrop
+
+                                            mimeType: mime
+                                            source: path
+
+                                            Icon {
+                                                visible: type == 1
+                                                source: "image://theme/icon-m-play"
+                                                width: Theme.iconSizeSmall
+                                                height: Theme.iconSizeSmall
+                                                anchors.centerIn: parent
+                                            }
+                                        }
+                                    }
+
+                                    Component {
+                                        id: iconComponent
+                                        Icon {
+                                            source: Theme.iconForMimeType(mime)
+                                        }
+                                    }
+                                }
+
+                                onClicked: openMenu()
+                                menu: Component {
+                                    ContextMenu {
+                                        MenuItem {
+                                            text: qsTr("Toggle spoiler")
+                                            onClicked: {
+                                                attachments[index].spoiler = !attachments[index].spoiler
+                                                attachmentsChanged()
+                                            }
+                                        }
+                                        MenuItem {
+                                            text: qsTr("Remove")
+                                            onClicked: remove()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                FadeableFlickable {
+                    id: attachActionsFlickable
+                    width: parent.width
+                    visible: false
+                    height: visible ? attachActionsRow.height : 0
+                    Behavior on height { SmoothedAnimation { duration: 200 } }
+                    contentHeight: attachActionsRow.height
+                    contentWidth: Math.max(width, attachActionsRow.width)
+
+                    function openPicker(path) {
+                        var picker = pageStack.push(path)
+                        picker.selectedContentPropertiesChanged.connect(function() {
+                            attachActionsFlickable.visible = false
+                            page.addAttachment(properties)
+                        })
+                    }
+
+                    Row {
+                        id: attachActionsRow
+                        spacing: Theme.paddingMedium
+
+                        IconButton {
+                            icon.source: "image://theme/icon-m-image"
+                            onClicked: openPicker("Sailfish.Pickers.ImagePickerPage")
+                        }
+                        IconButton {
+                            icon.source: "image://theme/icon-m-video"
+                            onClicked: openPicker("Sailfish.Pickers.VideoPickerPage")
+                        }
+                        IconButton {
+                            icon.source: "image://theme/icon-m-document"
+                            onClicked: openPicker("Sailfish.Pickers.FilePickerPage")
+                        }
+                    }
+                }
+
                 Row {
                     width: parent.width
                     TextArea {
                         id: sendField
-                        width: parent.width - sendButton.width
+                        width: parent.width - sendButtons.width
 
                         placeholderText: qsTr("Type something")
                         hideLabelOnEmptyField: false
@@ -325,23 +465,37 @@ Page {
                         horizontalAlignment: TextEdit.AlignLeft
 
                         EnterKey.iconSource: appSettings.sendByEnter ? "image://theme/icon-m-enter-accept" : ""
-                        EnterKey.onClicked: if (appSettings.sendByEnter) sendMessage()
+                        EnterKey.onClicked: if (appSettings.sendByEnter) switch (currentFieldAction) {
+                                                case 0: sendMessage();break
+                                                case 1: applyEdit();break
+                                                case 2: applyReply()
+                                                }
                     }
 
-                    IconButton {
-                        id: sendButton
-                        visible: !appSettings.sendByEnter
-                        width: visible ? (Theme.iconSizeMedium + 2 * Theme.paddingSmall) : 0
-                        height: width
-                        enabled: sendField.text.length !== 0
-                        anchors.bottom: parent.bottom
-                        icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
+                    Row {
+                        id: sendButtons
+                        IconButton {
+                            width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
+                            height: width
+                            anchors.bottom: parent.bottom
+                            icon.source: "image://theme/icon-m-attach"
+                            onClicked: attachActionsRow.visible = !attachActionsRow.visible
+                        }
 
-                        onClicked: switch (currentFieldAction) {
-                                   case 0: sendMessage();break
-                                   case 1: applyEdit();break
-                                   case 2: applyReply()
-                                   }
+                        IconButton {
+                            visible: !appSettings.sendByEnter
+                            width: visible ? (Theme.iconSizeMedium + 2 * Theme.paddingSmall) : 0
+                            height: width
+                            enabled: sendField.text.length !== 0
+                            anchors.bottom: parent.bottom
+                            icon.source: "image://theme/icon-m-" + (currentFieldAction == 1 ? "accept" : "send")
+
+                            onClicked: switch (currentFieldAction) {
+                                       case 0: sendMessage();break
+                                       case 1: applyEdit();break
+                                       case 2: applyReply()
+                                       }
+                        }
                     }
                 }
             }
