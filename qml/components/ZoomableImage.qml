@@ -1,3 +1,10 @@
+/*
+ * This file is part of File Browser.
+ *
+ * SPDX-FileCopyrightText: 2019-2021 Mirian Margiani
+ * SPDX-License-Identifier: GPL-3.0-or-later OR AGPL-3.0-or-later
+ */
+
 // code is based on https://github.com/ichthyosaurus/harbour-file-browser/blob/main/qml/pages/ViewImagePage.qml
 
 import QtQuick 2.5
