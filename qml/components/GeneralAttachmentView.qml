@@ -31,26 +31,38 @@ Item {
                     item.source = model.url
                     item.anchors.fill = item.parent
                     item.fillMode = Image.PreserveAspectFit
-                    item.visible = !blur.visible
                 }
 
                 Component { id: normalImg; Image {} }
                 Component { id: animImg; AnimatedImage {} }
             }
 
-            FastBlur {
-                id: blur
-                visible: model.spoiler && !fullscreen
-                anchors.fill: img
-                source: img.item
-                radius: 100
+			Loader {
+				id: blur
+				anchors.fill: img
+				active: model.spoiler && !dismissed && !fullscreen
+				property bool dismissed
+				
+	            sourceComponent: Component {
+		            FastBlur {
+		                anchors.fill: parent
+		                source: img.item
+		                radius: 100
 
-                Label {
-                    text: qsTr("SPOILER")
-                    anchors.centerIn: parent
-                    font.bold: true
-                    color: Theme.highlightColor
-                }
+		                Label {
+		                    text: qsTr("SPOILER")
+		                    font.pixelSize: Theme.fontSizeHuge
+		                    anchors.centerIn: parent
+		                    font.bold: true
+		                    color: Theme.highlightColor
+		                }
+		                
+		                MouseArea {
+		                	anchors.fill: parent
+		                	onClicked: console.log("Hi", blur.dismissed = true,blur.active)
+		                }
+		            }
+		    	}
             }
         }
     }
@@ -83,6 +95,9 @@ Item {
             x: Theme.horizontalPageMargin
             width: parent.width - 2*x
             height: parent.height
+
+			property bool spoilerDismissed
+            
             Rectangle {
                 anchors.fill: parent
                 color: Theme.colorScheme === Theme.LightOnDark ? Theme.secondaryColor : Theme.overlayBackgroundColor
@@ -102,11 +117,43 @@ Item {
                     source: Theme.iconForMimeType(model.realtype)
                 }
                 Label {
+                	id: unknownPreviewLabel
                     anchors.verticalCenter: parent.verticalCenter
                     width: parent.width - unknownPreviewIcon.width - parent.spacing*1
                     truncationMode: TruncationMode.Fade
                     text: model.filename
                 }
+            }
+
+            states: [
+	           	State {
+	           		name: "spoiler"
+	           		when: model.spoiler && !spoilerDismissed
+	           		
+	           		PropertyChanges {
+	           			target: unknownPreviewLabel
+	           			text: qsTr("SPOILER")
+	           			font.bold: true
+	           			color: Theme.highlightColor
+	           		}
+	           		
+	           		PropertyChanges {
+	           			target: unknownPreviewIcon
+	           			source: "image://theme/icon-m-question"
+	           		}
+
+	           		PropertyChanges {
+	           			target: spoilerMouseArea
+	           			enabled: true
+	           		}
+	           	}
+	        ]
+
+            MouseArea {
+            	id: spoilerMouseArea
+            	anchors.fill: parent
+            	enabled: false
+            	onClicked: spoilerDismissed = true
             }
         }
     }
