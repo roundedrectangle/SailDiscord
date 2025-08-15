@@ -44,7 +44,7 @@ Dialog {
 
             Loader {
                 id: loader
-                property string token: status == Loader.Ready ? (useToken ? item.token : item.getToken()) : ""
+                property string token: status == Loader.Ready ? item.token : ''
                 width: parent.width
                 height: parent.height - header.height
                 sourceComponent: useToken ? tokenLogin : webViewLogin
@@ -55,27 +55,23 @@ Dialog {
     Component {
         id: webViewLogin
         WebView {
-            property string discord_token: ""
-
             id: webview
-            url: "https://discord.com/login"
             anchors.fill: parent
+            url: "https://discord.com/login"
 
-             function getToken() {
-                 // if the webpage is loaded and there's a token, return it (string).
-                 // otherwise return an empty string
-                 if (!loaded) return ""
-                 updateToken()
-                 return discord_token
-             }
+            property string token
+
+            Component.onCompleted: updateToken()
+            onLoadedChanged: updateToken()
+            onUrlChanged: updateToken()
 
              function updateToken() {
-                 webview.runJavaScript(
+                 if (loaded) webview.runJavaScript(
                      // this code returns the token:
-                     "return (webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m?.exports?.default?.getToken).exports.default.getToken()",
+                     "iframe=document.createElement('iframe');document.body.append(iframe);token=JSON.parse(iframe.contentWindow.localStorage.token);iframe.remove();return token",
 
-                     function (res) { if (res !== null) webview.discord_token = res }, // callback: if there is a token, store it in discord_token
-                     function (err) {}// showError(qsTranslate("Errors", "Error getting token: %1").arg(err)) } // error callback
+                     function (res) { if (res !== null) webview.token = res }, // callback
+                     function (err) { shared.showError(qsTranslate("Errors", "Unable to retrieve token: %1").arg(err)) } // error callback
                  )
              }
         }
