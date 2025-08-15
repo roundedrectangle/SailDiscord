@@ -10,7 +10,7 @@ Basic functionality is already there. More features are coming through updates
 
 Join the [Telegram channel](https://t.me/saildiscord) for Sailcord development logs and releases.
 
-Join [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server! Besides general SailfishOS discussion, it also has several Sailcord-related channels including info, discussion and major announcements like releases.
+You can join the [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord server. Besides general SailfishOS discussion, it also has several Sailcord-related channels including info, discussion and major announcements like releases. Keep in mind that these channels may be out of date; the main channel is in Telegram.
 
 ## TODO
 
@@ -50,13 +50,31 @@ Check if you are able to open https://discord.com/login in the native browser. I
 
 ### Logging in via token
 
-See [discord.py-self docs page](https://discordpy-self.readthedocs.io/en/latest/authenticating.html) for up to date information. In short, you should:
+For up to date information, please search for a method using a search engine like Google. In short, you should:
 
-- Login into discord with a desktop web browser
-- Open developer tools (ctrl+shift+i on most browsers) and click on Console
-- Type this code and press enter:
+1. Login into discord with a desktop web browser
+2. Open developer tools (Ctrl+Shift+M on most browsers)
+
+#### Method 1 (usually works, the instruction is for Firefox, for other browsers it may be different):
+2. Select Network
+3. Select one of the requests (usually, the ones requred are under the XHR filter)
+4. Select Headers, scroll down to Request Headers, under which find Authorization and copy its value
+   In case you can't find such header, try again from step 3 with another request
+   If the header value starts with `Bearer: `, strip it; if it is in quotes (`"`), also remove them.
+
+#### Method 2:
+2. Select Console
+3. Enable Mobile device emulation (Ctrl+Shift+M on most browsers, or an icon with a phone)
+4. Type this code and press enter:
+	`iframe=document.createElement('iframe');document.body.appendChild(iframe);console.log(JSON.parse(iframe.contentWindow.localStorage.token));iframe.remove()`
+	In case an error shows up, refresh the page
+5. Copy the token it will show you
+
+#### Method 3 (stopped working recently):
+2. Select Console
+3. Type this code and press enter:
 	`(webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m => m?.exports?.default?.getToken).exports.default.getToken()`
-- Copy the token it will show you without the quotes (`"`)
+4. Copy the token it will show you without the quotes (`"`)
 
 After obtaining you token, in Sailcord top menu, when logging in, choose Login with token. Then paste your token and click Accept.
 
