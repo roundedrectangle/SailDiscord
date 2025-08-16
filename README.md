@@ -43,17 +43,25 @@ You can join the [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord se
 
 ### Login page isn't loading!
 
-Check if you are able to open https://discord.com/login in the native browser. If you can't, here are the possible workarounds:
+Check if you are able to open https://discord.com/login in the native browser. If you can't, this is most likely because the current SailfishOS browser is too old. Here are the solutions:
 
-- Update to [ESR91 beta](https://www.flypig.co.uk/geckoinstall)
+- Update to [ESR91 beta](https://www.flypig.co.uk/geckoinstall) if you are on SailfishOS 4.6, 4.5 or something like that.
 - Login using token (see below)
 
-### Logging in via token
+This could also be because Discord is blocked in your country. You can check if it is so by opening https://discord.com/login on another device or in Android AppSupport.
 
-For up to date information, please search for a method using a search engine like Google. In short, you should:
+### I am logged in, but I can't accept the dialog
+
+Login via token (see below). If you want to, you can open an issue on GitHub or comment on OpenRepos to let me know that it is broken for me to fix it, or fix it yourself and submit a PR.
+
+### Logging in via token (in case WebView login broke or the login page is not loading)
+
+For up to date information, please search for a method using a search engine like Google. In short, you should first:
 
 1. Login into discord with a desktop web browser
 2. Open developer tools (Ctrl+Shift+M on most browsers)
+
+Then try one of the following methods:
 
 #### Method 1 (usually works, the instruction is for Firefox, for other browsers it may be different):
 2. Select Network
