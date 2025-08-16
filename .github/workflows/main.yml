@@ -8,6 +8,14 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - .github/**
+      - .vscode/**
+      - icon_src/**
+      - pictures/**
+      - README.md
+      - LICENSE
+      - pyrightconfig.json
   pull_request:
     branches:
       - main
