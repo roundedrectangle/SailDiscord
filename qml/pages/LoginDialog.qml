@@ -42,14 +42,55 @@ Dialog {
                 acceptText: qsTr("Login")
             }
 
+            Column {
+                id: troubleshootColumn
+                visible: false
+
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                height: visible ? implicitHeight : 0
+                Behavior on height { NumberAnimation { duration: 200 } }
+                spacing: Theme.paddingMedium
+
+                Separator {
+                    color: Theme.primaryColor
+                    width: parent.width
+                    horizontalAlignment: Qt.AlignHCenter
+                }
+
+                Label {
+                    width: parent.width
+                    wrapMode: Text.Wrap
+                    font.pixelSize: Theme.fontSizeLarge
+                    color: Theme.highlightColor
+                    text: qsTr("Having trouble logging in?")
+                }
+
+                Label {
+                    width: parent.width
+                    wrapMode: Text.Wrap
+                    font.pixelSize: Theme.fontSizeSmall
+                    text: qsTr("Check the %1troubleshooting steps%2.").arg('<a href="%1">'.arg("https://github.com/roundedrectangle/SailDiscord#troubleshooting")).arg('</a>')
+                    linkColor: Theme.highlightColor
+                    bottomPadding: Theme.paddingLarge
+                    onLinkActivated: Qt.openUrlExternally(link)
+                }
+            }
+
             Loader {
                 id: loader
                 property string token: status == Loader.Ready ? item.token : ''
                 width: parent.width
-                height: parent.height - header.height
+                height: parent.height - header.height - troubleshootColumn.height
                 sourceComponent: useToken ? tokenLogin : webViewLogin
             }
         }
+    }
+
+    Timer {
+        interval: 45000
+        running: true
+        onTriggered: troubleshootColumn.visible = true
     }
 
     Component {
@@ -71,7 +112,7 @@ Dialog {
                      "iframe=document.createElement('iframe');document.body.append(iframe);token=JSON.parse(iframe.contentWindow.localStorage.token);iframe.remove();return token",
 
                      function (res) { if (res !== null) webview.token = res }, // callback
-                     function (err) { shared.showError(qsTranslate("Errors", "Unable to retrieve token: %1").arg(err)) } // error callback
+                     function (err) { shared.showError(qsTranslate("Errors", "Unable to retrieve token"), err)} // error callback
                  )
              }
         }
