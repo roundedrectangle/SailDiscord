@@ -59,7 +59,7 @@ Item {
 		                
 		                MouseArea {
 		                	anchors.fill: parent
-		                	onClicked: console.log("Hi", blur.dismissed = true,blur.active)
+                            onClicked: blur.dismissed = true
 		                }
 		            }
 		    	}
