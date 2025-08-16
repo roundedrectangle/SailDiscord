@@ -60,9 +60,9 @@ For up to date information, please search for a method using a search engine lik
 3. Select one of the requests (usually, the ones requred are under the XHR filter)
 4. Select Headers, scroll down to Request Headers, under which find Authorization and copy its value
    In case you can't find such header, try again from step 3 with another request
-   If the header value starts with `Bearer: `, strip it; if it is in quotes (`"`), also remove them.
+   If the header value starts with `Bearer: `, remove it; if it is in quotes (`"`), remove them too.
 
-#### Method 2:
+#### Method 2 (used in the app's WebView login):
 2. Select Console
 3. Enable Mobile device emulation (Ctrl+Shift+M on most browsers, or an icon with a phone)
 4. Type this code and press enter:
