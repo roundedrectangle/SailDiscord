@@ -45,6 +45,8 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
 
     # Caching Docker images is not ready yet, see 
     # https://github.com/storeman-developers/harbour-storeman-installer/blob/devel/cache-docker-images_github-ci.md
