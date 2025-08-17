@@ -76,11 +76,11 @@ images.files = images
 images.path = /usr/share/$${TARGET}
 
 pyotherside_utils.target = $$OUT_PWD/deps
-pyotherside_utils.commands = echo hi #python3 -m pip install --no-cache-dir --force-reinstall --upgrade https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=%_builddir/deps
+pyotherside_utils.commands = python3 -m pip install --no-cache-dir --force-reinstall --upgrade https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=%_builddir/deps
 pyotherside_utils.depends = FORCE
 
 discordpyself.target = $$OUT_PWD/deps
-discordpyself.commands = echo hi #python3 -m pip install --upgrade $$PWD/libs/discord.py-self --target=$$OUT_PWD/deps && rm -rf $$OUT_PWD/deps/bin && (strip -s $$OUT_PWD/deps/charset_normalizer/*.so 2>/dev/null || :) && (strip -s $$OUT_PWD/deps/google/_upb/*.so 2>/dev/null || :)
+discordpyself.commands = python3 -m pip install --upgrade $$PWD/libs/discord.py-self --target=$$OUT_PWD/deps && rm -rf $$OUT_PWD/deps/bin && (strip -s $$OUT_PWD/deps/charset_normalizer/*.so 2>/dev/null || :) && (strip -s $$OUT_PWD/deps/google/_upb/*.so 2>/dev/null || :)
 discordpyself.depends = FORCE
 
 QMAKE_EXTRA_TARGETS += pyotherside_utils discordpyself
