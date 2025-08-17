@@ -77,18 +77,19 @@ images.path = /usr/share/$${TARGET}
 
 pyotherside_utils.target = $$OUT_PWD/deps/pyotherside_utils_
 pyotherside_utils.commands = python3 -m pip install --no-cache-dir --force-reinstall --upgrade https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=$$OUT_PWD/deps/pyotherside_utils_
-pyotherside_utils.depends = FORCE
+#pyotherside_utils.depends = FORCE
 
 discordpyself.target = $$OUT_PWD/deps/discord_
 discordpyself.commands = python3 -m pip install $$PWD/libs/discord.py-self --target=$$OUT_PWD/deps/discord_ && rm -rf $$OUT_PWD/deps/discord_/bin && (strip -s $$OUT_PWD/deps/discord_/charset_normalizer/*.so 2>/dev/null || :) && (strip -s $$OUT_PWD/deps/discord_/google/_upb/*.so 2>/dev/null || :)
-discordpyself.depends = FORCE
+#discordpyself.depends = FORCE
 
 QMAKE_EXTRA_TARGETS += pyotherside_utils discordpyself
 PRE_TARGETDEPS += $$pyotherside_utils.target $$discordpyself.target
+QMAKE_DISTCLEAN += $$pyotherside_utils.target $$discordpyself.target
 
 pythondeps.files = $${pyotherside_utils.target}/* $${discordpyself.target}/*
 pythondeps.path = /usr/share/$${TARGET}/lib/deps
-pythondeps.depends = $$pyotherside_utils.target $$discordpyself.target
+#pythondeps.depends = $$pyotherside_utils.target $$discordpyself.target
 
 python.files = python
 python.path = /usr/share/$${TARGET}
