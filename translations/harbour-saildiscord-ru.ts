@@ -106,13 +106,13 @@
         <location filename="../qml/components/MessageReference.qml" line="140"/>
         <location filename="../qml/pages/AboutUserPage.qml" line="36"/>
         <location filename="../qml/pages/DMsView.qml" line="44"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="352"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="532"/>
         <source>About</source>
         <comment>User</comment>
         <translation>О пользователе</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="237"/>
+        <location filename="../qml/components/MessageItem.qml" line="238"/>
         <source>About this member</source>
         <comment>User</comment>
         <translation></translation>
@@ -280,6 +280,11 @@
         <source>Unable to share file %1. Check recent errors</source>
         <translation>Не удалось поделиться файлом %1. Проверьте недавние ошибки</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="115"/>
+        <source>Unable to retrieve token</source>
+        <translation>Не удалось получить токен</translation>
+    </message>
 </context>
 <context>
     <name>General</name>
@@ -300,17 +305,17 @@
         <translation>Скопировать ID пользователя</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="248"/>
+        <location filename="../qml/components/MessageItem.qml" line="249"/>
         <source>Copy message ID</source>
         <translation>Скопировать ID сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="243"/>
+        <location filename="../qml/components/MessageItem.qml" line="244"/>
         <source>Copy message link</source>
         <translation>Скопировать ссылку</translation>
     </message>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="253"/>
+        <location filename="../qml/components/MessageItem.qml" line="254"/>
         <source>Copy formatted contents</source>
         <translation>Скопировать форматированное содержание</translation>
     </message>
@@ -318,12 +323,13 @@
 <context>
     <name>GeneralAttachmentView</name>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="49"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="53"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="135"/>
         <source>SPOILER</source>
         <translation>СПОЙЛЕР</translation>
     </message>
     <message>
-        <location filename="../qml/components/GeneralAttachmentView.qml" line="76"/>
+        <location filename="../qml/components/GeneralAttachmentView.qml" line="88"/>
         <source>Attachment unsupported: %1</source>
         <translation>Приложение не поддерживается: %1</translation>
     </message>
@@ -364,7 +370,17 @@
         <translation>Войти</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LoginDialog.qml" line="94"/>
+        <location filename="../qml/pages/LoginDialog.qml" line="66"/>
+        <source>Having trouble logging in?</source>
+        <translation>Возникли проблемы с входом в систему?</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="73"/>
+        <source>Check the %1troubleshooting steps%2.</source>
+        <translation>Проверьте %1страницу с частыми проблемами%2.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/LoginDialog.qml" line="131"/>
         <source>Token</source>
         <translation>Токен</translation>
     </message>
@@ -372,7 +388,7 @@
 <context>
     <name>MessageItem</name>
     <message>
-        <location filename="../qml/components/MessageItem.qml" line="179"/>
+        <location filename="../qml/components/MessageItem.qml" line="180"/>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
@@ -409,32 +425,47 @@
 <context>
     <name>MessagesPage</name>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="129"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="140"/>
         <source>No messages</source>
         <translation>Нет сообщений</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="141"/>
         <source>Say hi ;)</source>
         <translation>Скажи привет ;)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="130"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="141"/>
         <source>Wait for someone to post something</source>
         <translation>Подождите, когда кто-то выложит что-то</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="254"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="265"/>
         <source>Message deleted</source>
         <translation>Сообщение удалено</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="292"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="309"/>
         <source>Editing message</source>
         <translation>Редактирование сообщения</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="320"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="426"/>
+        <source>Remove spoiler</source>
+        <translation>Убрать спойлер</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="426"/>
+        <source>Hide with spoiler</source>
+        <translation>Скрыть под спойлер</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="433"/>
+        <source>Remove</source>
+        <translation>Удалить</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="490"/>
         <source>Type something</source>
         <translation>Введите что-то</translation>
     </message>

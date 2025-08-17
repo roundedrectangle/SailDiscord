@@ -423,7 +423,7 @@ Page {
                                 menu: Component {
                                     ContextMenu {
                                         MenuItem {
-                                            text: modelData.spoiler ? qsTr("Disable spoiler") : qsTr("Hide with spoiler")
+                                            text: modelData.spoiler ? qsTr("Remove spoiler") : qsTr("Hide with spoiler")
                                             onClicked: {
                                                 attachments[index].spoiler = !attachments[index].spoiler
                                                 attachmentsChanged()
