@@ -1,4 +1,4 @@
-name: CI - next branch on latest SDK (aarch64,armv7hl,i486)
+name: CI - next branch on latest SDK (aarch64,armv7hl)
 
 env:
   # For the available docker images, see https://github.com/CODeRUS/docker-sailfishos-platform-sdk
