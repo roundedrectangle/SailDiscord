@@ -1,0 +1,3 @@
+[submodule "libs/discord.py-self"]
+	path = libs/discord.py-self
+	url = https://github.com/dolfies/discord.py-self
