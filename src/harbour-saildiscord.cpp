@@ -11,8 +11,12 @@
 
 #include "requires_defines.h"
 
-int main(int argc, char *argv[])
-{
+#include "lottieioplugin.h"
+
+
+Q_IMPORT_PLUGIN(LottieIOPlugin)
+
+int main(int argc, char *argv[]) {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     app->setApplicationName("harbour-saildiscord");
     app->setOrganizationDomain("io.github.roundedrectangle");
