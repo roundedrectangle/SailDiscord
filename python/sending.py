@@ -11,7 +11,8 @@ from utils import *
 import discord
 
 
-SUPPORTED_STICKER_FORMATS = (discord.StickerFormatType.png,)
+SUPPORTED_ANIMATED_STICKER_FORMATS = {discord.StickerFormatType.gif}#, discord.StickerFormatType.lottie}
+SUPPORTED_STICKER_FORMATS = SUPPORTED_ANIMATED_STICKER_FORMATS | {discord.StickerFormatType.png}
 
 # Servers
 
@@ -124,7 +125,8 @@ def convert_attachments(attachments: list[discord.Attachment]):
     return res
 
 def generate_stickers(stickers: list[discord.StickerItem], cacher: Cacher):
-    return [cacher.easy(s.url, s.id, ImageType.STICKER) for s in stickers if s.format in SUPPORTED_STICKER_FORMATS]
+    return [cacher.easy(s.url, s.id, ImageType.STICKER, animated = s.format in SUPPORTED_ANIMATED_STICKER_FORMATS)
+        for s in stickers if s.format in SUPPORTED_STICKER_FORMATS]
     
 
 def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
