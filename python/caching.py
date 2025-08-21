@@ -56,6 +56,7 @@ def cached_path(cache: Path | str, id, type: ImageType, format: str | None = Non
 # and one non-static format: gif (also taken from there)
 # BUT it seems like avatar decorations can be .apng (Animated PNG, sometimes extension is .png)
 # upd on APNG: seems like anything can be it and it's just png in original quality, besides (and if!) being animated
+# upd2: so also there is lottie for stickers...
 
 def construct_qml_data(path, url=None, animated=None, extension=None):
     if animated is None:
@@ -136,7 +137,7 @@ class Cacher(CacherBase):
         else:
             return True
     
-    def easy(self, url, id, type: ImageType, format: str|None=None, as_qml_data=True):
+    def easy(self, url, id, type: ImageType, format: str|None=None, as_qml_data=True, animated=None):
         icon = '' if url is None else \
             str(self.get_cached_path(id, type, url, format))
         if icon != '':
@@ -144,5 +145,5 @@ class Cacher(CacherBase):
         if as_qml_data:
             if icon == '':
                 return STUB_QML_ASSET
-            return construct_qml_data(icon, url)
+            return construct_qml_data(icon, url, animated)
         return icon
