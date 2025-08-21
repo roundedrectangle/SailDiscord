@@ -11,7 +11,7 @@ from utils import *
 import discord
 
 
-SUPPORTED_ANIMATED_STICKER_FORMATS = {discord.StickerFormatType.gif}#, discord.StickerFormatType.lottie}
+SUPPORTED_ANIMATED_STICKER_FORMATS = {discord.StickerFormatType.gif, discord.StickerFormatType.lottie}
 SUPPORTED_STICKER_FORMATS = SUPPORTED_ANIMATED_STICKER_FORMATS | {discord.StickerFormatType.png}
 
 # Servers
