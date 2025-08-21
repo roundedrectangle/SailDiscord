@@ -504,6 +504,7 @@ Page {
                         IconButton {
                             // TODO (maybe): editing attachments (not possible in official clients though)
                             visible: attachPermission && currentFieldAction != 1
+                            enabled: attachments.length < 10
                             width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
                             height: width
                             anchors.bottom: parent.bottom
