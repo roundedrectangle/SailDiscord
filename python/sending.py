@@ -51,6 +51,7 @@ async def send_channel(c: discord.abc.GuildChannel, myself_id):
     qsend(f'channel{c.guild.id}', c.id, getattr(c.category, 'name', ''),
             str(c.id), c.name, perms.view_channel, str(c.type.name),
             isinstance(c, discord.TextChannel) and perms.send_messages, # If sending text is allowed
+            isinstance(c, discord.TextChannel) and perms.attach_files,
             perms.manage_messages, getattr(c, 'topic', '') or '',
             *read_args,
     )

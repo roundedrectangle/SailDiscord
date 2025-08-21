@@ -13,6 +13,7 @@ Page {
     property string name
     property bool isDemo: false
     property bool sendPermissions: true
+    property bool attachPermission
     property bool managePermissions: false
     property bool isDM: false
     property bool isGroup: false
@@ -501,8 +502,8 @@ Page {
                     Row {
                         id: sendButtons
                         IconButton {
-                            // TODO: editing attachments
-                            visible: currentFieldAction != 1
+                            // TODO (maybe): editing attachments (not possible in official clients though)
+                            visible: attachPermission && currentFieldAction != 1
                             width: Theme.iconSizeMedium + 2 * Theme.paddingSmall
                             height: width
                             anchors.bottom: parent.bottom
