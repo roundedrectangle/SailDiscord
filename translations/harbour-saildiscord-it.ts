@@ -283,7 +283,7 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="115"/>
         <source>Unable to retrieve token</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile caricare il token</translation>
     </message>
 </context>
 <context>
@@ -372,12 +372,12 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="66"/>
         <source>Having trouble logging in?</source>
-        <translation type="unfinished"></translation>
+        <translation>Problemi nell&apos;accesso?</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="73"/>
         <source>Check the %1troubleshooting steps%2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlla la %1guida alla connessione%2.</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="131"/>
@@ -452,17 +452,17 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="427"/>
         <source>Remove spoiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi spoiler</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="427"/>
         <source>Hide with spoiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Nascondi con spoiler</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="434"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="491"/>
