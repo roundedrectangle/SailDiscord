@@ -233,12 +233,12 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="150"/>
         <source>Could not get user information</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte hämta användarinformation</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="151"/>
         <source>Could not get server information</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte hämta serverinformation</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="152"/>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="153"/>
         <source>Ignoring Discord error: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorerar Discord-fel: %1</translation>
     </message>
     <message>
         <location filename="../qml/harbour-saildiscord.qml" line="156"/>
@@ -273,17 +273,17 @@
     <message>
         <location filename="../qml/components/Shared.qml" line="95"/>
         <source>Unable to download file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte ladda ner filen %1. Kontrollera senaste felen.</translation>
     </message>
     <message>
         <location filename="../qml/components/Shared.qml" line="102"/>
         <source>Unable to share file %1. Check recent errors</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte dela filen %1. Kontrollera senaste felen.</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="115"/>
         <source>Unable to retrieve token</source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte ta emot token</translation>
     </message>
 </context>
 <context>
@@ -372,12 +372,12 @@
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="66"/>
         <source>Having trouble logging in?</source>
-        <translation type="unfinished"></translation>
+        <translation>Problem med att logga in?</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="73"/>
         <source>Check the %1troubleshooting steps%2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrollera %1felsökningsstegen%2.</translation>
     </message>
     <message>
         <location filename="../qml/pages/LoginDialog.qml" line="131"/>
@@ -452,17 +452,17 @@
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="427"/>
         <source>Remove spoiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort spoiler</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="427"/>
         <source>Hide with spoiler</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj med spoiler</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="434"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="491"/>
