@@ -576,6 +576,39 @@ Page {
                 return result;
             }
 
+            appendDemo(true, "Link preview test", {embeds: [
+                               {
+                                   "author":{"icon":"","name":"","url":""},
+                                   "description":"Telegram's first update of 2026 brings even more Liquid Glass interfaces on iOS and AI summaries for channel posts and Instant View pages — built to maximize privacy and protect user data.",
+                                   "image":{"aspectRatio":1,"placeholder":"","spoiler":false,"url":""},
+                                   "provider":{"name":"Telegram","url":""},
+                                   "thumbnail":{"aspectRatio":0.655,"placeholder":"ZCgKHYKZ29VpiXabaYZob8+S6Q+c","spoiler":false,"url":"https://telegram.org/file/400780400257/2/zMEvOzI7s0o.261721.jpg/4c239fd6a73380b51f"},
+                                   "title":"AI Summaries, New Design and More",
+                                   "url":"https://telegram.org/blog/new-design-ai-summaries",
+                                   "video":{"aspectRatio":1,"placeholder":"","spoiler":false,"url":""}
+                               },
+                               { // FIXME: i think youtube thumbnail can expire...
+                                   "author":{"icon":"","name":"NoCopyrightSounds","url":"https://www.youtube.com/channel/UC_aEa8K-EOJ3D6gOs7HcyNg"},
+                                   "description":"NoCopyrightSounds (NCS): Copyright free music for creators.\nDownload & use this track for free in your next video: http://ncs.io/TBWhenImGone\n\nStream here: http://NCS.lnk.to/TBWhenImGone\n\nDownload other NCS music for free to use in your next video: https://ncs.io\nFollow NCS on Spotify: http://ncs.lnk.to/Spotify\n\n- - - - - - - - - - - - - - - - -...",
+                                   "image":{"aspectRatio":1,"placeholder":"","spoiler":false,"url":""},
+                                   "provider":{"name":"YouTube","url":"https://www.youtube.com"},
+                                   "thumbnail":{"aspectRatio":0.5625,"placeholder":"CecFFIQmiFhhmHiAuXjPi81/+A==","spoiler":false,"url":"https://i.ytimg.com/vi/z4RfRxxz5lw/maxresdefault.jpg"},
+                                   "title":"Tetrix Bass & ROY KNOX - When I'm Gone (feat. Ellen Louise) | NCS -...",
+                                   "url":"https://www.youtube.com/watch?v=z4RfRxxz5lw",
+                                   "video":{"aspectRatio":0.5625,"placeholder":"CecFFIQmiFhhmHiAuXjPi81/+A==","spoiler":false,"url":""}
+                               },
+                               {
+                                   "author":{"icon":"","name":"","url":""},
+                                   "description":"",
+                                   "image":{"aspectRatio":1,"placeholder":"","spoiler":false,"url":""},
+                                   "provider":{"name":"Klipy","url":"https://klipy.com"},
+                                   "thumbnail":{"aspectRatio":1.7785714285714285,"placeholder":"HTkKDALvdo33WWdnl2mcYq8J9A==","spoiler":false,"url":"https://telegram.org/file/400780400257/2/zMEvOzI7s0o.261721.jpg/4c239fd6a73380b51f"},
+                                   "title":"Funny Cat and Linux Terminal Joke",
+                                   "url":"https://klipy.com/gifs/cat-linux",
+                                   "video":{"aspectRatio":1.7777777777777777,"placeholder":"HTkKDALvdo33WWdnl2mcYq8J9A==","spoiler":false,"url":"https://static.klipy.com/ii/e293a233a303a98e471f78d04e13a1b0/2b/0d/SHCbo2PW4Mqw.mp4"}
+                               }
+                           ]})
+
             // Append demo messages
             appendDemo(true, "First message!")
             appendDemo(true, "Second message")

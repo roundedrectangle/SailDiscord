@@ -128,7 +128,28 @@ def convert_attachments(attachments: list[discord.Attachment]):
 def generate_stickers(stickers: list[discord.StickerItem], cacher: Cacher):
     return [cacher.easy(s.url, s.id, ImageType.STICKER, animated = s.format in SUPPORTED_ANIMATED_STICKER_FORMATS)
         for s in stickers if s.format in SUPPORTED_STICKER_FORMATS]
-    
+
+# TODO: caching for embeds stuff
+def generate_media_embed_proxy(embed: discord.embeds._EmbedMediaProxy):
+    return {
+        'url': embed.proxy_url or embed.url or '',
+        'aspectRatio': (embed.height / embed.width) if embed.height and embed.width else 1,
+        'placeholder': (embed.placeholder or '') if embed.placeholder_version == 1 else '',
+        'spoiler': embed.flags.spoiler
+    }
+
+def generate_embeds(embeds: list[discord.Embed]):
+    return [{
+        'provider': {'name': e.provider.name or '', 'url': e.provider.url or ''},
+        'author': {'name': e.author.name or '', 'url': e.author.url or '', 'icon': e.author.proxy_icon_url or ''},
+        'url': e.url or '',
+        'description': e.description or '',
+        'title': e.title or '',
+
+        'image': generate_media_embed_proxy(e.image),
+        'thumbnail': generate_media_embed_proxy(e.thumbnail),
+        'video': generate_media_embed_proxy(e.video)
+    } for e in embeds]
 
 def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
     t = message.type
@@ -165,6 +186,7 @@ def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself
             is_history, convert_attachments(message.attachments),
             message.jump_url,
             generate_stickers(message.stickers, cacher),
+            generate_embeds(message.embeds)
         )
 
 # About

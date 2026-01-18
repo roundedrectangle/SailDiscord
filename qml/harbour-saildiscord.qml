@@ -87,6 +87,7 @@ ApplicationWindow {
             property bool focusAfterSend: true
             property bool focudOnChatOpen: false
             property bool modernUIServersQuickScroll: true
+            property bool animateEmbeddedGifs: true
 
             // Appearance (Look and feel)
             //property bool emptySpace: false

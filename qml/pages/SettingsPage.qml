@@ -45,6 +45,12 @@ Page {
                             onCheckedChanged: appSettings.defaultUnknownMessages = checked
                         }
 
+                        TextSwitch {
+                            text: qsTr("Animate embedded GIFs")
+                            checked: appSettings.animateEmbeddedGifs
+                            onCheckedChanged: appSettings.animateEmbeddedGifs = checked
+                        }
+
                         SectionHeader { text: qsTr("Replies") }
                         Label {
                             width: parent.width - 2*x

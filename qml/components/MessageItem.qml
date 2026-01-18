@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 import '../modules/Opal/LinkHandler'
@@ -172,7 +172,7 @@ ListItem {
 
                 Column {
                     width: parent.width
-                    spacing: Theme.paddingMedium
+                    spacing: Theme.paddingLarge
 
                     Label {
                         // LinkedLabel formats tags so they are appeared in plain text. While there are workarounds, they would break with markdown support
@@ -198,7 +198,7 @@ ListItem {
 
                     Repeater {
                         model: _model.stickers
-                        delegate: Asset {
+                        Asset {
                             anchors.right: (_model.sent && appSettings.sentBehaviour !== "n" && appSettings.alignMessagesText) ? parent.right : undefined
                             info: model
                             width: Theme.itemSizeHuge
@@ -206,6 +206,10 @@ ListItem {
                         }
                     }
 
+                    Repeater {
+                        model: _model.embeds
+                        Embed { embed: model }
+                    }
                 }
 
                 Item { height: _firstSameAuthor ? Theme.paddingLarge : Theme.paddingSmall; width: 1; }

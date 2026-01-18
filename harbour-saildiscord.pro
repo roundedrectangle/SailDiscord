@@ -24,6 +24,8 @@ DISTFILES += \
     qml/components/Asset.qml \
     qml/components/AttachmentsPreview.qml \
     qml/components/ChannelItem.qml \
+    qml/components/Embed.qml \
+    qml/components/EmbedPlaceholder.qml \
     qml/components/FadeableFlickable.qml \
     qml/components/GeneralAttachmentView.qml \
     qml/components/ListImage.qml \
@@ -35,10 +37,12 @@ DISTFILES += \
     qml/components/SettingsComboBox.qml \
     qml/components/Shared.qml \
     qml/components/SystemMessageItem.qml \
+    qml/components/VideoControls.qml \
     qml/components/ZoomableImage.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \
     qml/modules/FancyContextMenu/FancyAloneMenuItem.qml \
+    qml/modules/js/thumbhash.js \
     qml/pages/AboutPage.qml \
     qml/pages/AboutServerPage.qml \
     qml/pages/AboutUserPage.qml \

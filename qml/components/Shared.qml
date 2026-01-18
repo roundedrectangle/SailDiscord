@@ -78,7 +78,7 @@ QtObject {
     }
 
     function handleLink(link, sailcordHandler) {
-        if (link.indexOf('sailcord://') == 0) {
+        if (link.indexOf('sailcord://') === 0) {
             var part = link.slice(11)
             var slashIndex = part.indexOf('/')
             var before = part.slice(0, slashIndex), after = part.slice(slashIndex + 1)
@@ -145,11 +145,11 @@ QtObject {
         reference: {}, attachments: [],
         jumpUrl: '', highlightStarted: false,
         APIType: '', decoration: '',
-        stickers: [],
+        stickers: [], embeds: []
     })
     function constructMessageCallback(type, guildid, channelid, finalCallback) {
-        return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl, stickers) {
-            if (guildid != undefined && channelid != undefined)
+        return function(_serverid, _channelid, _id, date, edited, editedAt, userinfo, history, attachments, jumpUrl, stickers, embeds) {
+            if (typeof guildid != 'undefined' && typeof channelid != 'undefined')
                 if ((_serverid != guildid) || (_channelid != channelid)) return
             var data = {
                 type: type, messageId: _id, author: emojify(userinfo.name), avatar: userinfo.avatar,
@@ -161,10 +161,10 @@ QtObject {
                 },
                 APIType: '', contents: '', formattedContents: '', reference: {}, highlightStarted: false,
                 jumpUrl: jumpUrl, decoration: userinfo.decoration,
-                stickers: stickers,
+                stickers: stickers, embeds: embeds
             }
 
-            var extraStart = 11
+            var extraStart = 12
             if (type === "" || type === "unknown") {
                 data.contents = arguments[extraStart]
                 data.formattedContents = markdown(arguments[extraStart+1], data.flags.edit)
