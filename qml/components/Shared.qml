@@ -74,6 +74,7 @@ QtObject {
 
     function emojify(text) {
         if (!appSettings.twemoji) return text
+        if (!text) return text
         return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
     }
 
