@@ -138,13 +138,38 @@ def generate_media_embed_proxy(embed: discord.embeds._EmbedMediaProxy):
         'spoiler': embed.flags.spoiler
     }
 
+def generate_embed_field(field: discord.embeds._EmbedFieldProxy):
+    return {
+        'name': field.name or '',
+        'value': field.value or ''
+    }
+
+def generate_embed_fields(fields: list[discord.embeds._EmbedFieldProxy]):
+    inlines = []
+    for field in fields:
+        if field.inline:
+            inlines.append(generate_embed_field(field))
+        else:
+            if inlines:
+                yield inlines
+                inlines = []
+
+            yield [generate_embed_field(field)]
+
+    if inlines:
+        yield inlines
+
 def generate_embeds(embeds: list[discord.Embed]):
+    # TODO: support mentions and other text entities for embed fields (for example, Dyno shows a username embed)
     return [{
         'provider': {'name': e.provider.name or '', 'url': e.provider.url or ''},
         'author': {'name': e.author.name or '', 'url': e.author.url or '', 'icon': e.author.proxy_icon_url or ''},
         'url': e.url or '',
         'description': e.description or '',
         'title': e.title or '',
+        'footer': {'text': e.footer.text or '', 'icon': e.footer.icon_url or ''},
+        'timestamp': qml_date(e.timestamp) if e.timestamp else 0,
+        'fields': [{'row': fields} for fields in generate_embed_fields(e.fields)],
 
         'image': generate_media_embed_proxy(e.image),
         'thumbnail': generate_media_embed_proxy(e.thumbnail),

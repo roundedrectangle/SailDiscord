@@ -46,13 +46,21 @@ Item {
         }
     }
 
-    IconButton {
-        anchors.centerIn: parent
-        enabled: active
-        icon.source: "image://theme/icon-l-"+(isPlaying ? 'pause' : 'play')
-        onClicked:
-            if (isPlaying) video.pause()
-            else video.play()
+    Item {
+        width: parent.width
+        anchors {
+            top: parent.top
+            bottom: slider.top
+        }
+
+        IconButton {
+            anchors.centerIn: parent
+            enabled: active
+            icon.source: "image://theme/icon-l-"+(isPlaying ? 'pause' : 'play')
+            onClicked:
+                if (isPlaying) video.pause()
+                else video.play()
+        }
     }
 
     Slider {

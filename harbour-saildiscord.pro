@@ -25,6 +25,7 @@ DISTFILES += \
     qml/components/AttachmentsPreview.qml \
     qml/components/ChannelItem.qml \
     qml/components/Embed.qml \
+    qml/components/EmbedImageText.qml \
     qml/components/EmbedPlaceholder.qml \
     qml/components/FadeableFlickable.qml \
     qml/components/GeneralAttachmentView.qml \

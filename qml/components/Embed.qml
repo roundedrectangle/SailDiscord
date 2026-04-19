@@ -43,31 +43,17 @@ BackgroundItem {
             }
         }
 
-        Label {
-            width: parent.width
-            height: Math.max(implicitHeight, authorIcon.height)
-            visible: !!text
+        EmbedImageText {
             text: shared.emojify(embed.author.name)
-            font.pixelSize: Theme.fontSizeSmall
+            icon.source: embed.author.icon
+            icon.visible: embed.author.icon
+
             highlighted: authorMouseArea.containsPress
-            truncationMode: TruncationMode.Fade
             MouseArea {
                 id: authorMouseArea
                 anchors.fill: parent
                 enabled: embed.author.url
                 onClicked: Qt.openUrlExternally(embed.author.url)
-            }
-
-            leftPadding: authorIcon.visible ? (authorIcon.width + Theme.paddingMedium) : 0
-            verticalAlignment: Text.AlignVCenter
-            Image {
-                id: authorIcon
-                source: embed.author.icon
-                width: visible ? Theme.iconSizeExtraSmall : 0
-                height: width
-                visible: embed.author.icon
-                layer.enabled: parent.highlighted
-                layer.effect: Component { PressEffect { source: authorIcon } }
             }
         }
 
@@ -143,6 +129,49 @@ BackgroundItem {
                     }
                 }
             }
+        }
+
+        Repeater {
+            model: embed.fields
+            Row {
+                id: embedFieldsRow
+                property var _model: model
+
+                width: parent.width
+                spacing: Theme.paddingSmall
+
+                Repeater {
+                    id: embedFieldsRowRepeater
+                    model: _model.row
+                    Column {
+                        width: (embedFieldsRow.width / embedFieldsRowRepeater.count) - embedFieldsRow.spacing*(embedFieldsRowRepeater.count-1)
+
+                        Label {
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            text: model.name
+                            font.bold: true
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                        }
+                        Label {
+                            width: parent.width
+                            wrapMode: Text.Wrap
+                            text: model.value
+                            font.pixelSize: Theme.fontSizeExtraSmall
+                        }
+                    }
+                }
+            }
+        }
+
+        EmbedImageText {
+            property string footerText: shared.emojify(embed.footer.text)
+            property string timestamptText: embed.timestamp > -1 ? Format.formatDate(new Date(embed.timestamp)) : ''
+            text: footerText && timestamptText ? (footerText + '&nbsp;•&nbsp;' + timestamptText) : (footerText || timestamptText)
+            icon.source: embed.footer.icon
+            icon.visible: embed.footer.icon
+            wrapMode: Text.Wrap
+            truncationMode: TruncationMode.Elide
         }
     }
 }
