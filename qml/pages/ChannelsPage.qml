@@ -28,12 +28,12 @@ Page {
         if (!m.hasPermissions) return
         switch (m.icon) {
         case "text": case "news": case "name":
-            var page = pageStack.pushAttached(Qt.resolvedUrl("MessagesPage.qml"),
+            var messagesPage = pageStack.pushAttached(Qt.resolvedUrl("MessagesPage.qml"),
                 {guildid: serverid, channelid: m.channelid, name: m.name, sendPermissions: m.textSendPermissions, attachPermission: m.attachFilesPermission, managePermissions: m.managePermissions, topic: m.topic})
-            page.channelOpenRequested.connect(function(id) {
+            messagesPage.channelOpenRequested.connect(function(id) {
                 var i = chModel.findIndexById(id)
                 if (i >= 0) {
-                    pageStack.pop(page)
+                    pageStack.pop(page, PageStackAction.Immediate)
                     page.openChannel(chModel.get(i))
                 }
             })
