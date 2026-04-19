@@ -332,7 +332,7 @@ class Communicator:
                 self.client.set_current_channel(guild, channel)
             except Exception as e:
                 self.client.unset_current_channel()
-                qsend('channel', format_exc(e))
+                show_error('channel', format_exc(e))
     
     def send_message(self, message_text, files=[]):
         self.client.send_message(message_text, [
