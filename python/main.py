@@ -35,7 +35,7 @@ async def generate_message(message: discord.Message, is_history=False):
         #'channel': '-1', 'message': '-1',
         'state': 0, # 0: failed to load, 1: deleted, 2: loaded, 3: loaded from snapshot
         'resolvedType': '', 'resolved': {}}
-    if message.reference:
+    if message.reference and reference_needed(message):
         #ref['channel'], ref['message'] = str(message.reference.channel_id), str(message.reference.message_id)
         ref['type'] = 1 if message.reference.type == discord.MessageReferenceType.reply else \
             2 if message.reference.type == discord.MessageReferenceType.forward else 0

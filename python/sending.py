@@ -151,6 +151,15 @@ def generate_embeds(embeds: list[discord.Embed]):
         'video': generate_media_embed_proxy(e.video)
     } for e in embeds]
 
+def reference_needed(message: discord.Message | discord.MessageSnapshot):
+    return message.type not in (
+        discord.MessageType.new_member,
+
+        # thread_created messages can cause errors when attempting to fetch their reference for some reason
+        # just in case, we ignore specially handled reference types (see Message.reference docs) since they aren't supported right now anyway
+        discord.MessageType.pins_add, discord.MessageType.channel_follow_add, discord.MessageType.thread_created, discord.MessageType.thread_starter_message, discord.MessageType.poll_result, discord.MessageType.context_menu_command
+    )
+
 def generate_extra_message(message: discord.Message | discord.MessageSnapshot, cacher: Cacher | None = None, emoji_size: Any | None = None, ref={}):
     t = message.type
     if t == discord.MessageType.new_member:
