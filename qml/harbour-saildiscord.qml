@@ -146,7 +146,7 @@ ApplicationWindow {
                 captcha: qsTranslate("Errors", "Captcha required but not implemented"),
                 '404': qsTranslate("Errors", "404 Not Found"),
                 message: qsTranslate("Errors", "A message failed to load"),
-                reference: qsTranslate("Errors", "A reference failed to load"),
+                reference: qsTranslate("Errors", "A reference failed to load (%1)"),
                 channel: qsTranslate("Errors", "Channel failed to load"),
                 userInfo: qsTranslate("Errors", "Could not get user information"),
                 serverInfo: qsTranslate("Errors", "Could not get server information"),
@@ -174,7 +174,9 @@ ApplicationWindow {
                     shared.showError(text, info+': '+other)
                     break
                 case 'discord':
+                case 'reference':
                     shared.showError(text.arg(info), other)
+                    break
                 default:
                     shared.showError(text, info)
                 }

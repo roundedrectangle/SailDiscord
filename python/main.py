@@ -63,7 +63,7 @@ async def generate_message(message: discord.Message, is_history=False):
                     ref['resolvedType'], ref['resolved'] = await generate_message(m)
                     ref['state'] = 2
                 except Exception as e:
-                    show_error('reference', format_exc(e))
+                    show_error('reference', f'{message.channel.id if message.channel else "<unknown channel>"} {message.id}', format_exc(e))
                     ref['state'] = 0
         elif isinstance(message.reference.resolved, discord.DeletedReferencedMessage):
             ref['state'] = 1
