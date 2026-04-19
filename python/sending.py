@@ -215,7 +215,7 @@ def send_myself(client: discord.Client):
     status = client.status.value
 
     # We are not bots or system users. Or are we?
-    qsend('user', user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
+    qsend('user', None, None, user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))
 
 def send_guild_info(g: discord.Guild):
     qsend(f'serverinfo{g.id}',

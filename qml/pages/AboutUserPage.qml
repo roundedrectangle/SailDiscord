@@ -157,8 +157,15 @@ AboutPageBase {
             LinkHandler.openOrCopyUrl(link)
         })
         py.setHandler("user"+(isClient?"":userid), function(name, avatar, bio, date, status, onMobile, allNames) {
-            page.name = name
-            icon = avatar
+            if (!isClient) {
+                page.name = name
+                icon = avatar
+
+                isBot = arguments[5]
+                isSystem = arguments[6]
+                isFriend = arguments[7]
+                if (arguments[8]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
+            }
 
             description = shared.markdown(bio, false, true)
             memberSince = new Date(date)
@@ -167,15 +174,6 @@ AboutPageBase {
             // by default these are empty strings:
             globalName = allNames.global
             username = allNames.username
-
-            if (!isClient) /*{
-                page.icon = arguments[5]
-            } else*/ {
-                isBot = arguments[5]
-                isSystem = arguments[6]
-                isFriend = arguments[7]
-                if (arguments[8]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
-            }
         })
         load()
     }
