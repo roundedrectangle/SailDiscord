@@ -73,6 +73,8 @@ CONFIG += sailfishapp_i18n
 TRANSLATIONS += \
     translations/harbour-saildiscord-it.ts \
     translations/harbour-saildiscord-ru.ts \
+    translations/harbour-saildiscord-en.ts \
+    translations/harbour-saildiscord-nl.ts \
     translations/harbour-saildiscord-sv.ts
 
 HEADERS +=
