@@ -81,7 +81,7 @@ Page {
         property string lastServerId: '-1'
 
         function findIndexById(id) {
-            for(var i=0; i < count; i++)
+            for (var i=0; i < count; i++)
                 if (get(i).channelid == id) return i
             return -1
         }
@@ -98,10 +98,10 @@ Page {
             if (serverid == '') return
             lastServerId = serverid
             var last = shared.getLastChannel(serverid)
-            py.setHandler('channel'+serverid, function (categoryid, categoryname, channelid, name, haspermissions, icon, textSendPermissions, attachFilesPermission, managePermissions, topic, unread, mentions) {
+            py.setHandler('channel'+serverid, function (categoryname, channelid, name, haspermissions, icon, textSendPermissions, attachFilesPermission, managePermissions, topic, unread, mentions) {
                 if (!haspermissions && !appSettings.ignorePrivate) return
                 var m = {
-                    categoryid: categoryid, categoryname: shared.emojify(categoryname), channelid: channelid, name: shared.emojify(name),
+                    categoryname: shared.emojify(categoryname), channelid: channelid, name: shared.emojify(name),
                     icon: icon, hasPermissions: haspermissions, textSendPermissions: textSendPermissions, attachFilesPermission: attachFilesPermission,
                     managePermissions: managePermissions, topic: shared.emojify(topic), unread: unread, mentions: mentions,
                 }
