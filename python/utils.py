@@ -27,25 +27,6 @@ class classproperty(property):
     def __get__(self, owner_self, owner_cls=None):
         return self.fget(owner_cls) # pyright:ignore[reportOptionalCall]
 
-class ListEnum(Enum):
-    @property
-    def index(self):
-        return list(StatusMapping).index(self)
-    @classproperty
-    def list(cls):
-        return list(cls)
-    @classmethod
-    def has_value(cls, v):
-        return v in set(i.value for i in cls)
-
-class StatusMapping(ListEnum):
-    UNKNOWN = discord.Status.unknown
-    ONLINE = discord.Status.online
-    OFFLINE = discord.Status.offline
-    DND = discord.Status.dnd
-    INVISIBLE = discord.Status.invisible
-    IDLE = discord.Status.idle
-
 def permissions_for(channel, user_id) -> discord.Permissions | None:
     member = channel.guild.get_member(user_id)
     return None if member == None else channel.permissions_for(member)
@@ -79,6 +60,7 @@ def usernames(user: discord.User | discord.Member):
         if user.global_name:
             additional['global'] = user.global_name
     additional['username'] = user.name
+
     return additional
 
 def format_exc(e: Exception):

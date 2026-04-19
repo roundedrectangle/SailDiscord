@@ -7,10 +7,10 @@ Page {
     allowedOrientations: Orientation.All
 
     property bool loading: true
-    property string username: ""
+    property string username
     property var avatar
-    property int status: 0
-    property bool onMobile: false
+    property string status
+    property bool onMobile
 
     property alias dmModel: dmModel
     property alias serversModel: serversModel

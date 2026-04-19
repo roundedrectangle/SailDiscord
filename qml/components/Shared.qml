@@ -236,15 +236,17 @@ QtObject {
     }
 
     // User info
-    function constructStatus(statusIndex, onMobile) {
-        var result = ["",
-                      qsTranslate("status", "Online"),
-                      qsTranslate("status", "Offline"),
-                      qsTranslate("status", "Do Not Disturb"),
-                      qsTranslate("status", "Invisible"),
-                      qsTranslate("status", "Idle")
-                ][statusIndex]
-        if (onMobile && result !== "")
+    function constructStatus(status, onMobile) {
+        var result = {
+            unknown: '',
+            online: qsTranslate("status", "Online"),
+            offline: qsTranslate("status", "Offline"),
+            idle: qsTranslate("status", "Idle"),
+            dnd: qsTranslate("status", "Do Not Disturb"),
+            invisible: qsTranslate("status", "Invisible")
+        }[status]
+
+        if (onMobile && result)
             result += " "+qsTranslate("status", "(Phone)", "Used with e.g. Online (Phone)")
         return result
     }

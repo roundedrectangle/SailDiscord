@@ -98,7 +98,7 @@ class MyClient(discord.Client):
         comm.set_user_agent()
 
         qsend('logged_in', self.user.display_name, comm.cacher.easy(self.user.display_avatar, self.user.id, ImageType.MYSELF),
-            StatusMapping(self.status).index if StatusMapping.has_value(self.status) else 0,
+            self.status.value,
             self.is_on_mobile(),
         )
         
@@ -351,7 +351,7 @@ class Communicator:
         self.loginth.join() # App gets terminated once this function ends, so we end it only once the thread finishes
     
     @exception_safe({AttributeError: 'userInfo'})
-    def request_user_info(self, user_id:int=None):
+    def request_user_info(self, user_id: int = None):
         self.client.run_asyncio_threadsafe(self.client.send_user_info(user_id or -1))
 
     def download_file(self, url, filename):

@@ -201,10 +201,9 @@ def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself
 # About
 
 def send_user(user: discord.MemberProfile | discord.UserProfile, cacher: Cacher):
-    status, is_on_mobile = 0, False # default
+    status, is_on_mobile = 'unknown', False # default
     if isinstance(user, discord.MemberProfile):
-        if StatusMapping.has_value(user.status):
-            status = StatusMapping(user.status).index
+        status = user.status.value
         is_on_mobile = user.is_on_mobile()
     qsend(f'user{user.id}',
         user.display_name, cacher.easy(user.display_avatar, user.id, ImageType.USER), # these are already in other updates, but we do this to keep the info up-to-date (and also it is required for user mentions)
@@ -213,9 +212,7 @@ def send_user(user: discord.MemberProfile | discord.UserProfile, cacher: Cacher)
 
 def send_myself(client: discord.Client):
     user = client.user
-    status = 0 # default
-    if StatusMapping.has_value(client.status):
-        status = StatusMapping(client.status).index
+    status = client.status.value
 
     # We are not bots or system users. Or are we?
     qsend('user', user.bio or '', qml_date(user.created_at), status, client.is_on_mobile(), usernames(client.user))

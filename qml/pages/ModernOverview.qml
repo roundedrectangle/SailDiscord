@@ -11,7 +11,7 @@ SilicaFlickable {
     property var avatar
     property var dmModel
     property var serversModel
-    property int status
+    property string status
     property bool onMobile
     property bool loading
 
