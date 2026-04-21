@@ -179,7 +179,7 @@
     </message>
     <message>
         <source>A reference failed to load (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>En referens kunde inte läsas in (%1)</translation>
     </message>
     <message>
         <source>Channel failed to load</source>
@@ -706,7 +706,7 @@
     </message>
     <message>
         <source>Animate embedded GIFs</source>
-        <translation type="unfinished"></translation>
+        <translation>Animera inbäddade GIF:ar</translation>
     </message>
     <message>
         <source>Modern UI</source>
