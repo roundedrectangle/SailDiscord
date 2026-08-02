@@ -86,7 +86,7 @@ def send_dm_channel(channel: discord.DMChannel | discord.GroupChannel | Any, cac
         show_error('unknownPrivateChannel', type(channel).__name__)
 
 def send_dms(channel_list: List[discord.DMChannel | discord.GroupChannel | Any], cacher: Cacher, async_runner, send_unread = False):
-    for channel in channel_list:#sorted(channel_list, key=lambda u: u.last_viewed_timestamp, reverse=True):
+    for channel in sorted(channel_list, key=lambda c: c.last_message_id or 0, reverse=True):
         send_dm_channel(channel, cacher)
     # This might not be needed (except for muted maybe)
     if send_unread:
