@@ -4,9 +4,7 @@ Previously SailDiscord
 
 An unofficial SailfishOS Discord client
 
-Basic functionality is already there. More features are coming through updates
-
-**By using this, you are breaking Discord Terms of Services! This app might even get you banned! It stores your token in plain text and it is really easy to hack you with it!**
+Note that usage of this app violates Discord's Terms of Services. Use the app at your own tisk.
 
 Join the [Telegram channel](https://t.me/saildiscord) for Sailcord development logs and releases.
 
@@ -23,9 +21,9 @@ You can join the [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord se
     	- [X] Photos and GIFs (non-embedded)
     	- [X] Unknown files
     	- [ ] Preview for other types (videos, etc.)
-    - [ ] Embeds
-        - [ ] GIFs from Giphy, Tensor, etc.
-        - [ ] General embeds/EmbedProxy support
+    - [X] Embeds
+        - [X] GIFs from Giphy, Tensor, etc.
+        - [X] General embeds/EmbedProxy support
 - [X] DMs
 - [ ] Caching
 	- [X] Avatars
