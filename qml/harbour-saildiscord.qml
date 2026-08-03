@@ -122,8 +122,10 @@ ApplicationWindow {
         id: py
         property bool initialized: false
         property var _refreshFirstPage: function() {}
+        property var libraryVersions
 
         function init(loggedInHandler, serversModel, dmHandler, dmUpdateHandler, refreshHandler) {
+            setHandler('libraryVersions', function(versions) { libraryVersions = versions })
             setHandler('logged_in', loggedInHandler) // function(username, icon, status, isOnMobile)
             setHandler('server', function() {
                 serversModel.append(shared.processServer.apply(null, arguments))

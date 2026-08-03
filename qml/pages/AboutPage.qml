@@ -26,11 +26,17 @@ AboutPageBase {
     authors: "roundedrectangle"
     attributions: [
         Attribution {
-            name: "discord.py-self"
+            name: "discord.py-self v%1".arg(py.libraryVersions.discord)
+            description: qsTr("A discord user client library. It is used by the app to communicate with Discord servers.")
             entries: ["dolfies", "2015-present Rapptz"]
-            licenses:License { spdxId: "MIT" }
+            licenses: License { spdxId: "MIT" }
             sources: "https://github.com/dolfies/discord.py-self"
             homepage: "https://discordpy-self.rtfd.io/en/latest/"
+        },
+        Attribution {
+            name: "aiohttp v%1".arg(py.libraryVersions.aiohttp)
+            description: qsTr("The HTTP client library used by discord.py-self internally.")
+            licenses: License { spdxId: "Apache-2.0" }
         },
         Attribution {
             name: qsTr("Tester")
@@ -40,7 +46,7 @@ AboutPageBase {
         Attribution {
             name: "Showdown"
             entries: "2018,2021 ShowdownJS"
-            licenses:License { spdxId: "MIT" }
+            licenses: License { spdxId: "MIT" }
             sources: "https://github.com/showdownjs/showdown"
             homepage: "http://www.showdownjs.com/"
         },

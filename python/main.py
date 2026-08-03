@@ -15,6 +15,8 @@ from typing import Any
 from concurrent.futures._base import CancelledError
 import logging
 import traceback as tb
+import importlib.metadata
+import os
 
 from exceptions import *
 from utils import *
@@ -22,7 +24,7 @@ from sending import *
 from caching import Cacher
 
 from pyotherside_utils import *
-import discord, aiohttp.connector
+import discord, aiohttp, aiohttp.connector
 
 # when you save a file in QMLLive, the app is reloaded, and so is the Python login function
 # if QMLLIVE_DEBUG is enabled, the on_ready function is restarted so qml app would get username and servers again
@@ -232,7 +234,7 @@ class Communicator:
         self.loginth = Thread()
         self.loginth.start()
         self.client = MyClient()
-        discord.utils.setup_logging()
+        discord.utils.setup_logging(level=int(os.getenv('SAILCORD_LOGLEVEL', logging.INFO)))
 
     def login(self, token):
         if QMLLIVE_DEBUG and self.client.is_closed():
@@ -412,5 +414,9 @@ class Communicator:
         msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
         self.client.run_asyncio_threadsafe(msg.reply(content))
 
+discord_version = '{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(discord.version_info)
+if discord.version_info.releaselevel != 'final':
+    discord_version += f" ({importlib.metadata.version('discord.py-self')})"
+qsend('libraryVersions', {'discord': discord_version, 'aiohttp': aiohttp.__version__})
 
 comm = Communicator()

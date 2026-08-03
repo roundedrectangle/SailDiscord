@@ -44,6 +44,14 @@
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>A discord user client library. It is used by the app to communicate with Discord servers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The HTTP client library used by discord.py-self internally.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutServer</name>
