@@ -46,11 +46,11 @@
     </message>
     <message>
         <source>A discord user client library. It is used by the app to communicate with Discord servers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett klientbibliotek för Discord-användare. Det används av appen för att kommunicera med Discord-servrar.</translation>
     </message>
     <message>
         <source>The HTTP client library used by discord.py-self internally.</source>
-        <translation type="unfinished"></translation>
+        <translation>HTTP-klientbiblioteket som används internt av discord.py-self.</translation>
     </message>
 </context>
 <context>
