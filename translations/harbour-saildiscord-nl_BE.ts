@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.1" language="nl_BE">
 <context>
     <name>AboutApp</name>
     <message>
@@ -18,7 +18,7 @@
     <name>AboutPage</name>
     <message>
         <source>A SailfishOS Discord client</source>
-        <translation>Een Discord-cliënt voor SailfishOS</translation>
+        <translation>Nen Discord-cliënt voôr SailfishOS</translation>
     </message>
     <message>
         <source>Tester</source>
@@ -42,7 +42,7 @@
     </message>
     <message>
         <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord's terms of service. Use at your own risk</source>
-        <translation>Discord is een handelsmerk van Discord Inc. Sailcord is op geen enkele manier verbonden aan Discord Inc. Door Sailcord te gebruiken schend je de gebruiksvoorwaarden van Discord. Gebruik op eigen risico</translation>
+        <translation>Discord is een handelsmerk van Discord Inc. Sailcord is op geên enkele manier verbonden aan Discord Inc. Deur Sailcord te gebruiken schende de gebruiksvoôrwaarden van Discord. Gebruikt op u eigen risico</translation>
     </message>
 </context>
 <context>
@@ -70,15 +70,15 @@
     </message>
     <message>
         <source>This server is a community server</source>
-        <translation>Deze server is een gemeenschapsserver</translation>
+        <translation>Deze server is ne gemeênschapsserver</translation>
     </message>
     <message>
         <source>This server is a partnered server</source>
-        <translation>Deze server is een partnerserver</translation>
+        <translation>Deze server is ne partnerserver</translation>
     </message>
     <message>
         <source>This server is a verified server</source>
-        <translation>Deze server is een geverifieerde server</translation>
+        <translation>Deze server is ne geverifieerde server</translation>
     </message>
 </context>
 <context>
@@ -91,7 +91,7 @@
     <message>
         <source>About this member</source>
         <comment>User</comment>
-        <translation>Over dit lid</translation>
+        <translation>Over da lid</translation>
     </message>
 </context>
 <context>
@@ -102,15 +102,15 @@
     </message>
     <message>
         <source>This user is a system account</source>
-        <translation>Deze gebruiker is een systeemaccount</translation>
+        <translation>Deze gebruiker is ne systeemaccount</translation>
     </message>
     <message>
         <source>This user is a bot</source>
-        <translation>Deze gebruiker is een bot</translation>
+        <translation>Deze gebruiker is nen bot</translation>
     </message>
     <message>
         <source>Global nickname</source>
-        <translation>Globale bijnaam</translation>
+        <translation>Globalen bijnaam</translation>
     </message>
     <message>
         <source>Username</source>
@@ -118,7 +118,7 @@
     </message>
     <message>
         <source>Discord member since</source>
-        <translation>Lid van Discord sinds</translation>
+        <translation>Lid van Discord sedert</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -129,7 +129,7 @@
     <name>ChannelsPage</name>
     <message>
         <source>Channel unsupported</source>
-        <translation>Niet-ondersteund kanaal</translation>
+        <translation>Ni-ondersteund kanaal</translation>
     </message>
 </context>
 <context>
@@ -140,7 +140,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Vernieuwen</translation>
+        <translation>Vernieven</translation>
     </message>
     <message>
         <source>Servers</source>
@@ -148,7 +148,7 @@
     </message>
     <message>
         <source>Me</source>
-        <translation>Ik</translation>
+        <translation>Ikke</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -159,59 +159,59 @@
     <name>Errors</name>
     <message>
         <source>Connection failure</source>
-        <translation>Verbindingsfout</translation>
+        <translation>Connectiefout</translation>
     </message>
     <message>
         <source>Login failure</source>
-        <translation>Fout bij aanmelden</translation>
+        <translation>Fout bij ’t aanmelden</translation>
     </message>
     <message>
         <source>Captcha required but not implemented</source>
-        <translation>Captcha vereist maar niet geïmplementeerd</translation>
+        <translation>Captcha vereist ma ni’ geïmplementeerd</translation>
     </message>
     <message>
         <source>404 Not Found</source>
-        <translation>404 niet gevonden</translation>
+        <translation>404 ni’ gevonden</translation>
     </message>
     <message>
         <source>A message failed to load</source>
-        <translation>Laden van bericht mislukt</translation>
+        <translation>Laden van ’t bericht mislukt</translation>
     </message>
     <message>
         <source>A reference failed to load (%1)</source>
-        <translation>Laden van bericht mislukt (%1)</translation>
+        <translation>Laden van ’t bericht mislukt (%1)</translation>
     </message>
     <message>
         <source>Channel failed to load</source>
-        <translation>Laden van kanaal mislukt</translation>
+        <translation>Laden van ’t kanaal mislukt</translation>
     </message>
     <message>
         <source>Could not get user information</source>
-        <translation>Kon geen informatie over gebruiker verkrijgen</translation>
+        <translation>Kost geên informatie over de gebruiker verkrijgen</translation>
     </message>
     <message>
         <source>Could not get server information</source>
-        <translation>Kon geen informatie over server verkrijgen</translation>
+        <translation>Kost geên informatie over de server verkrijgen</translation>
     </message>
     <message>
         <source>Unknown private channel: %1. Please report this to developers</source>
-        <translation>Onbekend privékanaal: %1. Meld dit aan de ontwikkelaars</translation>
+        <translation>Ongekend privékanaal: %1. Meld da aan d’ontwikkelaars</translation>
     </message>
     <message>
         <source>Ignoring Discord error: %1</source>
-        <translation>Discord-fout wordt genegeerd: %1</translation>
+        <translation>Discord-fout wor’ genegeerd: %1</translation>
     </message>
     <message>
         <source>Unable to receive cache: connection failed</source>
-        <translation>Ontvangen van cache mislukt: verbinding mislukt</translation>
+        <translation>Ontvangen van cache mislukt: connectie mislukt</translation>
     </message>
     <message>
         <source>Unknown caching error</source>
-        <translation>Onbekende cachefout</translation>
+        <translation>Ongekende cachefout</translation>
     </message>
     <message>
         <source>Unknown error: %1</source>
-        <translation>Onbekende fout: %1</translation>
+        <translation>Ongekende fout: %1</translation>
     </message>
     <message>
         <source>Python error</source>
@@ -219,15 +219,15 @@
     </message>
     <message>
         <source>Unable to download file %1. Check recent errors</source>
-        <translation>Kon bestand %1 niet downloaden. Controleer de recente fouten</translation>
+        <translation>Kost bestand %1 ni’ downloaden. Controleert de recente fouten</translation>
     </message>
     <message>
         <source>Unable to share file %1. Check recent errors</source>
-        <translation>Kon bestand %1 niet delen. Controleer de recente fouten</translation>
+        <translation>Kost bestand %1 ni’ dêlen. Controleert de recente fouten</translation>
     </message>
     <message>
         <source>Unable to retrieve token</source>
-        <translation>Kon token niet ophalen</translation>
+        <translation>Kost token ni ophalen</translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@
     </message>
     <message>
         <source>Copy formatted contents</source>
-        <translation>Opgemaakte inhoud kopiëren</translation>
+        <translation>Opgemaakten inhoud kopiëren</translation>
     </message>
     <message>
         <source>Copy server ID</source>
@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>Attachment unsupported: %1</source>
-        <translation>Niet-ondersteunde bijlage: %1</translation>
+        <translation>Ni-ondersteunde bijlage: %1</translation>
     </message>
 </context>
 <context>
@@ -283,7 +283,7 @@
     </message>
     <message>
         <source>Use web page</source>
-        <translation>Webpagina gebruiken</translation>
+        <translation>Website gebruiken</translation>
     </message>
     <message>
         <source>Use token</source>
@@ -291,7 +291,7 @@
     </message>
     <message>
         <source>Please login</source>
-        <translation>Meld je aan</translation>
+        <translation>Meldt u aan</translation>
     </message>
     <message>
         <source>Login</source>
@@ -299,11 +299,11 @@
     </message>
     <message>
         <source>Having trouble logging in?</source>
-        <translation>Problemen met aanmelden?</translation>
+        <translation>Problemen me ’t aanmelden?</translation>
     </message>
     <message>
         <source>Check the %1troubleshooting steps%2.</source>
-        <translation>Controleer de %1hulp bij problemen%2.</translation>
+        <translation>Controleert d’%1hulp bij problemen%2.</translation>
     </message>
     <message>
         <source>Token</source>
@@ -315,7 +315,7 @@
     <message>
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
-        <translation>Bijgewerkt op %1</translation>
+        <translation>Bijgewèrkt op %1</translation>
     </message>
 </context>
 <context>
@@ -326,11 +326,11 @@
     </message>
     <message>
         <source>Original message was deleted</source>
-        <translation>Oorspronkelijk bericht is verwijderd</translation>
+        <translation>’t Oôrspronkelijk bericht is verwijderd geweest</translation>
     </message>
     <message>
         <source>Forwarded message</source>
-        <translation>Doorgestuurd bericht</translation>
+        <translation>Deurgestuurd bericht</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -345,15 +345,15 @@
     <name>MessagesPage</name>
     <message>
         <source>No messages</source>
-        <translation>Geen berichten</translation>
+        <translation>Geên berichten</translation>
     </message>
     <message>
         <source>Say hi ;)</source>
-        <translation>Zeg hoi ;)</translation>
+        <translation>Zegt ne keêr ne goeiendag ;)</translation>
     </message>
     <message>
         <source>Wait for someone to post something</source>
-        <translation>Wacht totdat iemand iets post</translation>
+        <translation>Wacht totda’ der iemand iet post</translation>
     </message>
     <message>
         <source>Message deleted</source>
@@ -361,7 +361,7 @@
     </message>
     <message>
         <source>Editing message</source>
-        <translation>Bericht bewerken</translation>
+        <translation>Bericht bewèrken</translation>
     </message>
     <message>
         <source>Remove spoiler</source>
@@ -369,7 +369,7 @@
     </message>
     <message>
         <source>Hide with spoiler</source>
-        <translation>Verbergen met spoiler</translation>
+        <translation>Wegsteken me ne spoiler</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -377,7 +377,7 @@
     </message>
     <message>
         <source>Type something</source>
-        <translation>Typ iets</translation>
+        <translation>Typt iet</translation>
     </message>
 </context>
 <context>
@@ -388,7 +388,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Vernieuwen</translation>
+        <translation>Vernieven</translation>
     </message>
 </context>
 <context>
@@ -407,11 +407,11 @@
     </message>
     <message>
         <source>show contributors</source>
-        <translation>bijdragers tonen</translation>
+        <translation>bijdragers tônen</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Startpagina</translation>
+        <translation>Startsite</translation>
     </message>
     <message>
         <source>Changelog</source>
@@ -435,7 +435,7 @@
     </message>
     <message numerus="yes">
         <source>show license(s)</source>
-        <translation><numerusform>licentie tonen</numerusform><numerusform>licenties tonen</numerusform></translation>
+        <translation><numerusform>licentie tônen</numerusform><numerusform>licenties tônen</numerusform></translation>
     </message>
     <message>
         <source>News</source>
@@ -443,15 +443,15 @@
     </message>
     <message>
         <source>Changes since version %1</source>
-        <translation>Wijzigingen sinds versie %1</translation>
+        <translation>Wijzigingen sedert versie %1</translation>
     </message>
     <message>
         <source>show details</source>
-        <translation>details tonen</translation>
+        <translation>details tônen</translation>
     </message>
     <message>
         <source>Contributors</source>
-        <translation>Met bijdragen van</translation>
+        <translation>Me bijdragen van</translation>
     </message>
     <message>
         <source>Acknowledgements</source>
@@ -459,7 +459,7 @@
     </message>
     <message>
         <source>Thank you!</source>
-        <translation>Dankjewel!</translation>
+        <translation>Merci!</translation>
     </message>
     <message>
         <source>Details</source>
@@ -475,15 +475,15 @@
     </message>
     <message>
         <source>Copied to clipboard: %1</source>
-        <translation>Gekopieerd naar klembord: %1</translation>
+        <translation>Gekopieerd naar ’t klembord: %1</translation>
     </message>
     <message>
         <source>Copy to clipboard</source>
-        <translation>Kopiëren naar klembord</translation>
+        <translation>Kopiëren naar ’t klembord</translation>
     </message>
     <message>
         <source>Please refer to &lt;a href="%1"&gt;%1&lt;/a&gt;</source>
-        <translation>Bekijk &lt;a href="%1"&gt;%1&lt;/a&gt;</translation>
+        <translation>Bekijkt &lt;a href="%1"&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Download license texts</source>
@@ -495,33 +495,33 @@
     </message>
     <message>
         <source>Note: please check the source code for most accurate information.</source>
-        <translation>Let op: controleer de broncode voor de accuraatste informatie.</translation>
+        <translation>Let op: controleert de broncode voôr d’accuraatste informatie.</translation>
     </message>
 </context>
 <context>
     <name>Opal.About.Common</name>
     <message>
         <source>If you want to support my work, you can buy me a cup of coffee.</source>
-        <translation>Als je mijn werk wilt ondersteunen, kun je me een kopje koffie kopen.</translation>
+        <translation>Als ge mij wèrk wilt ondersteunen, kunde mij een taske koffie kôpen.</translation>
     </message>
     <message>
         <source>You can support this project by contributing, or by donating using any of these services.</source>
-        <translation>Je kunt dit project ondersteunen door bij te dragen, of met een donatie via een van deze diensten.</translation>
+        <translation>Ge kunt da project hier ondersteunen deur bij te dragen, of me een donatie via eên van deze diensten.</translation>
     </message>
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
-        <translation>Bijdragen aan vertalingen of code zijn ook uiterst welkom.</translation>
+        <translation>Bijdragen aan vertalingen of code zijn vaneigens oôk uiterst welkom.</translation>
     </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
     <message>
         <source>Share link</source>
-        <translation>Koppeling delen</translation>
+        <translation>Koppeling dêlen</translation>
     </message>
     <message>
         <source>Copied to clipboard: %1</source>
-        <translation>Gekopieerd naar klembord: %1</translation>
+        <translation>Gekopieerd naar ’t klembord: %1</translation>
     </message>
     <message>
         <source>External Link</source>
@@ -529,15 +529,15 @@
     </message>
     <message>
         <source>Copy text to clipboard</source>
-        <translation>Tekst kopiëren naar klembord</translation>
+        <translation>Tekst kopiëren naar ’t klembord</translation>
     </message>
     <message>
         <source>Copy to clipboard</source>
-        <translation>Kopiëren naar klembord</translation>
+        <translation>Kopiëren naar ’t klembord</translation>
     </message>
     <message>
         <source>Share</source>
-        <translation>Delen</translation>
+        <translation>Dêlen</translation>
     </message>
     <message>
         <source>Open in browser</source>
@@ -545,7 +545,7 @@
     </message>
     <message>
         <source>Open externally</source>
-        <translation>Openen met andere app</translation>
+        <translation>Openen me nen anderen app</translation>
     </message>
 </context>
 <context>
@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>Use default type on unknown types</source>
-        <translation>Standaardtype gebruiken bij onbekende types</translation>
+        <translation>Standaardtype gebruiken bij ongekende types</translation>
     </message>
     <message>
         <source>Replies</source>
@@ -580,7 +580,7 @@
     </message>
     <message>
         <source>The only supported reply types at the moment are replied and forwarded messages</source>
-        <translation>De enige soorten antwoorden die op dit moment worden ondersteund zijn beantwoorde en doorgestuurde berichten</translation>
+        <translation>D’ênigste soôrten antwoorden da voôr de moment ondersteund worden zijn beantwoorde en deurgestuurde berichten</translation>
     </message>
     <message>
         <source>Message field</source>
@@ -588,15 +588,15 @@
     </message>
     <message>
         <source>Send messages by enter</source>
-        <translation>Berichten verzenden met Enter</translation>
+        <translation>Berichten verzenden me Enter</translation>
     </message>
     <message>
         <source>Focus input message area after send</source>
-        <translation>Focus op invoervak na verzenden</translation>
+        <translation>Focussen op ’t invoervak achter da’ g’een bericht verzendt</translation>
     </message>
     <message>
         <source>Focus input message area on channel open</source>
-        <translation>Focus op invoervak na openen van kanaal</translation>
+        <translation>Focussen op ’t invoervak achter da’ g’e kanaal opent</translation>
     </message>
     <message>
         <source>Sent messages</source>
@@ -604,19 +604,19 @@
     </message>
     <message>
         <source>Sets for which messages extra padding should apply</source>
-        <translation>Bepaalt bij welke berichten extra opvulling gebruikt wordt</translation>
+        <translation>Bepaalt bij wa’ voôr berichten da’ der extra opvulling gebruikt wordt</translation>
     </message>
     <message>
         <source>reversed (default)</source>
-        <translation>omgekeerd (standaard)</translation>
+        <translation>omgekeêrd (standaard)</translation>
     </message>
     <message>
         <source>nothing</source>
-        <translation>niets</translation>
+        <translation>niet</translation>
     </message>
     <message>
         <source>Set Sent messages to reversed or align right to enable.</source>
-        <translation>Stel Verzonden berichten in op omgekeerd of rechts uitgelijnd om in te schakelen.</translation>
+        <translation>Stelt Verzonden berichten in op omgekeêrd of rechts uitgelijnd voôr da hier in te schakelen.</translation>
     </message>
     <message>
         <source>Extra padding</source>
@@ -628,7 +628,7 @@
     </message>
     <message>
         <source>none</source>
-        <translation>geen</translation>
+        <translation>geên</translation>
     </message>
     <message>
         <source>Align sent messages text to right</source>
@@ -656,7 +656,7 @@
     </message>
     <message>
         <source>Set extra padding for new messages from the same author</source>
-        <translation>Stel extra opvulling in voor nieuwe berichten van dezelfde auteur</translation>
+        <translation>Stelt extra opvulling in voôr nieve berichten van dezelfsten auteur</translation>
     </message>
     <message>
         <source>small</source>
@@ -664,15 +664,15 @@
     </message>
     <message>
         <source>no</source>
-        <translation>geen</translation>
+        <translation>geên</translation>
     </message>
     <message>
         <source>High-contrast mode</source>
-        <translation>Hoogcontrastmodus</translation>
+        <translation>Hoôgcontrastmodus</translation>
     </message>
     <message>
         <source>Preview</source>
-        <translation>Voorbeeld</translation>
+        <translation>Voôrbeeld</translation>
     </message>
     <message>
         <source>Session</source>
@@ -696,7 +696,7 @@
     </message>
     <message>
         <source>Reset all settings</source>
-        <translation>Standaardwaarden herstellen</translation>
+        <translation>Standaardwèèrden herstellen</translation>
     </message>
     <message>
         <source>Animate embedded GIFs</source>
@@ -708,7 +708,7 @@
     </message>
     <message>
         <source>Servers quick scroll</source>
-        <translation>Snel scrollen door servers</translation>
+        <translation>Rap scrollen deur servers</translation>
     </message>
     <message>
         <source>as avatar (default)</source>
@@ -725,39 +725,39 @@
     </message>
     <message>
         <source>Never</source>
-        <translation>Nooit</translation>
+        <translation>Noôit ni</translation>
     </message>
     <message>
         <source>On app restart</source>
-        <translation>Bij herstarten van de app</translation>
+        <translation>Bij ’t herstarten van den app</translation>
     </message>
     <message>
         <source>Hourly</source>
-        <translation>Elk uur</translation>
+        <translation>Om ’t uur</translation>
     </message>
     <message>
         <source>Daily</source>
-        <translation>Dagelijks</translation>
+        <translation>Iederen dag</translation>
     </message>
     <message>
         <source>Weekly</source>
-        <translation>Wekelijks</translation>
+        <translation>Iedere week</translation>
     </message>
     <message>
         <source>Monthly</source>
-        <translation>Maandelijks</translation>
+        <translation>Iedere maand</translation>
     </message>
     <message>
         <source>Half-yearly</source>
-        <translation>Halfjaarlijks</translation>
+        <translation>Om ’t halfjaar</translation>
     </message>
     <message>
         <source>Yearly</source>
-        <translation>Jaarlijks</translation>
+        <translation>Om ’t jaar</translation>
     </message>
     <message>
         <source>Changes how often the cache is updated. App restart might be required</source>
-        <translation>Wijzigt hoe vaak het cachegeheugen bijgewerkt wordt. Mogelijk moet je de app herstarten</translation>
+        <translation>Wijzigt hoe dikwijls da ’t cachegeheugen bijgewèrkt wordt. Mogelijks moete den app herstarten</translation>
     </message>
     <message>
         <source>Spying</source>
@@ -765,15 +765,15 @@
     </message>
     <message>
         <source>Warning: changing any of these options can lead to a ban and is not recommended. Use at your own risk</source>
-        <translation>Let op: als je deze opties wijzigt, kun je gebannen worden, dus is het niet aanbevolen. Gebruik op eigen risico</translation>
+        <translation>Let op: als ge deze opties wijzigt, kunde gebannen worden, dus is ’t ni aanbevolen. Gebruikt op u eigen risico</translation>
     </message>
     <message>
         <source>Show channels without permissions</source>
-        <translation>Kanalen zonder toegangsrechten tonen</translation>
+        <translation>Kanalen zonder toegangsrechten tônen</translation>
     </message>
     <message>
         <source>They will be displayed, but it still won't be possible to open them</source>
-        <translation>Ze zullen weergegeven worden, maar je zult ze nog steeds niet kunnen openen</translation>
+        <translation>Ze gaan weergegeven worden, ma ge ga’ ze nog altijd ni kunnen openen</translation>
     </message>
     <message>
         <source>Advanced</source>
@@ -781,11 +781,11 @@
     </message>
     <message>
         <source>Networking</source>
-        <translation>Netwerken</translation>
+        <translation>Netwèrken</translation>
     </message>
     <message>
         <source>Login page always uses the global proxy regardless of these settings. Attachments, avatars and other static elements may not use proxy at all. Restart the app to apply</source>
-        <translation>De aanmeldpagina gebruikt altijd de globale proxy, onafhankelijk van deze instellingen. Bijlagen, avatars en andere statische elementen maken mogelijk helemaal geen gebruik van de proxy. Herstart de app om toe te passen</translation>
+        <translation>D’aanmeldingssite gebruikt altijd de globale proxy, los van deze instellingen. Bijlagen, avatars en andere statische elementen maken mogelijks hêlegans geê gebruik van de proxy. Herstart den app voôr toe te passen</translation>
     </message>
     <message>
         <source>Proxy</source>
@@ -809,7 +809,7 @@
     </message>
     <message>
         <source>Specify port by semicolon, if required</source>
-        <translation>Vermeld de poort met een puntkomma, indien vereist</translation>
+        <translation>Vermeldt de poort me een puntkomma, indien vereist</translation>
     </message>
     <message>
         <source>Debugging</source>
@@ -817,15 +817,15 @@
     </message>
     <message>
         <source>Show info messages in notifications</source>
-        <translation>Infoberichten in meldingen tonen</translation>
+        <translation>Infoberichten in meldingen tônen</translation>
     </message>
     <message>
         <source>Display unformatted HTML text in messages</source>
-        <translation>Onopgemaakte HTML-tekst in berichten tonen</translation>
+        <translation>Onopgemaakten HTML-tekst in berichten tônen</translation>
     </message>
     <message>
         <source>Text will still be parsed through Showdown, but HTML tags will be displayed as-is</source>
-        <translation>Tekst zal nog steeds verwerkt worden door Showdown, maar HTML-tags zullen zichtbaar gemaakt worden</translation>
+        <translation>Tekst ga nog altijd verwerkt worden deur Showdown, ma HTML-tags gaan zichtbaar gemaakt worden</translation>
     </message>
     <message>
         <source>Experimental</source>
@@ -837,11 +837,11 @@
     </message>
     <message>
         <source>Tries to mimic the UI in real Discord</source>
-        <translation>Probeert de UI van de echte Discord te imiteren</translation>
+        <translation>Probeert de UI van den echten Discord t’imiteren</translation>
     </message>
     <message>
         <source>Classic UI with tabs</source>
-        <translation>Klassieke UI met tabbladen</translation>
+        <translation>Klassieke UI me tabbladen</translation>
     </message>
     <message>
         <source>Classic</source>
@@ -857,7 +857,7 @@
     </message>
     <message>
         <source>Includes pings count, unread state. Can be buggy. Refresh the app to apply</source>
-        <translation>Bevat aantal pings en ongelezen status. Kan buggy zijn. Herstart de app om toe te passen</translation>
+        <translation>Bevat ’t aantal pings en ongelezen status. Kan buggy zijn. Herstart den app voôr toe te passen</translation>
     </message>
     <message>
         <source>Friend requests</source>
@@ -865,7 +865,7 @@
     </message>
     <message>
         <source>Does not work because of captcha for most people</source>
-        <translation>Werkt voor de meeste mensen niet door captcha</translation>
+        <translation>Wèrkt voor de meêste mensen ni’ deur de captcha</translation>
     </message>
     <message>
         <source>Developer mode</source>
@@ -873,18 +873,18 @@
     </message>
     <message>
         <source>Enables certain features useful for developers such as copying IDs</source>
-        <translation>Schakelt bepaalde functies in die nuttig zijn voor ontwikkelaars, zoals ID’s kopiëren</translation>
+        <translation>Schakelt bepaalde functies in da nuttig zijn voôr ontwikkelaars, gelijk ID’s kopiëren</translation>
     </message>
     <message>
         <source>Please restart the app</source>
-        <translation>Herstart de app</translation>
+        <translation>Herstart den app</translation>
     </message>
 </context>
 <context>
     <name>Shared</name>
     <message>
         <source>(edited)</source>
-        <translation>(bewerkt)</translation>
+        <translation>(bewèrkt)</translation>
     </message>
     <message>
         <source>Downloaded file %1</source>
@@ -899,7 +899,7 @@
     </message>
     <message>
         <source>Unknown message type: %1</source>
-        <translation>Onbekende berichtsoort: %1</translation>
+        <translation>Ongekende berichtsoôrt: %1</translation>
     </message>
 </context>
 <context>
@@ -907,7 +907,7 @@
     <message>
         <source>Unnamed</source>
         <comment>group</comment>
-        <translation>Naamloos</translation>
+        <translation>Naamloôs</translation>
     </message>
 </context>
 <context>
@@ -922,7 +922,7 @@
     </message>
     <message>
         <source>Do Not Disturb</source>
-        <translation>Niet storen</translation>
+        <translation>Ni stôren</translation>
     </message>
     <message>
         <source>Invisible</source>
@@ -935,7 +935,7 @@
     <message>
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
-        <translation>(Telefoon)</translation>
+        <translation>(gsm)</translation>
     </message>
 </context>
 </TS>

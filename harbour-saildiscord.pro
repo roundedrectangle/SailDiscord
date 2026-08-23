@@ -75,6 +75,7 @@ TRANSLATIONS += \
     translations/harbour-saildiscord-ru.ts \
     translations/harbour-saildiscord-en.ts \
     translations/harbour-saildiscord-nl.ts \
+    translations/harbour-saildiscord-nl_BE.ts \
     translations/harbour-saildiscord-sv.ts
 
 HEADERS +=
