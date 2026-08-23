@@ -41,8 +41,24 @@
         <translation>Disclaimer</translation>
     </message>
     <message>
-        <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord's terms of service. Use at your own risk</source>
+        <source>Discord is trademark of Discord Inc. Sailcord is in no way associated with Discord Inc. Using Sailcord violates Discord&apos;s terms of service. Use at your own risk</source>
         <translation>Discord is een handelsmerk van Discord Inc. Sailcord is op geen enkele manier verbonden aan Discord Inc. Door Sailcord te gebruiken schend je de gebruiksvoorwaarden van Discord. Gebruik op eigen risico</translation>
+    </message>
+    <message>
+        <source>A discord user client library. It is used by the app to communicate with Discord servers.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The HTTP client library used by discord.py-self internally.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Development</source>
+        <translation type="unfinished">Ontwikkeling</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -435,7 +451,10 @@
     </message>
     <message numerus="yes">
         <source>show license(s)</source>
-        <translation><numerusform>licentie tonen</numerusform><numerusform>licenties tonen</numerusform></translation>
+        <translation>
+            <numerusform>licentie tonen</numerusform>
+            <numerusform>licenties tonen</numerusform>
+        </translation>
     </message>
     <message>
         <source>News</source>
@@ -482,8 +501,8 @@
         <translation>Kopiëren naar klembord</translation>
     </message>
     <message>
-        <source>Please refer to &lt;a href="%1"&gt;%1&lt;/a&gt;</source>
-        <translation>Bekijk &lt;a href="%1"&gt;%1&lt;/a&gt;</translation>
+        <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
+        <translation>Bekijk &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Download license texts</source>
@@ -491,7 +510,10 @@
     </message>
     <message numerus="yes">
         <source>License(s)</source>
-        <translation><numerusform>Licentie</numerusform><numerusform>Licenties</numerusform></translation>
+        <translation>
+            <numerusform>Licentie</numerusform>
+            <numerusform>Licenties</numerusform>
+        </translation>
     </message>
     <message>
         <source>Note: please check the source code for most accurate information.</source>
@@ -772,7 +794,7 @@
         <translation>Kanalen zonder toegangsrechten tonen</translation>
     </message>
     <message>
-        <source>They will be displayed, but it still won't be possible to open them</source>
+        <source>They will be displayed, but it still won&apos;t be possible to open them</source>
         <translation>Ze zullen weergegeven worden, maar je zult ze nog steeds niet kunnen openen</translation>
     </message>
     <message>

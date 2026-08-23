@@ -52,6 +52,14 @@
         <source>The HTTP client library used by discord.py-self internally.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Development</source>
+        <translation type="unfinished">Development</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutServer</name>
