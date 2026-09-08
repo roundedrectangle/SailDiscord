@@ -61,7 +61,10 @@ AboutPageBase {
     contributionSections: [
     	ContributionSection {
     		title: qsTr("Development")
-    		entries: ["BotchedRPR"]
+            groups: ContributionGroup {
+                title: qsTr("General")
+                entries: ["BotchedRPR"]
+            }
     	},
         ContributionSection {
             title: qsTr("Translations")
