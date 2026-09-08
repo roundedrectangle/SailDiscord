@@ -54,11 +54,15 @@
     </message>
     <message>
         <source>Development</source>
-        <translation type="unfinished">Разработка</translation>
+        <translation>Разработка</translation>
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation>Голландский</translation>
+    </message>
+    <message>
+        <source>General</source>
+        <translation>Основное</translation>
     </message>
 </context>
 <context>
@@ -195,7 +199,7 @@
     </message>
     <message>
         <source>A reference failed to load (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Не удалось загрузить ответ (%1)</translation>
     </message>
     <message>
         <source>Channel failed to load</source>
@@ -507,6 +511,10 @@
         <source>Download license texts</source>
         <translation>Скачать тексты лицензий</translation>
     </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation>Вы используете сотовую связь.</translation>
+    </message>
     <message numerus="yes">
         <source>License(s)</source>
         <translation>
@@ -531,6 +539,176 @@
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
         <translation>Ваш вклад в перевод или код будет только приветствоваться.</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Автор</translation>
+    </message>
+    <message numerus="yes">
+        <source>Author(s)</source>
+        <translation>
+            <numerusform>Автор</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Maintainer</source>
+        <translation>Сопровождающий</translation>
+    </message>
+    <message numerus="yes">
+        <source>Maintainer(s)</source>
+        <translation>
+            <numerusform>Сопровождающий</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Programming</source>
+        <translation>Программирование</translation>
+    </message>
+    <message>
+        <source>Icon Design</source>
+        <translation>Дизайн иконок</translation>
+    </message>
+    <message>
+        <source>Third-party libraries</source>
+        <translation>Сторонние библиотеки</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Данные</translation>
+    </message>
+    <message>
+        <source>Data License</source>
+        <translation>Лицензия на работу с данными</translation>
+    </message>
+    <message numerus="yes">
+        <source>Data License(s)</source>
+        <translation>
+            <numerusform>Лицензия на работу с данными</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Terms of Use</source>
+        <translation>Условия использования</translation>
+    </message>
+    <message>
+        <source>Belarusian</source>
+        <translation>Белорусский</translation>
+    </message>
+    <message>
+        <source>Chinese</source>
+        <translation>Китайский</translation>
+    </message>
+    <message>
+        <source>Czech</source>
+        <translation>Чешский</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation>Голландский</translation>
+    </message>
+    <message>
+        <source>English</source>
+        <translation>Английский</translation>
+    </message>
+    <message>
+        <source>Estonian</source>
+        <translation>Эстонский</translation>
+    </message>
+    <message>
+        <source>Finnish</source>
+        <translation>Финский</translation>
+    </message>
+    <message>
+        <source>French</source>
+        <translation>Французский</translation>
+    </message>
+    <message>
+        <source>German</source>
+        <translation>Немецкий</translation>
+    </message>
+    <message>
+        <source>Greek</source>
+        <translation>Греческий</translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation>Венгерский</translation>
+    </message>
+    <message>
+        <source>Indonesian</source>
+        <translation>Индонезийский</translation>
+    </message>
+    <message>
+        <source>Italian</source>
+        <translation>Итальянский</translation>
+    </message>
+    <message>
+        <source>Lithuanian</source>
+        <translation>Литовский</translation>
+    </message>
+    <message>
+        <source>Norwegian Bokmål</source>
+        <translation>Норвежский букмол</translation>
+    </message>
+    <message>
+        <source>Polish</source>
+        <translation>Польский</translation>
+    </message>
+    <message>
+        <source>Portuguese</source>
+        <translation>Португальский</translation>
+    </message>
+    <message>
+        <source>Brazilian Portuguese</source>
+        <translation>Бразильский португальский</translation>
+    </message>
+    <message>
+        <source>Romanian</source>
+        <translation>Румынский</translation>
+    </message>
+    <message>
+        <source>Russian</source>
+        <translation>Русский</translation>
+    </message>
+    <message>
+        <source>Serbian</source>
+        <translation>Сербский</translation>
+    </message>
+    <message>
+        <source>Slovak</source>
+        <translation>Словацкий</translation>
+    </message>
+    <message>
+        <source>Spanish</source>
+        <translation>Испанский</translation>
+    </message>
+    <message>
+        <source>Swedish</source>
+        <translation>Шведский</translation>
+    </message>
+    <message>
+        <source>Tamil</source>
+        <translation>Тамильский</translation>
+    </message>
+    <message>
+        <source>Turkish</source>
+        <translation>Турецкий</translation>
+    </message>
+    <message>
+        <source>Ukrainian</source>
+        <translation>Украинский</translation>
+    </message>
+    <message>
+        <source>Norwegian Nynorsk</source>
+        <translation>Норвежский нюнорск</translation>
+    </message>
+    <message>
+        <source>Latvian</source>
+        <translation>Латышский</translation>
+    </message>
+    <message>
+        <source>Dutch (Belgium)</source>
+        <translation>Голландский (Бельгия)</translation>
     </message>
 </context>
 <context>
@@ -566,6 +744,30 @@
     <message>
         <source>Open externally</source>
         <translation>Открыть снаружи</translation>
+    </message>
+    <message>
+        <source>Phone number</source>
+        <translation>Номер телефона</translation>
+    </message>
+    <message>
+        <source>External link</source>
+        <translation>Внешняя ссылка</translation>
+    </message>
+    <message>
+        <source>Copy link</source>
+        <translation>Скопировать ссылку</translation>
+    </message>
+    <message>
+        <source>Copy text</source>
+        <translation>Скопировать текст</translation>
+    </message>
+    <message>
+        <source>No preview available.</source>
+        <translation>Предварительный просмотр недоступен.</translation>
+    </message>
+    <message>
+        <source>The page is taking too long to load.</source>
+        <translation>Страница загружается дольше обычного.</translation>
     </message>
 </context>
 <context>
@@ -664,7 +866,7 @@
     </message>
     <message>
         <source>Animate embedded GIFs</source>
-        <translation type="unfinished"></translation>
+        <translation>Анимировать вставленные GIF</translation>
     </message>
     <message>
         <source>Send messages by enter</source>
@@ -956,6 +1158,17 @@
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>
+    </message>
+</context>
+<context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation>Смахните влево для предпросмотра.</translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation>Вы используете мобильную передачу данных.</translation>
     </message>
 </context>
 </TS>

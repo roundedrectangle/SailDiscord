@@ -60,6 +60,10 @@
         <source>Dutch</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AboutServer</name>
@@ -452,7 +456,7 @@
     <message numerus="yes">
         <source>show license(s)</source>
         <translation>
-            <numerusform>show license(s)</numerusform>
+            <numerusform>show license</numerusform>
         </translation>
     </message>
     <message>
@@ -477,7 +481,7 @@
     </message>
     <message>
         <source>Thank you!</source>
-        <translation type="unfinished"></translation>
+        <translation>Thank you!</translation>
     </message>
     <message>
         <source>Details</source>
@@ -501,16 +505,20 @@
     </message>
     <message>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Download license texts</source>
         <translation>Download license texts</translation>
     </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
         <source>License(s)</source>
         <translation>
-            <numerusform>License(s)</numerusform>
+            <numerusform>License</numerusform>
         </translation>
     </message>
     <message>
@@ -531,6 +539,176 @@
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
         <translation>Your contributions to translations or code would be most welcome.</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Author</translation>
+    </message>
+    <message numerus="yes">
+        <source>Author(s)</source>
+        <translation>
+            <numerusform>Author</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Maintainer</source>
+        <translation>Maintainer</translation>
+    </message>
+    <message numerus="yes">
+        <source>Maintainer(s)</source>
+        <translation>
+            <numerusform>Maintainer</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Programming</source>
+        <translation>Programming</translation>
+    </message>
+    <message>
+        <source>Icon Design</source>
+        <translation>Icon Design</translation>
+    </message>
+    <message>
+        <source>Third-party libraries</source>
+        <translation>Third-party libraries</translation>
+    </message>
+    <message>
+        <source>Data</source>
+        <translation>Data</translation>
+    </message>
+    <message>
+        <source>Data License</source>
+        <translation>Data License</translation>
+    </message>
+    <message numerus="yes">
+        <source>Data License(s)</source>
+        <translation>
+            <numerusform>Data License</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Terms of Use</source>
+        <translation>Terms of Use</translation>
+    </message>
+    <message>
+        <source>Belarusian</source>
+        <translation>Belarusian</translation>
+    </message>
+    <message>
+        <source>Chinese</source>
+        <translation>Chinese</translation>
+    </message>
+    <message>
+        <source>Czech</source>
+        <translation>Czech</translation>
+    </message>
+    <message>
+        <source>Dutch</source>
+        <translation>Dutch</translation>
+    </message>
+    <message>
+        <source>English</source>
+        <translation>English</translation>
+    </message>
+    <message>
+        <source>Estonian</source>
+        <translation>Estonian</translation>
+    </message>
+    <message>
+        <source>Finnish</source>
+        <translation>Finnish</translation>
+    </message>
+    <message>
+        <source>French</source>
+        <translation>French</translation>
+    </message>
+    <message>
+        <source>German</source>
+        <translation>German</translation>
+    </message>
+    <message>
+        <source>Greek</source>
+        <translation>Greek</translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation>Hungarian</translation>
+    </message>
+    <message>
+        <source>Indonesian</source>
+        <translation>Indonesian</translation>
+    </message>
+    <message>
+        <source>Italian</source>
+        <translation>Italian</translation>
+    </message>
+    <message>
+        <source>Lithuanian</source>
+        <translation>Lithuanian</translation>
+    </message>
+    <message>
+        <source>Norwegian Bokmål</source>
+        <translation>Norwegian (Bokmål)</translation>
+    </message>
+    <message>
+        <source>Polish</source>
+        <translation>Polish</translation>
+    </message>
+    <message>
+        <source>Portuguese</source>
+        <translation>Portuguese</translation>
+    </message>
+    <message>
+        <source>Brazilian Portuguese</source>
+        <translation>Brazilian Portuguese</translation>
+    </message>
+    <message>
+        <source>Romanian</source>
+        <translation>Romanian</translation>
+    </message>
+    <message>
+        <source>Russian</source>
+        <translation>Russian</translation>
+    </message>
+    <message>
+        <source>Serbian</source>
+        <translation>Serbian</translation>
+    </message>
+    <message>
+        <source>Slovak</source>
+        <translation>Slovak</translation>
+    </message>
+    <message>
+        <source>Spanish</source>
+        <translation>Spanish</translation>
+    </message>
+    <message>
+        <source>Swedish</source>
+        <translation>Swedish</translation>
+    </message>
+    <message>
+        <source>Tamil</source>
+        <translation>Tamil</translation>
+    </message>
+    <message>
+        <source>Turkish</source>
+        <translation>Turkish</translation>
+    </message>
+    <message>
+        <source>Ukrainian</source>
+        <translation>Ukrainian</translation>
+    </message>
+    <message>
+        <source>Norwegian Nynorsk</source>
+        <translation>Norwegian (Nynorsk)</translation>
+    </message>
+    <message>
+        <source>Latvian</source>
+        <translation>Latvian</translation>
+    </message>
+    <message>
+        <source>Dutch (Belgium)</source>
+        <translation>Dutch (Belgium)</translation>
     </message>
 </context>
 <context>
@@ -566,6 +744,30 @@
     <message>
         <source>Open externally</source>
         <translation>Open externally</translation>
+    </message>
+    <message>
+        <source>Phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External link</source>
+        <translation>External link</translation>
+    </message>
+    <message>
+        <source>Copy link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No preview available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The page is taking too long to load.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -956,6 +1158,17 @@
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Phone)</translation>
+    </message>
+</context>
+<context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

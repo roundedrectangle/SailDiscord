@@ -58,6 +58,10 @@
     </message>
     <message>
         <source>Dutch</source>
+        <translation type="unfinished">Olandese</translation>
+    </message>
+    <message>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -247,6 +251,17 @@
     </message>
 </context>
 <context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>General</name>
     <message>
         <source>Copy server ID</source>
@@ -288,7 +303,7 @@
     <name>LicenseListPart</name>
     <message>
         <source>License text</source>
-        <translation>Testo di licenza</translation>
+        <translation>Testo della licenza</translation>
     </message>
 </context>
 <context>
@@ -411,7 +426,7 @@
     <name>Opal.About</name>
     <message>
         <source>About</source>
-        <translation>Info</translation>
+        <translation>In riguardo</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -423,7 +438,7 @@
     </message>
     <message>
         <source>show contributors</source>
-        <translation>mostra contributori</translation>
+        <translation>mostra i collaboratori</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -431,7 +446,7 @@
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Cambiamenti</translation>
+        <translation>Registro delle modifiche</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -458,11 +473,11 @@
     </message>
     <message>
         <source>News</source>
-        <translation>Novità</translation>
+        <translation>Notizie</translation>
     </message>
     <message>
         <source>Changes since version %1</source>
-        <translation>Cambiamenti dalla versione %1</translation>
+        <translation>Modifiche dalla versione %1</translation>
     </message>
     <message>
         <source>show details</source>
@@ -470,11 +485,11 @@
     </message>
     <message>
         <source>Contributors</source>
-        <translation>Contributori</translation>
+        <translation>Collaboratori</translation>
     </message>
     <message>
         <source>Acknowledgements</source>
-        <translation>Informazioni</translation>
+        <translation>Ringraziamenti</translation>
     </message>
     <message>
         <source>Thank you!</source>
@@ -502,11 +517,15 @@
     </message>
     <message>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation>Per favore fai riferimento a &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
+        <translation>Fare riferimento a &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Download license texts</source>
-        <translation>Scarica testi di licenza</translation>
+        <translation>Scarica i testi delle licenze</translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>License(s)</source>
@@ -517,22 +536,22 @@
     </message>
     <message>
         <source>Note: please check the source code for most accurate information.</source>
-        <translation>Nota: controlla il codice sorgente per avere le informazioni più accurate.</translation>
+        <translation>Nota: per informazioni più accurate, controllare il codice sorgente.</translation>
     </message>
 </context>
 <context>
     <name>Opal.About.Common</name>
     <message>
         <source>If you want to support my work, you can buy me a cup of coffee.</source>
-        <translation>Se vuoi supportare il mio lavoro puoi offrirmi una tazza di caffè.</translation>
+        <translation>Se vuoi sostenere il mio lavoro, puoi offrirmi una tazza di caffè.</translation>
     </message>
     <message>
         <source>You can support this project by contributing, or by donating using any of these services.</source>
-        <translation>Puoi supportare questo progetto contribuendo o donando con uno di questi servizi.</translation>
+        <translation>Puoi sostenere questo progetto contribuendo o effettuando una donazione tramite uno di questi servizi.</translation>
     </message>
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
-        <translation>Le tue contribuzioni per le traduzioni o per il codice sono le benvenute.</translation>
+        <translation>I vostri contributi alle traduzioni o al codice saranno molto graditi.</translation>
     </message>
 </context>
 <context>
@@ -543,19 +562,7 @@
     </message>
     <message>
         <source>Copied to clipboard: %1</source>
-        <translation>Copiato negli appunti %1</translation>
-    </message>
-    <message>
-        <source>External Link</source>
-        <translation>Collegamento esterno</translation>
-    </message>
-    <message>
-        <source>Copy text to clipboard</source>
-        <translation>Copia testo negli appunti</translation>
-    </message>
-    <message>
-        <source>Copy to clipboard</source>
-        <translation>Copia negli appunti</translation>
+        <translation>Copiato negli appunti: %1</translation>
     </message>
     <message>
         <source>Share</source>
@@ -568,6 +575,30 @@
     <message>
         <source>Open externally</source>
         <translation>Apri esternamente</translation>
+    </message>
+    <message>
+        <source>Phone number</source>
+        <translation>Numero di telefono</translation>
+    </message>
+    <message>
+        <source>External link</source>
+        <translation>Collegamento esterno</translation>
+    </message>
+    <message>
+        <source>Copy link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No preview available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The page is taking too long to load.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -58,6 +58,10 @@
     </message>
     <message>
         <source>Dutch</source>
+        <translation type="unfinished">Nederländska</translation>
+    </message>
+    <message>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -244,6 +248,17 @@
     <message>
         <source>Unable to retrieve token</source>
         <translation>Kunde inte ta emot token</translation>
+    </message>
+</context>
+<context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation>Svep vänster för att förhandsgranska.</translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation>Du använder en mobil dataanslutning.</translation>
     </message>
 </context>
 <context>
@@ -519,6 +534,10 @@
         <source>Note: please check the source code for most accurate information.</source>
         <translation>Notis: Kontrollera källkoden för mest korrekt information.</translation>
     </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation>Du använder en mobil dataanslutning.</translation>
+    </message>
 </context>
 <context>
     <name>Opal.About.Common</name>
@@ -546,18 +565,6 @@
         <translation>Kopierat till urklipp: %1</translation>
     </message>
     <message>
-        <source>External Link</source>
-        <translation>Extern länk</translation>
-    </message>
-    <message>
-        <source>Copy text to clipboard</source>
-        <translation>Kopiera text till urklipp</translation>
-    </message>
-    <message>
-        <source>Copy to clipboard</source>
-        <translation>Kopiera till urklipp</translation>
-    </message>
-    <message>
         <source>Share</source>
         <translation>Dela</translation>
     </message>
@@ -568,6 +575,30 @@
     <message>
         <source>Open externally</source>
         <translation>Öppna externt</translation>
+    </message>
+    <message>
+        <source>Phone number</source>
+        <translation>Telefonnummer</translation>
+    </message>
+    <message>
+        <source>External link</source>
+        <translation>Extern länk</translation>
+    </message>
+    <message>
+        <source>Copy link</source>
+        <translation>Kopiera länk</translation>
+    </message>
+    <message>
+        <source>Copy text</source>
+        <translation>Kopiera text</translation>
+    </message>
+    <message>
+        <source>No preview available.</source>
+        <translation>Ingen förhandsvisning tillgänglig.</translation>
+    </message>
+    <message>
+        <source>The page is taking too long to load.</source>
+        <translation>Sidan tar för lång tid att läsa in.</translation>
     </message>
 </context>
 <context>

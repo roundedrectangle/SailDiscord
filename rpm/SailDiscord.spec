@@ -4,7 +4,7 @@
 Name:       harbour-saildiscord
 
 Summary:    An unofficial Discord client for SailfishOS
-Version:    0.10.5
+Version:    0.10.6
 Release:    1
 License:    LICENSE
 URL:        http://example.org/
@@ -64,8 +64,8 @@ Discord in your pocket
 python3 -m pip install --no-cache-dir --force-reinstall --upgrade https://github.com/roundedrectangle/pyotherside-utils/releases/download/latest/pyotherside_utils-1.0-py3-none-any.whl --target=%_builddir/deps
 python3 -m pip install "git+https://github.com/dolfies/discord.py-self@20ae80b398ec83fa272f0a96812140e14868c88f" --target=%_builddir/deps
 rm -rf %_builddir/deps/bin
-strip -s %_builddir/deps/charset_normalizer/*.so || echo
-strip -s %_builddir/deps/google/_upb/*.so || echo
+strip -s %_builddir/deps/charset_normalizer/*.so || true
+strip -s %_builddir/deps/google/_upb/*.so || true
 %endif
 
 # << build post

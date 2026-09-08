@@ -58,6 +58,10 @@
     </message>
     <message>
         <source>Dutch</source>
+        <translation type="unfinished">Nederlands</translation>
+    </message>
+    <message>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -247,6 +251,17 @@
     </message>
 </context>
 <context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>General</name>
     <message>
         <source>Copy channel ID</source>
@@ -288,7 +303,7 @@
     <name>LicenseListPart</name>
     <message>
         <source>License text</source>
-        <translation>Licentietekst</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -411,7 +426,7 @@
     <name>Opal.About</name>
     <message>
         <source>About</source>
-        <translation>Over</translation>
+        <translation type="unfinished">Over</translation>
     </message>
     <message>
         <source>Version %1</source>
@@ -423,15 +438,15 @@
     </message>
     <message>
         <source>show contributors</source>
-        <translation>bijdragers tonen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Startpagina</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Changelog</source>
-        <translation>Lijst van veranderingen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Translations</source>
@@ -439,11 +454,11 @@
     </message>
     <message>
         <source>Source Code</source>
-        <translation>Broncode</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Donations</source>
-        <translation>Donaties</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>License</source>
@@ -451,38 +466,38 @@
     </message>
     <message numerus="yes">
         <source>show license(s)</source>
-        <translation>
-            <numerusform>licentie tonen</numerusform>
-            <numerusform>licenties tonen</numerusform>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
         <source>News</source>
-        <translation>Nieuws</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Changes since version %1</source>
-        <translation>Wijzigingen sinds versie %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>show details</source>
-        <translation>details tonen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Contributors</source>
-        <translation>Met bijdragen van</translation>
+        <translation>Bijdragers</translation>
     </message>
     <message>
         <source>Acknowledgements</source>
-        <translation>Dankbetuigingen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Thank you!</source>
-        <translation>Dankjewel!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Details</source>
-        <translation>Details</translation>
+        <translation>Informatie</translation>
     </message>
     <message>
         <source>External Link</source>
@@ -502,11 +517,15 @@
     </message>
     <message>
         <source>Please refer to &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</source>
-        <translation>Bekijk &lt;a href=&quot;%1&quot;&gt;%1&lt;/a&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Download license texts</source>
-        <translation>Licentieteksten downloaden</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
         <source>License(s)</source>
@@ -517,57 +536,69 @@
     </message>
     <message>
         <source>Note: please check the source code for most accurate information.</source>
-        <translation>Let op: controleer de broncode voor de accuraatste informatie.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Opal.About.Common</name>
     <message>
         <source>If you want to support my work, you can buy me a cup of coffee.</source>
-        <translation>Als je mijn werk wilt ondersteunen, kun je me een kopje koffie kopen.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>You can support this project by contributing, or by donating using any of these services.</source>
-        <translation>Je kunt dit project ondersteunen door bij te dragen, of met een donatie via een van deze diensten.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Your contributions to translations or code would be most welcome.</source>
-        <translation>Bijdragen aan vertalingen of code zijn ook uiterst welkom.</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
     <message>
         <source>Share link</source>
-        <translation>Koppeling delen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Copied to clipboard: %1</source>
-        <translation>Gekopieerd naar klembord: %1</translation>
-    </message>
-    <message>
-        <source>External Link</source>
-        <translation>Externe koppeling</translation>
-    </message>
-    <message>
-        <source>Copy text to clipboard</source>
-        <translation>Tekst kopiëren naar klembord</translation>
-    </message>
-    <message>
-        <source>Copy to clipboard</source>
-        <translation>Kopiëren naar klembord</translation>
+        <translation type="unfinished">Gekopieerd naar klembord: %1</translation>
     </message>
     <message>
         <source>Share</source>
-        <translation>Delen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open in browser</source>
-        <translation>Openen in browser</translation>
+        <translation type="unfinished">Openen in browser</translation>
     </message>
     <message>
         <source>Open externally</source>
-        <translation>Openen met andere app</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Phone number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>External link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copy text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No preview available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The page is taking too long to load.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
