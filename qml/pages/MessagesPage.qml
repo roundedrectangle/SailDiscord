@@ -30,6 +30,7 @@ Page {
     property string actionInfo: '' // replying contents
     property var attachments: []
     property bool _loaded: false
+    property bool loadingMessages: true
 
     signal channelOpenRequested(string id)
 
@@ -139,21 +140,13 @@ Page {
             contentHeight: height
 
             BusyLabel {
-                running: msgModel.count === 0 && waitForMessagesTimer.wait
+                running: msgModel.count === 0 && loadingMessages
             }
 
             ViewPlaceholder {
-                enabled: msgModel.count === 0 && !waitForMessagesTimer.wait
+                enabled: msgModel.count === 0 && !loadingMessages
                 text: qsTr("No messages")
                 hintText: sendPermissions ? qsTr("Say hi ;)") : qsTr("Wait for someone to post something")
-
-                Timer {
-                    id: waitForMessagesTimer
-                    interval: 2500
-                    running: started
-                    property bool started: false
-                    property bool wait: !started || running
-                }
             }
 
             PageHeader {
@@ -612,7 +605,6 @@ Page {
     function load() {
         if (status != PageStatus.Active || _loaded || isDemo) return
         _loaded = true
-        waitForMessagesTimer.started = true
 
         shared.registerMessageCallbacks(guildid, channelid, function(history, data) {
             if (history) msgModel.append(data); else msgModel.insert(0, data)
@@ -622,7 +614,7 @@ Page {
                 if (data) msgModel.set(i, data)
                 else msgModel.remove(i)
             }
-        })
+        }, function() { loadingMessages = false })
 
         py.setCurrentChannel(guildid, channelid)
         if (appSettings.focudOnChatOpen && sendPermissions) activeFocusTimer.start()

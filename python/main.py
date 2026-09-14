@@ -144,6 +144,8 @@ class MyClient(discord.Client):
                 await cancel_gen(gen)
                 break
             await send_message(m, True)
+        else:
+            qsend('nomessages')
 
     def run_asyncio_threadsafe(self, courutine, result_required=True, timeout:float | None=None) -> Any:
         """Without `result_required`, no exceptions will be raised. timeout id passed to future.result()"""

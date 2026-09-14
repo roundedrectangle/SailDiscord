@@ -184,7 +184,7 @@ QtObject {
         }
     }
 
-    function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback) {
+    function registerMessageCallbacks(guildid, channelid, finalCallback, editCallback, noMessages) {
         // see convertCallbackType()
         py.setHandler("message", constructMessageCallback('', guildid, channelid, finalCallback))
         py.setHandler("newmember", constructMessageCallback('join', guildid, channelid, finalCallback))
@@ -195,6 +195,7 @@ QtObject {
             }).apply(null, args)
         })
         py.setHandler("messagedelete", function(id) { editCallback(id) })
+        py.setHandler("nomessages", noMessages)
     }
 
     function cleanupMessageCallbacks() {
@@ -204,6 +205,7 @@ QtObject {
         py.reset("uknownmessage")
         py.reset("messageedit")
         py.reset("messagedelete")
+        py.reset("messagesloaded")
     }
 
     // Servers, channels
