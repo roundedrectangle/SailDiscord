@@ -13,7 +13,7 @@ ListItem {
     property int mentionCount
 
     contentWidth: parent.width
-    contentHeight: Theme.itemSizeLarge
+    contentHeight: appSettings.compactLists ? Theme.itemSizeMedium : Theme.itemSizeLarge
 
     Row {
         width: parent.width - Theme.horizontalPageMargin*2
@@ -22,15 +22,15 @@ ListItem {
 
         Loader {
             id: profileIcon
-            width: root.contentHeight - Theme.paddingSmall*4
+            width: root.contentHeight - (appSettings.compactLists ? Theme.paddingSmall*3 : Theme.paddingSmall*4)
             height: width
             sourceComponent: icon.source ? serverImageComponent : serverImagePlaceholderComponent
             Component {
                 id: serverImageComponent
                 ListImage {
                     id: profileIcon
-                    info: root.icon
                     anchors.fill: parent
+                    info: root.icon
                     forceVisibility: true
                     errorString: title
                     forceStatic: true

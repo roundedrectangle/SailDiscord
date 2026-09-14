@@ -139,6 +139,14 @@ Page {
                            onCurrentItemChanged: appSettings.modernUI = currentIndex == 1
                         }
 
+                        TextSwitch {
+                            text: qsTr("Compact lists")
+                            description: qsTr("Make servers (only in classic mode) and DMs lists more compact")
+                            checked: appSettings.compactLists
+                            automaticCheck: false
+                            onClicked: appSettings.compactLists = !checked
+                        }
+
                         SectionHeader { text: qsTr("Messages") }
 
                         ComboBox {

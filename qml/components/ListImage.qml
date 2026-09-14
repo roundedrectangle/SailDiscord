@@ -10,7 +10,7 @@ Asset {
     property string errorString
     property bool extendedRadius
     property bool disableAnimations
-    property real defaultSize: Theme.iconSizeLarge
+    readonly property real defaultSize: Theme.iconSizeLarge
 
     height: defaultSize
     width: visible ? height : 0

@@ -62,7 +62,7 @@ SilicaListView {
         property: "dmChannel"
         delegate: Loader {
             width: parent.width
-            sourceComponent: section == listView.model.get(0).dmChannel ? undefined : separatorComponent
+            sourceComponent: appSettings.compactLists || section == listView.model.get(0).dmChannel ? undefined : separatorComponent
             Component {
                 id: separatorComponent
                 Separator {

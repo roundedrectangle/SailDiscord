@@ -130,7 +130,7 @@ TabView {
                             property: "_id"
                             delegate: Loader {
                                 width: parent.width
-                                sourceComponent: section == serversModel.get(0)._id ? undefined : separatorComponent
+                                sourceComponent: appSettings.compactLists || section == serversModel.get(0)._id ? undefined : separatorComponent
                                 Component {
                                     id: separatorComponent
                                     Separator {

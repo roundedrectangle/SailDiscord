@@ -94,6 +94,7 @@ ApplicationWindow {
             property string sentBehaviour: 'r'
             property bool alignMessagesText: true
             property bool modernUI: false
+            property bool compactLists: true
             property string messageGrouping: 'd'
             property string oneAuthorPadding: 'a'
             property bool highContrastMessages: false

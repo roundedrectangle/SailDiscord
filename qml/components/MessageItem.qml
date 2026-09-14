@@ -102,6 +102,7 @@ ListItem {
                     active: _firstSameAuthor && !!_model.avatar
                     sourceComponent: Component {
                         ListImage {
+                            anchors.fill: parent
                             info: _model.avatar
                             errorString: _model.author
                             onClicked: openAboutUser()
