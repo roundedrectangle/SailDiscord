@@ -163,21 +163,12 @@ Page {
                 titleColor: highlighted ? palette.primaryColor : palette.highlightColor
                 Component.onCompleted: if (isDM) _navigateForwardMouseArea.clicked.connect(loadAboutDM)
 
-                Label {
-                    parent: header.extraContent
-                    text: topic
-                    visible: !!text
-                    anchors.centerIn: parent
-                    width: parent.width
-                    truncationMode: TruncationMode.Fade
-                    color: Theme.secondaryHighlightColor
-
-                    MouseArea {
-                        id: openTopicMouseArea
-                        anchors.fill: parent
-                        enabled: parent.visible && parent.implicitWidth > header.extraContent.width
-                        onClicked: if (enabled) topicPanel.show()
-                    }
+                description: topic
+                MouseArea {
+                    id: openTopicMouseArea
+                    anchors.fill: parent
+                    enabled: !!topic && header._descriptionLabel.implicitWidth > header._descriptionLabel.width
+                    onClicked: if (enabled) topicPanel.show()
                 }
             }
 
