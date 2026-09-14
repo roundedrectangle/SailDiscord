@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../modules/js/showdown.min.js" as ShowDown
-import "../modules/js/twemoji.min.js" as Twemoji
+import "../modules/js/twemoji.js" as Emoji
 import '../modules/Opal/LinkHandler'
 
 QtObject {
@@ -72,10 +72,10 @@ QtObject {
                                        )
     }
 
-    function emojify(text) {
+    function emojify(text, fontSize) {
         if (!appSettings.twemoji) return text
         if (!text) return text
-        return Twemoji.twemoji.parse(text, { base: Qt.resolvedUrl('../../images/twemoji/'), attributes: function () { return { width: '%1'.arg(Theme.fontSizeMedium), height: '%1'.arg(Theme.fontSizeMedium) } } })
+        return Emoji.emojify(Qt.resolvedUrl('../../images/twemoji/'), text, fontSize || Theme.fontSizeMedium)
     }
 
     function handleLink(link, sailcordHandler) {
