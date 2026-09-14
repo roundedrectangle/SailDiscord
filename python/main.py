@@ -416,7 +416,10 @@ class Communicator:
 
 discord_version = '{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(discord.version_info)
 if discord.version_info.releaselevel != 'final':
-    discord_version += f" ({importlib.metadata.version('discord.py-self')})"
+    try:
+        discord_version += f" ({importlib.metadata.version('discord.py-self')})"
+    except importlib.metadata.PackageNotFoundError:
+        discord_version += " (Unknown)"
 qsend('libraryVersions', {'discord': discord_version, 'aiohttp': aiohttp.__version__})
 
 comm = Communicator()
