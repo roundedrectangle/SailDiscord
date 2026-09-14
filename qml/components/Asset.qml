@@ -11,13 +11,13 @@ Loader {
 
     readonly property bool valid: !!(info && info.source)
     property bool cachedSourceFailed: !!info && !valid // if info is undefined (just loaded), don't automatically fail
-    property string source: ((asset.cachedSourceFailed && info && info.originalSource) ? info.originalSource : info.source) || ''
+    readonly property string defaultSource: ((asset.cachedSourceFailed && info && info.originalSource) ? info.originalSource : info.source) || ''
+    property string source: defaultSource
 
-    readonly property var imageStatus: item ? item.status : Image.Loading
+    readonly property int imageStatus: item ? item.status : Image.Loading
 
-    sourceComponent: info && info.source ?
-                         (!forceStatic && info && info.animated ? animatedComponent : staticComponent)
-                       : null
+    active: info && info.source
+    sourceComponent: !forceStatic && info && info.animated ? animatedComponent : staticComponent
     onImageStatusChanged: if (imageStatus == Image.Error) cachedSourceFailed = true
 
     Component {

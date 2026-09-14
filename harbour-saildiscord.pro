@@ -31,6 +31,7 @@ DISTFILES += \
     qml/components/GeneralAttachmentView.qml \
     qml/components/ListImage.qml \
     qml/components/MessageItem.qml \
+    qml/components/MessageReactions.qml \
     qml/components/MessageReference.qml \
     qml/components/PlaceholderImage.qml \
     qml/components/PressEffect.qml \

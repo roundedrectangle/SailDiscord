@@ -28,7 +28,7 @@ STUB_QML_ASSET = {
     3: extension: str,
 ]
 
-Original format:
+Previously used format:
 [
     0: available: bool,
     1: source: str,

@@ -88,6 +88,10 @@ async def send_edited_message(before_id: int, after: discord.Message | Any):
     """Ironically, this is for incoming messages (or already sent messages by you or anyone else in the past)."""
     event, args = await generate_message(after)
     qsend('messageedit', before_id, event, args)
+    await after.ack()
+
+async def send_updated_message(message: discord.Message):
+    await send_edited_message(message.id, message)
 
 class MyClient(discord.Client):
     current_server: discord.Guild | None = None
@@ -118,14 +122,32 @@ class MyClient(discord.Client):
             elif isinstance(message.channel, (discord.GroupChannel, discord.DMChannel)):
                 qsend('dmUpdate', str(message.channel.id), True, getattr(message.channel, 'mention_count', 0))
 
+    # Don't use on_raw_message_edit, on_raw_reaction_add, ... here
+    # because we only need updates for actually loaded messages
+
     async def on_message_edit(self, before: discord.Message, after: discord.Message):
         if self.ensure_current_channel(before.channel, before.guild):
             await send_edited_message(before.id, after)
-            await after.ack()
 
     async def on_message_delete(self, message: discord.Message):
         if self.ensure_current_channel(message.channel, message.guild):
             qsend('messagedelete', message.id)
+
+    async def send_message_update(self, message: discord.Message | discord.PartialMessage):
+        if self.ensure_current_channel(message.channel, message.guild):
+            message = await message.fetch() if isinstance(message, discord.PartialMessage) else message # pyright: ignore[reportUnnecessaryIsInstance]
+            await send_updated_message(message)
+
+    # TODO: it was not checked if these methods actually provide updated Message data;
+    # if they don't, we also need to convert Message to PartialMessage (so send_message_update would then fetch updated data)
+    async def on_reaction_add(self, reaction: discord.Reaction, _: discord.Member | discord.User):
+        await self.send_message_update(reaction.message)
+    async def on_reaction_remove(self, reaction: discord.Reaction, _: discord.Member | discord.User):
+        await self.send_message_update(reaction.message)
+    async def on_reaction_clear(self, message: discord.Message, _: list[discord.Reaction]):
+        await self.send_message_update(message)
+    async def on_reaction_clear_emoji(self, reaction: discord.Reaction):
+        await self.send_message_update(reaction.message)
 
     async def on_bulk_message_delete(self, messages: list[discord.Message]):
         for m in messages:
@@ -210,12 +232,16 @@ class MyClient(discord.Client):
                 folders.append(f if f.id or len(f) != 1 else f.guilds[0])
                 loaded_ids += (g.id for g in f.guilds)
         return folders + list(g for g in self.guilds if g.id not in loaded_ids)
-    
-    async def get_message(self, message_id) -> discord.Message:
-        message_id = int(message_id)
+
+    def get_partial_message(self, message_id) -> discord.PartialMessage:
         if not self.current_channel:
-            raise RuntimeError("Current channel was not set but delete requested")
-        return await self.current_channel.fetch_message(message_id)
+            raise RuntimeError("Current channel was not set but getting a partial requested")
+        return discord.PartialMessage(channel=self.current_channel, id=int(message_id))
+
+    async def get_message(self, message_id) -> discord.Message:
+        if not self.current_channel:
+            raise RuntimeError("Current channel was not set but getting a message requested")
+        return await self.current_channel.fetch_message(int(message_id))
 
     async def on_error(self, event_method: str, /, *args: Any, **kwargs: Any) -> None:
         await super().on_error(event_method, *args, **kwargs)
@@ -405,16 +431,24 @@ class Communicator:
             show_error('captcha', e)
     
     def edit_message(self, message_id: str | int, new_content: str):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        msg = self.client.get_partial_message(message_id)
         self.client.run_asyncio_threadsafe(msg.edit(content=new_content))
     
     def delete_message(self, message_id: str | int):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        msg = self.client.get_partial_message(message_id)
         self.client.run_asyncio_threadsafe(msg.delete())
 
     def reply_to(self, message_id: str | int, content: str):
-        msg: discord.Message = self.client.run_asyncio_threadsafe(self.client.get_message(message_id))
+        msg = self.client.get_partial_message(message_id)
         self.client.run_asyncio_threadsafe(msg.reply(content))
+
+    def toggle_message_reaction(self, message_id: str | int, reaction_str: str, add: bool):
+        msg = self.client.get_partial_message(message_id)
+        if add:
+            self.client.run_asyncio_threadsafe(msg.add_reaction(reaction_str))
+        else:
+            self.client.run_asyncio_threadsafe(msg.remove_reaction(reaction_str, self.client.user))
+        self.client.run_asyncio_threadsafe(self.client.send_message_update(msg))
 
 discord_version = '{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(discord.version_info)
 if discord.version_info.releaselevel != 'final':

@@ -177,6 +177,24 @@ def generate_embeds(embeds: list[discord.Embed]):
         'video': generate_media_embed_proxy(e.video)
     } for e in embeds]
 
+def generate_reactions(reactions: list[discord.Reaction], cacher: Cacher):
+    result = []
+    for r in reactions:
+        reaction = {
+            'count': r.count,
+            'me': r.me,
+            'reactionId': str(r)
+        }
+        if isinstance(r.emoji, str):
+            reaction['emoji'] = r.emoji
+            reaction['asset'] = cacher.easy('', '', ImageType.EMOJI)
+        else:
+            reaction['emoji'] = ''
+            reaction['asset'] = cacher.easy(r.emoji.url, r.emoji.id, ImageType.EMOJI)
+        result.append(reaction)
+
+    return result
+
 def reference_needed(message: discord.Message | discord.MessageSnapshot):
     return message.type not in (
         discord.MessageType.new_member,
@@ -200,7 +218,7 @@ def generate_extra_message(message: discord.Message | discord.MessageSnapshot, c
         return 'message', (message.content, content, ref or {})
     else: return 'unknownmessage', (message.content, content, ref or {}, message.type.name)
 
-def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself_id, is_history=False):
+def generate_base_message(message: discord.Message, cacher: Cacher, myself_id, is_history=False):
     """Returns a sequence of the base author-dependent message callback arguments to pass at the start"""
 
     return (str(message.guild.id) if message.guild else '-2', str(message.channel.id),
@@ -222,7 +240,8 @@ def generate_base_message(message: discord.Message | Any, cacher: Cacher, myself
             is_history, convert_attachments(message.attachments),
             message.jump_url,
             generate_stickers(message.stickers, cacher),
-            generate_embeds(message.embeds)
+            generate_embeds(message.embeds),
+            generate_reactions(message.reactions, cacher)
         )
 
 # About

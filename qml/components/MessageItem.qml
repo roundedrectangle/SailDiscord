@@ -230,6 +230,11 @@ ListItem {
             }
         }
 
+        MessageReactions {
+            messageId: _model.messageId
+            model: _model.reactions
+        }
+
         Item { height: _model.attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
     }
 
