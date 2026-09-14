@@ -1,0 +1,15 @@
+module Opal.FancyMenus
+# This file is part of Opal.FancyMenus.
+# SPDX-FileCopyrightText: 2023-2024 Mirian Margiani
+# SPDX-FileCopyrightText: 2024 roundedrectangle
+# SPDX-License-Identifier: GPL-3.0-or-later
+FancyContextMenu 1.0 FancyContextMenu.qml
+FancyMenuItem 1.0 FancyMenuItem.qml
+IconTextRowMenuItem 1.0 IconTextRowMenuItem.qml
+IconRowMenuItem 1.0 IconRowMenuItem.qml
+RowMenuItem 1.0 RowMenuItem.qml
+FancyMenuRow 1.0 FancyMenuRow.qml
+FancyPullDownMenu 1.0 FancyPullDownMenu.qml
+FancyPushUpMenu 1.0 FancyPushUpMenu.qml
+BaseRowMenuItem 1.0 BaseRowMenuItem.qml
+MenuItemLoader 1.0 MenuItemLoader.qml

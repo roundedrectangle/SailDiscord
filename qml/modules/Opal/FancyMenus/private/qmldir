@@ -1,6 +1,7 @@
-module Opal.FancyContextMenu.private
-# This file is part of Opal.FancyContextMenu.
+module Opal.FancyMenus.private
+# This file is part of Opal.FancyMenus.
 # SPDX-FileCopyrightText: 2023-2024 Mirian Margiani
 # SPDX-FileCopyrightText: 2024 roundedrectangle
 # SPDX-License-Identifier: GPL-3.0-or-later
-MyPrivateComponent 1.0 MyPrivateComponent.qml
+FadeableXMenuItem 1.0 FadeableXMenuItem.qml
+Util 1.0 Util.js
