@@ -42,13 +42,15 @@ Page {
                         TextSwitch {
                             text: qsTr("Use default type on unknown types")
                             checked: appSettings.defaultUnknownMessages
-                            onCheckedChanged: appSettings.defaultUnknownMessages = checked
+                            automaticCheck: false
+                            onClicked: appSettings.defaultUnknownMessages = !checked
                         }
 
                         TextSwitch {
                             text: qsTr("Animate embedded GIFs")
                             checked: appSettings.animateEmbeddedGifs
-                            onCheckedChanged: appSettings.animateEmbeddedGifs = checked
+                            automaticCheck: false
+                            onClicked: appSettings.animateEmbeddedGifs = !checked
                         }
 
                         SectionHeader { text: qsTr("Replies") }
@@ -65,7 +67,8 @@ Page {
                         /*TextSwitch {
                             text: qsTr("Use default type on unknown types")
                             checked: appSettings.defaultUnknownReferences
-                            onCheckedChanged: appSettings.defaultUnknownReferences = checked
+                            automaticCheck: false
+                            onClicked: appSettings.defaultUnknownReferences = !checked
                         }*/
 
                         SectionHeader { text: qsTr("Message field") }
@@ -73,19 +76,22 @@ Page {
                         TextSwitch {
                             text: qsTr("Send messages by enter")
                             checked: appSettings.sendByEnter
-                            onCheckedChanged: appSettings.sendByEnter = checked
+                            automaticCheck: false
+                            onClicked: appSettings.sendByEnter = !checked
                         }
 
                         TextSwitch {
                             text: qsTr("Focus input message area after send")
                             checked: appSettings.focusAfterSend
-                            onCheckedChanged: appSettings.focusAfterSend = checked
+                            automaticCheck: false
+                            onClicked: appSettings.focusAfterSend = !checked
                         }
 
                         TextSwitch {
                             text: qsTr("Focus input message area on channel open")
                             checked: appSettings.focudOnChatOpen
-                            onCheckedChanged: appSettings.focudOnChatOpen = checked
+                            automaticCheck: false
+                            onClicked: appSettings.focudOnChatOpen = !checked
                         }
 
                         SectionHeader { text: qsTr("Modern UI") }
@@ -94,7 +100,8 @@ Page {
                             enabled: appSettings.modernUI
                             text: qsTr("Servers quick scroll")
                             checked: appSettings.modernUIServersQuickScroll
-                            onCheckedChanged: appSettings.modernUIServersQuickScroll = checked
+                            automaticCheck: false
+                            onClicked: appSettings.modernUIServersQuickScroll = !checked
                         }
                     }
                 }
@@ -113,8 +120,9 @@ Page {
 
                         TextSwitch {
                             text: qsTr("Keep empty space in servers without icons")
-                            //onCheckedChanged: appSettings.emptySpace = checked
-                            //Component.onCompleted: checked = appSettings.emptySpace
+                            //checked: appSettings.emptySpace
+                            automaticCheck: false
+                            //onClicked: appSettings.emptySpace = !checked
                             visible: false
                         }
 
@@ -150,11 +158,11 @@ Page {
                         TextSwitch {
                             text: qsTr("Align sent messages text to right")
                             enabled: sentMessagesBox.currentIndex != 2
-                            description: sentMessagesBox.currentIndex != 2 ? ""
+                            description: sentMessagesBox.currentIndex != 2 ? ''
                                            : qsTr("Set Sent messages to reversed or align right to enable.")
-
-                            onCheckedChanged: appSettings.alignMessagesText = checked
-                            Component.onCompleted: checked = appSettings.alignMessagesText
+                            checked: appSettings.alignMessagesText
+                            automaticCheck: false
+                            onClicked: appSettings.alignMessagesText = !checked
                         }
 
                         ComboBox {
@@ -187,14 +195,16 @@ Page {
 
                         TextSwitch {
                             text: qsTr("High-contrast mode")
-                            onCheckedChanged: appSettings.highContrastMessages = checked
-                            Component.onCompleted: checked = appSettings.highContrastMessages
+                            checked: appSettings.highContrastMessages
+                            automaticCheck: false
+                            onClicked: appSettings.highContrastMessages = !checked
                         }
 
                         TextSwitch {
                             text: qsTr("Use Twemoji instead of default Emoji")
                             checked: appSettings.twemoji
-                            onCheckedChanged: appSettings.twemoji = checked
+                            automaticCheck: false
+                            onClicked: appSettings.twemoji = !checked
                         }
 
                         ButtonLayout {
@@ -314,8 +324,9 @@ Page {
                             text: qsTr("Show channels without permissions")
                             description: qsTr("They will be displayed, but it still won't be possible to open them")
                             icon.source: "image://theme/icon-m-device-lock"
-                            onCheckedChanged: appSettings.ignorePrivate = checked
-                            Component.onCompleted: checked = appSettings.ignorePrivate
+                            checked: appSettings.ignorePrivate
+                            automaticCheck: false
+                            onClicked: appSettings.ignorePrivate = !checked
                         }
                     }
                 }
@@ -362,13 +373,15 @@ Page {
                         TextSwitch {
                             text: qsTr("Show info messages in notifications")
                             checked: appSettings.infoInNotifications
-                            onCheckedChanged: appSettings.infoInNotifications = checked
+                            automaticCheck: false
+                            onClicked: appSettings.infoInNotifications = !checked
                         }
                         TextSwitch {
                             text: qsTr("Display unformatted HTML text in messages")
                             description: qsTr("Text will still be parsed through Showdown, but HTML tags will be displayed as-is")
                             checked: appSettings.unformattedText
-                            onCheckedChanged: appSettings.unformattedText = checked
+                            automaticCheck: false
+                            onClicked: appSettings.unformattedText = !checked
                         }
 
                         SectionHeader { text: qsTr("Experimental") }
@@ -377,20 +390,23 @@ Page {
                             text: qsTr("Show indicators of read states")
                             description: qsTr("Includes pings count, unread state. Can be buggy. Refresh the app to apply")
                             checked: appSettings.unreadState
-                            onCheckedChanged: appSettings.unreadState = checked
+                            automaticCheck: false
+                            onClicked: appSettings.unreadState = !checked
                         }
                         IconTextSwitch {
                             text: qsTr("Friend requests")
                             description: qsTr("Does not work because of captcha for most people")
                             checked: appSettings.friendRequests
-                            onCheckedChanged: appSettings.friendRequests = checked
+                            automaticCheck: false
+                            onClicked: appSettings.friendRequests = !checked
                         }
                         IconTextSwitch {
                             icon.source: "image://theme/icon-m-developer-mode"
                             text: qsTr("Developer mode")
                             description: qsTr("Enables certain features useful for developers such as copying IDs")
                             checked: appSettings.developerMode
-                            onCheckedChanged: appSettings.developerMode = checked
+                            automaticCheck: false
+                            onClicked: appSettings.developerMode = !checked
                         }
                     }
                 }
