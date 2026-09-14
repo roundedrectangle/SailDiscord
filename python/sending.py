@@ -169,7 +169,7 @@ def generate_embeds(embeds: list[discord.Embed]):
         'description': e.description or '',
         'title': e.title or '',
         'footer': {'text': e.footer.text or '', 'icon': e.footer.icon_url or ''},
-        'timestamp': qml_date(e.timestamp) if e.timestamp else 0,
+        'timestamp': qml_date(e.timestamp) if e.timestamp else -1,
         'fields': [{'row': fields} for fields in generate_embed_fields(e.fields)],
 
         'image': generate_media_embed_proxy(e.image),

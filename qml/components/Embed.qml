@@ -166,7 +166,7 @@ BackgroundItem {
 
         EmbedImageText {
             property string footerText: shared.emojify(embed.footer.text)
-            property string timestamptText: embed.timestamp > -1 ? Format.formatDate(new Date(embed.timestamp)) : ''
+            property string timestamptText: embed.timestamp > -1 ? Format.formatDate(new Date(embed.timestamp), Format.TimepointRelative) : ''
             text: footerText && timestamptText ? (footerText + '&nbsp;•&nbsp;' + timestamptText) : (footerText || timestamptText)
             icon.source: embed.footer.icon
             icon.visible: embed.footer.icon
