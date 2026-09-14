@@ -41,10 +41,7 @@ You can join the [SailfishOS Fan Club](https://discord.gg/j7zRh2gkGc) Discord se
 
 ### Login page isn't loading!
 
-Check if you are able to open https://discord.com/login in the native browser. If you can't, this is most likely because the current SailfishOS browser is too old. Here are the solutions:
-
-- Update to [ESR91 beta](https://www.flypig.co.uk/geckoinstall) if you are on SailfishOS 4.6, 4.5 or something like that.
-- Login using token (see below)
+Check if you are able to open https://discord.com/login in the native browser. If you can't, this is most likely because the current SailfishOS browser is too old. As a workaround, you can login via a token (see below).
 
 This could also be because Discord is blocked in your country. You can check if it is so by opening https://discord.com/login on another device or in Android AppSupport.
 
