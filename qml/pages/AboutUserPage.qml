@@ -156,15 +156,15 @@ AboutPageBase {
             pageStack.pop(undefined, PageStackAction.Immediate)
             LinkHandler.openOrCopyUrl(link)
         })
-        py.setHandler("user"+(isClient?"":userid), function(name, avatar, bio, date, status, onMobile, allNames) {
+        py.setHandler("user"+(isClient?"":userid), function(name, avatar, bio, date, status, onMobile, allNames, bot, system, friend, userColor) {
             if (!isClient) {
                 page.name = name
                 icon = avatar
 
-                isBot = arguments[5]
-                isSystem = arguments[6]
-                isFriend = arguments[7]
-                if (arguments[8]) _develInfoSection.parent.children[2].children[0].color = arguments[8]
+                isBot = bot
+                isSystem = system
+                isFriend = friend
+                if (userColor) _develInfoSection.parent.children[2].children[0].color = userColor
             }
 
             description = shared.markdown(bio, false, true)
