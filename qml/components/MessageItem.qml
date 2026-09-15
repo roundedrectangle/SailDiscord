@@ -354,7 +354,6 @@ ListItem {
                     width: parent.width
                     visible: serverEmojisGridView.count > 0
                     height: visible ? implicitHeight : 0
-                    Component.onCompleted: console.log(serverEmojisGridView.count, serverEmojis, serverEmojis.length)
 
                     SectionHeader { text: qsTr("Server reactions") }
 
@@ -366,7 +365,6 @@ ListItem {
                         cellHeight: Theme.itemSizeSmall
                         height: cellHeight * Math.ceil(count / reactionsMenu.columns)
                         interactive: false
-                        Component.onCompleted: console.log(height, parent.height)
 
                         delegate: BackgroundItem {
                             width: serverEmojisGridView.cellWidth
@@ -401,7 +399,6 @@ ListItem {
                         height: cellHeight * Math.ceil(count / columns)
                         interactive: false
 
-                        Component.onCompleted: console.log(height, parent.height, parent, parent.parent.height, parent.parent)
                         delegate: BackgroundItem {
                             width: emojisGridView.cellWidth
                             height: emojisGridView.cellHeight
