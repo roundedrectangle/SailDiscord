@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="en">
 <context>
     <name>AboutApp</name>
     <message>
@@ -58,7 +58,7 @@
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dutch</translation>
     </message>
     <message>
         <source>General</source>
@@ -176,6 +176,49 @@
     </message>
 </context>
 <context>
+    <name>EmojisModel</name>
+    <message>
+        <source>Smileys &amp; Emotion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>People &amp; Body</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Animals &amp; Nature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food &amp; Drink</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Travel &amp; Places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Symbols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flags</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Errors</name>
     <message>
         <source>Connection failure</source>
@@ -247,6 +290,17 @@
     </message>
     <message>
         <source>Unable to retrieve token</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -336,6 +390,10 @@
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Edited %1</translation>
+    </message>
+    <message>
+        <source>Server reactions</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -457,6 +515,7 @@
         <source>show license(s)</source>
         <translation>
             <numerusform>show license</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -519,6 +578,7 @@
         <source>License(s)</source>
         <translation>
             <numerusform>License</numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -540,176 +600,6 @@
         <source>Your contributions to translations or code would be most welcome.</source>
         <translation>Your contributions to translations or code would be most welcome.</translation>
     </message>
-    <message>
-        <source>Author</source>
-        <translation>Author</translation>
-    </message>
-    <message numerus="yes">
-        <source>Author(s)</source>
-        <translation>
-            <numerusform>Author</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Maintainer</source>
-        <translation>Maintainer</translation>
-    </message>
-    <message numerus="yes">
-        <source>Maintainer(s)</source>
-        <translation>
-            <numerusform>Maintainer</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Programming</source>
-        <translation>Programming</translation>
-    </message>
-    <message>
-        <source>Icon Design</source>
-        <translation>Icon Design</translation>
-    </message>
-    <message>
-        <source>Third-party libraries</source>
-        <translation>Third-party libraries</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation>Data</translation>
-    </message>
-    <message>
-        <source>Data License</source>
-        <translation>Data License</translation>
-    </message>
-    <message numerus="yes">
-        <source>Data License(s)</source>
-        <translation>
-            <numerusform>Data License</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Terms of Use</source>
-        <translation>Terms of Use</translation>
-    </message>
-    <message>
-        <source>Belarusian</source>
-        <translation>Belarusian</translation>
-    </message>
-    <message>
-        <source>Chinese</source>
-        <translation>Chinese</translation>
-    </message>
-    <message>
-        <source>Czech</source>
-        <translation>Czech</translation>
-    </message>
-    <message>
-        <source>Dutch</source>
-        <translation>Dutch</translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation>English</translation>
-    </message>
-    <message>
-        <source>Estonian</source>
-        <translation>Estonian</translation>
-    </message>
-    <message>
-        <source>Finnish</source>
-        <translation>Finnish</translation>
-    </message>
-    <message>
-        <source>French</source>
-        <translation>French</translation>
-    </message>
-    <message>
-        <source>German</source>
-        <translation>German</translation>
-    </message>
-    <message>
-        <source>Greek</source>
-        <translation>Greek</translation>
-    </message>
-    <message>
-        <source>Hungarian</source>
-        <translation>Hungarian</translation>
-    </message>
-    <message>
-        <source>Indonesian</source>
-        <translation>Indonesian</translation>
-    </message>
-    <message>
-        <source>Italian</source>
-        <translation>Italian</translation>
-    </message>
-    <message>
-        <source>Lithuanian</source>
-        <translation>Lithuanian</translation>
-    </message>
-    <message>
-        <source>Norwegian Bokmål</source>
-        <translation>Norwegian (Bokmål)</translation>
-    </message>
-    <message>
-        <source>Polish</source>
-        <translation>Polish</translation>
-    </message>
-    <message>
-        <source>Portuguese</source>
-        <translation>Portuguese</translation>
-    </message>
-    <message>
-        <source>Brazilian Portuguese</source>
-        <translation>Brazilian Portuguese</translation>
-    </message>
-    <message>
-        <source>Romanian</source>
-        <translation>Romanian</translation>
-    </message>
-    <message>
-        <source>Russian</source>
-        <translation>Russian</translation>
-    </message>
-    <message>
-        <source>Serbian</source>
-        <translation>Serbian</translation>
-    </message>
-    <message>
-        <source>Slovak</source>
-        <translation>Slovak</translation>
-    </message>
-    <message>
-        <source>Spanish</source>
-        <translation>Spanish</translation>
-    </message>
-    <message>
-        <source>Swedish</source>
-        <translation>Swedish</translation>
-    </message>
-    <message>
-        <source>Tamil</source>
-        <translation>Tamil</translation>
-    </message>
-    <message>
-        <source>Turkish</source>
-        <translation>Turkish</translation>
-    </message>
-    <message>
-        <source>Ukrainian</source>
-        <translation>Ukrainian</translation>
-    </message>
-    <message>
-        <source>Norwegian Nynorsk</source>
-        <translation>Norwegian (Nynorsk)</translation>
-    </message>
-    <message>
-        <source>Latvian</source>
-        <translation>Latvian</translation>
-    </message>
-    <message>
-        <source>Dutch (Belgium)</source>
-        <translation>Dutch (Belgium)</translation>
-    </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
@@ -720,18 +610,6 @@
     <message>
         <source>Copied to clipboard: %1</source>
         <translation>Copied to clipboard: %1</translation>
-    </message>
-    <message>
-        <source>External Link</source>
-        <translation>External Link</translation>
-    </message>
-    <message>
-        <source>Copy text to clipboard</source>
-        <translation>Copy text to clipboard</translation>
-    </message>
-    <message>
-        <source>Copy to clipboard</source>
-        <translation>Copy to clipboard</translation>
     </message>
     <message>
         <source>Share</source>
@@ -1101,6 +979,14 @@
         <source>Animate embedded GIFs</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Compact lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make servers (only in classic mode) and DMs lists more compact</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Shared</name>
@@ -1158,17 +1044,6 @@
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(Phone)</translation>
-    </message>
-</context>
-<context>
-    <name>ExternalUrlPage</name>
-    <message>
-        <source>Swipe left to preview.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You are using a mobile data connection.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

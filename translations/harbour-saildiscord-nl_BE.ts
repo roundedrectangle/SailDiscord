@@ -176,6 +176,49 @@
     </message>
 </context>
 <context>
+    <name>EmojisModel</name>
+    <message>
+        <source>Smileys &amp; Emotion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>People &amp; Body</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Component</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Animals &amp; Nature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Food &amp; Drink</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Travel &amp; Places</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Objects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Symbols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flags</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Errors</name>
     <message>
         <source>Connection failure</source>
@@ -347,6 +390,10 @@
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Bijgewèrkt op %1</translation>
+    </message>
+    <message>
+        <source>Server reactions</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -931,6 +978,14 @@
     <message>
         <source>Please restart the app</source>
         <translation>Herstart den app</translation>
+    </message>
+    <message>
+        <source>Compact lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make servers (only in classic mode) and DMs lists more compact</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

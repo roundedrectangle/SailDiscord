@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="ru">
 <context>
     <name>AboutApp</name>
     <message>
@@ -176,6 +176,49 @@
     </message>
 </context>
 <context>
+    <name>EmojisModel</name>
+    <message>
+        <source>Smileys &amp; Emotion</source>
+        <translation>Смайлы и эмоции</translation>
+    </message>
+    <message>
+        <source>People &amp; Body</source>
+        <translation>Люди и тело</translation>
+    </message>
+    <message>
+        <source>Component</source>
+        <translation>Компонент</translation>
+    </message>
+    <message>
+        <source>Animals &amp; Nature</source>
+        <translation>Животные и природа</translation>
+    </message>
+    <message>
+        <source>Food &amp; Drink</source>
+        <translation>Еда и напитки</translation>
+    </message>
+    <message>
+        <source>Travel &amp; Places</source>
+        <translation>Путешествия и места</translation>
+    </message>
+    <message>
+        <source>Activities</source>
+        <translation>Активности</translation>
+    </message>
+    <message>
+        <source>Objects</source>
+        <translation>Объекты</translation>
+    </message>
+    <message>
+        <source>Symbols</source>
+        <translation>Символы</translation>
+    </message>
+    <message>
+        <source>Flags</source>
+        <translation>Флаги</translation>
+    </message>
+</context>
+<context>
     <name>Errors</name>
     <message>
         <source>Connection failure</source>
@@ -248,6 +291,17 @@
     <message>
         <source>Unable to retrieve token</source>
         <translation>Не удалось получить токен</translation>
+    </message>
+</context>
+<context>
+    <name>ExternalUrlPage</name>
+    <message>
+        <source>Swipe left to preview.</source>
+        <translation>Смахните влево для предпросмотра.</translation>
+    </message>
+    <message>
+        <source>You are using a mobile data connection.</source>
+        <translation>Вы используете мобильную передачу данных.</translation>
     </message>
 </context>
 <context>
@@ -336,6 +390,10 @@
         <source>Edited %1</source>
         <comment>Date and time of a message edit. Showed when clicked on edited text</comment>
         <translation>Изменено %1</translation>
+    </message>
+    <message>
+        <source>Server reactions</source>
+        <translation>Реакции сервера</translation>
     </message>
 </context>
 <context>
@@ -457,6 +515,8 @@
         <source>show license(s)</source>
         <translation>
             <numerusform>показать лицензию</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -519,6 +579,8 @@
         <source>License(s)</source>
         <translation>
             <numerusform>Лицензия</numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -540,176 +602,6 @@
         <source>Your contributions to translations or code would be most welcome.</source>
         <translation>Ваш вклад в перевод или код будет только приветствоваться.</translation>
     </message>
-    <message>
-        <source>Author</source>
-        <translation>Автор</translation>
-    </message>
-    <message numerus="yes">
-        <source>Author(s)</source>
-        <translation>
-            <numerusform>Автор</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Maintainer</source>
-        <translation>Сопровождающий</translation>
-    </message>
-    <message numerus="yes">
-        <source>Maintainer(s)</source>
-        <translation>
-            <numerusform>Сопровождающий</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Programming</source>
-        <translation>Программирование</translation>
-    </message>
-    <message>
-        <source>Icon Design</source>
-        <translation>Дизайн иконок</translation>
-    </message>
-    <message>
-        <source>Third-party libraries</source>
-        <translation>Сторонние библиотеки</translation>
-    </message>
-    <message>
-        <source>Data</source>
-        <translation>Данные</translation>
-    </message>
-    <message>
-        <source>Data License</source>
-        <translation>Лицензия на работу с данными</translation>
-    </message>
-    <message numerus="yes">
-        <source>Data License(s)</source>
-        <translation>
-            <numerusform>Лицензия на работу с данными</numerusform>
-        </translation>
-    </message>
-    <message>
-        <source>Terms of Use</source>
-        <translation>Условия использования</translation>
-    </message>
-    <message>
-        <source>Belarusian</source>
-        <translation>Белорусский</translation>
-    </message>
-    <message>
-        <source>Chinese</source>
-        <translation>Китайский</translation>
-    </message>
-    <message>
-        <source>Czech</source>
-        <translation>Чешский</translation>
-    </message>
-    <message>
-        <source>Dutch</source>
-        <translation>Голландский</translation>
-    </message>
-    <message>
-        <source>English</source>
-        <translation>Английский</translation>
-    </message>
-    <message>
-        <source>Estonian</source>
-        <translation>Эстонский</translation>
-    </message>
-    <message>
-        <source>Finnish</source>
-        <translation>Финский</translation>
-    </message>
-    <message>
-        <source>French</source>
-        <translation>Французский</translation>
-    </message>
-    <message>
-        <source>German</source>
-        <translation>Немецкий</translation>
-    </message>
-    <message>
-        <source>Greek</source>
-        <translation>Греческий</translation>
-    </message>
-    <message>
-        <source>Hungarian</source>
-        <translation>Венгерский</translation>
-    </message>
-    <message>
-        <source>Indonesian</source>
-        <translation>Индонезийский</translation>
-    </message>
-    <message>
-        <source>Italian</source>
-        <translation>Итальянский</translation>
-    </message>
-    <message>
-        <source>Lithuanian</source>
-        <translation>Литовский</translation>
-    </message>
-    <message>
-        <source>Norwegian Bokmål</source>
-        <translation>Норвежский букмол</translation>
-    </message>
-    <message>
-        <source>Polish</source>
-        <translation>Польский</translation>
-    </message>
-    <message>
-        <source>Portuguese</source>
-        <translation>Португальский</translation>
-    </message>
-    <message>
-        <source>Brazilian Portuguese</source>
-        <translation>Бразильский португальский</translation>
-    </message>
-    <message>
-        <source>Romanian</source>
-        <translation>Румынский</translation>
-    </message>
-    <message>
-        <source>Russian</source>
-        <translation>Русский</translation>
-    </message>
-    <message>
-        <source>Serbian</source>
-        <translation>Сербский</translation>
-    </message>
-    <message>
-        <source>Slovak</source>
-        <translation>Словацкий</translation>
-    </message>
-    <message>
-        <source>Spanish</source>
-        <translation>Испанский</translation>
-    </message>
-    <message>
-        <source>Swedish</source>
-        <translation>Шведский</translation>
-    </message>
-    <message>
-        <source>Tamil</source>
-        <translation>Тамильский</translation>
-    </message>
-    <message>
-        <source>Turkish</source>
-        <translation>Турецкий</translation>
-    </message>
-    <message>
-        <source>Ukrainian</source>
-        <translation>Украинский</translation>
-    </message>
-    <message>
-        <source>Norwegian Nynorsk</source>
-        <translation>Норвежский нюнорск</translation>
-    </message>
-    <message>
-        <source>Latvian</source>
-        <translation>Латышский</translation>
-    </message>
-    <message>
-        <source>Dutch (Belgium)</source>
-        <translation>Голландский (Бельгия)</translation>
-    </message>
 </context>
 <context>
     <name>Opal.LinkHandler</name>
@@ -720,18 +612,6 @@
     <message>
         <source>Copied to clipboard: %1</source>
         <translation>Скопировано в буфер обмена: %1</translation>
-    </message>
-    <message>
-        <source>External Link</source>
-        <translation>Внешняя ссылка</translation>
-    </message>
-    <message>
-        <source>Copy text to clipboard</source>
-        <translation>Скопировать текст в буфер обмена</translation>
-    </message>
-    <message>
-        <source>Copy to clipboard</source>
-        <translation>Скопировать в буфер обмена</translation>
     </message>
     <message>
         <source>Share</source>
@@ -1101,6 +981,14 @@
         <source>Yearly</source>
         <translation>Ежегодно</translation>
     </message>
+    <message>
+        <source>Compact lists</source>
+        <translation>Компактные списки</translation>
+    </message>
+    <message>
+        <source>Make servers (only in classic mode) and DMs lists more compact</source>
+        <translation>Сделать серверы (только в классическом режиме) и списки личный сообщений более компактными</translation>
+    </message>
 </context>
 <context>
     <name>Shared</name>
@@ -1158,17 +1046,6 @@
         <source>(Phone)</source>
         <comment>Used with e.g. Online (Phone)</comment>
         <translation>(телефон)</translation>
-    </message>
-</context>
-<context>
-    <name>ExternalUrlPage</name>
-    <message>
-        <source>Swipe left to preview.</source>
-        <translation>Смахните влево для предпросмотра.</translation>
-    </message>
-    <message>
-        <source>You are using a mobile data connection.</source>
-        <translation>Вы используете мобильную передачу данных.</translation>
     </message>
 </context>
 </TS>
