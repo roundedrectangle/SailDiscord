@@ -29,6 +29,8 @@ ListItem {
         case "d": return (!(sameAuthorAsBefore && (_model.date - msgModel.get(index+1).date) < 300000) /*5 minutes*/) || referenceLoader.item != undefined
     }
     property real _infoWidth: profileIcon.width + iconPadding.width + leftPadding.width
+    // reverse if sent and set to reversed
+    property int contentLayoutDirection: (_model.sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
 
     property alias innerWidth: row.width
 
@@ -88,8 +90,7 @@ ListItem {
             height: !_firstSameAuthor ? textContainer.height : implicitHeight//childrenRect.height
             // align right if sent and set to reversed/right aligned
             anchors.right: (_model.sent && appSettings.sentBehaviour !== "n") ? parent.right : undefined
-            // reverse if sent and set to reversed
-            layoutDirection: (_model.sent && appSettings.sentBehaviour === "r") ? Qt.RightToLeft : Qt.LeftToRight
+            layoutDirection: contentLayoutDirection
 
             Item { id: leftPadding; height: 1; width: Theme.horizontalPageMargin
                 visible: _firstSameAuthor || appSettings.oneAuthorPadding !== "n"
@@ -236,6 +237,8 @@ ListItem {
         MessageReactions {
             messageId: _model.messageId
             model: _model.reactions
+            layoutDirection: contentLayoutDirection
+            //rightPadding: _infoWidth // TODO: decide if it's needed to add additional paddings to reactions
         }
 
         Item { height: _model.attachments.count > 0 ? Theme.paddingLarge : 0; width: 1 }
