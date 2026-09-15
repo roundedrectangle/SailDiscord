@@ -9,7 +9,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property Page channelsPage
-    readonly property string guildid: channelsPage ? channelsPage.serverid : ''
+    property string guildid: channelsPage ? channelsPage.serverid : ''
     readonly property var serverEmojis: channelsPage ? channelsPage.serverEmojis : []
     property string channelid
     property string name
