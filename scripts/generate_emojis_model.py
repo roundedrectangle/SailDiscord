@@ -15,7 +15,7 @@ def hex_to_emoji(emoji: str):
 data = requests.get(URL).content.decode()
 emojis: dict[str, list[str]] = {} # group: [emojis]
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 2:
     print(f"Insufficient arguments. Usage: python3 generate_emojis_model.py path/to/SailDiscord")
 
 saildiscord_root = Path(sys.argv[1])
@@ -44,7 +44,10 @@ ListModel {
     Component.onCompleted: {
 ''')
     for group, group_emojis in emojis.items():
-        obj = json.dumps({'group': group, 'emojis': [{'emoji': e} for e in group_emojis]})
+        obj = json.dumps({'group': group, 'emojis': 0})
+        dumped_group = json.dumps(group)
+        dumped_emojis = [{'emoji': e} for e in group_emojis]
+        obj = '{' + f'"group": qsTr({dumped_group}), "emojis": {dumped_emojis}' + '}'
         f.write(f'''\
         append({obj})\n''')
     f.write('''\
