@@ -72,9 +72,13 @@ QtObject {
                                        )
     }
 
+    function getEmojiPath(emoji) {
+        if (!emoji) return ''
+        return Qt.resolvedUrl('../../images/twemoji/') + Emoji.getEmojiFileName(emoji)
+    }
     function emojify(text, fontSize) {
         if (!appSettings.twemoji) return text
-        if (!text) return text
+        if (!text) return ''
         return Emoji.emojify(Qt.resolvedUrl('../../images/twemoji/'), text, fontSize || Theme.fontSizeMedium)
     }
 

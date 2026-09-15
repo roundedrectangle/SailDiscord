@@ -8,7 +8,9 @@ Page {
     id: page
     allowedOrientations: Orientation.All
 
-    property string guildid
+    property Page channelsPage
+    readonly property string guildid: channelsPage.serverid
+    readonly property var serverEmojis: channelsPage.serverEmojis
     property string channelid
     property string name
     property bool isDemo: false
@@ -17,6 +19,7 @@ Page {
     property bool sendPermissions: true
     property bool attachPermission: true
     property bool managePermissions: false
+    property bool addReactionPermissions: true
 
     property bool isDM: false
     property bool isGroup: false
@@ -126,10 +129,11 @@ Page {
             anchors.fill: parent
             Label {
                 id: topicDrawerLabel
-                text: topic
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2*x
                 height: implicitHeight + 2*Theme.paddingLarge
+                text: topic
+                color: Theme.highlightColor
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.Wrap
             }
@@ -219,8 +223,10 @@ Page {
                     Component {
                         id: defaultItem
                         MessageItem {
+                            serverEmojis: page.serverEmojis
                             sendPermissions: page.sendPermissions
                             managePermissions: page.managePermissions
+                            addReactionPermissions: page.addReactionPermissions
                             showRequestableOptions: !isDemo
 
                             sameAuthorAsBefore: index == msgModel.count-1 ? false : (msgModel.get(index+1).author == author)

@@ -450,6 +450,9 @@ class Communicator:
             self.client.run_asyncio_threadsafe(msg.remove_reaction(reaction_str, self.client.user))
         self.client.run_asyncio_threadsafe(self.client.send_message_update(msg))
 
+    def get_server_emojis(self, server_id: str | int):
+        send_guild_emojis(self.client.get_guild(int(server_id)), self.cacher)
+
 discord_version = '{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(discord.version_info)
 if discord.version_info.releaselevel != 'final':
     try:

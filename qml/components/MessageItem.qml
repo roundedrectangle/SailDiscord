@@ -2,7 +2,8 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtGraphicalEffects 1.0
 import '../modules/Opal/LinkHandler'
-import '../modules/FancyContextMenu'
+import '../modules/Opal/FancyMenus'
+import "../modules/js/twemoji.js" as Emoji
 
 // TODO: width broken in demo mode (hint: the easy way is to remove aligned mode)
 ListItem {
@@ -14,8 +15,10 @@ ListItem {
     property var _model: model // 1. For cases like `model: model.x` 2. For references (and possibly something else in the future)
 
     property bool sameAuthorAsBefore
+    property var serverEmojis
     property bool sendPermissions
     property bool managePermissions
+    property bool addReactionPermissions
 
     property real masterWidth: -1 // Width of the previous element with avatar. Used with sameAuthorAsBefore
     property date masterDate: new Date(1) // Date of previous element
@@ -244,52 +247,183 @@ ListItem {
                        )
     }
 
-    menu: Component { FancyContextMenu {
-        listItem: root
+    menu: menuComponent
+    Component {
+        id: menuComponent
+        FancyContextMenu {
+            listItem: root
 
-        FancyMenuRow {
-            FancyIconMenuItem {
-                icon.source: "image://theme/icon-m-clipboard"
-                onClicked: Clipboard.text = _model.contents
-                visible: _model.contents.length > 0
+            FancyMenuRow {
+                visible: addReactionPermissions
+
+                Repeater {
+                    // TODO: when discord.py-self supports this, put frequent emojis here
+                    model: ['👍', '👎', '❤️', '🔥', '😁', '😢']
+                    IconRowMenuItem {
+                        icon {
+                            color: undefined
+                            source: shared.getEmojiPath(modelData)
+                            width: Theme.itemSizeSmall/2
+                            height: icon.width
+                            sourceSize {
+                                width: icon.width
+                                height: icon.height
+                            }
+                        }
+                        onClicked: py.call2('toggle_message_reaction', [_model.messageId, modelData, true])
+                    }
+                }
+
+                IconRowMenuItem {
+                    icon.source: "image://theme/icon-m-down"
+                    onClicked: {
+                        menu = reactionsMenuComponent
+                        openMenu()
+                    }
+                }
             }
-            FancyIconMenuItem {
-                icon.source: "image://theme/icon-m-edit"
-                onClicked: editRequested()
-                visible: _model.sent && showRequestableOptions
+            FancyMenuRow {
+                IconRowMenuItem {
+                    icon.source: "image://theme/icon-m-clipboard"
+                    onClicked: Clipboard.text = _model.contents
+                    visible: _model.contents.length > 0
+                }
+                IconRowMenuItem {
+                    icon.source: "image://theme/icon-m-edit"
+                    onClicked: editRequested()
+                    visible: _model.sent && showRequestableOptions
+                }
+                IconRowMenuItem {
+                    icon.source: "image://theme/icon-m-delete"
+                    onClicked: deleteRequested()
+                    visible: (_model.sent || managePermissions) && showRequestableOptions
+                }
+                IconRowMenuItem {
+                    icon.source: "image://theme/icon-m-message-reply"
+                    onClicked: replyRequested()
+                    visible: sendPermissions && showRequestableOptions
+                }
             }
-            FancyIconMenuItem {
-                icon.source: "image://theme/icon-m-delete"
-                onClicked: deleteRequested()
-                visible: (_model.sent || managePermissions) && showRequestableOptions
+            FancyMenuItem {
+                icon.source: "image://theme/icon-m-about"
+                text: qsTranslate("AboutUser", "About this member", "User")
+                visible: _model.userid != '-1'
+                onClicked: openAboutUser()
             }
-            FancyIconMenuItem {
-                icon.source: "image://theme/icon-m-message-reply"
-                onClicked: replyRequested()
-                visible: sendPermissions && showRequestableOptions
+            FancyMenuItem {
+                icon.source: "image://theme/icon-m-link"
+                text: qsTranslate("General", "Copy message link")
+                visible: !!_model.jumpUrl
+                onClicked: Clipboard.text = _model.jumpUrl
+            }
+            MenuItem {
+                text: qsTranslate("General", "Copy message ID")
+                visible: appSettings.developerMode && _model.messageId
+                onClicked: Clipboard.text = _model.messageId
+            }
+            MenuItem {
+                text: qsTranslate("General", "Copy formatted contents")
+                visible: appSettings.developerMode
+                onClicked: Clipboard.text = _model.formattedContents
             }
         }
-        FancyAloneMenuItem {
-            icon.source: "image://theme/icon-m-about"
-            text: qsTranslate("AboutUser", "About this member", "User")
-            visible: _model.userid != '-1'
-            onClicked: openAboutUser()
+    }
+
+    // FIXME: this can be laggy on low-end devices
+    Component {
+        id: reactionsMenuComponent
+        ContextMenu {
+            id: reactionsMenu
+            height: Theme.itemSizeLarge*3
+            onClosed: menu = menuComponent
+
+            property int columns: Math.floor(width / Theme.itemSizeSmall)
+            property real cellWidth: width / columns
+
+            SilicaListView {
+                width: parent.width
+                height: Theme.itemSizeLarge*3
+
+                model: EmojisModel {}
+
+                header: Column {
+                    width: parent.width
+                    visible: serverEmojisGridView.count > 0
+                    height: visible ? implicitHeight : 0
+                    Component.onCompleted: console.log(serverEmojisGridView.count, serverEmojis, serverEmojis.length)
+
+                    SectionHeader { text: qsTr("Server reactions") }
+
+                    GridView {
+                        id: serverEmojisGridView
+                        width: parent.width
+                        model: serverEmojis
+                        cellWidth: reactionsMenu.cellWidth
+                        cellHeight: Theme.itemSizeSmall
+                        height: cellHeight * Math.ceil(count / reactionsMenu.columns)
+                        interactive: false
+                        Component.onCompleted: console.log(height, parent.height)
+
+                        delegate: BackgroundItem {
+                            width: serverEmojisGridView.cellWidth
+                            height: serverEmojisGridView.cellHeight
+
+                            Asset {
+                                width: Theme.itemSizeSmall/2
+                                height: width
+                                anchors.centerIn: parent
+                                info: modelData.asset
+                            }
+
+                            onClicked: {
+                                py.call2('toggle_message_reaction', [_model.messageId, modelData.reactionId, true])
+                                closeMenu()
+                            }
+                        }
+                    }
+                }
+
+                delegate: Column {
+                    width: parent.width
+
+                    SectionHeader { text: group }
+
+                    GridView {
+                        id: emojisGridView
+                        width: parent.width
+                        model: emojis
+                        cellWidth: reactionsMenu.cellWidth
+                        cellHeight: Theme.itemSizeSmall
+                        height: cellHeight * Math.ceil(count / columns)
+                        interactive: false
+
+                        Component.onCompleted: console.log(height, parent.height, parent, parent.parent.height, parent.parent)
+                        delegate: BackgroundItem {
+                            width: emojisGridView.cellWidth
+                            height: emojisGridView.cellHeight
+
+                            Image {
+                                width: Theme.itemSizeSmall/2
+                                height: width
+                                anchors.centerIn: parent
+                                sourceSize {
+                                    width: width
+                                    height: height
+                                }
+                                asynchronous: true
+                                source: shared.getEmojiPath(emoji)
+                            }
+
+                            onClicked: {
+                                py.call2('toggle_message_reaction', [_model.messageId, modelData, true])
+                                closeMenu()
+                            }
+                        }
+                    }
+                }
+
+                VerticalScrollDecorator {}
+            }
         }
-        FancyAloneMenuItem {
-            icon.source: "image://theme/icon-m-link"
-            text: qsTranslate("General", "Copy message link")
-            visible: !!_model.jumpUrl
-            onClicked: Clipboard.text = _model.jumpUrl
-        }
-        MenuItem {
-            text: qsTranslate("General", "Copy message ID")
-            visible: appSettings.developerMode && _model.messageId
-            onClicked: Clipboard.text = _model.messageId
-        }
-        MenuItem {
-            text: qsTranslate("General", "Copy formatted contents")
-            visible: appSettings.developerMode
-            onClicked: Clipboard.text = _model.formattedContents
-        }
-    }}
+    }
 }

@@ -1,6 +1,5 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-import "../modules/js/twemoji.js" as Emoji
 
 Flow {
     x: Theme.horizontalPageMargin
@@ -27,12 +26,13 @@ Flow {
             Asset {
                 id: emojiAsset
                 anchors {
+                    left: parent.left
                     leftMargin: Theme.paddingSmall
                     verticalCenter: parent.verticalCenter
                 }
                 width: parent.height - Theme.paddingSmall
                 height: width
-                source: emoji ? (Qt.resolvedUrl('../../images/twemoji/') + Emoji.getEmojiFileName(emoji)) : defaultSource
+                source: emoji ? shared.getEmojiPath(emoji) : defaultSource
                 active: !!emoji || (info && info.source)
                 info: asset
             }
@@ -48,8 +48,7 @@ Flow {
                 highlighted: reactionItem.highlighted || me
             }
 
-            onClicked:
-                py.call2('toggle_message_reaction', [messageId, reactionId, !me])
+            onClicked: py.call2('toggle_message_reaction', [messageId, reactionId, !me])
         }
     }
 }

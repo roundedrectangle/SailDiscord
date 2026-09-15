@@ -4,13 +4,14 @@ import io.thp.pyotherside 1.5
 import "../components"
 
 Page {
-    id: page
+    id: channelsPage
     allowedOrientations: Orientation.All
 
     property string serverid
     property string name
     property var icon
     property string memberCount
+    property var serverEmojis: []
 
     property alias channelList: channelList
     property bool _fillParent: true
@@ -29,7 +30,11 @@ Page {
         switch (m.icon) {
         case "text": case "news": case "name":
             var messagesPage = pageStack.pushAttached(Qt.resolvedUrl("MessagesPage.qml"),
-                {guildid: serverid, channelid: m.channelid, name: m.name, sendPermissions: m.textSendPermissions, attachPermission: m.attachFilesPermission, managePermissions: m.managePermissions, topic: m.topic})
+                {
+                    channelsPage: channelsPage, channelid: m.channelid, name: m.name,
+                    sendPermissions: m.textSendPermissions, attachPermission: m.attachFilesPermission, managePermissions: m.managePermissions, addReactionPermissions: m.addReactionPermissions,
+                    topic: m.topic
+                })
             messagesPage.channelOpenRequested.connect(function(id) {
                 var i = chModel.findIndexById(id)
                 if (i >= 0) {
@@ -98,12 +103,13 @@ Page {
             if (serverid == '') return
             lastServerId = serverid
             var last = shared.getLastChannel(serverid)
-            py.setHandler('channel'+serverid, function (categoryname, channelid, name, haspermissions, icon, textSendPermissions, attachFilesPermission, managePermissions, topic, unread, mentions) {
+            py.setHandler('channel'+serverid, function (categoryname, channelid, name, haspermissions, icon, textSendPermissions, attachFilesPermission, managePermissions, addReactionPermissions, topic, unread, mentions) {
                 if (!haspermissions && !appSettings.ignorePrivate) return
                 var m = {
                     categoryname: shared.emojify(categoryname), channelid: channelid, name: shared.emojify(name),
                     icon: icon, hasPermissions: haspermissions, textSendPermissions: textSendPermissions, attachFilesPermission: attachFilesPermission,
-                    managePermissions: managePermissions, topic: shared.emojify(topic), unread: unread, mentions: mentions,
+                    managePermissions: managePermissions, addReactionPermissions: addReactionPermissions,
+                    topic: shared.emojify(topic), unread: unread, mentions: mentions
                 }
                 append(m)
                 if (last == channelid) openChannel(m, true)
@@ -116,6 +122,9 @@ Page {
                 }
             })
             py.call2('get_channels', serverid)
+
+            py.setHandler('serverEmojis'+serverid, function(emojis) { serverEmojis = emojis })
+            py.call2('get_server_emojis', serverid)
         }
         Component.onCompleted: reloadModel()
     }
@@ -128,8 +137,9 @@ Page {
         }
         py.reset('channel'+serverid, true)
         py.reset('channelUpdate'+serverid, true)
+        py.reset('serverEmojis')
         py.call2('unset_server', serverid)
-        if (!!pageStack.nextPage() && pageStack.nextPage().serverid != '-1') pageStack.popAttached()
+        if (pageStack.nextPage() && pageStack.nextPage().serverid !== '-1') pageStack.popAttached()
     }
 
     Component {

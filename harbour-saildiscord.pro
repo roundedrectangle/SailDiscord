@@ -27,6 +27,7 @@ DISTFILES += \
     qml/components/Embed.qml \
     qml/components/EmbedImageText.qml \
     qml/components/EmbedPlaceholder.qml \
+    qml/components/EmojisModel.qml \
     qml/components/FadeableFlickable.qml \
     qml/components/GeneralAttachmentView.qml \
     qml/components/ListImage.qml \
@@ -43,7 +44,6 @@ DISTFILES += \
     qml/components/ZoomableImage.qml \
     qml/cover/CoverPage.qml \
     qml/harbour-saildiscord.qml \
-    qml/modules/FancyContextMenu/FancyAloneMenuItem.qml \
     qml/modules/js/thumbhash.js \
     qml/pages/AboutPage.qml \
     qml/pages/AboutServerPage.qml \
