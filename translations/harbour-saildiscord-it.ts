@@ -46,23 +46,23 @@
     </message>
     <message>
         <source>A discord user client library. It is used by the app to communicate with Discord servers.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una libreria per client Discord. Viene usata dall&apos;applicazione per comunicare con i server Discord.</translation>
     </message>
     <message>
         <source>The HTTP client library used by discord.py-self internally.</source>
-        <translation type="unfinished"></translation>
+        <translation>il Client della libreria HTTP usata internamente da discord.py-self.</translation>
     </message>
     <message>
         <source>Development</source>
-        <translation type="unfinished">Sviluppo</translation>
+        <translation>Sviluppo</translation>
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished">Olandese</translation>
+        <translation>Olandese</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Generale</translation>
     </message>
 </context>
 <context>
@@ -179,43 +179,43 @@
     <name>EmojisModel</name>
     <message>
         <source>Smileys &amp; Emotion</source>
-        <translation type="unfinished"></translation>
+        <translation>Faccine ed Emozioni</translation>
     </message>
     <message>
         <source>People &amp; Body</source>
-        <translation type="unfinished"></translation>
+        <translation>Persone e Corpo</translation>
     </message>
     <message>
         <source>Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Componenti</translation>
     </message>
     <message>
         <source>Animals &amp; Nature</source>
-        <translation type="unfinished"></translation>
+        <translation>Animali e Natura</translation>
     </message>
     <message>
         <source>Food &amp; Drink</source>
-        <translation type="unfinished"></translation>
+        <translation>Cibo e bevande</translation>
     </message>
     <message>
         <source>Travel &amp; Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Viaggi e Luoghi</translation>
     </message>
     <message>
         <source>Activities</source>
-        <translation type="unfinished"></translation>
+        <translation>Attività</translation>
     </message>
     <message>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Oggetti</translation>
     </message>
     <message>
         <source>Symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="unfinished"></translation>
+        <translation>Bandiere</translation>
     </message>
 </context>
 <context>
@@ -242,7 +242,7 @@
     </message>
     <message>
         <source>A reference failed to load (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Caricamento di un referenza fallito (%1)</translation>
     </message>
     <message>
         <source>Channel failed to load</source>
@@ -297,11 +297,11 @@
     <name>ExternalUrlPage</name>
     <message>
         <source>Swipe left to preview.</source>
-        <translation type="unfinished"></translation>
+        <translation>Trascina a sinistra per l&apos;anteprima</translation>
     </message>
     <message>
         <source>You are using a mobile data connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stai usando una connessione di rete mobile.</translation>
     </message>
 </context>
 <context>
@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>Server reactions</source>
-        <translation type="unfinished"></translation>
+        <translation>Reazioni server</translation>
     </message>
 </context>
 <context>
@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>You are using a mobile data connection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stai usando una connessione di rete mobile.</translation>
     </message>
     <message numerus="yes">
         <source>License(s)</source>
@@ -633,19 +633,19 @@
     </message>
     <message>
         <source>Copy link</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia collegamento</translation>
     </message>
     <message>
         <source>Copy text</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia testo</translation>
     </message>
     <message>
         <source>No preview available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna anteprima disponibile</translation>
     </message>
     <message>
         <source>The page is taking too long to load.</source>
-        <translation type="unfinished"></translation>
+        <translation>La pagina sta impigando troppo a caricare.</translation>
     </message>
 </context>
 <context>
@@ -712,7 +712,7 @@
     </message>
     <message>
         <source>author &amp; time (default)</source>
-        <translation>Autore &amp; data (predefinito)</translation>
+        <translation>Autore e data (predefinito)</translation>
     </message>
     <message>
         <source>author</source>
@@ -744,7 +744,7 @@
     </message>
     <message>
         <source>Animate embedded GIFs</source>
-        <translation type="unfinished"></translation>
+        <translation>Anima GIF incorporate</translation>
     </message>
     <message>
         <source>Send messages by enter</source>
@@ -981,11 +981,11 @@
     </message>
     <message>
         <source>Compact lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista compatta</translation>
     </message>
     <message>
         <source>Make servers (only in classic mode) and DMs lists more compact</source>
-        <translation type="unfinished"></translation>
+        <translation>Rendi le liste dei server (solo nella vista classica) e dei messaggi diretti più compatte</translation>
     </message>
 </context>
 <context>
