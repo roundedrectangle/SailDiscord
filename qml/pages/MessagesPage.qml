@@ -268,6 +268,8 @@ Page {
                                 currentFieldAction = 2
                                 actionInfo = model.contents
                             }
+                            onToggleReaction:
+                                py.call2('toggle_message_reaction', [messageId, reaction, add])
 
                             channelLinkClickable: !isDemo && !isDM && !isGroup
                             onChannelOpenRequested: page.channelOpenRequested(id)

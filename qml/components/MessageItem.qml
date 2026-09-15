@@ -41,6 +41,7 @@ ListItem {
     property bool channelLinkClickable: showRequestableOptions
     signal channelOpenRequested(string id)
     property var jumpToReference: function() { return false } // Should return true if reference was found in messages model and false if not, takes message ID as the argument
+    signal toggleReaction(string reaction, bool add)
 
     property bool highlightStarted
     property bool _highlighting
@@ -257,7 +258,7 @@ ListItem {
             listItem: root
 
             FancyMenuRow {
-                visible: addReactionPermissions
+                visible: showRequestableOptions && addReactionPermissions
 
                 Repeater {
                     // TODO: when discord.py-self supports this, put frequent emojis here
@@ -273,7 +274,7 @@ ListItem {
                                 height: icon.height
                             }
                         }
-                        onClicked: py.call2('toggle_message_reaction', [_model.messageId, modelData, true])
+                        onClicked: toggleReaction(modelData, true)
                     }
                 }
 
@@ -379,7 +380,7 @@ ListItem {
                             }
 
                             onClicked: {
-                                py.call2('toggle_message_reaction', [_model.messageId, modelData.reactionId, true])
+                                toggleReaction(modelData.reactionId, true)
                                 closeMenu()
                             }
                         }
@@ -418,7 +419,7 @@ ListItem {
                             }
 
                             onClicked: {
-                                py.call2('toggle_message_reaction', [_model.messageId, modelData, true])
+                                toggleReaction(modelData, true)
                                 closeMenu()
                             }
                         }

@@ -50,7 +50,7 @@ Flow {
                 highlighted: reactionItem.highlighted || me
             }
 
-            onClicked: py.call2('toggle_message_reaction', [messageId, reactionId, !me])
+            onClicked: toggleReaction(reactionId, !me)
         }
     }
 }
