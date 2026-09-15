@@ -4,6 +4,8 @@ import Sailfish.Silica 1.0
 Flow {
     x: Theme.horizontalPageMargin
     width: parent.width - 2*x
+    visible: repeater.count > 0
+    height: visible ? implicitHeight : 0
     topPadding: Theme.paddingMedium
     spacing: Theme.paddingMedium
     bottomPadding: Theme.paddingMedium
