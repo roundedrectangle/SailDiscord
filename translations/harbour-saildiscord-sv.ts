@@ -54,15 +54,15 @@
     </message>
     <message>
         <source>Development</source>
-        <translation type="unfinished">Utveckling</translation>
+        <translation>Utveckling</translation>
     </message>
     <message>
         <source>Dutch</source>
-        <translation type="unfinished">Nederländska</translation>
+        <translation>Nederländska</translation>
     </message>
     <message>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmänt</translation>
     </message>
 </context>
 <context>
@@ -179,43 +179,43 @@
     <name>EmojisModel</name>
     <message>
         <source>Smileys &amp; Emotion</source>
-        <translation type="unfinished"></translation>
+        <translation>Smileys &amp; känslor</translation>
     </message>
     <message>
         <source>People &amp; Body</source>
-        <translation type="unfinished"></translation>
+        <translation>Människor &amp; kropp</translation>
     </message>
     <message>
         <source>Component</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponent</translation>
     </message>
     <message>
         <source>Animals &amp; Nature</source>
-        <translation type="unfinished"></translation>
+        <translation>Djur &amp; natur</translation>
     </message>
     <message>
         <source>Food &amp; Drink</source>
-        <translation type="unfinished"></translation>
+        <translation>Mat &amp; dryck</translation>
     </message>
     <message>
         <source>Travel &amp; Places</source>
-        <translation type="unfinished"></translation>
+        <translation>Resor &amp; platser</translation>
     </message>
     <message>
         <source>Activities</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktiviteter</translation>
     </message>
     <message>
         <source>Objects</source>
-        <translation type="unfinished"></translation>
+        <translation>Objekt</translation>
     </message>
     <message>
         <source>Symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboler</translation>
     </message>
     <message>
         <source>Flags</source>
-        <translation type="unfinished"></translation>
+        <translation>Flaggor</translation>
     </message>
 </context>
 <context>
@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>Server reactions</source>
-        <translation type="unfinished"></translation>
+        <translation>Serverreaktioner</translation>
     </message>
 </context>
 <context>
@@ -981,11 +981,11 @@
     </message>
     <message>
         <source>Compact lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompaktlistor</translation>
     </message>
     <message>
         <source>Make servers (only in classic mode) and DMs lists more compact</source>
-        <translation type="unfinished"></translation>
+        <translation>Gör server- (endast i klassiskt läge) och DM-listor mer kompakta</translation>
     </message>
 </context>
 <context>
